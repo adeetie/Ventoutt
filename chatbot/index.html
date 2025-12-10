@@ -2,102 +2,138 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MentalBot Demo</title>
-    <link rel="stylesheet" href="css/mentalbot.css" />
-    <script src="js/mentalbot.js"> </script>
-    <script src="js/utils.js"> </script>
-    <style>
-        /* Simple layout styles for demo */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        header,
-        footer {
-            background: #333;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        nav {
-            background: #555;
-            padding: 0.5rem;
-        }
-
-        nav a {
-            color: #fff;
-            margin: 0 1rem;
-            text-decoration: none;
-        }
-
-        main {
-            padding: 2rem;
-            min-height: 60vh;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventoutt - A Safe Space to Be Heard</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/popup.css">
 </head>
 
 <body>
+
     <header>
-        <h1>My Site Header</h1>
+        <div class="logo">Ventoutt.</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="services.html?chatbot=open" class="cta-nav">Get Support</a>
+        </nav>
     </header>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="demo-venting.html">Venting</a>
-        <a href="demo-coaching.html">Coaching</a>
-        <a href="demo-therapy.html">Therapy</a>
-    </nav>
+
     <main>
-        <h2>Welcome to the Demo Site</h2>
-        <p>This is some placeholder content for the home page. Feel free to explore the chatbot in the bottom‑right
-            corner.</p>
-        <!-- Chatbot container: keep id/class names in contract -->
-        <div id="mentalbot-overlay" class="mobile-only"></div>
-        <div id="mentalbot-shell" class="collapsed" aria-live="polite">
-            <button id="mentalbot-bar" aria-expanded="false" aria-controls="mentalbot-panel">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z"
-                        fill="white" />
-                </svg>
-            </button>
-            <div id="mentalbot-panel" role="dialog" aria-hidden="true" aria-label="Support chat panel">
-                <div id="mentalbot-header">
-                    <span class="header-title">Message</span>
-                    <button id="mentalbot-close" aria-label="Close chat">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M18 6L6 18M6 6l12 12"></path>
-                        </svg>
-                    </button>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>A Safe Space to Be Heard — Anytime.</h1>
+            <p style="max-width: 600px; margin: 0 auto 2rem auto;">
+                Emotions don’t need to stay inside. Whether you want to vent, understand your feelings, or explore
+                support options — we’re here to listen.
+            </p>
+            <a href="services.html?chatbot=open" class="btn-primary">🟢 Explore Support</a>
+        </section>
+
+        <!-- Section 1: What We Offer -->
+        <section>
+            <h2 style="text-align: center;">Three ways to understand what you’re feeling</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>🟦 Venting</h3>
+                    <p>A non-judgmental space to express yourself freely. No advice, just listening.</p>
                 </div>
-                <!-- Disclaimer is now inserted dynamically into messages sidebar or top -->
-                <div id="mentalbot-disclaimer" class="scroll-disclaimer" aria-live="polite"></div>
-
-                <div id="mentalbot-messages" role="log" aria-live="polite"></div>
-
-                <div id="mentalbot-buttons" aria-label="Quick options"></div>
-
-                <div id="mentalbot-input-area" aria-hidden="true">
-
-                    <input id="mentalbot-input" type="text" placeholder="Type something..." aria-label="Message" />
-                    <button id="mentalbot-send" aria-label="Send message">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
+                <div class="feature-card">
+                    <h3>🟩 Coaching</h3>
+                    <p>Guidance and clarity from qualified Indian psychologists to understand patterns and build skills.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3>🟧 Therapy Resources</h3>
+                    <p>Find verified external therapy partners if you need clinical diagnosis or treatment.</p>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Section 2: Not Sure? -->
+        <section style="background: #fafafa; padding: 3rem; border-radius: 12px; text-align: center;">
+            <h2>Not Sure What You Need?</h2>
+            <p>Many people don’t know whether to vent, seek guidance, or consider therapy. It’s completely normal.</p>
+            <p><strong>A chatbot is here to help you explore safely.</strong></p>
+        </section>
+
+        <!-- Section 3: Why Choose Us -->
+        <section>
+            <h2>Why People Choose Us</h2>
+            <ul style="list-style: none; padding: 0; display: grid; gap: 1rem;">
+                <li>✅ 100% anonymous option</li>
+                <li>✅ Gentle, reflective conversations</li>
+                <li>✅ No diagnosis or pressure</li>
+                <li>✅ Clear redirection to therapy if needed</li>
+            </ul>
+        </section>
+
+        <!-- Long Scroll Content for Testing -->
+        <section>
+            <h3>Understanding Your Emotions</h3>
+            <p>Emotions can be complex. Sometimes we feel everything at once, and other times we feel nothing at all.
+                Ventoutt allows you to navigate these waves without judgment.</p>
+            <p>Whether it's work stress, relationship confusion, or just a heavy heart, speaking it out is the first
+                step to clarity.</p>
+            <br><br><br><br><br>
+            <p>Keep scrolling... deep dive into emotional health...</p>
+            <br><br><br><br><br>
+            <p>We are almost at the bottom. This ensures the 80% scroll trigger fires correctly.</p>
+        </section>
+
     </main>
+
     <footer>
-        <p>© 2025 My Demo Site. All rights reserved.</p>
+        <p>Support doesn’t have to be complicated. © 2025 Ventoutt.</p>
     </footer>
-    <script src="js/mentalbot.js"></script>
+
+    <!-- 80% Scroll Popup -->
+    <div id="scroll-popup">
+        <h3>Still not sure what would help the most?</h3>
+        <p>You don’t have to decide alone. Let our chatbot help you explore Venting, Coaching, or Therapy safely.</p>
+        <div class="popup-actions">
+            <a href="services.html?chatbot=open" class="btn-popup-primary">Help me choose</a>
+            <button id="close-popup" class="btn-popup-secondary">Not now</button>
+        </div>
+    </div>
+
+    <!-- Chatbot Container -->
+    <div id="mentalbot-overlay" class="mobile-only"></div>
+    <div id="mentalbot-shell" class="collapsed" aria-live="polite">
+        <button id="mentalbot-bar" aria-expanded="false" aria-controls="mentalbot-panel">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z"
+                    fill="white" />
+            </svg>
+        </button>
+        <div id="mentalbot-panel" role="dialog" aria-hidden="true" aria-label="Support chat panel">
+            <div id="mentalbot-header">
+                <span class="header-title">Message</span>
+                <button id="mentalbot-close" aria-label="Close chat">✕</button>
+            </div>
+            <div id="mentalbot-disclaimer" class="scroll-disclaimer" aria-live="polite"></div>
+            <div id="mentalbot-messages" role="log" aria-live="polite"></div>
+            <div id="mentalbot-buttons" aria-label="Quick options"></div>
+            <div id="mentalbot-input-area" aria-hidden="true">
+                <input id="mentalbot-input" type="text" placeholder="Type something..." aria-label="Message" />
+                <button id="mentalbot-send" aria-label="Send message">➔</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/chatbot.js"></script>
+    <script src="js/popup-scroll.js"></script>
+    <script src="js/auto-open.js"></script>
 </body>
 
 </html>

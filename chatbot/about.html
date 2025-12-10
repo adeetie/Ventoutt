@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Ventoutt</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/popup.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Ventoutt.</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html" style="color:var(--primary-green)">About</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="services.html?chatbot=open" class="cta-nav">Get Support</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Why Ventoutt Exists</h1>
+        </section>
+
+        <section style="max-width: 800px; margin: 0 auto; line-height: 1.8;">
+            <p>We created Ventoutt for the people who fall between “I’m fine” and “I need therapy.”</p>
+            <p>For the ones who feel overwhelmed but don’t know where to go.</p>
+            <p>For anyone who wants a safe moment to breathe and express.</p>
+            <p>Our mission is to provide accessible, non-clinical support through venting and coaching, while ensuring
+                clear pathways to professional therapy when needed.</p>
+        </section>
+
+        <div style="height: 600px;"></div>
+    </main>
+
+    <footer>
+        <p>© 2025 Ventoutt.</p>
+    </footer>
+
+    <!-- Popup -->
+    <div id="scroll-popup">
+        <h3>Still not sure?</h3>
+        <p>Let our chatbot help.</p>
+        <div class="popup-actions">
+            <a href="services.html?chatbot=open" class="btn-popup-primary">Help me choose</a>
+            <button id="close-popup" class="btn-popup-secondary">Not now</button>
+        </div>
+    </div>
+
+    <!-- Chatbot -->
+    <div id="mentalbot-overlay" class="mobile-only"></div>
+    <div id="mentalbot-shell" class="collapsed" aria-live="polite">
+        <button id="mentalbot-bar" aria-expanded="false" aria-controls="mentalbot-panel">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z"
+                    fill="white" />
+            </svg>
+        </button>
+        <div id="mentalbot-panel" role="dialog" aria-hidden="true" aria-label="Support chat panel">
+            <div id="mentalbot-header">
+                <span class="header-title">Message</span>
+                <button id="mentalbot-close" aria-label="Close chat">✕</button>
+            </div>
+            <div id="mentalbot-disclaimer" class="scroll-disclaimer" aria-live="polite"></div>
+            <div id="mentalbot-messages" role="log" aria-live="polite"></div>
+            <div id="mentalbot-buttons" aria-label="Quick options"></div>
+            <div id="mentalbot-input-area" aria-hidden="true">
+                <input id="mentalbot-input" type="text" placeholder="Type something..." aria-label="Message" />
+                <button id="mentalbot-send" aria-label="Send message">➔</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/chatbot.js"></script>
+    <script src="js/popup-scroll.js"></script>
+    <script src="js/auto-open.js"></script>
+</body>
+
+</html>

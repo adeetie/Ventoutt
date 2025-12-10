@@ -5,9 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MentalBot – Coaching Demo</title>
-    <link rel="stylesheet" href="css/mentalbot.css" />
-    <script src="js/mentalbot.js"> </script>
-    <script src="js/utils.js"> </script>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/chatbot.css" />
+    <link rel="stylesheet" href="css/popup.css" />
     <style>
         body {
             margin: 0;
@@ -53,15 +53,41 @@
     <main>
         <h2>Coaching Demo Page</h2>
         <p>This page demonstrates the coaching flow of the MentalBot chatbot.</p>
-        <!-- Chatbot container -->
+        <!-- Chatbot container: keep id/class names in contract -->
+        <div id="mentalbot-overlay" class="mobile-only"></div>
         <div id="mentalbot-shell" class="collapsed" aria-live="polite">
-            <button id="mentalbot-bar" aria-expanded="false" aria-controls="mentalbot-panel">💬 Support</button>
+            <button id="mentalbot-bar" aria-expanded="false" aria-controls="mentalbot-panel">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z"
+                        fill="white" />
+                </svg>
+            </button>
             <div id="mentalbot-panel" role="dialog" aria-hidden="true" aria-label="Support chat panel">
+                <div id="mentalbot-header">
+                    <span class="header-title">Message</span>
+                    <button id="mentalbot-close" aria-label="Close chat">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Disclaimer is now inserted dynamically into messages sidebar or top -->
+                <div id="mentalbot-disclaimer" class="scroll-disclaimer" aria-live="polite"></div>
+
                 <div id="mentalbot-messages" role="log" aria-live="polite"></div>
+
                 <div id="mentalbot-buttons" aria-label="Quick options"></div>
+
                 <div id="mentalbot-input-area" aria-hidden="true">
-                    <input id="mentalbot-input" type="text" aria-label="Message" />
-                    <button id="mentalbot-send" aria-label="Send message">Send</button>
+
+                    <input id="mentalbot-input" type="text" placeholder="Type something..." aria-label="Message" />
+                    <button id="mentalbot-send" aria-label="Send message">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -69,8 +95,9 @@
     <footer>
         <p>© 2025 My Demo Site. All rights reserved.</p>
     </footer>
-    <script src="js/utils.js"></script>
-    <script src="js/mentalbot.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/popup-scroll.js"></script>
+    <script src="js/auto-open.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Ventoutt</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/popup.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Ventoutt.</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="blog.html" style="color:var(--primary-green)">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="services.html?chatbot=open" class="cta-nav">Get Support</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Emotional Wellbeing, One Conversation at a Time</h1>
+        </section>
+
+        <section>
+            <article style="margin-bottom: 3rem;">
+                <h3>The Power of Being Heard</h3>
+                <p>Sometimes, all we need is someone to listen. Not to fix, not to judge, but just to witness our
+                    experience. Venting allows you to release the pressure valve of daily life...</p>
+                <div style="height: 200px; background: #f9f9f9; width: 100%; margin-top: 1rem;"></div>
+            </article>
+
+            <article style="margin-bottom: 3rem;">
+                <h3>Why Coaching is Different from Therapy</h3>
+                <p>Coaching focuses on the "how" and "what next," while therapy often explores the "why" and "past."
+                    Both are valid paths depending on your needs...</p>
+                <div style="height: 200px; background: #f9f9f9; width: 100%; margin-top: 1rem;"></div>
+            </article>
+
+            <article style="margin-bottom: 3rem;">
+                <h3>Managing Overthinking</h3>
+                <p>Circular thoughts can be exhausting. Breaking the cycle usually starts with vocalizing them...</p>
+                <div style="height: 200px; background: #f9f9f9; width: 100%; margin-top: 1rem;"></div>
+            </article>
+
+            <p><i>(Scroll down to see the popup trigger)</i></p>
+            <div style="height: 400px;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Ventoutt.</p>
+    </footer>
+
+    <!-- Popup -->
+    <div id="scroll-popup">
+        <h3>Still not sure?</h3>
+        <p>Let our chatbot help you choose safely.</p>
+        <div class="popup-actions">
+            <a href="services.html?chatbot=open" class="btn-popup-primary">Help me choose</a>
+            <button id="close-popup" class="btn-popup-secondary">Not now</button>
+        </div>
+    </div>
+
+    <!-- Chatbot -->
+    <div id="mentalbot-overlay" class="mobile-only"></div>
+    <div id="mentalbot-shell" class="collapsed" aria-live="polite">
+        <button id="mentalbot-bar" aria-expanded="false" aria-controls="mentalbot-panel">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z"
+                    fill="white" />
+            </svg>
+        </button>
+        <div id="mentalbot-panel" role="dialog" aria-hidden="true" aria-label="Support chat panel">
+            <div id="mentalbot-header">
+                <span class="header-title">Message</span>
+                <button id="mentalbot-close" aria-label="Close chat">✕</button>
+            </div>
+            <div id="mentalbot-disclaimer" class="scroll-disclaimer" aria-live="polite"></div>
+            <div id="mentalbot-messages" role="log" aria-live="polite"></div>
+            <div id="mentalbot-buttons" aria-label="Quick options"></div>
+            <div id="mentalbot-input-area" aria-hidden="true">
+                <input id="mentalbot-input" type="text" placeholder="Type something..." aria-label="Message" />
+                <button id="mentalbot-send" aria-label="Send message">➔</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/chatbot.js"></script>
+    <script src="js/popup-scroll.js"></script>
+    <script src="js/auto-open.js"></script>
+</body>
+
+</html>

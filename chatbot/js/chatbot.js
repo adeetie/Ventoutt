@@ -235,6 +235,13 @@ const MB = {
         });
 
         console.log("MB Initialized");
+
+        // URL Routing Check
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('chatbot') === 'open') {
+            // Slight delay to allow render
+            setTimeout(() => this.toggle(true), 500);
+        }
     },
 
     handleScroll: function () {
@@ -299,7 +306,13 @@ const MB = {
         this.panel.setAttribute("aria-hidden", !expanded);
     },
 
-    toggle: function () {
+    toggle: function (forceOpen) {
+        if (forceOpen === true) {
+            this.state = "collapsed"; // Will flip to expanded below
+        } else if (forceOpen === false) {
+            this.state = "expanded"; // Will flip to collapsed
+        }
+
         if (this.state === "collapsed") {
             this.state = "expanded";
             this.showMobileOverlay();
