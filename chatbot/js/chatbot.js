@@ -103,6 +103,59 @@ const BUTTONS = {
 
 const CRISIS_KEYWORDS = ["suicide", "kill myself", "end my life", "want to die", "self-harm", "hurt myself"];
 
+const EMOTION_MAP = {
+    sad: ["sad", "lonely", "depressed", "unhappy", "crying", "low", "down", "grief", "heartbroken"],
+    anxious: ["anxious", "scared", "nervous", "worried", "panic", "stress", "stressed", "overthinking", "fear"],
+    angry: ["angry", "mad", "furious", "irritated", "annoyed", "pissed", "rage", "frustrated"],
+    numb: ["numb", "empty", "nothing", "disconnected", "blank", "tired", "exhausted"],
+    confused: ["confused", "lost", "unsure", "stuck", "don't know", "idk", "help me decide"]
+};
+
+const INTENT_MAP = {
+    venting: ["vent", "rant", "speak", "talk", "listen", "express", "let out", "release", "hear me"],
+    coaching: ["coach", "guide", "advice", "tips", "skills", "improve", "better", "grow", "goals", "learn", "manage"],
+    therapy: ["therapy", "therapist", "psychologist", "counseling", "doctor", "diagnose", "medication", "treatment", "clinical", "counselor"],
+    faq: ["safe", "privacy", "private", "anonymous", "cost", "free", "human", "bot", "real", "who are you", "what is this", "license", "qualifications"],
+    confusion: ["don't know", "not sure", "confused", "help", "options", "what do you do", "start", "begin"]
+};
+
+const detectIntent = (text) => {
+    const lower = text.toLowerCase();
+
+    // Emotion Detection
+    let detectedEmotion = null;
+    for (const [emotion, keywords] of Object.entries(EMOTION_MAP)) {
+        if (keywords.some(k => lower.includes(k))) {
+            detectedEmotion = emotion;
+            break;
+        }
+    }
+
+    // Intent Detection
+    let scores = { venting: 0, coaching: 0, therapy: 0, faq: 0, confusion: 0 };
+
+    for (const [intent, keywords] of Object.entries(INTENT_MAP)) {
+        keywords.forEach(k => {
+            if (lower.includes(k)) scores[intent]++;
+        });
+    }
+
+    // Find highest score
+    let maxScore = 0;
+    let detectedIntent = null;
+
+    ['venting', 'coaching', 'therapy', 'faq', 'confusion'].forEach(intent => {
+        if (scores[intent] > maxScore) {
+            maxScore = scores[intent];
+            detectedIntent = intent;
+        }
+    });
+
+    if (maxScore === 0) detectedIntent = 'confusion';
+
+    return { intent: detectedIntent, emotion: detectedEmotion, confidence: maxScore };
+};
+
 // ===========================================
 // MAIN CLASS
 // ===========================================
@@ -325,8 +378,8 @@ const MB = {
         if (el) el.remove();
     },
 
-    handleAction(action, label) {
-        this.addUserMessage(label);
+    handleAction(action, label, isTyped = false) {
+        if (!isTyped && label) this.addUserMessage(label);
 
         // Core Flow Logic
         if (action === 'feeling_picked') {
@@ -392,11 +445,21 @@ const MB = {
 
         if (isCrisis) {
             this.addBotMessage(CONTENT.crisis.unsafeKeywordResponse, BUTTONS.crisis);
+            console.log("Detection: Crisis identified.");
         } else {
-            // General "I don't understand" but helpful fallback
-            setTimeout(() => {
-                this.addBotMessage(CONTENT.fallback, BUTTONS.reflection);
-            }, 600);
+            // Rule-Based Detection
+            const detection = detectIntent(txt);
+            console.log("Detection Result:", detection);
+
+            if (detection.intent === 'venting') this.handleAction('explain_venting', null, true);
+            else if (detection.intent === 'coaching') this.handleAction('explain_coaching', null, true);
+            else if (detection.intent === 'therapy') this.handleAction('explain_therapy', null, true);
+            else if (detection.intent === 'faq') this.handleAction('faq_intro', null, true);
+            else {
+                setTimeout(() => {
+                    this.addBotMessage(CONTENT.fallback, BUTTONS.reflection);
+                }, 600);
+            }
         }
     },
 
