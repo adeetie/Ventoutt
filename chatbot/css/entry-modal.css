@@ -1,4 +1,4 @@
-/* entry-modal.css */
+/* entry-modal.css - Compact Layout */
 #entry-modal-overlay {
     position: fixed;
     top: 0;
@@ -6,7 +6,6 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
-    /* Dim background */
     z-index: 10000;
     display: flex;
     align-items: center;
@@ -22,17 +21,26 @@
 }
 
 #entry-modal {
-    width: 640px;
-    max-width: 92%;
+    width: 60vw;
+    height: auto;
+    max-height: 90vh;
+    min-height: 500px;
+    /* Ensure decent size */
+    max-width: 900px;
     background: var(--white);
     border-radius: 20px;
     padding: 32px;
+    /* Restore comfortable padding */
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     transform: scale(0.95);
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
+    /* Comfortable gap */
+    justify-content: center;
+    overflow-y: auto;
+    /* No scroll */
 }
 
 #entry-modal-overlay.active #entry-modal {
@@ -45,14 +53,15 @@
 }
 
 .entry-header h2 {
-    font-size: 24px;
+    font-size: 22px;
+    /* Slightly smaller */
     font-weight: 600;
-    margin: 0 0 8px 0;
+    margin: 0 0 6px 0;
     color: var(--text-dark);
 }
 
 .entry-header p {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--text-muted);
     margin: 0;
 }
@@ -62,59 +71,100 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
+    /* Reduced gap */
+    flex: 1;
+    /* Allow grid to take available space */
+    min-height: 0;
+    /* Prevent overflow */
 }
 
+/* Card Style */
 .entry-card {
-    background: var(--grey-bubble-bg);
-    /* #F7F7F7 */
-    border-radius: 16px;
-    padding: 16px;
+    background: var(--white);
+    border: 1px solid var(--border-grey);
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    text-align: left;
-    transition: transform 0.2s, background 0.2s;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
     text-decoration: none;
-    /* Link reset */
     color: inherit;
-    border: 1px solid transparent;
+    height: 100%;
 }
 
 .entry-card:hover {
     transform: translateY(-2px);
-    background: #fff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
     border-color: var(--primary-green);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.entry-card h3 {
+.entry-img-container {
+    width: 100%;
+    height: 110px;
+    /* Reduced image height significantly */
+    overflow: hidden;
+    background: #f0f0f0;
+    flex-shrink: 0;
+}
+
+.entry-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.entry-card:hover .entry-img-container img {
+    transform: scale(1.05);
+}
+
+.entry-content {
+    padding: 12px;
+    /* Compact padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    /* Compact gap */
+    flex: 1;
+    justify-content: space-between;
+    /* Space out content nicely */
+}
+
+.entry-content h3 {
     font-size: 16px;
+    /* Reduced size */
     font-weight: 600;
     margin: 0;
     color: var(--text-dark);
 }
 
-.entry-card p {
-    font-size: 13px;
+.entry-content p {
+    font-size: 12px;
+    /* Reduced size */
     color: #666;
     margin: 0;
-    line-height: 1.4;
-    flex: 1;
-    /* Push button down */
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    /* Limit text lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-/* Buttons inside cards */
 .entry-btn {
     display: inline-block;
     padding: 8px 16px;
+    /* Smaller button */
     background: var(--white);
     border: 1px solid var(--border-grey);
     border-radius: 20px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     color: var(--primary-green);
-    text-align: center;
-    width: fit-content;
+    margin-top: 4px;
     transition: all 0.2s;
 }
 
@@ -127,7 +177,7 @@
 /* Close Link */
 #entry-close {
     text-align: center;
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-muted);
     cursor: pointer;
     background: none;
@@ -135,17 +185,67 @@
     text-decoration: underline;
     display: block;
     margin: 0 auto;
+    padding: 4px;
+    /* Ensure touch target */
 }
 
 /* Mobile */
-@media (max-width: 600px) {
-    .entry-grid {
-        grid-template-columns: 1fr;
+@media (max-width: 768px) {
+    #entry-modal {
+        padding: 16px;
+        height: auto;
+        min-height: 50vh;
+        max-height: 85vh;
+        width: 90vw;
     }
 
-    #entry-modal {
-        padding: 20px;
-        max-height: 90vh;
+    .entry-grid {
+        grid-template-columns: 1fr;
         overflow-y: auto;
+        gap: 12px;
+        padding-bottom: 4px;
+    }
+
+    .entry-card {
+        flex-direction: row;
+        /* Horizontal layout */
+        align-items: center;
+        min-height: 90px;
+    }
+
+    .entry-img-container {
+        display: block;
+        /* Show image */
+        width: 100px;
+        height: 100%;
+        min-height: 100px;
+        /* Ensure square-ish */
+        flex-shrink: 0;
+    }
+
+    .entry-content {
+        padding: 12px;
+        text-align: left;
+        /* Left align */
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 4px;
+    }
+
+    .entry-content h3 {
+        font-size: 15px;
+        margin: 0;
+    }
+
+    .entry-content p {
+        display: none;
+        /* Keep description hidden on mobile to save space, or very short? User said 'heading content on right' */
+    }
+
+    .entry-btn {
+        margin-top: 6px;
+        padding: 6px 12px;
+        font-size: 11px;
     }
 }

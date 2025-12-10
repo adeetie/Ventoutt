@@ -18,7 +18,14 @@
         <div class="logo">Ventoutt.</div>
         <nav>
             <a href="index.html">Home</a>
-            <a href="services.html">Services</a>
+            <div class="dropdown">
+                <button class="dropbtn" onclick="location.href='services.html'">Services ▾</button>
+                <div class="dropdown-content">
+                    <a href="/chatbot/demo-venting.html">Venting</a>
+                    <a href="/chatbot/demo-coaching.html">Coaching</a>
+                    <a href="/chatbot/demo-therapy.html">Therapy</a>
+                </div>
+            </div>
             <a href="about.html" style="color:var(--primary-green)">About</a>
             <a href="blog.html">Blog</a>
             <a href="contact.html">Contact</a>
@@ -96,7 +103,7 @@
     </div>
     <script src="js/chatbot.js"></script>
     <script src="js/popup-scroll.js"></script>
-    <script src="js/auto-open.js"></script>
+
 </body>
 
 </html>

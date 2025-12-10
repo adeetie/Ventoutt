@@ -18,11 +18,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const popup = document.getElementById("scroll-popup");
     const closeBtn = document.getElementById("close-popup");
-    let hasShown = sessionStorage.getItem("popupShown") === "true";
+    const pageKey = "popupShown_" + window.location.pathname;
+    let hasShown = sessionStorage.getItem(pageKey) === "true";
 
     // 2. Logic (80% Trigger)
     window.addEventListener("scroll", () => {
-        if (hasShown) return;
+        // Session check removed for aggressive behavior
+        // if (hasShown) return;
 
         const scrollHeight = document.documentElement.scrollHeight;
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -37,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function showPopup() {
         popup.classList.add("show");
         hasShown = true;
-        sessionStorage.setItem("popupShown", "true");
+        sessionStorage.setItem(pageKey, "true");
     }
 
     if (closeBtn) {
@@ -48,8 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Expose reset for testing
     window.resetPopup = () => {
-        sessionStorage.removeItem("popupShown");
+        const key = "popupShown_" + window.location.pathname;
+        sessionStorage.removeItem(key);
         hasShown = false;
-        console.log("Popup reset for testing.");
+        console.log("Popup reset for page:", key);
     };
 });

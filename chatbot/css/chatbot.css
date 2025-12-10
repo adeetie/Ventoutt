@@ -146,6 +146,7 @@
     text-align: left;
     box-sizing: border-box;
     /* Ensure padding doesn't overflow width */
+    white-space: pre-wrap;
 }
 
 /* BUBBLES */
@@ -158,6 +159,7 @@
     word-wrap: break-word;
     margin-bottom: 4px;
     /* Space for timestamp */
+    white-space: pre-wrap;
 }
 
 /* Bot Bubble */
@@ -348,9 +350,7 @@
 /* MOBILE (360px width, 85% height) */
 /* ============================================================ */
 @media (max-width: 480px) {
-    #mentalbot-shell {
-        /* Mobile placement constraints if needed, but the panel handles size */
-    }
+    /* #mentalbot-shell mobile constraints handled by panel */
 
     #mentalbot-panel {
         width: 360px;

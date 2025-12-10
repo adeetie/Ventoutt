@@ -106,7 +106,15 @@
         <div class="logo">Ventoutt.</div>
         <nav>
             <a href="index.html">Home</a>
-            <a href="services.html" style="color:var(--primary-green)">Services</a>
+            <div class="dropdown">
+                <button class="dropbtn" onclick="location.href='services.html'"
+                    style="color:var(--primary-green)">Services ▾</button>
+                <div class="dropdown-content">
+                    <a href="/chatbot/demo-venting.html">Venting</a>
+                    <a href="/chatbot/demo-coaching.html">Coaching</a>
+                    <a href="/chatbot/demo-therapy.html">Therapy</a>
+                </div>
+            </div>
             <a href="about.html">About</a>
             <a href="blog.html">Blog</a>
             <a href="contact.html">Contact</a>
@@ -140,7 +148,8 @@
                     <li>✓ 100% confidential</li>
                     <li>✓ Available anytime</li>
                 </ul>
-                <button class="btn-primary" onclick="MB.toggle(true)">Start Venting</button>
+                <button class="btn-primary" onclick="window.open('/chatbot/demo-venting.html', '_blank')">Start
+                    Venting</button>
             </div>
             <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80"
                 alt="Person venting and feeling relieved" class="service-image">
@@ -169,7 +178,7 @@
                     <li>✓ Understand emotional patterns</li>
                     <li>✓ Not therapy (no diagnosis)</li>
                 </ul>
-                <button class="btn-primary" onclick="MB.toggle(true)">Book Coaching</button>
+                <button class="btn-primary" onclick="window.open('/chatbot/demo-coaching.html')">Book Coaching</button>
             </div>
             <img src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?w=600&q=80" alt="Coaching session"
                 class="service-image">
@@ -205,50 +214,52 @@
         <!-- Comparison Table -->
         <section>
             <h2 style="text-align: center;">Compare Your Options</h2>
-            <table class="service-comparison">
-                <tr>
-                    <th>Feature</th>
-                    <th>Venting</th>
-                    <th>Coaching</th>
-                    <th>Therapy</th>
-                </tr>
-                <tr>
-                    <td>Emotional release</td>
-                    <td class="check">✔</td>
-                    <td class="check">✔</td>
-                    <td class="check">✔</td>
-                </tr>
-                <tr>
-                    <td>Psychoeducation</td>
-                    <td class="cross">✖</td>
-                    <td class="check">✔</td>
-                    <td class="check">✔</td>
-                </tr>
-                <tr>
-                    <td>Skill building</td>
-                    <td class="cross">✖</td>
-                    <td class="check">✔</td>
-                    <td class="check">✔</td>
-                </tr>
-                <tr>
-                    <td>Diagnosis</td>
-                    <td class="cross">✖</td>
-                    <td class="cross">✖</td>
-                    <td class="check">✔</td>
-                </tr>
-                <tr>
-                    <td>Treatment</td>
-                    <td class="cross">✖</td>
-                    <td class="cross">✖</td>
-                    <td class="check">✔</td>
-                </tr>
-                <tr>
-                    <td>Crisis support</td>
-                    <td class="cross">✖</td>
-                    <td class="cross">✖</td>
-                    <td>External</td>
-                </tr>
-            </table>
+            <div class="table-container">
+                <table class="service-comparison">
+                    <tr>
+                        <th>Feature</th>
+                        <th>Venting</th>
+                        <th>Coaching</th>
+                        <th>Therapy</th>
+                    </tr>
+                    <tr>
+                        <td>Emotional release</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Psychoeducation</td>
+                        <td class="cross">✖</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Skill building</td>
+                        <td class="cross">✖</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Diagnosis</td>
+                        <td class="cross">✖</td>
+                        <td class="cross">✖</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Treatment</td>
+                        <td class="cross">✖</td>
+                        <td class="cross">✖</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Crisis support</td>
+                        <td class="cross">✖</td>
+                        <td class="cross">✖</td>
+                        <td>External</td>
+                    </tr>
+                </table>
+            </div>
         </section>
 
         <!-- CTA Section -->
@@ -298,7 +309,7 @@
 
     <script src="js/chatbot.js"></script>
     <script src="js/popup-scroll.js"></script>
-    <script src="js/auto-open.js"></script>
+
 </body>
 
 </html>
