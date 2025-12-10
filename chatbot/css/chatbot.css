@@ -1,28 +1,7 @@
-/* mentalbot.css - "Borcelle" Style Implementation */
+/* mentalbot.css - Strict Figma Spec */
 
 /* ============================================================ */
-/* FONTS & VARS */
-/* ============================================================ */
-:root {
-    --mb-green-dark: #64B968;
-    /* Approx match to trigger/input button */
-    --mb-green-light: #C0F1C6;
-    /* User bubble */
-    --mb-grey-light: #F0F0F0;
-    /* Bot bubble */
-    --mb-text-dark: #333333;
-    --mb-text-sub: #888888;
-    --mb-white: #FFFFFF;
-    --mb-border: #E5E5E5;
-    --mb-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
-
-body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-}
-
-/* ============================================================ */
-/* FLOATING TRIGGER BUTTON */
+/* FLOATING TRIGGER */
 /* ============================================================ */
 #mentalbot-bar {
     position: fixed;
@@ -30,17 +9,17 @@ body {
     right: 24px;
     width: 60px;
     height: 60px;
-    background: var(--mb-green-dark);
-    color: #fff;
+    background: var(--primary-green);
+    color: var(--white);
     border: none;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(100, 185, 104, 0.4);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
     z-index: 999998;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
 }
 
 #mentalbot-bar:hover {
@@ -48,13 +27,14 @@ body {
 }
 
 /* ============================================================ */
-/* CHAT SHELL & PANEL */
+/* CHAT FRAME (Desktop: 390x560) */
 /* ============================================================ */
 #mentalbot-shell {
     position: fixed;
     bottom: 24px;
     right: 24px;
     z-index: 999999;
+    font-family: var(--font-body);
 }
 
 #mentalbot-shell.collapsed #mentalbot-panel {
@@ -62,20 +42,20 @@ body {
 }
 
 #mentalbot-panel {
-    background: var(--mb-white);
-    border: 1px solid var(--mb-border);
-    border-radius: 24px;
-    box-shadow: var(--mb-shadow);
-    width: 380px;
-    height: 600px;
-    max-height: calc(100vh - 120px);
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 390px;
+    height: 560px;
+    background: var(--white);
+    border: 1px solid var(--border-grey);
+    border-radius: 18px;
+    /* Spec: 18px */
+    box-shadow: var(--shadow-card);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    position: absolute;
-    bottom: 70px;
-    right: 0;
-    animation: slideUp 0.3s ease-out;
+    animation: slideUp 0.25s ease-out;
 }
 
 @keyframes slideUp {
@@ -91,38 +71,40 @@ body {
 }
 
 /* ============================================================ */
-/* HEADER */
+/* HEADER (H: 56px) */
 /* ============================================================ */
 #mentalbot-header {
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--mb-border);
+    flex: 0 0 56px;
+    padding: 0 16px;
+    background: var(--white);
+    border-bottom: 1px solid var(--border-grey);
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background: #fff;
+    justify-content: space-between;
 }
 
 .header-title {
+    font-family: var(--font-heading);
+    /* Poppins */
+    font-weight: 600;
     font-size: 18px;
-    font-weight: 500;
-    color: var(--mb-text-dark);
+    /* Spec: 18px */
+    color: var(--text-dark);
 }
 
 #mentalbot-close {
     background: none;
     border: none;
     cursor: pointer;
-    color: var(--mb-text-sub);
-    padding: 4px;
-    transition: color 0.2s;
-}
-
-#mentalbot-close:hover {
-    color: var(--mb-text-dark);
+    color: var(--text-dark);
+    font-size: 24px;
+    padding: 0;
+    display: flex;
+    align-items: center;
 }
 
 /* ============================================================ */
-/* MESSAGES AREA */
+/* MESSAGES SCROLL AREA */
 /* ============================================================ */
 #mentalbot-messages {
     flex: 1;
@@ -130,11 +112,13 @@ body {
     padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    background: #fff;
+    gap: 12px;
+    /* Spec: 12px */
+    background: var(--white);
+    scroll-behavior: smooth;
 }
 
-/* Scrollbar Styling */
+/* Scrollbar Polish */
 #mentalbot-messages::-webkit-scrollbar {
     width: 6px;
 }
@@ -145,73 +129,80 @@ body {
 }
 
 /* ============================================================ */
-/* MESSAGE BUBBLES */
+/* COMPONENTS */
 /* ============================================================ */
-.msg-container {
-    display: flex;
-    flex-direction: column;
-    max-width: 85%;
-    animation: fadeIn 0.3s ease;
+
+/* SYSTEM DISCLAIMER BLOCK */
+.mb-disclaimer-block {
+    width: 100%;
+    padding: 12px;
+    background: var(--white);
+    border: 1px solid var(--border-grey);
+    border-radius: 12px;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    line-height: 1.4;
+    text-align: left;
+    box-sizing: border-box;
+    /* Ensure padding doesn't overflow width */
 }
 
-.bot-container {
-    align-self: flex-start;
-}
-
-.user-container {
-    align-self: flex-end;
-    align-items: flex-end;
-}
-
-.msg-header {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 4px;
-    font-size: 12px;
-    color: var(--mb-text-sub);
-}
-
-.msg-header .name {
-    font-weight: 600;
-    color: var(--mb-text-dark);
-}
-
-.avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.bot-msg,
-.user-msg {
-    padding: 12px 16px;
-    border-radius: 18px;
+/* BUBBLES */
+.mb-bubble {
+    padding: 12px 14px;
     font-size: 14px;
     line-height: 1.5;
     position: relative;
+    max-width: 85%;
     word-wrap: break-word;
+    margin-bottom: 4px;
+    /* Space for timestamp */
 }
 
+/* Bot Bubble */
 .bot-msg {
-    background: var(--mb-grey-light);
-    color: var(--mb-text-dark);
-    border-top-left-radius: 4px;
+    align-self: flex-start;
+    background: var(--grey-bubble-bg);
+    color: var(--text-dark);
+    border-radius: 16px;
+    /* Spec: 16px all around implied, or standard chat bubble? Spec says Radius: 16px */
 }
 
+/* User Bubble */
 .user-msg {
-    background: var(--mb-green-light);
-    color: var(--mb-text-dark);
-    border-top-right-radius: 4px;
-    margin-right: 8px;
-    /* Offset for avatar if needed, logic handled in HTML construction */
+    align-self: flex-end;
+    background: var(--light-green-bg);
+    color: var(--text-dark);
+    border-radius: 16px;
+}
+
+/* Timestamp */
+.mb-time {
+    font-size: 11px;
+    /* Spec: 11px */
+    color: var(--text-muted);
+    margin-bottom: 0px;
+}
+
+.bot-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    animation: fadeIn 0.3s ease;
+}
+
+.user-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(5px);
+        transform: translateY(10px);
     }
 
     to {
@@ -220,208 +211,168 @@ body {
     }
 }
 
-/* Typing Indicator */
-.typing-indicator span {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    background-color: #888;
-    border-radius: 50%;
-    margin: 0 2px;
-    animation: typing 1s infinite alternate;
-}
-
-.typing-indicator span:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.typing-indicator span:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-@keyframes typing {
-    from {
-        opacity: 0.4;
-        transform: translateY(0);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(-3px);
-    }
-}
-
-/* ============================================================ */
-/* DISCLAIMER (Scroll Based) */
-/* ============================================================ */
-.scroll-disclaimer {
-    background: #FAFAFA;
-    border: 1px solid #E0E0E0;
-    border-radius: 8px;
-    padding: 10px;
-    font-size: 11px;
-    color: #666;
-    text-align: center;
-    margin-bottom: 12px;
-    transition: opacity 0.3s ease, margin-top 0.3s ease;
-}
-
-.scroll-disclaimer.hidden {
-    opacity: 0;
-    height: 0;
-    padding: 0;
-    margin: 0;
-    border: none;
-    overflow: hidden;
-}
-
-/* ============================================================ */
-/* HINT BUTTONS */
-/* ============================================================ */
-#mentalbot-buttons {
-    padding: 0 16px 8px;
+/* QUICK REPLY BUTTONS */
+.mb-options-group {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    justify-content: center;
-    /* or flex-start if preferred */
+    /* Spec: 8px */
+    margin-top: 8px;
+    /* Spec: 8px */
+    animation: fadeIn 0.3s ease;
+    width: 100%;
 }
 
-#mentalbot-buttons button {
-    background: var(--mb-green-light);
-    border: 1px solid var(--mb-green-light);
-    /* Or darker green if needed */
-    color: var(--mb-text-dark);
-    padding: 8px 16px;
+.mb-option-btn {
+    height: 36px;
+    /* Spec: 36px */
+    padding: 0 14px;
+    background: var(--primary-green);
+    color: var(--white);
+    border: none;
     border-radius: 20px;
-    font-size: 13px;
-    font-weight: 500;
+    /* Spec: 20px */
+    font-size: 14px;
+    font-weight: 600;
+    /* SemiBold */
     cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
 }
 
-#mentalbot-buttons button:hover {
-    background: #AEE8B6;
-    transform: translateY(-1px);
+.mb-option-btn:hover {
+    opacity: 0.9;
 }
 
 /* ============================================================ */
-/* INPUT AREA (Borcelle Style) */
+/* INPUT BAR (H: 56px) */
 /* ============================================================ */
 #mentalbot-input-area {
-    padding: 16px;
-    background: #fff;
+    flex: 0 0 56px;
+    padding: 10px;
+    background: var(--white);
+    border-top: 1px solid var(--border-grey);
     display: flex;
     align-items: center;
-    gap: 8px;
-    border-top: 1px solid transparent;
-    /* Optional separator */
-}
-
-
-
-/* Styling the input area as the container directly doesn't work well with buttons outside
-   The HTML structure is buttons inside input-area. We'll make input-area look like valid container 
-   BUT standard is inputs inside a border. 
-   Let's style the actual INPUT element to look seamless or Wrap it?
-   Given HTML structure: DIV > BUTTON, INPUT, BUTTON.
-   We will make the DIV the "pill" container? NO, that would put buttons inside.
-   The image shows Camera -> Input Pill -> Send Arrow? 
-   No, usually it's [Camera] [Input Field ....... [Arrow] ] 
-   Wait, the image shows:
-   [Camera Icon]  [Text input .......................... [->] ]
-   The whole thing looks like one pill OR input is the pill containing the arrow?
-   Let's assume the "Borcelle" image style:
-   A large 'capsule' containing [Camera] [Input] [Send].
-*/
-
-#mentalbot-input-area {
-    margin: 0 16px 16px;
-    padding: 6px 6px 6px 12px;
-    border: 1px solid #E0E0E0;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    gap: 10px;
+    box-sizing: border-box;
 }
 
 #mentalbot-camera-btn {
     background: none;
     border: none;
-    padding: 4px;
+    padding: 0;
     cursor: pointer;
     display: flex;
     align-items: center;
+}
+
+#mentalbot-camera-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: #8A8A8A;
 }
 
 #mentalbot-input {
     flex: 1;
-    border: none;
-    outline: none;
+    height: 36px;
+    border: 1px solid var(--border-grey);
+    border-radius: 18px;
+    /* Spec: 18px */
+    padding: 0 12px;
     font-size: 14px;
-    padding: 0 8px;
-    background: transparent;
+    outline: none;
+    color: var(--text-dark);
 }
 
 #mentalbot-send {
-    background: var(--mb-green-dark);
+    background: none;
     border: none;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
+    padding: 0;
+    cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 0.2s;
 }
 
-#mentalbot-send:hover {
-    background: #53A057;
+#mentalbot-send svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--primary-green);
+    stroke: none;
+}
+
+/* Paper plane usually fill or stroke? Using fill for typical icon */
+
+/* TYPING INDICATOR */
+.typing-bubble {
+    padding: 12px 14px;
+    background: var(--grey-bubble-bg);
+    border-radius: 16px;
+    align-self: flex-start;
+    display: inline-flex;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background: #888;
+    border-radius: 50%;
+    animation: typing 1.4s infinite ease-in-out both;
+}
+
+.dot:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.dot:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes typing {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1);
+    }
 }
 
 /* ============================================================ */
-/* MOBILE RESPONSIVE */
+/* MOBILE (360px width, 85% height) */
 /* ============================================================ */
 @media (max-width: 480px) {
     #mentalbot-shell {
-        bottom: 20px;
-        right: 20px;
+        /* Mobile placement constraints if needed, but the panel handles size */
     }
 
     #mentalbot-panel {
-        position: fixed;
+        width: 360px;
+        /* Spec: 360px */
+        height: 85vh;
+        /* Spec: 85% of screen */
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
-        width: 90vw;
-        height: 80vh;
-        max-height: none;
-        margin: 0;
-        bottom: auto;
         right: auto;
-        animation: fadeInModal 0.3s ease;
-    }
-}
-
-@keyframes fadeInModal {
-    from {
-        opacity: 0;
+        bottom: auto;
+        transform: translate(-50%, -50%);
+        border-radius: 18px;
+        position: fixed;
     }
 
-    to {
-        opacity: 1;
+    #mentalbot-shell.collapsed #mentalbot-panel {
+        display: none;
     }
-}
 
-/* Overlay for Mobile */
-#mentalbot-overlay {
-    display: none;
-}
-
-@media (max-width: 480px) {
-    #mentalbot-overlay.active {
-        display: block;
+    /* Mobile Overlay */
+    #mentalbot-overlay {
+        display: none;
         position: fixed;
         top: 0;
         left: 0;
@@ -429,5 +380,9 @@ body {
         height: 100%;
         background: rgba(0, 0, 0, 0.5);
         z-index: 999990;
+    }
+
+    #mentalbot-shell:not(.collapsed)~#mentalbot-overlay {
+        display: block;
     }
 }

@@ -1,0 +1,151 @@
+/* entry-modal.css */
+#entry-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    /* Dim background */
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#entry-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#entry-modal {
+    width: 640px;
+    max-width: 92%;
+    background: var(--white);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+#entry-modal-overlay.active #entry-modal {
+    transform: scale(1);
+}
+
+/* Header */
+.entry-header {
+    text-align: center;
+}
+
+.entry-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: var(--text-dark);
+}
+
+.entry-header p {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Grid */
+.entry-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.entry-card {
+    background: var(--grey-bubble-bg);
+    /* #F7F7F7 */
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+    transition: transform 0.2s, background 0.2s;
+    text-decoration: none;
+    /* Link reset */
+    color: inherit;
+    border: 1px solid transparent;
+}
+
+.entry-card:hover {
+    transform: translateY(-2px);
+    background: #fff;
+    border-color: var(--primary-green);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.entry-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.entry-card p {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+    flex: 1;
+    /* Push button down */
+}
+
+/* Buttons inside cards */
+.entry-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--white);
+    border: 1px solid var(--border-grey);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary-green);
+    text-align: center;
+    width: fit-content;
+    transition: all 0.2s;
+}
+
+.entry-card:hover .entry-btn {
+    background: var(--primary-green);
+    color: var(--white);
+    border-color: var(--primary-green);
+}
+
+/* Close Link */
+#entry-close {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-muted);
+    cursor: pointer;
+    background: none;
+    border: none;
+    text-decoration: underline;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .entry-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #entry-modal {
+        padding: 20px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}

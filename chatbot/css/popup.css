@@ -1,71 +1,108 @@
-/* Popup CSS */
+/* popup.css - Strict Figma Spec */
+
 #scroll-popup {
     position: fixed;
     bottom: -100%;
     /* Hidden by default */
     left: 50%;
     transform: translateX(-50%);
-    width: 90%;
-    max-width: 400px;
-    background: #fff;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    padding: 2rem;
+
+    /* Frame Spec */
+    width: 440px;
+    max-width: 94%;
+    /* Mobile: 94% width */
+    background: var(--white);
+
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    /* Spec: 20px */
+    gap: 12px;
+    /* Spec: 12px */
+
+    /* Styling */
+    border-radius: 16px;
+    /* Spec says Frame size 440x164 but implies radius */
+    box-shadow: var(--shadow-card);
     z-index: 999;
-    text-align: center;
+
     transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 #scroll-popup.show {
-    bottom: 0;
+    bottom: 24px;
+    /* Float slightly above bottom */
 }
 
+/* Typography */
 #scroll-popup h3 {
-    margin: 0 0 0.5rem 0;
-    color: var(--dark-text);
+    font-family: var(--font-heading);
+    font-size: 18px;
+    /* Spec: 18px SemiBold */
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-dark);
+    text-align: center;
 }
 
 #scroll-popup p {
-    font-size: 0.95rem;
-    color: #666;
-    margin-bottom: 1.5rem;
+    font-family: var(--font-body);
+    font-size: 14px;
+    /* Spec: 14px */
+    color: var(--text-dark);
+    /* Spec implies body text */
+    margin: 0;
+    text-align: center;
+    line-height: 1.5;
 }
 
+/* Actions */
 .popup-actions {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 12px;
 }
 
 .btn-popup-primary {
+    display: block;
+    width: 100%;
+    height: 44px;
+    /* Spec: 44px */
     background: var(--primary-green);
-    color: white;
-    padding: 0.8rem;
-    border-radius: 8px;
-    font-weight: 600;
+    color: var(--white);
     border: none;
+    border-radius: 22px;
+    /* Spec: 22px */
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
+    text-align: center;
+    line-height: 44px;
+    /* Vertically center text */
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.btn-popup-primary:hover {
+    background: #388E3C;
 }
 
 .btn-popup-secondary {
-    background: transparent;
-    color: #888;
+    background: none;
     border: none;
+    color: var(--text-muted);
+    /* Spec: #8A8A8A */
+    font-size: 13px;
+    /* "Not now" link size? Spec doesn't say, assuming small */
     cursor: pointer;
-    font-size: 0.9rem;
+    text-align: center;
     text-decoration: underline;
 }
 
-@media (min-width: 768px) {
-    #scroll-popup {
-        border-radius: 16px;
-        bottom: -100%;
-        margin-bottom: 2rem;
-    }
-
-    #scroll-popup.show {
-        bottom: 20px;
-        /* Float slightly above bottom on desktop */
-    }
+.popup-micro {
+    font-size: 11px;
+    /* Spec: 11px muted */
+    color: var(--text-muted);
+    text-align: center;
 }

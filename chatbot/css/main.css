@@ -1,22 +1,36 @@
 /* Main Design System */
 :root {
+    /* Global Design Tokens (Figma Spec) */
     --primary-green: #4CAF50;
+    --light-green-bg: #E5F5EA;
+    /* User Bubble */
+    --grey-bubble-bg: #F7F7F7;
+    /* Bot Bubble */
+    --border-grey: #E5E7EB;
+    --text-dark: #2D2D2D;
+    --text-muted: #8A8A8A;
+    --white: #FFFFFF;
+
+    /* Legacy Compat */
     --secondary-pale: #E5F5EA;
     --soft-grey: #F7F7F7;
-    --medium-grey: #C7C7C7;
     --dark-text: #2D2D2D;
-    --accent-blue: #2196F3;
     --text-sub: #8A8A8A;
+
+    /* Typography */
     --font-heading: 'Poppins', 'Inter', sans-serif;
     --font-body: 'Inter', 'Open Sans', sans-serif;
+
+    /* Shadows */
+    --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 body {
     margin: 0;
     font-family: var(--font-body);
-    color: var(--dark-text);
-    line-height: 1.6;
-    background-color: #fff;
+    color: var(--text-dark);
+    line-height: 1.5;
+    background-color: var(--white);
 }
 
 h1,
