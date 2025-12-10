@@ -4,97 +4,121 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MentalBot – Coaching Demo</title>
+    <title>Coaching Demo - Ventoutt</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/chatbot.css" />
     <link rel="stylesheet" href="css/popup.css" />
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        header,
-        footer {
-            background: #333;
-            color: #fff;
-            padding: 1rem;
+        .hero {
             text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #E5F5EA 0%, #fff 100%);
         }
 
-        nav {
-            background: #555;
-            padding: 0.5rem;
+        .hero-image {
+            max-width: 500px;
+            border-radius: 12px;
+            margin-top: 2rem;
         }
 
-        nav a {
-            color: #fff;
-            margin: 0 1rem;
-            text-decoration: none;
+        .icon-feature {
+            background: var(--secondary-pale);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin: auto;
+            margin-bottom: 1rem;
         }
 
-        main {
-            padding: 2rem;
-            min-height: 60vh;
+        .icon-feature svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--primary-green);
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>My Site Header</h1>
+        <div class="logo">Ventoutt.</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="services.html?chatbot=open" class="cta-nav">Get Support</a>
+        </nav>
     </header>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="demo-venting.html">Venting</a>
-        <a href="demo-coaching.html">Coaching</a>
-        <a href="demo-therapy.html">Therapy</a>
-    </nav>
     <main>
-        <h2>Coaching Demo Page</h2>
-        <p>This page demonstrates the coaching flow of the MentalBot chatbot.</p>
-        <!-- Chatbot container: keep id/class names in contract -->
-        <div id="mentalbot-overlay" class="mobile-only"></div>
-        <div id="mentalbot-shell" class="collapsed" aria-live="polite">
-            <button id="mentalbot-bar" aria-expanded="false" aria-controls="mentalbot-panel">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z"
-                        fill="white" />
-                </svg>
-            </button>
-            <div id="mentalbot-panel" role="dialog" aria-hidden="true" aria-label="Support chat panel">
-                <div id="mentalbot-header">
-                    <span class="header-title">Message</span>
-                    <button id="mentalbot-close" aria-label="Close chat">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M18 6L6 18M6 6l12 12"></path>
-                        </svg>
-                    </button>
+        <section class="hero">
+            <h1>Coaching Demo</h1>
+            <p>Guided, goal‑oriented conversations to help you move forward.</p>
+            <img src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?w=800&q=80"
+                alt="Coaching illustration" class="hero-image" />
+
+            <div style="margin-top:3rem;">
+                <div class="icon-feature">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2l4 4-4 4-4-4 4-4z" />
+                    </svg>
                 </div>
-                <!-- Disclaimer is now inserted dynamically into messages sidebar or top -->
-                <div id="mentalbot-disclaimer" class="scroll-disclaimer" aria-live="polite"></div>
-
-                <div id="mentalbot-messages" role="log" aria-live="polite"></div>
-
-                <div id="mentalbot-buttons" aria-label="Quick options"></div>
-
-                <div id="mentalbot-input-area" aria-hidden="true">
-
-                    <input id="mentalbot-input" type="text" placeholder="Type something..." aria-label="Message" />
-                    <button id="mentalbot-send" aria-label="Send message">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
-                </div>
+                <h3>Achieve Your Goals</h3>
+                <p style="max-width:600px; margin:auto; color:#666;">Get actionable advice and structured support to
+                    overcome obstacles.</p>
             </div>
+
+            <a href="services.html?chatbot=open" class="btn-primary"
+                style="display:inline-block; margin-top:2rem; padding:0.75rem 1.5rem; background:var(--primary-green); color:#fff; border-radius:8px; text-decoration:none;">Start
+                Coaching</a>
+        </section>
+        <div style="height:800px;">
+            <!-- Spacer to allow scrolling for popup test -->
         </div>
     </main>
     <footer>
-        <p>© 2025 My Demo Site. All rights reserved.</p>
+        <p>© 2025 Ventoutt.</p>
     </footer>
+
+    <!-- Popup -->
+    <div id="scroll-popup">
+        <h3>Still not sure?</h3>
+        <p>Let our chatbot help you choose safely.</p>
+        <div class="popup-actions">
+            <a href="services.html?chatbot=open" class="btn-popup-primary">Help me choose</a>
+            <button id="close-popup" class="btn-popup-secondary">Not now</button>
+        </div>
+    </div>
+
+    <!-- Chatbot -->
+    <div id="mentalbot-overlay" class="mobile-only"></div>
+    <div id="mentalbot-shell" class="collapsed" aria-live="polite">
+        <button id="mentalbot-bar" aria-expanded="false" aria-controls="mentalbot-panel">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z"
+                    fill="white" />
+            </svg>
+        </button>
+        <div id="mentalbot-panel" role="dialog" aria-hidden="true" aria-label="Support chat panel">
+            <div id="mentalbot-header"><span class="header-title">Message</span><button id="mentalbot-close"
+                    aria-label="Close chat">✕</button></div>
+            <div id="mentalbot-disclaimer" class="scroll-disclaimer" aria-live="polite"></div>
+            <div id="mentalbot-messages" role="log" aria-live="polite"></div>
+            <div id="mentalbot-buttons" aria-label="Quick options"></div>
+            <div id="mentalbot-input-area" aria-hidden="true"><input id="mentalbot-input" type="text"
+                    placeholder="Type something..." aria-label="Message" /><button id="mentalbot-send"
+                    aria-label="Send message">➔</button></div>
+        </div>
+    </div>
+
     <script src="js/chatbot.js"></script>
     <script src="js/popup-scroll.js"></script>
     <script src="js/auto-open.js"></script>
