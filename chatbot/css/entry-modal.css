@@ -239,8 +239,11 @@
     }
 
     .entry-content p {
-        display: none;
-        /* Keep description hidden on mobile to save space, or very short? User said 'heading content on right' */
+        display: block;
+        /* Show description */
+        font-size: 11px;
+        margin-bottom: 4px;
+        line-height: 1.2;
     }
 
     .entry-btn {
