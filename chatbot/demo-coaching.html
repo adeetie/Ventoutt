@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MentalBot – Coaching Demo</title>
+    <link rel="stylesheet" href="css/mentalbot.css" />
+    <script src="js/mentalbot.js"> </script>
+    <script src="js/utils.js"> </script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header,
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            background: #555;
+            padding: 0.5rem;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 2rem;
+            min-height: 60vh;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>My Site Header</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="demo-venting.html">Venting</a>
+        <a href="demo-coaching.html">Coaching</a>
+        <a href="demo-therapy.html">Therapy</a>
+    </nav>
+    <main>
+        <h2>Coaching Demo Page</h2>
+        <p>This page demonstrates the coaching flow of the MentalBot chatbot.</p>
+        <!-- Chatbot container -->
+        <div id="mentalbot-shell" class="collapsed" aria-live="polite">
+            <button id="mentalbot-bar" aria-expanded="false" aria-controls="mentalbot-panel">💬 Support</button>
+            <div id="mentalbot-panel" role="dialog" aria-hidden="true" aria-label="Support chat panel">
+                <div id="mentalbot-messages" role="log" aria-live="polite"></div>
+                <div id="mentalbot-buttons" aria-label="Quick options"></div>
+                <div id="mentalbot-input-area" aria-hidden="true">
+                    <input id="mentalbot-input" type="text" aria-label="Message" />
+                    <button id="mentalbot-send" aria-label="Send message">Send</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>© 2025 My Demo Site. All rights reserved.</p>
+    </footer>
+    <script src="js/utils.js"></script>
+    <script src="js/mentalbot.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,433 @@
+/* mentalbot.css - "Borcelle" Style Implementation */
+
+/* ============================================================ */
+/* FONTS & VARS */
+/* ============================================================ */
+:root {
+    --mb-green-dark: #64B968;
+    /* Approx match to trigger/input button */
+    --mb-green-light: #C0F1C6;
+    /* User bubble */
+    --mb-grey-light: #F0F0F0;
+    /* Bot bubble */
+    --mb-text-dark: #333333;
+    --mb-text-sub: #888888;
+    --mb-white: #FFFFFF;
+    --mb-border: #E5E5E5;
+    --mb-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ============================================================ */
+/* FLOATING TRIGGER BUTTON */
+/* ============================================================ */
+#mentalbot-bar {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    background: var(--mb-green-dark);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(100, 185, 104, 0.4);
+    z-index: 999998;
+    transition: transform 0.3s ease;
+}
+
+#mentalbot-bar:hover {
+    transform: scale(1.05);
+}
+
+/* ============================================================ */
+/* CHAT SHELL & PANEL */
+/* ============================================================ */
+#mentalbot-shell {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999999;
+}
+
+#mentalbot-shell.collapsed #mentalbot-panel {
+    display: none;
+}
+
+#mentalbot-panel {
+    background: var(--mb-white);
+    border: 1px solid var(--mb-border);
+    border-radius: 24px;
+    box-shadow: var(--mb-shadow);
+    width: 380px;
+    height: 600px;
+    max-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================ */
+/* HEADER */
+/* ============================================================ */
+#mentalbot-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--mb-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+}
+
+.header-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--mb-text-dark);
+}
+
+#mentalbot-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--mb-text-sub);
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+#mentalbot-close:hover {
+    color: var(--mb-text-dark);
+}
+
+/* ============================================================ */
+/* MESSAGES AREA */
+/* ============================================================ */
+#mentalbot-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: #fff;
+}
+
+/* Scrollbar Styling */
+#mentalbot-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+#mentalbot-messages::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+    border-radius: 3px;
+}
+
+/* ============================================================ */
+/* MESSAGE BUBBLES */
+/* ============================================================ */
+.msg-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 85%;
+    animation: fadeIn 0.3s ease;
+}
+
+.bot-container {
+    align-self: flex-start;
+}
+
+.user-container {
+    align-self: flex-end;
+    align-items: flex-end;
+}
+
+.msg-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+    font-size: 12px;
+    color: var(--mb-text-sub);
+}
+
+.msg-header .name {
+    font-weight: 600;
+    color: var(--mb-text-dark);
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.bot-msg,
+.user-msg {
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.5;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.bot-msg {
+    background: var(--mb-grey-light);
+    color: var(--mb-text-dark);
+    border-top-left-radius: 4px;
+}
+
+.user-msg {
+    background: var(--mb-green-light);
+    color: var(--mb-text-dark);
+    border-top-right-radius: 4px;
+    margin-right: 8px;
+    /* Offset for avatar if needed, logic handled in HTML construction */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Typing Indicator */
+.typing-indicator span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: #888;
+    border-radius: 50%;
+    margin: 0 2px;
+    animation: typing 1s infinite alternate;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    from {
+        opacity: 0.4;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
+}
+
+/* ============================================================ */
+/* DISCLAIMER (Scroll Based) */
+/* ============================================================ */
+.scroll-disclaimer {
+    background: #FAFAFA;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 11px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 12px;
+    transition: opacity 0.3s ease, margin-top 0.3s ease;
+}
+
+.scroll-disclaimer.hidden {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    overflow: hidden;
+}
+
+/* ============================================================ */
+/* HINT BUTTONS */
+/* ============================================================ */
+#mentalbot-buttons {
+    padding: 0 16px 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    /* or flex-start if preferred */
+}
+
+#mentalbot-buttons button {
+    background: var(--mb-green-light);
+    border: 1px solid var(--mb-green-light);
+    /* Or darker green if needed */
+    color: var(--mb-text-dark);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+#mentalbot-buttons button:hover {
+    background: #AEE8B6;
+    transform: translateY(-1px);
+}
+
+/* ============================================================ */
+/* INPUT AREA (Borcelle Style) */
+/* ============================================================ */
+#mentalbot-input-area {
+    padding: 16px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-top: 1px solid transparent;
+    /* Optional separator */
+}
+
+
+
+/* Styling the input area as the container directly doesn't work well with buttons outside
+   The HTML structure is buttons inside input-area. We'll make input-area look like valid container 
+   BUT standard is inputs inside a border. 
+   Let's style the actual INPUT element to look seamless or Wrap it?
+   Given HTML structure: DIV > BUTTON, INPUT, BUTTON.
+   We will make the DIV the "pill" container? NO, that would put buttons inside.
+   The image shows Camera -> Input Pill -> Send Arrow? 
+   No, usually it's [Camera] [Input Field ....... [Arrow] ] 
+   Wait, the image shows:
+   [Camera Icon]  [Text input .......................... [->] ]
+   The whole thing looks like one pill OR input is the pill containing the arrow?
+   Let's assume the "Borcelle" image style:
+   A large 'capsule' containing [Camera] [Input] [Send].
+*/
+
+#mentalbot-input-area {
+    margin: 0 16px 16px;
+    padding: 6px 6px 6px 12px;
+    border: 1px solid #E0E0E0;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#mentalbot-camera-btn {
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+#mentalbot-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 0 8px;
+    background: transparent;
+}
+
+#mentalbot-send {
+    background: var(--mb-green-dark);
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#mentalbot-send:hover {
+    background: #53A057;
+}
+
+/* ============================================================ */
+/* MOBILE RESPONSIVE */
+/* ============================================================ */
+@media (max-width: 480px) {
+    #mentalbot-shell {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    #mentalbot-panel {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90vw;
+        height: 80vh;
+        max-height: none;
+        margin: 0;
+        bottom: auto;
+        right: auto;
+        animation: fadeInModal 0.3s ease;
+    }
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Overlay for Mobile */
+#mentalbot-overlay {
+    display: none;
+}
+
+@media (max-width: 480px) {
+    #mentalbot-overlay.active {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999990;
+    }
+}
