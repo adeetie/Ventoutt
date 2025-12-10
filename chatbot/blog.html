@@ -11,10 +11,67 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/chatbot.css">
     <link rel="stylesheet" href="css/popup.css">
+    <style>
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .blog-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .blog-card-content {
+            padding: 1.5rem;
+        }
+
+        .blog-tag {
+            background: var(--secondary-pale);
+            color: var(--primary-green);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .icon-feature {
+            width: 48px;
+            height: 48px;
+            background: var(--secondary-pale);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .icon-feature svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--primary-green);
+        }
+    </style>
 </head>
 
 <body>
-
     <header>
         <div class="logo">Ventoutt.</div>
         <nav>
@@ -26,43 +83,47 @@
             <a href="services.html?chatbot=open" class="cta-nav">Get Support</a>
         </nav>
     </header>
-
     <main>
-        <section class="hero">
-            <h1>Emotional Wellbeing, One Conversation at a Time</h1>
+        <section class="hero"
+            style="text-align:center; padding:4rem 0; background:linear-gradient(135deg, #E5F5EA 0%, #fff 100%);">
+            <h1>Ventoutt Blog</h1>
+            <p>Stories, tips, and insights to help you navigate emotions.</p>
+            <img src="https://images.unsplash.com/photo-1515165562835-c6a0c8f5e5c5?w=800&q=80" alt="Blog hero"
+                class="hero-image" style="max-width:500px; border-radius:12px; margin-top:2rem;">
         </section>
-
-        <section>
-            <article style="margin-bottom: 3rem;">
-                <h3>The Power of Being Heard</h3>
-                <p>Sometimes, all we need is someone to listen. Not to fix, not to judge, but just to witness our
-                    experience. Venting allows you to release the pressure valve of daily life...</p>
-                <div style="height: 200px; background: #f9f9f9; width: 100%; margin-top: 1rem;"></div>
+        <section class="blog-grid">
+            <article class="blog-card">
+                <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&q=80" alt="Venting">
+                <div class="blog-card-content">
+                    <span class="blog-tag">Venting</span>
+                    <h3>The Power of Being Heard</h3>
+                    <p>Sometimes, all we need is someone to listen. No advice, just a safe space.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
             </article>
-
-            <article style="margin-bottom: 3rem;">
-                <h3>Why Coaching is Different from Therapy</h3>
-                <p>Coaching focuses on the "how" and "what next," while therapy often explores the "why" and "past."
-                    Both are valid paths depending on your needs...</p>
-                <div style="height: 200px; background: #f9f9f9; width: 100%; margin-top: 1rem;"></div>
+            <article class="blog-card">
+                <img src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?w=600&q=80" alt="Coaching">
+                <div class="blog-card-content">
+                    <span class="blog-tag">Coaching</span>
+                    <h3>Why Coaching Differs from Therapy</h3>
+                    <p>Coaching focuses on actionable steps, while therapy explores deeper roots.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
             </article>
-
-            <article style="margin-bottom: 3rem;">
-                <h3>Managing Overthinking</h3>
-                <p>Circular thoughts can be exhausting. Breaking the cycle usually starts with vocalizing them...</p>
-                <div style="height: 200px; background: #f9f9f9; width: 100%; margin-top: 1rem;"></div>
+            <article class="blog-card">
+                <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=600&q=80" alt="Mental Health">
+                <div class="blog-card-content">
+                    <span class="blog-tag">Mental Health</span>
+                    <h3>Managing Overthinking</h3>
+                    <p>Practical techniques to break the cycle of endless thoughts.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
             </article>
-
-            <p><i>(Scroll down to see the popup trigger)</i></p>
-            <div style="height: 400px;"></div>
         </section>
     </main>
-
     <footer>
         <p>© 2025 Ventoutt.</p>
     </footer>
-
-    <!-- Popup -->
     <div id="scroll-popup">
         <h3>Still not sure?</h3>
         <p>Let our chatbot help you choose safely.</p>
@@ -71,8 +132,6 @@
             <button id="close-popup" class="btn-popup-secondary">Not now</button>
         </div>
     </div>
-
-    <!-- Chatbot -->
     <div id="mentalbot-overlay" class="mobile-only"></div>
     <div id="mentalbot-shell" class="collapsed" aria-live="polite">
         <button id="mentalbot-bar" aria-expanded="false" aria-controls="mentalbot-panel">
@@ -83,20 +142,16 @@
             </svg>
         </button>
         <div id="mentalbot-panel" role="dialog" aria-hidden="true" aria-label="Support chat panel">
-            <div id="mentalbot-header">
-                <span class="header-title">Message</span>
-                <button id="mentalbot-close" aria-label="Close chat">✕</button>
-            </div>
+            <div id="mentalbot-header"><span class="header-title">Message</span><button id="mentalbot-close"
+                    aria-label="Close chat">✕</button></div>
             <div id="mentalbot-disclaimer" class="scroll-disclaimer" aria-live="polite"></div>
             <div id="mentalbot-messages" role="log" aria-live="polite"></div>
             <div id="mentalbot-buttons" aria-label="Quick options"></div>
-            <div id="mentalbot-input-area" aria-hidden="true">
-                <input id="mentalbot-input" type="text" placeholder="Type something..." aria-label="Message" />
-                <button id="mentalbot-send" aria-label="Send message">➔</button>
-            </div>
+            <div id="mentalbot-input-area" aria-hidden="true"><input id="mentalbot-input" type="text"
+                    placeholder="Type something..." aria-label="Message" /><button id="mentalbot-send"
+                    aria-label="Send message">➔</button></div>
         </div>
     </div>
-
     <script src="js/chatbot.js"></script>
     <script src="js/popup-scroll.js"></script>
     <script src="js/auto-open.js"></script>

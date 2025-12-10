@@ -14,7 +14,6 @@
 </head>
 
 <body>
-
     <header>
         <div class="logo">Ventoutt.</div>
         <nav>
@@ -26,43 +25,42 @@
             <a href="services.html?chatbot=open" class="cta-nav">Get Support</a>
         </nav>
     </header>
-
     <main>
-        <section class="hero">
-            <h1>Contact Us</h1>
-            <p>General inquiries only. No emergency or clinical support here.</p>
+        <section class="hero"
+            style="text-align:center; padding:4rem 0; background:linear-gradient(135deg, #E5F5EA 0%, #fff 100%);">
+            <h1>Get in Touch</h1>
+            <p>We’re here for general inquiries. For emergencies, please call local emergency services.</p>
+            <img src="https://images.unsplash.com/photo-1515165562835-c6a0c8f5e5c5?w=800&q=80"
+                alt="Contact illustration" class="hero-image"
+                style="max-width:500px; border-radius:12px; margin-top:2rem;">
         </section>
-
-        <section style="max-width: 600px; margin: 0 auto; text-align: center;">
-            <p>Our team responds within 24–48 hours.</p>
-            <div style="background: #f9f9f9; padding: 2rem; border-radius: 8px; margin-top: 2rem;">
-                <p><strong>Email:</strong> team@ventoutt.com</p>
-                <p><strong>Support:</strong> support@ventoutt.com</p>
+        <section style="max-width:600px; margin:3rem auto; text-align:center;">
+            <div class="icon-feature"
+                style="background:var(--secondary-pale); margin:auto; width:60px; height:60px; display:flex; align-items:center; justify-content:center; border-radius:12px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 2L11 13" />
+                    <path d="M22 2l-7 20-4-9-9-4 20-7z" />
+                </svg>
             </div>
-
-            <p style="margin-top: 2rem; font-size: 0.9rem; color: #888;">
-                ⚠️ If you are in crisis, please contact your local emergency services immediately.
-            </p>
+            <h2>Contact Details</h2>
+            <p><strong>Email:</strong> team@ventoutt.com</p>
+            <p><strong>Support:</strong> support@ventoutt.com</p>
+            <p style="margin-top:1rem; font-size:0.9rem; color:#888;">⚠️ If you are in crisis, please contact your local
+                emergency services immediately.</p>
         </section>
-
-        <div style="height: 600px;"></div>
     </main>
-
     <footer>
         <p>© 2025 Ventoutt.</p>
     </footer>
-
-    <!-- Popup -->
     <div id="scroll-popup">
         <h3>Still not sure?</h3>
-        <p>Let our chatbot help.</p>
+        <p>Let our chatbot help you choose safely.</p>
         <div class="popup-actions">
             <a href="services.html?chatbot=open" class="btn-popup-primary">Help me choose</a>
             <button id="close-popup" class="btn-popup-secondary">Not now</button>
         </div>
     </div>
-
-    <!-- Chatbot -->
     <div id="mentalbot-overlay" class="mobile-only"></div>
     <div id="mentalbot-shell" class="collapsed" aria-live="polite">
         <button id="mentalbot-bar" aria-expanded="false" aria-controls="mentalbot-panel">
@@ -73,20 +71,16 @@
             </svg>
         </button>
         <div id="mentalbot-panel" role="dialog" aria-hidden="true" aria-label="Support chat panel">
-            <div id="mentalbot-header">
-                <span class="header-title">Message</span>
-                <button id="mentalbot-close" aria-label="Close chat">✕</button>
-            </div>
+            <div id="mentalbot-header"><span class="header-title">Message</span><button id="mentalbot-close"
+                    aria-label="Close chat">✕</button></div>
             <div id="mentalbot-disclaimer" class="scroll-disclaimer" aria-live="polite"></div>
             <div id="mentalbot-messages" role="log" aria-live="polite"></div>
             <div id="mentalbot-buttons" aria-label="Quick options"></div>
-            <div id="mentalbot-input-area" aria-hidden="true">
-                <input id="mentalbot-input" type="text" placeholder="Type something..." aria-label="Message" />
-                <button id="mentalbot-send" aria-label="Send message">➔</button>
-            </div>
+            <div id="mentalbot-input-area" aria-hidden="true"><input id="mentalbot-input" type="text"
+                    placeholder="Type something..." aria-label="Message" /><button id="mentalbot-send"
+                    aria-label="Send message">➔</button></div>
         </div>
     </div>
-
     <script src="js/chatbot.js"></script>
     <script src="js/popup-scroll.js"></script>
     <script src="js/auto-open.js"></script>

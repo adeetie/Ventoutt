@@ -12,23 +12,90 @@
     <link rel="stylesheet" href="css/chatbot.css">
     <link rel="stylesheet" href="css/popup.css">
     <style>
+        .service-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin: 4rem 0;
+        }
+
+        .service-section.reverse {
+            direction: rtl;
+        }
+
+        .service-section.reverse>* {
+            direction: ltr;
+        }
+
+        .service-image {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--secondary-pale);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .service-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--primary-green);
+        }
+
         .service-comparison {
-            max-width: 800px;
+            max-width: 900px;
             margin: 3rem auto;
             border-collapse: collapse;
             width: 100%;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .service-comparison th,
         .service-comparison td {
-            border: 1px solid #eee;
-            padding: 1rem;
+            padding: 1.2rem;
             text-align: center;
+            border-bottom: 1px solid #eee;
         }
 
         .service-comparison th {
-            background: #fafafa;
-            color: var(--primary-green);
+            background: var(--primary-green);
+            color: white;
+        }
+
+        .service-comparison tr:hover {
+            background: #f9f9f9;
+        }
+
+        .check {
+            color: #4CAF50;
+            font-size: 1.3rem;
+        }
+
+        .cross {
+            color: #ccc;
+            font-size: 1.3rem;
+        }
+
+        @media (max-width: 768px) {
+            .service-section {
+                grid-template-columns: 1fr;
+            }
+
+            .service-section.reverse {
+                direction: ltr;
+            }
         }
     </style>
 </head>
@@ -50,36 +117,94 @@
     <main>
         <section class="hero">
             <h1>Choose Your Kind of Support</h1>
-            <p>You don’t have to label your feelings — these are simply different pathways.</p>
+            <p>You don't have to label your feelings — these are simply different pathways to feeling better.</p>
         </section>
 
-        <section>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>VENTING</h3>
-                    <p>A space to unload what’s on your mind. No advice. Just expression.</p>
-                    <button class="btn-primary"
-                        onclick="MB.toggle(true); MB.handleButtonAction('start_venting', 'Start Venting')">Start
-                        Venting</button>
+        <!-- Venting Section -->
+        <section class="service-section">
+            <div>
+                <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path
+                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                        </path>
+                    </svg>
                 </div>
-                <div class="feature-card">
-                    <h3>COACHING</h3>
-                    <p>Psychoeducational conversations led by qualified psychologists. Helps with clarity.</p>
-                    <button class="btn-primary"
-                        onclick="MB.toggle(true); MB.handleButtonAction('book_coaching', 'Book Coaching')">Book
-                        Slot</button>
-                </div>
-                <div class="feature-card">
-                    <h3>THERAPY</h3>
-                    <p>Licensed treatment by external partners.</p>
-                    <button class="btn-primary"
-                        onclick="MB.toggle(true); MB.handleButtonAction('view_therapy', 'View Resources')">View
-                        Resources</button>
-                </div>
+                <h2>Venting</h2>
+                <p>A space to unload what's on your mind. No advice. No correction. No diagnosis. Just pure expression
+                    and emotional release.</p>
+                <ul style="margin: 1.5rem 0; line-height: 2;">
+                    <li>✓ Talk freely without judgment</li>
+                    <li>✓ Trained listeners who care</li>
+                    <li>✓ 100% confidential</li>
+                    <li>✓ Available anytime</li>
+                </ul>
+                <button class="btn-primary" onclick="MB.toggle(true)">Start Venting</button>
             </div>
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80"
+                alt="Person venting and feeling relieved" class="service-image">
         </section>
 
+        <!-- Coaching Section -->
+        <section class="service-section reverse">
+            <div>
+                <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path
+                            d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.54">
+                        </path>
+                        <path
+                            d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.54">
+                        </path>
+                    </svg>
+                </div>
+                <h2>Coaching</h2>
+                <p>Psychoeducational conversations led by qualified psychologists based in India. Build skills,
+                    understand patterns, and gain clarity.</p>
+                <ul style="margin: 1.5rem 0; line-height: 2;">
+                    <li>✓ Qualified Indian psychologists</li>
+                    <li>✓ Skill-building focus</li>
+                    <li>✓ Understand emotional patterns</li>
+                    <li>✓ Not therapy (no diagnosis)</li>
+                </ul>
+                <button class="btn-primary" onclick="MB.toggle(true)">Book Coaching</button>
+            </div>
+            <img src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?w=600&q=80" alt="Coaching session"
+                class="service-image">
+        </section>
+
+        <!-- Therapy Section -->
+        <section class="service-section">
+            <div>
+                <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path
+                            d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
+                        </path>
+                    </svg>
+                </div>
+                <h2>Therapy Resources</h2>
+                <p>Licensed mental health treatment provided by external verified partners. For clinical diagnosis and
+                    professional treatment.</p>
+                <ul style="margin: 1.5rem 0; line-height: 2;">
+                    <li>✓ Licensed therapists</li>
+                    <li>✓ Clinical diagnosis available</li>
+                    <li>✓ Treatment for conditions</li>
+                    <li>✓ External verified platforms</li>
+                </ul>
+                <button class="btn-primary" onclick="window.open('https://www.betterhelp.com', '_blank')">View
+                    Resources</button>
+            </div>
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80"
+                alt="Professional therapy session" class="service-image">
+        </section>
+
+        <!-- Comparison Table -->
         <section>
+            <h2 style="text-align: center;">Compare Your Options</h2>
             <table class="service-comparison">
                 <tr>
                     <th>Feature</th>
@@ -89,37 +214,58 @@
                 </tr>
                 <tr>
                     <td>Emotional release</td>
-                    <td>✔</td>
-                    <td>✔</td>
-                    <td>✔</td>
+                    <td class="check">✔</td>
+                    <td class="check">✔</td>
+                    <td class="check">✔</td>
                 </tr>
                 <tr>
                     <td>Psychoeducation</td>
-                    <td>✖</td>
-                    <td>✔</td>
-                    <td>✔</td>
+                    <td class="cross">✖</td>
+                    <td class="check">✔</td>
+                    <td class="check">✔</td>
+                </tr>
+                <tr>
+                    <td>Skill building</td>
+                    <td class="cross">✖</td>
+                    <td class="check">✔</td>
+                    <td class="check">✔</td>
                 </tr>
                 <tr>
                     <td>Diagnosis</td>
-                    <td>✖</td>
-                    <td>✖</td>
-                    <td>✔</td>
+                    <td class="cross">✖</td>
+                    <td class="cross">✖</td>
+                    <td class="check">✔</td>
+                </tr>
+                <tr>
+                    <td>Treatment</td>
+                    <td class="cross">✖</td>
+                    <td class="cross">✖</td>
+                    <td class="check">✔</td>
                 </tr>
                 <tr>
                     <td>Crisis support</td>
-                    <td>✖</td>
-                    <td>✖</td>
-                    <td>✔ (External)</td>
+                    <td class="cross">✖</td>
+                    <td class="cross">✖</td>
+                    <td>External</td>
                 </tr>
             </table>
         </section>
 
-        <!-- Long content for scroll trigger -->
-        <div style="height: 800px;"></div>
+        <!-- CTA Section -->
+        <section
+            style="text-align: center; background: linear-gradient(135deg, #E5F5EA 0%, #fff 100%); padding: 4rem; border-radius: 16px; margin-top: 3rem;">
+            <h2>Still Not Sure?</h2>
+            <p>Our chatbot can help you figure out the right path. No pressure, no commitment.</p>
+            <button class="btn-primary" onclick="MB.toggle(true)" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                💬 Talk to Our Chatbot
+            </button>
+        </section>
+
+        <div style="height: 200px;"></div>
     </main>
 
     <footer>
-        <p>© 2025 Ventoutt.</p>
+        <p>© 2025 Ventoutt. Support made simple.</p>
     </footer>
 
     <!-- Popup -->
