@@ -488,7 +488,8 @@
 
         .scroll-slider-wrapper {
             width: 100%;
-            max-width: 1100px;
+            max-width: 1050px;
+            /* Balanced width */
             margin: 0 auto;
             padding: 0 20px 100px;
             /* Extra bottom padding for stack */
@@ -500,18 +501,24 @@
             flex-direction: column;
             gap: 40px;
             /* Gap between cards in the flow */
+            align-items: center;
+            /* Ensure cards are centered in the track */
         }
 
         .feature-card {
             background: white;
             border: 3px solid var(--primary-orange);
             border-radius: 40px;
-            padding: 60px;
+            padding: 40px;
+            /* Reduced padding for compact look */
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            /* Even 50/50 split for balance */
+            gap: 60px;
             align-items: center;
-            min-height: 550px;
+            /* Vertically center content */
+            min-height: 380px;
+            /* Compact height */
             /* Tall cards */
             position: sticky;
             top: 120px;
@@ -521,6 +528,8 @@
             box-sizing: border-box;
             background-clip: padding-box;
             /* Ensures border doesn't clip background */
+            width: 100%;
+            /* Ensure it takes full width of wrapper */
         }
 
         /* Alternating Layout: Even cards have Image Left, Text Right */
@@ -532,50 +541,45 @@
             order: 1;
         }
 
-        /* Stacking Logic for 9 Cards */
-        /* Each card gets a slightly incremented top value so they stack visibly */
-        .feature-card:nth-child(1) {
+        /* Stacking Logic */
+        /* All cards stick at the same position to overlap completely */
+        .feature-card:nth-child(n) {
             top: 120px;
+        }
+
+        .feature-card:nth-child(1) {
             z-index: 1;
         }
 
         .feature-card:nth-child(2) {
-            top: 140px;
             z-index: 2;
         }
 
         .feature-card:nth-child(3) {
-            top: 160px;
             z-index: 3;
         }
 
         .feature-card:nth-child(4) {
-            top: 180px;
             z-index: 4;
         }
 
         .feature-card:nth-child(5) {
-            top: 200px;
             z-index: 5;
         }
 
         .feature-card:nth-child(6) {
-            top: 220px;
             z-index: 6;
         }
 
         .feature-card:nth-child(7) {
-            top: 240px;
             z-index: 7;
         }
 
         .feature-card:nth-child(8) {
-            top: 260px;
             z-index: 8;
         }
 
         .feature-card:nth-child(9) {
-            top: 280px;
             z-index: 9;
         }
 
@@ -587,27 +591,30 @@
 
         .feature-card-title {
             font-family: var(--font-heading);
-            font-size: 48px;
+            font-size: 40px;
             line-height: 1.1;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             color: var(--dark-gray);
         }
 
         .feature-card-description {
             font-family: var(--font-body);
-            font-size: 20px;
-            line-height: 1.6;
+            font-size: 18px;
+            line-height: 1.5;
             color: var(--dark-gray);
             margin: 0;
             opacity: 0.85;
         }
 
         .feature-card-image {
-            height: 100%;
-            min-height: 400px;
+            width: 100%;
+            height: 300px;
+            /* Fixed height for consistency */
             border-radius: 20px;
             overflow: hidden;
             position: relative;
+            align-self: center;
+            /* Ensure it stays centered vertically */
         }
 
         .feature-card-image img {
@@ -685,46 +692,68 @@
         }
 
         .expert-card {
-            background: linear-gradient(135deg, #F4EDE4 0%, #E8DED0 100%);
-            border-radius: 20px;
-            padding: 20px;
+            background: #EAE4DC;
+            /* Fallback beige */
+            border-radius: 32px;
+            /* Smooth large radius */
+            height: 480px;
+            /* Taller card */
             position: relative;
             overflow: hidden;
-            box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 0 !important;
+            /* Force no padding */
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
             cursor: pointer;
+            display: block;
+            /* Ensure block layout */
         }
 
         .expert-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
         }
 
+        .expert-photo {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            z-index: 1 !important;
+            margin: 0 !important;
+            border-radius: 0 !important;
+            /* Inherit from card overflow hidden */
+            max-width: none !important;
+            max-height: none !important;
+        }
+
+        /* Rating Badge */
         .expert-rating {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 24px;
+            right: 24px;
             background: white;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
+            border-radius: 16px;
+            padding: 8px 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 2;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 3;
+            min-width: 60px;
         }
 
         .expert-rating .star {
             color: var(--accent-yellow);
-            font-size: 16px;
+            font-size: 14px;
             margin-bottom: 2px;
         }
 
         .expert-rating .score {
-            font-family: var(--font-body);
-            font-size: 18px;
+            font-family: var(--font-heading);
+            font-size: 20px;
             font-weight: 600;
             color: var(--dark-gray);
             line-height: 1;
@@ -733,45 +762,55 @@
         .expert-rating .score-label {
             font-family: var(--font-body);
             font-size: 10px;
-            color: var(--dark-gray);
-            opacity: 0.7;
+            font-weight: 500;
+            color: #999;
+            margin-top: 2px;
         }
 
-        .expert-photo {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 16px;
+        /* Hanging Info Block (White Box) */
+        .expert-info-box {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            right: 24px;
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            z-index: 3;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
         .expert-name {
             font-family: var(--font-heading);
-            font-size: 24px;
+            font-size: 26px;
             color: var(--dark-gray);
             margin-bottom: 4px;
         }
 
         .expert-title {
             font-family: var(--font-body);
-            font-size: 14px;
-            color: var(--dark-gray);
-            opacity: 0.8;
+            font-size: 15px;
+            color: #666;
+            font-weight: 500;
         }
 
-        /* Hover Overlay */
+        /* Hover Overlay Logic */
         .expert-details {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: var(--bg-beige);
-            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
             transform: translateY(100%);
-            transition: transform 0.4s ease;
-            border-radius: 20px 20px 0 0;
-            max-height: 90%;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 32px 32px 0 0;
+            max-height: 80%;
             overflow-y: auto;
+            z-index: 4;
+            /* Above info box */
         }
 
         .expert-card:hover .expert-details {
@@ -1420,65 +1459,747 @@
 
 <body>
     <!-- Navigation Bar -->
-    <header style="background: rgba(0, 0, 0, 0.4); position: absolute; top: 0; left: 0; right: 0; z-index: 100;">
-        <div class="logo">Ventoutt.</div>
-        <nav>
-            <a href="index.html">Home</a>
-            <div class="dropdown">
-                <button class="dropbtn" onclick="location.href='services.html'">Services ▾</button>
-                <div class="dropdown-content">
-                    <a href="services.html#demo-venting">Venting</a>
-                    <a href="services.html#demo-coaching">Coaching</a>
-                    <a href="services.html#demo-therapy">Therapy</a>
+    <!-- Navigation Bar (Responsive) -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo" style="color: white;">Ventoutt.</div>
+
+            <button class="hamburger" aria-label="Open Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <nav class="nav-links">
+                <a href="index.html" style="color: white;">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="location.href='services.html'" style="color: white;">Services
+                        ▾</button>
+                    <div class="dropdown-content">
+                        <a href="services.html#demo-venting">Venting</a>
+                        <a href="services.html#demo-coaching">Coaching</a>
+                        <a href="services.html#demo-therapy">Therapy</a>
+                    </div>
                 </div>
-            </div>
-            <a href="about.html">About</a>
-            <a href="blog.html">Blog</a>
-            <a href="contact.html">Contact</a>
-            <a href="services.html?chatbot=open" class="cta-nav">Get Support</a>
-        </nav>
+                <a href="about.html" style="color: white;">About</a>
+                <a href="blog.html" style="color: white;">Blog</a>
+                <a href="contact.html" style="color: white;">Contact</a>
+                <a href="services.html?chatbot=open" class="cta-nav" style="color: white; border-color: white;">Get
+                    Support</a>
+            </nav>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">Start venting. Feel the shift.</h1>
-            <p class="hero-subtitle">Sometimes, saying it out loud is all it takes to feel lighter. Begin the
-                conversation you've been holding in for too long.</p>
-            <a href="services.html?chatbot=open" class="btn-hero">Learn More</a>
+    <style>
+        /* Responsive Header Styles */
+        .main-header {
+            background: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 40px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 28px;
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a,
+        .dropbtn {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            text-decoration: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 1001;
+        }
+
+        .bar {
+            width: 25px;
+            height: 2px;
+            background-color: white;
+            transition: 0.3s;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .main-header {
+                padding: 15px 20px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background-color: #111;
+                /* Dark background for mobile menu */
+                flex-direction: column;
+                justify-content: center;
+                gap: 40px;
+                transition: 0.4s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+                padding: 40px;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            /* Hamburger Animation */
+            .hamburger.active .bar:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            /* Hero Title Fluid scaling */
+            .hero-title {
+                font-size: clamp(32px, 8vw, 64px) !important;
+                /* Ensures it looks 'same' just smaller */
+            }
+
+            .hero-slide {
+                padding: 0 20px !important;
+                /* Less padding on mobile */
+            }
+
+            /* Expanding Gallery - Horizontal Scroll instead of Stack */
+            /* "Look same only shrink" => Horizontal overflow */
+            .expanding-gallery {
+                flex-direction: row !important;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                justify-content: flex-start;
+                padding-bottom: 20px;
+                /* Space for scrollbar */
+                gap: 10px;
+            }
+
+            .gallery-card {
+                flex: 0 0 85% !important;
+                /* Show 85% of card to encourage scroll */
+                min-width: 85% !important;
+                height: 400px !important;
+                scroll-snap-align: center;
+            }
+
+            /* Ensure content is visible on mobile cards */
+            .gallery-card p,
+            .card-link {
+                opacity: 1 !important;
+                height: auto !important;
+                transform: none !important;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (hamburger) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        });
+    </script>
+
+    <!-- Hero Section (Slideshow) -->
+    <section class="hero-slider-section">
+        <div class="hero-slides">
+            <!-- Slide 1: You don't have to do it alone -->
+            <div class="hero-slide active"
+                style="--bg-url: url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=1600&auto=format&fit=crop');">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1 class="hero-title">You don’t have to do it alone.</h1>
+                    <p class="hero-subtitle">Begin your journey with a conversation that’s just for you. Speak freely.
+                        Feel lighter. Heal slowly.</p>
+                    <a href="services.html" class="btn-hero-orange">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Slide 2: Let's find someone who listens -->
+            <div class="hero-slide"
+                style="--bg-url: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1600&auto=format&fit=crop');">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1 class="hero-title">Let’s find someone who listens, just for you.</h1>
+                    <p class="hero-subtitle">Because feeling heard is the first step toward feeling better. Explore
+                        therapists who understand your world, your pace, your voice.</p>
+                    <a href="services.html#demo-therapy" class="btn-hero-orange">Online Therapy</a>
+                </div>
+            </div>
+
+            <!-- Slide 3: Start venting. Feel the shift. -->
+            <div class="hero-slide"
+                style="--bg-url: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1600&auto=format&fit=crop');">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1 class="hero-title">Start venting. Feel the shift.</h1>
+                    <p class="hero-subtitle">Sometimes, saying it out loud is all it takes to feel lighter. Begin the
+                        conversation you’ve been holding in for too long.</p>
+                    <a href="services.html#demo-venting" class="btn-hero-orange">Instant Venting</a>
+                </div>
+            </div>
         </div>
+
+        <style>
+            .hero-slider-section {
+                position: relative;
+                width: 100%;
+                height: 710px;
+                /* Match Figma height */
+                overflow: hidden;
+            }
+
+            .hero-slides {
+                position: relative;
+                width: 100%;
+                height: 100%;
+            }
+
+            .hero-slide {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                transition: opacity 1.5s ease-in-out;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding-left: 150px;
+                padding-right: 150px;
+                box-sizing: border-box;
+                z-index: 1;
+                overflow: hidden;
+            }
+
+            /* Flipped Background using pseudo-element */
+            /* This avoids mirroring the content/padding */
+            .hero-slide::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: var(--bg-url);
+                background-size: cover;
+                background-position: center;
+                transform: scaleX(-1);
+                z-index: -1;
+            }
+
+            .hero-slide.active {
+                opacity: 1;
+                z-index: 2;
+            }
+
+            .hero-content {
+                position: relative;
+                z-index: 3;
+                max-width: 800px;
+                color: white;
+                display: flex;
+                flex-direction: column;
+                gap: 35px;
+            }
+
+            /* Overlay for readability */
+            .hero-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                /* Gradient on the actual screen-left to support text */
+                background: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%);
+                z-index: 1;
+                pointer-events: none;
+            }
+
+            .hero-title {
+                font-family: 'DM Serif Display', serif;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 64px;
+                line-height: 88px;
+                letter-spacing: -0.5px;
+                color: #FFFFFF;
+                margin: 0;
+                text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+                max-width: 1000px;
+            }
+
+            .hero-subtitle {
+                font-family: 'DM Sans', sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 26px;
+                color: #FFFFFF;
+                margin: 0;
+                text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+                max-width: 682px;
+            }
+
+            .btn-hero-orange {
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 12px 45px;
+                gap: 10px;
+                width: 240px;
+                height: 50px;
+                background: #F57F17;
+                border: 1px solid #FFFFFF;
+                border-radius: 10px;
+
+                /* Text Style */
+                font-family: 'DM Sans', sans-serif;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 26px;
+                text-align: center;
+                letter-spacing: 0.5px;
+                color: #FFFFFF;
+                text-decoration: none;
+                transition: transform 0.2s, background-color 0.2s;
+            }
+
+            .btn-hero-orange:hover {
+                background-color: #E66A2E;
+                transform: translateY(-2px);
+            }
+
+            @media (max-width: 768px) {
+                .hero-slide {
+                    padding: 0 5%;
+                    align-items: center;
+                    text-align: center;
+                }
+
+                .hero-title {
+                    font-size: 36px;
+                    line-height: 1.2;
+                }
+
+                .hero-content {
+                    align-items: center;
+                    /* Center button on mobile */
+                }
+            }
+        </style>
+
+        <script>
+            // Simple Hero Slider Script
+            document.addEventListener('DOMContentLoaded', () => {
+                const slides = document.querySelectorAll('.hero-slide');
+                if (slides.length === 0) return;
+                let currentSlide = 0;
+
+                function nextSlide() {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }
+
+                setInterval(nextSlide, 5000); // Change slide every 5 seconds
+            });
+        </script>
     </section>
 
-    <!-- How Can We Help Section -->
-    <section class="help-section">
-        <h2 class="section-title">How Can We Help You Today?</h2>
-        <div class="service-cards">
-            <div class="service-card">
-                <div class="service-card-image" style="background-color: #D9D9D9;"></div>
-                <h3 class="service-card-title">Instant Venting</h3>
-                <p class="service-card-description">Say anything, anytime, we're all ears. No judgment, just someone to
-                    hear you out.</p>
-                <a href="services.html#demo-venting" class="btn-hero">Learn More</a>
+    <!-- How Can We Help (Expanding Gallery) -->
+    <section class="help-section" id="how-we-help">
+        <div class="help-container">
+            <div class="help-header-centered">
+                <h2 class="section-title-bold">Transforming mental health,<br>one step at a time</h2>
+                <p class="section-subtitle-centered">We provide a wide range of services designed to support your mental
+                    well-being at every step of your journey.</p>
+                <!-- Button removed from here or moved? User asked for centered view. I'll add a centered button if desired, but image showed button right-aligned. Image 4 is what user complained about. "black bold in centre without any pill or background".-->
             </div>
-            <div class="service-card">
-                <div class="service-card-image" style="background-color: #D9D9D9;"></div>
-                <h3 class="service-card-title">Coaching</h3>
-                <p class="service-card-description">Get expert help to understand, heal, and grow. Private sessions with
-                    licensed professionals.</p>
-                <a href="services.html#demo-coaching" class="btn-hero">Learn More</a>
-            </div>
-            <div class="service-card">
-                <div class="service-card-image" style="background-color: #D9D9D9;"></div>
-                <h3 class="service-card-title">Therapy</h3>
-                <p class="service-card-description">Get expert help to understand, heal, and grow. Private sessions with
-                    licensed professionals.</p>
-                <a href="services.html#demo-therapy" class="btn-hero">Learn More</a>
+
+            <style>
+                .help-header-centered {
+                    text-align: center;
+                    margin-bottom: 60px;
+                    max-width: 800px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .section-title-bold {
+                    font-family: var(--font-heading);
+                    font-size: 48px;
+                    line-height: 1.1;
+                    color: black;
+                    /* Black, bold */
+                    margin-bottom: 24px;
+                    font-weight: 700;
+                }
+
+                .section-subtitle-centered {
+                    font-family: var(--font-body);
+                    font-size: 18px;
+                    color: var(--dark-gray);
+                    line-height: 1.6;
+                }
+            </style>
+
+            <div class="expanding-gallery">
+                <!-- Card 1: Instant Venting -->
+                <div class="gallery-card centered-bg"
+                    style="background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1600&auto=format&fit=crop');">
+                    <div class="card-overlay">
+                        <div class="card-content">
+                            <h3>Instant Venting</h3>
+                            <p>Say anything, anytime. No judgment, just someone to listen.</p>
+                            <a href="services.html#demo-venting" class="card-link">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Coaching -->
+                <div class="gallery-card"
+                    style="background-image: url('https://images.unsplash.com/photo-1544717302-de2939b7ef71?q=80&w=1600&auto=format&fit=crop');">
+                    <div class="card-overlay">
+                        <div class="card-content">
+                            <h3>Coaching</h3>
+                            <p>Expert guidance to understand, heal, and achieve your goals.</p>
+                            <a href="services.html#demo-coaching" class="card-link">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Therapy -->
+                <div class="gallery-card"
+                    style="background-image: url('https://images.unsplash.com/photo-1531169509526-f8f1fdaa4a67?q=80&w=1600&auto=format&fit=crop');">
+                    <div class="card-overlay">
+                        <div class="card-content">
+                            <h3>Therapy</h3>
+                            <p>Private sessions with licensed professionals for deep healing.</p>
+                            <a href="services.html#demo-therapy" class="card-link">Learn More</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="quiz-section">
-            <span class="quiz-text">Not sure what you want?</span>
-            <a href="#quiz" class="quiz-link">Take a 30sec quiz</a>
+
+        <!-- Quiz Prompt Section -->
+        <div class="quiz-prompt-wrapper">
+            <span class="quiz-text">Not sure what you want? </span>
+            <a href="services.html?chatbot=open" class="quiz-action-link">Talk to our chatbot.</a>
         </div>
+
+        <style>
+            .quiz-prompt-wrapper {
+                text-align: center;
+                margin-top: 40px;
+                padding-bottom: 20px;
+                font-family: 'DM Sans', sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+                color: #212121;
+            }
+
+            .quiz-text {
+                font-weight: 500;
+                font-size: 24px;
+                line-height: 31px;
+            }
+
+            .quiz-action-link {
+                font-weight: 500;
+                font-size: 24px;
+                line-height: 31px;
+                color: #F57F17;
+                text-decoration: none;
+                position: relative;
+            }
+
+            /* Underline Rectangle 39981 effect */
+            .quiz-action-link::after {
+                content: "";
+                position: absolute;
+                bottom: -4px;
+                left: 0;
+                width: 100%;
+                height: 4px;
+                background: #F57F17;
+                border-radius: 5px;
+            }
+        </style>
+
+        <style>
+            .help-section {
+                padding: 100px 0;
+                background-color: #fff;
+            }
+
+            .help-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 24px;
+            }
+
+            /* Header part matching Image 1 */
+            .help-header {
+                margin-bottom: 60px;
+            }
+
+            .badge-pill {
+                display: inline-block;
+                background: #E0E7E2;
+                color: #2F4F4F;
+                padding: 8px 16px;
+                border-radius: 50px;
+                font-size: 14px;
+                font-weight: 500;
+                margin-bottom: 24px;
+            }
+
+            .help-header .section-title {
+                font-family: var(--font-heading);
+                font-size: 48px;
+                line-height: 1.1;
+                color: #1A3C34;
+                /* Dark greenish slate */
+                margin-bottom: 32px;
+                text-align: left;
+            }
+
+            .header-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .section-subtitle {
+                max-width: 500px;
+                font-size: 18px;
+                color: #555;
+                font-family: var(--font-body);
+                line-height: 1.6;
+            }
+
+            .btn-outline-pill {
+                display: inline-block;
+                padding: 12px 32px;
+                border: 2px solid #6B8E78;
+                /* Soft Green */
+                color: #6B8E78;
+                border-radius: 50px;
+                text-decoration: none;
+                font-weight: 600;
+                transition: all 0.3s ease;
+            }
+
+            .btn-outline-pill:hover {
+                background: #6B8E78;
+                color: white;
+            }
+
+            /* Expanding Gallery CSS */
+            .expanding-gallery {
+                display: flex;
+                gap: 20px;
+                height: 600px;
+                /* Fixed height for the expansion effect */
+                width: 100%;
+            }
+
+            .gallery-card {
+                flex: 1;
+                /* Default state */
+                position: relative;
+                background-size: cover;
+                background-position: center;
+                border-radius: 24px;
+                overflow: hidden;
+                cursor: pointer;
+                transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+                min-width: 60px;
+                /* Prevent collapse on mobile */
+            }
+
+            /* The hovered card expands */
+            .gallery-card:hover {
+                flex: 3;
+            }
+
+            /* Make standard focus logic (for keyboard nav, can simulate hover) */
+            .gallery-card:focus-within {
+                flex: 3;
+            }
+
+            .gallery-card .card-overlay {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 60%);
+                display: flex;
+                align-items: flex-end;
+                opacity: 0.9;
+                transition: opacity 0.3s;
+            }
+
+            .gallery-card .card-content {
+                padding: 40px;
+                width: 100%;
+                transform: translateY(20px);
+                opacity: 0;
+                /* Hidden by default in non-expanded state? 
+                             Or maybe just show Title? 
+                             Ref images show title always? 
+                             Image 2 shows "Your Journey" title on left (unhovered?).
+                             Let's keep title visible, desc hidden until hover for cleaner effect.
+                          */
+                opacity: 1;
+                /* Keep visible for now, adjust transition below */
+                transform: translateY(0);
+                text-align: left;
+            }
+
+            .gallery-card h3 {
+                font-family: var(--font-heading);
+                font-size: 32px;
+                color: white;
+                margin-bottom: 12px;
+                white-space: nowrap;
+                /* Prevent wrap when narrow */
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .gallery-card p {
+                font-family: var(--font-body);
+                font-size: 16px;
+                color: rgba(255, 255, 255, 0.9);
+                margin-bottom: 24px;
+                max-width: 400px;
+
+                /* Reveal animation */
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.4s ease 0s;
+                height: 0;
+                /* Collapse height to hide */
+                overflow: hidden;
+            }
+
+            .card-link {
+                display: inline-block;
+                color: white;
+                text-decoration: underline;
+                font-weight: 500;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.4s ease 0.1s;
+            }
+
+            /* On Expand (Hover), show details */
+            .gallery-card:hover p,
+            .gallery-card:hover .card-link,
+            .gallery-card:focus-within p,
+            .gallery-card:focus-within .card-link {
+                opacity: 1;
+                transform: translateY(0);
+                height: auto;
+                /* Restore height */
+            }
+
+            @media (max-width: 768px) {
+                .expanding-gallery {
+                    flex-direction: column;
+                    height: auto;
+                }
+
+                .gallery-card {
+                    height: 300px;
+                    flex: none;
+                    width: 100%;
+                }
+
+                .gallery-card:hover {
+                    flex: none;
+                    /* Disable flex expand on mobile, just stack */
+                }
+
+                .gallery-card p,
+                .card-link {
+                    opacity: 1;
+                    height: auto;
+                    transform: none;
+                }
+
+                .help-header .section-title {
+                    font-size: 32px;
+                }
+            }
+        </style>
     </section>
 
     <!-- Stats Section -->
@@ -1637,24 +2358,294 @@
         </p>
     </section>
 
-    <!-- Therapist Banner -->
-    <section class="therapist-banner">
-        <div class="therapist-content">
-            <h2 class="therapist-title">Real Experts. Real Care. Just for You.</h2>
-            <div class="therapist-description">
-                <p>Our therapists aren't just qualified — they're carefully selected to meet the emotional needs of
-                    young adults like you.</p>
-                <ul>
-                    <li>All hold a Master's degree or higher</li>
-                    <li>Minimum 3+ years of experience</li>
-                    <li>Pass a rigorous multi-stage interview process</li>
-                    <li>Personally verified to meet global therapy standards</li>
-                </ul>
-                <p>With us, you're never just talking. You're growing — with professional guidance tailored to your
-                    needs, beliefs, and background.</p>
+    <!-- Therapist Banner (Figma Exact Match) -->
+    <section class="therapist-banner-figma">
+        <div class="figma-container">
+            <!-- Left: Graphics Layer -->
+            <div class="graphics-wrapper">
+                <!-- Image Container (Slideshow) positioned relatively -->
+                <div class="image-frame">
+                    <!-- Slideshow logic -->
+                    <div class="banner-slideshow-inner">
+                        <div class="blob-slide active" style="background-image: url('experts_bg_1.png');"></div>
+                        <div class="blob-slide" style="background-image: url('experts_bg_2.png');"></div>
+                        <div class="blob-slide" style="background-image: url('experts_bg_3.png');"></div>
+                    </div>
+                </div>
             </div>
-            <div class="therapist-footer">Verified. Compassionate. Confidential.</div>
+
+            <!-- Right: Content -->
+            <div class="content-wrapper">
+                <h2 class="figma-title">Real Experts. Real Care.<br>Just for You.</h2>
+                <div class="figma-description">
+                    <p>Our therapists aren’t just qualified — they’re carefully selected to meet the emotional needs of
+                        young adults like you.</p>
+                    <ul>
+                        <li>All hold a Master’s degree or higher</li>
+                        <li>Minimum 3+ years of experience</li>
+                        <li>Pass a rigorous multi-stage interview process</li>
+                        <li>Personally verified to meet global therapy standards</li>
+                    </ul>
+                    <p>With us, you’re never just talking. You’re growing — with professional guidance tailored to your
+                        needs, beliefs, and background.</p>
+                </div>
+                <div class="figma-footer">Verified. Compassionate. Confidential.</div>
+            </div>
         </div>
+
+        <style>
+            .therapist-banner-figma {
+                position: relative;
+                background: #212121;
+                width: 100%;
+                min-height: 800px;
+                /* From Figma: 800px */
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .figma-container {
+                position: relative;
+                width: 1440px;
+                /* Max width base */
+                max-width: 100%;
+                height: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                padding: 0 20px;
+            }
+
+            /* Graphics Layer */
+            .graphics-wrapper {
+                position: relative;
+                width: 800px;
+                /* Adjusted to fit layout */
+                height: 800px;
+                flex: 1 1 50%;
+                min-width: 400px;
+            }
+
+            .vector-orange {
+                position: absolute;
+                width: 767px;
+                height: 650px;
+                left: -100px;
+                /* Adjusting for relative container */
+                top: 50px;
+                background: #F57F17;
+                transform: rotate(-46.83deg);
+                z-index: 1;
+                border-radius: 40px;
+                /* Soften edges slightly if needed, Figma says vector */
+            }
+
+            .image-frame {
+                position: absolute;
+                width: 766px;
+                /* From Figma */
+                height: 650px;
+                left: 0px;
+                /* Adjusting relative */
+                top: 100px;
+                z-index: 2;
+                overflow: visible;
+                /* Allow borders to stick out */
+            }
+
+            .banner-slideshow-inner {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                overflow: hidden;
+                /* background: #212121; */
+                /* If the image has a specific mask, user didn't give frame but said "image 2". 
+                   Image 2 shows blob. But CSS provided just shows Rects and Vectors.
+                   The user said "do not give any frame... its already created".
+                   So I will just make it a rectangular slideshow if the images are pre-blobbed?
+                   Wait, user uploaded experts_bg_1.png (Property 1=Default.png). Those are rectangular photos usually.
+                   If the Mask is in the CSS: "Vector... background: url(...)".
+                   But the URL in CSS was "Flux_Dev...".
+                   I will apply a border-radius resembling the blob in reference image 2 if possible, or just huge rounded corners.
+                   The "Vector" with image has box-shadow.
+                */
+                /* border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+                /* Organic Blob approximation */
+                /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+                *
+            }
+
+            .blob-slide {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-position: center;
+                opacity: 0;
+                transition: opacity 1.5s ease;
+            }
+
+            .blob-slide.active {
+                opacity: 1;
+            }
+
+            /* Decorative Lines */
+            .vector-border-1,
+            .vector-border-2 {
+                position: absolute;
+                border: 4px solid rgba(255, 255, 255, 0.15);
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            .vector-border-1 {
+                width: 513px;
+                height: 796px;
+                left: -50px;
+                top: -50px;
+                border-radius: 50%;
+                /* Just guessing shape if vector path not provided */
+                transform: rotate(-10deg);
+            }
+
+            /* Content Layer */
+            .content-wrapper {
+                flex: 1 1 40%;
+                position: relative;
+                z-index: 3;
+                padding-top: 120px;
+                /* From Figma top: 120px */
+                min-width: 350px;
+                padding-left: 40px;
+            }
+
+            .figma-title {
+                font-family: 'DM Serif Display', serif;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 48px;
+                line-height: 66px;
+                letter-spacing: -0.5px;
+                color: #FFFFFF;
+                margin-bottom: 30px;
+            }
+
+            .figma-description {
+                font-family: 'DM Sans', sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 23px;
+                letter-spacing: -0.5px;
+                color: #FFFFFF;
+                margin-bottom: 60px;
+            }
+
+            .figma-description p {
+                margin-bottom: 24px;
+                color: #fff;
+            }
+
+            .figma-description ul {
+                list-style: none;
+                padding: 0;
+                margin-bottom: 24px;
+            }
+
+            .figma-description li {
+                position: relative;
+                padding-left: 20px;
+                margin-bottom: 12px;
+                color: #fff;
+            }
+
+            .figma-description li::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 8px;
+                /* Approx center of line */
+                width: 5px;
+                height: 5px;
+                background: white;
+                /* Ellipse 234 */
+                border-radius: 50%;
+            }
+
+            .figma-footer {
+                font-family: 'DM Sans', sans-serif;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 31px;
+                letter-spacing: -0.5px;
+                color: #FFFFFF;
+            }
+
+            @media (max-width: 1024px) {
+                .graphics-wrapper {
+                    transform: scale(0.8);
+                    left: -50px;
+                }
+
+                .figma-title {
+                    font-size: 36px;
+                    line-height: 1.2;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .figma-container {
+                    flex-direction: column;
+                }
+
+                .graphics-wrapper {
+                    width: 100%;
+                    height: 400px;
+                    transform: scale(0.7);
+                    left: 0;
+                    margin-bottom: -50px;
+                }
+
+                .vector-orange {
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                }
+
+                .content-wrapper {
+                    padding-top: 20px;
+                    text-align: center;
+                }
+
+                .figma-description ul {
+                    text-align: left;
+                    display: inline-block;
+                }
+
+                .figma-description li::before {
+                    left: 0;
+                }
+            }
+        </style>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const figmaSlides = document.querySelectorAll('.banner-slideshow-inner .blob-slide');
+                if (figmaSlides.length > 0) {
+                    let cur = 0;
+                    setInterval(() => {
+                        figmaSlides[cur].classList.remove('active');
+                        cur = (cur + 1) % figmaSlides.length;
+                        figmaSlides[cur].classList.add('active');
+                    }, 4000);
+                }
+            });
+        </script>
     </section>
 
     <!-- Why People Love VentOutt -->
@@ -1803,17 +2794,19 @@
                 <div class="experts-grid">
                     <!-- Expert Card 1: Pulkita W. -->
                     <div class="expert-card">
-                        <div class="expert-rating">
-                            <span class="star">★</span>
-                            <div>
-                                <div class="score">4.9</div>
-                                <span class="score-label">score</span>
-                            </div>
-                        </div>
                         <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
                             alt="Pulkita W." class="expert-photo">
-                        <div class="expert-name">Pulkita W.</div>
-                        <div class="expert-title">Psychoanalytic Therapist</div>
+
+                        <div class="expert-info-box">
+                            <div class="expert-name">Pulkita W.</div>
+                            <div class="expert-title">Psychoanalytic Therapist</div>
+                        </div>
+
+                        <div class="expert-rating">
+                            <span class="star">★</span>
+                            <div class="score">4.9</div>
+                            <span class="score-label">score</span>
+                        </div>
 
                         <!-- Hover Details -->
                         <div class="expert-details">
@@ -1836,17 +2829,19 @@
 
                     <!-- Expert Card 2: Muskan K. -->
                     <div class="expert-card">
-                        <div class="expert-rating">
-                            <span class="star">★</span>
-                            <div>
-                                <div class="score">4.7</div>
-                                <span class="score-label">score</span>
-                            </div>
-                        </div>
                         <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
                             alt="Muskan K." class="expert-photo">
-                        <div class="expert-name">Muskan K.</div>
-                        <div class="expert-title">CBT & Couples Counselor</div>
+
+                        <div class="expert-info-box">
+                            <div class="expert-name">Muskan K.</div>
+                            <div class="expert-title">CBT & Couples Counselor</div>
+                        </div>
+
+                        <div class="expert-rating">
+                            <span class="star">★</span>
+                            <div class="score">4.7</div>
+                            <span class="score-label">score</span>
+                        </div>
 
                         <!-- Hover Details -->
                         <div class="expert-details">
@@ -1872,17 +2867,19 @@
                 <div class="experts-grid">
                     <!-- Expert Card 3: Nishi -->
                     <div class="expert-card">
-                        <div class="expert-rating">
-                            <span class="star">★</span>
-                            <div>
-                                <div class="score">4.5</div>
-                                <span class="score-label">score</span>
-                            </div>
-                        </div>
                         <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80" alt="Nishi"
                             class="expert-photo">
-                        <div class="expert-name">Nishi</div>
-                        <div class="expert-title">Clinical Psychiatrist</div>
+
+                        <div class="expert-info-box">
+                            <div class="expert-name">Nishi</div>
+                            <div class="expert-title">Clinical Psychiatrist</div>
+                        </div>
+
+                        <div class="expert-rating">
+                            <span class="star">★</span>
+                            <div class="score">4.5</div>
+                            <span class="score-label">score</span>
+                        </div>
 
                         <!-- Hover Details -->
                         <div class="expert-details">
@@ -1904,17 +2901,19 @@
 
                     <!-- Expert Card 4: Additional Therapist -->
                     <div class="expert-card">
-                        <div class="expert-rating">
-                            <span class="star">★</span>
-                            <div>
-                                <div class="score">4.8</div>
-                                <span class="score-label">score</span>
-                            </div>
-                        </div>
                         <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
                             alt="Dr. Sarah M." class="expert-photo">
-                        <div class="expert-name">Dr. Sarah M.</div>
-                        <div class="expert-title">Clinical Psychiatrist</div>
+
+                        <div class="expert-info-box">
+                            <div class="expert-name">Dr. Sarah M.</div>
+                            <div class="expert-title">Clinical Psychiatrist</div>
+                        </div>
+
+                        <div class="expert-rating">
+                            <span class="star">★</span>
+                            <div class="score">4.8</div>
+                            <span class="score-label">score</span>
+                        </div>
 
                         <!-- Hover Details -->
                         <div class="expert-details">
@@ -2065,120 +3064,11 @@
 
     <!-- Partners -->
     <section class="partners-section">
-        <h2 class="partners-title">Making mental health a priority together with our partners.</h2>
-        <div class="partners-grid">
-
-            <style>
-                /* ===== Carousel (scoped) ===== */
-                .vt-partners {
-                    max-width: 1200px;
-                    margin: 0 auto;
-                    padding: 0 16px;
-                }
-
-                .vt-partners .logo-carousel {
-                    --gap: 12px;
-                    /* spacing between items */
-                    --speed: 100;
-                    /* px/sec — higher = faster */
-                    width: 100%;
-                    overflow: hidden;
-                    padding: 6px 0;
-                    background: transparent;
-                }
-
-                .vt-partners .logo-track {
-                    display: flex;
-                    align-items: center;
-                    gap: var(--gap);
-                    width: max-content;
-                    will-change: transform;
-                    /* JS will set animation inline after measuring */
-                }
-
-                /* Desktop hover pause only */
-                @media (hover: hover) and (pointer: fine) {
-                    .vt-partners .logo-track:hover {
-                        animation-play-state: paused;
-                    }
-                }
-
-                @keyframes vt-scroll {
-                    0% {
-                        transform: translate3d(0, 0, 0);
-                    }
-
-                    100% {
-                        transform: translate3d(calc(var(--distance, 0px) * -1), 0, 0);
-                    }
-                }
-
-                .vt-partners .logo-item {
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                    min-width: clamp(120px, 16vw, 180px);
-                    height: clamp(60px, 10vw, 92px);
-                    padding: 10px 12px;
-                    border-radius: 10px;
-                    text-decoration: none;
-                    transition: transform .15s ease, opacity .2s ease;
-                    background: transparent;
-                }
-
-                .vt-partners .logo-item:hover {
-                    transform: translateY(-1px);
-                    opacity: 1;
-                }
-
-                .vt-partners .logo-item img {
-                    display: block;
-                    max-height: clamp(36px, 8vw, 72px);
-                    width: auto;
-                    height: auto;
-                    object-fit: contain;
-                    opacity: .95;
-                    transition: opacity .2s ease;
-                }
-
-                .vt-partners .logo-item:hover img {
-                    opacity: 1;
-                }
-
-                /* ===== Bigger logos on phones ===== */
-                @media (max-width: 480px) {
-                    .vt-partners .logo-carousel {
-                        --gap: 14px;
-                    }
-
-                    .vt-partners .logo-item {
-                        min-width: clamp(160px, 52vw, 260px);
-                        height: clamp(84px, 26vw, 140px);
-                        padding: 12px 14px;
-                    }
-
-                    .vt-partners .logo-item img {
-                        max-height: clamp(56px, 18vw, 110px);
-                    }
-                }
-
-                /* ===== Tiny phones get an extra bump ===== */
-                @media (max-width: 360px) {
-                    .vt-partners .logo-item {
-                        min-width: clamp(176px, 60vw, 280px);
-                        height: clamp(96px, 30vw, 150px);
-                    }
-
-                    .vt-partners .logo-item img {
-                        max-height: clamp(64px, 22vw, 120px);
-                    }
-                }
-            </style>
-            </head>
-
-            <body>
-
-                <section class="vt-partners" aria-label="Partner logos">
+        <div class="partners-container">
+            <h2 class="partners-title">Making mental health a priority together with our partners.</h2>
+            <div class="partners-carousel-wrapper">
+                <!-- Carousel logic is internally scoped below, we just wrap it for layout -->
+                <div class="vt-partners" aria-label="Partner logos">
                     <div class="logo-carousel">
                         <div class="logo-track" id="vtLogoTrack">
                             <!-- Collative -->
@@ -2214,93 +3104,203 @@
                             </a>
                         </div>
                     </div>
-                </section>
+                </div>
+            </div>
+        </div>
 
-                <script>
-                    (function () {
-                        const track = document.getElementById('vtLogoTrack');
-                        const wrap = track?.closest('.logo-carousel');
-                        if (!track || !wrap) return;
+        <style>
+            .partners-section {
+                background-color: #1a1a1a;
+                padding: 60px 0;
+                color: white;
+            }
 
-                        // Clone original sequence ONCE (Elementor-safe)
-                        function ensureClones() {
-                            if (track.dataset.cloned) return;
-                            const originals = Array.from(track.children);
-                            const count = originals.length;
-                            track.dataset.originalCount = String(count);
-                            originals.forEach(n => track.appendChild(n.cloneNode(true)));
-                            track.dataset.cloned = '1';
-                            // mark clones as decorative
-                            originals.slice().forEach((_, i) => {
-                                const clone = track.children[count + i];
-                                if (clone) clone.setAttribute('aria-hidden', 'true');
-                            });
-                        }
+            .partners-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 24px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 60px;
+            }
 
-                        function afterImages(cb) {
-                            const imgs = track.querySelectorAll('img');
-                            let pending = imgs.length;
-                            if (!pending) return cb();
-                            let done = 0;
-                            imgs.forEach(img => {
-                                if (img.complete) { if (++done === pending) cb(); }
-                                else {
-                                    img.addEventListener('load', () => { if (++done === pending) cb(); }, { once: true });
-                                    img.addEventListener('error', () => { if (++done === pending) cb(); }, { once: true });
-                                }
-                            });
-                        }
+            .partners-title {
+                font-family: var(--font-heading);
+                font-size: 36px;
+                line-height: 1.2;
+                color: white;
+                max-width: 400px;
+                /* Force wrap */
+                flex-shrink: 0;
+            }
 
-                        function measureOriginalWidth() {
-                            const originalCount = Number(track.dataset.originalCount || 0);
-                            const gap = parseFloat(getComputedStyle(track).gap) || 0;
-                            let w = 0;
-                            for (let i = 0; i < originalCount; i++) {
-                                w += track.children[i].getBoundingClientRect().width;
-                            }
-                            w += gap * Math.max(0, originalCount - 1);
-                            return w;
-                        }
+            .partners-carousel-wrapper {
+                flex-grow: 1;
+                /* Takes remaining space */
+                width: 0;
+                /* Flexbox trick to allow carousel shrinking */
+                overflow: hidden;
+            }
 
-                        // Robust normalize with retries if width is 0 (fonts/CDN delay etc.)
-                        function normalize(retries = 6) {
-                            const distance = measureOriginalWidth();
-                            if (distance <= 1 && retries > 0) {
-                                // wait a frame and try again
-                                return setTimeout(() => normalize(retries - 1), 120);
-                            }
+            @media (max-width: 900px) {
+                .partners-container {
+                    flex-direction: column;
+                    text-align: center;
+                }
 
-                            // Store distance for keyframes
-                            track.style.setProperty('--distance', distance + 'px');
+                .partners-title {
+                    margin-bottom: 40px;
+                }
+            }
 
-                            // Compute duration from --speed on wrapper
-                            const pxPerSec = parseFloat(getComputedStyle(wrap).getPropertyValue('--speed')) || 70;
-                            const dur = Math.max(10, Math.min(60, distance / pxPerSec));
+            /* ===== Carousel (scoped) ===== */
+            .vt-partners {
+                width: 100%;
+                overflow: hidden;
+            }
 
-                            // Set animation inline so it always runs
-                            track.style.animation = `vt-scroll ${dur}s linear infinite`;
-                            track.style.animationPlayState = 'running';
-                        }
+            /* Fix logos to white/bright for dark background if needed, 
+                   or keep as is if transparent. Assuming original images are usable. 
+                   If they are black logos, they might need 'filter: invert(1)' or similar.
+                */
 
-                        function init() {
-                            ensureClones();
-                            // measure after images settle and on next frame
-                            afterImages(() => requestAnimationFrame(normalize));
-                        }
+            .vt-partners .logo-carousel {
+                --gap: 12px;
+                --speed: 100;
+                width: 100%;
+                overflow: hidden;
+                padding: 6px 0;
+                background: transparent;
+            }
 
-                        if (document.readyState === 'complete') init();
-                        else window.addEventListener('load', init, { once: true });
+            .vt-partners .logo-track {
+                display: flex;
+                align-items: center;
+                gap: var(--gap);
+                width: max-content;
+                will-change: transform;
+            }
 
-                        // Recalculate on size changes
-                        if ('ResizeObserver' in window) {
-                            const ro = new ResizeObserver(() => normalize());
-                            ro.observe(wrap);
-                        } else {
-                            let t;
-                            window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(normalize, 150); }, { passive: true });
-                        }
-                    })();
-                </script>
+            @keyframes vt-scroll {
+                0% {
+                    transform: translate3d(0, 0, 0);
+                }
+
+                100% {
+                    transform: translate3d(calc(var(--distance, 0px) * -1), 0, 0);
+                }
+            }
+
+            .vt-partners .logo-item {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-width: clamp(120px, 16vw, 180px);
+                height: clamp(60px, 10vw, 92px);
+                padding: 10px 12px;
+                background: white;
+                /* Logo bg white tile */
+                border-radius: 4px;
+                /* Slight rounded tile */
+                text-decoration: none;
+            }
+
+            .vt-partners .logo-item img {
+                display: block;
+                max-height: clamp(36px, 8vw, 72px);
+                width: auto;
+                height: auto;
+                object-fit: contain;
+            }
+        </style>
+    </section>
+
+    <script>
+        (function () {
+            const track = document.getElementById('vtLogoTrack');
+            const wrap = track?.closest('.logo-carousel');
+            if (!track || !wrap) return;
+
+            // Clone original sequence ONCE (Elementor-safe)
+            function ensureClones() {
+                if (track.dataset.cloned) return;
+                const originals = Array.from(track.children);
+                const count = originals.length;
+                track.dataset.originalCount = String(count);
+                originals.forEach(n => track.appendChild(n.cloneNode(true)));
+                track.dataset.cloned = '1';
+                // mark clones as decorative
+                originals.slice().forEach((_, i) => {
+                    const clone = track.children[count + i];
+                    if (clone) clone.setAttribute('aria-hidden', 'true');
+                });
+            }
+
+            function afterImages(cb) {
+                const imgs = track.querySelectorAll('img');
+                let pending = imgs.length;
+                if (!pending) return cb();
+                let done = 0;
+                imgs.forEach(img => {
+                    if (img.complete) { if (++done === pending) cb(); }
+                    else {
+                        img.addEventListener('load', () => { if (++done === pending) cb(); }, { once: true });
+                        img.addEventListener('error', () => { if (++done === pending) cb(); }, { once: true });
+                    }
+                });
+            }
+
+            function measureOriginalWidth() {
+                const originalCount = Number(track.dataset.originalCount || 0);
+                const gap = parseFloat(getComputedStyle(track).gap) || 0;
+                let w = 0;
+                for (let i = 0; i < originalCount; i++) {
+                    w += track.children[i].getBoundingClientRect().width;
+                }
+                w += gap * Math.max(0, originalCount - 1);
+                return w;
+            }
+
+            // Robust normalize with retries if width is 0 (fonts/CDN delay etc.)
+            function normalize(retries = 6) {
+                const distance = measureOriginalWidth();
+                if (distance <= 1 && retries > 0) {
+                    // wait a frame and try again
+                    return setTimeout(() => normalize(retries - 1), 120);
+                }
+
+                // Store distance for keyframes
+                track.style.setProperty('--distance', distance + 'px');
+
+                // Compute duration from --speed on wrapper
+                const pxPerSec = parseFloat(getComputedStyle(wrap).getPropertyValue('--speed')) || 70;
+                const dur = Math.max(10, Math.min(60, distance / pxPerSec));
+
+                // Set animation inline so it always runs
+                track.style.animation = `vt-scroll ${dur}s linear infinite`;
+                track.style.animationPlayState = 'running';
+            }
+
+            function init() {
+                ensureClones();
+                // measure after images settle and on next frame
+                afterImages(() => requestAnimationFrame(normalize));
+            }
+
+            if (document.readyState === 'complete') init();
+            else window.addEventListener('load', init, { once: true });
+
+            // Recalculate on size changes
+            if ('ResizeObserver' in window) {
+                const ro = new ResizeObserver(() => normalize());
+                ro.observe(wrap);
+            } else {
+                let t;
+                window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(normalize, 150); }, { passive: true });
+            }
+        })();
+    </script>
 
     </section>
 
@@ -2324,6 +3324,9 @@
     <!-- Chatbot Container -->
     <div id="mentalbot-overlay" class="mobile-only"></div>
     <div id="mentalbot-shell" class="collapsed" aria-live="polite">
+        <!-- New Helper Bubble -->
+        <div class="mentalbot-trigger-bubble">How can we help you?</div>
+
         <button id="mentalbot-bar" aria-expanded="false" aria-controls="mentalbot-panel">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -2344,6 +3347,43 @@
                 <button id="mentalbot-send" aria-label="Send message">➔</button>
             </div>
         </div>
+
+        <style>
+            .mentalbot-trigger-bubble {
+                position: absolute;
+                bottom: 80px;
+                /* Above the button (which is 60px height + 24px bottom if relative, but shell is fixed) */
+                right: 0;
+                background: white;
+                color: #222;
+                padding: 12px 20px;
+                border-radius: 20px 20px 0 20px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+                font-family: var(--font-body, sans-serif);
+                font-size: 14px;
+                font-weight: 500;
+                white-space: nowrap;
+                z-index: 999997;
+                opacity: 0;
+                transform: translateY(10px);
+                animation: bubble-pop 0.5s ease-out forwards 1s;
+                /* Delay appearance */
+                pointer-events: none;
+                /* Let clicks pass through if needed, though usually clickable to open bot would be nice */
+            }
+
+            /* When chat is open (not collapsed), hide the bubble */
+            #mentalbot-shell:not(.collapsed) .mentalbot-trigger-bubble {
+                display: none;
+            }
+
+            @keyframes bubble-pop {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        </style>
     </div>
 
     <!-- Scripts -->

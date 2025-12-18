@@ -1,92 +1,121 @@
-/* entry-modal.js - Image Card Redesign */
+/* entry-modal.js - Replaced with Scroll Popup Content (Centered) */
 document.addEventListener("DOMContentLoaded", () => {
     // Only run on Homepage
     const path = window.location.pathname;
     if (!path.endsWith("index.html") && path !== "/" && !path.endsWith("/")) return;
 
-    // Session check removed for aggressive behavior
-    // if (sessionStorage.getItem("entryModalShown")) return;
+    if (sessionStorage.getItem("entryModalShown")) return;
 
-    // 1. Inject HTML with Images
+    // Inject HTML - Same content as Scroll Popup but wrapped in overlay for centering
+    // Using distinct IDs to avoid conflict with the actual Scroll Popup
     const modalHTML = `
-        <div id="entry-modal-overlay">
-            <div id="entry-modal" role="dialog" aria-modal="true">
-                <div class="entry-header">
-                    <h2>Where would you like to begin?</h2>
-                    <p>Everyone’s needs are different. Choose what feels right — or let us help you decide.</p>
+        <div id="entry-popup-overlay">
+            <div id="entry-popup-card">
+                <h3>Still not sure what kind of support would help?</h3>
+                <p>You don’t have to decide alone. Let our chatbot help you explore Venting, Coaching, or Therapy safely.</p>
+                <div class="popup-actions">
+                    <a href="services.html?chatbot=open" class="btn-popup-primary">Help me choose</a>
+                    <button id="entry-popup-close" class="btn-popup-secondary">Not now</button>
+                    <div class="popup-micro">You can explore without commitment.</div>
                 </div>
-                
-                <div class="entry-grid">
-                    <!-- Venting -->
-                    <a href="services.html#venting" class="entry-card">
-                        <div class="entry-img-container">
-                            <img src="https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?w=500&q=80" alt="Happy relief">
-                        </div>
-                        <div class="entry-content">
-                            <h3>Venting</h3>
-                            <p>A safe space to express your feelings freely without judgment.</p>
-                            <span class="entry-btn">Start Venting</span>
-                        </div>
-                    </a>
-                    
-                    <!-- Coaching -->
-                    <a href="services.html#coaching" class="entry-card">
-                        <div class="entry-img-container">
-                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80" alt="Coaching session">
-                        </div>
-                        <div class="entry-content">
-                            <h3>Coaching</h3>
-                            <p>Guidance and emotional clarity from qualified psychologists.</p>
-                            <span class="entry-btn">Explore Coaching</span>
-                        </div>
-                    </a>
-                    
-                    <!-- Therapy -->
-                    <a href="services.html#therapy" class="entry-card">
-                        <div class="entry-img-container">
-                            <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=500&q=80" alt="Professional therapy">
-                        </div>
-                        <div class="entry-content">
-                            <h3>Therapy Resources</h3>
-                            <p>Find licensed mental health professionals on external platforms.</p>
-                            <span class="entry-btn">Find Therapy</span>
-                        </div>
-                    </a>
-                    
-                    <!-- Chatbot -->
-                    <a href="?chatbot=open" class="entry-card">
-                        <div class="entry-img-container">
-                            <img src="https://images.unsplash.com/photo-1456406644174-8ddd4cd52a06?w=500&q=80" alt="Thinking">
-                        </div>
-                        <div class="entry-content">
-                            <h3>I’m not sure yet</h3>
-                            <p>It’s okay to feel uncertain. Our chatbot can help you decide.</p>
-                            <span class="entry-btn">Help Me Decide</span>
-                        </div>
-                    </a>
-                </div>
-                
-                <button id="entry-close">Not now</button>
             </div>
         </div>
+        
+        <style>
+            #entry-popup-overlay {
+                position: fixed;
+                top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.5s ease;
+            }
+            #entry-popup-overlay.active {
+                opacity: 1;
+                pointer-events: auto;
+            }
+            #entry-popup-card {
+                width: 440px;
+                max-width: 90%;
+                background: white;
+                padding: 30px;
+                border-radius: 20px;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                transform: scale(0.9);
+                transition: transform 0.3s ease;
+            }
+            #entry-popup-overlay.active #entry-popup-card {
+                transform: scale(1);
+            }
+            #entry-popup-card h3 {
+                font-family: var(--font-heading, serif);
+                font-size: 22px;
+                font-weight: 600;
+                color: #222;
+                margin: 0;
+            }
+            #entry-popup-card p {
+                font-family: var(--font-body, sans-serif);
+                font-size: 15px;
+                color: #555;
+                line-height: 1.5;
+                margin: 0;
+            }
+            #entry-popup-card .popup-actions {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 10px;
+            }
+            #entry-popup-card .btn-popup-primary {
+                background: #4CAF50; /* Primary Green */
+                color: white;
+                border: none;
+                padding: 12px;
+                border-radius: 30px;
+                font-weight: 600;
+                text-decoration: none;
+                font-size: 16px;
+                display: block;
+            }
+            #entry-popup-card .btn-popup-primary:hover {
+                background: #45a049;
+            }
+            #entry-popup-card .btn-popup-secondary {
+                background: none;
+                border: none;
+                color: #888;
+                text-decoration: underline;
+                cursor: pointer;
+                font-size: 14px;
+            }
+            #entry-popup-card .popup-micro {
+                font-size: 12px;
+                color: #aaa;
+            }
+        </style>
     `;
 
     document.body.insertAdjacentHTML("beforeend", modalHTML);
 
-    const overlay = document.getElementById("entry-modal-overlay");
-    const closeBtn = document.getElementById("entry-close");
+    const overlay = document.getElementById("entry-popup-overlay");
+    const closeBtn = document.getElementById("entry-popup-close");
 
+    // Show after delay
     setTimeout(() => {
         overlay.classList.add("active");
         sessionStorage.setItem("entryModalShown", "true");
-    }, 800);
+    }, 1000);
 
     closeBtn.addEventListener("click", () => {
         overlay.classList.remove("active");
     });
-
-    window.resetEntry = () => {
-        sessionStorage.removeItem("entryModalShown");
-        location.reload();
-    };
 });
