@@ -1,0 +1,2532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventoutt - A Safe Space to Be Heard</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display:wght@400&family=IBM+Plex+Mono:wght@500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/ventoutt-base.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="css/entry-modal.css">
+    <style>
+        /* Homepage Specific Styles */
+        body {
+            background: var(--bg-cream);
+            font-family: var(--font-body);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 698px;
+            background: var(--dark-gray);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 120px 150px;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 64px;
+            line-height: 88px;
+            letter-spacing: -0.5px;
+            color: var(--white);
+            max-width: 799px;
+            margin-bottom: 35px;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-body);
+            font-size: 20px;
+            line-height: 26px;
+            color: var(--white);
+            max-width: 682px;
+            margin-bottom: 75px;
+        }
+
+        .btn-hero {
+            background: var(--primary-orange);
+            border: 1px solid var(--white);
+            border-radius: 10px;
+            padding: 12px 45px;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 26px;
+            letter-spacing: 0.5px;
+            color: var(--white);
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* How Can We Help Section */
+        .help-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            line-height: 66px;
+            letter-spacing: -0.5px;
+            color: var(--dark-gray);
+            margin-bottom: 60px;
+        }
+
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 380px);
+            gap: 50px;
+            justify-content: center;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 70px;
+        }
+
+        .service-card {
+            background: var(--accent-green);
+            border-radius: 20px;
+            padding: 0;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card-image {
+            width: 300px;
+            height: 300px;
+            margin: 40px auto;
+            border-radius: 10px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-card-title {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 28px;
+            line-height: 36px;
+            text-align: center;
+            color: var(--bg-cream);
+            margin: 24px 0;
+        }
+
+        .service-card-description {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 21px;
+            text-align: center;
+            color: var(--white);
+            padding: 0 40px;
+            margin-bottom: 30px;
+        }
+
+        .service-card .btn-hero {
+            margin: 0 auto;
+            display: block;
+            width: 206px;
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .quiz-text {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 31px;
+            color: var(--dark-gray);
+            display: inline;
+        }
+
+        .quiz-link {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 31px;
+            color: var(--primary-orange);
+            text-decoration: none;
+            border-bottom: 2px solid var(--primary-orange);
+            margin-left: 10px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--bg-yellow);
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .stats-title {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 36px;
+            line-height: 47px;
+            text-align: center;
+            color: var(--dark-gray);
+            margin-bottom: 60px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 270px);
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: var(--dark-gray);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-icon {
+            width: 150px;
+            height: 150px;
+            border-radius: 100px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            margin-bottom: 26px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .stat-number {
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 500;
+            font-size: 32px;
+            line-height: 42px;
+            color: var(--white);
+            margin-bottom: 13px;
+        }
+
+        .stat-label {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 26px;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .stat-description {
+            font-family: var(--font-body);
+            font-style: italic;
+            font-size: 18px;
+            line-height: 23px;
+            color: var(--white);
+            text-align: center;
+        }
+
+        /* Testimonials Carousel Section */
+        .testimonials-section {
+            padding: 80px 0;
+            overflow: hidden;
+        }
+
+        .testimonials-title {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            line-height: 66px;
+            letter-spacing: -0.5px;
+            text-align: center;
+            color: var(--dark-gray);
+            margin-bottom: 60px;
+        }
+
+        /* Carousel Wrapper */
+        .carousel-wrapper {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin: 56px 0;
+            padding: 0 16px;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 40px;
+            width: max-content;
+            animation: scroll 20s linear infinite;
+        }
+
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Testimonial Cards */
+        .card {
+            width: 366px;
+            height: 500px;
+            background-color: var(--medium-gray);
+            border-radius: 20px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            text-align: center;
+            padding: 0;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        /* Video cards */
+        .card .video-container {
+            width: 300px;
+            height: 400px;
+            margin: 25px auto 0;
+            position: relative;
+        }
+
+        .card .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .card .location {
+            margin-top: auto;
+            font-size: 20px;
+            font-weight: 600;
+            background: var(--medium-gray);
+            color: white;
+            padding: 15px;
+            font-family: var(--font-body);
+            line-height: 26px;
+        }
+
+        /* Text cards with different colors */
+        .card.orange {
+            background-color: var(--primary-orange);
+            color: white;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            text-align: center;
+        }
+
+        .card.orange.yellow {
+            background-color: var(--accent-yellow);
+            color: var(--dark-gray);
+        }
+
+        .card.orange.green {
+            background-color: var(--accent-green-light);
+            color: #fff;
+        }
+
+        .card.orange.beige {
+            background-color: var(--bg-beige);
+            color: var(--dark-gray);
+        }
+
+        .card.orange .name {
+            font-weight: 600;
+            margin-bottom: 25px;
+            padding: 0 33px;
+            font-size: 20px;
+            line-height: 26px;
+            font-family: var(--font-body);
+        }
+
+        .card .name img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            margin: 30px auto 25px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .card.orange p {
+            font-size: 16px;
+            line-height: 21px;
+            margin: 0;
+            padding: 0 35px 35px;
+            font-family: var(--font-body);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 420px) {
+            .carousel-wrapper {
+                margin: 40px 0;
+                padding: 0 12px;
+            }
+
+            .carousel-track {
+                gap: 28px;
+            }
+
+            .card {
+                width: 300px;
+            }
+        }
+
+        /* Therapist Banner */
+        .therapist-banner {
+            background: var(--dark-gray);
+            padding: 120px 150px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .therapist-content {
+            max-width: 501px;
+            margin-left: auto;
+        }
+
+        .therapist-title {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            line-height: 66px;
+            letter-spacing: -0.5px;
+            color: var(--white);
+            margin-bottom: 75px;
+        }
+
+        .therapist-description {
+            font-family: var(--font-body);
+            font-size: 18px;
+            line-height: 23px;
+            letter-spacing: -0.5px;
+            color: var(--white);
+            margin-bottom: 80px;
+        }
+
+        .therapist-description ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .therapist-description li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+        }
+
+        .therapist-description li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 5px;
+            height: 5px;
+            background: var(--white);
+            border-radius: 50%;
+        }
+
+        .therapist-footer {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 31px;
+            letter-spacing: -0.5px;
+            color: var(--white);
+        }
+
+        /* Why People Love VentOutt - Sticky Stack */
+        .why-love-section {
+            background: var(--bg-beige);
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .why-love-title {
+            font-family: var(--font-heading);
+            font-size: 56px;
+            line-height: 1.1;
+            text-align: center;
+            color: var(--dark-gray);
+            margin-bottom: 80px;
+        }
+
+        .scroll-slider-wrapper {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 100px;
+            /* Extra bottom padding for stack */
+            position: relative;
+        }
+
+        .scroll-slider-track {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            /* Gap between cards in the flow */
+        }
+
+        .feature-card {
+            background: white;
+            border: 3px solid var(--primary-orange);
+            border-radius: 40px;
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            min-height: 550px;
+            /* Tall cards */
+            position: sticky;
+            top: 120px;
+            /* Base sticky position */
+            box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            box-sizing: border-box;
+            background-clip: padding-box;
+            /* Ensures border doesn't clip background */
+        }
+
+        /* Alternating Layout: Even cards have Image Left, Text Right */
+        .feature-card:nth-child(even) .feature-card-content {
+            order: 2;
+        }
+
+        .feature-card:nth-child(even) .feature-card-image {
+            order: 1;
+        }
+
+        /* Stacking Logic for 9 Cards */
+        /* Each card gets a slightly incremented top value so they stack visibly */
+        .feature-card:nth-child(1) {
+            top: 120px;
+            z-index: 1;
+        }
+
+        .feature-card:nth-child(2) {
+            top: 140px;
+            z-index: 2;
+        }
+
+        .feature-card:nth-child(3) {
+            top: 160px;
+            z-index: 3;
+        }
+
+        .feature-card:nth-child(4) {
+            top: 180px;
+            z-index: 4;
+        }
+
+        .feature-card:nth-child(5) {
+            top: 200px;
+            z-index: 5;
+        }
+
+        .feature-card:nth-child(6) {
+            top: 220px;
+            z-index: 6;
+        }
+
+        .feature-card:nth-child(7) {
+            top: 240px;
+            z-index: 7;
+        }
+
+        .feature-card:nth-child(8) {
+            top: 260px;
+            z-index: 8;
+        }
+
+        .feature-card:nth-child(9) {
+            top: 280px;
+            z-index: 9;
+        }
+
+        .feature-card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .feature-card-title {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--dark-gray);
+        }
+
+        .feature-card-description {
+            font-family: var(--font-body);
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            margin: 0;
+            opacity: 0.85;
+        }
+
+        .feature-card-image {
+            height: 100%;
+            min-height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .feature-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 968px) {
+            .feature-card {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 40px;
+                min-height: auto;
+            }
+
+            .why-love-title {
+                font-size: 36px;
+            }
+
+            .feature-card-title {
+                font-size: 32px;
+            }
+
+            /* Reset alternating layout on mobile for consistency */
+            .feature-card:nth-child(even) .feature-card-content {
+                order: initial;
+            }
+
+            .feature-card:nth-child(even) .feature-card-image {
+                order: initial;
+            }
+        }
+
+        /* Experts Section */
+        .experts-section {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .experts-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .experts-header {
+            margin-bottom: 40px;
+        }
+
+        .experts-label {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--primary-orange);
+            margin-bottom: 12px;
+        }
+
+        .experts-title {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            line-height: 1.2;
+            color: var(--dark-gray);
+        }
+
+        .experts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .expert-card {
+            background: linear-gradient(135deg, #F4EDE4 0%, #E8DED0 100%);
+            border-radius: 20px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .expert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .expert-rating {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        .expert-rating .star {
+            color: var(--accent-yellow);
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+
+        .expert-rating .score {
+            font-family: var(--font-body);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-gray);
+            line-height: 1;
+        }
+
+        .expert-rating .score-label {
+            font-family: var(--font-body);
+            font-size: 10px;
+            color: var(--dark-gray);
+            opacity: 0.7;
+        }
+
+        .expert-photo {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+
+        .expert-name {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--dark-gray);
+            margin-bottom: 4px;
+        }
+
+        .expert-title {
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--dark-gray);
+            opacity: 0.8;
+        }
+
+        /* Hover Overlay */
+        .expert-details {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-beige);
+            padding: 30px 20px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            border-radius: 20px 20px 0 0;
+            max-height: 90%;
+            overflow-y: auto;
+        }
+
+        .expert-card:hover .expert-details {
+            transform: translateY(0);
+        }
+
+        .detail-name {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            color: var(--dark-gray);
+            margin-bottom: 8px;
+        }
+
+        .detail-credentials {
+            font-family: var(--font-body);
+            font-size: 13px;
+            color: var(--dark-gray);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .detail-expertise {
+            margin-bottom: 12px;
+        }
+
+        .detail-expertise strong {
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--dark-gray);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .detail-expertise ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .detail-expertise li {
+            font-family: var(--font-body);
+            font-size: 13px;
+            color: var(--dark-gray);
+            padding-left: 16px;
+            position: relative;
+            margin-bottom: 4px;
+        }
+
+        .detail-expertise li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-orange);
+        }
+
+        .detail-meta {
+            font-family: var(--font-body);
+            font-size: 12px;
+            color: var(--dark-gray);
+            font-style: italic;
+        }
+
+        .experts-content {
+            margin-top: 40px;
+        }
+
+        .experts-description {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--dark-gray);
+            margin-bottom: 24px;
+        }
+
+        .btn-learn-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-body);
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dark-gray);
+            text-decoration: none;
+            border: 2px solid var(--dark-gray);
+            padding: 12px 24px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-learn-more:hover {
+            background: var(--dark-gray);
+            color: white;
+        }
+
+        .btn-learn-more .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-learn-more:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 968px) {
+            .experts-container {
+                grid-template-columns: 1fr;
+            }
+
+            .experts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experts-title {
+                font-size: 36px;
+            }
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            background: var(--accent-green);
+            padding: 80px 0;
+        }
+
+        .comparison-title {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            line-height: 66px;
+            letter-spacing: -0.5px;
+            color: var(--bg-cream);
+            text-align: center;
+            max-width: 1140px;
+            margin: 0 auto 60px;
+            padding: 0 150px;
+        }
+
+        .comparison-table {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 100px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 28px;
+            line-height: 36px;
+            letter-spacing: -0.5px;
+            color: var(--white);
+            padding: 20px;
+            border: 2.5px solid var(--white);
+            text-align: center;
+        }
+
+        td {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 26px;
+            letter-spacing: -0.5px;
+            color: var(--white);
+            padding: 15px 20px;
+            border: 1.5px solid var(--white);
+        }
+
+        td:first-child {
+            text-align: left;
+        }
+
+        td:not(:first-child) {
+            text-align: center;
+        }
+
+        /* How It Works */
+        .how-it-works-section {
+            background: var(--bg-light-green);
+            padding: 80px 0;
+        }
+
+        .how-it-works-title {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            line-height: 66px;
+            letter-spacing: -0.5px;
+            text-align: center;
+            color: var(--dark-gray);
+            margin-bottom: 60px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 220px);
+            gap: 20px;
+            justify-content: center;
+            max-width: 1180px;
+            margin: 0 auto 60px;
+        }
+
+        .step-card {
+            background: var(--dark-gray);
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            height: 220px;
+        }
+
+        .step-number {
+            font-family: var(--font-body);
+            font-size: 32px;
+            line-height: 42px;
+            letter-spacing: -0.5px;
+            color: var(--bg-cream);
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            margin-bottom: 14px;
+        }
+
+        .step-description {
+            font-family: var(--font-body);
+            font-size: 20px;
+            line-height: 26px;
+            letter-spacing: -0.5px;
+            color: var(--bg-cream);
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Specializations */
+        .specializations-section {
+            padding: 80px 0;
+        }
+
+        .specializations-title {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            line-height: 66px;
+            letter-spacing: -0.5px;
+            text-align: center;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+        }
+
+        .specializations-subtitle {
+            font-family: var(--font-body);
+            font-size: 20px;
+            line-height: 26px;
+            text-align: center;
+            color: var(--dark-gray);
+            margin-bottom: 60px;
+        }
+
+        .specializations-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 270px);
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+
+        .specialization-card {
+            background: var(--bg-beige);
+            border: 0.25px solid #000000;
+            border-radius: 20px;
+            box-shadow: var(--shadow-light);
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .specialization-image {
+            width: 202px;
+            height: 224px;
+            margin: 20px auto;
+            border: 0.25px solid #000000;
+            border-radius: 20px;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            background-size: cover;
+            background-position: center;
+        }
+
+        .specialization-label {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 21px;
+            text-align: center;
+            color: var(--dark-gray);
+            border: 0.25px solid #000000;
+            padding: 10px;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            background: var(--dark-gray);
+            padding: 80px 0;
+        }
+
+        .partners-title {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            line-height: 66px;
+            color: var(--white);
+            max-width: 373px;
+            margin-left: 157px;
+            margin-bottom: 60px;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 150px);
+            gap: 25px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .partner-logo {
+            width: 150px;
+            height: 150px;
+            background: #D9D9D9;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            padding: 80px 0 40px;
+            border-top: 6px solid rgba(196, 196, 196, 0.5);
+        }
+
+        .footer-warning {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 25px;
+            line-height: 33px;
+            color: #FF0000;
+            text-align: center;
+            max-width: 1150px;
+            margin: 0 auto 50px;
+            padding: 0 166px;
+        }
+
+        .footer-disclaimer {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 26px;
+            color: var(--bg-cream);
+            text-align: center;
+            max-width: 1150px;
+            margin: 0 auto 40px;
+            padding: 0 166px;
+        }
+
+        .footer-social-title {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 26px;
+            color: var(--bg-cream);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .footer-contact {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 26px;
+            color: var(--bg-cream);
+            max-width: 807px;
+            margin: 60px auto 0;
+            padding: 0 171px;
+        }
+
+        /* Therapist/Experts Section */
+        .experts-section {
+            background-color: #fff;
+            padding: 80px 150px;
+            position: relative;
+        }
+
+        .experts-header {
+            margin-bottom: 60px;
+        }
+
+        .experts-label {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+        }
+
+        .experts-title {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            line-height: 1.2;
+            font-weight: 400;
+            color: var(--dark-gray);
+            max-width: 400px;
+        }
+
+        .experts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .experts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .expert-card {
+            background: linear-gradient(135deg, #E8E8E8 0%, #D5D5D5 100%);
+            border-radius: 20px;
+            padding: 30px 25px 25px;
+            position: relative;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .expert-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .expert-rating {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 12px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        .expert-rating .star {
+            color: #FFB800;
+            font-size: 16px;
+        }
+
+        .expert-rating .score {
+            font-family: var(--font-body);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark-gray);
+            line-height: 1;
+        }
+
+        .expert-rating .score-label {
+            font-family: var(--font-body);
+            font-size: 11px;
+            color: #666;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .expert-photo {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .expert-name {
+            font-family: var(--font-body);
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark-gray);
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .expert-title {
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 400;
+            color: #666;
+            text-align: center;
+        }
+
+        /* Hover Details Overlay */
+        .expert-details {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 25px 20px;
+            border-radius: 0 0 20px 20px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            z-index: 3;
+        }
+
+        .expert-card:hover .expert-details {
+            transform: translateY(0);
+        }
+
+        .expert-details .detail-name {
+            font-family: var(--font-body);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark-gray);
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .expert-details .detail-title {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 400;
+            color: #666;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .expert-details .detail-phone {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+        }
+
+        .expert-details .detail-phone svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .expert-social {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .expert-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--dark-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .expert-social a:hover {
+            background: var(--primary-orange);
+            transform: scale(1.1);
+        }
+
+        .expert-social svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        .experts-content {
+            padding: 40px 0;
+        }
+
+        .experts-description {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--dark-gray);
+            margin-bottom: 30px;
+        }
+
+        .btn-learn-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-body);
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dark-gray);
+            text-decoration: none;
+            border: 2px solid var(--dark-gray);
+            border-radius: 30px;
+            padding: 12px 30px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-learn-more:hover {
+            background: var(--dark-gray);
+            color: white;
+        }
+
+        .btn-learn-more .arrow {
+            font-size: 14px;
+        }
+
+        @media (max-width: 1200px) {
+            .experts-section {
+                padding: 60px 80px;
+            }
+
+            .experts-container {
+                grid-template-columns: 1fr;
+            }
+
+            .experts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .experts-section {
+                padding: 40px 20px;
+            }
+
+            .experts-title {
+                font-size: 36px;
+            }
+
+            .experts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .expert-photo {
+                height: 320px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <header style="background: rgba(0, 0, 0, 0.4); position: absolute; top: 0; left: 0; right: 0; z-index: 100;">
+        <div class="logo">Ventoutt.</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn" onclick="location.href='services.html'">Services ▾</button>
+                <div class="dropdown-content">
+                    <a href="services.html#demo-venting">Venting</a>
+                    <a href="services.html#demo-coaching">Coaching</a>
+                    <a href="services.html#demo-therapy">Therapy</a>
+                </div>
+            </div>
+            <a href="about.html">About</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="services.html?chatbot=open" class="cta-nav">Get Support</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Start venting. Feel the shift.</h1>
+            <p class="hero-subtitle">Sometimes, saying it out loud is all it takes to feel lighter. Begin the
+                conversation you've been holding in for too long.</p>
+            <a href="services.html?chatbot=open" class="btn-hero">Learn More</a>
+        </div>
+    </section>
+
+    <!-- How Can We Help Section -->
+    <section class="help-section">
+        <h2 class="section-title">How Can We Help You Today?</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <div class="service-card-image" style="background-color: #D9D9D9;"></div>
+                <h3 class="service-card-title">Instant Venting</h3>
+                <p class="service-card-description">Say anything, anytime, we're all ears. No judgment, just someone to
+                    hear you out.</p>
+                <a href="services.html#demo-venting" class="btn-hero">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image" style="background-color: #D9D9D9;"></div>
+                <h3 class="service-card-title">Coaching</h3>
+                <p class="service-card-description">Get expert help to understand, heal, and grow. Private sessions with
+                    licensed professionals.</p>
+                <a href="services.html#demo-coaching" class="btn-hero">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image" style="background-color: #D9D9D9;"></div>
+                <h3 class="service-card-title">Therapy</h3>
+                <p class="service-card-description">Get expert help to understand, heal, and grow. Private sessions with
+                    licensed professionals.</p>
+                <a href="services.html#demo-therapy" class="btn-hero">Learn More</a>
+            </div>
+        </div>
+        <div class="quiz-section">
+            <span class="quiz-text">Not sure what you want?</span>
+            <a href="#quiz" class="quiz-link">Take a 30sec quiz</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <h2 class="stats-title">Here's How Far We've Come Together</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon" style="background-color: #FEFCEF;"></div>
+                <div class="stat-number">36,610</div>
+                <div class="stat-label">Users</div>
+                <div class="stat-description">People who found someone to talk to</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background-color: #FEFCEF;"></div>
+                <div class="stat-number">265,294</div>
+                <div class="stat-label">Hours of Conversation</div>
+                <div class="stat-description">Total hours of conversation and care</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background-color: #FEFCEF;"></div>
+                <div class="stat-number">170+</div>
+                <div class="stat-label">Countries</div>
+                <div class="stat-description">Spread across 170 countries and counting</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background-color: #FEFCEF;"></div>
+                <div class="stat-number">Avg. 9.5 stars</div>
+                <div class="stat-label">Feedback</div>
+                <div class="stat-description">Loved by our community</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <h2 class="testimonials-title">What Our Users Say</h2>
+
+        <div class="carousel-wrapper">
+            <div class="carousel-track">
+                <!-- GROUP A (source of truth) -->
+                <div class="card orange">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"
+                            alt="Emma avatar" />
+                        Emma, England
+                    </div>
+                    <p>Ventoutt is my go-to place when I need to vent. The anonymous chat feature allows me to express
+                        my feelings freely without judgment. It's incredible how talking to strangers online has helped
+                        me manage my stress and anxiety.</p>
+                </div>
+
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/bEA_lVQtXGo?enablejsapi=1"
+                            title="Ewa video testimonial"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="location">Ewa, France</div>
+                </div>
+
+                <div class="card orange yellow">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
+                            alt="Sarah avatar" />
+                        Sarah M., USA
+                    </div>
+                    <p>I was honestly really unsure about trying online therapy at first especially with a therapist
+                        from another country. But honestly, my therapist was amazing. They were there 24/7 whenever I
+                        needed support, and the cost was something I could actually afford.</p>
+                </div>
+
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/wS1ljs6nQX0?enablejsapi=1"
+                            title="Iya video testimonial"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="location">Iya, Bosnia and Herzegovina</div>
+                </div>
+
+                <div class="card orange green">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80"
+                            alt="Jennifer avatar" />
+                        Jennifer R., USA
+                    </div>
+                    <p>I struggled with anxiety for years and was skeptical about finding the right support. Then I
+                        connected with my therapist, and everything shifted. They really understood what I was going
+                        through, made me feel heard, and gave me tools that actually worked in my daily life.</p>
+                </div>
+
+                <!-- GROUP B (exact duplicate for seamless loop) -->
+                <div class="card orange">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"
+                            alt="Emma avatar" />
+                        Emma, England
+                    </div>
+                    <p>Ventoutt is my go-to place when I need to vent. The anonymous chat feature allows me to express
+                        my feelings freely without judgment. It's incredible how talking to strangers online has helped
+                        me manage my stress and anxiety.</p>
+                </div>
+
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/bEA_lVQtXGo?enablejsapi=1"
+                            title="Ewa video testimonial"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="location">Ewa, France</div>
+                </div>
+
+                <div class="card orange yellow">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
+                            alt="Sarah avatar" />
+                        Sarah M., USA
+                    </div>
+                    <p>I was honestly really unsure about trying online therapy at first especially with a therapist
+                        from another country. But honestly, my therapist was amazing. They were there 24/7 whenever I
+                        needed support, and the cost was something I could actually afford.</p>
+                </div>
+
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/wS1ljs6nQX0?enablejsapi=1"
+                            title="Iya video testimonial"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="location">Iya, Bosnia and Herzegovina</div>
+                </div>
+
+                <div class="card orange green">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80"
+                            alt="Jennifer avatar" />
+                        Jennifer R., USA
+                    </div>
+                    <p>I struggled with anxiety for years and was skeptical about finding the right support. Then I
+                        connected with my therapist, and everything shifted. They really understood what I was going
+                        through, made me feel heard, and gave me tools that actually worked in my daily life.</p>
+                </div>
+            </div>
+        </div>
+
+        <p style="text-align:center; color:#999; font-size:0.8rem; margin-top:10px;">
+            💡 Tip: Click on any card to pause the carousel.
+        </p>
+    </section>
+
+    <!-- Therapist Banner -->
+    <section class="therapist-banner">
+        <div class="therapist-content">
+            <h2 class="therapist-title">Real Experts. Real Care. Just for You.</h2>
+            <div class="therapist-description">
+                <p>Our therapists aren't just qualified — they're carefully selected to meet the emotional needs of
+                    young adults like you.</p>
+                <ul>
+                    <li>All hold a Master's degree or higher</li>
+                    <li>Minimum 3+ years of experience</li>
+                    <li>Pass a rigorous multi-stage interview process</li>
+                    <li>Personally verified to meet global therapy standards</li>
+                </ul>
+                <p>With us, you're never just talking. You're growing — with professional guidance tailored to your
+                    needs, beliefs, and background.</p>
+            </div>
+            <div class="therapist-footer">Verified. Compassionate. Confidential.</div>
+        </div>
+    </section>
+
+    <!-- Why People Love VentOutt -->
+    <section class="why-love-section">
+        <h2 class="why-love-title">Why People Love VentOutt</h2>
+
+        <div class="scroll-slider-wrapper">
+            <div class="scroll-slider-track">
+                <!-- Card 1: Relationship Building -->
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3 class="feature-card-title">Relationship Building</h3>
+                        <p class="feature-card-description">Great relationships are built on trust, communication, and
+                            mutual respect. Whether personal or professional, taking the time to listen, understand, and
+                            support each other strengthens connections.</p>
+                    </div>
+                    <div class="feature-card-image">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80"
+                            alt="Relationship Building">
+                    </div>
+                </div>
+
+                <!-- Card 2: Improved Mental Health -->
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3 class="feature-card-title">Improved Mental Health</h3>
+                        <p class="feature-card-description">Improved mental health starts with self-care, positivity,
+                            and strong connections. Prioritize rest, mindfulness, and supportive relationships for a
+                            healthier mind.</p>
+                    </div>
+                    <div class="feature-card-image">
+                        <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&q=80"
+                            alt="Improved Mental Health">
+                    </div>
+                </div>
+
+                <!-- Card 3: Emotional Support -->
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3 class="feature-card-title">Emotional Support</h3>
+                        <p class="feature-card-description">Emotional support means being present, listening without
+                            judgment, and offering comfort. A little kindness and understanding go a long way.</p>
+                    </div>
+                    <div class="feature-card-image">
+                        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80"
+                            alt="Emotional Support">
+                    </div>
+                </div>
+
+                <!-- Card 4: Counseling and Therapy -->
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3 class="feature-card-title">Counseling and Therapy</h3>
+                        <p class="feature-card-description">Counseling and therapy provide a safe space to heal, grow,
+                            and gain clarity. Seeking help is a step toward a healthier mind and emotional well-being.
+                        </p>
+                    </div>
+                    <div class="feature-card-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80"
+                            alt="Counseling and Therapy">
+                    </div>
+                </div>
+
+                <!-- Card 5: Best Pricing -->
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3 class="feature-card-title">Best Pricing</h3>
+                        <p class="feature-card-description">Ventoutt is your go-to therapy platform for everyone,
+                            offering some of the most affordable therapy options by connecting users worldwide with
+                            experienced therapists.</p>
+                    </div>
+                    <div class="feature-card-image">
+                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=80"
+                            alt="Best Pricing">
+                    </div>
+                </div>
+
+                <!-- Card 6: 24/7 Venting Support -->
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3 class="feature-card-title">24/7 Venting Support</h3>
+                        <p class="feature-card-description">Ventoutt offers 24/7 instant venting and therapy, allowing
+                            users to connect with listeners and licensed therapists anytime, anywhere—all at an
+                            affordable rate.</p>
+                    </div>
+                    <div class="feature-card-image">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80"
+                            alt="24/7 Venting Support">
+                    </div>
+                </div>
+
+                <!-- Card 7: Certified Therapists -->
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3 class="feature-card-title">Certified Therapists</h3>
+                        <p class="feature-card-description">At Ventoutt, we're committed to connecting you with
+                            certified and experienced therapists who provide professional and compassionate mental
+                            health support.</p>
+                    </div>
+                    <div class="feature-card-image">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80"
+                            alt="Certified Therapists">
+                    </div>
+                </div>
+
+                <!-- Card 8: Safe & Private Space -->
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3 class="feature-card-title">Safe & Private Space</h3>
+                        <p class="feature-card-description">At Ventoutt, your safety and privacy come first. Our
+                            platform is built to offer a secure space where you can express your thoughts and emotions
+                            freely.</p>
+                    </div>
+                    <div class="feature-card-image">
+                        <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=600&q=80"
+                            alt="Safe & Private Space">
+                    </div>
+                </div>
+
+                <!-- Card 9: Personal Growth -->
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3 class="feature-card-title">Personal Growth</h3>
+                        <p class="feature-card-description">Unlock your potential through guided self-discovery and
+                            professional support. Our platform helps you develop coping strategies, build resilience,
+                            and achieve your personal goals.</p>
+                    </div>
+                    <div class="feature-card-image">
+                        <img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=600&q=80"
+                            alt="Personal Growth">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Meet Our Experts Section -->
+    <section class="experts-section">
+        <div class="experts-container">
+            <!-- Left Side: Header and Grid -->
+            <div>
+                <div class="experts-header">
+                    <div class="experts-label">MEET OUR EXPERTS</div>
+                    <h2 class="experts-title">Caring & Expert Members</h2>
+                </div>
+
+                <div class="experts-grid">
+                    <!-- Expert Card 1: Pulkita W. -->
+                    <div class="expert-card">
+                        <div class="expert-rating">
+                            <span class="star">★</span>
+                            <div>
+                                <div class="score">4.9</div>
+                                <span class="score-label">score</span>
+                            </div>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
+                            alt="Pulkita W." class="expert-photo">
+                        <div class="expert-name">Pulkita W.</div>
+                        <div class="expert-title">Psychoanalytic Therapist</div>
+
+                        <!-- Hover Details -->
+                        <div class="expert-details">
+                            <div class="detail-name">Pulkita W.</div>
+                            <div class="detail-credentials">Masters Psychology | Psychoanalytic Fellowship
+                                (Washington–Baltimore, USA)</div>
+                            <div class="detail-expertise">
+                                <strong>Specialized Expertise:</strong>
+                                <ul>
+                                    <li>Psychoanalytic Therapy</li>
+                                    <li>Sexual & Identity Issues</li>
+                                    <li>Family Systems Therapy</li>
+                                    <li>Career-Related Stress</li>
+                                    <li>Deep Psychological Exploration</li>
+                                </ul>
+                            </div>
+                            <div class="detail-meta"><strong>USA-trained psychoanalyst</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- Expert Card 2: Muskan K. -->
+                    <div class="expert-card">
+                        <div class="expert-rating">
+                            <span class="star">★</span>
+                            <div>
+                                <div class="score">4.7</div>
+                                <span class="score-label">score</span>
+                            </div>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
+                            alt="Muskan K." class="expert-photo">
+                        <div class="expert-name">Muskan K.</div>
+                        <div class="expert-title">CBT & Couples Counselor</div>
+
+                        <!-- Hover Details -->
+                        <div class="expert-details">
+                            <div class="detail-name">Muskan K.</div>
+                            <div class="detail-expertise">
+                                <strong>Specialized Expertise:</strong>
+                                <ul>
+                                    <li>Solution-Focused Brief Therapy</li>
+                                    <li>Cognitive Behavioral Therapy (CBT)</li>
+                                    <li>Couples & Relationship Counseling</li>
+                                    <li>Goal-Oriented Treatment Plans</li>
+                                </ul>
+                            </div>
+                            <div class="detail-meta"><strong>90% satisfaction rate with North American clients</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Large Cards and Content -->
+            <div>
+                <div class="experts-grid">
+                    <!-- Expert Card 3: Nishi -->
+                    <div class="expert-card">
+                        <div class="expert-rating">
+                            <span class="star">★</span>
+                            <div>
+                                <div class="score">4.5</div>
+                                <span class="score-label">score</span>
+                            </div>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80" alt="Nishi"
+                            class="expert-photo">
+                        <div class="expert-name">Nishi</div>
+                        <div class="expert-title">Clinical Psychiatrist</div>
+
+                        <!-- Hover Details -->
+                        <div class="expert-details">
+                            <div class="detail-name">Nishi</div>
+                            <div class="detail-credentials">MSc Clinical Psychology (Neuropsychology Specialist)</div>
+                            <div class="detail-expertise">
+                                <strong>Specialized Expertise:</strong>
+                                <ul>
+                                    <li>LGBTQ+ Affirming Therapy</li>
+                                    <li>Adolescent & Childhood Trauma</li>
+                                    <li>Grief & Loss Counseling</li>
+                                    <li>Phobias & OCD Treatment</li>
+                                    <li>Identity Exploration & Body Image</li>
+                                </ul>
+                            </div>
+                            <div class="detail-meta"><strong>3+ years serving US clients</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- Expert Card 4: Additional Therapist -->
+                    <div class="expert-card">
+                        <div class="expert-rating">
+                            <span class="star">★</span>
+                            <div>
+                                <div class="score">4.8</div>
+                                <span class="score-label">score</span>
+                            </div>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
+                            alt="Dr. Sarah M." class="expert-photo">
+                        <div class="expert-name">Dr. Sarah M.</div>
+                        <div class="expert-title">Clinical Psychiatrist</div>
+
+                        <!-- Hover Details -->
+                        <div class="expert-details">
+                            <div class="detail-name">Dr. Sarah M.</div>
+                            <div class="detail-credentials">Clinical Psychiatrist</div>
+                            <div class="detail-expertise">
+                                <strong>Specialized Expertise:</strong>
+                                <ul>
+                                    <li>Anxiety & Depression Treatment</li>
+                                    <li>Stress Management</li>
+                                    <li>Mindfulness-Based Therapy</li>
+                                    <li>Emotional Regulation</li>
+                                </ul>
+                            </div>
+                            <div class="detail-meta"><strong>Certified mental health professional</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experts-content">
+                    <p class="experts-description">Our team consists of compassionate and skilled professionals
+                        dedicated to providing personalized support and effective solutions for your well-being.</p>
+                    <a href="#" class="btn-learn-more">
+                        Learn More
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="comparison-section">
+        <h2 class="comparison-title">One of the Fastest-Growing Mental Health Spaces in the World; and It's Just the
+            Beginning</h2>
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Ventoutt</th>
+                        <th>Others Platforms</th>
+                        <th>In Person</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Quickly Switch Therapists</td>
+                        <td>Yes</td>
+                        <td>Maybe</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>Easy Appointment Scheduling</td>
+                        <td>Yes</td>
+                        <td>Maybe</td>
+                        <td>Maybe</td>
+                    </tr>
+                    <tr>
+                        <td>Receive Message Back</td>
+                        <td>Yes</td>
+                        <td>Maybe</td>
+                        <td>Maybe</td>
+                    </tr>
+                    <tr>
+                        <td>Message Your Therapist Anytime</td>
+                        <td>Yes</td>
+                        <td>Maybe</td>
+                        <td>Maybe</td>
+                    </tr>
+                    <tr>
+                        <td>Receive Therapist from Anywhere</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>A Licensed Therapist</td>
+                        <td>Yes</td>
+                        <td>Maybe</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Vent Whenever We Want</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>Maybe</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works-section">
+        <h2 class="how-it-works-title">How It Works</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">Step 1</div>
+                <div class="step-description">Pick what you need - a full therapy session or a quick vent.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">Step 2</div>
+                <div class="step-description">Choose your listener or therapist from the list.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">Step 3</div>
+                <div class="step-description">Select a time that works for you.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">Step 4</div>
+                <div class="step-description">Pay securely and get your session link via email.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">Step 5</div>
+                <div class="step-description">Talk it out. Feel lighter. Share how it went</div>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <a href="services.html" class="btn-hero">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Specializations -->
+    <section class="specializations-section">
+        <h2 class="specializations-title">What We Specialize In</h2>
+        <p class="specializations-subtitle">Our therapists support you through every phase of life. Here's what we
+            specialize in.</p>
+        <div class="specializations-grid">
+            <div class="specialization-card">
+                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
+                <div class="specialization-label">Relationship & Family</div>
+            </div>
+            <div class="specialization-card">
+                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
+                <div class="specialization-label">Individual well-being</div>
+            </div>
+            <div class="specialization-card">
+                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
+                <div class="specialization-label">Life Transitions & Transitions</div>
+            </div>
+            <div class="specialization-card">
+                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
+                <div class="specialization-label">Telehealth & Virtual Therapy</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners -->
+    <section class="partners-section">
+        <h2 class="partners-title">Making mental health a priority together with our partners.</h2>
+        <div class="partners-grid">
+
+            <style>
+                /* ===== Carousel (scoped) ===== */
+                .vt-partners {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 0 16px;
+                }
+
+                .vt-partners .logo-carousel {
+                    --gap: 12px;
+                    /* spacing between items */
+                    --speed: 100;
+                    /* px/sec — higher = faster */
+                    width: 100%;
+                    overflow: hidden;
+                    padding: 6px 0;
+                    background: transparent;
+                }
+
+                .vt-partners .logo-track {
+                    display: flex;
+                    align-items: center;
+                    gap: var(--gap);
+                    width: max-content;
+                    will-change: transform;
+                    /* JS will set animation inline after measuring */
+                }
+
+                /* Desktop hover pause only */
+                @media (hover: hover) and (pointer: fine) {
+                    .vt-partners .logo-track:hover {
+                        animation-play-state: paused;
+                    }
+                }
+
+                @keyframes vt-scroll {
+                    0% {
+                        transform: translate3d(0, 0, 0);
+                    }
+
+                    100% {
+                        transform: translate3d(calc(var(--distance, 0px) * -1), 0, 0);
+                    }
+                }
+
+                .vt-partners .logo-item {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-width: clamp(120px, 16vw, 180px);
+                    height: clamp(60px, 10vw, 92px);
+                    padding: 10px 12px;
+                    border-radius: 10px;
+                    text-decoration: none;
+                    transition: transform .15s ease, opacity .2s ease;
+                    background: transparent;
+                }
+
+                .vt-partners .logo-item:hover {
+                    transform: translateY(-1px);
+                    opacity: 1;
+                }
+
+                .vt-partners .logo-item img {
+                    display: block;
+                    max-height: clamp(36px, 8vw, 72px);
+                    width: auto;
+                    height: auto;
+                    object-fit: contain;
+                    opacity: .95;
+                    transition: opacity .2s ease;
+                }
+
+                .vt-partners .logo-item:hover img {
+                    opacity: 1;
+                }
+
+                /* ===== Bigger logos on phones ===== */
+                @media (max-width: 480px) {
+                    .vt-partners .logo-carousel {
+                        --gap: 14px;
+                    }
+
+                    .vt-partners .logo-item {
+                        min-width: clamp(160px, 52vw, 260px);
+                        height: clamp(84px, 26vw, 140px);
+                        padding: 12px 14px;
+                    }
+
+                    .vt-partners .logo-item img {
+                        max-height: clamp(56px, 18vw, 110px);
+                    }
+                }
+
+                /* ===== Tiny phones get an extra bump ===== */
+                @media (max-width: 360px) {
+                    .vt-partners .logo-item {
+                        min-width: clamp(176px, 60vw, 280px);
+                        height: clamp(96px, 30vw, 150px);
+                    }
+
+                    .vt-partners .logo-item img {
+                        max-height: clamp(64px, 22vw, 120px);
+                    }
+                }
+            </style>
+            </head>
+
+            <body>
+
+                <section class="vt-partners" aria-label="Partner logos">
+                    <div class="logo-carousel">
+                        <div class="logo-track" id="vtLogoTrack">
+                            <!-- Collative -->
+                            <a class="logo-item" href="https://collative.in/" target="_blank" rel="noopener"
+                                aria-label="Collative">
+                                <img src="https://www.ventoutt.com/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-23-at-11.01.43-1.jpeg"
+                                    alt="Collative Logo" width="200" height="60" loading="lazy" decoding="async">
+                            </a>
+                            <!-- SuccessBrew -->
+                            <a class="logo-item" href="https://successbrew.in/" target="_blank" rel="noopener"
+                                aria-label="SuccessBrew">
+                                <img src="https://www.ventoutt.com/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-23-at-11.01.43-2.jpeg"
+                                    alt="SuccessBrew Logo" width="200" height="60" loading="lazy" decoding="async">
+                            </a>
+                            <!-- Make A Difference -->
+                            <a class="logo-item" href="https://makeadiff.in/" target="_blank" rel="noopener"
+                                aria-label="Make A Difference">
+                                <img src="https://www.ventoutt.com/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-23-at-11.01.44.jpeg"
+                                    alt="Make A Difference logo" width="300" height="300" loading="lazy"
+                                    decoding="async">
+                            </a>
+                            <!-- The 3AM Couch -->
+                            <a class="logo-item" href="https://the3amcouch.in/" target="_blank" rel="noopener"
+                                aria-label="The 3AM Couch">
+                                <img src="https://www.ventoutt.com/wp-content/uploads/2025/06/Couch-Logo-2.jpg"
+                                    alt="The 3AM Couch Logo" width="200" height="200" loading="lazy" decoding="async">
+                            </a>
+                            <!-- Decoders -->
+                            <a class="logo-item" href="https://decoders.co.in/" target="_blank" rel="noopener"
+                                aria-label="Decoders">
+                                <img src="https://www.ventoutt.com/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-23-at-11.01.43.jpeg"
+                                    alt="Decoders logo" width="260" height="260" loading="lazy" decoding="async">
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <script>
+                    (function () {
+                        const track = document.getElementById('vtLogoTrack');
+                        const wrap = track?.closest('.logo-carousel');
+                        if (!track || !wrap) return;
+
+                        // Clone original sequence ONCE (Elementor-safe)
+                        function ensureClones() {
+                            if (track.dataset.cloned) return;
+                            const originals = Array.from(track.children);
+                            const count = originals.length;
+                            track.dataset.originalCount = String(count);
+                            originals.forEach(n => track.appendChild(n.cloneNode(true)));
+                            track.dataset.cloned = '1';
+                            // mark clones as decorative
+                            originals.slice().forEach((_, i) => {
+                                const clone = track.children[count + i];
+                                if (clone) clone.setAttribute('aria-hidden', 'true');
+                            });
+                        }
+
+                        function afterImages(cb) {
+                            const imgs = track.querySelectorAll('img');
+                            let pending = imgs.length;
+                            if (!pending) return cb();
+                            let done = 0;
+                            imgs.forEach(img => {
+                                if (img.complete) { if (++done === pending) cb(); }
+                                else {
+                                    img.addEventListener('load', () => { if (++done === pending) cb(); }, { once: true });
+                                    img.addEventListener('error', () => { if (++done === pending) cb(); }, { once: true });
+                                }
+                            });
+                        }
+
+                        function measureOriginalWidth() {
+                            const originalCount = Number(track.dataset.originalCount || 0);
+                            const gap = parseFloat(getComputedStyle(track).gap) || 0;
+                            let w = 0;
+                            for (let i = 0; i < originalCount; i++) {
+                                w += track.children[i].getBoundingClientRect().width;
+                            }
+                            w += gap * Math.max(0, originalCount - 1);
+                            return w;
+                        }
+
+                        // Robust normalize with retries if width is 0 (fonts/CDN delay etc.)
+                        function normalize(retries = 6) {
+                            const distance = measureOriginalWidth();
+                            if (distance <= 1 && retries > 0) {
+                                // wait a frame and try again
+                                return setTimeout(() => normalize(retries - 1), 120);
+                            }
+
+                            // Store distance for keyframes
+                            track.style.setProperty('--distance', distance + 'px');
+
+                            // Compute duration from --speed on wrapper
+                            const pxPerSec = parseFloat(getComputedStyle(wrap).getPropertyValue('--speed')) || 70;
+                            const dur = Math.max(10, Math.min(60, distance / pxPerSec));
+
+                            // Set animation inline so it always runs
+                            track.style.animation = `vt-scroll ${dur}s linear infinite`;
+                            track.style.animationPlayState = 'running';
+                        }
+
+                        function init() {
+                            ensureClones();
+                            // measure after images settle and on next frame
+                            afterImages(() => requestAnimationFrame(normalize));
+                        }
+
+                        if (document.readyState === 'complete') init();
+                        else window.addEventListener('load', init, { once: true });
+
+                        // Recalculate on size changes
+                        if ('ResizeObserver' in window) {
+                            const ro = new ResizeObserver(() => normalize());
+                            ro.observe(wrap);
+                        } else {
+                            let t;
+                            window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(normalize, 150); }, { passive: true });
+                        }
+                    })();
+                </script>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-warning">This is not a Helpline! In case of Emergency or If somebody is in danger, please reach
+            out to government authorities.</p>
+        <p class="footer-disclaimer">Please note that we are not capable in case of crisis intervention. If you have any
+            severe symptoms or any thoughts about self harm, please seek immediate medical help or call suicide
+            prevention helplines. <a href="#" style="color: var(--primary-orange);">Click here for suicide prevention
+                helplines across the world</a></p>
+        <p class="footer-social-title">We're here for you, online and beyond. Join us on socials.</p>
+        <div class="footer-contact">
+            <p><strong>Address:</strong> Neuniverse Networks Pvt Ltd. B-218, M.I.G Flats, East of Loni Road, Delhi,
+                110093, India.</p>
+            <p><strong>PHONE:</strong> +91-9560465272 | +91-704244902</p>
+            <p><strong>EMAIL:</strong> Connect@ventoutt.com | Management@ventoutt.com</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot Container -->
+    <div id="mentalbot-overlay" class="mobile-only"></div>
+    <div id="mentalbot-shell" class="collapsed" aria-live="polite">
+        <button id="mentalbot-bar" aria-expanded="false" aria-controls="mentalbot-panel">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z"
+                    fill="white" />
+            </svg>
+        </button>
+        <div id="mentalbot-panel" role="dialog" aria-hidden="true" aria-label="Support chat panel">
+            <div id="mentalbot-header">
+                <span class="header-title">Message</span>
+                <button id="mentalbot-close" aria-label="Close chat">✕</button>
+            </div>
+            <div id="mentalbot-disclaimer" class="scroll-disclaimer" aria-live="polite"></div>
+            <div id="mentalbot-messages" role="log" aria-live="polite"></div>
+            <div id="mentalbot-buttons" aria-label="Quick options"></div>
+            <div id="mentalbot-input-area" aria-hidden="true">
+                <input id="mentalbot-input" type="text" placeholder="Type something..." aria-label="Message" />
+                <button id="mentalbot-send" aria-label="Send message">➔</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/chatbot.js"></script>
+    <script src="js/popup-scroll.js"></script>
+    <script src="js/entry-modal.js"></script>
+
+    <!-- Carousel Control Script -->
+    <script>
+        (function () {
+            const wrapper = document.querySelector('.carousel-wrapper');
+            if (!wrapper) return;
+            const track = wrapper.querySelector('.carousel-track');
+            if (!track) return;
+
+            // Carousel state
+            let isPaused = false;
+            let controller = null;
+
+            const setRunning = (running) => {
+                isPaused = !running;
+                track.style.setProperty('animation-play-state', running ? 'running' : 'paused', 'important');
+            };
+            setRunning(true);
+
+            const toggleBy = (el) => {
+                if (!isPaused) {
+                    controller = el;
+                    setRunning(false);
+                } else {
+                    if (controller === el) {
+                        setRunning(true);
+                        controller = null;
+                    } else {
+                        controller = el;
+                    }
+                }
+            };
+
+            // Orange cards toggle on click
+            wrapper.querySelectorAll('.card.orange').forEach((card) => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleBy(card);
+                }, { passive: false });
+            });
+
+            // Video card handling
+            const iframes = wrapper.querySelectorAll('.card iframe[src*="youtube.com/embed"]');
+
+            iframes.forEach((ifr, idx) => {
+                if (!ifr.id) ifr.id = `yt-carousel-${idx}`;
+
+                // Ensure enablejsapi=1 is in the URL
+                try {
+                    const u = new URL(ifr.src, location.href);
+                    if (!u.searchParams.has('enablejsapi')) {
+                        u.searchParams.set('enablejsapi', '1');
+                        u.searchParams.set('origin', location.origin);
+                        ifr.src = u.toString();
+                    }
+                } catch (_) { }
+            });
+
+            // Subscribe to YouTube events
+            function subscribeToYTEvents() {
+                iframes.forEach((ifr) => {
+                    if (ifr.contentWindow) {
+                        ifr.contentWindow.postMessage(JSON.stringify({
+                            event: 'listening',
+                            id: ifr.id
+                        }), '*');
+                        ifr.contentWindow.postMessage(JSON.stringify({
+                            event: 'command',
+                            func: 'addEventListener',
+                            args: ['onStateChange'],
+                            id: ifr.id
+                        }), '*');
+                    }
+                });
+            }
+
+            // Listen for YouTube state changes
+            window.addEventListener('message', (e) => {
+                let data;
+                try {
+                    data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+                } catch { return; }
+
+                if (!data || (data.event !== 'onStateChange' && data.info === undefined)) return;
+
+                const state = data.info;
+                // YT states: -1 unstarted, 0 ended, 1 playing, 2 paused, 3 buffering, 5 cued
+
+                if (state === 1) { // playing
+                    setRunning(false);
+                } else if (state === 2 || state === 0) { // paused or ended
+                    if (isPaused) {
+                        setRunning(true);
+                        controller = null;
+                    }
+                }
+            });
+
+            // Initialize YouTube API
+            window.addEventListener('load', () => setTimeout(subscribeToYTEvents, 500));
+            setTimeout(subscribeToYTEvents, 1500);
+
+            // Keep state after tab switches
+            window.addEventListener('focus', () => {
+                track.style.setProperty('animation-play-state', isPaused ? 'paused' : 'running', 'important');
+            });
+        })();
+    </script>
+
+    <!-- Therapist Carousel Script -->
+    <script>
+        let currentSlide = 0;
+        const carousel = document.getElementById('carousel');
+        const slides = document.querySelectorAll('.team-member');
+        const dotsContainer = document.getElementById('dots');
+
+        function createDots() {
+            for (let i = 0; i < slides.length; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach(dot => dot.classList.remove('active'));
+            if (dots[currentSlide]) {
+                dots[currentSlide].classList.add('active');
+            }
+        }
+
+        function moveSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            if (currentSlide >= slides.length) currentSlide = 0;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            if (carousel) {
+                carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+                updateDots();
+            }
+        }
+
+        // Initialize dots on page load
+        if (dotsContainer && slides.length > 0) {
+            createDots();
+        }
+
+        // Scroll-based feature card activation (similar to Scrapped Films reel panels)
+        function initFeatureCardScroll() {
+            const featureCards = Array.from(document.querySelectorAll('.feature-card'));
+            if (featureCards.length === 0) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    entry.target.classList.toggle('is-active', entry.isIntersecting);
+                });
+            }, { threshold: 0.6 }); // Activate when 60% visible
+
+            featureCards.forEach(card => observer.observe(card));
+        }
+
+        // Initialize on page load
+        initFeatureCardScroll();
+    </script>
+</body>
+
+</html>

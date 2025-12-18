@@ -1,28 +1,48 @@
 /* Main Design System */
 :root {
-    /* Global Design Tokens (Figma Spec) */
-    --primary-green: #4CAF50;
-    --light-green-bg: #E5F5EA;
-    /* User Bubble */
-    --grey-bubble-bg: #F7F7F7;
-    /* Bot Bubble */
+    /* Global Design Tokens (Updated Color Palette) */
+    --primary-orange: #F57F17;
+    --primary-orange-dark: #E65100;
+    --primary-orange-light: #FDA84D;
+
+    /* Backgrounds */
+    --bg-cream: #FFFDF7;
+    --bg-beige: #F4EDE4;
+    --bg-light-cream: #FBF4E4;
+    --bg-yellow: #FFE4AD;
+    --bg-light-green: #C8EAC9;
+
+    /* Accent Colors */
+    --accent-green: #3A7F56;
+    --accent-green-light: #43A047;
+    --accent-yellow: #FFD54F;
+    --accent-teal: #58766A;
+    --accent-rust: #B75F4C;
+
+    /* Neutrals */
+    --dark-gray: #212121;
+    --medium-gray: #4E4E4E;
     --border-grey: #E5E7EB;
-    --text-dark: #2D2D2D;
-    --text-muted: #8A8A8A;
+    --text-dark: #212121;
+    --text-muted: #4E4E4E;
     --white: #FFFFFF;
 
-    /* Legacy Compat */
-    --secondary-pale: #E5F5EA;
-    --soft-grey: #F7F7F7;
-    --dark-text: #2D2D2D;
-    --text-sub: #8A8A8A;
+    /* Legacy Compat - Updated */
+    --primary-green: #F57F17;
+    --secondary-pale: #F4EDE4;
+    --soft-grey: #FFFDF7;
+    --dark-text: #212121;
+    --text-sub: #4E4E4E;
+    --light-green-bg: #C8EAC9;
+    --grey-bubble-bg: #F4EDE4;
 
     /* Typography */
-    --font-heading: 'Poppins', 'Inter', sans-serif;
-    --font-body: 'Inter', 'Open Sans', sans-serif;
+    --font-heading: 'DM Serif Display', 'Poppins', 'Inter', sans-serif;
+    --font-body: 'DM Sans', 'Inter', 'Open Sans', sans-serif;
 
     /* Shadows */
-    --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --shadow-card: 0 6px 6px rgba(0, 0, 0, 0.5);
+    --shadow-light: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 body {
@@ -30,7 +50,7 @@ body {
     font-family: var(--font-body);
     color: var(--text-dark);
     line-height: 1.5;
-    background-color: var(--white);
+    background-color: var(--bg-cream);
     overflow-x: hidden;
     /* Prevent horizontal scroll */
     width: 100%;
@@ -68,7 +88,7 @@ header {
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary-green);
+    color: var(--primary-orange);
 }
 
 nav a {
@@ -80,11 +100,11 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--primary-green);
+    color: var(--primary-orange);
 }
 
 nav a.cta-nav {
-    background: var(--primary-green);
+    background: var(--primary-orange);
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 20px;
@@ -136,8 +156,8 @@ nav a.cta-nav:hover {
 }
 
 .dropdown-content a:hover {
-    background-color: #f5f5f5;
-    color: var(--primary-green);
+    background-color: var(--bg-beige);
+    color: var(--primary-orange);
 }
 
 .dropdown:hover .dropdown-content {
@@ -145,7 +165,7 @@ nav a.cta-nav:hover {
 }
 
 .dropdown:hover .dropbtn {
-    color: var(--primary-green);
+    color: var(--primary-orange);
 }
 
 /* Common Layout */
@@ -163,8 +183,8 @@ section {
 .hero {
     text-align: center;
     padding: 4rem 1rem;
-    background: var(--secondary-pale);
-    border-radius: 12px;
+    background: var(--bg-beige);
+    border-radius: 20px;
 }
 
 .hero h1 {
@@ -173,15 +193,16 @@ section {
 }
 
 .btn-primary {
-    background: var(--primary-green);
+    background: var(--primary-orange);
     color: white;
     padding: 0.8rem 1.5rem;
-    border-radius: 30px;
+    border-radius: 10px;
     font-weight: 600;
-    border: none;
+    border: 1px solid var(--white);
     cursor: pointer;
     display: inline-block;
     transition: transform 0.2s;
+    box-shadow: var(--shadow-light);
 }
 
 .btn-primary:hover {
@@ -198,10 +219,10 @@ section {
 
 .feature-card {
     padding: 1.5rem;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    background: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    border: 0.25px solid #000000;
+    border-radius: 20px;
+    background: var(--bg-beige);
+    box-shadow: var(--shadow-light);
     transition: transform 0.2s;
 }
 
@@ -211,18 +232,18 @@ section {
 
 .feature-card h3 {
     margin-top: 0;
-    color: var(--primary-green);
+    color: var(--dark-gray);
 }
 
 /* Footer */
 footer {
-    background: var(--soft-grey);
+    background: var(--dark-gray);
     padding: 2rem;
     text-align: center;
     margin-top: 4rem;
-    border-top: 1px solid #eee;
+    border-top: 6px solid rgba(196, 196, 196, 0.5);
     font-size: 0.9rem;
-    color: var(--text-sub);
+    color: var(--bg-cream);
 }
 
 /* Responsive Table */
