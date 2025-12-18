@@ -927,64 +927,130 @@
             }
         }
 
-        /* Comparison Table */
+        /* Comparison Table - Benefit First */
         .comparison-section {
-            background: var(--accent-green);
             padding: 80px 0;
+            background: #fff;
         }
 
-        .comparison-title {
-            font-family: var(--font-heading);
-            font-size: 48px;
-            line-height: 66px;
-            letter-spacing: -0.5px;
-            color: var(--bg-cream);
-            text-align: center;
-            max-width: 1140px;
-            margin: 0 auto 60px;
-            padding: 0 150px;
-        }
-
-        .comparison-table {
-            max-width: 1240px;
+        .comparison-wrapper {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 100px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th {
-            font-family: var(--font-body);
-            font-weight: 500;
-            font-size: 28px;
-            line-height: 36px;
-            letter-spacing: -0.5px;
-            color: var(--white);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
             padding: 20px;
-            border: 2.5px solid var(--white);
-            text-align: center;
         }
 
-        td {
-            font-family: var(--font-body);
-            font-weight: 500;
-            font-size: 20px;
-            line-height: 26px;
-            letter-spacing: -0.5px;
-            color: var(--white);
-            padding: 15px 20px;
-            border: 1.5px solid var(--white);
+        .comp-table {
+            width: 100%;
+            min-width: 800px;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            background: #fff;
         }
 
-        td:first-child {
+        .comp-table th {
             text-align: left;
+            padding: 30px 20px;
+            color: #555;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #eee;
+            background: #fff;
+            vertical-align: middle;
+            font-family: 'DM Sans', sans-serif;
         }
 
-        td:not(:first-child) {
+        .comp-table td {
+            padding: 20px;
+            font-size: 1.05rem;
+            color: #212121;
+            border-bottom: 1px solid #eee;
+            background: #fff;
+            vertical-align: middle;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        /* Coaching Column Highlight */
+        .col-coaching {
+            background-color: #E8F5E9 !important;
+            /* Very light green */
+            border-left: 2px solid #43A047;
+            border-right: 2px solid #43A047;
+            position: relative;
+        }
+
+        th.col-coaching {
+            background-color: #43A047 !important;
+            /* Accent Green */
+            color: white !important;
+            border-bottom: none;
             text-align: center;
+        }
+
+        .best-value-badge {
+            display: block;
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 4px 12px;
+            border-radius: 20px;
+            width: fit-content;
+            margin: 0 auto 8px auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            color: #888;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .coaching-point {
+            font-weight: 700;
+            color: #2E7D32;
+            font-size: 1.1rem;
+        }
+
+        /* Buttons */
+        .btn-select-table {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            width: 90%;
+            transition: all 0.3s ease;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .btn-vent-row {
+            color: #666;
+            background: #eee;
+        }
+
+        .btn-coach-row {
+            color: white;
+            background: #43A047;
+            box-shadow: 0 4px 12px rgba(67, 160, 71, 0.3);
+        }
+
+        .btn-therapy-row {
+            color: #F57F17;
+            background: #FFF3E0;
+            border: 1px solid #FDA84D;
+        }
+
+        .btn-select-table:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
         }
 
         /* How It Works */
@@ -2946,61 +3012,93 @@
     </section>
 
     <!-- Comparison Table -->
+    <!-- Comparison Table -->
     <section class="comparison-section">
-        <h2 class="comparison-title">One of the Fastest-Growing Mental Health Spaces in the World; and It's Just the
-            Beginning</h2>
-        <div class="comparison-table">
-            <table>
+        <div style="text-align: center; margin-bottom: 40px; padding: 0 20px;">
+            <h2 style="font-family: 'DM Serif Display', serif; font-size: 48px; margin-bottom: 10px; color: #212121;">
+                Find
+                Your Right Fit</h2>
+            <p style="color: #666; font-size: 1.1rem; font-family: 'DM Sans', sans-serif;">Every path is valid. Choose
+                what helps you today.</p>
+        </div>
+
+        <div class="comparison-wrapper">
+            <table class="comp-table">
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>Ventoutt</th>
-                        <th>Others Platforms</th>
-                        <th>In Person</th>
+                        <th style="width: 20%;"></th>
+                        <th style="width: 25%; text-align: center;">
+                            <span style="font-size: 1.2rem; display: block; font-weight: 600;">Venting</span>
+                            <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.7;">Listeners</span>
+                        </th>
+                        <th class="col-coaching" style="width: 30%;">
+                            <span class="best-value-badge">Most Popular</span>
+                            <span style="font-size: 1.4rem; display: block; font-weight: 700;">Coaching</span>
+                            <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.9;">Psychologists</span>
+                        </th>
+                        <th style="width: 25%; text-align: center;">
+                            <span style="font-size: 1.2rem; display: block; font-weight: 600;">Therapy</span>
+                            <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.7;">Clinicians</span>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Quickly Switch Therapists</td>
-                        <td>Yes</td>
-                        <td>Maybe</td>
-                        <td>No</td>
+                        <td class="feature-title">The Expert</td>
+                        <td style="text-align: center;">Empathetic Listener</td>
+                        <td class="col-coaching" style="text-align: center;">
+                            <span class="coaching-point">Qualified Psychologist</span>
+                        </td>
+                        <td style="text-align: center;">Licensed Doctor</td>
                     </tr>
+
                     <tr>
-                        <td>Easy Appointment Scheduling</td>
-                        <td>Yes</td>
-                        <td>Maybe</td>
-                        <td>Maybe</td>
+                        <td class="feature-title">Your Goal</td>
+                        <td style="text-align: center;">Instant Relief</td>
+                        <td class="col-coaching" style="text-align: center;">
+                            <span class="coaching-point">Growth & Action Plans</span>
+                        </td>
+                        <td style="text-align: center;">Medical Diagnosis</td>
                     </tr>
+
                     <tr>
-                        <td>Receive Message Back</td>
-                        <td>Yes</td>
-                        <td>Maybe</td>
-                        <td>Maybe</td>
+                        <td class="feature-title">The Focus</td>
+                        <td style="text-align: center;">"Feeling Heard"</td>
+                        <td class="col-coaching" style="text-align: center;">
+                            <span class="coaching-point">"Building Skills"</span>
+                        </td>
+                        <td style="text-align: center;">"Deep Healing"</td>
                     </tr>
+
                     <tr>
-                        <td>Message Your Therapist Anytime</td>
-                        <td>Yes</td>
-                        <td>Maybe</td>
-                        <td>Maybe</td>
+                        <td class="feature-title">Availability</td>
+                        <td style="text-align: center;">Instant Access</td>
+                        <td class="col-coaching" style="text-align: center;">
+                            <span class="coaching-point">Same-Day Priority</span>
+                        </td>
+                        <td style="text-align: center;">By Appointment</td>
                     </tr>
+
                     <tr>
-                        <td>Receive Therapist from Anywhere</td>
-                        <td>Yes</td>
-                        <td>Yes</td>
-                        <td>No</td>
+                        <td class="feature-title">Investment</td>
+                        <td style="text-align: center;">Low Cost ($)</td>
+                        <td class="col-coaching" style="text-align: center;">
+                            <span class="coaching-point">Affordable ($$)</span>
+                        </td>
+                        <td style="text-align: center;">Premium ($$$$)</td>
                     </tr>
+
                     <tr>
-                        <td>A Licensed Therapist</td>
-                        <td>Yes</td>
-                        <td>Maybe</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>Vent Whenever We Want</td>
-                        <td>Yes</td>
-                        <td>No</td>
-                        <td>Maybe</td>
+                        <td></td>
+                        <td style="text-align: center;">
+                            <a href="#" class="btn-select-table btn-vent-row">Start Chat</a>
+                        </td>
+                        <td class="col-coaching" style="text-align: center; padding-bottom: 25px;">
+                            <a href="#" class="btn-select-table btn-coach-row">Get Matched</a>
+                        </td>
+                        <td style="text-align: center;">
+                            <a href="#" class="btn-select-table btn-therapy-row">Join Waitlist</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
