@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/ventoutt-base.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/service-pages.css">
+    <link rel="stylesheet" href="css/comparison-overlay.css">
     <link rel="stylesheet" href="css/chatbot.css">
     <link rel="stylesheet" href="css/popup.css">
     <style>
@@ -267,47 +268,57 @@
         </div>
     </header>
 
-    <!-- New Hero Section -->
-    <div class="new-services-hero-section">
-        <div class="hero-text-content">
-            <h1>Empowering Change, One Step at a Time</h1>
-            <p>From managing stress to overcoming life’s challenges, we’re here to support you every step of the way.
-            </p>
-            <div class="hero-actions">
-                <a href="#" class="btn-explore">Explore Our Approach</a>
-                <p class="link-discover">Discover a range of personalized mental health services.</p>
+    <!-- New Hero Section (Team Grid Redesign) -->
+    <section class="services-hero-redesign">
+        <div class="services-hero-container">
+            <div class="services-hero-header">
+                <h1 class="services-hero-title">About us, your partners in holistic wellness</h1>
+                <p class="services-hero-text">Our experienced team of psycologist therapists, and rehabilitation experts
+                    work together to create personalized care plans.</p>
+            </div>
+
+            <div class="services-hero-grid">
+                <!-- Item 1: Woman Glasses -->
+                <div class="hero-grid-item item-1">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80"
+                        alt="Therapist">
+                </div>
+
+                <!-- Item 2: Mixed Couple/Team -->
+                <div class="hero-grid-item item-2">
+                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=500&q=80"
+                        alt="Team Members">
+                </div>
+
+                <!-- Item 3: Centerpiece Woman -->
+                <div class="hero-grid-item item-3">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80"
+                        alt="Senior Therapist">
+                </div>
+
+                <!-- Item 4: Woman Sitting -->
+                <div class="hero-grid-item item-4">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80"
+                        alt="Relaxed Client">
+                </div>
+
+                <!-- Item 5: Testimonial -->
+                <div class="hero-grid-item item-5">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80"
+                        alt="Brandon Wathson" class="hero-testimonial-img">
+                    <div class="hero-testimonial-content">
+                        <p class="hero-quote">"I feel more confident and at peace since starting therapy here."</p>
+                        <span class="hero-author">Brandon Wathson</span>
+                    </div>
+                </div>
+
+                <!-- Item 6: Video Button -->
+                <div class="hero-grid-item item-6">
+                    <div class="play-btn-triangle"></div>
+                </div>
             </div>
         </div>
-        <div class="hero-stats-content">
-            <!-- Card 1 -->
-            <div class="stat-card white-card">
-                <div class="stat-card-left">
-                    <div class="stat-number">14<span>+</span></div>
-                    <div class="stat-label">Years of Experience</div>
-                </div>
-                <div class="stat-desc">With 14 years of experience in therapy, I bring a wealth of knowledge and
-                    expertise to support</div>
-            </div>
-            <!-- Card 2 -->
-            <div class="stat-card beige-card">
-                <div class="stat-card-left">
-                    <div class="stat-number">100<span>%</span></div>
-                    <div class="stat-label">Client Satisfaction</div>
-                </div>
-                <div class="stat-desc">Our practice is committed to delivering top-notch care, reflected in our
-                    outstanding 100% patient.</div>
-            </div>
-            <!-- Card 3 -->
-            <div class="stat-card white-card">
-                <div class="stat-card-left">
-                    <div class="stat-number">75<span>+</span></div>
-                    <div class="stat-label">Patients helped</div>
-                </div>
-                <div class="stat-desc">With 75 patients assisted, our practice has consistently delivered personalized
-                    and effective care, helping individuals achieve better</div>
-            </div>
-        </div>
-    </div>
+    </section>
 
     <!-- Testimonials Section -->
     <section class="testimonials-section">
@@ -455,10 +466,11 @@
                     <li>Proven therapeutic methods for emotional healing and growth.</li>
                     <li>Safe, space to explore personal struggles and self-discovery.</li>
                 </ul>
-                <a href="therapy.html" class="btn-download" style="padding: 12px 28px; font-size: 15px;">Learn more</a>
+                <a href="therapy.html" class="btn-orange">Learn more</a>
             </div>
             <div class="service-detail-image-box">
-                <img src="therapy_hero.png" alt="Individual Therapy Session" class="service-detail-image">
+                <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=600&q=80"
+                    alt="Individual Therapy Session" class="service-detail-image">
             </div>
         </div>
 
@@ -474,22 +486,14 @@
                     <li>Tools to enhance intimacy, trust, and mutual respect.</li>
                     <li>Support for navigating transitions & life challenges together.</li>
                 </ul>
-                <a href="therapy.html" class="btn-download" style="padding: 12px 28px; font-size: 15px;">Learn more</a>
+                <a href="therapy.html" class="btn-orange">Learn more</a>
             </div>
             <div class="service-detail-image-box">
-                <img src="therapy_hero.png" alt="Couple Therapy Session" class="service-detail-image">
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80"
+                    alt="Couple Therapy Session" class="service-detail-image">
             </div>
         </div>
 
-        <!-- Row 3: Venting aka Family Therapy content from prompt but user said categories are Coaching Venting Therapy -->
-        <!-- Based on user request I will do Coaching and Venting next, but the image showed Couple/Family. 
-             User explicitly said: "categories will be coaching, venting, therapy".
-             I will interpret "Therapy" as Individual/Couple/Family (handled above or combined) and add Coaching and Venting.
-             Let's do: Therapy (Individual), Venting, Coaching. That covers the 3 categories requested. 
-             If the image had "Couple" and "Family" rows, I should probably stick to the user's explicit TEXT instruction "categories will be coaching, venting, therapy".
-             However, the prompt also said "add this section... matching provided design". 
-             I will add 3 rows: Therapy, Venting, Coaching.
-        -->
         <!-- Row 2: Venting (replacing above couple interpretation to match category request) -->
         <div class="service-detail-row">
             <div class="service-detail-text">
@@ -502,11 +506,11 @@
                     <li>Immediate support whenever you feel overwhelmed.</li>
                     <li>Completely anonymous and confidential interactions.</li>
                 </ul>
-                <a href="venting.html" class="btn-download" style="padding: 12px 28px; font-size: 15px;">Start
-                    Venting</a>
+                <a href="venting.html" class="btn-orange">Start Venting</a>
             </div>
             <div class="service-detail-image-box">
-                <img src="venting_hero.png" alt="Venting Session" class="service-detail-image">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="Venting Session"
+                    class="service-detail-image">
             </div>
         </div>
 
@@ -522,11 +526,11 @@
                     <li>Develop practical skills to overcome obstacles.</li>
                     <li>Accountability partners to keep you on track.</li>
                 </ul>
-                <a href="coaching.html" class="btn-download" style="padding: 12px 28px; font-size: 15px;">Find a
-                    Coach</a>
+                <a href="coaching.html" class="btn-orange">Find a Coach</a>
             </div>
             <div class="service-detail-image-box">
-                <img src="coaching_hero.png" alt="Coaching Session" class="service-detail-image">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80"
+                    alt="Coaching Session" class="service-detail-image">
             </div>
         </div>
 
@@ -549,7 +553,9 @@
             <!-- Relationship Counseling -->
             <div class="service-option-card">
                 <div class="service-card-image">
-                    <!-- Placeholder or actual image if available -->
+                    <img src="https://images.unsplash.com/photo-1621252179027-94459d27d3ee?w=300&q=80"
+                        alt="Relationship Counseling"
+                        style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
                 </div>
                 <span class="service-card-title">Relationship Counseling</span>
                 <p class="service-card-desc">Professional relationship therapists and marriage counselors can help
@@ -558,7 +564,10 @@
 
             <!-- Family Counseling -->
             <div class="service-option-card">
-                <div class="service-card-image"></div>
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=300&q=80"
+                        alt="Family Counseling" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+                </div>
                 <span class="service-card-title">Family Counseling</span>
                 <p class="service-card-desc">To address issues like communication gaps, intergenerational relationships,
                     parenting challenges etc., Ventoutt provides affordable online family counseling.</p>
@@ -566,7 +575,11 @@
 
             <!-- Private Venting Space -->
             <div class="service-option-card">
-                <div class="service-card-image"></div>
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1493836512294-502baa1986e2?w=300&q=80"
+                        alt="Private Venting Space"
+                        style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+                </div>
                 <span class="service-card-title">Private Venting Space</span>
                 <p class="service-card-desc">A safe, convenient and judgement free online venting space that protects
                     your privacy, security and maintains ethical conduct.</p>
@@ -574,7 +587,11 @@
 
             <!-- Individual Counseling -->
             <div class="service-option-card">
-                <div class="service-card-image"></div>
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=300&q=80"
+                        alt="Individual Counseling"
+                        style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+                </div>
                 <span class="service-card-title">Individual Counseling</span>
                 <p class="service-card-desc">Get individual one-on-one therapy sessions which are tailored according to
                     your needs varying from stress, anxiety, trauma to everyday mental health struggles.</p>
@@ -582,7 +599,11 @@
 
             <!-- Youth Counseling Support -->
             <div class="service-option-card">
-                <div class="service-card-image"></div>
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=300&q=80"
+                        alt="Youth Counseling Support"
+                        style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+                </div>
                 <span class="service-card-title">Youth Counseling Support</span>
                 <p class="service-card-desc">Find support for youth groups from age 18 to 34 by specialised youth
                     counselors who understand your unique concerns.</p>
@@ -590,7 +611,10 @@
 
             <!-- LGBTQ Counseling -->
             <div class="service-option-card">
-                <div class="service-card-image"></div>
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1563823263595-5df882d9646b?w=300&q=80"
+                        alt="LGBTQ Counseling" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+                </div>
                 <span class="service-card-title">LGBTQ Counseling</span>
                 <p class="service-card-desc">Safe, inclusive and affirming LGBTQ+ therapy with trained professionals.
                 </p>
@@ -598,7 +622,11 @@
 
             <!-- Affordable Online Therapy -->
             <div class="service-option-card">
-                <div class="service-card-image"></div>
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=300&q=80"
+                        alt="Affordable Online Therapy"
+                        style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+                </div>
                 <span class="service-card-title">Affordable Online Therapy</span>
                 <p class="service-card-desc">Affordable, pocket-friendly therapy designed for young adult budgets
                     without sacrificing expert quality accessible from anywhere in the world.</p>
@@ -1237,101 +1265,6 @@
             </div>
         </div>
     </section>
-
-    <!-- How It Works -->
-    <section class="how-it-works-section">
-        <h2 class="how-it-works-title">How It Works</h2>
-        <div class="steps-grid">
-            <div class="step-card">
-                <div class="step-number">Step 1</div>
-                <div class="step-description">Pick what you need - a full therapy session or a quick vent.</div>
-            </div>
-            <div class="step-card">
-                <div class="step-number">Step 2</div>
-                <div class="step-description">Choose your listener or therapist from the list.</div>
-            </div>
-            <div class="step-card">
-                <div class="step-number">Step 3</div>
-                <div class="step-description">Select a time that works for you.</div>
-            </div>
-            <div class="step-card">
-                <div class="step-number">Step 4</div>
-                <div class="step-description">Pay securely and get your session link via email.</div>
-            </div>
-            <div class="step-card">
-                <div class="step-number">Step 5</div>
-                <div class="step-description">Talk it out. Feel lighter. Share how it went</div>
-            </div>
-        </div>
-        <div style="text-align: center;"><a href="services.html" class="btn-hero">Learn More</a></div>
-    </section>
-
-    <!-- Related Blogs Section -->
-    <section class="related-blogs-section">
-        <h2 class="specializations-title">Related Blogs</h2>
-        <div class="blogs-grid">
-            <!-- Blog 1 -->
-            <div class="blog-card">
-                <div class="blog-image"></div>
-                <div class="blog-content">
-                    <span class="blog-tag">Temper</span>
-                    <h3 class="blog-title">Understanding and Managing Temper Issues</h3>
-                    <a href="#" class="blog-link">Read More</a>
-                </div>
-            </div>
-            <!-- Blog 2 -->
-            <div class="blog-card">
-                <div class="blog-image"></div>
-                <div class="blog-content">
-                    <span class="blog-tag">ADHD-C</span>
-                    <h3 class="blog-title">Living with ADHD-C: Strategies for Success</h3>
-                    <a href="#" class="blog-link">Read More</a>
-                </div>
-            </div>
-            <!-- Blog 3 -->
-            <div class="blog-card">
-                <div class="blog-image"></div>
-                <div class="blog-content">
-                    <span class="blog-tag">Anxious-Avoidant</span>
-                    <h3 class="blog-title">Navigating Anxious-Avoidant Attachment Styles</h3>
-                    <a href="#" class="blog-link">Read More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <h2 class="specializations-title">Frequently Asked Questions</h2>
-        <div class="faq-container">
-            <details class="faq-item">
-                <summary>Is venting safe?</summary>
-                <p>Yes, venting is safe. We prioritize your privacy and anonymity.</p>
-            </details>
-            <details class="faq-item">
-                <summary>Who are your coaches?</summary>
-                <p>Our coaches are trained professionals with experience in various fields of mental health.</p>
-            </details>
-            <details class="faq-item">
-                <summary>Is this therapy?</summary>
-                <p>No, venting and coaching are not replacements for clinical therapy, but they can be a great first
-                    step.</p>
-            </details>
-            <details class="faq-item">
-                <summary>Will my chats stay private?</summary>
-                <p>Absolutely. All chats are confidential and anonymous.</p>
-            </details>
-            <details class="faq-item">
-                <summary>Are your psychologists licensed?</summary>
-                <p>Yes, all our therapists and psychologists are licensed professionals.</p>
-            </details>
-            <details class="faq-item">
-                <summary>Can I stay anonymous?</summary>
-                <p>Yes, you can choose to remain anonymous during your sessions.</p>
-            </details>
-        </div>
-    </section>
-    <!-- Venting Banner (Figma Match) -->
     <section class="venting-banner-figma">
         <div class="figma-container">
             <!-- Left: Content -->
@@ -1378,6 +1311,611 @@
             });
         </script>
     </section>
+    <!-- How It Works -->
+    <section class="how-it-works-section">
+        <h2 class="how-it-works-title">How It Works</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">Step 1</div>
+                <div class="step-description">Pick what you need - a full therapy session or a quick vent.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">Step 2</div>
+                <div class="step-description">Choose your listener or therapist from the list.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">Step 3</div>
+                <div class="step-description">Select a time that works for you.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">Step 4</div>
+                <div class="step-description">Pay securely and get your session link via email.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">Step 5</div>
+                <div class="step-description">Talk it out. Feel lighter. Share how it went</div>
+            </div>
+        </div>
+        <div style="text-align: center;"><a href="services.html" class="btn-hero">Learn More</a></div>
+    </section>
+
+    <!-- Partners -->
+    <section class="partners-section">
+        <div class="partners-container">
+            <h2 class="partners-title">Making mental health a priority together with our partners.</h2>
+            <div class="partners-carousel-wrapper">
+                <!-- Carousel logic is internally scoped below, we just wrap it for layout -->
+                <div class="vt-partners" aria-label="Partner logos">
+                    <div class="logo-carousel">
+                        <div class="logo-track" id="vtLogoTrack">
+                            <!-- Collative -->
+                            <a class="logo-item" href="https://collative.in/" target="_blank" rel="noopener"
+                                aria-label="Collative">
+                                <img src="https://placehold.co/120x120/e0e0e0/555555?text=Collative"
+                                    alt="Collative Logo" width="120" height="120" loading="lazy" decoding="async">
+                            </a>
+                            <!-- SuccessBrew -->
+                            <a class="logo-item" href="https://successbrew.in/" target="_blank" rel="noopener"
+                                aria-label="SuccessBrew">
+                                <img src="https://placehold.co/120x120/e0e0e0/555555?text=SuccessBrew"
+                                    alt="SuccessBrew Logo" width="120" height="120" loading="lazy" decoding="async">
+                            </a>
+                            <!-- Make A Difference -->
+                            <a class="logo-item" href="https://makeadiff.in/" target="_blank" rel="noopener"
+                                aria-label="Make A Difference">
+                                <img src="https://placehold.co/120x120/e0e0e0/555555?text=Make+A+Diff"
+                                    alt="Make A Difference logo" width="120" height="120" loading="lazy"
+                                    decoding="async">
+                            </a>
+                            <!-- The 3AM Couch -->
+                            <a class="logo-item" href="https://the3amcouch.in/" target="_blank" rel="noopener"
+                                aria-label="The 3AM Couch">
+                                <img src="https://placehold.co/120x120/e0e0e0/555555?text=3AM+Couch"
+                                    alt="The 3AM Couch Logo" width="120" height="120" loading="lazy" decoding="async">
+                            </a>
+                            <!-- Decoders -->
+                            <a class="logo-item" href="https://decoders.co.in/" target="_blank" rel="noopener"
+                                aria-label="Decoders">
+                                <img src="https://placehold.co/120x120/e0e0e0/555555?text=Decoders" alt="Decoders logo"
+                                    width="120" height="120" loading="lazy" decoding="async">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Therapists Profile Reverse Loop (New Section) -->
+        <div class="therapists-carousel-wrapper">
+            <div class="vt-therapists" aria-label="Therapist Profiles">
+                <div class="therapist-track" id="vtTherapistTrack">
+                    <!-- Card 1 -->
+                    <div class="therapist-card">
+                        <div class="therapist-header">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=80"
+                                alt="Frances Guerrero" class="therapist-avatar">
+                            <div class="therapist-info">
+                                <h3 class="therapist-name">FRANCES GUERRERO</h3>
+                                <div class="therapist-profession">Clinical Psychologist</div>
+                            </div>
+                        </div>
+                        <div class="therapist-specialization">
+                            <strong>Specializations:</strong> Anxiety, Trauma, PTSD
+                        </div>
+                        <a href="#" class="therapist-booking-btn">Book Now</a>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="therapist-card">
+                        <div class="therapist-header">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80"
+                                alt="Dennis Barrett" class="therapist-avatar">
+                            <div class="therapist-info">
+                                <h3 class="therapist-name">DENNIS BARRETT</h3>
+                                <div class="therapist-profession">Family Therapist</div>
+                            </div>
+                        </div>
+                        <div class="therapist-specialization">
+                            <strong>Specializations:</strong> Couples Therapy, Relationship Issues
+                        </div>
+                        <a href="#" class="therapist-booking-btn">Book Now</a>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="therapist-card">
+                        <div class="therapist-header">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&q=80"
+                                alt="Larry Lawson" class="therapist-avatar">
+                            <div class="therapist-info">
+                                <h3 class="therapist-name">LARRY LAWSON</h3>
+                                <div class="therapist-profession">Mental Health Counselor</div>
+                            </div>
+                        </div>
+                        <div class="therapist-specialization">
+                            <strong>Specializations:</strong> Depression, grief, Loss
+                        </div>
+                        <a href="#" class="therapist-booking-btn">Book Now</a>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="therapist-card">
+                        <div class="therapist-header">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80"
+                                alt="Sarah Jenkins" class="therapist-avatar">
+                            <div class="therapist-info">
+                                <h3 class="therapist-name">SARAH JENKINS</h3>
+                                <div class="therapist-profession">Psychiatrist</div>
+                            </div>
+                        </div>
+                        <div class="therapist-specialization">
+                            <strong>Specializations:</strong> Mood Disorders, ADHD, Bipolar
+                        </div>
+                        <a href="#" class="therapist-booking-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            /* Redesigned Partners & Therapists Section */
+            .partners-section {
+                background-color: #212121;
+                /* Dark background from Figma */
+                padding: 100px 0;
+                color: white;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .partners-container {
+                max-width: 1100px;
+                /* Constrained width */
+                margin: 0 auto;
+                /* padding: 0 40px; */
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 80px;
+                /* margin-bottom: 40px; */
+                /* Reduced from 80px */
+                /* Space before therapists */
+            }
+
+            .partners-title {
+                font-family: 'DM Serif Display', serif;
+                font-size: 48px;
+                /* Reduced from 56px */
+                line-height: 1.1;
+                font-weight: 400;
+                color: #FFFFFF;
+                max-width: 500px;
+                /* Reduced from 450px */
+                flex-shrink: 0;
+            }
+
+            /* Right side Partners Carousel */
+            .partners-carousel-wrapper {
+                flex-grow: 1;
+                max-width: 600px;
+                /* Reduced from 700px */
+                overflow: hidden;
+            }
+
+            /* ===== Carousel (Partners) ===== */
+            .vt-partners .logo-carousel {
+                --gap: 20px;
+                --speed: 100;
+                width: 100%;
+                overflow: hidden;
+                padding: 10px 0;
+            }
+
+            .vt-partners .logo-track {
+                display: flex;
+                align-items: center;
+                gap: var(--gap);
+                width: max-content;
+                will-change: transform;
+            }
+
+            .vt-partners .logo-item {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 120px;
+                height: 120px;
+                background: transparent;
+                /* Changed from white to transparent */
+                border-radius: 0;
+                /* Square as per image/CSS */
+                text-decoration: none;
+                flex-shrink: 0;
+            }
+
+            .vt-partners .logo-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                /* Fill the box */
+                background: #e0e0e0;
+                /* Fallback grey */
+            }
+
+            /* ===== Therapists Profile Carousel Styles (Redesigned) ===== */
+            .therapists-carousel-wrapper {
+                max-width: 1100px;
+                /* Constrained width to match partners */
+                margin: 0 auto;
+                padding: 30px 40px 60px;
+                overflow: hidden;
+                position: relative;
+                box-sizing: border-box;
+            }
+
+            .therapist-track {
+                display: flex;
+                gap: 20px;
+                /* Reduced gap from 30px */
+                width: max-content;
+                will-change: transform;
+                padding-left: 0;
+                /* No extra padding needed if container has padding */
+            }
+
+            .therapist-card {
+                background: #FFFFFF;
+                border: 3px solid #3A7F56;
+                /* Thinner border */
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 16px;
+                /* Slightly tighter radius */
+                padding: 20px 15px;
+                /* Further reduced padding */
+                width: 280px;
+                /* Much smaller width (was 340px) */
+                min-height: auto;
+                /* Remove fixed min-height to fit content */
+                flex-shrink: 0;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                margin-top: 0;
+            }
+
+            .therapist-card:hover {
+                transform: translateY(-5px);
+                transition: transform 0.3s ease;
+            }
+
+            .therapist-header {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                /* Reduced gap */
+                width: 100%;
+                margin-bottom: 15px;
+                text-align: left;
+                padding-left: 0;
+            }
+
+            .therapist-avatar {
+                width: 60px;
+                /* Reduced from 70px */
+                height: 60px;
+                object-fit: cover;
+                border-radius: 50%;
+                box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+                flex-shrink: 0;
+            }
+
+            .therapist-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+            }
+
+            .therapist-name {
+                font-family: 'Playfair Display', serif;
+                font-weight: 700;
+                font-size: 18px;
+                /* Reduced from 22px */
+                line-height: 1.2;
+                color: #000000;
+                margin: 0;
+                text-transform: uppercase;
+            }
+
+            .therapist-profession {
+                font-family: 'DM Sans', sans-serif;
+                font-weight: 600;
+                font-size: 14px;
+                /* Reduced from 15px */
+                line-height: 1.3;
+                color: #4E4E4E;
+            }
+
+            /* Specialization Box */
+            .therapist-specialization {
+                box-sizing: border-box;
+                background: #FFFFFF;
+                border: 0.5px solid rgba(0, 0, 0, 0.5);
+                border-radius: 6px;
+                padding: 8px 10px;
+                width: 100%;
+                margin-bottom: 15px;
+                text-align: left;
+
+                font-family: 'DM Sans', sans-serif;
+                font-weight: 600;
+                font-size: 12px;
+                /* Reduced from 13px */
+                line-height: 1.4;
+                color: #4E4E4E;
+            }
+
+            .therapist-specialization strong {
+                font-weight: 700;
+                color: #212121;
+            }
+
+            /* Button */
+            .therapist-booking-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 8px 16px;
+                width: 100%;
+                max-width: 480px;
+                /* Approx 476px from CSS */
+                background: #F57F17;
+                border: 1px solid #FFFFFF;
+                border-radius: 6px;
+
+                font-family: 'DM Sans', sans-serif;
+                font-weight: 700;
+                font-size: 14px;
+                /* Reduced from 16px */
+                line-height: 1.4;
+                text-align: center;
+                letter-spacing: 0.5px;
+                color: #FFFFFF;
+                text-decoration: none;
+                transition: all 0.2s;
+            }
+
+            .therapist-booking-btn:hover {
+                background: #E65100;
+                transform: scale(1.02);
+            }
+
+            /* Responsive */
+            @media (max-width: 1024px) {
+                .partners-container {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 40px;
+                }
+
+                .partners-title {
+                    font-size: 56px;
+                    max-width: 100%;
+                }
+
+                .partners-carousel-wrapper {
+                    max-width: 100%;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .partners-title {
+                    font-size: 40px;
+                }
+
+                .therapist-card {
+                    width: 90vw;
+                    padding: 20px;
+                }
+
+                .therapist-header {
+                    flex-direction: column;
+                    text-align: center;
+                    padding: 0;
+                    gap: 15px;
+                }
+
+                .therapist-info {
+                    align-items: center;
+                }
+
+                .therapist-booking-btn,
+                .therapist-specialization {
+                    font-size: 16px;
+                    padding: 12px;
+                }
+
+                .therapist-name {
+                    font-size: 28px;
+                }
+            }
+
+            @keyframes vt-scroll {
+                0% {
+                    transform: translate3d(0, 0, 0);
+                }
+
+                100% {
+                    transform: translate3d(calc(var(--distance, 0px) * -1), 0, 0);
+                }
+            }
+
+            @keyframes vt-scroll-reverse {
+                0% {
+                    transform: translate3d(calc(var(--distance, 0px) * -1), 0, 0);
+                }
+
+                100% {
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+        </style>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Partners Carousel (Original, Normal Scroll) ---
+            const partnersTrack = document.getElementById('vtLogoTrack');
+
+            if (partnersTrack) {
+                // Clone logic
+                if (!partnersTrack.dataset.cloned) {
+                    const originals = Array.from(partnersTrack.children);
+                    originals.forEach(n => partnersTrack.appendChild(n.cloneNode(true)));
+                    partnersTrack.dataset.cloned = '1';
+                }
+
+                function setupPartnersAnim() {
+                    const gap = 20; // Matches CSS
+                    // Measure
+                    const firstItem = partnersTrack.firstElementChild;
+                    if (!firstItem) return;
+
+                    const itemWidth = firstItem.getBoundingClientRect().width || 120; // Fallback
+                    const singleItemTotal = itemWidth + gap;
+
+                    // Total items is originals * 2
+                    const totalItems = partnersTrack.children.length;
+                    const originalCount = totalItems / 2;
+
+                    const singleSetWidth = singleItemTotal * originalCount;
+
+                    partnersTrack.style.setProperty('--distance', `${singleSetWidth}px`);
+                    // Duration logic: e.g. 50px per second
+                    const duration = singleSetWidth / 50;
+                    partnersTrack.style.animation = `vt-scroll ${duration}s linear infinite`;
+                }
+
+                // Run
+                setupPartnersAnim();
+                window.addEventListener('resize', setupPartnersAnim);
+                // Also run on window load to be sure of images
+                window.addEventListener('load', setupPartnersAnim);
+            }
+
+            // --- Therapists Carousel (New, Reverse Scroll) ---
+            const therapistTrack = document.getElementById('vtTherapistTrack');
+
+            if (therapistTrack) {
+                // Clone logic 
+                if (!therapistTrack.dataset.cloned) {
+                    const originals = Array.from(therapistTrack.children);
+                    // Clone twice for safety
+                    originals.forEach(n => therapistTrack.appendChild(n.cloneNode(true)));
+                    originals.forEach(n => therapistTrack.appendChild(n.cloneNode(true)));
+                    therapistTrack.dataset.cloned = '1';
+                }
+
+                function setupTherapistAnim() {
+                    const gap = 20; // Updated to match CSS gap
+                    const card = therapistTrack.firstElementChild;
+                    if (!card) return;
+
+                    // Force a reflow or check if width is available
+                    let width = card.getBoundingClientRect().width;
+                    if (width === 0) width = 280; // Fallback to CSS width if hidden/not rendered
+
+                    const singleCardWidth = width + gap;
+                    const originalCount = 4; // We hardcoded 4 cards in HTML
+                    const singleSetWidth = singleCardWidth * originalCount;
+
+                    therapistTrack.style.setProperty('--distance', `${singleSetWidth}px`);
+
+                    // Slower speed
+                    const duration = singleSetWidth / 30;
+                    therapistTrack.style.animation = `vt-scroll-reverse ${duration}s linear infinite`;
+                }
+
+                setupTherapistAnim();
+                window.addEventListener('resize', setupTherapistAnim);
+                window.addEventListener('load', setupTherapistAnim);
+            }
+        });
+    </script>
+
+    <!-- Related Blogs Section -->
+    <section class="related-blogs-section">
+        <h2 class="specializations-title">Related Blogs</h2>
+        <div class="blogs-grid">
+            <!-- Blog 1 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=400&q=80"
+                        alt="Temper Issues" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="blog-content">
+                    <span class="blog-tag">Temper</span>
+                    <h3 class="blog-title">Understanding and Managing Temper Issues</h3>
+                    <a href="#" class="blog-link">Read More</a>
+                </div>
+            </div>
+            <!-- Blog 2 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1555617778-02518510b9fa?w=400&q=80" alt="ADHD-C"
+                        style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="blog-content">
+                    <span class="blog-tag">ADHD-C</span>
+                    <h3 class="blog-title">Living with ADHD-C: Strategies for Success</h3>
+                    <a href="#" class="blog-link">Read More</a>
+                </div>
+            </div>
+            <!-- Blog 3 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1606103920295-b71c320216e9?w=400&q=80"
+                        alt="Anxious-Avoidant" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="blog-content">
+                    <span class="blog-tag">Anxious-Avoidant</span>
+                    <h3 class="blog-title">Navigating Anxious-Avoidant Attachment Styles</h3>
+                    <a href="#" class="blog-link">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2 class="specializations-title">Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <details class="faq-item">
+                <summary>Is venting safe?</summary>
+                <p>Yes, venting is safe. We prioritize your privacy and anonymity.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Who are your coaches?</summary>
+                <p>Our coaches are trained professionals with experience in various fields of mental health.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is this therapy?</summary>
+                <p>No, venting and coaching are not replacements for clinical therapy, but they can be a great first
+                    step.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Will my chats stay private?</summary>
+                <p>Absolutely. All chats are confidential and anonymous.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Are your psychologists licensed?</summary>
+                <p>Yes, all our therapists and psychologists are licensed professionals.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Can I stay anonymous?</summary>
+                <p>Yes, you can choose to remain anonymous during your sessions.</p>
+            </details>
+        </div>
+    </section>
+
     <!-- Specializations -->
     <section class="specializations-section">
         <h2 class="specializations-title">What We Specialize In</h2>

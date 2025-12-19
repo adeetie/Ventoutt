@@ -65,7 +65,8 @@
 
     <!-- Hero Illustration Banner -->
     <section class="service-img-banner">
-        <img src="venting_hero.png" alt="Venting Session Illustration">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&q=80"
+            alt="Venting Session Illustration">
     </section>
 
     <!-- Hero Text Content -->
@@ -276,6 +277,58 @@
         </p>
     </section>
 
+    <!-- Why People Love Ventoutt Section -->
+    <section class="why-love-scroll-section">
+        <div class="why-love-scroll-container">
+            <div class="why-love-scroll-left">
+                <h2 class="why-love-main-title">Why People Love Ventoutt</h2>
+
+                <div class="why-love-points-wrapper">
+                    <div class="why-love-point active">
+                        <h3 class="why-love-point-title">Built around people, not policies:</h3>
+                        <p class="why-love-point-desc">That means flexible sessions, accessible formats, and support
+                            that works around your life — not the other way around.</p>
+                    </div>
+                    <div class="why-love-point">
+                        <h3 class="why-love-point-title">24/7 Availability:</h3>
+                        <p class="why-love-point-desc">Life doesn't pause for business hours. Whether it's 3 AM or lunch
+                            break, our listeners are here when you need to vent.</p>
+                    </div>
+                    <div class="why-love-point">
+                        <h3 class="why-love-point-title">Complete Anonymity:</h3>
+                        <p class="why-love-point-desc">Express yourself freely without judgment. Your identity stays
+                            protected, so you can be completely honest about how you feel.</p>
+                    </div>
+                    <div class="why-love-point">
+                        <h3 class="why-love-point-title">Affordable Support:</h3>
+                        <p class="why-love-point-desc">Quality emotional support shouldn't break the bank. We've made
+                            mental wellness accessible to everyone, everywhere.</p>
+                    </div>
+                    <div class="why-love-point">
+                        <h3 class="why-love-point-title">Trained Listeners:</h3>
+                        <p class="why-love-point-desc">Our community of listeners is trained to provide empathetic,
+                            non-judgmental support whenever you need someone to talk to.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-love-scroll-right">
+                <div class="why-love-slideshow">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
+                        alt="Person finding peace" class="why-love-slide-image active">
+                    <img src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?w=600&q=80"
+                        alt="24/7 Support" class="why-love-slide-image">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80"
+                        alt="Anonymous venting" class="why-love-slide-image">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=80"
+                        alt="Affordable care" class="why-love-slide-image">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80"
+                        alt="Trained listeners" class="why-love-slide-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Meet Our Experts Section -->
     <section class="experts-section">
         <div class="experts-container">
@@ -461,7 +514,52 @@
             </div>
         </div>
     </section>
+    <section class="venting-banner-figma">
+        <div class="figma-container">
+            <!-- Left: Content -->
+            <div class="content-wrapper">
+                <h2 class="figma-title">You're not alone in this.</h2>
+                <div class="figma-description">
+                    <p>We know it's hard to open up, especially when everything feels overwhelming or nobody seems to
+                        get it.
+                        But even one small conversation can make a difference. Whether you want to vent, reflect, or
+                        heal,
+                        this space is yours. Whenever you're ready, we're here to listen.</p>
+                </div>
+                <!-- Button from Image: Talk to Our Chatbot -->
+                <a href="#" class="btn-venting-banner">Talk to Our Chatbot</a>
+            </div>
 
+            <!-- Right: Graphics Layer -->
+            <div class="graphics-wrapper">
+                <!-- Image Container (Slideshow) positioned relatively -->
+                <div class="image-frame">
+                    <!-- Slideshow logic -->
+                    <div class="banner-slideshow-inner">
+                        <!-- Using uploaded_image_0 as Variant 1 placeholder, and the found variants 2 and 3 -->
+                        <div class="blob-slide active" style="background-image: url('Property 1=Default (1).png');">
+                        </div>
+                        <div class="blob-slide" style="background-image: url('Property 1=Variant2 (1).png');"></div>
+                        <div class="blob-slide" style="background-image: url('Property 1=Variant3 (1).png');"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const figmaSlides = document.querySelectorAll('.venting-banner-figma .blob-slide');
+                if (figmaSlides.length > 0) {
+                    let cur = 0;
+                    setInterval(() => {
+                        figmaSlides[cur].classList.remove('active');
+                        cur = (cur + 1) % figmaSlides.length;
+                        figmaSlides[cur].classList.add('active');
+                    }, 4000);
+                }
+            });
+        </script>
+    </section>
     <!-- How It Works -->
     <section class="how-it-works-section">
         <h2 class="how-it-works-title">How It Works</h2>
@@ -556,52 +654,7 @@
         </div>
     </section>
     <!-- Venting Banner (Figma Match) -->
-    <section class="venting-banner-figma">
-        <div class="figma-container">
-            <!-- Left: Content -->
-            <div class="content-wrapper">
-                <h2 class="figma-title">You're not alone in this.</h2>
-                <div class="figma-description">
-                    <p>We know it's hard to open up, especially when everything feels overwhelming or nobody seems to
-                        get it.
-                        But even one small conversation can make a difference. Whether you want to vent, reflect, or
-                        heal,
-                        this space is yours. Whenever you're ready, we're here to listen.</p>
-                </div>
-                <!-- Button from Image: Talk to Our Chatbot -->
-                <a href="#" class="btn-venting-banner">Talk to Our Chatbot</a>
-            </div>
 
-            <!-- Right: Graphics Layer -->
-            <div class="graphics-wrapper">
-                <!-- Image Container (Slideshow) positioned relatively -->
-                <div class="image-frame">
-                    <!-- Slideshow logic -->
-                    <div class="banner-slideshow-inner">
-                        <!-- Using uploaded_image_0 as Variant 1 placeholder, and the found variants 2 and 3 -->
-                        <div class="blob-slide active" style="background-image: url('Property 1=Default (1).png');">
-                        </div>
-                        <div class="blob-slide" style="background-image: url('Property 1=Variant2 (1).png');"></div>
-                        <div class="blob-slide" style="background-image: url('Property 1=Variant3 (1).png');"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const figmaSlides = document.querySelectorAll('.venting-banner-figma .blob-slide');
-                if (figmaSlides.length > 0) {
-                    let cur = 0;
-                    setInterval(() => {
-                        figmaSlides[cur].classList.remove('active');
-                        cur = (cur + 1) % figmaSlides.length;
-                        figmaSlides[cur].classList.add('active');
-                    }, 4000);
-                }
-            });
-        </script>
-    </section>
     <!-- Specializations -->
     <section class="specializations-section">
         <h2 class="specializations-title">What We Specialize In</h2>
@@ -707,6 +760,7 @@
             });
         });
     </script>
+    <script src="js/why-love-scroll.js"></script>
 </body>
 
 </html>

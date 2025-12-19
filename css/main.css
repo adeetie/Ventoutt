@@ -508,6 +508,25 @@ a {
     box-shadow: var(--shadow-md);
 }
 
+.btn-orange {
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--primary-orange);
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    transition: background 0.3s ease, transform 0.2s;
+    border: 1px solid transparent;
+}
+
+.btn-orange:hover {
+    background: var(--primary-orange-dark);
+    transform: translateY(-2px);
+    color: white;
+}
+
 /* ========== Responsive Styles (Header/Footer) ========== */
 @media (max-width: 1200px) {
     .service-nav {

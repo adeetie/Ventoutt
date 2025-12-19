@@ -171,20 +171,21 @@
 
 .service-img-banner {
     width: 100%;
-    /* Keep logical height or auto based on image */
+    height: 100vh;
     background-color: #F8F4E9;
     /* Beige background */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 60px 0;
+    padding: 0;
+    overflow: hidden;
 }
 
 .service-img-banner img {
-    max-width: 100%;
-    height: auto;
-    max-height: 400px;
-    /* Constraint height */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-height: none;
 }
 
 .service-text-content-wrapper {
@@ -1230,4 +1231,338 @@
     .detailed-services-main-title {
         font-size: 32px;
     }
+}
+
+/* ========== Premium Directory Features (Therapy Page) ========== */
+
+/* Verified Partner Badge */
+.verified-badge {
+    background-color: #E3F2FD;
+    /* Light Blue */
+    color: #1565C0;
+    /* Dark Blue */
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* External Profile Button (Outline) */
+.btn-external-profile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: #212121;
+    text-decoration: none;
+    border: 1px solid #212121;
+    border-radius: 8px;
+    padding: 10px 20px;
+    width: 100%;
+    margin-top: 15px;
+    transition: all 0.2s ease;
+}
+
+.btn-external-profile:hover {
+    background-color: #212121;
+    color: #FFFFFF;
+}
+
+/* Interim Solution Block */
+.interim-solution-block {
+    background-color: #F0FDF4;
+    /* Mint Green */
+    border-radius: 20px;
+    padding: 40px;
+    margin: 60px auto;
+    max-width: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    border: 1px solid #DCFCE7;
+}
+
+.interim-content {
+    flex: 1;
+}
+
+.interim-title {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    color: #14532D;
+    /* Dark Green */
+    margin-bottom: 10px;
+}
+
+.interim-text {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: #166534;
+    /* Medium Green */
+    line-height: 1.5;
+}
+
+.btn-interim-cta {
+    background-color: #166534;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.btn-interim-cta:hover {
+    background-color: #14532D;
+}
+
+.directory-disclaimer {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .interim-solution-block {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+        margin: 40px 20px;
+    }
+
+    .btn-interim-cta {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ========== Why People Love Ventoutt - Scroll Section (Native Sticky) ========== */
+.why-love-scroll-section {
+    background: #FFFDF7;
+    height: 250vh;
+    /* Reduced to 250vh to further minimize whitespace */
+    position: relative;
+    z-index: 10;
+}
+
+.why-love-scroll-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px;
+    /* Removed vertical padding as we center content */
+    align-items: center;
+    /* Vertically center content */
+    overflow: hidden;
+}
+
+.why-love-scroll-left {
+    padding-right: 40px;
+}
+
+.why-love-main-title {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    line-height: 1.15;
+    color: #212121;
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+
+.why-love-points-wrapper {
+    position: relative;
+    min-height: 160px;
+    /* Ensure space for content */
+}
+
+.why-love-point {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+.why-love-point.active {
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
+    pointer-events: auto;
+}
+
+.why-love-point-title {
+    font-family: var(--font-body);
+    font-size: 22px;
+    font-weight: 700;
+    color: #212121;
+    margin-bottom: 12px;
+}
+
+.why-love-point-desc {
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+    color: #555;
+    margin: 0;
+}
+
+.why-love-scroll-right {
+    position: relative;
+    width: 100%;
+    /* Ensure it takes grid space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.why-love-slideshow {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    /* Limit size for aesthetics */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    aspect-ratio: 4/5;
+}
+
+.why-love-slide-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.why-love-slide-image.active {
+    opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .why-love-scroll-section {
+        min-height: auto;
+    }
+
+    .why-love-scroll-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 60px 30px;
+    }
+
+    .why-love-scroll-left {
+        padding-right: 0;
+    }
+
+    .why-love-scroll-right {
+        order: -1;
+    }
+
+    .why-love-main-title {
+        font-size: 36px;
+    }
+
+    .why-love-points-wrapper {
+        min-height: auto;
+    }
+
+    .why-love-point {
+        position: relative;
+        opacity: 1;
+        transform: none;
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #E0E0E0;
+    }
+
+    .why-love-point:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .why-love-slideshow {
+        aspect-ratio: 16/10;
+    }
+
+    .why-love-image-box img {
+        height: 300px;
+    }
+}
+
+/* ========== Banner CTA Stack (Stacked Buttons) ========== */
+.banner-cta-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 320px;
+    /* Constrain width matches buttons */
+    margin-top: 24px;
+}
+
+.banner-cta-stack .btn-interim-cta,
+.banner-cta-stack .btn-venting-banner {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Ensure Green Button style */
+.banner-cta-stack .btn-interim-cta {
+    background: #166534;
+    /* Green */
+    color: white;
+    border: 1px solid transparent;
+}
+
+.banner-cta-stack .btn-interim-cta:hover {
+    background: #14532D;
+}
+
+/* Ensure Orange Button style (Chatbot) - Matches branding */
+.banner-cta-stack .btn-venting-banner {
+    background: var(--primary-orange, #F57F17);
+    /* Fallback #F57F17 */
+    color: white;
+    border: 1px solid transparent;
+}
+
+.banner-cta-stack .btn-venting-banner:hover {
+    background: var(--primary-orange-dark, #E65100);
 }
