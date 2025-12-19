@@ -1351,10 +1351,24 @@
 /* ========== Why People Love Ventoutt - Scroll Section (Native Sticky) ========== */
 .why-love-scroll-section {
     background: #FFFDF7;
-    height: 250vh;
-    /* Reduced to 250vh to further minimize whitespace */
+    height: 150vh;
+    /* Reduced to 150vh to extremely minimize whitespace */
     position: relative;
     z-index: 10;
+}
+
+/* ... existing code ... */
+
+/* ========== Banner CTA Stack (Stacked Buttons) ========== */
+.banner-cta-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Reduced gap as requested */
+    width: 100%;
+    max-width: 300px;
+    /* Tighter fit */
+    margin-top: 24px;
 }
 
 .why-love-scroll-container {
@@ -1518,7 +1532,7 @@
 .banner-cta-stack {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 10px;
     width: 100%;
     max-width: 320px;
     /* Constrain width matches buttons */

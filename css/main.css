@@ -783,7 +783,10 @@ a {
     flex-wrap: wrap;
     padding: 0 40px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    /* Changed from space-between to center */
+    gap: 40px;
+    /* Bring image closer */
 }
 
 /* Content Layer (Left) */
@@ -791,10 +794,12 @@ a {
     flex: 1 1 40%;
     position: relative;
     z-index: 3;
-    max-width: 600px;
+    max-width: 650px;
+    /* Widened to matching screenshot layout */
     padding-top: 120px;
     /* Match homepage top padding */
-    padding-right: 40px;
+    padding-right: 0;
+    /* Remove right padding */
 }
 
 .venting-banner-figma .figma-title {
@@ -805,7 +810,8 @@ a {
     line-height: 1.2;
     letter-spacing: -0.5px;
     color: #FFFFFF;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
+    /* Reduced margin */
 }
 
 .venting-banner-figma .figma-description {
@@ -816,7 +822,8 @@ a {
     line-height: 1.5;
     letter-spacing: -0.5px;
     color: #FFFFFF;
-    margin-bottom: 50px;
+    margin-bottom: 24px;
+    /* Reduced from 50px */
 }
 
 .btn-venting-banner {
