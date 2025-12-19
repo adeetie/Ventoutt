@@ -10,6 +10,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/ventoutt-base.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/service-pages.css">
     <link rel="stylesheet" href="css/chatbot.css">
@@ -17,21 +19,24 @@
 </head>
 
 <body>
-    <!-- Hero Section with Navigation -->
-    <section class="service-hero" style="background-image: url('therapy_hero.png');">
-        <header class="service-nav">
+    <!-- Header Section (Wrapper for background color) -->
+    <div class="service-nav-wrapper">
+        <header class="service-nav nav-solid" style="position: relative; background: transparent;">
             <div class="logo-container">
                 <span class="logo-text">V</span>
             </div>
             <div class="service-nav-links">
                 <a href="index.html">Home</a>
                 <div class="nav-dropdown">
-                    <button class="nav-dropdown-btn">
-                        Services
-                        <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
-                            <path d="M1 1L6 6L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
+                    <div class="nav-split-btn">
+                        <a href="services.html" class="nav-split-link">Services</a>
+                        <button class="nav-split-toggle" aria-label="Toggle Services Menu">
+                            <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
                     <div class="nav-dropdown-menu">
                         <a href="therapy.html">Therapy</a>
                         <a href="venting.html">Venting</a>
@@ -56,21 +61,26 @@
                 Log In
             </div>
         </header>
+    </div>
+
+    <!-- Hero Illustration Banner -->
+    <section class="service-img-banner">
+        <img src="therapy_hero.png" alt="Therapy Session Illustration">
     </section>
 
-    <!-- Hero Content -->
-    <section class="service-hero-content">
-        <h1 class="service-hero-title">Healing That Begins with Just One Conversation</h1>
-        <p class="service-hero-subtitle">
+    <!-- Hero Text Content -->
+    <section class="service-text-content-wrapper">
+        <h1 class="service-hero-title-dark">Healing That Begins with Just One Conversation</h1>
+        <p class="service-hero-subtitle-dark">
             Whether you're navigating teenage confusion, personal setbacks, or simply need someone to talk to, we're
             here for you.
             Get matched with a professional therapist in under 24 hours. Therapy that fits your pace, schedule, and
             comfort,
             now exclusively on the Ventoutt app.
         </p>
-        <div class="service-hero-buttons">
-            <a href="#" class="btn-download">Download App on iOS</a>
-            <a href="#" class="btn-download" style="background: #212121;">Download App on Google Play</a>
+        <div class="service-hero-buttons-col">
+            <a href="#" class="btn-green-download">Download App on iOS</a>
+            <a href="#" class="btn-green-download">Download App on Google Play</a>
         </div>
     </section>
 
@@ -144,61 +154,605 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="service-pricing">
-        <h2 class="pricing-title">Transparent Pricing, Real Help</h2>
-        <p class="pricing-subtitle">Whether you're just starting or continuing your healing journey, our plans are built
-            to support you.</p>
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <h2 class="testimonials-title">What Our Users Say</h2>
 
-        <table class="pricing-table">
-            <thead>
-                <tr>
-                    <th class="plan-col">Plan</th>
-                    <th class="price-col">Price</th>
-                    <th class="details-col">Details</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="plan-col">🧑‍⚕️ Single Therapy Session</td>
-                    <td class="price-col">₹999–₹1200</td>
-                    <td class="details-col">One 1:1 video session with therapist</td>
-                </tr>
-                <tr>
-                    <td class="plan-col">💬 First 50 Texts</td>
-                    <td class="price-col">FREE</td>
-                    <td class="details-col">Text-based support with therapist</td>
-                </tr>
-                <tr>
-                    <td class="plan-col">🧠 Therapy Pack (4x)</td>
-                    <td class="price-col">₹4000</td>
-                    <td class="details-col">Save more with bundled sessions</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+        <div class="carousel-wrapper">
+            <div class="carousel-track">
+                <!-- GROUP A (source of truth) -->
+                <div class="card orange">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"
+                            alt="Emma avatar" />
+                        Emma, England
+                    </div>
+                    <p>Ventoutt is my go-to place when I need to vent. The anonymous chat feature allows me to express
+                        my feelings freely without judgment. It's incredible how talking to strangers online has helped
+                        me manage my stress and anxiety.</p>
+                </div>
 
-    <!-- App Offer Section -->
-    <section class="service-app-offer">
-        <p class="app-offer-note">App-exclusive offers and discounts apply automatically when you download.</p>
-        <a href="#" class="app-offer-link">[Download to Get Started]</a>
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/bEA_lVQtXGo?enablejsapi=1"
+                            title="Ewa video testimonial"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="location">Ewa, France</div>
+                </div>
 
-        <h3 class="app-offer-title">🎉 App-Only Offer:</h3>
-        <ul class="app-offer-list">
-            <li>First 50 texts completely free</li>
-            <li>15% OFF your first video session</li>
-            <li>Exclusive access to group sessions & workshops</li>
-        </ul>
-    </section>
+                <div class="card orange yellow">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
+                            alt="Sarah avatar" />
+                        Sarah M., USA
+                    </div>
+                    <p>I was honestly really unsure about trying online therapy at first especially with a therapist
+                        from another country. But honestly, my therapist was amazing. They were there 24/7 whenever I
+                        needed support, and the cost was something I could actually afford.</p>
+                </div>
 
-    <!-- Support Section -->
-    <section class="service-support">
-        <h2 class="support-title">You're not alone in this.</h2>
-        <p class="support-text">
-            We know it's hard to open up, especially when everything feels overwhelming or nobody seems to get it.
-            But even one small conversation can make a difference. Whether you want to vent, reflect, or heal,
-            this space is yours. Whenever you're ready, we're here to listen.
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/wS1ljs6nQX0?enablejsapi=1"
+                            title="Iya video testimonial"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="location">Iya, Bosnia and Herzegovina</div>
+                </div>
+
+                <div class="card orange green">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80"
+                            alt="Jennifer avatar" />
+                        Jennifer R., USA
+                    </div>
+                    <p>I struggled with anxiety for years and was skeptical about finding the right support. Then I
+                        connected with my therapist, and everything shifted. They really understood what I was going
+                        through, made me feel heard, and gave me tools that actually worked in my daily life.</p>
+                </div>
+
+                <!-- GROUP B (exact duplicate for seamless loop) -->
+                <div class="card orange">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"
+                            alt="Emma avatar" />
+                        Emma, England
+                    </div>
+                    <p>Ventoutt is my go-to place when I need to vent. The anonymous chat feature allows me to express
+                        my feelings freely without judgment. It's incredible how talking to strangers online has helped
+                        me manage my stress and anxiety.</p>
+                </div>
+
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/bEA_lVQtXGo?enablejsapi=1"
+                            title="Ewa video testimonial"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="location">Ewa, France</div>
+                </div>
+
+                <div class="card orange yellow">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
+                            alt="Sarah avatar" />
+                        Sarah M., USA
+                    </div>
+                    <p>I was honestly really unsure about trying online therapy at first especially with a therapist
+                        from another country. But honestly, my therapist was amazing. They were there 24/7 whenever I
+                        needed support, and the cost was something I could actually afford.</p>
+                </div>
+
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/wS1ljs6nQX0?enablejsapi=1"
+                            title="Iya video testimonial"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="location">Iya, Bosnia and Herzegovina</div>
+                </div>
+
+                <div class="card orange green">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80"
+                            alt="Jennifer avatar" />
+                        Jennifer R., USA
+                    </div>
+                    <p>I struggled with anxiety for years and was skeptical about finding the right support. Then I
+                        connected with my therapist, and everything shifted. They really understood what I was going
+                        through, made me feel heard, and gave me tools that actually worked in my daily life.</p>
+                </div>
+            </div>
+        </div>
+
+        <p style="text-align:center; color:#999; font-size:0.8rem; margin-top:10px;">
+            💡 Tip: Click on any card to pause the carousel.
         </p>
+    </section>
+
+    <!-- Meet Our Experts Section -->
+    <section class="experts-section">
+        <div class="experts-container">
+            <div>
+                <div class="experts-header">
+                    <div class="experts-label">MEET OUR EXPERTS</div>
+                    <h2 class="experts-title">Caring & Expert Members</h2>
+                </div>
+                <div class="experts-grid">
+                    <div class="expert-card">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
+                            alt="Pulkita W." class="expert-photo">
+                        <div class="expert-rating"><span class="star">★</span>
+                            <div class="score">4.9</div><span class="score-label">score</span>
+                        </div>
+                        <div class="expert-info-box">
+                            <div class="expert-name">Pulkita W.</div>
+                            <div class="expert-title">Psychoanalytic Therapist</div>
+                            <div class="expert-details">
+                                <div class="detail-credentials">Masters Psychology | Psychoanalytic Fellowship
+                                    (Washington–Baltimore, USA)</div>
+                                <div class="detail-expertise"><strong>Specialized Expertise:</strong>
+                                    <ul>
+                                        <li>Psychoanalytic Therapy</li>
+                                        <li>Sexual & Identity Issues</li>
+                                        <li>Family Systems Therapy</li>
+                                        <li>Career-Related Stress</li>
+                                        <li>Deep Psychological Exploration</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-meta"><strong>USA-trained psychoanalyst</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="expert-card">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
+                            alt="Muskan K." class="expert-photo">
+                        <div class="expert-rating"><span class="star">★</span>
+                            <div class="score">4.7</div><span class="score-label">score</span>
+                        </div>
+                        <div class="expert-info-box">
+                            <div class="expert-name">Muskan K.</div>
+                            <div class="expert-title">CBT & Couples Counselor</div>
+                            <div class="expert-details">
+                                <div class="detail-expertise"><strong>Specialized Expertise:</strong>
+                                    <ul>
+                                        <li>Solution-Focused Brief Therapy</li>
+                                        <li>Cognitive Behavioral Therapy (CBT)</li>
+                                        <li>Couples & Relationship Counseling</li>
+                                        <li>Goal-Oriented Treatment Plans</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-meta"><strong>90% satisfaction rate with North American
+                                        clients</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="experts-grid">
+                    <div class="expert-card">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80" alt="Nishi"
+                            class="expert-photo">
+                        <div class="expert-rating"><span class="star">★</span>
+                            <div class="score">4.5</div><span class="score-label">score</span>
+                        </div>
+                        <div class="expert-info-box">
+                            <div class="expert-name">Nishi</div>
+                            <div class="expert-title">Clinical Psychiatrist</div>
+                            <div class="expert-details">
+                                <div class="detail-credentials">MSc Clinical Psychology (Neuropsychology Specialist)
+                                </div>
+                                <div class="detail-expertise"><strong>Specialized Expertise:</strong>
+                                    <ul>
+                                        <li>LGBTQ+ Affirming Therapy</li>
+                                        <li>Adolescent & Childhood Trauma</li>
+                                        <li>Grief & Loss Counseling</li>
+                                        <li>Phobias & OCD Treatment</li>
+                                        <li>Identity Exploration & Body Image</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-meta"><strong>3+ years serving US clients</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="expert-card">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
+                            alt="Dr. Sarah M." class="expert-photo">
+                        <div class="expert-rating"><span class="star">★</span>
+                            <div class="score">4.8</div><span class="score-label">score</span>
+                        </div>
+                        <div class="expert-info-box">
+                            <div class="expert-name">Dr. Sarah M.</div>
+                            <div class="expert-title">Clinical Psychiatrist</div>
+                            <div class="expert-details">
+                                <div class="detail-credentials">Clinical Psychiatrist</div>
+                                <div class="detail-expertise"><strong>Specialized Expertise:</strong>
+                                    <ul>
+                                        <li>Anxiety & Depression Treatment</li>
+                                        <li>Stress Management</li>
+                                        <li>Mindfulness-Based Therapy</li>
+                                        <li>Emotional Regulation</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-meta"><strong>Certified mental health professional</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="experts-content">
+                    <p class="experts-description">Our team consists of compassionate and skilled professionals
+                        dedicated to providing personalized support and effective solutions for your well-being.</p>
+                    <a href="#" class="btn-learn-more">Learn More <span class="arrow">→</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <!-- Comparison Section (Redesigned) -->
+    <section class="comparison-section">
+        <div style="text-align: center; margin-bottom: 60px; padding: 0 20px;">
+            <h2 style="font-family: 'DM Serif Display', serif; font-size: 48px; margin-bottom: 10px; color: #212121;">
+                Find Your Right Fit</h2>
+            <p style="color: #666; font-size: 1.1rem; font-family: 'DM Sans', sans-serif;">Every path is valid. Choose
+                what helps you today.</p>
+        </div>
+        <div class="comparison-wrapper">
+            <div class="comparison-grid">
+                <!-- Venting Card -->
+                <div class="comp-card">
+                    <div class="comp-header">
+                        <h3 class="comp-title">Venting</h3>
+                        <div class="comp-role">Empathetic Listeners</div>
+                    </div>
+                    <div class="comp-investment">Low Cost ($)</div>
+                    <ul class="comp-features-list">
+                        <li><span class="comp-check">✓</span> <span><strong>Goal:</strong> Instant Relief</span></li>
+                        <li><span class="comp-check">✓</span> <span><strong>Focus:</strong> "Feeling Heard"</span></li>
+                        <li><span class="comp-check">✓</span> <span><strong>Availability:</strong> Instant Access</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn-comp">Start Chat</a>
+                </div>
+
+                <!-- Coaching Card (Featured) -->
+                <div class="comp-card featured">
+                    <div class="comp-header">
+                        <h3 class="comp-title">Coaching</h3>
+                        <div class="comp-role">Qualified Psychologists</div>
+                        <div
+                            style="font-size: 12px; text-transform: uppercase; background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 20px; display: inline-block;">
+                            Most Popular</div>
+                    </div>
+                    <div class="comp-investment">Affordable ($$)</div>
+                    <ul class="comp-features-list">
+                        <li><span class="comp-check">✓</span> <span><strong>Goal:</strong> Growth & Action Plans</span>
+                        </li>
+                        <li><span class="comp-check">✓</span> <span><strong>Focus:</strong> "Building Skills"</span>
+                        </li>
+                        <li><span class="comp-check">✓</span> <span><strong>Availability:</strong> Same-Day
+                                Priority</span></li>
+                    </ul>
+                    <a href="#" class="btn-comp">Get Matched</a>
+                </div>
+
+                <!-- Therapy Card -->
+                <div class="comp-card">
+                    <div class="comp-header">
+                        <h3 class="comp-title">Therapy</h3>
+                        <div class="comp-role">Licensed Clinicians</div>
+                    </div>
+                    <div class="comp-investment">Premium ($$$$)</div>
+                    <ul class="comp-features-list">
+                        <li><span class="comp-check">✓</span> <span><strong>Goal:</strong> Medical Diagnosis</span></li>
+                        <li><span class="comp-check">✓</span> <span><strong>Focus:</strong> "Deep Healing"</span></li>
+                        <li><span class="comp-check">✓</span> <span><strong>Availability:</strong> By Appointment</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn-comp">Join Waitlist</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works-section">
+        <h2 class="how-it-works-title">How It Works</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">Step 1</div>
+                <div class="step-description">Pick what you need - a full therapy session or a quick vent.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">Step 2</div>
+                <div class="step-description">Choose your listener or therapist from the list.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">Step 3</div>
+                <div class="step-description">Select a time that works for you.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">Step 4</div>
+                <div class="step-description">Pay securely and get your session link via email.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">Step 5</div>
+                <div class="step-description">Talk it out. Feel lighter. Share how it went</div>
+            </div>
+        </div>
+        <div style="text-align: center;"><a href="services.html" class="btn-hero">Learn More</a></div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <h2 class="testimonials-title">What Our Users Say</h2>
+
+        <div class="carousel-wrapper">
+            <div class="carousel-track">
+                <!-- GROUP A (source of truth) -->
+                <div class="card orange">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"
+                            alt="Emma avatar" />
+                        Emma, England
+                    </div>
+                    <p>Ventoutt is my go-to place when I need to vent. The anonymous chat feature allows me to express
+                        my feelings freely without judgment. It's incredible how talking to strangers online has helped
+                        me manage my stress and anxiety.</p>
+                </div>
+
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/bEA_lVQtXGo?enablejsapi=1"
+                            title="Ewa video testimonial"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="location">Ewa, France</div>
+                </div>
+
+                <div class="card orange yellow">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
+                            alt="Sarah avatar" />
+                        Sarah M., USA
+                    </div>
+                    <p>I was honestly really unsure about trying online therapy at first especially with a therapist
+                        from another country. But honestly, my therapist was amazing. They were there 24/7 whenever I
+                        needed support, and the cost was something I could actually afford.</p>
+                </div>
+
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/wS1ljs6nQX0?enablejsapi=1"
+                            title="Iya video testimonial"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="location">Iya, Bosnia and Herzegovina</div>
+                </div>
+
+                <div class="card orange green">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80"
+                            alt="Jennifer avatar" />
+                        Jennifer R., USA
+                    </div>
+                    <p>I struggled with anxiety for years and was skeptical about finding the right support. Then I
+                        connected with my therapist, and everything shifted. They really understood what I was going
+                        through, made me feel heard, and gave me tools that actually worked in my daily life.</p>
+                </div>
+
+                <!-- GROUP B (exact duplicate for seamless loop) -->
+                <div class="card orange">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"
+                            alt="Emma avatar" />
+                        Emma, England
+                    </div>
+                    <p>Ventoutt is my go-to place when I need to vent. The anonymous chat feature allows me to express
+                        my feelings freely without judgment. It's incredible how talking to strangers online has helped
+                        me manage my stress and anxiety.</p>
+                </div>
+
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/bEA_lVQtXGo?enablejsapi=1"
+                            title="Ewa video testimonial"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="location">Ewa, France</div>
+                </div>
+
+                <div class="card orange yellow">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
+                            alt="Sarah avatar" />
+                        Sarah M., USA
+                    </div>
+                    <p>I was honestly really unsure about trying online therapy at first especially with a therapist
+                        from another country. But honestly, my therapist was amazing. They were there 24/7 whenever I
+                        needed support, and the cost was something I could actually afford.</p>
+                </div>
+
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/wS1ljs6nQX0?enablejsapi=1"
+                            title="Iya video testimonial"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="location">Iya, Bosnia and Herzegovina</div>
+                </div>
+
+                <div class="card orange green">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80"
+                            alt="Jennifer avatar" />
+                        Jennifer R., USA
+                    </div>
+                    <p>I struggled with anxiety for years and was skeptical about finding the right support. Then I
+                        connected with my therapist, and everything shifted. They really understood what I was going
+                        through, made me feel heard, and gave me tools that actually worked in my daily life.</p>
+                </div>
+            </div>
+        </div>
+
+        <p style="text-align:center; color:#999; font-size:0.8rem; margin-top:10px;">
+            💡 Tip: Click on any card to pause the carousel.
+        </p>
+    </section>
+
+    <!-- Related Blogs Section -->
+    <section class="related-blogs-section">
+        <h2 class="specializations-title">Related Blogs</h2>
+        <div class="blogs-grid">
+            <!-- Blog 1 -->
+            <div class="blog-card">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">Temper</span>
+                    <h3 class="blog-title">Understanding and Managing Temper Issues</h3>
+                    <a href="#" class="blog-link">Read More</a>
+                </div>
+            </div>
+            <!-- Blog 2 -->
+            <div class="blog-card">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">ADHD-C</span>
+                    <h3 class="blog-title">Living with ADHD-C: Strategies for Success</h3>
+                    <a href="#" class="blog-link">Read More</a>
+                </div>
+            </div>
+            <!-- Blog 3 -->
+            <div class="blog-card">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">Anxious-Avoidant</span>
+                    <h3 class="blog-title">Navigating Anxious-Avoidant Attachment Styles</h3>
+                    <a href="#" class="blog-link">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2 class="specializations-title">Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <details class="faq-item">
+                <summary>Is venting safe?</summary>
+                <p>Yes, venting is safe. We prioritize your privacy and anonymity.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Who are your coaches?</summary>
+                <p>Our coaches are trained professionals with experience in various fields of mental health.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is this therapy?</summary>
+                <p>No, venting and coaching are not replacements for clinical therapy, but they can be a great first
+                    step.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Will my chats stay private?</summary>
+                <p>Absolutely. All chats are confidential and anonymous.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Are your psychologists licensed?</summary>
+                <p>Yes, all our therapists and psychologists are licensed professionals.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Can I stay anonymous?</summary>
+                <p>Yes, you can choose to remain anonymous during your sessions.</p>
+            </details>
+        </div>
+    </section>
+    <!-- Venting Banner (Figma Match) -->
+    <section class="venting-banner-figma">
+        <div class="figma-container">
+            <!-- Left: Content -->
+            <div class="content-wrapper">
+                <h2 class="figma-title">You're not alone in this.</h2>
+                <div class="figma-description">
+                    <p>We know it's hard to open up, especially when everything feels overwhelming or nobody seems to
+                        get it.
+                        But even one small conversation can make a difference. Whether you want to vent, reflect, or
+                        heal,
+                        this space is yours. Whenever you're ready, we're here to listen.</p>
+                </div>
+                <!-- Button from Image: Talk to Our Chatbot -->
+                <a href="#" class="btn-venting-banner">Talk to Our Chatbot</a>
+            </div>
+
+            <!-- Right: Graphics Layer -->
+            <div class="graphics-wrapper">
+                <!-- Image Container (Slideshow) positioned relatively -->
+                <div class="image-frame">
+                    <!-- Slideshow logic -->
+                    <div class="banner-slideshow-inner">
+                        <!-- Using uploaded_image_0 as Variant 1 placeholder, and the found variants 2 and 3 -->
+                        <div class="blob-slide active" style="background-image: url('Property 1=Default (1).png');">
+                        </div>
+                        <div class="blob-slide" style="background-image: url('Property 1=Variant2 (1).png');"></div>
+                        <div class="blob-slide" style="background-image: url('Property 1=Variant3 (1).png');"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const figmaSlides = document.querySelectorAll('.venting-banner-figma .blob-slide');
+                if (figmaSlides.length > 0) {
+                    let cur = 0;
+                    setInterval(() => {
+                        figmaSlides[cur].classList.remove('active');
+                        cur = (cur + 1) % figmaSlides.length;
+                        figmaSlides[cur].classList.add('active');
+                    }, 4000);
+                }
+            });
+        </script>
+    </section>
+    <!-- Specializations -->
+    <section class="specializations-section">
+        <h2 class="specializations-title">What We Specialize In</h2>
+        <p class="specializations-subtitle">Our therapists support you through every phase of life. Here's what we
+            specialize in.</p>
+        <div class="specializations-grid">
+            <div class="specialization-card">
+                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
+                <div class="specialization-label">Relationship & Family</div>
+            </div>
+            <div class="specialization-card">
+                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
+                <div class="specialization-label">Individual well-being</div>
+            </div>
+            <div class="specialization-card">
+                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
+                <div class="specialization-label">Life Transitions & Transitions</div>
+            </div>
+            <div class="specialization-card">
+                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
+                <div class="specialization-label">Telehealth & Virtual Therapy</div>
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -260,12 +814,13 @@
     <script src="js/popup-scroll.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const navDropdownBtns = document.querySelectorAll('.nav-dropdown-btn');
-            
-            navDropdownBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
+            const navSplitToggles = document.querySelectorAll('.nav-split-toggle');
+
+            navSplitToggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const dropdown = btn.closest('.nav-dropdown');
+                    e.stopPropagation();
+                    const dropdown = toggle.closest('.nav-dropdown');
                     dropdown.classList.toggle('active');
                 });
             });

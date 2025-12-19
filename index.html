@@ -507,7 +507,7 @@
 
         .feature-card {
             background: white;
-            border: 3px solid var(--primary-orange);
+            /* border: 3px solid var(--primary-orange); */
             border-radius: 40px;
             padding: 40px;
             /* Reduced padding for compact look */
@@ -523,7 +523,7 @@
             position: sticky;
             top: 120px;
             /* Base sticky position */
-            box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.08);
+            /* box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.08); */
             transition: transform 0.3s ease;
             box-sizing: border-box;
             background-clip: padding-box;
@@ -650,282 +650,7 @@
             }
         }
 
-        /* Experts Section */
-        .experts-section {
-            background: white;
-            padding: 80px 0;
-        }
 
-        .experts-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-
-        .experts-header {
-            margin-bottom: 40px;
-        }
-
-        .experts-label {
-            font-family: var(--font-body);
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            color: var(--primary-orange);
-            margin-bottom: 12px;
-        }
-
-        .experts-title {
-            font-family: var(--font-heading);
-            font-size: 48px;
-            line-height: 1.2;
-            color: var(--dark-gray);
-        }
-
-        .experts-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .expert-card {
-            background: #EAE4DC;
-            /* Fallback beige */
-            border-radius: 32px;
-            /* Smooth large radius */
-            height: 480px;
-            /* Taller card */
-            position: relative;
-            overflow: hidden;
-            padding: 0 !important;
-            /* Force no padding */
-            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-            cursor: pointer;
-            display: block;
-            /* Ensure block layout */
-        }
-
-        .expert-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .expert-photo {
-            position: absolute !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: cover !important;
-            z-index: 1 !important;
-            margin: 0 !important;
-            border-radius: 0 !important;
-            /* Inherit from card overflow hidden */
-            max-width: none !important;
-            max-height: none !important;
-        }
-
-        /* Rating Badge */
-        .expert-rating {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            background: white;
-            border-radius: 16px;
-            padding: 8px 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-            z-index: 3;
-            min-width: 60px;
-        }
-
-        .expert-rating .star {
-            color: var(--accent-yellow);
-            font-size: 14px;
-            margin-bottom: 2px;
-        }
-
-        .expert-rating .score {
-            font-family: var(--font-heading);
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--dark-gray);
-            line-height: 1;
-        }
-
-        .expert-rating .score-label {
-            font-family: var(--font-body);
-            font-size: 10px;
-            font-weight: 500;
-            color: #999;
-            margin-top: 2px;
-        }
-
-        /* Hanging Info Block (White Box) */
-        .expert-info-box {
-            position: absolute;
-            bottom: 24px;
-            left: 24px;
-            right: 24px;
-            background: white;
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
-            z-index: 3;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .expert-name {
-            font-family: var(--font-heading);
-            font-size: 26px;
-            color: var(--dark-gray);
-            margin-bottom: 4px;
-        }
-
-        .expert-title {
-            font-family: var(--font-body);
-            font-size: 15px;
-            color: #666;
-            font-weight: 500;
-        }
-
-        /* Hover Overlay Logic */
-        .expert-details {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            transform: translateY(100%);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border-radius: 32px 32px 0 0;
-            max-height: 80%;
-            overflow-y: auto;
-            z-index: 4;
-            /* Above info box */
-        }
-
-        .expert-card:hover .expert-details {
-            transform: translateY(0);
-        }
-
-        .detail-name {
-            font-family: var(--font-heading);
-            font-size: 22px;
-            color: var(--dark-gray);
-            margin-bottom: 8px;
-        }
-
-        .detail-credentials {
-            font-family: var(--font-body);
-            font-size: 13px;
-            color: var(--dark-gray);
-            margin-bottom: 16px;
-            line-height: 1.5;
-        }
-
-        .detail-expertise {
-            margin-bottom: 12px;
-        }
-
-        .detail-expertise strong {
-            font-family: var(--font-body);
-            font-size: 14px;
-            color: var(--dark-gray);
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .detail-expertise ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .detail-expertise li {
-            font-family: var(--font-body);
-            font-size: 13px;
-            color: var(--dark-gray);
-            padding-left: 16px;
-            position: relative;
-            margin-bottom: 4px;
-        }
-
-        .detail-expertise li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--primary-orange);
-        }
-
-        .detail-meta {
-            font-family: var(--font-body);
-            font-size: 12px;
-            color: var(--dark-gray);
-            font-style: italic;
-        }
-
-        .experts-content {
-            margin-top: 40px;
-        }
-
-        .experts-description {
-            font-family: var(--font-body);
-            font-size: 16px;
-            line-height: 1.7;
-            color: var(--dark-gray);
-            margin-bottom: 24px;
-        }
-
-        .btn-learn-more {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: var(--font-body);
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--dark-gray);
-            text-decoration: none;
-            border: 2px solid var(--dark-gray);
-            padding: 12px 24px;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-learn-more:hover {
-            background: var(--dark-gray);
-            color: white;
-        }
-
-        .btn-learn-more .arrow {
-            transition: transform 0.3s ease;
-        }
-
-        .btn-learn-more:hover .arrow {
-            transform: translateX(4px);
-        }
-
-        @media (max-width: 968px) {
-            .experts-container {
-                grid-template-columns: 1fr;
-            }
-
-            .experts-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .experts-title {
-                font-size: 36px;
-            }
-        }
 
         /* Comparison Table - Benefit First */
         .comparison-section {
@@ -1297,18 +1022,25 @@
         }
 
         .expert-card {
-            background: linear-gradient(135deg, #E8E8E8 0%, #D5D5D5 100%);
+            background: #f0f0f0;
             border-radius: 20px;
-            padding: 30px 25px 25px;
             position: relative;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease;
+            height: 450px;
             overflow: hidden;
             cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
         .expert-card:hover {
             transform: translateY(-5px);
+        }
+
+        .expert-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .expert-rating {
@@ -1319,138 +1051,123 @@
             border-radius: 12px;
             padding: 8px 12px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 5px;
-            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             z-index: 2;
         }
 
         .expert-rating .star {
             color: #FFB800;
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .expert-rating .score {
-            font-family: var(--font-body);
-            font-size: 20px;
             font-weight: 700;
-            color: var(--dark-gray);
-            line-height: 1;
+            font-size: 18px;
+            color: #333;
         }
 
         .expert-rating .score-label {
-            font-family: var(--font-body);
-            font-size: 11px;
+            font-size: 10px;
             color: #666;
-            display: block;
-            margin-top: 2px;
+            text-transform: uppercase;
         }
 
-        .expert-photo {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 20px;
+        .expert-info-box {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            z-index: 3;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            /* Only animate properties that don't conflict with child expansion */
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .expert-card:hover .expert-info-box {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
         .expert-name {
             font-family: var(--font-body);
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
-            color: var(--dark-gray);
-            margin-bottom: 5px;
+            color: #333;
             text-align: center;
+            margin: 0;
         }
 
         .expert-title {
             font-family: var(--font-body);
-            font-size: 15px;
-            font-weight: 400;
+            font-size: 14px;
             color: #666;
-            text-align: center;
-        }
-
-        /* Hover Details Overlay */
-        .expert-details {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.98);
-            padding: 25px 20px;
-            border-radius: 0 0 20px 20px;
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
-            z-index: 3;
-        }
-
-        .expert-card:hover .expert-details {
-            transform: translateY(0);
-        }
-
-        .expert-details .detail-name {
-            font-family: var(--font-body);
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--dark-gray);
             text-align: center;
             margin-bottom: 5px;
         }
 
-        .expert-details .detail-title {
-            font-family: var(--font-body);
-            font-size: 14px;
-            font-weight: 400;
-            color: #666;
+        .expert-details {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            /* Transition max-height and opacity for smooth accordion effect */
+            transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out, padding 0.4s ease;
+            padding-top: 0;
+        }
+
+        .expert-card:hover .expert-details {
+            max-height: 400px;
+            /* Sufficient height to show content */
+            opacity: 1;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .detail-credentials {
+            font-size: 12px;
+            color: #555;
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            font-style: italic;
         }
 
-        .expert-details .detail-phone {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-family: var(--font-body);
-            font-size: 14px;
-            color: var(--dark-gray);
-            margin-bottom: 15px;
+        .detail-expertise {
+            font-size: 13px;
+            color: #333;
+            text-align: left;
         }
 
-        .expert-details .detail-phone svg {
-            width: 16px;
-            height: 16px;
+        .detail-expertise strong {
+            display: block;
+            margin-bottom: 5px;
         }
 
-        .expert-social {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
+        .detail-expertise ul {
+            padding-left: 20px;
+            margin: 0;
         }
 
-        .expert-social a {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--dark-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
+        .detail-expertise li {
+            margin-bottom: 3px;
         }
 
-        .expert-social a:hover {
-            background: var(--primary-orange);
-            transform: scale(1.1);
+        .detail-meta {
+            font-size: 11px;
+            color: #888;
+            text-align: center;
+            margin-top: 10px;
+            border-top: 1px solid #eee;
+            padding-top: 5px;
         }
 
-        .expert-social svg {
-            width: 18px;
-            height: 18px;
-            fill: white;
+        .detail-name {
+            display: none;
         }
 
         .experts-content {
@@ -1520,6 +1237,114 @@
                 height: 320px;
             }
         }
+
+        /* Related Blogs Section */
+        .related-blogs-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .blogs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+
+        .blog-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .blog-image {
+            height: 200px;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-tag {
+            display: inline-block;
+            background: #F57F17;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .blog-title {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+
+        .blog-link {
+            color: #F57F17;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 20px;
+            background: #f9f9f9;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 40px auto 0;
+        }
+
+        .faq-item {
+            background: #fff;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .faq-item summary {
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            list-style: none;
+            position: relative;
+            font-family: var(--font-heading);
+            font-size: 18px;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            font-size: 20px;
+            color: #F57F17;
+        }
+
+        .faq-item[open] summary::after {
+            content: '-';
+        }
+
+        .faq-item p {
+            padding: 0 20px 20px;
+            color: #666;
+            line-height: 1.6;
+            font-family: var(--font-body);
+        }
     </style>
 </head>
 
@@ -1528,6 +1353,7 @@
     <style>
         /* Mobile Styles */
         @media (max-width: 768px) {
+
             /* Hero Title Fluid scaling */
             .hero-title {
                 font-size: clamp(32px, 8vw, 64px) !important;
@@ -1577,12 +1403,15 @@
         <div class="service-nav-links">
             <a href="index.html">Home</a>
             <div class="nav-dropdown">
-                <button class="nav-dropdown-btn">
-                    Services
-                    <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
-                        <path d="M1 1L6 6L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
+                <div class="nav-split-btn">
+                    <a href="services.html" class="nav-split-link">Services</a>
+                    <button class="nav-split-toggle" aria-label="Toggle Services Menu">
+                        <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                            <path d="M1 1L6 6L11 1" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
                 <div class="nav-dropdown-menu">
                     <a href="therapy.html">Therapy</a>
                     <a href="venting.html">Venting</a>
@@ -2736,258 +2565,185 @@
     <!-- Meet Our Experts Section -->
     <section class="experts-section">
         <div class="experts-container">
-            <!-- Left Side: Header and Grid -->
             <div>
                 <div class="experts-header">
                     <div class="experts-label">MEET OUR EXPERTS</div>
                     <h2 class="experts-title">Caring & Expert Members</h2>
                 </div>
-
                 <div class="experts-grid">
-                    <!-- Expert Card 1: Pulkita W. -->
                     <div class="expert-card">
                         <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
                             alt="Pulkita W." class="expert-photo">
-
+                        <div class="expert-rating"><span class="star">★</span>
+                            <div class="score">4.9</div><span class="score-label">score</span>
+                        </div>
                         <div class="expert-info-box">
                             <div class="expert-name">Pulkita W.</div>
                             <div class="expert-title">Psychoanalytic Therapist</div>
-                        </div>
-
-                        <div class="expert-rating">
-                            <span class="star">★</span>
-                            <div class="score">4.9</div>
-                            <span class="score-label">score</span>
-                        </div>
-
-                        <!-- Hover Details -->
-                        <div class="expert-details">
-                            <div class="detail-name">Pulkita W.</div>
-                            <div class="detail-credentials">Masters Psychology | Psychoanalytic Fellowship
-                                (Washington–Baltimore, USA)</div>
-                            <div class="detail-expertise">
-                                <strong>Specialized Expertise:</strong>
-                                <ul>
-                                    <li>Psychoanalytic Therapy</li>
-                                    <li>Sexual & Identity Issues</li>
-                                    <li>Family Systems Therapy</li>
-                                    <li>Career-Related Stress</li>
-                                    <li>Deep Psychological Exploration</li>
-                                </ul>
+                            <div class="expert-details">
+                                <div class="detail-credentials">Masters Psychology | Psychoanalytic Fellowship
+                                    (Washington–Baltimore, USA)</div>
+                                <div class="detail-expertise"><strong>Specialized Expertise:</strong>
+                                    <ul>
+                                        <li>Psychoanalytic Therapy</li>
+                                        <li>Sexual & Identity Issues</li>
+                                        <li>Family Systems Therapy</li>
+                                        <li>Career-Related Stress</li>
+                                        <li>Deep Psychological Exploration</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-meta"><strong>USA-trained psychoanalyst</strong></div>
                             </div>
-                            <div class="detail-meta"><strong>USA-trained psychoanalyst</strong></div>
                         </div>
                     </div>
-
-                    <!-- Expert Card 2: Muskan K. -->
                     <div class="expert-card">
                         <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
                             alt="Muskan K." class="expert-photo">
-
+                        <div class="expert-rating"><span class="star">★</span>
+                            <div class="score">4.7</div><span class="score-label">score</span>
+                        </div>
                         <div class="expert-info-box">
                             <div class="expert-name">Muskan K.</div>
                             <div class="expert-title">CBT & Couples Counselor</div>
-                        </div>
-
-                        <div class="expert-rating">
-                            <span class="star">★</span>
-                            <div class="score">4.7</div>
-                            <span class="score-label">score</span>
-                        </div>
-
-                        <!-- Hover Details -->
-                        <div class="expert-details">
-                            <div class="detail-name">Muskan K.</div>
-                            <div class="detail-expertise">
-                                <strong>Specialized Expertise:</strong>
-                                <ul>
-                                    <li>Solution-Focused Brief Therapy</li>
-                                    <li>Cognitive Behavioral Therapy (CBT)</li>
-                                    <li>Couples & Relationship Counseling</li>
-                                    <li>Goal-Oriented Treatment Plans</li>
-                                </ul>
-                            </div>
-                            <div class="detail-meta"><strong>90% satisfaction rate with North American clients</strong>
+                            <div class="expert-details">
+                                <div class="detail-expertise"><strong>Specialized Expertise:</strong>
+                                    <ul>
+                                        <li>Solution-Focused Brief Therapy</li>
+                                        <li>Cognitive Behavioral Therapy (CBT)</li>
+                                        <li>Couples & Relationship Counseling</li>
+                                        <li>Goal-Oriented Treatment Plans</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-meta"><strong>90% satisfaction rate with North American
+                                        clients</strong></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Right Side: Large Cards and Content -->
             <div>
                 <div class="experts-grid">
-                    <!-- Expert Card 3: Nishi -->
                     <div class="expert-card">
                         <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80" alt="Nishi"
                             class="expert-photo">
-
+                        <div class="expert-rating"><span class="star">★</span>
+                            <div class="score">4.5</div><span class="score-label">score</span>
+                        </div>
                         <div class="expert-info-box">
                             <div class="expert-name">Nishi</div>
                             <div class="expert-title">Clinical Psychiatrist</div>
-                        </div>
-
-                        <div class="expert-rating">
-                            <span class="star">★</span>
-                            <div class="score">4.5</div>
-                            <span class="score-label">score</span>
-                        </div>
-
-                        <!-- Hover Details -->
-                        <div class="expert-details">
-                            <div class="detail-name">Nishi</div>
-                            <div class="detail-credentials">MSc Clinical Psychology (Neuropsychology Specialist)</div>
-                            <div class="detail-expertise">
-                                <strong>Specialized Expertise:</strong>
-                                <ul>
-                                    <li>LGBTQ+ Affirming Therapy</li>
-                                    <li>Adolescent & Childhood Trauma</li>
-                                    <li>Grief & Loss Counseling</li>
-                                    <li>Phobias & OCD Treatment</li>
-                                    <li>Identity Exploration & Body Image</li>
-                                </ul>
+                            <div class="expert-details">
+                                <div class="detail-credentials">MSc Clinical Psychology (Neuropsychology Specialist)
+                                </div>
+                                <div class="detail-expertise"><strong>Specialized Expertise:</strong>
+                                    <ul>
+                                        <li>LGBTQ+ Affirming Therapy</li>
+                                        <li>Adolescent & Childhood Trauma</li>
+                                        <li>Grief & Loss Counseling</li>
+                                        <li>Phobias & OCD Treatment</li>
+                                        <li>Identity Exploration & Body Image</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-meta"><strong>3+ years serving US clients</strong></div>
                             </div>
-                            <div class="detail-meta"><strong>3+ years serving US clients</strong></div>
                         </div>
                     </div>
-
-                    <!-- Expert Card 4: Additional Therapist -->
                     <div class="expert-card">
                         <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
                             alt="Dr. Sarah M." class="expert-photo">
-
+                        <div class="expert-rating"><span class="star">★</span>
+                            <div class="score">4.8</div><span class="score-label">score</span>
+                        </div>
                         <div class="expert-info-box">
                             <div class="expert-name">Dr. Sarah M.</div>
                             <div class="expert-title">Clinical Psychiatrist</div>
-                        </div>
-
-                        <div class="expert-rating">
-                            <span class="star">★</span>
-                            <div class="score">4.8</div>
-                            <span class="score-label">score</span>
-                        </div>
-
-                        <!-- Hover Details -->
-                        <div class="expert-details">
-                            <div class="detail-name">Dr. Sarah M.</div>
-                            <div class="detail-credentials">Clinical Psychiatrist</div>
-                            <div class="detail-expertise">
-                                <strong>Specialized Expertise:</strong>
-                                <ul>
-                                    <li>Anxiety & Depression Treatment</li>
-                                    <li>Stress Management</li>
-                                    <li>Mindfulness-Based Therapy</li>
-                                    <li>Emotional Regulation</li>
-                                </ul>
+                            <div class="expert-details">
+                                <div class="detail-credentials">Clinical Psychiatrist</div>
+                                <div class="detail-expertise"><strong>Specialized Expertise:</strong>
+                                    <ul>
+                                        <li>Anxiety & Depression Treatment</li>
+                                        <li>Stress Management</li>
+                                        <li>Mindfulness-Based Therapy</li>
+                                        <li>Emotional Regulation</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-meta"><strong>Certified mental health professional</strong></div>
                             </div>
-                            <div class="detail-meta"><strong>Certified mental health professional</strong></div>
                         </div>
                     </div>
                 </div>
-
                 <div class="experts-content">
                     <p class="experts-description">Our team consists of compassionate and skilled professionals
                         dedicated to providing personalized support and effective solutions for your well-being.</p>
-                    <a href="#" class="btn-learn-more">
-                        Learn More
-                        <span class="arrow">→</span>
-                    </a>
+                    <a href="#" class="btn-learn-more">Learn More <span class="arrow">→</span></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Comparison Table -->
-    <!-- Comparison Table -->
+    <!-- Comparison Section (Redesigned) -->
     <section class="comparison-section">
-        <div style="text-align: center; margin-bottom: 40px; padding: 0 20px;">
+        <div style="text-align: center; margin-bottom: 60px; padding: 0 20px;">
             <h2 style="font-family: 'DM Serif Display', serif; font-size: 48px; margin-bottom: 10px; color: #212121;">
-                Find
-                Your Right Fit</h2>
+                Find Your Right Fit</h2>
             <p style="color: #666; font-size: 1.1rem; font-family: 'DM Sans', sans-serif;">Every path is valid. Choose
                 what helps you today.</p>
         </div>
-
         <div class="comparison-wrapper">
-            <table class="comp-table">
-                <thead>
-                    <tr>
-                        <th style="width: 20%;"></th>
-                        <th style="width: 25%; text-align: center;">
-                            <span style="font-size: 1.2rem; display: block; font-weight: 600;">Venting</span>
-                            <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.7;">Listeners</span>
-                        </th>
-                        <th class="col-coaching" style="width: 30%;">
-                            <span class="best-value-badge">Most Popular</span>
-                            <span style="font-size: 1.4rem; display: block; font-weight: 700;">Coaching</span>
-                            <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.9;">Psychologists</span>
-                        </th>
-                        <th style="width: 25%; text-align: center;">
-                            <span style="font-size: 1.2rem; display: block; font-weight: 600;">Therapy</span>
-                            <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.7;">Clinicians</span>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="feature-title">The Expert</td>
-                        <td style="text-align: center;">Empathetic Listener</td>
-                        <td class="col-coaching" style="text-align: center;">
-                            <span class="coaching-point">Qualified Psychologist</span>
-                        </td>
-                        <td style="text-align: center;">Licensed Doctor</td>
-                    </tr>
+            <div class="comparison-grid">
+                <!-- Venting Card -->
+                <div class="comp-card">
+                    <div class="comp-header">
+                        <h3 class="comp-title">Venting</h3>
+                        <div class="comp-role">Empathetic Listeners</div>
+                    </div>
+                    <div class="comp-investment">Low Cost ($)</div>
+                    <ul class="comp-features-list">
+                        <li><span class="comp-check">✓</span> <span><strong>Goal:</strong> Instant Relief</span></li>
+                        <li><span class="comp-check">✓</span> <span><strong>Focus:</strong> "Feeling Heard"</span></li>
+                        <li><span class="comp-check">✓</span> <span><strong>Availability:</strong> Instant Access</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn-comp">Start Chat</a>
+                </div>
 
-                    <tr>
-                        <td class="feature-title">Your Goal</td>
-                        <td style="text-align: center;">Instant Relief</td>
-                        <td class="col-coaching" style="text-align: center;">
-                            <span class="coaching-point">Growth & Action Plans</span>
-                        </td>
-                        <td style="text-align: center;">Medical Diagnosis</td>
-                    </tr>
+                <!-- Coaching Card (Featured) -->
+                <div class="comp-card featured">
+                    <div class="comp-header">
+                        <h3 class="comp-title">Coaching</h3>
+                        <div class="comp-role">Qualified Psychologists</div>
+                        <div
+                            style="font-size: 12px; text-transform: uppercase; background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 20px; display: inline-block;">
+                            Most Popular</div>
+                    </div>
+                    <div class="comp-investment">Affordable ($$)</div>
+                    <ul class="comp-features-list">
+                        <li><span class="comp-check">✓</span> <span><strong>Goal:</strong> Growth & Action Plans</span>
+                        </li>
+                        <li><span class="comp-check">✓</span> <span><strong>Focus:</strong> "Building Skills"</span>
+                        </li>
+                        <li><span class="comp-check">✓</span> <span><strong>Availability:</strong> Same-Day
+                                Priority</span></li>
+                    </ul>
+                    <a href="#" class="btn-comp">Get Matched</a>
+                </div>
 
-                    <tr>
-                        <td class="feature-title">The Focus</td>
-                        <td style="text-align: center;">"Feeling Heard"</td>
-                        <td class="col-coaching" style="text-align: center;">
-                            <span class="coaching-point">"Building Skills"</span>
-                        </td>
-                        <td style="text-align: center;">"Deep Healing"</td>
-                    </tr>
-
-                    <tr>
-                        <td class="feature-title">Availability</td>
-                        <td style="text-align: center;">Instant Access</td>
-                        <td class="col-coaching" style="text-align: center;">
-                            <span class="coaching-point">Same-Day Priority</span>
-                        </td>
-                        <td style="text-align: center;">By Appointment</td>
-                    </tr>
-
-                    <tr>
-                        <td class="feature-title">Investment</td>
-                        <td style="text-align: center;">Low Cost ($)</td>
-                        <td class="col-coaching" style="text-align: center;">
-                            <span class="coaching-point">Affordable ($$)</span>
-                        </td>
-                        <td style="text-align: center;">Premium ($$$$)</td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td style="text-align: center;">
-                            <a href="#" class="btn-select-table btn-vent-row">Start Chat</a>
-                        </td>
-                        <td class="col-coaching" style="text-align: center; padding-bottom: 25px;">
-                            <a href="#" class="btn-select-table btn-coach-row">Get Matched</a>
-                        </td>
-                        <td style="text-align: center;">
-                            <a href="#" class="btn-select-table btn-therapy-row">Join Waitlist</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                <!-- Therapy Card -->
+                <div class="comp-card">
+                    <div class="comp-header">
+                        <h3 class="comp-title">Therapy</h3>
+                        <div class="comp-role">Licensed Clinicians</div>
+                    </div>
+                    <div class="comp-investment">Premium ($$$$)</div>
+                    <ul class="comp-features-list">
+                        <li><span class="comp-check">✓</span> <span><strong>Goal:</strong> Medical Diagnosis</span></li>
+                        <li><span class="comp-check">✓</span> <span><strong>Focus:</strong> "Deep Healing"</span></li>
+                        <li><span class="comp-check">✓</span> <span><strong>Availability:</strong> By Appointment</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn-comp">Join Waitlist</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -3021,30 +2777,7 @@
         </div>
     </section>
 
-    <!-- Specializations -->
-    <section class="specializations-section">
-        <h2 class="specializations-title">What We Specialize In</h2>
-        <p class="specializations-subtitle">Our therapists support you through every phase of life. Here's what we
-            specialize in.</p>
-        <div class="specializations-grid">
-            <div class="specialization-card">
-                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
-                <div class="specialization-label">Relationship & Family</div>
-            </div>
-            <div class="specialization-card">
-                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
-                <div class="specialization-label">Individual well-being</div>
-            </div>
-            <div class="specialization-card">
-                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
-                <div class="specialization-label">Life Transitions & Transitions</div>
-            </div>
-            <div class="specialization-card">
-                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
-                <div class="specialization-label">Telehealth & Virtual Therapy</div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Partners -->
     <section class="partners-section">
@@ -3087,6 +2820,79 @@
                                     alt="Decoders logo" width="260" height="260" loading="lazy" decoding="async">
                             </a>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Therapists Profile Reverse Loop (New Section) -->
+        <div class="therapists-carousel-wrapper">
+            <div class="vt-therapists" aria-label="Therapist Profiles">
+                <div class="therapist-track" id="vtTherapistTrack">
+                    <!-- Card 1 -->
+                    <div class="therapist-card">
+                        <div class="therapist-content-left">
+                            <div class="therapist-info">
+                                <div class="therapist-profession">Clinical Psychologist</div>
+                                <h3 class="therapist-name">FRANCES GUERRERO</h3>
+                                <div class="therapist-specialization">
+                                    Learn, Support, Grow. <br>
+                                    Pursuing a master’s in psychology? Join us as an intern and gain real-time
+                                    experience.
+                                </div>
+                            </div>
+                            <a href="#" class="therapist-booking-btn">Apply as a Intern</a>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80"
+                            alt="Frances Guerrero" class="therapist-avatar">
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="therapist-card">
+                        <div class="therapist-content-left">
+                            <div class="therapist-info">
+                                <div class="therapist-profession">Intern</div>
+                                <h3 class="therapist-name">DENNIS BARRETT</h3>
+                                <div class="therapist-specialization">
+                                    Learn, Support, Grow. <br>
+                                    Gain mentorship and make a difference.
+                                </div>
+                            </div>
+                            <a href="#" class="therapist-booking-btn">Apply as a Intern</a>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80"
+                            alt="Dennis Barrett" class="therapist-avatar">
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="therapist-card">
+                        <div class="therapist-content-left">
+                            <div class="therapist-info">
+                                <div class="therapist-profession">Intern</div>
+                                <h3 class="therapist-name">LARRY LAWSON</h3>
+                                <div class="therapist-specialization">
+                                    Learn, Support, Grow. <br>
+                                    Learning directly from professionals.
+                                </div>
+                            </div>
+                            <a href="#" class="therapist-booking-btn">Apply as a Intern</a>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80"
+                            alt="Larry Lawson" class="therapist-avatar">
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="therapist-card">
+                        <div class="therapist-content-left">
+                            <div class="therapist-info">
+                                <div class="therapist-profession">Psychiatrist</div>
+                                <h3 class="therapist-name">SARAH JENKINS</h3>
+                                <div class="therapist-specialization">
+                                    Learn, Support, Grow.<br>
+                                    Specialized in Mood Disorders and ADHD.
+                                </div>
+                            </div>
+                            <a href="#" class="therapist-booking-btn">Apply as a Intern</a>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80"
+                            alt="Sarah Jenkins" class="therapist-avatar">
                     </div>
                 </div>
             </div>
@@ -3144,11 +2950,6 @@
                 overflow: hidden;
             }
 
-            /* Fix logos to white/bright for dark background if needed, 
-                   or keep as is if transparent. Assuming original images are usable. 
-                   If they are black logos, they might need 'filter: invert(1)' or similar.
-                */
-
             .vt-partners .logo-carousel {
                 --gap: 12px;
                 --speed: 100;
@@ -3197,104 +2998,330 @@
                 height: auto;
                 object-fit: contain;
             }
+
+            /* ===== Therapists Profile Carousel Styles ===== */
+            .therapists-carousel-wrapper {
+                margin-top: 80px;
+                width: 100%;
+                overflow: hidden;
+                position: relative;
+                padding: 40px 0;
+                /* Space for shadow */
+            }
+
+            /* Gradient Masks for Fade Effect */
+            .therapists-carousel-wrapper::before,
+            .therapists-carousel-wrapper::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                width: 150px;
+                height: 100%;
+                z-index: 2;
+                pointer-events: none;
+            }
+
+            .therapists-carousel-wrapper::before {
+                left: 0;
+                background: linear-gradient(to right, #1a1a1a, transparent);
+            }
+
+            .therapists-carousel-wrapper::after {
+                right: 0;
+                background: linear-gradient(to left, #1a1a1a, transparent);
+            }
+
+            .vt-therapists {
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .therapist-track {
+                display: flex;
+                gap: 30px;
+                /* Space between cards */
+                width: max-content;
+                will-change: transform;
+                padding-left: 30px;
+            }
+
+            .therapist-card {
+                background: white;
+                border-radius: 8px;
+                padding: 30px;
+                width: 400px;
+                flex-shrink: 0;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease;
+            }
+
+            .therapist-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .therapist-header {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                margin-bottom: 15px;
+                text-align: left;
+            }
+
+            .therapist-avatar {
+                width: 70px;
+                height: 70px;
+                object-fit: cover;
+                border-radius: 50%;
+                border: 2px solid #eee;
+            }
+
+            .therapist-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .therapist-name {
+                font-family: 'DM Serif Display', serif;
+                font-size: 18px;
+                color: #0f1c3f;
+                text-transform: uppercase;
+                margin: 0 0 2px 0;
+                letter-spacing: 0.5px;
+            }
+
+            .therapist-profession {
+                font-family: 'DM Sans', sans-serif;
+                font-size: 14px;
+                color: #666;
+                font-weight: 500;
+            }
+
+            .therapist-specialization {
+                font-family: 'DM Sans', sans-serif;
+                font-size: 14px;
+                color: #444;
+                margin-bottom: 20px;
+                background: #fdfdfd;
+                padding: 10px;
+                border-radius: 6px;
+                border: 1px solid #f0f0f0;
+            }
+
+            .therapist-booking-btn {
+                display: block;
+                width: 100%;
+                padding: 10px 0;
+                background-color: #F57F17;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                font-family: 'DM Sans', sans-serif;
+                font-weight: 700;
+                font-size: 14px;
+                border-radius: 30px;
+                transition: background-color 0.3s ease;
+            }
+
+            .therapist-booking-btn:hover {
+                background-color: #e65100;
+            }
+
+            @keyframes vt-scroll-reverse {
+                0% {
+                    transform: translate3d(calc(var(--distance, 0px) * -1), 0, 0);
+                }
+
+                100% {
+                    transform: translate3d(0, 0, 0);
+                }
+            }
         </style>
     </section>
 
     <script>
         (function () {
-            const track = document.getElementById('vtLogoTrack');
-            const wrap = track?.closest('.logo-carousel');
-            if (!track || !wrap) return;
+            // --- Partners Carousel (Original, Normal Scroll) ---
+            const partnersTrack = document.getElementById('vtLogoTrack');
 
-            // Clone original sequence ONCE (Elementor-safe)
-            function ensureClones() {
-                if (track.dataset.cloned) return;
-                const originals = Array.from(track.children);
-                const count = originals.length;
-                track.dataset.originalCount = String(count);
-                originals.forEach(n => track.appendChild(n.cloneNode(true)));
-                track.dataset.cloned = '1';
-                // mark clones as decorative
-                originals.slice().forEach((_, i) => {
-                    const clone = track.children[count + i];
-                    if (clone) clone.setAttribute('aria-hidden', 'true');
-                });
-            }
-
-            function afterImages(cb) {
-                const imgs = track.querySelectorAll('img');
-                let pending = imgs.length;
-                if (!pending) return cb();
-                let done = 0;
-                imgs.forEach(img => {
-                    if (img.complete) { if (++done === pending) cb(); }
-                    else {
-                        img.addEventListener('load', () => { if (++done === pending) cb(); }, { once: true });
-                        img.addEventListener('error', () => { if (++done === pending) cb(); }, { once: true });
-                    }
-                });
-            }
-
-            function measureOriginalWidth() {
-                const originalCount = Number(track.dataset.originalCount || 0);
-                const gap = parseFloat(getComputedStyle(track).gap) || 0;
-                let w = 0;
-                for (let i = 0; i < originalCount; i++) {
-                    w += track.children[i].getBoundingClientRect().width;
-                }
-                w += gap * Math.max(0, originalCount - 1);
-                return w;
-            }
-
-            // Robust normalize with retries if width is 0 (fonts/CDN delay etc.)
-            function normalize(retries = 6) {
-                const distance = measureOriginalWidth();
-                if (distance <= 1 && retries > 0) {
-                    // wait a frame and try again
-                    return setTimeout(() => normalize(retries - 1), 120);
+            if (partnersTrack) {
+                // Clone logic
+                if (!partnersTrack.dataset.cloned) {
+                    const originals = Array.from(partnersTrack.children);
+                    originals.forEach(n => partnersTrack.appendChild(n.cloneNode(true)));
+                    partnersTrack.dataset.cloned = '1';
                 }
 
-                // Store distance for keyframes
-                track.style.setProperty('--distance', distance + 'px');
+                function setupPartnersAnim() {
+                    const gap = 12;
+                    const totalWidth = partnersTrack.scrollWidth;
+                    const singleSetWidth = totalWidth / 2; // Assuming 2 sets (original + clone)
 
-                // Compute duration from --speed on wrapper
-                const pxPerSec = parseFloat(getComputedStyle(wrap).getPropertyValue('--speed')) || 70;
-                const dur = Math.max(10, Math.min(60, distance / pxPerSec));
+                    partnersTrack.style.setProperty('--distance', `${singleSetWidth}px`);
+                    // Duration logic: e.g. 50px per second
+                    const duration = singleSetWidth / 50;
+                    partnersTrack.style.animation = `vt-scroll ${duration}s linear infinite`;
+                }
 
-                // Set animation inline so it always runs
-                track.style.animation = `vt-scroll ${dur}s linear infinite`;
-                track.style.animationPlayState = 'running';
+                // Init and Resize observer
+                setupPartnersAnim();
+                window.addEventListener('resize', setupPartnersAnim);
             }
 
-            function init() {
-                ensureClones();
-                // measure after images settle and on next frame
-                afterImages(() => requestAnimationFrame(normalize));
-            }
+            // --- Therapists Carousel (New, Reverse Scroll) ---
+            const therapistTrack = document.getElementById('vtTherapistTrack');
 
-            if (document.readyState === 'complete') init();
-            else window.addEventListener('load', init, { once: true });
+            if (therapistTrack) {
+                // Clone logic - we need enough clones to fill screen + scroll
+                // Since items are 400px + 30px gap, and screen can be large, just cloning once might be enough if content > screen.
+                // Safe bet: Clone 3 times to be super safe or just once if initial content is wide enough.
+                // The initial content is ~4 cards * 430px = 1720px. On 1920px screen it might need more.
+                // Let's clone TWICE (Original + Clone1 + Clone2) to be safe for continuous loop.
 
-            // Recalculate on size changes
-            if ('ResizeObserver' in window) {
-                const ro = new ResizeObserver(() => normalize());
-                ro.observe(wrap);
-            } else {
-                let t;
-                window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(normalize, 150); }, { passive: true });
+                if (!therapistTrack.dataset.cloned) {
+                    const originals = Array.from(therapistTrack.children);
+                    // Clone once
+                    originals.forEach(n => therapistTrack.appendChild(n.cloneNode(true)));
+                    // Clone again for safety (large screens)
+                    originals.forEach(n => therapistTrack.appendChild(n.cloneNode(true)));
+                    therapistTrack.dataset.cloned = '1';
+                }
+
+                function setupTherapistAnim() {
+                    // Logic: The animation moves from -Distance to 0. DISTANCE should be the width of ONE SET.
+                    // But we have 3 sets now. So we can scroll one set width.
+                    // Total width = S1 + S2 + S3 = 3 * S.
+                    // We scroll from -S to 0? No.
+                    // Continuous Reverse Loop: Moves Right.
+                    // Visual: Ends of S1...S2...S3.
+                    // Start: TranslateX(-S). You see S2.
+                    // End: TranslateX(0). You see S1.
+                    // Then snap back to -S.
+                    // Correct.
+
+                    const gap = 120;
+                    // Measure one card including gap (approx)
+                    const card = therapistTrack.firstElementChild;
+                    if (!card) return;
+
+                    const singleCardWidth = card.getBoundingClientRect().width + gap;
+                    const originalCount = 4; // We hardcoded 4 cards in HTML
+                    const singleSetWidth = singleCardWidth * originalCount;
+
+                    therapistTrack.style.setProperty('--distance', `${singleSetWidth}px`);
+
+                    // Slower speed for reading: 30px per second
+                    const duration = singleSetWidth / 30;
+                    therapistTrack.style.animation = `vt-scroll-reverse ${duration}s linear infinite`;
+                }
+
+                setupTherapistAnim();
+                window.addEventListener('resize', setupTherapistAnim);
             }
         })();
     </script>
 
     </section>
 
+
+    <!-- Related Blogs Section -->
+    <section class="related-blogs-section">
+        <h2 class="specializations-title">Related Blogs</h2>
+        <div class="blogs-grid">
+            <!-- Blog 1 -->
+            <div class="blog-card">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">Temper</span>
+                    <h3 class="blog-title">Understanding and Managing Temper Issues</h3>
+                    <a href="#" class="blog-link">Read More</a>
+                </div>
+            </div>
+            <!-- Blog 2 -->
+            <div class="blog-card">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">ADHD-C</span>
+                    <h3 class="blog-title">Living with ADHD-C: Strategies for Success</h3>
+                    <a href="#" class="blog-link">Read More</a>
+                </div>
+            </div>
+            <!-- Blog 3 -->
+            <div class="blog-card">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">Anxious-Avoidant</span>
+                    <h3 class="blog-title">Navigating Anxious-Avoidant Attachment Styles</h3>
+                    <a href="#" class="blog-link">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2 class="specializations-title">Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <details class="faq-item">
+                <summary>Is venting safe?</summary>
+                <p>Yes, venting is safe. We prioritize your privacy and anonymity.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Who are your coaches?</summary>
+                <p>Our coaches are trained professionals with experience in various fields of mental health.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is this therapy?</summary>
+                <p>No, venting and coaching are not replacements for clinical therapy, but they can be a great first
+                    step.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Will my chats stay private?</summary>
+                <p>Absolutely. All chats are confidential and anonymous.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Are your psychologists licensed?</summary>
+                <p>Yes, all our therapists and psychologists are licensed professionals.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Can I stay anonymous?</summary>
+                <p>Yes, you can choose to remain anonymous during your sessions.</p>
+            </details>
+        </div>
+    </section>
+    <!-- Specializations -->
+    <section class="specializations-section">
+        <h2 class="specializations-title">What We Specialize In</h2>
+        <p class="specializations-subtitle">Our therapists support you through every phase of life. Here's what we
+            specialize in.</p>
+        <div class="specializations-grid">
+            <div class="specialization-card">
+                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
+                <div class="specialization-label">Relationship & Family</div>
+            </div>
+            <div class="specialization-card">
+                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
+                <div class="specialization-label">Individual well-being</div>
+            </div>
+            <div class="specialization-card">
+                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
+                <div class="specialization-label">Life Transitions & Transitions</div>
+            </div>
+            <div class="specialization-card">
+                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
+                <div class="specialization-label">Telehealth & Virtual Therapy</div>
+            </div>
+        </div>
+    </section>
     <!-- Footer -->
     <footer class="service-footer">
-        <p class="footer-warning">This is not a Helpline! In case of Emergency or If somebody is in danger, please reach
+        <p class="footer-warning">This is not a Helpline! In case of Emergency or If somebody is in danger, please
+            reach
             out to government authorities.</p>
 
         <p class="footer-disclaimer">
-            Please note that we are not capable in case of crisis intervention. If you have any severe symptoms or any
+            Please note that we are not capable in case of crisis intervention. If you have any severe symptoms or
+            any
             thoughts about self harm,
             please seek immediate medical help or call suicide prevention helplines.
             <a href="#">Click here for suicide prevention helplines across the world</a>
@@ -3415,12 +3442,13 @@
     <!-- Navigation Dropdown Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const navDropdownBtns = document.querySelectorAll('.nav-dropdown-btn');
-            
-            navDropdownBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
+            const navSplitToggles = document.querySelectorAll('.nav-split-toggle');
+
+            navSplitToggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const dropdown = btn.closest('.nav-dropdown');
+                    e.stopPropagation();
+                    const dropdown = toggle.closest('.nav-dropdown');
                     dropdown.classList.toggle('active');
                 });
             });

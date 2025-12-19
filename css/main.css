@@ -147,7 +147,48 @@ a {
     position: relative;
 }
 
+.nav-split-btn {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
+    color: #FFFFFF;
+    background: none;
+    border: none;
+    padding: 2px 20px;
+    border-radius: 22px;
+    cursor: default;
+    /* formatting container */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+}
+
+.nav-split-btn:hover {
+    background: transparent;
+}
+
+.nav-split-link {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-split-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: inherit;
+    /* inherit white */
+}
+
+/* Legacy support or removal? Keeping .nav-dropdown-btn for now if needed, but redefining for legacy? No, just replace. */
 .nav-dropdown-btn {
+    /* Previous styles kept just in case, but we are migrating */
     font-family: var(--font-body);
     font-weight: 500;
     font-size: 20px;
@@ -226,7 +267,12 @@ a {
     font-family: var(--font-body);
     font-weight: 500;
     font-size: 15px;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
+}
+
+.venting-banner-figma .figma-description p {
+    color: #FFFFFF !important;
+    /* Force white on p tag */
 }
 
 /* ========== Global Footer Section (Standardized) ========== */
@@ -513,5 +559,540 @@ a {
         bottom: auto;
         text-align: center;
         margin-top: 40px;
+    }
+}
+
+/* ========== Comparison Cards Section ========== */
+.comparison-section {
+    padding: 80px 20px;
+    background: #fff;
+}
+
+.comparison-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    align-items: stretch;
+}
+
+.comp-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Ensure spacing */
+    transition: background 0.3s ease;
+    background: #212121;
+    /* Charcoal for side cards */
+    border: 1px solid #333;
+    /* Subtle border */
+    position: relative;
+    height: 100%;
+    /* Ensure full height in grid */
+    color: #fff;
+    /* White text for all cards */
+}
+
+
+
+/* Featured Card (Coaching) */
+.comp-card.featured {
+    background: #1B4D3E;
+    /* Dark Green theme */
+    color: #fff;
+    border: none;
+}
+
+
+
+.comp-card.featured .comp-title,
+.comp-card.featured .comp-investment,
+.comp-card.featured .comp-features-list li {
+    color: #fff;
+}
+
+.comp-title {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.comp-role {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.comp-card.featured .comp-role {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.comp-investment {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.comp-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 auto 0;
+    /* Push button to bottom */
+}
+
+.comp-features-list li {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    align-items: flex-start;
+    gap: 12px;
+    color: #fff;
+}
+
+.comp-check {
+    color: var(--primary-orange);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.comp-card.featured .comp-check {
+    color: #A5D6A7;
+}
+
+.comp-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    margin-bottom: 10px;
+    display: block;
+    font-weight: 600;
+}
+
+.comp-card.featured .comp-label {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.btn-comp {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: auto;
+    /* Force to bottom */
+    transition: all 0.3s;
+    background: #F57F17;
+    /* Orange Button */
+    border: none;
+    color: #fff;
+}
+
+.btn-comp:hover {
+    background: #E65100;
+    /* Darker Orange on hover */
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.comp-card.featured .btn-comp {
+    background: #fff;
+    color: #1B4D3E;
+    border: 2px solid #fff;
+}
+
+.comp-card.featured .btn-comp:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .comparison-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .comp-card.featured {
+        transform: none;
+    }
+
+    .comp-card.featured:hover {
+        transform: translateY(-5px);
+    }
+}
+
+/* ========== Venting Banner (Figma Match) ========== */
+.venting-banner-figma {
+    position: relative;
+    background: #212121;
+    width: 100%;
+    min-height: 800px;
+    /* Match homepage exact height */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    /* Remove padding to match homepage logic */
+}
+
+.venting-banner-figma .figma-container {
+    position: relative;
+    width: 1440px;
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 40px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Content Layer (Left) */
+.venting-banner-figma .content-wrapper {
+    flex: 1 1 40%;
+    position: relative;
+    z-index: 3;
+    max-width: 600px;
+    padding-top: 120px;
+    /* Match homepage top padding */
+    padding-right: 40px;
+}
+
+.venting-banner-figma .figma-title {
+    font-family: 'DM Serif Display', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    color: #FFFFFF;
+    margin-bottom: 30px;
+}
+
+.venting-banner-figma .figma-description {
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.5;
+    letter-spacing: -0.5px;
+    color: #FFFFFF;
+    margin-bottom: 50px;
+}
+
+.btn-venting-banner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 40px;
+    background: #F57F17;
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.btn-venting-banner:hover {
+    background: #FFF;
+    color: #F57F17;
+    border-color: #F57F17;
+}
+
+/* Graphics Layer (Right) */
+.venting-banner-figma .graphics-wrapper {
+    position: relative;
+    width: 700px;
+    height: 650px;
+    flex: 1 1 50%;
+    min-width: 400px;
+}
+
+.venting-banner-figma .image-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; */
+    overflow: hidden;
+    /* box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25); */
+    /* background: url('../experts_bg_1.png') no-repeat center; */
+    /* Adjusted path */
+    background-size: cover;
+}
+
+/* Decoration Vectors */
+.venting-banner-figma .graphics-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 100%;
+    height: 100%;
+    /* border: 4px solid rgba(255, 255, 255, 0.15); */
+    /* border-radius: 43% 57% 72% 28% / 42% 48% 62% 48%; */
+    z-index: 0;
+    transform: rotate(10deg);
+}
+
+.venting-banner-figma .banner-slideshow-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.venting-banner-figma .blob-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+.venting-banner-figma .blob-slide.active {
+    opacity: 1;
+}
+
+@media (max-width: 1024px) {
+    .venting-banner-figma .figma-title {
+        font-size: 42px;
+    }
+
+    .venting-banner-figma .image-frame {
+        height: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .venting-banner-figma .figma-container {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .venting-banner-figma .content-wrapper {
+        padding-right: 0;
+        margin-top: 40px;
+    }
+
+    .venting-banner-figma .graphics-wrapper {
+        width: 100%;
+        height: 400px;
+    }
+
+    .venting-banner-figma .image-frame {
+        border-radius: 20px;
+    }
+}
+
+/* ========== Related Blogs Section (Global) ========== */
+.related-blogs-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.blogs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto 0;
+}
+
+.blog-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.blog-image {
+    height: 200px;
+    background-color: #eee;
+    background-size: cover;
+    background-position: center;
+}
+
+.blog-content {
+    padding: 20px;
+}
+
+.blog-tag {
+    display: inline-block;
+    background: #F57F17;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.blog-title {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: var(--dark-gray);
+}
+
+.blog-link {
+    color: #F57F17;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* ========== FAQ Section (Global) ========== */
+.faq-section {
+    padding: 80px 20px;
+    background: #f9f9f9;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 40px auto 0;
+}
+
+.faq-item {
+    background: #fff;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.faq-item summary {
+    padding: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    position: relative;
+    font-family: var(--font-heading);
+    font-size: 18px;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 20px;
+    font-size: 20px;
+    color: #F57F17;
+}
+
+.faq-item[open] summary::after {
+    content: '-';
+}
+
+.faq-item p {
+    padding: 0 20px 20px;
+    color: #666;
+    line-height: 1.6;
+    font-family: var(--font-body);
+}
+
+/* ========== Specializations Section (Global) ========== */
+.specializations-section {
+    padding: 80px 0;
+}
+
+.specializations-title {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    line-height: 66px;
+    letter-spacing: -0.5px;
+    text-align: center;
+    color: var(--dark-gray);
+    margin-bottom: 20px;
+}
+
+.specializations-subtitle {
+    font-family: var(--font-body);
+    font-size: 20px;
+    line-height: 26px;
+    text-align: center;
+    color: var(--dark-gray);
+    margin-bottom: 60px;
+}
+
+.specializations-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 270px);
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+}
+
+.specialization-card {
+    background: var(--bg-beige);
+    border: 0.25px solid #000000;
+    border-radius: 20px;
+    box-shadow: var(--shadow-light);
+    height: 300px;
+    overflow: hidden;
+}
+
+.specialization-image {
+    width: 202px;
+    height: 224px;
+    margin: 20px auto;
+    border: 0.25px solid #000000;
+    border-radius: 20px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background-size: cover;
+    background-position: center;
+}
+
+.specialization-label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 21px;
+    text-align: center;
+    color: var(--dark-gray);
+    border: 0.25px solid #000000;
+    padding: 10px;
+}
+
+/* Responsive adjustments for new sections */
+@media (max-width: 1024px) {
+    .specializations-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 600px) {
+    .specializations-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
     }
 }

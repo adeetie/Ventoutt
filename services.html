@@ -8,67 +8,111 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/ventoutt-base.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/service-pages.css">
     <link rel="stylesheet" href="css/chatbot.css">
     <link rel="stylesheet" href="css/popup.css">
     <style>
         /* Services Page Specific Styles (Internal for now, to move to CSS later if needed) */
-        /* Hero Overwrite if typical service-hero class is used, but we want unique look */
-        .services-page-hero {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            background: #F4EDE4;
-            /* Placeholder color matching design vibe */
-            /* background-image: url('path/to/hero.jpg'); */
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            margin-bottom: 50px;
-        }
 
-        .services-intro {
-            text-align: center;
-            max-width: 1140px;
-            margin: 0 auto 60px;
-            padding: 0 20px;
-        }
-
-        .services-intro h1 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 48px;
-            line-height: 66px;
-            color: #212121;
-            margin-bottom: 20px;
-        }
-
-        .services-intro p {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 20px;
-            line-height: 26px;
-            color: #000000;
-        }
 
         /* Card Grid */
         .services-grid-container {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 20px;
-            flex-wrap: wrap;
-            max-width: 1200px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            max-width: 100%;
             margin: 0 auto 80px;
-            padding: 0 20px;
+            padding: 20px 40px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Hide scrollbar for cleaner look but allow scroll */
+        .services-grid-container::-webkit-scrollbar {
+            display: none;
+            /* Hide default scrollbar */
+        }
+
+        /* Carousel Wrapper */
+        .services-carousel-wrapper {
+            position: relative;
+            max-width: 1200px;
+            /* Or whatever the design requires */
+            margin: 0 auto 80px;
+            padding: 0 40px;
+            /* Space for buttons */
+        }
+
+        .services-grid-container {
+            /* Override existing margins since wrapper handles it */
+            margin: 0;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: #212121;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background: #424242;
+        }
+
+        .carousel-btn.prev {
+            left: 0;
+        }
+
+        .carousel-btn.next {
+            right: 0;
+        }
+
+        @media (max-width: 768px) {
+            .services-carousel-wrapper {
+                padding: 0 10px;
+            }
+
+            .carousel-btn {
+                width: 30px;
+                height: 30px;
+            }
         }
 
         .service-option-card {
-            width: 270px;
-            height: 300px;
+            flex: 0 0 300px;
+            /* Fixed width, no shrink/grow */
+            min-height: 400px;
             background: #3A7F56;
             border-radius: 20px;
             position: relative;
             transition: transform 0.2s;
             cursor: pointer;
             text-decoration: none;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+            align-items: center;
+            scroll-snap-align: center;
         }
 
         .service-option-card:hover {
@@ -76,13 +120,21 @@
         }
 
         .service-card-image {
-            width: 200px;
-            height: 180px;
+            width: 100%;
+            height: 200px;
             background: #FFFDF7;
-            /* Placeholder for image */
-            border-radius: 10px;
-            margin: 35px auto 0;
-            display: block;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .service-card-image img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
         }
 
@@ -90,10 +142,21 @@
             text-align: center;
             color: #FFFDF7;
             font-family: 'DM Sans', sans-serif;
-            font-weight: 500;
+            font-weight: 700;
             font-size: 20px;
-            margin-top: 20px;
+            margin-bottom: 10px;
+            line-height: 1.3;
             display: block;
+        }
+
+        .service-card-desc {
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            font-weight: 400;
+            margin: 0;
+            text-align: center;
         }
 
         /* Quiz Section */
@@ -168,12 +231,15 @@
         <div class="service-nav-links">
             <a href="index.html">Home</a>
             <div class="nav-dropdown">
-                <button class="nav-dropdown-btn">
-                    Services
-                    <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
-                        <path d="M1 1L6 6L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
+                <div class="nav-split-btn">
+                    <a href="services.html" class="nav-split-link">Services</a>
+                    <button class="nav-split-toggle" aria-label="Toggle Services Menu">
+                        <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                            <path d="M1 1L6 6L11 1" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
                 <div class="nav-dropdown-menu">
                     <a href="therapy.html">Therapy</a>
                     <a href="venting.html">Venting</a>
@@ -181,7 +247,7 @@
                 </div>
             </div>
             <a href="#">Join Us</a>
-            <!-- <a href="#">Internships</a> -->
+            <a href="#">Internships</a>
             <a href="about.html">About Us</a>
             <a href="#">Help</a>
             <a href="#">Blog</a>
@@ -201,62 +267,1145 @@
         </div>
     </header>
 
-    <!-- Hero Background -->
-    <div class="services-page-hero">
-        <!-- Background Image should go here in CSS -->
+    <!-- New Hero Section -->
+    <div class="new-services-hero-section">
+        <div class="hero-text-content">
+            <h1>Empowering Change, One Step at a Time</h1>
+            <p>From managing stress to overcoming life’s challenges, we’re here to support you every step of the way.
+            </p>
+            <div class="hero-actions">
+                <a href="#" class="btn-explore">Explore Our Approach</a>
+                <p class="link-discover">Discover a range of personalized mental health services.</p>
+            </div>
+        </div>
+        <div class="hero-stats-content">
+            <!-- Card 1 -->
+            <div class="stat-card white-card">
+                <div class="stat-card-left">
+                    <div class="stat-number">14<span>+</span></div>
+                    <div class="stat-label">Years of Experience</div>
+                </div>
+                <div class="stat-desc">With 14 years of experience in therapy, I bring a wealth of knowledge and
+                    expertise to support</div>
+            </div>
+            <!-- Card 2 -->
+            <div class="stat-card beige-card">
+                <div class="stat-card-left">
+                    <div class="stat-number">100<span>%</span></div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+                <div class="stat-desc">Our practice is committed to delivering top-notch care, reflected in our
+                    outstanding 100% patient.</div>
+            </div>
+            <!-- Card 3 -->
+            <div class="stat-card white-card">
+                <div class="stat-card-left">
+                    <div class="stat-number">75<span>+</span></div>
+                    <div class="stat-label">Patients helped</div>
+                </div>
+                <div class="stat-desc">With 75 patients assisted, our practice has consistently delivered personalized
+                    and effective care, helping individuals achieve better</div>
+            </div>
+        </div>
     </div>
 
-    <!-- Intro Text -->
-    <div class="services-intro">
-        <h1>Support That Meets You Where You Are</h1>
-        <p>Whether you’re navigating teenage confusion, personal setbacks, or simply need someone to talk to, we’re here
-            for you. Our services are crafted to suit your pace, your comfort, and your story. No judgment, just a safe
-            space to start.</p>
-    </div>
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <h2 class="testimonials-title">What Our Users Say</h2>
 
-    <!-- Services Grid -->
-    <div class="services-grid-container">
-        <!-- Therapy for Teen -->
-        <a href="therapy.html" class="service-option-card">
-            <img src="" alt="Teen Therapy" class="service-card-image" style="background-color: #E0E0E0;">
-            <!-- Placeholder -->
-            <span class="service-card-title">Therapy for Teen</span>
-        </a>
+        <div class="carousel-wrapper">
+            <div class="carousel-track">
+                <!-- GROUP A (source of truth) -->
+                <div class="card orange">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"
+                            alt="Emma avatar" />
+                        Emma, England
+                    </div>
+                    <p>Ventoutt is my go-to place when I need to vent. The anonymous chat feature allows me to express
+                        my feelings freely without judgment. It's incredible how talking to strangers online has helped
+                        me manage my stress and anxiety.</p>
+                </div>
 
-        <!-- Therapy for Individual -->
-        <a href="therapy.html" class="service-option-card">
-            <img src="" alt="Individual Therapy" class="service-card-image" style="background-color: #E0E0E0;">
-            <span class="service-card-title">Therapy for Individual</span>
-        </a>
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/bEA_lVQtXGo?enablejsapi=1"
+                            title="Ewa video testimonial"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="location">Ewa, France</div>
+                </div>
 
-        <!-- Therapy for Couple -->
-        <a href="therapy.html" class="service-option-card">
-            <img src="" alt="Couple Therapy" class="service-card-image" style="background-color: #E0E0E0;">
-            <span class="service-card-title">Therapy for Couple</span>
-        </a>
+                <div class="card orange yellow">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
+                            alt="Sarah avatar" />
+                        Sarah M., USA
+                    </div>
+                    <p>I was honestly really unsure about trying online therapy at first especially with a therapist
+                        from another country. But honestly, my therapist was amazing. They were there 24/7 whenever I
+                        needed support, and the cost was something I could actually afford.</p>
+                </div>
 
-        <!-- Instant Venting -->
-        <a href="venting.html" class="service-option-card">
-            <img src="" alt="Instant Venting" class="service-card-image" style="background-color: #E0E0E0;">
-            <span class="service-card-title">Instant Venting</span>
-        </a>
-    </div>
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/wS1ljs6nQX0?enablejsapi=1"
+                            title="Iya video testimonial"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="location">Iya, Bosnia and Herzegovina</div>
+                </div>
 
-    <!-- Quiz Section -->
-    <div class="quiz-section">
-        <span class="quiz-text">Not sure what you want? Take a </span>
-        <a href="#" class="quiz-link">30sec quiz.</a>
-    </div>
+                <div class="card orange green">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80"
+                            alt="Jennifer avatar" />
+                        Jennifer R., USA
+                    </div>
+                    <p>I struggled with anxiety for years and was skeptical about finding the right support. Then I
+                        connected with my therapist, and everything shifted. They really understood what I was going
+                        through, made me feel heard, and gave me tools that actually worked in my daily life.</p>
+                </div>
 
-    <!-- Emotional Support Section -->
-    <section class="emotional-support-section">
-        <h2 class="emotional-support-title">You're not alone in this.</h2>
-        <p class="emotional-support-desc">
-            We know it's hard to open up, especially when everything feels overwhelming or nobody seems to get it.
-            But even one small conversation can make a difference. Whether you want to vent, reflect, or heal,
-            this space is yours. Whenever you're ready, we're here to listen.
+                <!-- GROUP B (exact duplicate for seamless loop) -->
+                <div class="card orange">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"
+                            alt="Emma avatar" />
+                        Emma, England
+                    </div>
+                    <p>Ventoutt is my go-to place when I need to vent. The anonymous chat feature allows me to express
+                        my feelings freely without judgment. It's incredible how talking to strangers online has helped
+                        me manage my stress and anxiety.</p>
+                </div>
+
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/bEA_lVQtXGo?enablejsapi=1"
+                            title="Ewa video testimonial"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="location">Ewa, France</div>
+                </div>
+
+                <div class="card orange yellow">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
+                            alt="Sarah avatar" />
+                        Sarah M., USA
+                    </div>
+                    <p>I was honestly really unsure about trying online therapy at first especially with a therapist
+                        from another country. But honestly, my therapist was amazing. They were there 24/7 whenever I
+                        needed support, and the cost was something I could actually afford.</p>
+                </div>
+
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/wS1ljs6nQX0?enablejsapi=1"
+                            title="Iya video testimonial"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="location">Iya, Bosnia and Herzegovina</div>
+                </div>
+
+                <div class="card orange green">
+                    <div class="name">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80"
+                            alt="Jennifer avatar" />
+                        Jennifer R., USA
+                    </div>
+                    <p>I struggled with anxiety for years and was skeptical about finding the right support. Then I
+                        connected with my therapist, and everything shifted. They really understood what I was going
+                        through, made me feel heard, and gave me tools that actually worked in my daily life.</p>
+                </div>
+            </div>
+        </div>
+
+        <p style="text-align:center; color:#999; font-size:0.8rem; margin-top:10px;">
+            💡 Tip: Click on any card to pause the carousel.
         </p>
     </section>
+
+    <!-- Detailed Services Section (Coaching, Venting, Therapy) -->
+    <section class="detailed-services-section">
+        <!-- Section Header -->
+        <div class="detailed-services-header">
+            <span class="detailed-services-eyebrow">STEPS FROM CUSTOMERS</span>
+            <h2 class="detailed-services-main-title">Empowering You to Overcome Challenges, Find Inner Peace, and Thrive
+                — Your Journey to Better Mental Health Starts Here.</h2>
+        </div>
+
+        <!-- Row 1: Therapy -->
+        <div class="service-detail-row">
+            <div class="service-detail-text">
+                <h3 class="service-detail-title">Individual Therapy for Healing and Growing</h3>
+                <p class="service-detail-desc">
+                    Personalized therapy designed to help you navigate life's challenges and find inner peace.
+                </p>
+                <ul class="service-detail-list">
+                    <li>Tailored sessions to address personal goals well-being.</li>
+                    <li>Proven therapeutic methods for emotional healing and growth.</li>
+                    <li>Safe, space to explore personal struggles and self-discovery.</li>
+                </ul>
+                <a href="therapy.html" class="btn-download" style="padding: 12px 28px; font-size: 15px;">Learn more</a>
+            </div>
+            <div class="service-detail-image-box">
+                <img src="therapy_hero.png" alt="Individual Therapy Session" class="service-detail-image">
+            </div>
+        </div>
+
+        <!-- Row 2: Couple Therapy -->
+        <div class="service-detail-row">
+            <div class="service-detail-text">
+                <h3 class="service-detail-title">Couple Therapy to Strengthen Your Relationship</h3>
+                <p class="service-detail-desc">
+                    Rebuild connection and communication in your relationship with expert couple's therapy.
+                </p>
+                <ul class="service-detail-list">
+                    <li>Help with resolving conflicts and improving communication.</li>
+                    <li>Tools to enhance intimacy, trust, and mutual respect.</li>
+                    <li>Support for navigating transitions & life challenges together.</li>
+                </ul>
+                <a href="therapy.html" class="btn-download" style="padding: 12px 28px; font-size: 15px;">Learn more</a>
+            </div>
+            <div class="service-detail-image-box">
+                <img src="therapy_hero.png" alt="Couple Therapy Session" class="service-detail-image">
+            </div>
+        </div>
+
+        <!-- Row 3: Venting aka Family Therapy content from prompt but user said categories are Coaching Venting Therapy -->
+        <!-- Based on user request I will do Coaching and Venting next, but the image showed Couple/Family. 
+             User explicitly said: "categories will be coaching, venting, therapy".
+             I will interpret "Therapy" as Individual/Couple/Family (handled above or combined) and add Coaching and Venting.
+             Let's do: Therapy (Individual), Venting, Coaching. That covers the 3 categories requested. 
+             If the image had "Couple" and "Family" rows, I should probably stick to the user's explicit TEXT instruction "categories will be coaching, venting, therapy".
+             However, the prompt also said "add this section... matching provided design". 
+             I will add 3 rows: Therapy, Venting, Coaching.
+        -->
+        <!-- Row 2: Venting (replacing above couple interpretation to match category request) -->
+        <div class="service-detail-row">
+            <div class="service-detail-text">
+                <h3 class="service-detail-title">Instant Venting for Emotional Relief</h3>
+                <p class="service-detail-desc">
+                    Sometimes you just need to let it out. Connect anonymously with trained listeners 24/7.
+                </p>
+                <ul class="service-detail-list">
+                    <li>Judgment-free zone to express your thoughts freely.</li>
+                    <li>Immediate support whenever you feel overwhelmed.</li>
+                    <li>Completely anonymous and confidential interactions.</li>
+                </ul>
+                <a href="venting.html" class="btn-download" style="padding: 12px 28px; font-size: 15px;">Start
+                    Venting</a>
+            </div>
+            <div class="service-detail-image-box">
+                <img src="venting_hero.png" alt="Venting Session" class="service-detail-image">
+            </div>
+        </div>
+
+        <!-- Row 3: Coaching -->
+        <div class="service-detail-row">
+            <div class="service-detail-text">
+                <h3 class="service-detail-title">Professional Coaching for Goal Achievement</h3>
+                <p class="service-detail-desc">
+                    Unlock your full potential with actionable strategies and expert guidance.
+                </p>
+                <ul class="service-detail-list">
+                    <li>Define clear personal and professional goals.</li>
+                    <li>Develop practical skills to overcome obstacles.</li>
+                    <li>Accountability partners to keep you on track.</li>
+                </ul>
+                <a href="coaching.html" class="btn-download" style="padding: 12px 28px; font-size: 15px;">Find a
+                    Coach</a>
+            </div>
+            <div class="service-detail-image-box">
+                <img src="coaching_hero.png" alt="Coaching Session" class="service-detail-image">
+            </div>
+        </div>
+
+    </section>
+
+    <div class="services-header-centered" style="text-align: center; margin-bottom: 50px; margin-top: 20px;">
+        <h2 style="font-family: 'DM Serif Display', serif; font-size: 48px; color: #212121; margin-bottom: 15px;">Why
+            Choose Us?</h2>
+    </div>
+
+    <div class="services-carousel-wrapper">
+        <button class="carousel-btn prev" aria-label="Scroll Left">
+            <svg width="10" height="16" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 1L2 8L9 15" />
+            </svg>
+        </button>
+
+        <div class="services-grid-container">
+            <!-- Relationship Counseling -->
+            <div class="service-option-card">
+                <div class="service-card-image">
+                    <!-- Placeholder or actual image if available -->
+                </div>
+                <span class="service-card-title">Relationship Counseling</span>
+                <p class="service-card-desc">Professional relationship therapists and marriage counselors can help
+                    partners rebuild trust, resolve conflicts, and strengthen their bond.</p>
+            </div>
+
+            <!-- Family Counseling -->
+            <div class="service-option-card">
+                <div class="service-card-image"></div>
+                <span class="service-card-title">Family Counseling</span>
+                <p class="service-card-desc">To address issues like communication gaps, intergenerational relationships,
+                    parenting challenges etc., Ventoutt provides affordable online family counseling.</p>
+            </div>
+
+            <!-- Private Venting Space -->
+            <div class="service-option-card">
+                <div class="service-card-image"></div>
+                <span class="service-card-title">Private Venting Space</span>
+                <p class="service-card-desc">A safe, convenient and judgement free online venting space that protects
+                    your privacy, security and maintains ethical conduct.</p>
+            </div>
+
+            <!-- Individual Counseling -->
+            <div class="service-option-card">
+                <div class="service-card-image"></div>
+                <span class="service-card-title">Individual Counseling</span>
+                <p class="service-card-desc">Get individual one-on-one therapy sessions which are tailored according to
+                    your needs varying from stress, anxiety, trauma to everyday mental health struggles.</p>
+            </div>
+
+            <!-- Youth Counseling Support -->
+            <div class="service-option-card">
+                <div class="service-card-image"></div>
+                <span class="service-card-title">Youth Counseling Support</span>
+                <p class="service-card-desc">Find support for youth groups from age 18 to 34 by specialised youth
+                    counselors who understand your unique concerns.</p>
+            </div>
+
+            <!-- LGBTQ Counseling -->
+            <div class="service-option-card">
+                <div class="service-card-image"></div>
+                <span class="service-card-title">LGBTQ Counseling</span>
+                <p class="service-card-desc">Safe, inclusive and affirming LGBTQ+ therapy with trained professionals.
+                </p>
+            </div>
+
+            <!-- Affordable Online Therapy -->
+            <div class="service-option-card">
+                <div class="service-card-image"></div>
+                <span class="service-card-title">Affordable Online Therapy</span>
+                <p class="service-card-desc">Affordable, pocket-friendly therapy designed for young adult budgets
+                    without sacrificing expert quality accessible from anywhere in the world.</p>
+            </div>
+        </div>
+
+        <button class="carousel-btn next" aria-label="Scroll Right">
+            <svg width="10" height="16" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 1L8 8L1 15" />
+            </svg>
+        </button>
+    </div>
+
+    <style>
+        /* Therapist/Experts Section */
+        .experts-section {
+            background-color: #fff;
+            padding: 80px 150px;
+            position: relative;
+        }
+
+        .experts-header {
+            margin-bottom: 60px;
+        }
+
+        .experts-label {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+        }
+
+        .experts-title {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            line-height: 1.2;
+            font-weight: 400;
+            color: var(--dark-gray);
+            max-width: 400px;
+        }
+
+        .experts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .experts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .expert-card {
+            background: #f0f0f0;
+            border-radius: 20px;
+            position: relative;
+            height: 450px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .expert-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .expert-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .expert-rating {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 12px;
+            padding: 8px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        .expert-rating .star {
+            color: #FFB800;
+            font-size: 14px;
+        }
+
+        .expert-rating .score {
+            font-weight: 700;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .expert-rating .score-label {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .expert-info-box {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            z-index: 3;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .expert-name {
+            font-family: var(--font-body);
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            text-align: center;
+            margin: 0;
+        }
+
+        .expert-title {
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .expert-details {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            padding-top: 0;
+        }
+
+        .expert-card:hover .expert-details {
+            max-height: 500px;
+            opacity: 1;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .detail-credentials {
+            font-size: 12px;
+            color: #555;
+            text-align: center;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .detail-expertise {
+            font-size: 13px;
+            color: #333;
+        }
+
+        .detail-expertise strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .detail-expertise ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .detail-expertise li {
+            margin-bottom: 3px;
+        }
+
+        .detail-meta {
+            font-size: 11px;
+            color: #888;
+            text-align: center;
+            margin-top: 10px;
+            border-top: 1px solid #eee;
+            padding-top: 5px;
+        }
+
+        .detail-name {
+            display: none;
+        }
+
+        .experts-content {
+            padding: 40px 0;
+        }
+
+        .experts-description {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--dark-gray);
+            margin-bottom: 30px;
+        }
+
+        .btn-learn-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-body);
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dark-gray);
+            text-decoration: none;
+            border: 2px solid var(--dark-gray);
+            border-radius: 30px;
+            padding: 12px 30px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-learn-more:hover {
+            background: var(--dark-gray);
+            color: white;
+        }
+
+        .btn-learn-more .arrow {
+            font-size: 14px;
+        }
+
+        @media (max-width: 1200px) {
+            .experts-section {
+                padding: 60px 80px;
+            }
+
+            .experts-container {
+                grid-template-columns: 1fr;
+            }
+
+            .experts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .experts-section {
+                padding: 40px 20px;
+            }
+
+            .experts-title {
+                font-size: 36px;
+            }
+
+            .experts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .expert-photo {
+                height: 320px;
+            }
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            padding: 80px 0;
+            background: #fff;
+        }
+
+        .comparison-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 20px;
+        }
+
+        .comp-table {
+            width: 100%;
+            min-width: 800px;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            background: #fff;
+        }
+
+        .comp-table th {
+            text-align: left;
+            padding: 30px 20px;
+            color: #555;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #eee;
+            background: #fff;
+            vertical-align: middle;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .comp-table td {
+            padding: 20px;
+            font-size: 1.05rem;
+            color: #212121;
+            border-bottom: 1px solid #eee;
+            background: #fff;
+            vertical-align: middle;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .col-coaching {
+            background-color: #E8F5E9 !important;
+            border-left: 2px solid #43A047;
+            border-right: 2px solid #43A047;
+            position: relative;
+        }
+
+        th.col-coaching {
+            background-color: #43A047 !important;
+            color: white !important;
+            border-bottom: none;
+            text-align: center;
+        }
+
+        .best-value-badge {
+            display: block;
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 4px 12px;
+            border-radius: 20px;
+            width: fit-content;
+            margin: 0 auto 8px auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            color: #888;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .coaching-point {
+            font-weight: 700;
+            color: #2E7D32;
+            font-size: 1.1rem;
+        }
+
+        .btn-select-table {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            width: 90%;
+            transition: all 0.3s ease;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .btn-vent-row {
+            color: #666;
+            background: #eee;
+        }
+
+        .btn-coach-row {
+            color: white;
+            background: #43A047;
+            box-shadow: 0 4px 12px rgba(67, 160, 71, 0.3);
+        }
+
+        .btn-therapy-row {
+            color: #F57F17;
+            background: #FFF3E0;
+            border: 1px solid #FDA84D;
+        }
+
+        .btn-select-table:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        /* How It Works */
+        .how-it-works-section {
+            background: var(--bg-light-green);
+            padding: 80px 0;
+        }
+
+        .how-it-works-title {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            line-height: 66px;
+            letter-spacing: -0.5px;
+            text-align: center;
+            color: var(--dark-gray);
+            margin-bottom: 60px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 220px);
+            gap: 20px;
+            justify-content: center;
+            max-width: 1180px;
+            margin: 0 auto 60px;
+        }
+
+        .step-card {
+            background: var(--dark-gray);
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            height: 220px;
+        }
+
+        .step-number {
+            font-family: var(--font-body);
+            font-size: 32px;
+            line-height: 42px;
+            letter-spacing: -0.5px;
+            color: var(--bg-cream);
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            margin-bottom: 14px;
+        }
+
+        .step-description {
+            font-family: var(--font-body);
+            font-size: 20px;
+            line-height: 26px;
+            letter-spacing: -0.5px;
+            color: var(--bg-cream);
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-hero {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #F57F17;
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+    </style>
+
+    <!-- Meet Our Experts Section -->
+    <section class="experts-section">
+        <div class="experts-container">
+            <div>
+                <div class="experts-header">
+                    <div class="experts-label">MEET OUR EXPERTS</div>
+                    <h2 class="experts-title">Caring & Expert Members</h2>
+                </div>
+                <div class="experts-grid">
+                    <div class="expert-card">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
+                            alt="Pulkita W." class="expert-photo">
+                        <div class="expert-rating"><span class="star">★</span>
+                            <div class="score">4.9</div><span class="score-label">score</span>
+                        </div>
+                        <div class="expert-info-box">
+                            <div class="expert-name">Pulkita W.</div>
+                            <div class="expert-title">Psychoanalytic Therapist</div>
+                            <div class="expert-details">
+                                <div class="detail-credentials">Masters Psychology | Psychoanalytic Fellowship
+                                    (Washington–Baltimore, USA)</div>
+                                <div class="detail-expertise"><strong>Specialized Expertise:</strong>
+                                    <ul>
+                                        <li>Psychoanalytic Therapy</li>
+                                        <li>Sexual & Identity Issues</li>
+                                        <li>Family Systems Therapy</li>
+                                        <li>Career-Related Stress</li>
+                                        <li>Deep Psychological Exploration</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-meta"><strong>USA-trained psychoanalyst</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="expert-card">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
+                            alt="Muskan K." class="expert-photo">
+                        <div class="expert-rating"><span class="star">★</span>
+                            <div class="score">4.7</div><span class="score-label">score</span>
+                        </div>
+                        <div class="expert-info-box">
+                            <div class="expert-name">Muskan K.</div>
+                            <div class="expert-title">CBT & Couples Counselor</div>
+                            <div class="expert-details">
+                                <div class="detail-expertise"><strong>Specialized Expertise:</strong>
+                                    <ul>
+                                        <li>Solution-Focused Brief Therapy</li>
+                                        <li>Cognitive Behavioral Therapy (CBT)</li>
+                                        <li>Couples & Relationship Counseling</li>
+                                        <li>Goal-Oriented Treatment Plans</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-meta"><strong>90% satisfaction rate with North American
+                                        clients</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="experts-grid">
+                    <div class="expert-card">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80" alt="Nishi"
+                            class="expert-photo">
+                        <div class="expert-rating"><span class="star">★</span>
+                            <div class="score">4.5</div><span class="score-label">score</span>
+                        </div>
+                        <div class="expert-info-box">
+                            <div class="expert-name">Nishi</div>
+                            <div class="expert-title">Clinical Psychiatrist</div>
+                            <div class="expert-details">
+                                <div class="detail-credentials">MSc Clinical Psychology (Neuropsychology Specialist)
+                                </div>
+                                <div class="detail-expertise"><strong>Specialized Expertise:</strong>
+                                    <ul>
+                                        <li>LGBTQ+ Affirming Therapy</li>
+                                        <li>Adolescent & Childhood Trauma</li>
+                                        <li>Grief & Loss Counseling</li>
+                                        <li>Phobias & OCD Treatment</li>
+                                        <li>Identity Exploration & Body Image</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-meta"><strong>3+ years serving US clients</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="expert-card">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
+                            alt="Dr. Sarah M." class="expert-photo">
+                        <div class="expert-rating"><span class="star">★</span>
+                            <div class="score">4.8</div><span class="score-label">score</span>
+                        </div>
+                        <div class="expert-info-box">
+                            <div class="expert-name">Dr. Sarah M.</div>
+                            <div class="expert-title">Clinical Psychiatrist</div>
+                            <div class="expert-details">
+                                <div class="detail-credentials">Clinical Psychiatrist</div>
+                                <div class="detail-expertise"><strong>Specialized Expertise:</strong>
+                                    <ul>
+                                        <li>Anxiety & Depression Treatment</li>
+                                        <li>Stress Management</li>
+                                        <li>Mindfulness-Based Therapy</li>
+                                        <li>Emotional Regulation</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-meta"><strong>Certified mental health professional</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="experts-content">
+                    <p class="experts-description">Our team consists of compassionate and skilled professionals
+                        dedicated to providing personalized support and effective solutions for your well-being.</p>
+                    <a href="#" class="btn-learn-more">Learn More <span class="arrow">→</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <!-- Comparison Section (Redesigned) -->
+    <section class="comparison-section">
+        <div style="text-align: center; margin-bottom: 60px; padding: 0 20px;">
+            <h2 style="font-family: 'DM Serif Display', serif; font-size: 48px; margin-bottom: 10px; color: #212121;">
+                Find Your Right Fit</h2>
+            <p style="color: #666; font-size: 1.1rem; font-family: 'DM Sans', sans-serif;">Every path is valid. Choose
+                what helps you today.</p>
+        </div>
+        <div class="comparison-wrapper">
+            <div class="comparison-grid">
+                <!-- Venting Card -->
+                <div class="comp-card">
+                    <div class="comp-header">
+                        <h3 class="comp-title">Venting</h3>
+                        <div class="comp-role">Empathetic Listeners</div>
+                    </div>
+                    <div class="comp-investment">Low Cost ($)</div>
+                    <ul class="comp-features-list">
+                        <li><span class="comp-check">✓</span> <span><strong>Goal:</strong> Instant Relief</span></li>
+                        <li><span class="comp-check">✓</span> <span><strong>Focus:</strong> "Feeling Heard"</span></li>
+                        <li><span class="comp-check">✓</span> <span><strong>Availability:</strong> Instant Access</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn-comp">Start Chat</a>
+                </div>
+
+                <!-- Coaching Card (Featured) -->
+                <div class="comp-card featured">
+                    <div class="comp-header">
+                        <h3 class="comp-title">Coaching</h3>
+                        <div class="comp-role">Qualified Psychologists</div>
+                        <div
+                            style="font-size: 12px; text-transform: uppercase; background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 20px; display: inline-block;">
+                            Most Popular</div>
+                    </div>
+                    <div class="comp-investment">Affordable ($$)</div>
+                    <ul class="comp-features-list">
+                        <li><span class="comp-check">✓</span> <span><strong>Goal:</strong> Growth & Action Plans</span>
+                        </li>
+                        <li><span class="comp-check">✓</span> <span><strong>Focus:</strong> "Building Skills"</span>
+                        </li>
+                        <li><span class="comp-check">✓</span> <span><strong>Availability:</strong> Same-Day
+                                Priority</span></li>
+                    </ul>
+                    <a href="#" class="btn-comp">Get Matched</a>
+                </div>
+
+                <!-- Therapy Card -->
+                <div class="comp-card">
+                    <div class="comp-header">
+                        <h3 class="comp-title">Therapy</h3>
+                        <div class="comp-role">Licensed Clinicians</div>
+                    </div>
+                    <div class="comp-investment">Premium ($$$$)</div>
+                    <ul class="comp-features-list">
+                        <li><span class="comp-check">✓</span> <span><strong>Goal:</strong> Medical Diagnosis</span></li>
+                        <li><span class="comp-check">✓</span> <span><strong>Focus:</strong> "Deep Healing"</span></li>
+                        <li><span class="comp-check">✓</span> <span><strong>Availability:</strong> By Appointment</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn-comp">Join Waitlist</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works-section">
+        <h2 class="how-it-works-title">How It Works</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">Step 1</div>
+                <div class="step-description">Pick what you need - a full therapy session or a quick vent.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">Step 2</div>
+                <div class="step-description">Choose your listener or therapist from the list.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">Step 3</div>
+                <div class="step-description">Select a time that works for you.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">Step 4</div>
+                <div class="step-description">Pay securely and get your session link via email.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">Step 5</div>
+                <div class="step-description">Talk it out. Feel lighter. Share how it went</div>
+            </div>
+        </div>
+        <div style="text-align: center;"><a href="services.html" class="btn-hero">Learn More</a></div>
+    </section>
+
+    <!-- Related Blogs Section -->
+    <section class="related-blogs-section">
+        <h2 class="specializations-title">Related Blogs</h2>
+        <div class="blogs-grid">
+            <!-- Blog 1 -->
+            <div class="blog-card">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">Temper</span>
+                    <h3 class="blog-title">Understanding and Managing Temper Issues</h3>
+                    <a href="#" class="blog-link">Read More</a>
+                </div>
+            </div>
+            <!-- Blog 2 -->
+            <div class="blog-card">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">ADHD-C</span>
+                    <h3 class="blog-title">Living with ADHD-C: Strategies for Success</h3>
+                    <a href="#" class="blog-link">Read More</a>
+                </div>
+            </div>
+            <!-- Blog 3 -->
+            <div class="blog-card">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">Anxious-Avoidant</span>
+                    <h3 class="blog-title">Navigating Anxious-Avoidant Attachment Styles</h3>
+                    <a href="#" class="blog-link">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2 class="specializations-title">Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <details class="faq-item">
+                <summary>Is venting safe?</summary>
+                <p>Yes, venting is safe. We prioritize your privacy and anonymity.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Who are your coaches?</summary>
+                <p>Our coaches are trained professionals with experience in various fields of mental health.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is this therapy?</summary>
+                <p>No, venting and coaching are not replacements for clinical therapy, but they can be a great first
+                    step.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Will my chats stay private?</summary>
+                <p>Absolutely. All chats are confidential and anonymous.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Are your psychologists licensed?</summary>
+                <p>Yes, all our therapists and psychologists are licensed professionals.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Can I stay anonymous?</summary>
+                <p>Yes, you can choose to remain anonymous during your sessions.</p>
+            </details>
+        </div>
+    </section>
+    <!-- Venting Banner (Figma Match) -->
+    <section class="venting-banner-figma">
+        <div class="figma-container">
+            <!-- Left: Content -->
+            <div class="content-wrapper">
+                <h2 class="figma-title">You're not alone in this.</h2>
+                <div class="figma-description">
+                    <p>We know it's hard to open up, especially when everything feels overwhelming or nobody seems to
+                        get it.
+                        But even one small conversation can make a difference. Whether you want to vent, reflect, or
+                        heal,
+                        this space is yours. Whenever you're ready, we're here to listen.</p>
+                </div>
+                <!-- Button from Image: Talk to Our Chatbot -->
+                <a href="#" class="btn-venting-banner">Talk to Our Chatbot</a>
+            </div>
+
+            <!-- Right: Graphics Layer -->
+            <div class="graphics-wrapper">
+                <!-- Image Container (Slideshow) positioned relatively -->
+                <div class="image-frame">
+                    <!-- Slideshow logic -->
+                    <div class="banner-slideshow-inner">
+                        <!-- Using uploaded_image_0 as Variant 1 placeholder, and the found variants 2 and 3 -->
+                        <div class="blob-slide active" style="background-image: url('Property 1=Default (1).png');">
+                        </div>
+                        <div class="blob-slide" style="background-image: url('Property 1=Variant2 (1).png');"></div>
+                        <div class="blob-slide" style="background-image: url('Property 1=Variant3 (1).png');"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const figmaSlides = document.querySelectorAll('.venting-banner-figma .blob-slide');
+                if (figmaSlides.length > 0) {
+                    let cur = 0;
+                    setInterval(() => {
+                        figmaSlides[cur].classList.remove('active');
+                        cur = (cur + 1) % figmaSlides.length;
+                        figmaSlides[cur].classList.add('active');
+                    }, 4000);
+                }
+            });
+        </script>
+    </section>
+    <!-- Specializations -->
+    <section class="specializations-section">
+        <h2 class="specializations-title">What We Specialize In</h2>
+        <p class="specializations-subtitle">Our therapists support you through every phase of life. Here's what we
+            specialize in.</p>
+        <div class="specializations-grid">
+            <div class="specialization-card">
+                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
+                <div class="specialization-label">Relationship & Family</div>
+            </div>
+            <div class="specialization-card">
+                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
+                <div class="specialization-label">Individual well-being</div>
+            </div>
+            <div class="specialization-card">
+                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
+                <div class="specialization-label">Life Transitions & Transitions</div>
+            </div>
+            <div class="specialization-card">
+                <div class="specialization-image" style="background-color: #D9D9D9;"></div>
+                <div class="specialization-label">Telehealth & Virtual Therapy</div>
+            </div>
+        </div>
+    </section>
+
+
+
+
 
     <!-- Global Footer -->
     <footer class="service-footer">
@@ -312,12 +1461,13 @@
     <script src="js/popup-scroll.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const navDropdownBtns = document.querySelectorAll('.nav-dropdown-btn');
-            
-            navDropdownBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
+            const navSplitToggles = document.querySelectorAll('.nav-split-toggle');
+
+            navSplitToggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const dropdown = btn.closest('.nav-dropdown');
+                    e.stopPropagation();
+                    const dropdown = toggle.closest('.nav-dropdown');
                     dropdown.classList.toggle('active');
                 });
             });
@@ -330,6 +1480,21 @@
                     });
                 }
             });
+
+            // Services Grid Navigation logic
+            const container = document.querySelector('.services-grid-container');
+            const prevBtn = document.querySelector('.carousel-btn.prev');
+            const nextBtn = document.querySelector('.carousel-btn.next');
+
+            if (container && prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', () => {
+                    container.scrollBy({ left: -320, behavior: 'smooth' });
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    container.scrollBy({ left: 320, behavior: 'smooth' });
+                });
+            }
         });
     </script>
 </body>

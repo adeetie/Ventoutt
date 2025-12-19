@@ -11,70 +11,333 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/chatbot.css">
     <link rel="stylesheet" href="css/popup.css">
+    <style>
+        /* Hero Section Styles (from index.html) */
+        .hero-slider-section {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .hero-slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 150px;
+            padding-right: 150px;
+            box-sizing: border-box;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .hero-slide::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: var(--bg-url);
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 64px;
+            line-height: 1.2;
+            color: #FFFFFF;
+            margin: 0;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-subtitle {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 20px;
+            line-height: 1.5;
+            color: #FFFFFF;
+            margin: 0;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+            max-width: 700px;
+        }
+
+        /* Experts Section Styles (from index.html) */
+        .experts-section {
+            background-color: #fff;
+            padding: 80px 150px;
+            position: relative;
+        }
+
+        .experts-header {
+            margin-bottom: 40px;
+        }
+
+        .experts-label {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+        }
+
+        .experts-title {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            line-height: 1.2;
+            font-weight: 400;
+            color: var(--dark-gray);
+            max-width: 400px;
+        }
+
+        .experts-description {
+            font-family: var(--font-body);
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-top: 20px;
+            max-width: 500px;
+        }
+
+        .experts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .experts-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .expert-card {
+            background: #f0f0f0;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .expert-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .expert-info-box {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .expert-name {
+            font-family: var(--font-body);
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .expert-title {
+            font-family: var(--font-body);
+            font-size: 16px;
+            color: #666;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-slide, .experts-section {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+            .hero-title {
+                font-size: 48px;
+            }
+            .experts-container {
+                grid-template-columns: 1fr;
+            }
+            .experts-title {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-slide, .experts-section {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .hero-title {
+                font-size: 36px;
+            }
+            .hero-slider-section {
+                height: 500px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <header>
-        <div class="logo">Ventoutt.</div>
-        <nav>
+    <!-- Global Navigation -->
+    <header class="service-nav">
+        <div class="logo-container">
+            <span class="logo-text">V</span>
+        </div>
+        <div class="service-nav-links">
             <a href="index.html">Home</a>
-            <div class="dropdown">
-                <button class="dropbtn" onclick="location.href='services.html'">Services ▾</button>
-                <div class="dropdown-content">
-                    <a href="/chatbot/demo-venting.html">Venting</a>
-                    <a href="/chatbot/demo-coaching.html">Coaching</a>
-                    <a href="/chatbot/demo-therapy.html">Therapy</a>
+            <div class="nav-dropdown">
+                <div class="nav-split-btn">
+                    <a href="services.html" class="nav-split-link">Services</a>
+                    <button class="nav-split-toggle" aria-label="Toggle Services Menu">
+                        <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                            <path d="M1 1L6 6L11 1" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="nav-dropdown-menu">
+                    <a href="therapy.html">Therapy</a>
+                    <a href="venting.html">Venting</a>
+                    <a href="coaching.html">Coaching</a>
                 </div>
             </div>
-            <a href="about.html" style="color:var(--primary-green)">About</a>
-            <a href="blog.html">Blog</a>
-            <a href="contact.html">Contact</a>
-            <a href="services.html?chatbot=open" class="cta-nav">Get Support</a>
-        </nav>
+            <a href="#">Join Us</a>
+            <a href="#">Internships</a>
+            <a href="about.html">About Us</a>
+            <a href="#">Help</a>
+            <a href="#">Blog</a>
+        </div>
+        <div class="language-selector">
+            <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="English">
+            <span>En</span>
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M2 4L5 7L8 4" stroke="white" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </div>
+        <div
+            style="margin-left: 20px; border: 2px solid white; border-radius: 20px; padding: 5px 15px; color: white; cursor: pointer;">
+            Log In
+        </div>
     </header>
     <main>
-        <section class="hero"
-            style="text-align:center; padding:4rem 0; background:linear-gradient(135deg, #E5F5EA 0%, #fff 100%);">
-            <h1>Our Story</h1>
-            <p>Ventoutt was created to bridge the gap between “I’m fine” and “I need professional help.” A safe,
-                anonymous space for venting, coaching, and guided pathways to therapy.</p>
-            <img src="https://images.unsplash.com/photo-1522199710521-72d69614c702?w=800&q=80" alt="Team collaboration"
-                class="hero-image" style="max-width:500px; border-radius:12px; margin-top:2rem;">
-        </section>
-        <section style="display:flex; align-items:center; gap:2rem; margin:4rem 0;">
-            <div class="icon-feature" style="background:var(--secondary-pale); flex-shrink:0;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z" />
-                </svg>
-            </div>
-            <div>
-                <h2>Our Mission</h2>
-                <p>Provide a non‑clinical, judgment‑free environment where anyone can express themselves, gain clarity,
-                    and discover next steps.</p>
+        <!-- Hero Section -->
+        <section class="hero-slider-section" style="height: 600px;">
+            <div class="hero-slides">
+                <div class="hero-slide active" style="--bg-url: url('https://images.unsplash.com/photo-1522199710521-72d69614c702?w=1600&q=80');">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <h1 class="hero-title">Our Story</h1>
+                        <p class="hero-subtitle">Ventoutt was created to bridge the gap between “I’m fine” and “I need professional help.” A safe, anonymous space for venting, coaching, and guided pathways to therapy.</p>
+                    </div>
+                </div>
             </div>
         </section>
-        <section style="display:flex; align-items:center; gap:2rem; margin:4rem 0; flex-direction:row-reverse;">
-            <div class="icon-feature" style="background:var(--secondary-pale); flex-shrink:0;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8 12 2" />
-                </svg>
-            </div>
-            <div>
-                <h2>Our Values</h2>
-                <ul style="margin-left:1.5rem; line-height:1.6;">
-                    <li>Privacy – 100% anonymous.</li>
-                    <li>Empathy – Listening without judgment.</li>
-                    <li>Accessibility – Free, web‑based support.</li>
-                </ul>
+
+        <!-- Mission & Values Section -->
+        <section class="specializations-section">
+            <h2 class="specializations-title">Our Mission & Values</h2>
+            <p class="specializations-subtitle">We are dedicated to providing a non-clinical, judgment-free environment.</p>
+            <div class="specializations-grid">
+                <!-- Mission -->
+                <div class="specialization-card">
+                    <div class="specialization-image" style="background-color: var(--bg-light-green); display:flex; align-items:center; justify-content:center;">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <div class="specialization-label">Our Mission</div>
+                    <p style="padding: 0 20px 20px; text-align: center; color: var(--text-muted);">Provide a non‑clinical, judgment‑free environment where anyone can express themselves, gain clarity, and discover next steps.</p>
+                </div>
+                <!-- Values: Privacy -->
+                <div class="specialization-card">
+                    <div class="specialization-image" style="background-color: var(--bg-yellow); display:flex; align-items:center; justify-content:center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary-orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    </div>
+                    <div class="specialization-label">Privacy</div>
+                    <p style="padding: 0 20px 20px; text-align: center; color: var(--text-muted);">100% anonymous. We prioritize your privacy above all else.</p>
+                </div>
+                <!-- Values: Empathy -->
+                <div class="specialization-card">
+                    <div class="specialization-image" style="background-color: var(--bg-beige); display:flex; align-items:center; justify-content:center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-rust)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </div>
+                    <div class="specialization-label">Empathy</div>
+                    <p style="padding: 0 20px 20px; text-align: center; color: var(--text-muted);">Listening without judgment. We are here to support, not to judge.</p>
+                </div>
+                <!-- Values: Accessibility -->
+                <div class="specialization-card">
+                    <div class="specialization-image" style="background-color: var(--bg-light-cream); display:flex; align-items:center; justify-content:center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    </div>
+                    <div class="specialization-label">Accessibility</div>
+                    <p style="padding: 0 20px 20px; text-align: center; color: var(--text-muted);">Free, web‑based support available to everyone, everywhere.</p>
+                </div>
             </div>
         </section>
-        <section style="text-align:center; margin:4rem 0;">
-            <h2>Meet the Team</h2>
-            <p>Our small team of mental‑health enthusiasts and developers.</p>
-            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80" alt="Team photo"
-                class="hero-image" style="max-width:600px; border-radius:12px; margin-top:2rem;">
+
+        <!-- Team Section -->
+        <section class="experts-section">
+            <div class="experts-container">
+                <div>
+                    <div class="experts-header">
+                        <div class="experts-label">OUR TEAM</div>
+                        <h2 class="experts-title">Meet the Team</h2>
+                        <p class="experts-description">Our small team of mental‑health enthusiasts and developers working together to make mental health support accessible to all.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="experts-grid" style="grid-template-columns: 1fr;">
+                         <div class="expert-card" style="height: auto;">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80" alt="Team photo" class="expert-photo" style="height: 400px;">
+                            <div class="expert-info-box" style="position: relative; bottom: 0; left: 0; right: 0; margin: -40px 20px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                                <div class="expert-name">The Ventoutt Team</div>
+                                <div class="expert-title">Dedicated to your well-being</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
     <footer>
@@ -103,6 +366,31 @@
     </div>
     <script src="js/chatbot.js"></script>
     <script src="js/popup-scroll.js"></script>
+
+    <!-- Navigation Dropdown Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navSplitToggles = document.querySelectorAll('.nav-split-toggle');
+
+            navSplitToggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const dropdown = toggle.closest('.nav-dropdown');
+                    dropdown.classList.toggle('active');
+                });
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.nav-dropdown')) {
+                    document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+        });
+    </script>
 
 </body>
 
