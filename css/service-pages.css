@@ -1,0 +1,401 @@
+/* Service Pages Styles - Based on Figma Design */
+/* Header and Footer styles have been moved to main.css */
+
+/* ========== Hero Section ========== */
+.service-hero {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.service-hero-content {
+    padding: 450px 150px 60px;
+    text-align: center;
+    background: var(--bg-cream);
+}
+
+.service-hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 66px;
+    letter-spacing: -0.5px;
+    color: #212121;
+    max-width: 988px;
+    margin: 0 auto 40px;
+}
+
+.service-hero-subtitle {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+    max-width: 1140px;
+    margin: 0 auto 30px;
+}
+
+.service-hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.btn-download {
+    background: var(--accent-green);
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    padding: 12px 45px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 20px;
+    color: #FFFFFF;
+    text-decoration: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ========== Feature Cards Section ========== */
+.service-features {
+    background: var(--bg-cream);
+    padding: 60px 130px;
+}
+
+.feature-cards-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.feature-card-box {
+    width: 220px;
+    height: 250px;
+    background: #212121;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.feature-card-box .icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-card-box .icon svg {
+    width: 60px;
+    height: 60px;
+    fill: none;
+    stroke: #FFFDF7;
+    stroke-width: 2;
+}
+
+.feature-card-box .icon img {
+    width: 60px;
+    height: 60px;
+    filter: brightness(0) invert(1);
+}
+
+.feature-card-box .label {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 31px;
+    color: #FFFDF7;
+}
+
+/* ========== Pricing Section ========== */
+.service-pricing {
+    position: relative;
+    padding: 80px 150px;
+    background: #FFE4AD;
+}
+
+.pricing-bg-wave {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: var(--bg-cream);
+}
+
+.pricing-bg-wave::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: #FFE4AD;
+    border-radius: 100% 100% 0 0;
+}
+
+.pricing-title {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 47px;
+    color: #212121;
+    margin-bottom: 20px;
+}
+
+.pricing-subtitle {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+    margin-bottom: 40px;
+}
+
+.pricing-table {
+    width: 100%;
+    max-width: 1140px;
+    border-collapse: collapse;
+}
+
+.pricing-table th,
+.pricing-table td {
+    padding: 25px 20px;
+    text-align: left;
+    font-family: var(--font-body);
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: -0.5px;
+    vertical-align: middle;
+}
+
+.pricing-table th {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 36px;
+    color: #212121;
+    border-bottom: 2.5px solid #000000;
+}
+
+.pricing-table td {
+    font-weight: 400;
+    color: #212121;
+    border-bottom: 1.5px solid #000000;
+}
+
+.pricing-table .plan-col {
+    width: 30%;
+    border-right: 2.5px solid #000000;
+}
+
+.pricing-table .price-col {
+    width: 20%;
+    text-align: center;
+    border-right: 1.5px solid #000000;
+}
+
+.pricing-table .details-col {
+    width: 50%;
+}
+
+.pricing-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ========== App Offer Section ========== */
+.service-app-offer {
+    background: #FFE4AD;
+    padding: 60px 150px;
+}
+
+.app-offer-note {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.app-offer-link {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+    color: #43A047;
+    text-decoration: none;
+}
+
+.app-offer-link:hover {
+    text-decoration: underline;
+}
+
+.app-offer-title {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 47px;
+    color: #F57F17;
+    margin: 40px 0 30px;
+}
+
+.app-offer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.app-offer-list li {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+    padding-left: 25px;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.app-offer-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 5px;
+    height: 5px;
+    background: #212121;
+    border-radius: 50%;
+}
+
+/* ========== Emotional Support Section ========== */
+.service-support {
+    background: var(--bg-cream);
+    padding: 80px 150px;
+}
+
+.support-title {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 42px;
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+.support-text {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+    max-width: 804px;
+}
+
+/* ========== Responsive Styles ========== */
+@media (max-width: 1200px) {
+
+    .service-hero-content,
+    .service-pricing,
+    .service-app-offer,
+    .service-support {
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+    .service-features {
+        padding: 60px 40px;
+    }
+}
+
+@media (max-width: 992px) {
+    .feature-cards-grid {
+        flex-wrap: wrap;
+    }
+
+    .feature-card-box {
+        width: calc(50% - 10px);
+        max-width: 220px;
+    }
+
+    .pricing-table th,
+    .pricing-table td {
+        padding: 15px 10px;
+        font-size: 16px;
+    }
+
+    .pricing-table th {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-hero {
+        height: 250px;
+    }
+
+    .service-hero-content {
+        padding: 280px 20px 40px;
+    }
+
+    .service-hero-title {
+        font-size: 32px;
+        line-height: 42px;
+    }
+
+    .service-hero-subtitle {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .feature-card-box {
+        width: 100%;
+        max-width: 280px;
+        height: 200px;
+    }
+
+    .feature-card-box .label {
+        font-size: 18px;
+    }
+
+    .service-pricing,
+    .service-app-offer,
+    .service-support {
+        padding: 40px 20px;
+    }
+
+    .pricing-title,
+    .app-offer-title {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .pricing-table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .support-title {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .support-text {
+        font-size: 16px;
+        line-height: 22px;
+    }
+}

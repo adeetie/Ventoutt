@@ -6,310 +6,298 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services - Ventoutt</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/service-pages.css">
     <link rel="stylesheet" href="css/chatbot.css">
     <link rel="stylesheet" href="css/popup.css">
     <style>
-        .service-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            margin: 4rem 0;
-        }
-
-        .service-section.reverse {
-            direction: rtl;
-        }
-
-        .service-section.reverse>* {
-            direction: ltr;
-        }
-
-        .service-image {
+        /* Services Page Specific Styles (Internal for now, to move to CSS later if needed) */
+        /* Hero Overwrite if typical service-hero class is used, but we want unique look */
+        .services-page-hero {
+            position: relative;
             width: 100%;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            height: 400px;
+            background: #F4EDE4;
+            /* Placeholder color matching design vibe */
+            /* background-image: url('path/to/hero.jpg'); */
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            margin-bottom: 50px;
         }
 
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--secondary-pale);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-
-        .service-icon svg {
-            width: 32px;
-            height: 32px;
-            stroke: var(--primary-green);
-        }
-
-        .service-comparison {
-            max-width: 900px;
-            margin: 3rem auto;
-            border-collapse: collapse;
-            width: 100%;
-            background: #fff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .service-comparison th,
-        .service-comparison td {
-            padding: 1.2rem;
+        .services-intro {
             text-align: center;
-            border-bottom: 1px solid #eee;
+            max-width: 1140px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
         }
 
-        .service-comparison th {
-            background: var(--primary-green);
-            color: white;
+        .services-intro h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 48px;
+            line-height: 66px;
+            color: #212121;
+            margin-bottom: 20px;
         }
 
-        .service-comparison tr:hover {
-            background: #f9f9f9;
+        .services-intro p {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 20px;
+            line-height: 26px;
+            color: #000000;
         }
 
-        .check {
-            color: #4CAF50;
-            font-size: 1.3rem;
+        /* Card Grid */
+        .services-grid-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
         }
 
-        .cross {
-            color: #ccc;
-            font-size: 1.3rem;
+        .service-option-card {
+            width: 270px;
+            height: 300px;
+            background: #3A7F56;
+            border-radius: 20px;
+            position: relative;
+            transition: transform 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .service-option-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card-image {
+            width: 200px;
+            height: 180px;
+            background: #FFFDF7;
+            /* Placeholder for image */
+            border-radius: 10px;
+            margin: 35px auto 0;
+            display: block;
+            object-fit: cover;
+        }
+
+        .service-card-title {
+            text-align: center;
+            color: #FFFDF7;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            font-size: 20px;
+            margin-top: 20px;
+            display: block;
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .quiz-text {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 24px;
+            color: #212121;
+            font-weight: 500;
+        }
+
+        .quiz-link {
+            color: #F57F17;
+            font-weight: 700;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+        }
+
+        .quiz-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #F57F17;
+        }
+
+        /* Emotional Support Text */
+        .emotional-support-section {
+            padding: 40px 150px 80px;
+            background: #FFFDF7;
+        }
+
+        .emotional-support-title {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 32px;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+
+        .emotional-support-desc {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 20px;
+            line-height: 26px;
+            color: #000000;
+            max-width: 800px;
         }
 
         @media (max-width: 768px) {
-            .service-section {
-                grid-template-columns: 1fr;
-            }
-
-            .service-section.reverse {
-                direction: ltr;
+            .emotional-support-section {
+                padding: 40px 20px;
             }
         }
     </style>
 </head>
 
 <body>
-
-    <header>
-        <div class="logo">Ventoutt.</div>
-        <nav>
+    <!-- Navigation (Standard Global Header) -->
+    <!-- Use .nav-solid if no hero image behind it is dark enough, but for now we overlay on hero -->
+    <header class="service-nav">
+        <div class="logo-container">
+            <!-- Logo placeholder or img -->
+            <span class="logo-text">V</span>
+        </div>
+        <div class="service-nav-links">
             <a href="index.html">Home</a>
-            <div class="dropdown">
-                <button class="dropbtn" onclick="location.href='services.html'"
-                    style="color:var(--primary-green)">Services ▾</button>
-                <div class="dropdown-content">
-                    <a href="/chatbot/demo-venting.html">Venting</a>
-                    <a href="/chatbot/demo-coaching.html">Coaching</a>
-                    <a href="/chatbot/demo-therapy.html">Therapy</a>
-                </div>
-            </div>
-            <a href="about.html">About</a>
-            <a href="blog.html">Blog</a>
-            <a href="contact.html">Contact</a>
-            <a href="services.html?chatbot=open" class="cta-nav">Get Support</a>
-        </nav>
+            <a href="services.html">Services</a>
+            <a href="#">Join Us</a>
+            <!-- <a href="#">Internships</a> -->
+            <a href="about.html">About Us</a>
+            <a href="#">Help</a>
+            <a href="#">Blog</a>
+        </div>
+        <div class="language-selector">
+            <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="English">
+            <span>En</span>
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M2 4L5 7L8 4" stroke="white" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </div>
+        <!-- Aligning closer to specific design if needed, but keeping global structure -->
+        <!-- Login button component from Figma -->
+        <div
+            style="margin-left: 20px; border: 2px solid white; border-radius: 20px; padding: 5px 15px; color: white; cursor: pointer;">
+            Log In
+        </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <h1>Choose Your Kind of Support</h1>
-            <p>You don't have to label your feelings — these are simply different pathways to feeling better.</p>
-        </section>
-
-        <!-- Venting Section -->
-        <section class="service-section">
-            <div>
-                <div class="service-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <path
-                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
-                        </path>
-                    </svg>
-                </div>
-                <h2>Venting</h2>
-                <p>A space to unload what's on your mind. No advice. No correction. No diagnosis. Just pure expression
-                    and emotional release.</p>
-                <ul style="margin: 1.5rem 0; line-height: 2;">
-                    <li>✓ Talk freely without judgment</li>
-                    <li>✓ Trained listeners who care</li>
-                    <li>✓ 100% confidential</li>
-                    <li>✓ Available anytime</li>
-                </ul>
-                <button class="btn-primary" onclick="window.open('/chatbot/demo-venting.html', '_blank')">Start
-                    Venting</button>
-            </div>
-            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80"
-                alt="Person venting and feeling relieved" class="service-image">
-        </section>
-
-        <!-- Coaching Section -->
-        <section class="service-section reverse">
-            <div>
-                <div class="service-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <path
-                            d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.54">
-                        </path>
-                        <path
-                            d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.54">
-                        </path>
-                    </svg>
-                </div>
-                <h2>Coaching</h2>
-                <p>Psychoeducational conversations led by qualified psychologists based in India. Build skills,
-                    understand patterns, and gain clarity.</p>
-                <ul style="margin: 1.5rem 0; line-height: 2;">
-                    <li>✓ Qualified Indian psychologists</li>
-                    <li>✓ Skill-building focus</li>
-                    <li>✓ Understand emotional patterns</li>
-                    <li>✓ Not therapy (no diagnosis)</li>
-                </ul>
-                <button class="btn-primary" onclick="window.open('/chatbot/demo-coaching.html')">Book Coaching</button>
-            </div>
-            <img src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?w=600&q=80" alt="Coaching session"
-                class="service-image">
-        </section>
-
-        <!-- Therapy Section -->
-        <section class="service-section">
-            <div>
-                <div class="service-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <path
-                            d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
-                        </path>
-                    </svg>
-                </div>
-                <h2>Therapy Resources</h2>
-                <p>Licensed mental health treatment provided by external verified partners. For clinical diagnosis and
-                    professional treatment.</p>
-                <ul style="margin: 1.5rem 0; line-height: 2;">
-                    <li>✓ Licensed therapists</li>
-                    <li>✓ Clinical diagnosis available</li>
-                    <li>✓ Treatment for conditions</li>
-                    <li>✓ External verified platforms</li>
-                </ul>
-                <button class="btn-primary" onclick="window.open('https://www.betterhelp.com', '_blank')">View
-                    Resources</button>
-            </div>
-            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80"
-                alt="Professional therapy session" class="service-image">
-        </section>
-
-        <!-- Comparison Table -->
-        <section>
-            <h2 style="text-align: center;">Compare Your Options</h2>
-            <div class="table-container">
-                <table class="service-comparison">
-                    <tr>
-                        <th>Feature</th>
-                        <th>Venting</th>
-                        <th>Coaching</th>
-                        <th>Therapy</th>
-                    </tr>
-                    <tr>
-                        <td>Emotional release</td>
-                        <td class="check">✔</td>
-                        <td class="check">✔</td>
-                        <td class="check">✔</td>
-                    </tr>
-                    <tr>
-                        <td>Psychoeducation</td>
-                        <td class="cross">✖</td>
-                        <td class="check">✔</td>
-                        <td class="check">✔</td>
-                    </tr>
-                    <tr>
-                        <td>Skill building</td>
-                        <td class="cross">✖</td>
-                        <td class="check">✔</td>
-                        <td class="check">✔</td>
-                    </tr>
-                    <tr>
-                        <td>Diagnosis</td>
-                        <td class="cross">✖</td>
-                        <td class="cross">✖</td>
-                        <td class="check">✔</td>
-                    </tr>
-                    <tr>
-                        <td>Treatment</td>
-                        <td class="cross">✖</td>
-                        <td class="cross">✖</td>
-                        <td class="check">✔</td>
-                    </tr>
-                    <tr>
-                        <td>Crisis support</td>
-                        <td class="cross">✖</td>
-                        <td class="cross">✖</td>
-                        <td>External</td>
-                    </tr>
-                </table>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section
-            style="text-align: center; background: linear-gradient(135deg, #E5F5EA 0%, #fff 100%); padding: 4rem; border-radius: 16px; margin-top: 3rem;">
-            <h2>Still Not Sure?</h2>
-            <p>Our chatbot can help you figure out the right path. No pressure, no commitment.</p>
-            <button class="btn-primary" onclick="MB.toggle(true)" style="font-size: 1.1rem; padding: 1rem 2rem;">
-                💬 Talk to Our Chatbot
-            </button>
-        </section>
-
-        <div style="height: 200px;"></div>
-    </main>
-
-    <footer>
-        <p>© 2025 Ventoutt. Support made simple.</p>
-    </footer>
-
-    <!-- Popup -->
-    <!-- Popup injected by JS -->
-
-    <!-- Chatbot -->
-    <div id="mentalbot-overlay" class="mobile-only"></div>
-    <div id="mentalbot-shell" class="collapsed" aria-live="polite">
-        <button id="mentalbot-bar" aria-expanded="false" aria-controls="mentalbot-panel">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z"
-                    fill="white" />
-            </svg>
-        </button>
-        <div id="mentalbot-panel" role="dialog" aria-hidden="true" aria-label="Support chat panel">
-            <div id="mentalbot-header">
-                <span class="header-title">Message</span>
-                <button id="mentalbot-close" aria-label="Close chat">✕</button>
-            </div>
-            <div id="mentalbot-disclaimer" class="scroll-disclaimer" aria-live="polite"></div>
-            <div id="mentalbot-messages" role="log" aria-live="polite"></div>
-            <div id="mentalbot-buttons" aria-label="Quick options"></div>
-            <div id="mentalbot-input-area" aria-hidden="true">
-                <input id="mentalbot-input" type="text" placeholder="Type something..." aria-label="Message" />
-                <button id="mentalbot-send" aria-label="Send message">➔</button>
-            </div>
-        </div>
+    <!-- Hero Background -->
+    <div class="services-page-hero">
+        <!-- Background Image should go here in CSS -->
     </div>
 
+    <!-- Intro Text -->
+    <div class="services-intro">
+        <h1>Support That Meets You Where You Are</h1>
+        <p>Whether you’re navigating teenage confusion, personal setbacks, or simply need someone to talk to, we’re here
+            for you. Our services are crafted to suit your pace, your comfort, and your story. No judgment, just a safe
+            space to start.</p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="services-grid-container">
+        <!-- Therapy for Teen -->
+        <a href="therapy.html" class="service-option-card">
+            <img src="" alt="Teen Therapy" class="service-card-image" style="background-color: #E0E0E0;">
+            <!-- Placeholder -->
+            <span class="service-card-title">Therapy for Teen</span>
+        </a>
+
+        <!-- Therapy for Individual -->
+        <a href="therapy.html" class="service-option-card">
+            <img src="" alt="Individual Therapy" class="service-card-image" style="background-color: #E0E0E0;">
+            <span class="service-card-title">Therapy for Individual</span>
+        </a>
+
+        <!-- Therapy for Couple -->
+        <a href="therapy.html" class="service-option-card">
+            <img src="" alt="Couple Therapy" class="service-card-image" style="background-color: #E0E0E0;">
+            <span class="service-card-title">Therapy for Couple</span>
+        </a>
+
+        <!-- Instant Venting -->
+        <a href="venting.html" class="service-option-card">
+            <img src="" alt="Instant Venting" class="service-card-image" style="background-color: #E0E0E0;">
+            <span class="service-card-title">Instant Venting</span>
+        </a>
+    </div>
+
+    <!-- Quiz Section -->
+    <div class="quiz-section">
+        <span class="quiz-text">Not sure what you want? Take a </span>
+        <a href="#" class="quiz-link">30sec quiz.</a>
+    </div>
+
+    <!-- Emotional Support Section -->
+    <section class="emotional-support-section">
+        <h2 class="emotional-support-title">You're not alone in this.</h2>
+        <p class="emotional-support-desc">
+            We know it's hard to open up, especially when everything feels overwhelming or nobody seems to get it.
+            But even one small conversation can make a difference. Whether you want to vent, reflect, or heal,
+            this space is yours. Whenever you're ready, we're here to listen.
+        </p>
+    </section>
+
+    <!-- Global Footer -->
+    <footer class="service-footer">
+        <p class="footer-warning">This is not a Helpline! In case of Emergency or If somebody is in danger, please reach
+            out to government authorities.</p>
+
+        <p class="footer-disclaimer">
+            Please note that we are not capable in case of crisis intervention. If you have any severe symptoms or any
+            thoughts about self harm,
+            please seek immediate medical help or call suicide prevention helplines.
+            <a href="#">Click here for suicide prevention helplines across the world</a>
+        </p>
+
+        <p class="footer-social-title">We're here for you, online and beyond. Join us on socials.</p>
+
+        <div class="footer-social-icons">
+            <!-- Social Icons SVG copied from previous files -->
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg></a>
+            <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                </svg></a>
+            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg></a>
+        </div>
+
+        <div class="footer-buttons">
+            <a href="#" class="btn-footer">Learn More</a>
+            <a href="#" class="btn-footer">Download the App</a>
+        </div>
+
+        <div class="footer-contact">
+            <p><strong>Address:</strong> Neuniverse Networks Pvt Ltd. B-218, M.I.G Flats, East of Loni Road, Delhi,
+                110093, India.</p>
+            <p><strong>PHONE:</strong> +91-9560465272 | +91-704244902</p>
+            <p><strong>EMAIL:</strong> Connect@ventoutt.com | Management@ventoutt.com</p>
+        </div>
+
+        <!-- Footer logo if needed -->
+    </footer>
+
+    <!-- Scripts -->
     <script src="js/chatbot.js"></script>
     <script src="js/popup-scroll.js"></script>
-
 </body>
 
 </html>
