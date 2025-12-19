@@ -25,7 +25,19 @@
             </div>
             <div class="service-nav-links">
                 <a href="index.html">Home</a>
-                <a href="services.html">Services</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn">
+                        Services
+                        <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                            <path d="M1 1L6 6L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="therapy.html">Therapy</a>
+                        <a href="venting.html">Venting</a>
+                        <a href="coaching.html">Coaching</a>
+                    </div>
+                </div>
                 <a href="#">Join Us</a>
                 <a href="#">Internships</a>
                 <a href="about.html">About Us</a>
@@ -246,6 +258,28 @@
     <!-- Scripts -->
     <script src="js/chatbot.js"></script>
     <script src="js/popup-scroll.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navDropdownBtns = document.querySelectorAll('.nav-dropdown-btn');
+            
+            navDropdownBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const dropdown = btn.closest('.nav-dropdown');
+                    dropdown.classList.toggle('active');
+                });
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.nav-dropdown')) {
+                    document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
