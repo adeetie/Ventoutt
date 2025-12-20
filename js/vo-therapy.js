@@ -1,75 +1,126 @@
-            document.addEventListener('DOMContentLoaded', () => {
-                const track = document.getElementById('expertPointersTrack');
-                if (track) {
-                    // 1. Clone items for infinite loop logic (at least enough to fill screen + scroll)
-                    // We have 3 items. Clone them 3 times = 12 items total, should be plenty.
-                    const originals = Array.from(track.children);
+/**
+ * VentOut Therapy Page JavaScript
+ * Page-specific functionality for the therapy page
+ */
 
-                    // Clone set 1
-                    originals.forEach(item => track.appendChild(item.cloneNode(true)));
-                    // Clone set 2
-                    originals.forEach(item => track.appendChild(item.cloneNode(true)));
-                    // Clone set 3
-                    originals.forEach(item => track.appendChild(item.cloneNode(true)));
+// Slideshow for venting banner (blob slides)
+document.addEventListener('DOMContentLoaded', () => {
+    const figmaSlides = document.querySelectorAll('.venting-banner-figma .blob-slide');
+    if (figmaSlides.length > 0) {
+        let cur = 0;
+        setInterval(() => {
+            figmaSlides[cur].classList.remove('active');
+            cur = (cur + 1) % figmaSlides.length;
+            figmaSlides[cur].classList.add('active');
+        }, 4000);
+    }
+});
 
-                    // 2. Calculate widths
-                    const gap = 20;
-                    // Get one item width (assuming equal)
-                    const itemWidth = originals[0].getBoundingClientRect().width || 280;
-                    const totalItemWidth = itemWidth + gap;
+// Expert Pointers Carousel Animation
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('expertPointersTrack');
+    if (track) {
+        // Clone items for infinite loop
+        const originals = Array.from(track.children);
 
-                    // The distance to scroll is the width of the ORIGINAL set
-                    const scrollDistance = totalItemWidth * originals.length;
+        // Clone set 1
+        originals.forEach(item => track.appendChild(item.cloneNode(true)));
+        // Clone set 2
+        originals.forEach(item => track.appendChild(item.cloneNode(true)));
+        // Clone set 3
+        originals.forEach(item => track.appendChild(item.cloneNode(true)));
 
-                    // 3. Set CSS variable and Animation
-                    track.style.setProperty('--scroll-distance', `${scrollDistance}px`);
+        // Calculate widths
+        const gap = 20;
+        const itemWidth = originals[0].getBoundingClientRect().width || 280;
+        const totalItemWidth = itemWidth + gap;
 
-                    // Duration: Let's say 40px per second speed
-                    // 3 items * 300px(approx) = 900px. 900/40 = ~22s
-                    const duration = scrollDistance / 40;
+        // The distance to scroll is the width of the ORIGINAL set
+        const scrollDistance = totalItemWidth * originals.length;
 
-                    track.style.animation = `pointer-scroll ${duration}s linear infinite`;
+        // Set CSS variable and Animation
+        track.style.setProperty('--scroll-distance', `${scrollDistance}px`);
 
-                    // Pause on hover
-                    track.addEventListener('mouseenter', () => track.style.animationPlayState = 'paused');
-                    track.addEventListener('mouseleave', () => track.style.animationPlayState = 'running');
+        // Duration: 40px per second speed
+        const duration = scrollDistance / 40;
+
+        track.style.animation = `pointer-scroll ${duration}s linear infinite`;
+
+        // Pause on hover
+        track.addEventListener('mouseenter', () => track.style.animationPlayState = 'paused');
+        track.addEventListener('mouseleave', () => track.style.animationPlayState = 'running');
+    }
+});
+
+/**
+ * Why People Love Ventoutt - Scroll-Triggered Behavior (Smooth)
+ * Content changes smoothly as user scrolls through the section
+ */
+document.addEventListener('DOMContentLoaded', function () {
+    const section = document.querySelector('.why-love-section');
+
+    if (!section) return;
+
+    let ticking = false;
+    let currentIndex = 0;
+
+    // Throttled scroll handler for performance
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                handleScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+
+    // Run once on load
+    handleScroll();
+
+    function handleScroll() {
+        const points = section.querySelectorAll('.why-love-point');
+        const photos = section.querySelectorAll('.why-love-photo');
+
+        if (points.length === 0) return;
+
+        const rect = section.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+
+        // Calculate scroll progress
+        const scrollDistance = rect.height - viewportHeight;
+        let scrolled = -rect.top;
+
+        // Normalize to 0-1
+        let progress = scrolled / scrollDistance;
+        if (progress < 0) progress = 0;
+        if (progress > 1) progress = 1;
+
+        // Map to index with smooth transition zones
+        const totalPoints = points.length;
+        const rawIndex = progress * totalPoints;
+        const index = Math.min(Math.floor(rawIndex), totalPoints - 1);
+
+        // Only update if index changed (reduces reflows)
+        if (index !== currentIndex) {
+            currentIndex = index;
+
+            // Update active states with stagger
+            points.forEach((point, i) => {
+                if (i === index) {
+                    setTimeout(() => point.classList.add('active'), 0);
+                } else {
+                    point.classList.remove('active');
                 }
             });
 
-
-                document.addEventListener('DOMContentLoaded', () => {
-                    const figmaSlides = document.querySelectorAll('.venting-banner-figma .blob-slide');
-                    if (figmaSlides.length > 0) {
-                        let cur = 0;
-                        setInterval(() => {
-                            figmaSlides[cur].classList.remove('active');
-                            cur = (cur + 1) % figmaSlides.length;
-                            figmaSlides[cur].classList.add('active');
-                        }, 4000);
-                    }
-                });
-
-
-            document.addEventListener('DOMContentLoaded', () => {
-                const navSplitToggles = document.querySelectorAll('.nav-split-toggle');
-
-                navSplitToggles.forEach(toggle => {
-                    toggle.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        const dropdown = toggle.closest('.nav-dropdown');
-                        dropdown.classList.toggle('active');
-                    });
-                });
-
-                // Close dropdown when clicking outside
-                document.addEventListener('click', (e) => {
-                    if (!e.target.closest('.nav-dropdown')) {
-                        document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
-                            dropdown.classList.remove('active');
-                        });
-                    }
-                });
+            photos.forEach((photo, i) => {
+                if (i === index) {
+                    setTimeout(() => photo.classList.add('active'), 0);
+                } else {
+                    photo.classList.remove('active');
+                }
             });
-
-
+        }
+    }
+});
