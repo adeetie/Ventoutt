@@ -281,7 +281,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     text-decoration: none;
     background: none;
     width: 100%;
@@ -333,7 +332,6 @@
     color: var(--vo-color-primary);
     font-weight: 600;
     letter-spacing: 0.5px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin: 30px 0 20px;
 }
 

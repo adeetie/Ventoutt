@@ -276,3 +276,12 @@ button {
     transform: translateY(-2px);
     box-shadow: var(--vo-shadow-base);
 }
+/* Mobile Text Alignment Override */
+@media (max-width: 768px) {
+    main {
+        text-align: left !important;
+    }
+    main * {
+        text-align: left !important;
+    }
+}

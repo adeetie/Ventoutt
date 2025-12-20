@@ -1431,9 +1431,9 @@
     top: 160px;
     left: 0;
     right: 0;
-    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-                visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateY(20px);
 }
 
@@ -1761,9 +1761,9 @@ html {
     top: 160px;
     left: 0;
     right: 0;
-    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-                visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateY(20px);
 }
 
@@ -2037,18 +2037,24 @@ html {
     .vetting-redesign-section {
         padding: 60px 40px;
     }
-    
+
     .vetting-header {
         flex-direction: column;
         gap: 20px;
     }
-    
+
     .vetting-title {
         font-size: 36px;
     }
-    
+
     .vetting-cards-grid {
         grid-template-columns: 1fr;
         gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .experts-grid {
+        display: none !important;
     }
 }

@@ -12,7 +12,75 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('VO-Index: Initializing homepage logic...');
 
     /* =========================================
-       2. FAQ Toggle Logic
+       2. Hero Slideshow (Homepage)
+       ========================================= */
+    const heroSlides = document.querySelectorAll('.vo-hero-slide');
+    if (heroSlides.length > 1) {
+        let currentSlide = 0;
+
+        const rotateSlides = () => {
+            // Remove active class from current slide
+            heroSlides[currentSlide].classList.remove('active');
+
+            // Move to next slide
+            currentSlide = (currentSlide + 1) % heroSlides.length;
+
+            // Add active class to new slide
+            heroSlides[currentSlide].classList.add('active');
+        };
+
+        // Auto-rotate every 5 seconds
+        setInterval(rotateSlides, 5000);
+    }
+
+    /* =========================================
+       3. Service Cards Touch Expansion (Mobile)
+       ========================================= */
+    const galleryCards = document.querySelectorAll('.vo-gallery-card');
+    if (galleryCards.length > 0 && window.innerWidth <= 768) {
+        galleryCards.forEach(card => {
+            // Handle both touch and click events
+            const handleExpand = (e) => {
+                // Don't interfere with link clicks
+                if (e.target.classList.contains('vo-gallery-link')) {
+                    return;
+                }
+
+                // Toggle expanded state
+                const isExpanded = card.classList.contains('expanded');
+
+                // Remove expanded from all cards
+                galleryCards.forEach(c => c.classList.remove('expanded'));
+
+                // If card wasn't expanded, expand it
+                if (!isExpanded) {
+                    card.classList.add('expanded');
+
+                    // Scroll the card into view smoothly
+                    setTimeout(() => {
+                        card.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'nearest',
+                            inline: 'center'
+                        });
+                    }, 100);
+                }
+            };
+
+            card.addEventListener('click', handleExpand);
+            card.addEventListener('touchstart', (e) => {
+                // Prevent default to avoid double-firing with click
+                if (e.target.classList.contains('vo-gallery-link')) {
+                    return;
+                }
+                e.preventDefault();
+                handleExpand(e);
+            }, { passive: false });
+        });
+    }
+
+    /* =========================================
+       4. FAQ Toggle Logic
        ========================================= */
     // Using standard details/summary, but we can add smooth animation if needed.
     // CSS handles the toggle icon rotation.
