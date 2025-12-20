@@ -194,7 +194,6 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================= */
     // Monitor footer injection to ensure columns render
     const checkFooter = setInterval(() => {
-        const footerContent = document.querySelector('.vo-footer__content');
         if (footerContent) {
             clearInterval(checkFooter);
             if (footerContent.children.length < 2) {
@@ -215,4 +214,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 });
+
+/* =========================================
+   8. Common Challenges Toggle Global Function
+   ========================================= */
+window.toggleVoChallengesList = function () {
+    const expanded = document.querySelector('.vo-challenges-expanded');
+    const initial = document.querySelector('.vo-challenges-initial');
+    const toggleText = document.getElementById('voToggleText');
+    const btn = document.getElementById('voToggleChallenges');
+
+    if (!expanded || !initial || !toggleText || !btn) {
+        console.error('VO: Toggle elements not found');
+        return;
+    }
+
+    if (expanded.style.display === 'none') {
+        // Show expanded, Hide initial
+        expanded.style.display = 'grid'; // Using grid layout
+        initial.style.display = 'none';
+        toggleText.textContent = 'See Less';
+        btn.classList.add('expanded');
+    } else {
+        // Hide expanded, Show initial
+        expanded.style.display = 'none';
+        initial.style.display = 'grid'; // Using grid layout
+        toggleText.textContent = 'See More';
+        btn.classList.remove('expanded');
+    }
+};
 
