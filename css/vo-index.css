@@ -281,6 +281,108 @@
         scroll-snap-type: x mandatory;
     }
 
+    /* Partners & Therapists Section Mobile Override */
+    .partners-section {
+        background-color: #212121 !important;
+        /* Dark background from image */
+        padding: 60px 20px !important;
+    }
+
+    .partners-title {
+        color: #FFFFFF !important;
+        text-align: center;
+        font-size: 32px !important;
+        margin-bottom: 20px !important;
+        display: block !important;
+    }
+
+    /* Force visibility of the logos loop */
+    .vo-partners-logos {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        width: 100% !important;
+        justify-content: flex-start !important;
+        margin-bottom: 40px !important;
+    }
+
+    /* Ensure wrapper is strictly block for vertical stacking */
+    .therapists-carousel-wrapper {
+        display: block !important;
+        width: 100% !important;
+        margin-top: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    /* Therapist Card Styling to Match Image 2 */
+    .therapist-card {
+        background: #FFFFFF !important;
+        border: 2px solid #3A7F56 !important;
+        /* Green border/shadow hint */
+        border-radius: 20px !important;
+        padding: 20px !important;
+        width: 280px !important;
+        text-align: left !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    .therapist-header {
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 15px !important;
+        margin-bottom: 15px !important;
+        width: 100% !important;
+    }
+
+    .therapist-avatar {
+        width: 60px !important;
+        height: 60px !important;
+        border-radius: 50% !important;
+        margin-bottom: 0 !important;
+    }
+
+    .therapist-info {
+        text-align: left !important;
+    }
+
+    .therapist-name {
+        font-size: 16px !important;
+        margin-bottom: 2px !important;
+        text-align: left !important;
+    }
+
+    .therapist-profession {
+        font-size: 13px !important;
+        color: #666 !important;
+        text-align: left !important;
+    }
+
+    .therapist-specialization {
+        border: 1px solid #ccc !important;
+        border-radius: 8px !important;
+        padding: 10px !important;
+        font-size: 12px !important;
+        color: #444 !important;
+        width: 100% !important;
+        margin-bottom: 15px !important;
+        background: #fff !important;
+    }
+
+    .therapist-booking-btn {
+        width: 100% !important;
+        background-color: #F57F17 !important;
+        /* Orange button */
+        color: #fff !important;
+        font-weight: 700 !important;
+        padding: 12px 0 !important;
+        border-radius: 8px !important;
+        text-transform: none !important;
+    }
+
     .vo-expanding-gallery {
         display: flex;
         flex-direction: row;
@@ -842,9 +944,21 @@
     .vo-therapist-banner {
         min-height: auto;
         padding: 60px 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: block;
+        /* Stack content vertically */
+    }
+
+    /* Hide desktop expert grid interactions */
+    .vo-experts-grid,
+    .vo-experts-content,
+    .vo-banner-content {
+        display: none !important;
+    }
+
+    /* Ensure only swipe container is visible */
+    .vo-swipe-container {
+        display: block !important;
+        margin: 0 auto;
     }
 
     .vo-figma-container {
@@ -1193,13 +1307,65 @@
     color: white;
 }
 
-@media (max-width: 1200px) {
-    .vo-experts-section {
-        padding: 60px 80px;
+/* Mobile Override for Comparison Carousel */
+@media (max-width: 768px) {
+    .vo-comparison-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        gap: 20px !important;
+        padding: 20px 40px !important;
+        /* Peek effect */
+        justify-content: flex-start !important;
     }
 
-    .vo-experts-container {
-        grid-template-columns: 1fr;
+    .vo-comp-card {
+        min-width: 85vw !important;
+        /* Show most of the card */
+        scroll-snap-align: center;
+        background: #111 !important;
+        /* Default dark background per reference */
+        color: white !important;
+        border: none !important;
+    }
+
+    .vo-comp-card h3,
+    .vo-comp-card .vo-comp-price {
+        color: white !important;
+    }
+
+    .vo-comp-role {
+        color: #aaa !important;
+    }
+
+    .vo-comp-features li {
+        color: #ddd !important;
+    }
+
+    /* Featured (Coaching) Card Styling */
+    .vo-comp-card.vo-featured {
+        background-color: #1B4D3E !important;
+        /* Deep Green */
+        transform: scale(1) !important;
+        /* Reset desktop scale */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .vo-comp-card.vo-featured .vo-btn-comp {
+        background: white !important;
+        color: #1B4D3E !important;
+    }
+
+    .vo-btn-comp {
+        width: 100%;
+        text-align: center;
+        margin-top: auto;
+    }
+
+    /* Hide scrollbar */
+    .vo-comparison-grid::-webkit-scrollbar {
+        display: none;
     }
 }
 
@@ -1750,10 +1916,13 @@ h2,
     max-width: 1100px;
     margin: 0 auto;
     display: flex;
+    /* Title left, Logos right */
     align-items: center;
     justify-content: space-between;
     gap: 80px;
     padding: 0 20px;
+    margin-bottom: 60px;
+    /* Spacing before carousel */
 }
 
 .vo-partners-title {

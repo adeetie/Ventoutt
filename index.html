@@ -684,6 +684,21 @@
                 <p class="vo-section-subtitle-center">Every path is valid. Choose what helps you today.</p>
             </div>
 
+            <!-- Mobile Navigation Arrows -->
+            <div class="vo-comp-arrows"
+                style="display: none; justify-content: flex-end; gap: 10px; padding: 0 40px 10px;">
+                <button class="vo-arrow-btn prev" aria-label="Previous Plan">←</button>
+                <button class="vo-arrow-btn next" aria-label="Next Plan">→</button>
+            </div>
+
+
+            <!-- Mobile Navigation Arrows -->
+            <div class="vo-comp-arrows"
+                style="display: none; justify-content: flex-end; gap: 10px; padding: 0 40px 10px;">
+                <button class="vo-arrow-btn prev" aria-label="Previous Plan">←</button>
+                <button class="vo-arrow-btn next" aria-label="Next Plan">→</button>
+            </div>
+
             <div class="vo-comparison-grid">
                 <!-- Venting -->
                 <div class="vo-comp-card">
@@ -770,453 +785,438 @@
 
         <!-- 10. Partners & Therapists Loop -->
         <!-- Partners & Therapists (User Provided) -->
-        <section class="partners-section">
-            <div class="partners-container">
-                <h2 class="partners-title">Making mental health a priority together with our partners.</h2>
-                <div class="partners-carousel-wrapper">
-                    <div class="vt-partners" aria-label="Partner logos">
-                        <div class="logo-carousel">
-                            <div class="logo-track" id="vtLogoTrack">
-                                <!-- Set 1 -->
-                                <!-- Collative -->
-                                <a class="logo-item" href="https://collative.in/" target="_blank" rel="noopener"
-                                    aria-label="Collative">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Collative"
-                                        alt="Collative Logo" width="120" height="120" loading="lazy" decoding="async">
-                                </a>
-                                <!-- SuccessBrew -->
-                                <a class="logo-item" href="https://successbrew.in/" target="_blank" rel="noopener"
-                                    aria-label="SuccessBrew">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=SuccessBrew"
-                                        alt="SuccessBrew Logo" width="120" height="120" loading="lazy" decoding="async">
-                                </a>
-                                <!-- Make A Difference -->
-                                <a class="logo-item" href="https://makeadiff.in/" target="_blank" rel="noopener"
-                                    aria-label="Make A Difference">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Make+A+Diff"
-                                        alt="Make A Difference logo" width="120" height="120" loading="lazy"
-                                        decoding="async">
-                                </a>
-                                <!-- The 3AM Couch -->
-                                <a class="logo-item" href="https://the3amcouch.in/" target="_blank" rel="noopener"
-                                    aria-label="The 3AM Couch">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=3AM+Couch"
-                                        alt="The 3AM Couch Logo" width="120" height="120" loading="lazy"
-                                        decoding="async">
-                                </a>
-                                <!-- Decoders -->
-                                <a class="logo-item" href="https://decoders.co.in/" target="_blank" rel="noopener"
-                                    aria-label="Decoders">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Decoders"
-                                        alt="Decoders logo" width="120" height="120" loading="lazy" decoding="async">
-                                </a>
+        <!-- 10. Partners & Therapists Loop -->
+        <section class="vo-partners-section">
+            <div class="vo-partners-container">
+                <h2 class="vo-partners-title">Making mental health a priority together with our partners.</h2>
+                <div class="vo-logo-carousel">
+                    <div class="vo-logo-track" id="vtLogoTrack">
+                        <!-- Set 1 -->
+                        <!-- Collative -->
+                        <a class="logo-item" href="https://collative.in/" target="_blank" rel="noopener"
+                            aria-label="Collative">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Collative"
+                                alt="Collative Logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <!-- SuccessBrew -->
+                        <a class="logo-item" href="https://successbrew.in/" target="_blank" rel="noopener"
+                            aria-label="SuccessBrew">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=SuccessBrew"
+                                alt="SuccessBrew Logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <!-- Make A Difference -->
+                        <a class="logo-item" href="https://makeadiff.in/" target="_blank" rel="noopener"
+                            aria-label="Make A Difference">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Make+A+Diff"
+                                alt="Make A Difference logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <!-- The 3AM Couch -->
+                        <a class="logo-item" href="https://the3amcouch.in/" target="_blank" rel="noopener"
+                            aria-label="The 3AM Couch">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=3AM+Couch"
+                                alt="The 3AM Couch Logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <!-- Decoders -->
+                        <a class="logo-item" href="https://decoders.co.in/" target="_blank" rel="noopener"
+                            aria-label="Decoders">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Decoders"
+                                alt="Decoders logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
 
-                                <!-- Set 2 -->
-                                <a class="logo-item" href="https://collative.in/" target="_blank" rel="noopener"
-                                    aria-label="Collative">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Collative"
-                                        alt="Collative Logo" width="120" height="120" loading="lazy" decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://successbrew.in/" target="_blank" rel="noopener"
-                                    aria-label="SuccessBrew">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=SuccessBrew"
-                                        alt="SuccessBrew Logo" width="120" height="120" loading="lazy" decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://makeadiff.in/" target="_blank" rel="noopener"
-                                    aria-label="Make A Difference">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Make+A+Diff"
-                                        alt="Make A Difference logo" width="120" height="120" loading="lazy"
-                                        decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://the3amcouch.in/" target="_blank" rel="noopener"
-                                    aria-label="The 3AM Couch">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=3AM+Couch"
-                                        alt="The 3AM Couch Logo" width="120" height="120" loading="lazy"
-                                        decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://decoders.co.in/" target="_blank" rel="noopener"
-                                    aria-label="Decoders">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Decoders"
-                                        alt="Decoders logo" width="120" height="120" loading="lazy" decoding="async">
-                                </a>
+                        <!-- Set 2 -->
+                        <a class="logo-item" href="https://collative.in/" target="_blank" rel="noopener"
+                            aria-label="Collative">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Collative"
+                                alt="Collative Logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://successbrew.in/" target="_blank" rel="noopener"
+                            aria-label="SuccessBrew">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=SuccessBrew"
+                                alt="SuccessBrew Logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://makeadiff.in/" target="_blank" rel="noopener"
+                            aria-label="Make A Difference">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Make+A+Diff"
+                                alt="Make A Difference logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://the3amcouch.in/" target="_blank" rel="noopener"
+                            aria-label="The 3AM Couch">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=3AM+Couch"
+                                alt="The 3AM Couch Logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://decoders.co.in/" target="_blank" rel="noopener"
+                            aria-label="Decoders">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Decoders"
+                                alt="Decoders logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
 
-                                <!-- Set 3 -->
-                                <a class="logo-item" href="https://collative.in/" target="_blank" rel="noopener"
-                                    aria-label="Collative">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Collative"
-                                        alt="Collative Logo" width="120" height="120" loading="lazy" decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://successbrew.in/" target="_blank" rel="noopener"
-                                    aria-label="SuccessBrew">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=SuccessBrew"
-                                        alt="SuccessBrew Logo" width="120" height="120" loading="lazy" decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://makeadiff.in/" target="_blank" rel="noopener"
-                                    aria-label="Make A Difference">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Make+A+Diff"
-                                        alt="Make A Difference logo" width="120" height="120" loading="lazy"
-                                        decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://the3amcouch.in/" target="_blank" rel="noopener"
-                                    aria-label="The 3AM Couch">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=3AM+Couch"
-                                        alt="The 3AM Couch Logo" width="120" height="120" loading="lazy"
-                                        decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://decoders.co.in/" target="_blank" rel="noopener"
-                                    aria-label="Decoders">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Decoders"
-                                        alt="Decoders logo" width="120" height="120" loading="lazy" decoding="async">
-                                </a>
+                        <!-- Set 3 -->
+                        <a class="logo-item" href="https://collative.in/" target="_blank" rel="noopener"
+                            aria-label="Collative">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Collative"
+                                alt="Collative Logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://successbrew.in/" target="_blank" rel="noopener"
+                            aria-label="SuccessBrew">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=SuccessBrew"
+                                alt="SuccessBrew Logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://makeadiff.in/" target="_blank" rel="noopener"
+                            aria-label="Make A Difference">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Make+A+Diff"
+                                alt="Make A Difference logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://the3amcouch.in/" target="_blank" rel="noopener"
+                            aria-label="The 3AM Couch">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=3AM+Couch"
+                                alt="The 3AM Couch Logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://decoders.co.in/" target="_blank" rel="noopener"
+                            aria-label="Decoders">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Decoders"
+                                alt="Decoders logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
 
-                                <!-- Set 4 -->
-                                <a class="logo-item" href="https://collative.in/" target="_blank" rel="noopener"
-                                    aria-label="Collative">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Collative"
-                                        alt="Collative Logo" width="120" height="120" loading="lazy" decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://successbrew.in/" target="_blank" rel="noopener"
-                                    aria-label="SuccessBrew">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=SuccessBrew"
-                                        alt="SuccessBrew Logo" width="120" height="120" loading="lazy" decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://makeadiff.in/" target="_blank" rel="noopener"
-                                    aria-label="Make A Difference">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Make+A+Diff"
-                                        alt="Make A Difference logo" width="120" height="120" loading="lazy"
-                                        decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://the3amcouch.in/" target="_blank" rel="noopener"
-                                    aria-label="The 3AM Couch">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=3AM+Couch"
-                                        alt="The 3AM Couch Logo" width="120" height="120" loading="lazy"
-                                        decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://decoders.co.in/" target="_blank" rel="noopener"
-                                    aria-label="Decoders">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Decoders"
-                                        alt="Decoders logo" width="120" height="120" loading="lazy" decoding="async">
-                                </a>
+                        <!-- Set 4 -->
+                        <a class="logo-item" href="https://collative.in/" target="_blank" rel="noopener"
+                            aria-label="Collative">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Collative"
+                                alt="Collative Logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://successbrew.in/" target="_blank" rel="noopener"
+                            aria-label="SuccessBrew">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=SuccessBrew"
+                                alt="SuccessBrew Logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://makeadiff.in/" target="_blank" rel="noopener"
+                            aria-label="Make A Difference">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Make+A+Diff"
+                                alt="Make A Difference logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://the3amcouch.in/" target="_blank" rel="noopener"
+                            aria-label="The 3AM Couch">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=3AM+Couch"
+                                alt="The 3AM Couch Logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://decoders.co.in/" target="_blank" rel="noopener"
+                            aria-label="Decoders">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Decoders"
+                                alt="Decoders logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
 
-                                <!-- Set 5 -->
-                                <a class="logo-item" href="https://collative.in/" target="_blank" rel="noopener"
-                                    aria-label="Collative">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Collative"
-                                        alt="Collative Logo" width="120" height="120" loading="lazy" decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://successbrew.in/" target="_blank" rel="noopener"
-                                    aria-label="SuccessBrew">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=SuccessBrew"
-                                        alt="SuccessBrew Logo" width="120" height="120" loading="lazy" decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://makeadiff.in/" target="_blank" rel="noopener"
-                                    aria-label="Make A Difference">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Make+A+Diff"
-                                        alt="Make A Difference logo" width="120" height="120" loading="lazy"
-                                        decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://the3amcouch.in/" target="_blank" rel="noopener"
-                                    aria-label="The 3AM Couch">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=3AM+Couch"
-                                        alt="The 3AM Couch Logo" width="120" height="120" loading="lazy"
-                                        decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://decoders.co.in/" target="_blank" rel="noopener"
-                                    aria-label="Decoders">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Decoders"
-                                        alt="Decoders logo" width="120" height="120" loading="lazy" decoding="async">
-                                </a>
+                        <!-- Set 5 -->
+                        <a class="logo-item" href="https://collative.in/" target="_blank" rel="noopener"
+                            aria-label="Collative">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Collative"
+                                alt="Collative Logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://successbrew.in/" target="_blank" rel="noopener"
+                            aria-label="SuccessBrew">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=SuccessBrew"
+                                alt="SuccessBrew Logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://makeadiff.in/" target="_blank" rel="noopener"
+                            aria-label="Make A Difference">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Make+A+Diff"
+                                alt="Make A Difference logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://the3amcouch.in/" target="_blank" rel="noopener"
+                            aria-label="The 3AM Couch">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=3AM+Couch"
+                                alt="The 3AM Couch Logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://decoders.co.in/" target="_blank" rel="noopener"
+                            aria-label="Decoders">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Decoders"
+                                alt="Decoders logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
 
-                                <!-- Set 6 -->
-                                <a class="logo-item" href="https://collative.in/" target="_blank" rel="noopener"
-                                    aria-label="Collative">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Collative"
-                                        alt="Collative Logo" width="120" height="120" loading="lazy" decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://successbrew.in/" target="_blank" rel="noopener"
-                                    aria-label="SuccessBrew">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=SuccessBrew"
-                                        alt="SuccessBrew Logo" width="120" height="120" loading="lazy" decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://makeadiff.in/" target="_blank" rel="noopener"
-                                    aria-label="Make A Difference">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Make+A+Diff"
-                                        alt="Make A Difference logo" width="120" height="120" loading="lazy"
-                                        decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://the3amcouch.in/" target="_blank" rel="noopener"
-                                    aria-label="The 3AM Couch">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=3AM+Couch"
-                                        alt="The 3AM Couch Logo" width="120" height="120" loading="lazy"
-                                        decoding="async">
-                                </a>
-                                <a class="logo-item" href="https://decoders.co.in/" target="_blank" rel="noopener"
-                                    aria-label="Decoders">
-                                    <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Decoders"
-                                        alt="Decoders logo" width="120" height="120" loading="lazy" decoding="async">
-                                </a>
-                            </div>
-                        </div>
+                        <!-- Set 6 -->
+                        <a class="logo-item" href="https://collative.in/" target="_blank" rel="noopener"
+                            aria-label="Collative">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Collative"
+                                alt="Collative Logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://successbrew.in/" target="_blank" rel="noopener"
+                            aria-label="SuccessBrew">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=SuccessBrew"
+                                alt="SuccessBrew Logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://makeadiff.in/" target="_blank" rel="noopener"
+                            aria-label="Make A Difference">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Make+A+Diff"
+                                alt="Make A Difference logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://the3amcouch.in/" target="_blank" rel="noopener"
+                            aria-label="The 3AM Couch">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=3AM+Couch"
+                                alt="The 3AM Couch Logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
+                        <a class="logo-item" href="https://decoders.co.in/" target="_blank" rel="noopener"
+                            aria-label="Decoders">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Decoders"
+                                alt="Decoders logo" width="120" height="120" loading="lazy" decoding="async">
+                        </a>
                     </div>
                 </div>
             </div>
-
-
+            <!-- End of vo-partners-container (Title + Logos) -->
 
             <!-- Therapists Profile Reverse Loop (Hidden on Mobile) -->
             <div class="therapists-carousel-wrapper">
                 <div class="vt-therapists" aria-label="Therapist Profiles">
-                    <div class="therapist-track" id="vtTherapistTrack">
-                        <!-- Therapist Set 1 -->
-                        <!-- Card 1 -->
-                        <div class="therapist-card">
-                            <div class="therapist-header">
-                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=80"
-                                    alt="Frances Guerrero" class="therapist-avatar">
-                                <div class="therapist-info">
-                                    <h3 class="therapist-name">FRANCES GUERRERO</h3>
-                                    <div class="therapist-profession">Clinical Psychologist</div>
+                    <div class="vt-therapists" aria-label="Therapist Profiles">
+                        <div class="therapist-track" id="vtTherapistTrack">
+                            <!-- Therapist Set 1 -->
+                            <!-- Card 1 -->
+                            <div class="therapist-card">
+                                <div class="therapist-header">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=80"
+                                        alt="Frances Guerrero" class="therapist-avatar">
+                                    <div class="therapist-info">
+                                        <h3 class="therapist-name">FRANCES GUERRERO</h3>
+                                        <div class="therapist-profession">Clinical Psychologist</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="therapist-specialization">
-                                <strong>Specializations:</strong> Anxiety, Trauma, PTSD
-                            </div>
-                            <a href="#" class="therapist-booking-btn">Book Now</a>
-                        </div>
-                        <!-- Card 2 -->
-                        <div class="therapist-card">
-                            <div class="therapist-header">
-                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80"
-                                    alt="Dennis Barrett" class="therapist-avatar">
-                                <div class="therapist-info">
-                                    <h3 class="therapist-name">DENNIS BARRETT</h3>
-                                    <div class="therapist-profession">Family Therapist</div>
+                                <div class="therapist-specialization">
+                                    <strong>Specializations:</strong> Anxiety, Trauma, PTSD
                                 </div>
+                                <a href="#" class="therapist-booking-btn">Book Now</a>
                             </div>
-                            <div class="therapist-specialization">
-                                <strong>Specializations:</strong> Couples Therapy, Relationship Issues
-                            </div>
-                            <a href="#" class="therapist-booking-btn">Book Now</a>
-                        </div>
-                        <!-- Card 3 -->
-                        <div class="therapist-card">
-                            <div class="therapist-header">
-                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&q=80"
-                                    alt="Larry Lawson" class="therapist-avatar">
-                                <div class="therapist-info">
-                                    <h3 class="therapist-name">LARRY LAWSON</h3>
-                                    <div class="therapist-profession">Mental Health Counselor</div>
+                            <!-- Card 2 -->
+                            <div class="therapist-card">
+                                <div class="therapist-header">
+                                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80"
+                                        alt="Dennis Barrett" class="therapist-avatar">
+                                    <div class="therapist-info">
+                                        <h3 class="therapist-name">DENNIS BARRETT</h3>
+                                        <div class="therapist-profession">Family Therapist</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="therapist-specialization">
-                                <strong>Specializations:</strong> Depression, grief, Loss
-                            </div>
-                            <a href="#" class="therapist-booking-btn">Book Now</a>
-                        </div>
-                        <!-- Card 4 -->
-                        <div class="therapist-card">
-                            <div class="therapist-header">
-                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80"
-                                    alt="Sarah Jenkins" class="therapist-avatar">
-                                <div class="therapist-info">
-                                    <h3 class="therapist-name">SARAH JENKINS</h3>
-                                    <div class="therapist-profession">Psychiatrist</div>
+                                <div class="therapist-specialization">
+                                    <strong>Specializations:</strong> Couples Therapy, Relationship Issues
                                 </div>
+                                <a href="#" class="therapist-booking-btn">Book Now</a>
                             </div>
-                            <div class="therapist-specialization">
-                                <strong>Specializations:</strong> Mood Disorders, ADHD, Bipolar
+                            <!-- Card 3 -->
+                            <div class="therapist-card">
+                                <div class="therapist-header">
+                                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&q=80"
+                                        alt="Larry Lawson" class="therapist-avatar">
+                                    <div class="therapist-info">
+                                        <h3 class="therapist-name">LARRY LAWSON</h3>
+                                        <div class="therapist-profession">Mental Health Counselor</div>
+                                    </div>
+                                </div>
+                                <div class="therapist-specialization">
+                                    <strong>Specializations:</strong> Depression, grief, Loss
+                                </div>
+                                <a href="#" class="therapist-booking-btn">Book Now</a>
                             </div>
-                            <a href="#" class="therapist-booking-btn">Book Now</a>
-                        </div>
+                            <!-- Card 4 -->
+                            <div class="therapist-card">
+                                <div class="therapist-header">
+                                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80"
+                                        alt="Sarah Jenkins" class="therapist-avatar">
+                                    <div class="therapist-info">
+                                        <h3 class="therapist-name">SARAH JENKINS</h3>
+                                        <div class="therapist-profession">Psychiatrist</div>
+                                    </div>
+                                </div>
+                                <div class="therapist-specialization">
+                                    <strong>Specializations:</strong> Mood Disorders, ADHD, Bipolar
+                                </div>
+                                <a href="#" class="therapist-booking-btn">Book Now</a>
+                            </div>
 
-                        <!-- Therapist Set 2 -->
-                        <!-- Card 1 -->
-                        <div class="therapist-card">
-                            <div class="therapist-header">
-                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=80"
-                                    alt="Frances Guerrero" class="therapist-avatar">
-                                <div class="therapist-info">
-                                    <h3 class="therapist-name">FRANCES GUERRERO</h3>
-                                    <div class="therapist-profession">Clinical Psychologist</div>
+                            <!-- Therapist Set 2 -->
+                            <!-- Card 1 -->
+                            <div class="therapist-card">
+                                <div class="therapist-header">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=80"
+                                        alt="Frances Guerrero" class="therapist-avatar">
+                                    <div class="therapist-info">
+                                        <h3 class="therapist-name">FRANCES GUERRERO</h3>
+                                        <div class="therapist-profession">Clinical Psychologist</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="therapist-specialization">
-                                <strong>Specializations:</strong> Anxiety, Trauma, PTSD
-                            </div>
-                            <a href="#" class="therapist-booking-btn">Book Now</a>
-                        </div>
-                        <!-- Card 2 -->
-                        <div class="therapist-card">
-                            <div class="therapist-header">
-                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80"
-                                    alt="Dennis Barrett" class="therapist-avatar">
-                                <div class="therapist-info">
-                                    <h3 class="therapist-name">DENNIS BARRETT</h3>
-                                    <div class="therapist-profession">Family Therapist</div>
+                                <div class="therapist-specialization">
+                                    <strong>Specializations:</strong> Anxiety, Trauma, PTSD
                                 </div>
+                                <a href="#" class="therapist-booking-btn">Book Now</a>
                             </div>
-                            <div class="therapist-specialization">
-                                <strong>Specializations:</strong> Couples Therapy, Relationship Issues
-                            </div>
-                            <a href="#" class="therapist-booking-btn">Book Now</a>
-                        </div>
-                        <!-- Card 3 -->
-                        <div class="therapist-card">
-                            <div class="therapist-header">
-                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&q=80"
-                                    alt="Larry Lawson" class="therapist-avatar">
-                                <div class="therapist-info">
-                                    <h3 class="therapist-name">LARRY LAWSON</h3>
-                                    <div class="therapist-profession">Mental Health Counselor</div>
+                            <!-- Card 2 -->
+                            <div class="therapist-card">
+                                <div class="therapist-header">
+                                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80"
+                                        alt="Dennis Barrett" class="therapist-avatar">
+                                    <div class="therapist-info">
+                                        <h3 class="therapist-name">DENNIS BARRETT</h3>
+                                        <div class="therapist-profession">Family Therapist</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="therapist-specialization">
-                                <strong>Specializations:</strong> Depression, grief, Loss
-                            </div>
-                            <a href="#" class="therapist-booking-btn">Book Now</a>
-                        </div>
-                        <!-- Card 4 -->
-                        <div class="therapist-card">
-                            <div class="therapist-header">
-                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80"
-                                    alt="Sarah Jenkins" class="therapist-avatar">
-                                <div class="therapist-info">
-                                    <h3 class="therapist-name">SARAH JENKINS</h3>
-                                    <div class="therapist-profession">Psychiatrist</div>
+                                <div class="therapist-specialization">
+                                    <strong>Specializations:</strong> Couples Therapy, Relationship Issues
                                 </div>
+                                <a href="#" class="therapist-booking-btn">Book Now</a>
                             </div>
-                            <div class="therapist-specialization">
-                                <strong>Specializations:</strong> Mood Disorders, ADHD, Bipolar
+                            <!-- Card 3 -->
+                            <div class="therapist-card">
+                                <div class="therapist-header">
+                                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&q=80"
+                                        alt="Larry Lawson" class="therapist-avatar">
+                                    <div class="therapist-info">
+                                        <h3 class="therapist-name">LARRY LAWSON</h3>
+                                        <div class="therapist-profession">Mental Health Counselor</div>
+                                    </div>
+                                </div>
+                                <div class="therapist-specialization">
+                                    <strong>Specializations:</strong> Depression, grief, Loss
+                                </div>
+                                <a href="#" class="therapist-booking-btn">Book Now</a>
                             </div>
-                            <a href="#" class="therapist-booking-btn">Book Now</a>
-                        </div>
+                            <!-- Card 4 -->
+                            <div class="therapist-card">
+                                <div class="therapist-header">
+                                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80"
+                                        alt="Sarah Jenkins" class="therapist-avatar">
+                                    <div class="therapist-info">
+                                        <h3 class="therapist-name">SARAH JENKINS</h3>
+                                        <div class="therapist-profession">Psychiatrist</div>
+                                    </div>
+                                </div>
+                                <div class="therapist-specialization">
+                                    <strong>Specializations:</strong> Mood Disorders, ADHD, Bipolar
+                                </div>
+                                <a href="#" class="therapist-booking-btn">Book Now</a>
+                            </div>
 
-                        <!-- Therapist Set 3 -->
-                        <!-- Card 1 -->
-                        <div class="therapist-card">
-                            <div class="therapist-header">
-                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=80"
-                                    alt="Frances Guerrero" class="therapist-avatar">
-                                <div class="therapist-info">
-                                    <h3 class="therapist-name">FRANCES GUERRERO</h3>
-                                    <div class="therapist-profession">Clinical Psychologist</div>
+                            <!-- Therapist Set 3 -->
+                            <!-- Card 1 -->
+                            <div class="therapist-card">
+                                <div class="therapist-header">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=80"
+                                        alt="Frances Guerrero" class="therapist-avatar">
+                                    <div class="therapist-info">
+                                        <h3 class="therapist-name">FRANCES GUERRERO</h3>
+                                        <div class="therapist-profession">Clinical Psychologist</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="therapist-specialization">
-                                <strong>Specializations:</strong> Anxiety, Trauma, PTSD
-                            </div>
-                            <a href="#" class="therapist-booking-btn">Book Now</a>
-                        </div>
-                        <!-- Card 2 -->
-                        <div class="therapist-card">
-                            <div class="therapist-header">
-                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80"
-                                    alt="Dennis Barrett" class="therapist-avatar">
-                                <div class="therapist-info">
-                                    <h3 class="therapist-name">DENNIS BARRETT</h3>
-                                    <div class="therapist-profession">Family Therapist</div>
+                                <div class="therapist-specialization">
+                                    <strong>Specializations:</strong> Anxiety, Trauma, PTSD
                                 </div>
+                                <a href="#" class="therapist-booking-btn">Book Now</a>
                             </div>
-                            <div class="therapist-specialization">
-                                <strong>Specializations:</strong> Couples Therapy, Relationship Issues
-                            </div>
-                            <a href="#" class="therapist-booking-btn">Book Now</a>
-                        </div>
-                        <!-- Card 3 -->
-                        <div class="therapist-card">
-                            <div class="therapist-header">
-                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&q=80"
-                                    alt="Larry Lawson" class="therapist-avatar">
-                                <div class="therapist-info">
-                                    <h3 class="therapist-name">LARRY LAWSON</h3>
-                                    <div class="therapist-profession">Mental Health Counselor</div>
+                            <!-- Card 2 -->
+                            <div class="therapist-card">
+                                <div class="therapist-header">
+                                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80"
+                                        alt="Dennis Barrett" class="therapist-avatar">
+                                    <div class="therapist-info">
+                                        <h3 class="therapist-name">DENNIS BARRETT</h3>
+                                        <div class="therapist-profession">Family Therapist</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="therapist-specialization">
-                                <strong>Specializations:</strong> Depression, grief, Loss
-                            </div>
-                            <a href="#" class="therapist-booking-btn">Book Now</a>
-                        </div>
-                        <!-- Card 4 -->
-                        <div class="therapist-card">
-                            <div class="therapist-header">
-                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80"
-                                    alt="Sarah Jenkins" class="therapist-avatar">
-                                <div class="therapist-info">
-                                    <h3 class="therapist-name">SARAH JENKINS</h3>
-                                    <div class="therapist-profession">Psychiatrist</div>
+                                <div class="therapist-specialization">
+                                    <strong>Specializations:</strong> Couples Therapy, Relationship Issues
                                 </div>
+                                <a href="#" class="therapist-booking-btn">Book Now</a>
                             </div>
-                            <div class="therapist-specialization">
-                                <strong>Specializations:</strong> Mood Disorders, ADHD, Bipolar
+                            <!-- Card 3 -->
+                            <div class="therapist-card">
+                                <div class="therapist-header">
+                                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&q=80"
+                                        alt="Larry Lawson" class="therapist-avatar">
+                                    <div class="therapist-info">
+                                        <h3 class="therapist-name">LARRY LAWSON</h3>
+                                        <div class="therapist-profession">Mental Health Counselor</div>
+                                    </div>
+                                </div>
+                                <div class="therapist-specialization">
+                                    <strong>Specializations:</strong> Depression, grief, Loss
+                                </div>
+                                <a href="#" class="therapist-booking-btn">Book Now</a>
                             </div>
-                            <a href="#" class="therapist-booking-btn">Book Now</a>
-                        </div>
+                            <!-- Card 4 -->
+                            <div class="therapist-card">
+                                <div class="therapist-header">
+                                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80"
+                                        alt="Sarah Jenkins" class="therapist-avatar">
+                                    <div class="therapist-info">
+                                        <h3 class="therapist-name">SARAH JENKINS</h3>
+                                        <div class="therapist-profession">Psychiatrist</div>
+                                    </div>
+                                </div>
+                                <div class="therapist-specialization">
+                                    <strong>Specializations:</strong> Mood Disorders, ADHD, Bipolar
+                                </div>
+                                <a href="#" class="therapist-booking-btn">Book Now</a>
+                            </div>
 
-                        <!-- Therapist Set 4 -->
-                        <!-- Card 1 -->
-                        <div class="therapist-card">
-                            <div class="therapist-header">
-                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=80"
-                                    alt="Frances Guerrero" class="therapist-avatar">
-                                <div class="therapist-info">
-                                    <h3 class="therapist-name">FRANCES GUERRERO</h3>
-                                    <div class="therapist-profession">Clinical Psychologist</div>
+                            <!-- Therapist Set 4 -->
+                            <!-- Card 1 -->
+                            <div class="therapist-card">
+                                <div class="therapist-header">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=80"
+                                        alt="Frances Guerrero" class="therapist-avatar">
+                                    <div class="therapist-info">
+                                        <h3 class="therapist-name">FRANCES GUERRERO</h3>
+                                        <div class="therapist-profession">Clinical Psychologist</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="therapist-specialization">
-                                <strong>Specializations:</strong> Anxiety, Trauma, PTSD
-                            </div>
-                            <a href="#" class="therapist-booking-btn">Book Now</a>
-                        </div>
-                        <!-- Card 2 -->
-                        <div class="therapist-card">
-                            <div class="therapist-header">
-                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80"
-                                    alt="Dennis Barrett" class="therapist-avatar">
-                                <div class="therapist-info">
-                                    <h3 class="therapist-name">DENNIS BARRETT</h3>
-                                    <div class="therapist-profession">Family Therapist</div>
+                                <div class="therapist-specialization">
+                                    <strong>Specializations:</strong> Anxiety, Trauma, PTSD
                                 </div>
+                                <a href="#" class="therapist-booking-btn">Book Now</a>
                             </div>
-                            <div class="therapist-specialization">
-                                <strong>Specializations:</strong> Couples Therapy, Relationship Issues
-                            </div>
-                            <a href="#" class="therapist-booking-btn">Book Now</a>
-                        </div>
-                        <!-- Card 3 -->
-                        <div class="therapist-card">
-                            <div class="therapist-header">
-                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&q=80"
-                                    alt="Larry Lawson" class="therapist-avatar">
-                                <div class="therapist-info">
-                                    <h3 class="therapist-name">LARRY LAWSON</h3>
-                                    <div class="therapist-profession">Mental Health Counselor</div>
+                            <!-- Card 2 -->
+                            <div class="therapist-card">
+                                <div class="therapist-header">
+                                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80"
+                                        alt="Dennis Barrett" class="therapist-avatar">
+                                    <div class="therapist-info">
+                                        <h3 class="therapist-name">DENNIS BARRETT</h3>
+                                        <div class="therapist-profession">Family Therapist</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="therapist-specialization">
-                                <strong>Specializations:</strong> Depression, grief, Loss
-                            </div>
-                            <a href="#" class="therapist-booking-btn">Book Now</a>
-                        </div>
-                        <!-- Card 4 -->
-                        <div class="therapist-card">
-                            <div class="therapist-header">
-                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80"
-                                    alt="Sarah Jenkins" class="therapist-avatar">
-                                <div class="therapist-info">
-                                    <h3 class="therapist-name">SARAH JENKINS</h3>
-                                    <div class="therapist-profession">Psychiatrist</div>
+                                <div class="therapist-specialization">
+                                    <strong>Specializations:</strong> Couples Therapy, Relationship Issues
                                 </div>
+                                <a href="#" class="therapist-booking-btn">Book Now</a>
                             </div>
-                            <div class="therapist-specialization">
-                                <strong>Specializations:</strong> Mood Disorders, ADHD, Bipolar
+                            <!-- Card 3 -->
+                            <div class="therapist-card">
+                                <div class="therapist-header">
+                                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&q=80"
+                                        alt="Larry Lawson" class="therapist-avatar">
+                                    <div class="therapist-info">
+                                        <h3 class="therapist-name">LARRY LAWSON</h3>
+                                        <div class="therapist-profession">Mental Health Counselor</div>
+                                    </div>
+                                </div>
+                                <div class="therapist-specialization">
+                                    <strong>Specializations:</strong> Depression, grief, Loss
+                                </div>
+                                <a href="#" class="therapist-booking-btn">Book Now</a>
                             </div>
-                            <a href="#" class="therapist-booking-btn">Book Now</a>
+                            <!-- Card 4 -->
+                            <div class="therapist-card">
+                                <div class="therapist-header">
+                                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80"
+                                        alt="Sarah Jenkins" class="therapist-avatar">
+                                    <div class="therapist-info">
+                                        <h3 class="therapist-name">SARAH JENKINS</h3>
+                                        <div class="therapist-profession">Psychiatrist</div>
+                                    </div>
+                                </div>
+                                <div class="therapist-specialization">
+                                    <strong>Specializations:</strong> Mood Disorders, ADHD, Bipolar
+                                </div>
+                                <a href="#" class="therapist-booking-btn">Book Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
 
         <!-- 11. Related Blogs -->

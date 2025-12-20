@@ -147,15 +147,18 @@ class SwipeableStack {
         setTimeout(() => {
             this.currentIndex++;
 
-            // Loop back to start if at end? Or just stop?
-            // "users can swipe all cards while scrolling downwards"
-            // Usually we loop or just hide. Let's loop for infinite feel if desired, 
-            // or if the user wants to see them while scrolling down, maybe just hide.
-            // Let's implement LOOP for better UX if they run out.
-
             if (this.currentIndex >= this.cards.length) {
-                // Reset stack loop
-                this.resetStackLoop();
+                // Stack is empty - reveal final content
+                const finalContent = this.container.querySelector('.vo-swipe-final-content');
+                if (finalContent) {
+                    finalContent.style.display = 'flex';
+                    // Optional: Fade in
+                    finalContent.style.opacity = '0';
+                    requestAnimationFrame(() => {
+                        finalContent.style.transition = 'opacity 0.5s ease';
+                        finalContent.style.opacity = '1';
+                    });
+                }
             } else {
                 this.updateStack();
             }
