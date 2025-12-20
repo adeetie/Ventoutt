@@ -46,22 +46,50 @@ class SwipeableStack {
             card.style.transform = '';
             card.style.opacity = '';
             card.style.zIndex = '';
+            card.style.backgroundColor = ''; // Reset
+            card.style.transition = 'transform 0.4s ease, opacity 0.4s ease'; // Smooth auto-adjust
 
             // Remove listeners from all cards first
             this.removeListeners(card);
 
             if (index < this.currentIndex) {
-                // Already swiped cards (ensure they are gone)
+                // Previously swiped cards (Hidden)
                 card.style.display = 'none';
             } else {
                 card.style.display = 'block';
-                // Calculate visual stack position
+                // Calculate visual stack position (0 = top, 1 = behind, etc)
                 const stackIndex = index - this.currentIndex;
 
-                // Add listeners only to the top card
+                // Stack Visuals
                 if (stackIndex === 0) {
+                    // Top Card (Main)
+                    card.style.zIndex = '100';
+                    card.style.transform = 'scale(1) translateY(0)';
+                    card.style.opacity = '1';
+                    // Ensure photo is main, background doesn't matter as much but keep clean
+                    card.style.backgroundColor = 'white';
+
+                    // Activate interaction
                     this.addListeners(card);
                     this.activeCard = card;
+                } else if (stackIndex === 1) {
+                    // Second Card (Visible "In Back") - Blue tint
+                    card.style.zIndex = '90';
+                    card.style.transform = 'scale(0.95) translateY(15px)';
+                    card.style.opacity = '1';
+                    // Set to the blue color from reference
+                    card.style.backgroundColor = '#CBE6F6';
+                } else if (stackIndex === 2) {
+                    // Third Card (Peeking) - Slightly darker/lighter blue
+                    card.style.zIndex = '80';
+                    card.style.transform = 'scale(0.90) translateY(30px)';
+                    card.style.opacity = '1';
+                    card.style.backgroundColor = '#9CCDE8';
+                } else {
+                    // Others hidden in stack
+                    card.style.zIndex = '10';
+                    card.style.transform = 'scale(0.85) translateY(45px)';
+                    card.style.opacity = '0';
                 }
             }
         });
@@ -143,6 +171,8 @@ class SwipeableStack {
         // Add swipe-out class for animation
         this.activeCard.classList.add('vo-swipe-out-left');
 
+
+
         // Wait for animation
         setTimeout(() => {
             this.currentIndex++;
@@ -194,5 +224,92 @@ document.addEventListener('DOMContentLoaded', () => {
     stacks.forEach(container => {
         // We can scope the init by ID if needed, using class for now
         new SwipeableStack('.vo-swipe-container');
+        // Initialize Comparison Carousel (Mobile)
+        if (window.innerWidth <= 768) {
+            initComparisonCarousel();
+        }
     });
-});
+}); // End of DOMContentLoaded
+
+function initComparisonCarousel() {
+    const compGrid = document.querySelector('.vo-comparison-grid');
+    const cards = document.querySelectorAll('.vo-comp-card');
+    const prevBtn = document.querySelector('.vo-arrow-btn.prev');
+    const nextBtn = document.querySelector('.vo-arrow-btn.next');
+    const featuredCard = document.querySelector('.vo-comp-card.vo-featured');
+
+    if (compGrid && cards.length) {
+        // 1. Center "Coaching" on Load
+        setTimeout(() => {
+            if (featuredCard) {
+                const scrollLeft = featuredCard.offsetLeft - (compGrid.clientWidth - featuredCard.offsetWidth) / 2;
+                compGrid.scrollTo({ left: scrollLeft, behavior: 'instant' });
+            }
+        }, 100);
+
+        // 2. "Grow Big" Logic (IntersectionObserver)
+        const observerOptions = {
+            root: compGrid,
+            threshold: 0.6, // Trigger when 60% visible
+            rootMargin: "0px -20% 0px -20%" // Center focus
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Activate this card
+                    cards.forEach(c => c.classList.remove('vo-card-active'));
+                    entry.target.classList.add('vo-card-active');
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => observer.observe(card));
+
+        // 3. Arrow Click & Visibility Logic
+        if (prevBtn && nextBtn) {
+            const updateArrows = () => {
+                // Use a small tolerance
+                const scrollLeft = compGrid.scrollLeft;
+                const maxScroll = compGrid.scrollWidth - compGrid.clientWidth;
+
+                // Left Arrow
+                if (scrollLeft > 20) {
+                    prevBtn.style.opacity = '1';
+                    prevBtn.style.pointerEvents = 'auto';
+                } else {
+                    prevBtn.style.opacity = '0.3';
+                    // prevBtn.style.pointerEvents = 'none'; // Keep clickable if needed, or disable
+                }
+
+                // Right Arrow
+                if (scrollLeft < maxScroll - 20) {
+                    nextBtn.style.opacity = '1';
+                    nextBtn.style.pointerEvents = 'auto';
+                } else {
+                    nextBtn.style.opacity = '0.3';
+                }
+            };
+
+            compGrid.addEventListener('scroll', () => {
+                requestAnimationFrame(updateArrows);
+            });
+
+            // Initial check
+            setTimeout(updateArrows, 600);
+
+            // Click Handlers
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                compGrid.scrollBy({ left: -window.innerWidth * 0.75, behavior: 'smooth' });
+            });
+
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                compGrid.scrollBy({ left: window.innerWidth * 0.75, behavior: 'smooth' });
+            });
+        }
+    }
+}

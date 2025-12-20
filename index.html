@@ -564,8 +564,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="vo-experts-grid">
-                        <div class="vo-expert-card">
+                    <div class="vo-experts-grid vo-swipe-container">
+                        <!-- Card 1: Pulkita -->
+                        <div class="vo-expert-card vo-swipe-card">
                             <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
                                 alt="Pulkita W." class="vo-expert-photo">
                             <div class="vo-expert-rating"><span class="star">★</span>
@@ -590,7 +591,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="vo-expert-card">
+
+                        <!-- Card 2: Muskan -->
+                        <div class="vo-expert-card vo-swipe-card">
                             <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80"
                                 alt="Muskan K." class="vo-expert-photo">
                             <div class="vo-expert-rating"><span class="star">★</span>
@@ -613,11 +616,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="vo-experts-grid">
-                        <div class="vo-expert-card">
+
+                        <!-- Card 3: Nishi -->
+                        <div class="vo-expert-card vo-swipe-card">
                             <img src="https://images.unsplash.com/photo-1554151228-14d9def656ec?w=400&q=80" alt="Nishi"
                                 class="vo-expert-photo">
                             <div class="vo-expert-rating"><span class="star">★</span>
@@ -643,7 +644,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="vo-expert-card">
+
+                        <!-- Card 4: Dr. Sarah -->
+                        <div class="vo-expert-card vo-swipe-card">
                             <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&q=80"
                                 alt="Dr. Sarah M." class="vo-expert-photo">
                             <div class="vo-expert-rating"><span class="star">★</span>
@@ -667,14 +670,20 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="vo-experts-content">
-                        <p class="vo-experts-description">Our team consists of compassionate and skilled professionals
-                            dedicated to providing personalized support and effective solutions for your well-being.</p>
-                        <a href="#" class="vo-btn-learn-more">Learn More <span class="arrow">→</span></a>
+
+                        <!-- Final Content (Initially Hidden) -->
+                        <div class="vo-swipe-final-content"
+                            style="display: none; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; padding: 20px;">
+                            <p class="vo-experts-description"
+                                style="color: white; font-size: 16px; margin-bottom: 20px; line-height: 1.5;">Our team
+                                consists of compassionate and skilled professionals dedicated to providing personalized
+                                support and effective solutions for your well-being.</p>
+                            <a href="#" class="vo-btn-learn-more"
+                                style="background: #F57F17; color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: bold;">Learn
+                                More <span class="arrow">→</span></a>
+                        </div>
                     </div>
                 </div>
-            </div>
         </section>
 
         <!-- 8. Find Your Right Fit (Comparison Section) -->
@@ -684,66 +693,62 @@
                 <p class="vo-section-subtitle-center">Every path is valid. Choose what helps you today.</p>
             </div>
 
-            <!-- Mobile Navigation Arrows -->
-            <div class="vo-comp-arrows"
-                style="display: none; justify-content: flex-end; gap: 10px; padding: 0 40px 10px;">
-                <button class="vo-arrow-btn prev" aria-label="Previous Plan">←</button>
-                <button class="vo-arrow-btn next" aria-label="Next Plan">→</button>
-            </div>
 
 
-            <!-- Mobile Navigation Arrows -->
-            <div class="vo-comp-arrows"
-                style="display: none; justify-content: flex-end; gap: 10px; padding: 0 40px 10px;">
-                <button class="vo-arrow-btn prev" aria-label="Previous Plan">←</button>
-                <button class="vo-arrow-btn next" aria-label="Next Plan">→</button>
-            </div>
-
-            <div class="vo-comparison-grid">
-                <!-- Venting -->
-                <div class="vo-comp-card">
-                    <div class="vo-comp-top">
-                        <h3>Venting</h3>
-                        <div class="vo-comp-role">Empathetic Listeners</div>
-                        <div class="vo-comp-price">Low Cost ($)</div>
-                    </div>
-                    <ul class="vo-comp-features">
-                        <li><span>✓</span> <strong>Goal:</strong> Instant Relief</li>
-                        <li><span>✓</span> <strong>Focus:</strong> "Feeling Heard"</li>
-                        <li><span>✓</span> <strong>Availability:</strong> Instant Access</li>
-                    </ul>
-                    <a href="#" class="vo-btn-comp orange">Start Chat</a>
+            <div class="vo-comparison-deck" style="position: relative;">
+                <!-- Mobile Navigation Arrows -->
+                <div class="vo-comp-arrows"
+                    style="display: none; justify-content: space-between; padding: 0 10px; pointer-events: none;">
+                    <button class="vo-arrow-btn prev" aria-label="Previous Plan">&lt;</button>
+                    <button class="vo-arrow-btn next" aria-label="Next Plan">&gt;</button>
                 </div>
 
-                <!-- Coaching -->
-                <div class="vo-comp-card vo-featured">
-                    <div class="vo-comp-top">
-                        <h3>Coaching</h3>
-                        <div class="vo-comp-role">Qualified Psychologists</div>
-                        <div class="vo-comp-tag">Most Popular</div>
-                        <div class="vo-comp-price">Affordable ($$)</div>
+                <div class="vo-comparison-grid">
+                    <!-- Venting -->
+                    <div class="vo-comp-card">
+                        <div class="vo-comp-top">
+                            <h3>Venting</h3>
+                            <div class="vo-comp-role">Empathetic Listeners</div>
+                            <div class="vo-comp-price">Low Cost ($)</div>
+                        </div>
+                        <ul class="vo-comp-features">
+                            <li><span>✓</span> <strong>Goal:</strong> Instant Relief</li>
+                            <li><span>✓</span> <strong>Focus:</strong> "Feeling Heard"</li>
+                            <li><span>✓</span> <strong>Availability:</strong> Instant Access</li>
+                        </ul>
+                        <a href="#" class="vo-btn-comp orange">Start Chat</a>
                     </div>
-                    <ul class="vo-comp-features">
-                        <li><span>✓</span> <strong>Goal:</strong> Growth & Action Plans</li>
-                        <li><span>✓</span> <strong>Focus:</strong> "Building Skills"</li>
-                        <li><span>✓</span> <strong>Availability:</strong> Same-Day Priority</li>
-                    </ul>
-                    <a href="#" class="vo-btn-comp white">Get Matched</a>
-                </div>
 
-                <!-- Therapy -->
-                <div class="vo-comp-card">
-                    <div class="vo-comp-top">
-                        <h3>Therapy</h3>
-                        <div class="vo-comp-role">Licensed Clinicians</div>
-                        <div class="vo-comp-price">Premium ($$$$)</div>
+                    <!-- Coaching -->
+                    <div class="vo-comp-card vo-featured">
+                        <div class="vo-comp-top">
+                            <h3>Coaching</h3>
+                            <div class="vo-comp-role">Qualified Psychologists</div>
+                            <div class="vo-comp-tag">Most Popular</div>
+                            <div class="vo-comp-price">Affordable ($$)</div>
+                        </div>
+                        <ul class="vo-comp-features">
+                            <li><span>✓</span> <strong>Goal:</strong> Growth & Action Plans</li>
+                            <li><span>✓</span> <strong>Focus:</strong> "Building Skills"</li>
+                            <li><span>✓</span> <strong>Availability:</strong> Same-Day Priority</li>
+                        </ul>
+                        <a href="#" class="vo-btn-comp white">Get Matched</a>
                     </div>
-                    <ul class="vo-comp-features">
-                        <li><span>✓</span> <strong>Goal:</strong> Medical Diagnosis</li>
-                        <li><span>✓</span> <strong>Focus:</strong> "Deep Healing"</li>
-                        <li><span>✓</span> <strong>Availability:</strong> By Appointment</li>
-                    </ul>
-                    <a href="#" class="vo-btn-comp orange">Join Waitlist</a>
+
+                    <!-- Therapy -->
+                    <div class="vo-comp-card">
+                        <div class="vo-comp-top">
+                            <h3>Therapy</h3>
+                            <div class="vo-comp-role">Licensed Clinicians</div>
+                            <div class="vo-comp-price">Premium ($$$$)</div>
+                        </div>
+                        <ul class="vo-comp-features">
+                            <li><span>✓</span> <strong>Goal:</strong> Medical Diagnosis</li>
+                            <li><span>✓</span> <strong>Focus:</strong> "Deep Healing"</li>
+                            <li><span>✓</span> <strong>Availability:</strong> By Appointment</li>
+                        </ul>
+                        <a href="#" class="vo-btn-comp orange">Join Waitlist</a>
+                    </div>
                 </div>
             </div>
         </section>

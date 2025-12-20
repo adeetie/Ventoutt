@@ -1140,70 +1140,80 @@
         padding: 30px;
     }
 
-    .vo-feature-image {
-        height: 250px;
-    }
+    .vo-feature-image {}
 }
 
 /* =========================================
-   8. Experts Section
+   16. Caring & Expert Members (Grid) - NEW
    ========================================= */
-/* This section was "Meet Our Experts" in index.html, styled by .experts-section 
-       There was also a "Therapist Banner" above. This is the grid of profiles. */
 .vo-experts-section {
-    background-color: #fff;
-    padding: 80px 150px;
-    position: relative;
+    padding: 80px 10%;
+    /* Max width container centered */
+    background: #fff;
+    /* Clean white background */
 }
 
-.vo-experts-header {
-    margin-bottom: 60px;
+.vo-experts-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Side-by-side: Title Left, Grid Right */
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+/* Left: Title + Decor */
+.vo-experts-title-block {
+    text-align: left;
+    position: sticky;
+    top: 100px;
 }
 
 .vo-experts-label {
     font-family: var(--vo-font-body);
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 13px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--vo-color-dark-gray);
+    color: #666;
     margin-bottom: 15px;
+    font-weight: 600;
 }
 
-.vo-experts-title {
+.vo-experts-heading {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
-    line-height: 1.2;
+    font-size: 56px;
+    line-height: 1.1;
     color: var(--vo-color-dark-gray);
-    max-width: 400px;
+    margin-bottom: 0;
 }
 
-.vo-experts-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: start;
+.vo-experts-heading em {
+    font-style: italic;
+    font-family: var(--vo-font-heading);
 }
 
+/* Right: Grid of Cards */
 .vo-experts-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
 }
 
-.vo-expert-card {
-    background: #f0f0f0;
-    border-radius: 20px;
+.vo-expert-card,
+.vo-swipe-card {
     position: relative;
-    height: 450px;
+    background: transparent;
+    border-radius: 20px;
+    height: 400px;
+    /* Fixed height for consistency */
     overflow: hidden;
-    cursor: pointer;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease;
 }
 
 .vo-expert-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
 }
 
 .vo-expert-photo {
@@ -1213,7 +1223,9 @@
     display: block;
 }
 
-.vo-expert-rating {
+/* Rating Badge - Top Right (Global Style) */
+.vo-expert-rating,
+.vo-swipe-card .vo-expert-rating {
     position: absolute;
     top: 20px;
     right: 20px;
@@ -1223,49 +1235,74 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     z-index: 2;
+    width: 50px;
+    height: 60px;
+    border: none;
+    /* Clean up if any borders existed */
 }
 
-.vo-expert-info {
+.vo-expert-rating .star {
+    color: #FFB800;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.vo-expert-rating .score {
+    font-weight: 700;
+    font-size: 16px;
+    color: #333;
+    font-family: var(--vo-font-heading);
+    line-height: 1;
+}
+
+.vo-expert-rating .score-label {
+    font-size: 9px;
+    color: #999;
+    text-transform: uppercase;
+    font-family: var(--vo-font-body);
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+}
+
+/* Info Bubble - Bottom Overlay (Global Style) */
+.vo-expert-info-box,
+.vo-swipe-card .vo-expert-info-box {
     position: absolute;
-    left: 15px;
-    right: 15px;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
     background: white;
     border-radius: 20px;
     padding: 20px;
     z-index: 3;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    transition: box-shadow 0.3s ease;
-}
-
-.vo-expert-card:hover .vo-expert-info {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.3s ease;
 }
 
 .vo-expert-name {
-    font-family: var(--vo-font-body);
+    font-family: var(--vo-font-heading);
     font-size: 20px;
     font-weight: 700;
     color: #333;
-    text-align: center;
-    margin: 0;
+    margin-bottom: 4px;
 }
 
-.vo-expert-job {
+.vo-expert-title-text {
     font-family: var(--vo-font-body);
     font-size: 14px;
     color: #666;
-    text-align: center;
-    margin-bottom: 5px;
 }
 
+/* Hide detailed list gloablly per reference image */
 .vo-expert-details {
-    max-height: 0;
-    opacity: 0;
     overflow: hidden;
     transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out, padding 0.4s ease;
     padding-top: 0;
@@ -1782,6 +1819,115 @@ h2,
     font-size: 24px;
     font-style: italic;
     color: var(--vo-color-primary);
+}
+
+@media (max-width: 768px) {
+    .vo-swipe-container {
+        position: relative;
+        height: 600px;
+        /* Adjust as needed for card height */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        /* Hide swipe-out overflow */
+    }
+
+    /* Swipe Card specific styling to match Reference Image */
+    .vo-swipe-card {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        margin-left: -160px;
+        /* Center 320px wide card */
+        width: 320px;
+        height: 480px;
+        /* Fixed height for consistency */
+        background: #CBE6F6;
+        /* Fallback Light Blue for stack background appearance */
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        /* Ensure image fills */
+    }
+
+    /* Stack Background Colors (Simulated via nth-child in JS/CSS or just generic stack look) */
+    .vo-swipe-card .vo-expert-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    /* Rating Badge - Top Right */
+    .vo-swipe-card .vo-expert-rating {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: white;
+        padding: 5px 10px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 60px;
+        z-index: 2;
+    }
+
+    .vo-swipe-card .vo-expert-rating .star {
+        color: #F57F17;
+        font-size: 14px;
+        margin-bottom: 2px;
+    }
+
+    .vo-swipe-card .vo-expert-rating .score {
+        font-weight: 700;
+        font-size: 16px;
+        color: #333;
+    }
+
+    .vo-swipe-card .vo-expert-rating .score-label {
+        font-size: 8px;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Info Bubble - Bottom Overlay */
+    .vo-swipe-card .vo-expert-info-box {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        background: white;
+        padding: 15px 20px;
+        border-radius: 16px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        text-align: left;
+        z-index: 2;
+    }
+
+    .vo-swipe-card .vo-expert-name {
+        font-family: var(--vo-font-heading);
+        font-size: 20px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 4px;
+    }
+
+    .vo-swipe-card .vo-expert-title-text {
+        font-family: var(--vo-font-body);
+        font-size: 13px;
+        color: #666;
+    }
+
+    /* Hide detailed info on card front to match clean look */
+    .vo-swipe-card .vo-expert-details {
+        display: none;
+    }
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
@@ -2728,79 +2874,7 @@ h2,
     display: block;
 }
 
-.vo-expert-rating {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: white;
-    border-radius: 12px;
-    padding: 8px 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    z-index: 2;
-}
-
-.vo-expert-rating .star {
-    color: #FFB800;
-    font-size: 14px;
-}
-
-.vo-expert-rating .score {
-    font-weight: 700;
-    font-size: 18px;
-    color: #333;
-    font-family: var(--vo-font-heading);
-    /* Ensure standard font */
-}
-
-.vo-expert-rating .score-label {
-    font-size: 10px;
-    color: #666;
-    text-transform: uppercase;
-    font-family: var(--vo-font-body);
-}
-
-.vo-expert-info-box {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    right: 15px;
-    background: white;
-    border-radius: 20px;
-    padding: 20px;
-    z-index: 3;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.vo-expert-card:hover .vo-expert-info-box {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.vo-expert-name {
-    font-family: var(--vo-font-heading);
-    /* Was body in some places, usually Heading for names */
-    font-size: 20px;
-    font-weight: 700;
-    color: #333;
-    text-align: center;
-    margin: 0;
-}
-
-.vo-expert-title-text {
-    /* distinct from section title */
-    font-family: var(--vo-font-body);
-    font-size: 14px;
-    color: #666;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
+/* Styles previously here have been consolidated to Global Experts Section above (Line ~1760 onwards) */
 .vo-expert-details {
     max-height: 0;
     opacity: 0;
@@ -3468,3 +3542,365 @@ h2 {
         text-align: flex-start;
     }
 }
+
+/* =========================================
+   Mobile Comparison Carousel Overrides (Fixed)
+   ========================================= */
+@media (max-width: 768px) {
+
+    /* 3D Perspective Container */
+    .vo-comparison-section {
+        perspective: 1000px;
+        overflow: hidden;
+        position: relative;
+        padding: 40px 0 !important;
+        /* Reduce side padding to let arrows float */
+    }
+
+    /* Arrows Visibility & Styling (White Circles) */
+    .vo-comp-arrows {
+        display: flex !important;
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        justify-content: space-between !important;
+        padding: 0 10px !important;
+        pointer-events: none;
+        /* Pass clicks */
+        z-index: 50;
+    }
+
+    .vo-arrow-btn {
+        pointer-events: auto;
+        background: white;
+        color: #333;
+        border: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        font-size: 26px;
+        /* Larger for < > */
+        font-family: monospace;
+        /* Ensure neutral styling */
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 3px;
+        /* Visual center tweak */
+        transition: all 0.3s;
+        opacity: 0.4;
+        /* Dimmed by default, JS toggles to 1 */
+    }
+
+    .vo-arrow-btn.active-arrow {
+        opacity: 1 !important;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .vo-arrow-btn:active {
+        transform: scale(0.9);
+        background: #F57F17;
+        color: white;
+    }
+
+    /* Grid -> Carousel */
+    .vo-comparison-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth !important;
+        gap: 15px !important;
+        /* Tighter gap */
+        padding: 30px 20px 60px !important;
+        /* Top/Bottom padding for shadows, less side padding */
+        justify-content: flex-start !important;
+        align-items: center !important;
+        width: 100%;
+        margin: 0;
+        /* Reset margins */
+    }
+
+    /* General Card Style */
+    .vo-comp-card {
+        min-width: 75vw !important;
+        /* 75vw allows next card peek like Image 2 */
+        scroll-snap-align: center;
+        border: none !important;
+        border-radius: 20px !important;
+        padding: 25px 30px !important;
+        /* Match inner spacing */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        background: #000;
+        /* Default Black */
+
+        /* General Card Style */
+        .vo-comp-card {
+            min-width: 75vw !important;
+            scroll-snap-align: center;
+            border: none !important;
+            border-radius: 20px !important;
+            padding: 25px 30px !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background: #000;
+            /* Default Black */
+
+            /* Default State: Smaller but FULLY VISIBLE */
+            transform: scale(0.9) !important;
+            opacity: 1 !important;
+            /* User reported 'faded', so strictly 1 */
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        }
+
+        /* ACTIVE CENTER CARD: Grows Big */
+        .vo-comp-card.vo-card-active {
+            transform: scale(1.05) !important;
+            /* Grow Big */
+            z-index: 10;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        /* 1. Venting Card - Black */
+        .vo-comp-card:nth-child(1) {
+            background: #000000 !important;
+        }
+
+        /* 2. Coaching Card (Featured) - Green */
+        .vo-comp-card.vo-featured {
+            background-color: #1F4D3E !important;
+        }
+
+        /* 3. Therapy Card - Black */
+        .vo-comp-card:last-child {
+            background: #000000 !important;
+        }
+
+        /* Typography Override for "Inside Content Styling" */
+        .vo-comp-card h3 {
+            font-family: var(--vo-font-heading);
+            color: white !important;
+            font-size: 32px !important;
+            /* Matches "Venting" size */
+            margin-bottom: 5px !important;
+            text-align: left !important;
+        }
+
+        .vo-comp-card .vo-comp-role {
+            color: rgba(255, 255, 255, 0.7) !important;
+            font-size: 14px !important;
+            text-align: left !important;
+            margin-bottom: 20px !important;
+            font-weight: 400 !important;
+        }
+
+        .vo-comp-card .vo-comp-price {
+            color: #fff !important;
+            font-size: 26px !important;
+            font-weight: 700 !important;
+            text-align: left !important;
+            margin-bottom: 25px !important;
+        }
+
+        /* Checklists */
+        .vo-comp-features li {
+            color: rgba(255, 255, 255, 0.95) !important;
+            font-size: 15px !important;
+            margin-bottom: 12px !important;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            line-height: 1.4;
+        }
+
+        .vo-comp-features li span {
+            color: #F57F17 !important;
+            /* Orange Checks */
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        /* Buttons */
+        .vo-comp-card .vo-btn-comp {
+            width: 100% !important;
+            text-align: center !important;
+            padding: 14px 0 !important;
+            font-size: 16px !important;
+            font-weight: 700 !important;
+            border-radius: 30px !important;
+            margin-top: auto !important;
+            border: none !important;
+        }
+
+        /* Venting & Therapy Button: Orange */
+        .vo-comp-card:nth-child(1) .vo-btn-comp,
+        .vo-comp-card:last-child .vo-btn-comp {
+            background: #F57F17 !important;
+            color: white !important;
+        }
+
+        /* Coaching Button: White */
+        .vo-comp-card.vo-featured .vo-btn-comp {
+            background: white !important;
+            color: #1F4D3E !important;
+        }
+
+        /* Scrollbar Hidden */
+        .vo-comparison-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* =========================================
+   MOBILE TIMELINE OVERRIDE (How It Works)
+   ========================================= */
+        @media (max-width: 768px) {
+            .vo-how-section {
+                padding: 60px 20px;
+                background-color: #212121 !important;
+                /* Dark Background */
+            }
+
+            /* Grid becomes Block for Timeline */
+            .vo-steps-grid {
+                display: block !important;
+                position: relative;
+                max-width: 100%;
+                margin: 0;
+                padding-left: 0;
+            }
+
+            /* Central Line */
+            .vo-steps-grid::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 50%;
+                width: 2px;
+                background: #FEFCEF;
+                /* Cream Line */
+                transform: translateX(-50%);
+                z-index: 0;
+            }
+
+            /* Remove Blue Progress segment */
+            .vo-steps-grid::after {
+                display: none;
+            }
+
+            /* Card Wrapper resets - Transparent BG */
+            .vo-step-card {
+                position: relative;
+                width: 42% !important;
+                background: transparent !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                border-radius: 0 !important;
+                height: auto !important;
+                margin-bottom: 60px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center;
+                z-index: 2;
+                border: none !important;
+            }
+
+            /* Step Number (Text Only, No Pill) */
+            .vo-step-number {
+                font-family: var(--vo-font-heading);
+                font-weight: 700;
+                font-size: 24px !important;
+                letter-spacing: 0px;
+                background: transparent !important;
+                /* No Pill BG */
+                color: #FEFCEF !important;
+                /* Cream Text */
+                padding: 0 !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                display: block;
+                margin-bottom: 8px !important;
+                text-transform: none;
+                /* "Step 1" case */
+                width: auto;
+                text-shadow: none !important;
+                line-height: 1.2 !important;
+            }
+
+            /* Description (Light Text) */
+            .vo-step-description {
+                font-family: var(--vo-font-body) !important;
+                font-size: 14px !important;
+                line-height: 1.5 !important;
+                color: rgba(254, 252, 239, 0.8) !important;
+                /* Cream opacity */
+                text-shadow: none !important;
+                letter-spacing: normal !important;
+            }
+
+            /* --- Alternating Layout --- */
+
+            /* ODD: LEFT */
+            .vo-step-card:nth-child(odd) {
+                float: left;
+                clear: both;
+                text-align: right;
+                align-items: flex-end;
+                margin-right: 50%;
+                padding-right: 30px !important;
+            }
+
+            /* EVEN: RIGHT */
+            .vo-step-card:nth-child(even) {
+                float: right;
+                clear: both;
+                text-align: left;
+                align-items: flex-start;
+                margin-left: 50%;
+                padding-left: 30px !important;
+            }
+
+            /* --- Connector Dots --- */
+            .vo-step-card::after {
+                content: '';
+                position: absolute;
+                top: 8px;
+                /* Align near top of text */
+                width: 16px;
+                height: 16px;
+                background: #FEFCEF;
+                /* Cream Dot */
+                border: none;
+                border-radius: 50%;
+                z-index: 5;
+            }
+
+            /* Left Card Dot */
+            .vo-step-card:nth-child(odd)::after {
+                right: -39px;
+                /* Adjusted for line width */
+            }
+
+            /* Right Card Dot */
+            .vo-step-card:nth-child(even)::after {
+                left: -39px;
+            }
+
+            /* Clearfloats */
+            .vo-steps-grid::after {
+                content: '';
+                display: table;
+                clear: both;
+            }
+        }
+    }
