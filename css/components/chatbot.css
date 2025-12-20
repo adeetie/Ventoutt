@@ -26,6 +26,42 @@
     transform: scale(1.05);
 }
 
+/* Helper Bubble (The "How can we help you?" text) */
+.mentalbot-trigger-bubble {
+    position: absolute;
+    bottom: 80px;
+    /* Above the button (which is 60px height + 24px bottom if relative, but shell is fixed) */
+    right: 0;
+    background: white;
+    color: #222;
+    padding: 12px 20px;
+    border-radius: 20px 20px 0 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    font-family: var(--font-body, sans-serif);
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    z-index: 999997;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: bubble-pop 0.5s ease-out forwards 1s;
+    /* Delay appearance */
+    pointer-events: none;
+    /* Let clicks pass through if needed */
+}
+
+/* When chat is open (not collapsed), hide the bubble */
+#mentalbot-shell:not(.collapsed) .mentalbot-trigger-bubble {
+    display: none;
+}
+
+@keyframes bubble-pop {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* ============================================================ */
 /* CHAT FRAME (Desktop: 390x560) */
 /* ============================================================ */

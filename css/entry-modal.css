@@ -53,14 +53,17 @@
 }
 
 .entry-header h2 {
+    font-family: var(--font-heading);
     font-size: 22px;
     /* Slightly smaller */
-    font-weight: 600;
+    font-weight: 700;
+    font-style: italic;
     margin: 0 0 6px 0;
     color: var(--text-dark);
 }
 
 .entry-header p {
+    font-family: var(--font-body);
     font-size: 14px;
     color: var(--text-muted);
     margin: 0;
@@ -133,14 +136,17 @@
 }
 
 .entry-content h3 {
+    font-family: var(--font-heading);
     font-size: 16px;
     /* Reduced size */
     font-weight: 600;
+    font-style: italic;
     margin: 0;
     color: var(--text-dark);
 }
 
 .entry-content p {
+    font-family: var(--font-body);
     font-size: 12px;
     /* Reduced size */
     color: #666;

@@ -2,7 +2,7 @@
    VentOutt Base Styles & Components
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
+
 
 /* ========== Global Styles ========== */
 
@@ -29,35 +29,45 @@ h4,
 h5,
 h6 {
     font-family: var(--font-heading);
-    font-weight: var(--font-semibold);
     line-height: var(--leading-tight);
     color: var(--text-primary);
     margin-bottom: var(--space-4);
 }
 
+/* H1, H2: Lora Bold + Italic */
 h1 {
     font-size: var(--text-5xl);
     font-weight: var(--font-bold);
+    font-style: italic;
 }
 
 h2 {
     font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    font-style: italic;
 }
 
+/* H3: Lora Semibold + Italic */
 h3 {
     font-size: var(--text-3xl);
+    font-weight: var(--font-semibold);
+    font-style: italic;
 }
 
+/* H4, H5, H6: Lora Bold (no italic) */
 h4 {
     font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
 }
 
 h5 {
     font-size: var(--text-xl);
+    font-weight: var(--font-bold);
 }
 
 h6 {
     font-size: var(--text-lg);
+    font-weight: var(--font-bold);
 }
 
 p {

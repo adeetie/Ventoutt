@@ -7,6 +7,8 @@
 .comparison-title-redesign {
     font-family: var(--font-heading);
     font-size: 48px;
+    font-weight: 700;
+    font-style: italic;
     line-height: 1.2;
     text-align: center;
     color: #212121;
@@ -69,6 +71,7 @@
     font-family: var(--font-heading);
     font-size: 32px;
     font-weight: 700;
+    font-style: italic;
     margin-bottom: 8px;
     line-height: 1.1;
 }
@@ -208,7 +211,8 @@
     line-height: 1.1;
     color: #1F2937;
     /* Dark Gray */
-    font-weight: 400;
+    font-weight: 700;
+    font-style: italic;
 }
 
 .vetting-learn-btn {
@@ -321,6 +325,7 @@
 .vetting-card-title {
     font-size: 24px;
     font-weight: 600;
+    font-style: italic;
     /* As visually bold */
     color: #111827;
     margin-bottom: 16px;
@@ -381,14 +386,15 @@
 }
 
 .services-hero-title {
-    font-family: var(--font-heading, "DM Serif Display", serif);
+    font-family: var(--font-heading);
     font-size: 64px;
     line-height: 1.1;
     max-width: 600px;
     margin: 0;
     color: #212121;
     /* Dark Title */
-    font-weight: 400;
+    font-weight: 700;
+    font-style: italic;
 }
 
 .services-hero-text {

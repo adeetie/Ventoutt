@@ -27,7 +27,7 @@
     line-height: 1.1;
     color: var(--dark-gray);
     margin-bottom: 24px;
-    font-weight: 400;
+    font-weight: 700;
 }
 
 .hero-text-content p {
@@ -198,6 +198,7 @@
 .service-hero-title-dark {
     font-family: var(--font-heading);
     font-weight: 700;
+    font-style: italic;
     font-size: 56px;
     line-height: 1.1;
     color: #212121;
@@ -262,9 +263,9 @@
 }
 
 .experts-label {
-    font-family: var(--font-body);
+    font-family: var(--font-heading);
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--dark-gray);
@@ -275,7 +276,8 @@
     font-family: var(--font-heading);
     font-size: 48px;
     line-height: 1.2;
-    font-weight: 400;
+    font-weight: 700;
+    font-style: italic;
     color: var(--dark-gray);
     max-width: 400px;
 }
@@ -507,6 +509,8 @@
 .how-it-works-title {
     font-family: var(--font-heading);
     font-size: 48px;
+    font-weight: 700;
+    font-style: italic;
     line-height: 66px;
     letter-spacing: -0.5px;
     text-align: center;
@@ -655,8 +659,9 @@
 }
 
 .pricing-title {
-    font-family: var(--font-body);
-    font-weight: 600;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-style: italic;
     font-size: 36px;
     line-height: 47px;
     color: #212121;
@@ -751,8 +756,9 @@
 }
 
 .app-offer-title {
-    font-family: var(--font-body);
+    font-family: var(--font-heading);
     font-weight: 600;
+    font-style: italic;
     font-size: 36px;
     line-height: 47px;
     color: #F57F17;
@@ -794,8 +800,9 @@
 }
 
 .support-title {
-    font-family: var(--font-body);
+    font-family: var(--font-heading);
     font-weight: 600;
+    font-style: italic;
     font-size: 32px;
     line-height: 42px;
     color: #000000;
@@ -915,6 +922,8 @@
 .testimonials-title {
     font-family: var(--font-heading);
     font-size: 48px;
+    font-weight: 700;
+    font-style: italic;
     line-height: 66px;
     letter-spacing: -0.5px;
     text-align: center;
@@ -1102,6 +1111,8 @@
 .service-detail-title {
     font-family: var(--font-heading);
     font-size: 40px;
+    font-weight: 700;
+    font-style: italic;
     line-height: 1.2;
     color: var(--dark-gray);
     margin-bottom: 24px;
@@ -1222,6 +1233,8 @@
 .detailed-services-main-title {
     font-family: var(--font-heading);
     font-size: 48px;
+    font-weight: 700;
+    font-style: italic;
     line-height: 1.2;
     color: var(--dark-gray);
     margin-bottom: 40px;
@@ -1297,6 +1310,8 @@
 .interim-title {
     font-family: var(--font-heading);
     font-size: 28px;
+    font-weight: 600;
+    font-style: italic;
     color: #14532D;
     /* Dark Green */
     margin-bottom: 10px;
@@ -1398,7 +1413,8 @@
     line-height: 1.15;
     color: #212121;
     margin-bottom: 50px;
-    font-weight: 400;
+    font-weight: 700;
+    font-style: italic;
 }
 
 .why-love-points-wrapper {
@@ -1426,7 +1442,7 @@
 }
 
 .why-love-point-title {
-    font-family: var(--font-body);
+    font-family: var(--font-heading);
     font-size: 22px;
     font-weight: 700;
     color: #212121;

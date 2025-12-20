@@ -1,0 +1,199 @@
+/* ============================================================ */
+/* SCROLL POPUP (Bottom Float) */
+/* ============================================================ */
+#scroll-popup {
+    position: fixed;
+    bottom: -100%;
+    /* Hidden by default */
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* Frame Spec */
+    width: 440px;
+    max-width: 94%;
+    /* Mobile: 94% width */
+    background: var(--white, #FFFFFF);
+
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    /* Spec: 20px */
+    gap: 12px;
+    /* Spec: 12px */
+
+    /* Styling */
+    border-radius: 16px;
+    /* Spec says Frame size 440x164 but implies radius */
+    box-shadow: var(--shadow-card, 0 4px 12px rgba(0, 0, 0, 0.15));
+    z-index: 999;
+
+    transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#scroll-popup.show {
+    bottom: 24px;
+    /* Float slightly above bottom */
+}
+
+/* Typography for Scroll Popup */
+#scroll-popup h3 {
+    font-family: var(--font-heading, serif);
+    font-size: 18px;
+    /* Spec: 18px SemiBold */
+    font-weight: 600;
+    font-style: italic;
+    margin: 0;
+    color: var(--text-dark, #212121);
+    text-align: center;
+}
+
+#scroll-popup p {
+    font-family: var(--font-body, sans-serif);
+    font-size: 14px;
+    /* Spec: 14px */
+    color: var(--text-dark, #212121);
+    /* Spec implies body text */
+    margin: 0;
+    text-align: center;
+    line-height: 1.5;
+}
+
+
+/* ============================================================ */
+/* ENTRY MODAL (Centered Overlay) */
+/* ============================================================ */
+#entry-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+#entry-popup-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#entry-popup-card {
+    width: 440px;
+    max-width: 90%;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+#entry-popup-overlay.active #entry-popup-card {
+    transform: scale(1);
+}
+
+#entry-popup-card h3 {
+    font-family: var(--font-heading, serif);
+    font-size: 22px;
+    font-weight: 600;
+    color: #222;
+    margin: 0;
+}
+
+#entry-popup-card p {
+    font-family: var(--font-body, sans-serif);
+    font-size: 15px;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+}
+
+#entry-popup-card .popup-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* ============================================================ */
+/* SHARED BUTTON STYLES */
+/* ============================================================ */
+
+/* Actions Container */
+.popup-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Primary Button */
+.btn-popup-primary {
+    display: block;
+    width: 100%;
+    /* Scroll popup has height 44, Entry modal used padding 12px */
+    padding: 12px 12px;
+
+    background: var(--primary-green, #4CAF50);
+    color: var(--white, #FFFFFF);
+    border: none;
+    border-radius: 22px;
+    /* Uniform radius */
+
+    font-family: var(--font-body, sans-serif);
+    font-size: 14px;
+    /* Entry modal used 16px, Scroll used 14px. Unifying to 15px? or keep logic separate? */
+    /* Let's keep specific overrides if needed */
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s;
+    box-sizing: border-box;
+}
+
+#entry-popup-card .btn-popup-primary {
+    font-size: 16px;
+    border-radius: 30px;
+}
+
+#scroll-popup .btn-popup-primary {
+    height: 44px;
+    /* fixed height for scroll popup compliance */
+    padding: 0;
+    line-height: 44px;
+}
+
+.btn-popup-primary:hover {
+    background: #388E3C;
+    /* Darker green */
+}
+
+/* Secondary Button */
+.btn-popup-secondary {
+    background: none;
+    border: none;
+    color: var(--text-muted, #888);
+    font-size: 13px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: underline;
+    padding: 5px;
+}
+
+/* Micro Copy */
+.popup-micro {
+    font-size: 11px;
+    color: var(--text-muted, #aaa);
+    text-align: center;
+}

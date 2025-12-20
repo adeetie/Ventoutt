@@ -1,0 +1,2642 @@
+/* vo-index.css - Homepage Specific Styles */
+
+/* =========================================
+   1. Hero Slider Section
+   ========================================= */
+.vo-hero-slider {
+    position: relative;
+    width: 100%;
+    height: 710px;
+    /* Match Figma height */
+    overflow: hidden;
+}
+
+.vo-hero-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.vo-hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 150px;
+    padding-right: 150px;
+    box-sizing: border-box;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Flipped Background using pseudo-element */
+.vo-hero-slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--bg-url);
+    background-size: cover;
+    background-position: center;
+    transform: scaleX(-1);
+    z-index: -1;
+}
+
+.vo-hero-slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.vo-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
+    color: var(--vo-color-white);
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.vo-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.vo-hero-title {
+    font-family: var(--vo-font-heading);
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 88px;
+    letter-spacing: -0.5px;
+    color: var(--vo-color-white);
+    margin: 0;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+    max-width: 1000px;
+}
+
+.vo-hero-subtitle {
+    font-family: var(--vo-font-body);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: var(--vo-color-white);
+    margin: 0;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+    max-width: 682px;
+}
+
+.vo-btn-hero {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 45px;
+    gap: 10px;
+    width: 240px;
+    height: 50px;
+    background: var(--vo-color-primary);
+    /* #F57F17 */
+    border: 1px solid var(--vo-color-white);
+    border-radius: 10px;
+    font-family: var(--vo-font-body);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    color: var(--vo-color-white);
+    text-decoration: none;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.vo-btn-hero:hover {
+    background-color: #E66A2E;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .vo-hero-slide {
+        padding: 0 5%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .vo-hero-title {
+        font-size: 36px;
+        line-height: 1.2;
+    }
+
+    .vo-hero-content {
+        align-items: center;
+    }
+}
+
+/* =========================================
+   2. How Can We Help (Expanding Gallery)
+   ========================================= */
+.vo-help-section {
+    padding: 100px 0;
+    background-color: var(--vo-color-white);
+}
+
+.vo-help-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.vo-help-header {
+    text-align: center;
+    margin-bottom: 60px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vo-section-title {
+    font-family: var(--vo-font-heading);
+    font-size: 48px;
+    line-height: 1.1;
+    color: var(--vo-color-black);
+    margin-bottom: 24px;
+    font-weight: 700;
+}
+
+.vo-section-subtitle {
+    font-family: var(--vo-font-body);
+    font-size: 18px;
+    color: var(--vo-color-dark-gray);
+    line-height: 1.6;
+}
+
+.vo-expanding-gallery {
+    display: flex;
+    gap: 20px;
+    height: 600px;
+    width: 100%;
+}
+
+.vo-gallery-card {
+    flex: 1;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border-radius: 24px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    min-width: 60px;
+}
+
+.vo-gallery-card:hover,
+.vo-gallery-card:focus-within {
+    flex: 3;
+}
+
+.vo-gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 60%);
+    display: flex;
+    align-items: flex-end;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+}
+
+.vo-gallery-content {
+    padding: 40px;
+    width: 100%;
+    transform: translateY(0);
+    text-align: left;
+    opacity: 1;
+}
+
+.vo-gallery-card h3 {
+    font-family: var(--vo-font-heading);
+    font-size: 32px;
+    color: var(--vo-color-white);
+    margin-bottom: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.vo-gallery-card p {
+    font-family: var(--vo-font-body);
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 24px;
+    max-width: 400px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease 0s;
+    height: 0;
+    overflow: hidden;
+}
+
+.vo-gallery-link {
+    display: inline-block;
+    color: var(--vo-color-white);
+    text-decoration: underline;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease 0.1s;
+}
+
+.vo-gallery-card:hover p,
+.vo-gallery-card:hover .vo-gallery-link,
+.vo-gallery-card:focus-within p,
+.vo-gallery-card:focus-within .vo-gallery-link {
+    opacity: 1;
+    transform: translateY(0);
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .vo-expanding-gallery {
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        justify-content: flex-start;
+        padding-bottom: 20px;
+        height: auto;
+    }
+
+    .vo-gallery-card {
+        flex: 0 0 85% !important;
+        min-width: 85% !important;
+        height: 400px !important;
+        scroll-snap-align: center;
+    }
+
+    .vo-gallery-card p,
+    .vo-gallery-link {
+        opacity: 1 !important;
+        height: auto !important;
+        transform: none !important;
+    }
+}
+
+/* =========================================
+   3. Quiz Prompt
+   ========================================= */
+.vo-quiz-prompt {
+    text-align: center;
+    margin-top: 40px;
+    padding-bottom: 20px;
+    font-family: var(--vo-font-body);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: #212121;
+}
+
+.vo-quiz-text {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 31px;
+}
+
+.vo-quiz-link {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 31px;
+    color: var(--vo-color-primary);
+    text-decoration: none;
+    position: relative;
+}
+
+.vo-quiz-link::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--vo-color-primary);
+    border-radius: 5px;
+}
+
+/* =========================================
+   4. Stats Section
+   ========================================= */
+/* =========================================
+   4. Stats Section (Dark Cards)
+   ========================================= */
+.vo-stats-section {
+    padding: 100px 5%;
+    background-color: var(--vo-color-bg-primary);
+    /* Cream/White background */
+    text-align: center;
+}
+
+.vo-stats-title {
+    font-family: var(--vo-font-heading);
+    font-size: 48px;
+    font-style: italic;
+    color: var(--vo-color-dark-gray);
+    margin-bottom: 60px;
+}
+
+.vo-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.vo-stat-card {
+    background-color: #212121;
+    /* Dark card background */
+    border-radius: 20px;
+    padding: 40px 20px;
+    text-align: center;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 100%;
+    /* Uniform height */
+}
+
+.vo-stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.vo-stat-icon {
+    width: 140px;
+    height: 140px;
+    background-color: #FFFDF7;
+    /* Off-white circle placeholder */
+    border-radius: 50%;
+    margin: 0 auto 30px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vo-stat-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.vo-stat-number {
+    font-family: var(--vo-font-body);
+    font-size: 36px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+}
+
+.vo-stat-label {
+    font-family: var(--vo-font-heading);
+    font-weight: 700;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.vo-stat-desc {
+    font-family: var(--vo-font-body);
+    color: #CCCCCC;
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 220px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+    .vo-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 500px) {
+    .vo-stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   5. Testimonials (Carousel)
+   ========================================= */
+.vo-testimonials-section {
+    padding: 80px 0;
+    background-color: var(--vo-color-bg-light);
+    overflow: hidden;
+}
+
+.vo-testimonials-title {
+    font-family: var(--vo-font-heading);
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 60px;
+    color: var(--vo-color-dark-gray);
+}
+
+.vo-testimonials-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.vo-testimonials-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: vo-scroll-left 40s linear infinite;
+    will-change: transform;
+}
+
+.vo-testimonials-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes vo-scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.vo-testimonial-card {
+    width: 350px;
+    height: 450px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    transition: transform 0.3s ease;
+}
+
+.vo-testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.vo-testimonial-card.vo-orange {
+    background: #FFF3E0;
+    border: 1px solid #FFE0B2;
+}
+
+.vo-testimonial-card.vo-yellow {
+    background: #FEFCEF;
+    border: 1px solid #FFF59D;
+}
+
+.vo-testimonial-card.vo-green {
+    background: #E8F5E9;
+    border: 1px solid #C8E6C9;
+}
+
+.vo-testimonial-name {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: var(--vo-font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.vo-testimonial-name img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.vo-testimonial-card p {
+    font-family: var(--vo-font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.vo-video-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.vo-video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.vo-testimonial-location {
+    font-family: var(--vo-font-body);
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+    margin-top: auto;
+}
+
+/* =========================================
+   6. Therapist Banner (Figma)
+   ========================================= */
+.vo-therapist-banner {
+    position: relative;
+    background: #212121;
+    width: 100%;
+    min-height: 800px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.vo-banner-container {
+    position: relative;
+    width: 1440px;
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.vo-banner-graphics {
+    position: relative;
+    width: 800px;
+    height: 800px;
+    flex: 1 1 50%;
+    min-width: 400px;
+}
+
+.vo-banner-vector {
+    position: absolute;
+    width: 767px;
+    height: 650px;
+    left: -100px;
+    top: 50px;
+    background: var(--vo-color-primary);
+    transform: rotate(-46.83deg);
+    z-index: 1;
+    border-radius: 40px;
+}
+
+.vo-banner-image-frame {
+    position: absolute;
+    width: 766px;
+    height: 650px;
+    left: 0px;
+    top: 100px;
+    z-index: 2;
+}
+
+.vo-banner-slideshow {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.vo-banner-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+.vo-banner-slide.active {
+    opacity: 1;
+}
+
+.vo-banner-content {
+    flex: 1 1 40%;
+    position: relative;
+    z-index: 3;
+    padding-top: 120px;
+    min-width: 350px;
+    padding-left: 40px;
+}
+
+.vo-banner-title {
+    font-family: var(--vo-font-heading);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 66px;
+    letter-spacing: -0.5px;
+    color: var(--vo-color-white);
+    margin-bottom: 30px;
+}
+
+.vo-banner-desc {
+    font-family: var(--vo-font-body);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    color: var(--vo-color-white);
+    margin-bottom: 60px;
+}
+
+.vo-banner-desc ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 24px;
+}
+
+.vo-banner-desc li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+}
+
+.vo-banner-desc li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+}
+
+.vo-banner-footer {
+    font-family: var(--vo-font-body);
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--vo-color-white);
+}
+
+@media (max-width: 1024px) {
+    .vo-banner-graphics {
+        transform: scale(0.8);
+        left: -50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .vo-banner-container {
+        flex-direction: column;
+    }
+
+    .vo-banner-graphics {
+        width: 100%;
+        height: 400px;
+        transform: scale(0.7);
+        left: 0;
+        margin-bottom: -50px;
+    }
+
+    .vo-banner-content {
+        padding-top: 20px;
+        text-align: center;
+    }
+
+    .vo-banner-desc ul {
+        display: inline-block;
+        text-align: left;
+    }
+}
+
+/* =========================================
+   7. Why People Love VentOutt (Sticky Stack)
+   ========================================= */
+.vo-why-section {
+    position: relative;
+    padding: 60px 0;
+    background: var(--vo-color-bg-light);
+    /* #FEFCEF */
+}
+
+.vo-why-title {
+    text-align: center;
+    font-family: var(--vo-font-heading);
+    font-size: 48px;
+    margin-bottom: 40px;
+    color: var(--vo-color-dark-gray);
+}
+
+.vo-sticky-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.vo-feature-card {
+    position: sticky;
+    top: 120px;
+    /* Offset for header */
+    margin: 0 auto 40px;
+    width: 100%;
+    max-width: 1000px;
+    height: 400px;
+    background: #fff;
+    border-radius: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    overflow: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.vo-feature-card.is-active {
+    transform: scale(1.02);
+}
+
+.vo-feature-card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.vo-feature-content {
+    flex: 1;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.vo-feature-image {
+    flex: 1;
+    overflow: hidden;
+}
+
+.vo-feature-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vo-feature-title {
+    font-family: var(--vo-font-heading);
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: var(--vo-color-primary);
+}
+
+.vo-feature-desc {
+    font-family: var(--vo-font-body);
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+}
+
+@media (max-width: 768px) {
+    .vo-feature-card {
+        flex-direction: column !important;
+        height: auto;
+        position: relative;
+        /* Disable sticky on mobile */
+        top: 0;
+    }
+
+    .vo-feature-content {
+        padding: 30px;
+    }
+
+    .vo-feature-image {
+        height: 250px;
+    }
+}
+
+/* =========================================
+   8. Experts Section
+   ========================================= */
+/* This section was "Meet Our Experts" in index.html, styled by .experts-section 
+       There was also a "Therapist Banner" above. This is the grid of profiles. */
+.vo-experts-section {
+    background-color: #fff;
+    padding: 80px 150px;
+    position: relative;
+}
+
+.vo-experts-header {
+    margin-bottom: 60px;
+}
+
+.vo-experts-label {
+    font-family: var(--vo-font-body);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--vo-color-dark-gray);
+    margin-bottom: 15px;
+}
+
+.vo-experts-title {
+    font-family: var(--vo-font-heading);
+    font-size: 48px;
+    line-height: 1.2;
+    color: var(--vo-color-dark-gray);
+    max-width: 400px;
+}
+
+.vo-experts-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.vo-experts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.vo-expert-card {
+    background: #f0f0f0;
+    border-radius: 20px;
+    position: relative;
+    height: 450px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.vo-expert-card:hover {
+    transform: translateY(-5px);
+}
+
+.vo-expert-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.vo-expert-rating {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 12px;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.vo-expert-info {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    z-index: 3;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    transition: box-shadow 0.3s ease;
+}
+
+.vo-expert-card:hover .vo-expert-info {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.vo-expert-name {
+    font-family: var(--vo-font-body);
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    margin: 0;
+}
+
+.vo-expert-job {
+    font-family: var(--vo-font-body);
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.vo-expert-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out, padding 0.4s ease;
+    padding-top: 0;
+}
+
+.vo-expert-card:hover .vo-expert-details {
+    max-height: 400px;
+    /* Sufficient height */
+    opacity: 1;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.vo-experts-desc {
+    font-family: var(--vo-font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--vo-color-dark-gray);
+    margin-bottom: 30px;
+}
+
+.vo-btn-learn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--vo-font-body);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--vo-color-dark-gray);
+    text-decoration: none;
+    border: 2px solid var(--vo-color-dark-gray);
+    border-radius: 30px;
+    padding: 12px 30px;
+    transition: all 0.3s ease;
+}
+
+.vo-btn-learn:hover {
+    background: var(--vo-color-dark-gray);
+    color: white;
+}
+
+@media (max-width: 1200px) {
+    .vo-experts-section {
+        padding: 60px 80px;
+    }
+
+    .vo-experts-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .vo-experts-section {
+        padding: 40px 20px;
+    }
+
+    .vo-experts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   9. Comparison Section
+   ========================================= */
+.vo-comparison-section {
+    padding: 80px 20px;
+    background: #fff;
+    text-align: center;
+}
+
+.vo-comp-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.vo-comp-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.vo-comp-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 360px;
+    background: #fff;
+    border: 1px solid #E0E0E0;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.vo-comp-card.featured {
+    border: 2px solid var(--vo-color-primary);
+    /* #F57F17 */
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(245, 127, 23, 0.15);
+    position: relative;
+    z-index: 2;
+}
+
+.vo-comp-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.vo-comp-title {
+    font-family: var(--vo-font-heading);
+    font-size: 28px;
+    margin-bottom: 5px;
+    color: var(--vo-color-dark-gray);
+}
+
+.vo-comp-role {
+    font-family: var(--vo-font-body);
+    font-weight: 600;
+    color: #dbd6d6;
+}
+
+.vo-comp-investment {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--vo-color-primary);
+    margin-bottom: 20px;
+}
+
+.vo-comp-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.vo-comp-list li {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.vo-comp-check {
+    color: #43A047;
+    font-weight: bold;
+}
+
+.vo-btn-comp {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    text-align: center;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.vo-comp-card .vo-btn-comp {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.vo-comp-card.featured .vo-btn-comp {
+    background: var(--vo-color-primary);
+    color: white;
+}
+
+.vo-comp-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================
+   6. Why People Love VentOutt (Sticky Stack)
+   ========================================= */
+.vo-why-love-section {
+    background: var(--vo-color-bg-tertiary);
+    /* Cream/Beige */
+    padding: 120px 0;
+    position: relative;
+}
+
+.vo-why-love-title {
+    font-family: var(--vo-font-heading);
+    font-size: 56px;
+    line-height: 1.1;
+    text-align: center;
+    color: var(--vo-color-dark-gray);
+    margin-bottom: 80px;
+}
+
+.vo-scroll-slider-wrapper {
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 0 20px 100px;
+    position: relative;
+}
+
+.vo-scroll-slider-track {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+
+.vo-feature-card {
+    background: white;
+    border-radius: 40px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    min-height: 380px;
+    position: sticky;
+    top: 120px;
+    /* Sticky top */
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Alternating Layout */
+.vo-feature-card:nth-child(even) .vo-feature-card-content {
+    order: 2;
+}
+
+.vo-feature-card:nth-child(even) .vo-feature-card-image {
+    order: 1;
+}
+
+/* Stacking Order (Explicit z-index for 9 cards) */
+.vo-feature-card:nth-child(n) {
+    top: 120px;
+}
+
+.vo-feature-card:nth-child(1) {
+    z-index: 1;
+}
+
+.vo-feature-card:nth-child(2) {
+    z-index: 2;
+}
+
+.vo-feature-card:nth-child(3) {
+    z-index: 3;
+}
+
+.vo-feature-card:nth-child(4) {
+    z-index: 4;
+}
+
+.vo-feature-card:nth-child(5) {
+    z-index: 5;
+}
+
+.vo-feature-card:nth-child(6) {
+    z-index: 6;
+}
+
+.vo-feature-card:nth-child(7) {
+    z-index: 7;
+}
+
+.vo-feature-card:nth-child(8) {
+    z-index: 8;
+}
+
+.vo-feature-card:nth-child(9) {
+    z-index: 9;
+}
+
+.vo-feature-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1,
+h2,
+.vo-h1,
+.vo-h2 {
+    font-family: var(--vo-font-heading);
+    font-weight: 700;
+    font-style: italic;
+    /* User Request: Lora Italic */
+    line-height: 1.2;
+    margin-bottom: var(--vo-space-4);
+    color: var(--vo-text-primary);
+}
+
+/* =========================================
+   6. Real Experts Section (Slideshow)
+   ========================================= */
+.vo-therapist-banner {
+    position: relative;
+    background: #212121;
+    width: 100%;
+    min-height: 800px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vo-figma-container {
+    position: relative;
+    width: 1440px;
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.vo-graphics-wrapper {
+    position: relative;
+    width: 800px;
+    height: 800px;
+    flex: 1 1 50%;
+    min-width: 400px;
+}
+
+.vo-image-frame {
+    position: absolute;
+    width: 766px;
+    height: 650px;
+    left: 0px;
+    top: 100px;
+    z-index: 2;
+    overflow: visible;
+}
+
+.vo-banner-slideshow-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.vo-blob-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+.vo-blob-slide.active {
+    opacity: 1;
+}
+
+.vo-content-wrapper {
+    flex: 1 1 40%;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 3;
+    max-width: 600px;
+}
+
+.vo-figma-title {
+    font-family: var(--vo-font-heading);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    color: #FFFFFF;
+}
+
+.vo-figma-description {
+    font-family: var(--vo-font-body);
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 40px;
+}
+
+.vo-figma-description ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.vo-figma-description li {
+    margin-bottom: 12px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.vo-figma-description li::before {
+    content: "•";
+    color: var(--vo-color-primary);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.vo-figma-footer {
+    font-family: var(--vo-font-heading);
+    font-size: 24px;
+    font-style: italic;
+    color: var(--vo-color-primary);
+}
+
+@media (max-width: 1024px) {
+    .vo-graphics-wrapper {
+        display: none;
+        /* Hide huge graphic on mobile/tablet or adjust */
+    }
+
+    .vo-content-wrapper {
+        align-items: center;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .vo-therapist-banner {
+        min-height: auto;
+        padding: 80px 20px;
+    }
+}
+
+.vo-feature-card-title {
+    font-family: var(--vo-font-heading);
+    font-size: 40px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    color: var(--vo-color-dark-gray);
+}
+
+.vo-feature-card-desc {
+    font-family: var(--vo-font-body);
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--vo-color-gray-600);
+}
+
+.vo-feature-card-image {
+    width: 100%;
+    height: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.vo-feature-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 968px) {
+    .vo-feature-card {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        min-height: auto;
+    }
+
+    .vo-feature-card:nth-child(even) .vo-feature-card-content,
+    .vo-feature-card:nth-child(even) .vo-feature-card-image {
+        order: initial;
+    }
+
+    .vo-feature-card-title {
+        font-size: 32px;
+    }
+}
+
+/* =========================================
+   10. How It Works
+   ========================================= */
+.vo-how-section {
+    background: var(--vo-color-bg-light);
+    padding: 80px 0;
+}
+
+.vo-how-title {
+    font-family: var(--vo-font-heading);
+    font-size: 48px;
+    text-align: center;
+    color: var(--vo-color-dark-gray);
+    margin-bottom: 60px;
+}
+
+.vo-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 220px);
+    gap: 20px;
+    justify-content: center;
+    max-width: 1180px;
+    margin: 0 auto 60px;
+}
+
+.vo-step-card {
+    background: var(--vo-color-dark-gray);
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    height: 220px;
+    color: var(--vo-color-bg-light);
+}
+
+.vo-step-num {
+    font-family: var(--vo-font-body);
+    font-size: 32px;
+    margin-bottom: 14px;
+}
+
+.vo-step-desc {
+    font-family: var(--vo-font-body);
+    font-size: 20px;
+    line-height: 26px;
+}
+
+@media (max-width: 1200px) {
+    .vo-steps-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 0 20px;
+    }
+}
+
+/* =========================================
+   11. Partners & Therapists (Dark Section)
+   ========================================= */
+.vo-partners-section {
+    background-color: #212121;
+    padding: 100px 0;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.vo-partners-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+    padding: 0 20px;
+}
+
+.vo-partners-title {
+    font-family: var(--vo-font-heading);
+    font-size: 48px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1.1;
+    max-width: 500px;
+}
+
+/* Carousel (Logos) */
+.vo-logo-carousel {
+    flex-grow: 1;
+    max-width: 600px;
+    overflow: hidden;
+}
+
+.vo-logo-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    will-change: transform;
+    animation: vo-scroll-logos 10s linear infinite;
+}
+
+.vo-logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    background: transparent;
+    flex-shrink: 0;
+}
+
+.vo-logo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #e0e0e0;
+}
+
+@keyframes vo-scroll-logos {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+
+    /* Assumes duplication */
+}
+
+/* Therapists Loop (Reverse) */
+.vo-therapists-wrapper {
+    max-width: 1100px;
+    margin: 60px auto 0;
+    padding: 0 40px;
+    overflow: hidden;
+}
+
+.vo-therapist-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    will-change: transform;
+    /* Animation handled by JS or CSS if size known, 
+       but here we set a standard reverse scroll */
+    animation: vo-scroll-reverse 20s linear infinite;
+}
+
+.vo-therapist-card {
+    background: #FFFFFF;
+    border: 3px solid #3A7F56;
+    border-radius: 16px;
+    padding: 20px 15px;
+    width: 280px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.vo-therapist-card:hover {
+    transform: translateY(-5px);
+    transition: 0.3s;
+}
+
+.vo-therapist-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.vo-therapist-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.vo-therapist-info h3 {
+    font-family: var(--vo-font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+}
+
+.vo-therapist-tags {
+    background: #fff;
+    border: 0.5px solid rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    padding: 8px 10px;
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 12px;
+    color: #4E4E4E;
+    text-align: left;
+}
+
+.vo-btn-book {
+    display: block;
+    width: 100%;
+    padding: 8px 0;
+    background: #F57F17;
+    /* Orange from reference image */
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+@keyframes vo-scroll-reverse {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 1024px) {
+    .vo-partners-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+    }
+}
+
+/* =========================================
+   12. Related Blogs
+   ========================================= */
+.vo-blogs-section {
+    padding: 80px 20px;
+    text-align: center;
+    background: #fff;
+}
+
+.vo-blogs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto 0;
+}
+
+.vo-blog-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.vo-blog-image {
+    height: 200px;
+    background-color: #eee;
+    background-size: cover;
+    background-position: center;
+}
+
+.vo-blog-content {
+    padding: 20px;
+}
+
+.vo-blog-tag {
+    display: inline-block;
+    background: var(--vo-color-primary);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.vo-blog-title {
+    font-family: var(--vo-font-heading);
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: var(--vo-color-dark-gray);
+}
+
+.vo-blog-link {
+    color: var(--vo-color-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* =========================================
+   13. FAQ Section
+   ========================================= */
+.vo-faq-section {
+    padding: 80px 20px;
+    background: #f9f9f9;
+}
+
+.vo-faq-container {
+    max-width: 800px;
+    margin: 40px auto 0;
+}
+
+.vo-faq-item {
+    background: #fff;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.vo-faq-item summary {
+    padding: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    position: relative;
+    font-family: var(--vo-font-heading);
+    font-size: 18px;
+}
+
+.vo-faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.vo-faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 20px;
+    color: var(--vo-color-primary);
+    font-size: 20px;
+}
+
+.vo-faq-item[open] summary::after {
+    content: '-';
+}
+
+.vo-faq-item p {
+    padding: 0 20px 20px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* =========================================
+   14. Specializations
+   ========================================= */
+.vo-specs-section {
+    padding: 80px 0;
+    background: #fff;
+    text-align: center;
+}
+
+.vo-specs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 270px);
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.vo-spec-card {
+    background: var(--vo-color-bg-light);
+    border: 0.25px solid #000;
+    border-radius: 20px;
+    box-shadow: var(--vo-shadow-light);
+    height: 300px;
+}
+
+.vo-spec-image {
+    width: 202px;
+    height: 224px;
+    margin: 20px auto;
+    border: 0.25px solid #000;
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+}
+
+.vo-spec-label {
+    font-family: var(--vo-font-body);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--vo-color-dark-gray);
+    border: 0.25px solid #000;
+    padding: 10px;
+    display: inline-block;
+    background: #fff;
+    /* fallback */
+}
+
+/* Challenges List */
+.vo-challenges-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.vo-challenge-item {
+    font-family: var(--vo-font-body);
+    font-size: 16px;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    background: #fff;
+}
+
+.vo-challenges-expanded {
+    display: none;
+}
+
+.vo-btn-see-more {
+    margin-top: 30px;
+    background: none;
+    border: none;
+    color: var(--vo-color-primary);
+    /* Dark Gray or Primary? Original was dark gray icon */
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* =========================================
+   15. Global Scroll Animations (Migrated)
+   ========================================= */
+.vo-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+}
+
+.vo-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered delays for children if needed */
+.vo-reveal-stagger>* {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.vo-reveal-stagger.active>* {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.vo-reveal-stagger.active>*:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.vo-reveal-stagger.active>*:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.vo-reveal-stagger.active>*:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.vo-reveal-stagger.active>*:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+/* =========================================
+   16. Caring & Expert Members (Grid) - NEW
+   ========================================= */
+.vo-experts-grid-section {
+    padding: 100px 5%;
+    background-color: var(--vo-color-bg-primary);
+    text-align: center;
+}
+
+.vo-experts-header {
+    margin-bottom: 60px;
+}
+
+.vo-experts-label {
+    font-family: var(--vo-font-body);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.vo-experts-title {
+    font-family: var(--vo-font-heading);
+    font-size: 48px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--vo-color-dark-gray);
+    margin: 0;
+}
+
+.vo-experts-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 60px;
+}
+
+.vo-expert-card {
+    position: relative;
+    text-align: left;
+}
+
+.vo-expert-image-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    width: 100%;
+    aspect-ratio: 1 / 1.2;
+}
+
+.vo-expert-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.vo-expert-card:hover .vo-expert-image-wrapper img {
+    transform: scale(1.05);
+}
+
+.vo-expert-rating {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: white;
+    padding: 5px 12px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: var(--vo-font-body);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.vo-expert-rating .star {
+    color: #F57F17;
+}
+
+.vo-expert-rating .score-label {
+    font-size: 10px;
+    color: #999;
+    font-weight: 600;
+    margin-left: 4px;
+    letter-spacing: 0.5px;
+}
+
+.vo-expert-content {
+    padding: 0 5px;
+}
+
+.vo-expert-name {
+    font-family: var(--vo-font-heading);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--vo-color-dark-gray);
+}
+
+.vo-expert-role {
+    font-family: var(--vo-font-body);
+    font-size: 16px;
+    color: #666;
+}
+
+.vo-experts-actions {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.vo-experts-actions p {
+    font-family: var(--vo-font-body);
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.vo-experts-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.vo-btn-outline {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #212121;
+    border-radius: 50px;
+    color: #212121;
+    text-decoration: none;
+    font-family: var(--vo-font-body);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.vo-btn-outline:hover {
+    background: #212121;
+    color: #fff;
+}
+
+.vo-btn-chat {
+    border: none;
+    background: none;
+    font-family: var(--vo-font-body);
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 16px;
+    color: #212121;
+}
+
+
+
+/* =========================================
+   18. Find Your Right Fit (Comparison) - NEW
+   ========================================= */
+.vo-comparison-section {
+    padding: 100px 5%;
+    background-color: #FAFAFA;
+}
+
+.vo-comparison-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.vo-section-title-center {
+    font-family: var(--vo-font-heading);
+    font-size: 48px;
+    font-style: italic;
+    color: var(--vo-color-dark-gray);
+    margin-bottom: 10px;
+}
+
+.vo-section-subtitle-center {
+    font-family: var(--vo-font-body);
+    font-size: 18px;
+    color: #666;
+}
+
+.vo-comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.vo-comp-card {
+    background: #111;
+    border-radius: 20px;
+    padding: 40px 30px;
+    color: #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
+    transition: transform 0.3s;
+}
+
+.vo-comp-card.vo-featured {
+    background: #1B4D3E;
+    /* Dark Green */
+    transform: scale(1.05);
+    z-index: 1;
+    min-height: 540px;
+}
+
+.vo-comp-top {
+    margin-bottom: 30px;
+}
+
+.vo-comp-top h3 {
+    font-family: var(--vo-font-heading);
+    font-size: 32px;
+    font-weight: 700;
+    font-style: italic;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.vo-comp-role {
+    font-family: var(--vo-font-body);
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 20px;
+}
+
+.vo-comp-tag {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    font-family: var(--vo-font-body);
+}
+
+.vo-comp-price {
+    font-family: var(--vo-font-body);
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.vo-comp-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px;
+    flex: 1;
+}
+
+.vo-comp-features li {
+    font-family: var(--vo-font-body);
+    font-size: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.4;
+}
+
+.vo-comp-features li span {
+    color: #F57F17;
+    font-weight: bold;
+}
+
+.vo-btn-comp {
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    border-radius: 30px;
+    font-family: var(--vo-font-body);
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.vo-btn-comp:hover {
+    opacity: 0.9;
+}
+
+.vo-btn-comp.orange {
+    background: #F57F17;
+    color: #fff;
+}
+
+.vo-btn-comp.white {
+    background: #fff;
+    color: #1B4D3E;
+}
+
+/* Force User Preference for Partners Title */
+.vo-partners-title {
+    font-family: 'Lora', serif !important;
+    font-style: italic !important;
+    font-weight: 700 !important;
+    color: #FFFFFF !important;
+}
+
+@media (max-width: 1024px) {
+
+    .vo-experts-container,
+    .vo-comparison-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .vo-why-scroll-container {
+        flex-direction: column;
+    }
+
+    .vo-why-image-col {
+        display: none;
+    }
+
+    .vo-why-text-col {
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .vo-experts-container,
+    .vo-comparison-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   16. Caring & Expert Members (Exact Match)
+   ========================================= */
+.vo-experts-section {
+    background-color: #fff;
+    padding: 80px 150px;
+    position: relative;
+}
+
+.vo-experts-header {
+    margin-bottom: 60px;
+}
+
+.vo-experts-label {
+    font-family: var(--vo-font-body);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--vo-color-dark-gray);
+    margin-bottom: 15px;
+}
+
+.vo-experts-title {
+    font-family: var(--vo-font-heading);
+    font-size: 48px;
+    line-height: 1.2;
+    font-weight: 700;
+    /* Enforced Bold */
+    font-style: italic;
+    color: var(--vo-color-dark-gray);
+    max-width: 400px;
+}
+
+.vo-experts-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.vo-experts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.vo-expert-card {
+    background: #f0f0f0;
+    border-radius: 20px;
+    position: relative;
+    height: 450px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.vo-expert-card:hover {
+    transform: translateY(-5px);
+}
+
+.vo-expert-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.vo-expert-rating {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 12px;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.vo-expert-rating .star {
+    color: #FFB800;
+    font-size: 14px;
+}
+
+.vo-expert-rating .score {
+    font-weight: 700;
+    font-size: 18px;
+    color: #333;
+    font-family: var(--vo-font-heading);
+    /* Ensure standard font */
+}
+
+.vo-expert-rating .score-label {
+    font-size: 10px;
+    color: #666;
+    text-transform: uppercase;
+    font-family: var(--vo-font-body);
+}
+
+.vo-expert-info-box {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    z-index: 3;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.vo-expert-card:hover .vo-expert-info-box {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.vo-expert-name {
+    font-family: var(--vo-font-heading);
+    /* Was body in some places, usually Heading for names */
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    margin: 0;
+}
+
+.vo-expert-title-text {
+    /* distinct from section title */
+    font-family: var(--vo-font-body);
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.vo-expert-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out, padding 0.4s ease;
+    padding-top: 0;
+}
+
+.vo-expert-card:hover .vo-expert-details {
+    max-height: 400px;
+    opacity: 1;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.vo-detail-credentials {
+    font-size: 12px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 10px;
+    font-style: italic;
+    font-family: var(--vo-font-body);
+}
+
+.vo-detail-expertise {
+    font-size: 13px;
+    color: #333;
+    text-align: left;
+    font-family: var(--vo-font-body);
+}
+
+.vo-detail-expertise strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.vo-detail-expertise ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.vo-detail-expertise li {
+    margin-bottom: 3px;
+}
+
+.vo-detail-meta {
+    font-size: 11px;
+    color: #888;
+    text-align: center;
+    margin-top: 10px;
+    border-top: 1px solid #eee;
+    padding-top: 5px;
+    font-family: var(--vo-font-body);
+}
+
+.vo-experts-content {
+    padding: 40px 0;
+}
+
+.vo-experts-description {
+    font-family: var(--vo-font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--vo-color-dark-gray);
+    margin-bottom: 30px;
+}
+
+.vo-btn-learn-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--vo-font-body);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--vo-color-dark-gray);
+    text-decoration: none;
+    border: 2px solid var(--vo-color-dark-gray);
+    border-radius: 30px;
+    padding: 12px 30px;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.vo-btn-learn-more:hover {
+    background: var(--vo-color-dark-gray);
+    color: white;
+}
+
+@media (max-width: 1200px) {
+    .vo-experts-section {
+        padding: 60px 80px;
+    }
+
+    .vo-experts-container {
+        grid-template-columns: 1fr;
+    }
+
+    .vo-experts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .vo-experts-section {
+        padding: 40px 20px;
+    }
+
+    .vo-experts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   17. How It Works (Redesigned)
+   ========================================= */
+.vo-how-section {
+    background-color: transparent;
+    /* Fix: Match body background */
+    padding: 80px 0;
+    text-align: center;
+}
+
+.vo-how-title {
+    font-family: var(--vo-font-heading);
+    font-size: 48px;
+    line-height: 66px;
+    letter-spacing: -0.5px;
+    color: var(--vo-color-dark-gray);
+    margin-bottom: 60px;
+    font-style: italic;
+    font-weight: 700;
+}
+
+.vo-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 220px);
+    gap: 20px;
+    justify-content: center;
+    max-width: 1180px;
+    margin: 0 auto 60px;
+}
+
+.vo-step-card {
+    background: var(--vo-color-dark-gray);
+    border-radius: 20px;
+    padding: 30px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.vo-step-number {
+    font-family: var(--vo-font-body);
+    font-size: 32px;
+    line-height: 42px;
+    letter-spacing: -0.5px;
+    color: #FEFCEF;
+    /* Cream text */
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 14px;
+}
+
+.vo-step-description {
+    font-family: var(--vo-font-body);
+    font-size: 18px;
+    /* Slightly adjusted to fit */
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+    color: #FEFCEF;
+}
+
+@media (max-width: 1200px) {
+    .vo-steps-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 0 20px;
+    }
+}
+
+/* =========================================
+   18. Common Challenges (Matching Original Design)
+   ========================================= */
+.vo-challenges-grid-full {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px 40px;
+    /* Matches main.css */
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+    /* Alignment from main.css */
+    padding: 0 20px;
+}
+
+.vo-challenge-item {
+    font-family: var(--vo-font-body);
+    /* Using variable but kept DM Sans fallbacks if needed */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    /* Original size */
+    line-height: 26px;
+    color: #050505;
+    background: transparent;
+    /* Removing pill background */
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    display: block;
+    /* Default block */
+}
+
+/* Remove the '•' bullet if not in original css (original css didn't have :before) */
+/* The original HTML uses text content only. */
+
+.vo-challenge-item:hover {
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+    border-color: transparent;
+}
+
+@media (max-width: 768px) {
+    .vo-challenges-grid-full {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+/* =========================================
+   19. Global Typography Overrides (User Request)
+   ========================================= */
+/* "all h1 and h2 will be italic bold lora" */
+.vo-hero-title,
+.vo-section-title,
+.vo-section-title-center,
+.vo-experts-title,
+.vo-how-title,
+.vo-partners-title,
+.vo-why-love-title,
+.vo-figma-title,
+h1,
+h2 {
+    font-family: 'Lora', serif !important;
+    font-weight: 700 !important;
+    font-style: italic !important;
+}

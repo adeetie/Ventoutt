@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VentOutt - A Safe Space to Be Heard</title>
+
+    <!-- Global Design System -->
+    <link rel="stylesheet" href="css/global.css">
+
+    <!-- Page Specific Styles -->
+    <link rel="stylesheet" href="css/vo-index.css">
+
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="css/components/vo-header.css">
+    <link rel="stylesheet" href="css/components/vo-footer.css">
+    <link rel="stylesheet" href="css/components/vo-chatbot.css">
+    <link rel="stylesheet" href="css/components/vo-popups.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Scripts will inject Header here automatically -->
+
+    <main>
+
+        <!-- 1. Hero Section (Slideshow) -->
+        <section class="vo-hero-slider">
+            <div class="vo-hero-slides">
+                <!-- Slide 1 -->
+                <div class="vo-hero-slide active"
+                    style="--bg-url: url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=1600&auto=format&fit=crop');">
+                    <div class="vo-hero-overlay"></div>
+                    <div class="vo-hero-content">
+                        <h1 class="vo-hero-title">You don’t have to do it alone.</h1>
+                        <p class="vo-hero-subtitle">Begin your journey with a conversation that’s just for you. Speak
+                            freely. Feel lighter. Heal slowly.</p>
+                        <a href="services.html" class="vo-btn-hero">Learn More</a>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="vo-hero-slide"
+                    style="--bg-url: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1600&auto=format&fit=crop');">
+                    <div class="vo-hero-overlay"></div>
+                    <div class="vo-hero-content">
+                        <h1 class="vo-hero-title">Let’s find someone who listens, just for you.</h1>
+                        <p class="vo-hero-subtitle">Because feeling heard is the first step toward feeling better.
+                            Explore therapists who understand your world, your pace, your voice.</p>
+                        <a href="services.html#demo-therapy" class="vo-btn-hero">Online Therapy</a>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="vo-hero-slide"
+                    style="--bg-url: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1600&auto=format&fit=crop');">
+                    <div class="vo-hero-overlay"></div>
+                    <div class="vo-hero-content">
+                        <h1 class="vo-hero-title">Start venting. Feel the shift.</h1>
+                        <p class="vo-hero-subtitle">Sometimes, saying it out loud is all it takes to feel lighter. Begin
+                            the conversation you’ve been holding in for too long.</p>
+                        <a href="services.html#demo-venting" class="vo-btn-hero">Instant Venting</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. How Can We Help (Expanding Gallery) -->
+        <section class="vo-help-section" id="how-we-help">
+            <div class="vo-help-container">
+                <div class="vo-help-header">
+                    <h2 class="vo-section-title">Transforming mental health,<br>one step at a time</h2>
+                    <p class="vo-section-subtitle">We provide a wide range of services designed to support your mental
+                        well-being at every step of your journey.</p>
+                </div>
+
+                <div class="vo-expanding-gallery">
+                    <!-- Card 1 -->
+                    <div class="vo-gallery-card centered-bg"
+                        style="background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1600&auto=format&fit=crop');">
+                        <div class="vo-gallery-overlay">
+                            <div class="vo-gallery-content">
+                                <h3>Instant Venting</h3>
+                                <p>Say anything, anytime. No judgment, just someone to listen.</p>
+                                <a href="services.html#demo-venting" class="vo-gallery-link">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="vo-gallery-card"
+                        style="background-image: url('https://images.unsplash.com/photo-1544717302-de2939b7ef71?q=80&w=1600&auto=format&fit=crop');">
+                        <div class="vo-gallery-overlay">
+                            <div class="vo-gallery-content">
+                                <h3>Coaching</h3>
+                                <p>Expert guidance to understand, heal, and achieve your goals.</p>
+                                <a href="services.html#demo-coaching" class="vo-gallery-link">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="vo-gallery-card"
+                        style="background-image: url('https://images.unsplash.com/photo-1531169509526-f8f1fdaa4a67?q=80&w=1600&auto=format&fit=crop');">
+                        <div class="vo-gallery-overlay">
+                            <div class="vo-gallery-content">
+                                <h3>Therapy</h3>
+                                <p>Private sessions with licensed professionals for deep healing.</p>
+                                <a href="services.html#demo-therapy" class="vo-gallery-link">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Prompt -->
+            <div class="vo-quiz-prompt">
+                <span class="vo-quiz-text">Not sure what you want? </span>
+                <a href="services.html?chatbot=open" class="vo-quiz-link">Talk to our chatbot.</a>
+            </div>
+        </section>
+
+        <!-- 3. Stats Section -->
+        <section class="vo-stats-section">
+            <h2 class="vo-stats-title">Here's How Far We've Come Together</h2>
+            <div class="vo-stats-grid">
+                <!-- Stat 1 -->
+                <div class="vo-stat-card">
+                    <div class="vo-stat-icon">
+                        <img src="https://placehold.co/140x140/FFFDF7/212121?text=Users" alt="Users">
+                    </div>
+                    <div class="vo-stat-number" data-odometer data-increment="0.5">36615</div>
+                    <div class="vo-stat-label">Users</div>
+                    <p class="vo-stat-desc">People who found someone to talk to</p>
+                </div>
+                <!-- Stat 2 -->
+                <div class="vo-stat-card">
+                    <div class="vo-stat-icon">
+                        <img src="https://placehold.co/140x140/FFFDF7/212121?text=Hours" alt="Hours">
+                    </div>
+                    <div class="vo-stat-number" data-odometer data-increment="2">265315</div>
+                    <div class="vo-stat-label">Hours of Conversation</div>
+                    <p class="vo-stat-desc">Total hours of conversation and care</p>
+                </div>
+                <!-- Stat 3 -->
+                <div class="vo-stat-card">
+                    <div class="vo-stat-icon">
+                        <img src="https://placehold.co/140x140/FFFDF7/212121?text=Countries" alt="Countries">
+                    </div>
+                    <div class="vo-stat-number">170+</div>
+                    <div class="vo-stat-label">Countries</div>
+                    <p class="vo-stat-desc">Spread across 170 countries and counting</p>
+                </div>
+                <!-- Stat 4 -->
+                <div class="vo-stat-card">
+                    <div class="vo-stat-icon">
+                        <img src="https://placehold.co/140x140/FFFDF7/212121?text=Stars" alt="Stars">
+                    </div>
+                    <div class="vo-stat-number">Avg. 9.5 stars</div>
+                    <div class="vo-stat-label">Feedback</div>
+                    <p class="vo-stat-desc">Loved by our community</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Testimonials Section -->
+        <section class="vo-testimonials-section">
+            <h2 class="vo-testimonials-title">What Our Users Say</h2>
+            <div class="vo-testimonials-wrapper">
+                <div class="vo-testimonials-track">
+                    <!-- Group A -->
+                    <div class="vo-testimonial-card vo-orange">
+                        <div class="vo-testimonial-name">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"
+                                alt="Emma"> Emma, England
+                        </div>
+                        <p>Ventoutt is my go-to place when I need to vent. The anonymous chat feature allows me to
+                            express my feelings freely without judgment. It's incredible how talking to strangers online
+                            has helped me manage my stress and anxiety.</p>
+                    </div>
+
+                    <div class="vo-testimonial-card">
+                        <div class="vo-video-container">
+                            <iframe src="https://www.youtube.com/embed/bEA_lVQtXGo?enablejsapi=1"
+                                title="Ewa video testimonial"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="vo-testimonial-location">Ewa, France</div>
+                    </div>
+
+                    <div class="vo-testimonial-card vo-yellow">
+                        <div class="vo-testimonial-name">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
+                                alt="Sarah"> Sarah M., USA
+                        </div>
+                        <p>I was honestly really unsure about trying online therapy at first especially with a therapist
+                            from another country. But honestly, my therapist was amazing. They were there 24/7 whenever
+                            I needed support, and the cost was something I could actually afford.</p>
+                    </div>
+
+                    <div class="vo-testimonial-card">
+                        <div class="vo-video-container">
+                            <iframe src="https://www.youtube.com/embed/wS1ljs6nQX0?enablejsapi=1"
+                                title="Iya video testimonial"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="vo-testimonial-location">Iya, Bosnia and Herzegovina</div>
+                    </div>
+
+                    <div class="vo-testimonial-card vo-green">
+                        <div class="vo-testimonial-name">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80"
+                                alt="Jennifer"> Jennifer R., USA
+                        </div>
+                        <p>I struggled with anxiety for years and was skeptical about finding the right support. Then I
+                            connected with my therapist, and everything shifted. They really understood what I was going
+                            through, made me feel heard, and gave me tools that actually worked in my daily life.</p>
+                    </div>
+
+                    <!-- Group B (Duplicate for Loop) -->
+                    <div class="vo-testimonial-card vo-orange">
+                        <div class="vo-testimonial-name">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"
+                                alt="Emma"> Emma, England
+                        </div>
+                        <p>Ventoutt is my go-to place when I need to vent. The anonymous chat feature allows me to
+                            express my feelings freely without judgment. It's incredible how talking to strangers online
+                            has helped me manage my stress and anxiety.</p>
+                    </div>
+
+                    <div class="vo-testimonial-card">
+                        <div class="vo-video-container">
+                            <iframe src="https://www.youtube.com/embed/bEA_lVQtXGo?enablejsapi=1"
+                                title="Ewa video testimonial"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="vo-testimonial-location">Ewa, France</div>
+                    </div>
+
+                    <div class="vo-testimonial-card vo-yellow">
+                        <div class="vo-testimonial-name">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
+                                alt="Sarah"> Sarah M., USA
+                        </div>
+                        <p>I was honestly really unsure about trying online therapy at first especially with a therapist
+                            from another country. But honestly, my therapist was amazing. They were there 24/7 whenever
+                            I needed support, and the cost was something I could actually afford.</p>
+                    </div>
+
+                    <div class="vo-testimonial-card">
+                        <div class="vo-video-container">
+                            <iframe src="https://www.youtube.com/embed/wS1ljs6nQX0?enablejsapi=1"
+                                title="Iya video testimonial"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="vo-testimonial-location">Iya, Bosnia and Herzegovina</div>
+                    </div>
+
+                    <div class="vo-testimonial-card vo-green">
+                        <div class="vo-testimonial-name">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80"
+                                alt="Jennifer"> Jennifer R., USA
+                        </div>
+                        <p>I struggled with anxiety for years and was skeptical about finding the right support. Then I
+                            connected with my therapist, and everything shifted. They really understood what I was going
+                            through, made me feel heard, and gave me tools that actually worked in my daily life.</p>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align:center; color:#999; font-size:0.8rem; margin-top:20px;">
+                💡 Tip: Hover over any card to pause the carousel.
+            </p>
+        </section>
+
+        <!-- 5. Real Experts Slideshow (Figma Banner) -->
+        <section class="vo-therapist-banner">
+            <div class="vo-figma-container">
+                <!-- Left: Graphics Layer (Slideshow) -->
+                <div class="vo-graphics-wrapper">
+                    <div class="vo-image-frame">
+                        <div class="vo-banner-slideshow-inner">
+                            <div class="vo-blob-slide active" style="background-image: url('images/experts_bg_1.png');">
+                            </div>
+                            <div class="vo-blob-slide" style="background-image: url('images/experts_bg_2.png');"></div>
+                            <div class="vo-blob-slide" style="background-image: url('images/experts_bg_3.png');"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Content -->
+                <div class="vo-content-wrapper">
+                    <h2 class="vo-figma-title">Real Experts. Real Care.<br>How We Choose Our Team.</h2>
+                    <div class="vo-figma-description">
+                        <p>Our therapists aren’t just qualified — they’re carefully selected to meet the emotional needs
+                            of young adults like you.</p>
+                        <ul>
+                            <li>All hold a Master’s degree or higher</li>
+                            <li>Minimum 3+ years of experience</li>
+                            <li>Pass a rigorous multi-stage interview process</li>
+                            <li>Personally verified to meet global therapy standards</li>
+                        </ul>
+                        <p>With us, you’re never just talking. You’re growing — with professional guidance tailored to
+                            your needs, beliefs, and background.</p>
+                    </div>
+                    <div class="vo-figma-footer">Verified. Compassionate. Confidential.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Why People Love VentOutt (Sticky Stack) -->
+        <section class="vo-why-love-section">
+            <h2 class="vo-why-love-title">Why People Love VentOutt</h2>
+            <div class="vo-scroll-slider-wrapper">
+                <div class="vo-scroll-slider-track">
+                    <!-- Card 1 -->
+                    <div class="vo-feature-card">
+                        <div class="vo-feature-card-content">
+                            <h3 class="vo-feature-card-title">Relationship Building</h3>
+                            <p class="vo-feature-card-description">Great relationships are built on trust,
+                                communication, and mutual respect. Taking the time to listen strengthens connections.
+                            </p>
+                        </div>
+                        <div class="vo-feature-card-image">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80"
+                                alt="Relationship Building">
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="vo-feature-card">
+                        <div class="vo-feature-card-content">
+                            <h3 class="vo-feature-card-title">Improved Mental Health</h3>
+                            <p class="vo-feature-card-description">Prioritize rest, mindfulness, and supportive
+                                relationships for a healthier mind and self-care routine.</p>
+                        </div>
+                        <div class="vo-feature-card-image">
+                            <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800&q=80"
+                                alt="Improved Mental Health">
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="vo-feature-card">
+                        <div class="vo-feature-card-content">
+                            <h3 class="vo-feature-card-title">Emotional Support</h3>
+                            <p class="vo-feature-card-description">Being present and listening without judgment goes a
+                                long way in offering comfort and kindness.</p>
+                        </div>
+                        <div class="vo-feature-card-image">
+                            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80"
+                                alt="Emotional Support">
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="vo-feature-card">
+                        <div class="vo-feature-card-content">
+                            <h3 class="vo-feature-card-title">Counseling and Therapy</h3>
+                            <p class="vo-feature-card-description">A safe space to heal, grow, and gain clarity. Seeking
+                                help is a step toward emotional well-being.</p>
+                        </div>
+                        <div class="vo-feature-card-image">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80"
+                                alt="Counseling and Therapy">
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="vo-feature-card">
+                        <div class="vo-feature-card-content">
+                            <h3 class="vo-feature-card-title">Best Pricing</h3>
+                            <p class="vo-feature-card-description">Affordable therapy options connecting you with
+                                experienced professionals worldwide.</p>
+                        </div>
+                        <div class="vo-feature-card-image">
+                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80"
+                                alt="Best Pricing">
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="vo-feature-card">
+                        <div class="vo-feature-card-content">
+                            <h3 class="vo-feature-card-title">24/7 Venting Support</h3>
+                            <p class="vo-feature-card-description">Connect with listeners and therapists anytime,
+                                anywhere, at an affordable rate.</p>
+                        </div>
+                        <div class="vo-feature-card-image">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80"
+                                alt="24/7 Venting Support">
+                        </div>
+                    </div>
+
+                    <!-- Card 7 -->
+                    <div class="vo-feature-card">
+                        <div class="vo-feature-card-content">
+                            <h3 class="vo-feature-card-title">Certified Therapists</h3>
+                            <p class="vo-feature-card-description">At Ventoutt, we're committed to connecting you with
+                                certified and experienced therapists who provide professional and compassionate mental
+                                health support.</p>
+                        </div>
+                        <div class="vo-feature-card-image">
+                            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80"
+                                alt="Certified Therapists">
+                        </div>
+                    </div>
+
+                    <!-- Card 8 -->
+                    <div class="vo-feature-card">
+                        <div class="vo-feature-card-content">
+                            <h3 class="vo-feature-card-title">Safe & Private Space</h3>
+                            <p class="vo-feature-card-description">At Ventoutt, your safety and privacy come first. Our
+                                platform is built to offer a secure space where you can express your thoughts and
+                                emotions freely.</p>
+                        </div>
+                        <div class="vo-feature-card-image">
+                            <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80"
+                                alt="Safe & Private Space">
+                        </div>
+                    </div>
+
+                    <!-- Card 9 -->
+                    <div class="vo-feature-card">
+                        <div class="vo-feature-card-content">
+                            <h3 class="vo-feature-card-title">Personal Growth</h3>
+                            <p class="vo-feature-card-description">Unlock your potential through guided self-discovery
+                                and professional support.</p>
+                        </div>
+                        <div class="vo-feature-card-image">
+                            <img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=800&q=80"
+                                alt="Personal Growth">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Caring & Expert Members (Exact Match) -->
+        <section class="vo-experts-section">
+            <div class="vo-experts-container">
+                <div>
+                    <div class="vo-experts-header">
+                        <div class="vo-experts-label">MEET OUR EXPERTS</div>
+                        <h2 class="vo-experts-title">Caring & Expert Members</h2>
+                    </div>
+                    <div class="vo-experts-grid">
+                        <div class="vo-expert-card">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
+                                alt="Pulkita W." class="vo-expert-photo">
+                            <div class="vo-expert-rating"><span class="star">★</span>
+                                <div class="score">4.9</div><span class="score-label">score</span>
+                            </div>
+                            <div class="vo-expert-info-box">
+                                <div class="vo-expert-name">Pulkita W.</div>
+                                <div class="vo-expert-title-text">Psychoanalytic Therapist</div>
+                                <div class="vo-expert-details">
+                                    <div class="vo-detail-credentials">Masters Psychology | Psychoanalytic Fellowship
+                                        (Washington–Baltimore, USA)</div>
+                                    <div class="vo-detail-expertise"><strong>Specialized Expertise:</strong>
+                                        <ul>
+                                            <li>Psychoanalytic Therapy</li>
+                                            <li>Sexual & Identity Issues</li>
+                                            <li>Family Systems Therapy</li>
+                                            <li>Career-Related Stress</li>
+                                            <li>Deep Psychological Exploration</li>
+                                        </ul>
+                                    </div>
+                                    <div class="vo-detail-meta"><strong>USA-trained psychoanalyst</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vo-expert-card">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80"
+                                alt="Muskan K." class="vo-expert-photo">
+                            <div class="vo-expert-rating"><span class="star">★</span>
+                                <div class="score">4.7</div><span class="score-label">score</span>
+                            </div>
+                            <div class="vo-expert-info-box">
+                                <div class="vo-expert-name">Muskan K.</div>
+                                <div class="vo-expert-title-text">CBT & Couples Counselor</div>
+                                <div class="vo-expert-details">
+                                    <div class="vo-detail-expertise"><strong>Specialized Expertise:</strong>
+                                        <ul>
+                                            <li>Solution-Focused Brief Therapy</li>
+                                            <li>Cognitive Behavioral Therapy (CBT)</li>
+                                            <li>Couples & Relationship Counseling</li>
+                                            <li>Goal-Oriented Treatment Plans</li>
+                                        </ul>
+                                    </div>
+                                    <div class="vo-detail-meta"><strong>90% satisfaction rate with North American
+                                            clients</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="vo-experts-grid">
+                        <div class="vo-expert-card">
+                            <img src="https://images.unsplash.com/photo-1554151228-14d9def656ec?w=400&q=80" alt="Nishi"
+                                class="vo-expert-photo">
+                            <div class="vo-expert-rating"><span class="star">★</span>
+                                <div class="score">4.5</div><span class="score-label">score</span>
+                            </div>
+                            <div class="vo-expert-info-box">
+                                <div class="vo-expert-name">Nishi</div>
+                                <div class="vo-expert-title-text">Clinical Psychiatrist</div>
+                                <div class="vo-expert-details">
+                                    <div class="vo-detail-credentials">MSc Clinical Psychology (Neuropsychology
+                                        Specialist)
+                                    </div>
+                                    <div class="vo-detail-expertise"><strong>Specialized Expertise:</strong>
+                                        <ul>
+                                            <li>LGBTQ+ Affirming Therapy</li>
+                                            <li>Adolescent & Childhood Trauma</li>
+                                            <li>Grief & Loss Counseling</li>
+                                            <li>Phobias & OCD Treatment</li>
+                                            <li>Identity Exploration & Body Image</li>
+                                        </ul>
+                                    </div>
+                                    <div class="vo-detail-meta"><strong>3+ years serving US clients</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vo-expert-card">
+                            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&q=80"
+                                alt="Dr. Sarah M." class="vo-expert-photo">
+                            <div class="vo-expert-rating"><span class="star">★</span>
+                                <div class="score">4.8</div><span class="score-label">score</span>
+                            </div>
+                            <div class="vo-expert-info-box">
+                                <div class="vo-expert-name">Dr. Sarah M.</div>
+                                <div class="vo-expert-title-text">Clinical Psychiatrist</div>
+                                <div class="vo-expert-details">
+                                    <div class="vo-detail-credentials">Clinical Psychiatrist</div>
+                                    <div class="vo-detail-expertise"><strong>Specialized Expertise:</strong>
+                                        <ul>
+                                            <li>Anxiety & Depression Treatment</li>
+                                            <li>Stress Management</li>
+                                            <li>Mindfulness-Based Therapy</li>
+                                            <li>Emotional Regulation</li>
+                                        </ul>
+                                    </div>
+                                    <div class="vo-detail-meta"><strong>Certified mental health professional</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vo-experts-content">
+                        <p class="vo-experts-description">Our team consists of compassionate and skilled professionals
+                            dedicated to providing personalized support and effective solutions for your well-being.</p>
+                        <a href="#" class="vo-btn-learn-more">Learn More <span class="arrow">→</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Find Your Right Fit (Comparison Section) -->
+        <section class="vo-comparison-section">
+            <div class="vo-comparison-header">
+                <h2 class="vo-section-title-center">Find Your Right Fit</h2>
+                <p class="vo-section-subtitle-center">Every path is valid. Choose what helps you today.</p>
+            </div>
+
+            <div class="vo-comparison-grid">
+                <!-- Venting -->
+                <div class="vo-comp-card">
+                    <div class="vo-comp-top">
+                        <h3>Venting</h3>
+                        <div class="vo-comp-role">Empathetic Listeners</div>
+                        <div class="vo-comp-price">Low Cost ($)</div>
+                    </div>
+                    <ul class="vo-comp-features">
+                        <li><span>✓</span> <strong>Goal:</strong> Instant Relief</li>
+                        <li><span>✓</span> <strong>Focus:</strong> "Feeling Heard"</li>
+                        <li><span>✓</span> <strong>Availability:</strong> Instant Access</li>
+                    </ul>
+                    <a href="#" class="vo-btn-comp orange">Start Chat</a>
+                </div>
+
+                <!-- Coaching -->
+                <div class="vo-comp-card vo-featured">
+                    <div class="vo-comp-top">
+                        <h3>Coaching</h3>
+                        <div class="vo-comp-role">Qualified Psychologists</div>
+                        <div class="vo-comp-tag">Most Popular</div>
+                        <div class="vo-comp-price">Affordable ($$)</div>
+                    </div>
+                    <ul class="vo-comp-features">
+                        <li><span>✓</span> <strong>Goal:</strong> Growth & Action Plans</li>
+                        <li><span>✓</span> <strong>Focus:</strong> "Building Skills"</li>
+                        <li><span>✓</span> <strong>Availability:</strong> Same-Day Priority</li>
+                    </ul>
+                    <a href="#" class="vo-btn-comp white">Get Matched</a>
+                </div>
+
+                <!-- Therapy -->
+                <div class="vo-comp-card">
+                    <div class="vo-comp-top">
+                        <h3>Therapy</h3>
+                        <div class="vo-comp-role">Licensed Clinicians</div>
+                        <div class="vo-comp-price">Premium ($$$$)</div>
+                    </div>
+                    <ul class="vo-comp-features">
+                        <li><span>✓</span> <strong>Goal:</strong> Medical Diagnosis</li>
+                        <li><span>✓</span> <strong>Focus:</strong> "Deep Healing"</li>
+                        <li><span>✓</span> <strong>Availability:</strong> By Appointment</li>
+                    </ul>
+                    <a href="#" class="vo-btn-comp orange">Join Waitlist</a>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+        <!-- 9. How It Works -->
+        <section class="vo-how-section">
+            <h2 class="vo-how-title">How It Works</h2>
+            <div class="vo-steps-grid">
+                <div class="vo-step-card">
+                    <div class="vo-step-number">Step 1</div>
+                    <div class="vo-step-description">Pick what you need - a full therapy session or a quick vent.</div>
+                </div>
+                <div class="vo-step-card">
+                    <div class="vo-step-number">Step 2</div>
+                    <div class="vo-step-description">Choose your listener or therapist from the list.</div>
+                </div>
+                <div class="vo-step-card">
+                    <div class="vo-step-number">Step 3</div>
+                    <div class="vo-step-description">Select a time that works for you.</div>
+                </div>
+                <div class="vo-step-card">
+                    <div class="vo-step-number">Step 4</div>
+                    <div class="vo-step-description">Pay securely and get your session link via email.</div>
+                </div>
+                <div class="vo-step-card">
+                    <div class="vo-step-number">Step 5</div>
+                    <div class="vo-step-description">Talk it out. Feel lighter. Share how it went</div>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="services.html" class="vo-btn-hero">Learn More</a>
+            </div>
+        </section>
+
+        <!-- 10. Partners & Therapists Loop -->
+        <section class="vo-partners-section">
+            <div class="vo-partners-container">
+                <h2 class="vo-partners-title">Making mental health a priority together with our partners.</h2>
+                <div class="vo-logo-carousel">
+                    <div class="vo-logo-track">
+                        <!-- Logos (Original) -->
+                        <a class="vo-logo-item" href="https://collative.in/"><img
+                                src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Collative"
+                                alt="Collative"></a>
+                        <a class="vo-logo-item" href="https://successbrew.in/"><img
+                                src="https://via.placeholder.com/120x120/e0e0e0/555555?text=SuccessBrew"
+                                alt="SuccessBrew"></a>
+                        <a class="vo-logo-item" href="https://makeadiff.in/"><img
+                                src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Make+A+Diff"
+                                alt="Make A Difference"></a>
+                        <a class="vo-logo-item" href="https://the3amcouch.in/"><img
+                                src="https://via.placeholder.com/120x120/e0e0e0/555555?text=3AM+Couch"
+                                alt="3AM Couch"></a>
+                        <a class="vo-logo-item" href="https://decoders.co.in/"><img
+                                src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Decoders"
+                                alt="Decoders"></a>
+
+                        <!-- Logos (Duplicate for Interval) -->
+                        <a class="vo-logo-item" href="https://collative.in/"><img
+                                src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Collative"
+                                alt="Collative"></a>
+                        <a class="vo-logo-item" href="https://successbrew.in/"><img
+                                src="https://via.placeholder.com/120x120/e0e0e0/555555?text=SuccessBrew"
+                                alt="SuccessBrew"></a>
+                        <a class="vo-logo-item" href="https://makeadiff.in/"><img
+                                src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Make+A+Diff"
+                                alt="Make A Difference"></a>
+                        <a class="vo-logo-item" href="https://the3amcouch.in/"><img
+                                src="https://via.placeholder.com/120x120/e0e0e0/555555?text=3AM+Couch"
+                                alt="3AM Couch"></a>
+                        <a class="vo-logo-item" href="https://decoders.co.in/"><img
+                                src="https://via.placeholder.com/120x120/e0e0e0/555555?text=Decoders"
+                                alt="Decoders"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vo-therapists-wrapper">
+                <div class="vo-therapist-track">
+                    <!-- Therapist 1 -->
+                    <div class="vo-therapist-card">
+                        <div class="vo-therapist-head">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=80"
+                                class="vo-therapist-avatar" alt="Frances">
+                            <div class="vo-therapist-info">
+                                <h3>FRANCES GUERRERO</h3>
+                                <span>Clinical Psychologist</span>
+                            </div>
+                        </div>
+                        <div class="vo-therapist-tags"><strong>Specializations:</strong> Anxiety, Trauma, PTSD
+                        </div>
+                        <a href="#" class="vo-btn-book">Book Now</a>
+                    </div>
+                    <!-- Therapist 2 -->
+                    <div class="vo-therapist-card">
+                        <div class="vo-therapist-head">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80"
+                                class="vo-therapist-avatar" alt="Dennis">
+                            <div class="vo-therapist-info">
+                                <h3>DENNIS BARRETT</h3>
+                                <span>Family Therapist</span>
+                            </div>
+                        </div>
+                        <div class="vo-therapist-tags"><strong>Specializations:</strong> Couples Therapy,
+                            Relationship
+                            Issues</div>
+                        <a href="#" class="vo-btn-book">Book Now</a>
+                    </div>
+                    <!-- Therapist 3 -->
+                    <div class="vo-therapist-card">
+                        <div class="vo-therapist-head">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&q=80"
+                                class="vo-therapist-avatar" alt="Larry">
+                            <div class="vo-therapist-info">
+                                <h3>LARRY LAWSON</h3>
+                                <span>Mental Health Counselor</span>
+                            </div>
+                        </div>
+                        <div class="vo-therapist-tags"><strong>Specializations:</strong> Depression, grief, Loss
+                        </div>
+                        <a href="#" class="vo-btn-book">Book Now</a>
+                    </div>
+                    <!-- Therapist 4 -->
+                    <div class="vo-therapist-card">
+                        <div class="vo-therapist-head">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80"
+                                class="vo-therapist-avatar" alt="Sarah">
+                            <div class="vo-therapist-info">
+                                <h3>SARAH JENKINS</h3>
+                                <span>Psychiatrist</span>
+                            </div>
+                        </div>
+                        <div class="vo-therapist-tags"><strong>Specializations:</strong> Mood Disorders, ADHD,
+                            Bipolar
+                        </div>
+                        <a href="#" class="vo-btn-book">Book Now</a>
+                    </div>
+
+                    <!-- DUPLICATE SET FOR LOOP -->
+                    <!-- Therapist 1 -->
+                    <div class="vo-therapist-card">
+                        <div class="vo-therapist-head">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=80"
+                                class="vo-therapist-avatar" alt="Frances">
+                            <div class="vo-therapist-info">
+                                <h3>FRANCES GUERRERO</h3>
+                                <span>Clinical Psychologist</span>
+                            </div>
+                        </div>
+                        <div class="vo-therapist-tags"><strong>Specializations:</strong> Anxiety, Trauma, PTSD
+                        </div>
+                        <a href="#" class="vo-btn-book">Book Now</a>
+                    </div>
+                    <!-- Therapist 2 -->
+                    <div class="vo-therapist-card">
+                        <div class="vo-therapist-head">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80"
+                                class="vo-therapist-avatar" alt="Dennis">
+                            <div class="vo-therapist-info">
+                                <h3>DENNIS BARRETT</h3>
+                                <span>Family Therapist</span>
+                            </div>
+                        </div>
+                        <div class="vo-therapist-tags"><strong>Specializations:</strong> Couples Therapy,
+                            Relationship
+                            Issues</div>
+                        <a href="#" class="vo-btn-book">Book Now</a>
+                    </div>
+                    <!-- Therapist 3 -->
+                    <div class="vo-therapist-card">
+                        <div class="vo-therapist-head">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&q=80"
+                                class="vo-therapist-avatar" alt="Larry">
+                            <div class="vo-therapist-info">
+                                <h3>LARRY LAWSON</h3>
+                                <span>Mental Health Counselor</span>
+                            </div>
+                        </div>
+                        <div class="vo-therapist-tags"><strong>Specializations:</strong> Depression, grief, Loss
+                        </div>
+                        <a href="#" class="vo-btn-book">Book Now</a>
+                    </div>
+                    <!-- Therapist 4 -->
+                    <div class="vo-therapist-card">
+                        <div class="vo-therapist-head">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80"
+                                class="vo-therapist-avatar" alt="Sarah">
+                            <div class="vo-therapist-info">
+                                <h3>SARAH JENKINS</h3>
+                                <span>Psychiatrist</span>
+                            </div>
+                        </div>
+                        <div class="vo-therapist-tags"><strong>Specializations:</strong> Mood Disorders, ADHD,
+                            Bipolar
+                        </div>
+                        <a href="#" class="vo-btn-book">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. Related Blogs -->
+        <section class="vo-blogs-section">
+            <h2 class="vo-section-title">Related Blogs</h2>
+            <div class="vo-blogs-grid">
+                <div class="vo-blog-card">
+                    <div class="vo-blog-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1520962922320-2038eebab146?w=600&q=80')">
+                    </div>
+                    <div class="vo-blog-content">
+                        <span class="vo-blog-tag">Temper</span>
+                        <h3 class="vo-blog-title">Understanding and Managing Temper Issues</h3>
+                        <a href="#" class="vo-blog-link">Read More</a>
+                    </div>
+                </div>
+                <div class="vo-blog-card">
+                    <div class="vo-blog-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=600&q=80')">
+                    </div>
+                    <div class="vo-blog-content">
+                        <span class="vo-blog-tag">ADHD-C</span>
+                        <h3 class="vo-blog-title">Living with ADHD-C: Strategies for Success</h3>
+                        <a href="#" class="vo-blog-link">Read More</a>
+                    </div>
+                </div>
+                <div class="vo-blog-card">
+                    <div class="vo-blog-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1627389955776-6644f2d70395?w=600&q=80')">
+                    </div>
+                    <div class="vo-blog-content">
+                        <span class="vo-blog-tag">Anxious-Avoidant</span>
+                        <h3 class="vo-blog-title">Navigating Anxious-Avoidant Attachment Styles</h3>
+                        <a href="#" class="vo-blog-link">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 12. FAQ -->
+        <section class="vo-faq-section">
+            <h2 class="vo-section-title" style="text-align:center;">Frequently Asked Questions</h2>
+            <div class="vo-faq-container">
+                <details class="vo-faq-item">
+                    <summary>Is venting safe?</summary>
+                    <p>Yes, venting is safe. We prioritize your privacy and anonymity.</p>
+                </details>
+                <details class="vo-faq-item">
+                    <summary>Who are your coaches?</summary>
+                    <p>Our coaches are trained professionals with experience in various fields of mental health.
+                    </p>
+                </details>
+                <details class="vo-faq-item">
+                    <summary>Is this therapy?</summary>
+                    <p>No, venting and coaching are not replacements for clinical therapy, but they can be a
+                        great first
+                        step.</p>
+                </details>
+                <details class="vo-faq-item">
+                    <summary>Will my chats stay private?</summary>
+                    <p>Absolutely. All chats are confidential and anonymous.</p>
+                </details>
+                <details class="vo-faq-item">
+                    <summary>Are your psychologists licensed?</summary>
+                    <p>Yes, all our therapists and psychologists are licensed professionals.</p>
+                </details>
+                <details class="vo-faq-item">
+                    <summary>Can I stay anonymous?</summary>
+                    <p>Yes, you can choose to remain anonymous during your sessions.</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- 13. Specializations & Common Challenges -->
+        <section class="vo-specs-section">
+            <h2 class="vo-section-title">What We Specialize In</h2>
+            <p class="vo-section-subtitle">Our therapists support you through every phase of life. Here's what we
+                specialize in.</p>
+            <div class="vo-specs-grid">
+                <div class="vo-spec-card">
+                    <div class="vo-spec-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80')">
+                    </div>
+                    <div class="vo-spec-label">Relationship & Family</div>
+                </div>
+                <div class="vo-spec-card">
+                    <div class="vo-spec-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&q=80')">
+                    </div>
+                    <div class="vo-spec-label">Individual well-being</div>
+                </div>
+                <div class="vo-spec-card">
+                    <div class="vo-spec-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=600&q=80')">
+                    </div>
+                    <div class="vo-spec-label">Life Transitions & Transitions</div>
+                </div>
+                <div class="vo-spec-card">
+                    <div class="vo-spec-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80')">
+                    </div>
+                    <div class="vo-spec-label">Telehealth & Virtual Therapy</div>
+                </div>
+            </div>
+
+            <!-- Common Challenges (Redesigned Grid without Toggle) -->
+            <div class="vo-common-challenges" style="margin-top: 60px; text-align: center;">
+                <h3 class="vo-section-title" style="margin-bottom: 40px;">Common Challenges We Help With</h3>
+                <div class="vo-challenges-grid-full">
+                    <div class="vo-challenge-item">Family therapy for conflict resolution</div>
+                    <div class="vo-challenge-item">Therapy for coping with grief and loss</div>
+                    <div class="vo-challenge-item">EMDR therapy for trauma processing</div>
+                    <div class="vo-challenge-item">Couples counseling for relationship issues</div>
+                    <div class="vo-challenge-item">Art therapy for emotional expression</div>
+                    <div class="vo-challenge-item">Dialectical behavior therapy for BPD</div>
+                    <div class="vo-challenge-item">Marriage counseling to rebuild trust</div>
+                    <div class="vo-challenge-item">EMDR therapy for trauma processing</div>
+                    <div class="vo-challenge-item">Holistic therapy for mind–body wellness</div>
+                    <div class="vo-challenge-item">Career counseling therapy for stress</div>
+                    <div class="vo-challenge-item">Online therapy for busy students</div>
+                    <div class="vo-challenge-item">Therapy for dealing with divorce</div>
+                    <div class="vo-challenge-item">Therapy for managing chronic pain</div>
+                    <div class="vo-challenge-item">Affordable therapy for individuals</div>
+                    <div class="vo-challenge-item">Anger management therapy for individuals</div>
+                    <div class="vo-challenge-item">Therapy for improving communication skills</div>
+                    <div class="vo-challenge-item">Therapy for depression</div>
+                    <div class="vo-challenge-item">Child therapy for trauma recovery</div>
+                    <div class="vo-challenge-item">Therapy for managing bipolar disorder</div>
+                    <div class="vo-challenge-item">Therapy for improving self-esteem</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Injection Target -->
+    <div id="vo-footer-container"></div>
+
+    <!-- Components Injected via JS -->
+
+    <!-- Scripts -->
+    <!-- Logics -->
+    <script src="js/vo-index.js"></script>
+
+    <!-- Loaders -->
+    <script src="js/vo-header.js"></script>
+    <script src="js/vo-footer.js"></script>
+    <script src="js/vo-chatbot.js"></script>
+    <script src="js/vo-popups.js"></script>
+
+</body>
+
+</html>
