@@ -29,7 +29,7 @@
     <div class="vo-footer__content">
         <!-- Col 1: Logo & Social -->
         <div class="vo-footer__col vo-footer__col--brand">
-            <a href="vo-index.html" class="vo-footer__logo-link">
+            <a href="index.html" class="vo-footer__logo-link">
                 <!-- Using updated path that will be managed by CMS later -->
                 <img src="images/ve_logo_new.png" alt="Ventoutt Logo" class="vo-footer__logo">
             </a>
