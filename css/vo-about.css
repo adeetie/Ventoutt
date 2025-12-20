@@ -1988,13 +1988,13 @@ footer * {
 }
 
 .mission-container {
-    max-width: 1400px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
 .mission-header-row {
     margin-bottom: 60px;
-    text-align: center;
+
 }
 
 .mission-eyebrow {
@@ -2904,7 +2904,7 @@ footer * {
 }
 
 .mission-container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
@@ -6154,13 +6154,13 @@ section {
 }
 
 .mission-container {
-    max-width: 1400px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
 .mission-header-row {
     margin-bottom: 60px;
-    text-align: center;
+    text-align: flex-start;
 }
 
 .mission-eyebrow {
@@ -6185,41 +6185,48 @@ section {
 
 .mission-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 280px);
+    grid-template-columns: 1fr 1fr 1.5fr 2fr;
+    /* 2 small columns, 1 medium, 1 large */
+    grid-template-rows: repeat(2, 300px);
     gap: 20px;
     margin: 0 auto;
     max-width: 1400px;
 }
 
-/* Bento-style grid layout like reference */
+/* Bento-style grid layout matching image 2 reference */
+/* Top-left small card */
 .mission-card:nth-child(1) {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
 }
 
+/* Top-middle-left small card */
 .mission-card:nth-child(2) {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
 }
 
+/* Middle tall card - spans both rows */
 .mission-card:nth-child(3) {
     grid-column: 3 / 4;
     grid-row: 1 / 3;
-    /* Tall card spanning 2 rows */
+    height: 620px;
 }
 
+/* Right large tall card - spans both rows */
 .mission-card:nth-child(4) {
     grid-column: 4 / 5;
     grid-row: 1 / 3;
-    /* Tall card spanning 2 rows */
+    height: 620px;
 }
 
+/* Bottom-left small card */
 .mission-card:nth-child(5) {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
 }
 
+/* Bottom-middle-left small card */
 .mission-card:nth-child(6) {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
