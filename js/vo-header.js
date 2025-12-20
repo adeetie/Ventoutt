@@ -36,6 +36,7 @@
         initDesktopDropdown();
         initMobileMenu();
         initScrollBehavior();
+        setHeaderTextColor();
     }
 
     function initDesktopDropdown() {
@@ -107,6 +108,42 @@
                 setTimeout(closeMenu, 100);
             });
         });
+    }
+
+    function setHeaderTextColor() {
+        // Get current page filename
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+        // Pages with light backgrounds that need black text
+        const lightBackgroundPages = [
+            'vo-about.html',
+            'vo-services.html',
+            'vo-therapy.html'
+        ];
+
+        // Check if current page has light background
+        const isLightBackground = lightBackgroundPages.some(page => currentPage.includes(page));
+
+        // Only apply black text on light background pages, keep white on index.html
+        if (isLightBackground) {
+            // Select all navigation links and elements that need color change
+            const navLinks = document.querySelectorAll('nav a, .vo-header a, .vo-header__nav a, header a, .vo-header__dropdown-toggle');
+            const navText = document.querySelectorAll('.vo-header span, .vo-header__logo, nav span');
+
+            // Apply black color with high specificity
+            navLinks.forEach(link => {
+                link.style.color = '#000000';
+                link.style.setProperty('color', '#000000', 'important');
+            });
+
+            navText.forEach(text => {
+                text.style.color = '#000000';
+                text.style.setProperty('color', '#000000', 'important');
+            });
+
+            // Also update on hover state via CSS variable if needed
+            document.documentElement.style.setProperty('--header-text-color', '#000000');
+        }
     }
 
     function initScrollBehavior() {
