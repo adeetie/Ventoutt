@@ -564,9 +564,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="vo-experts-grid vo-swipe-container">
-                        <!-- Card 1: Pulkita -->
-                        <div class="vo-expert-card vo-swipe-card">
+                    <div class="vo-experts-grid">
+                        <div class="vo-expert-card">
                             <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
                                 alt="Pulkita W." class="vo-expert-photo">
                             <div class="vo-expert-rating"><span class="star">★</span>
@@ -591,9 +590,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Card 2: Muskan -->
-                        <div class="vo-expert-card vo-swipe-card">
+                        <div class="vo-expert-card">
                             <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80"
                                 alt="Muskan K." class="vo-expert-photo">
                             <div class="vo-expert-rating"><span class="star">★</span>
@@ -616,9 +613,11 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Card 3: Nishi -->
-                        <div class="vo-expert-card vo-swipe-card">
+                    </div>
+                </div>
+                <div>
+                    <div class="vo-experts-grid">
+                        <div class="vo-expert-card">
                             <img src="https://images.unsplash.com/photo-1554151228-14d9def656ec?w=400&q=80" alt="Nishi"
                                 class="vo-expert-photo">
                             <div class="vo-expert-rating"><span class="star">★</span>
@@ -644,9 +643,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Card 4: Dr. Sarah -->
-                        <div class="vo-expert-card vo-swipe-card">
+                        <div class="vo-expert-card">
                             <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&q=80"
                                 alt="Dr. Sarah M." class="vo-expert-photo">
                             <div class="vo-expert-rating"><span class="star">★</span>
@@ -670,21 +667,16 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Final Content (Initially Hidden) -->
-                        <div class="vo-swipe-final-content"
-                            style="display: none; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; padding: 20px;">
-                            <p class="vo-experts-description"
-                                style="color: white; font-size: 16px; margin-bottom: 20px; line-height: 1.5;">Our team
-                                consists of compassionate and skilled professionals dedicated to providing personalized
-                                support and effective solutions for your well-being.</p>
-                            <a href="#" class="vo-btn-learn-more"
-                                style="background: #F57F17; color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: bold;">Learn
-                                More <span class="arrow">→</span></a>
-                        </div>
+                    </div>
+                    <div class="vo-experts-content">
+                        <p class="vo-experts-description">Our team consists of compassionate and skilled professionals
+                            dedicated to providing personalized support and effective solutions for your well-being.</p>
+                        <a href="#" class="vo-btn-learn-more">Learn More <span class="arrow">→</span></a>
                     </div>
                 </div>
+            </div>
         </section>
+
 
         <!-- 8. Find Your Right Fit (Comparison Section) -->
         <section class="vo-comparison-section">
@@ -1227,37 +1219,53 @@
         <!-- 11. Related Blogs -->
         <section class="vo-blogs-section">
             <h2 class="vo-section-title">Related Blogs</h2>
-            <div class="vo-blogs-grid">
-                <div class="vo-blog-card">
-                    <div class="vo-blog-image"
-                        style="background-image:url('https://images.unsplash.com/photo-1520962922320-2038eebab146?w=600&q=80')">
+            <!-- Carousel Wrapper for Blogs -->
+            <div class="vo-carousel-wrapper">
+                <button class="vo-bubble-arrow prev" aria-label="Previous">&lt;</button>
+                <div class="vo-carousel-track">
+                    <div class="vo-blog-card">
+                        <div class="vo-blog-image"
+                            style="background-image:url('https://images.unsplash.com/photo-1520962922320-2038eebab146?w=600&q=80')">
+                        </div>
+                        <div class="vo-blog-content">
+                            <span class="vo-blog-tag">Temper</span>
+                            <h3 class="vo-blog-title">Understanding and Managing Temper Issues</h3>
+                            <a href="#" class="vo-blog-link">Read More</a>
+                        </div>
                     </div>
-                    <div class="vo-blog-content">
-                        <span class="vo-blog-tag">Temper</span>
-                        <h3 class="vo-blog-title">Understanding and Managing Temper Issues</h3>
-                        <a href="#" class="vo-blog-link">Read More</a>
+                    <div class="vo-blog-card">
+                        <div class="vo-blog-image"
+                            style="background-image:url('https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=600&q=80')">
+                        </div>
+                        <div class="vo-blog-content">
+                            <span class="vo-blog-tag">ADHD-C</span>
+                            <h3 class="vo-blog-title">Living with ADHD-C: Strategies for Success</h3>
+                            <a href="#" class="vo-blog-link">Read More</a>
+                        </div>
+                    </div>
+                    <div class="vo-blog-card">
+                        <div class="vo-blog-image"
+                            style="background-image:url('https://images.unsplash.com/photo-1627389955776-6644f2d70395?w=600&q=80')">
+                        </div>
+                        <div class="vo-blog-content">
+                            <span class="vo-blog-tag">Anxious-Avoidant</span>
+                            <h3 class="vo-blog-title">Navigating Anxious-Avoidant Attachment Styles</h3>
+                            <a href="#" class="vo-blog-link">Read More</a>
+                        </div>
+                    </div>
+                    <!-- Added extra cards to fill carousel for demo -->
+                    <div class="vo-blog-card">
+                        <div class="vo-blog-image"
+                            style="background-image:url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&q=80')">
+                        </div>
+                        <div class="vo-blog-content">
+                            <span class="vo-blog-tag">Self-Care</span>
+                            <h3 class="vo-blog-title">The Essential Guide to Daily Self-Care</h3>
+                            <a href="#" class="vo-blog-link">Read More</a>
+                        </div>
                     </div>
                 </div>
-                <div class="vo-blog-card">
-                    <div class="vo-blog-image"
-                        style="background-image:url('https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=600&q=80')">
-                    </div>
-                    <div class="vo-blog-content">
-                        <span class="vo-blog-tag">ADHD-C</span>
-                        <h3 class="vo-blog-title">Living with ADHD-C: Strategies for Success</h3>
-                        <a href="#" class="vo-blog-link">Read More</a>
-                    </div>
-                </div>
-                <div class="vo-blog-card">
-                    <div class="vo-blog-image"
-                        style="background-image:url('https://images.unsplash.com/photo-1627389955776-6644f2d70395?w=600&q=80')">
-                    </div>
-                    <div class="vo-blog-content">
-                        <span class="vo-blog-tag">Anxious-Avoidant</span>
-                        <h3 class="vo-blog-title">Navigating Anxious-Avoidant Attachment Styles</h3>
-                        <a href="#" class="vo-blog-link">Read More</a>
-                    </div>
-                </div>
+                <button class="vo-bubble-arrow next" aria-label="Next">&gt;</button>
             </div>
         </section>
 
@@ -1300,31 +1308,43 @@
             <h2 class="vo-section-title">What We Specialize In</h2>
             <p class="vo-section-subtitle">Our therapists support you through every phase of life. Here's what we
                 specialize in.</p>
-            <div class="vo-specs-grid">
-                <div class="vo-spec-card">
-                    <div class="vo-spec-image"
-                        style="background-image:url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80')">
+            <!-- Carousel Wrapper for Specs -->
+            <div class="vo-carousel-wrapper">
+                <button class="vo-bubble-arrow prev" aria-label="Previous">&lt;</button>
+                <div class="vo-carousel-track">
+                    <div class="vo-spec-card">
+                        <div class="vo-spec-image"
+                            style="background-image:url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80')">
+                        </div>
+                        <div class="vo-spec-label">Relationship & Family</div>
                     </div>
-                    <div class="vo-spec-label">Relationship & Family</div>
-                </div>
-                <div class="vo-spec-card">
-                    <div class="vo-spec-image"
-                        style="background-image:url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&q=80')">
+                    <div class="vo-spec-card">
+                        <div class="vo-spec-image"
+                            style="background-image:url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&q=80')">
+                        </div>
+                        <div class="vo-spec-label">Individual well-being</div>
                     </div>
-                    <div class="vo-spec-label">Individual well-being</div>
-                </div>
-                <div class="vo-spec-card">
-                    <div class="vo-spec-image"
-                        style="background-image:url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=600&q=80')">
+                    <div class="vo-spec-card">
+                        <div class="vo-spec-image"
+                            style="background-image:url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=600&q=80')">
+                        </div>
+                        <div class="vo-spec-label">Life Transitions & Transitions</div>
                     </div>
-                    <div class="vo-spec-label">Life Transitions & Transitions</div>
-                </div>
-                <div class="vo-spec-card">
-                    <div class="vo-spec-image"
-                        style="background-image:url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80')">
+                    <div class="vo-spec-card">
+                        <div class="vo-spec-image"
+                            style="background-image:url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80')">
+                        </div>
+                        <div class="vo-spec-label">Telehealth & Virtual Therapy</div>
                     </div>
-                    <div class="vo-spec-label">Telehealth & Virtual Therapy</div>
+                    <!-- Added extra cards for demo scroll -->
+                    <div class="vo-spec-card">
+                        <div class="vo-spec-image"
+                            style="background-image:url('https://images.unsplash.com/photo-1520962922320-2038eebab146?w=600&q=80')">
+                        </div>
+                        <div class="vo-spec-label">Stress Management</div>
+                    </div>
                 </div>
+                <button class="vo-bubble-arrow next" aria-label="Next">&gt;</button>
             </div>
 
             <!-- Common Challenges (Redesigned Grid without Toggle) -->
@@ -1389,6 +1409,7 @@
     <!-- Scripts -->
     <!-- Logics -->
     <script src="js/vo-index.js"></script>
+    <script src="js/vo-therapist-swipe.js"></script>
 
     <!-- Loaders -->
     <script src="js/vo-header.js"></script>

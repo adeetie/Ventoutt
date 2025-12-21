@@ -4,8 +4,13 @@
  */
 
 class SwipeableStack {
-    constructor(containerSelector) {
-        this.container = document.querySelector(containerSelector);
+    constructor(containerOrSelector) {
+        if (typeof containerOrSelector === 'string') {
+            this.container = document.querySelector(containerOrSelector);
+        } else {
+            this.container = containerOrSelector;
+        }
+
         if (!this.container) return;
 
         this.cards = Array.from(this.container.querySelectorAll('.vo-swipe-card'));
@@ -42,55 +47,43 @@ class SwipeableStack {
 
     updateStack() {
         this.cards.forEach((card, index) => {
-            // Reset styles first
-            card.style.transform = '';
-            card.style.opacity = '';
-            card.style.zIndex = '';
-            card.style.backgroundColor = ''; // Reset
-            card.style.transition = 'transform 0.4s ease, opacity 0.4s ease'; // Smooth auto-adjust
+            // Reset styles first for everyone to ensure clean state
+            card.style.transition = 'transform 0.4s ease, opacity 0.4s ease';
+            card.style.display = 'block'; // Always block in infinite loop
 
             // Remove listeners from all cards first
             this.removeListeners(card);
 
-            if (index < this.currentIndex) {
-                // Previously swiped cards (Hidden)
-                card.style.display = 'none';
+            // Stack Visuals
+            if (index === 0) {
+                // Top Card (Active)
+                card.style.zIndex = '100';
+                card.style.transform = 'scale(1) translateY(0) rotate(0deg)';
+                card.style.opacity = '1';
+                card.style.opacity = '1';
+                card.style.backgroundColor = 'white';
+                card.classList.remove('vo-text-card'); // Ensure reset
+
+                // Activate interaction
+                this.addListeners(card);
+                this.activeCard = card;
+            } else if (index === 1) {
+                // Second Card (Visible "In Back") - First Blue
+                card.style.zIndex = '90';
+                card.style.transform = 'scale(0.95) translateY(15px) rotate(3deg)';
+                card.style.opacity = '1';
+                card.style.backgroundColor = '#CBE6F6';
+            } else if (index === 2) {
+                // Third Card (Peeking) - Second Blue
+                card.style.zIndex = '80';
+                card.style.transform = 'scale(0.90) translateY(30px) rotate(-3deg)';
+                card.style.opacity = '1';
+                card.style.backgroundColor = '#9CCDE8';
             } else {
-                card.style.display = 'block';
-                // Calculate visual stack position (0 = top, 1 = behind, etc)
-                const stackIndex = index - this.currentIndex;
-
-                // Stack Visuals
-                if (stackIndex === 0) {
-                    // Top Card (Main)
-                    card.style.zIndex = '100';
-                    card.style.transform = 'scale(1) translateY(0)';
-                    card.style.opacity = '1';
-                    // Ensure photo is main, background doesn't matter as much but keep clean
-                    card.style.backgroundColor = 'white';
-
-                    // Activate interaction
-                    this.addListeners(card);
-                    this.activeCard = card;
-                } else if (stackIndex === 1) {
-                    // Second Card (Visible "In Back") - Blue tint
-                    card.style.zIndex = '90';
-                    card.style.transform = 'scale(0.95) translateY(15px)';
-                    card.style.opacity = '1';
-                    // Set to the blue color from reference
-                    card.style.backgroundColor = '#CBE6F6';
-                } else if (stackIndex === 2) {
-                    // Third Card (Peeking) - Slightly darker/lighter blue
-                    card.style.zIndex = '80';
-                    card.style.transform = 'scale(0.90) translateY(30px)';
-                    card.style.opacity = '1';
-                    card.style.backgroundColor = '#9CCDE8';
-                } else {
-                    // Others hidden in stack
-                    card.style.zIndex = '10';
-                    card.style.transform = 'scale(0.85) translateY(45px)';
-                    card.style.opacity = '0';
-                }
+                // Others hidden behind the stack
+                card.style.zIndex = '10';
+                card.style.transform = 'scale(0.85) translateY(45px) rotate(0deg)';
+                card.style.opacity = '0'; // Hide deeper cards
             }
         });
     }
@@ -99,15 +92,24 @@ class SwipeableStack {
         card.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: true });
         card.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
         card.addEventListener('touchend', this.handleTouchEnd.bind(this), { passive: true });
+        card.addEventListener('click', this.handleClick.bind(this));
     }
 
     removeListeners(card) {
-        // Cleaning up listeners (clone node is a crude but effective way, or use named references)
-        // For this implementation, we rely on the state check in handlers
+        // In this implementation, we simply don't add listeners to non-active cards.
+        // But to be safe if we were reusing elements strictly:
+        // Use cloneNode(true) to strip listeners OR just rely on logic. 
+        // Since we are re-assigning listeners only to index 0, logic holds.
     }
 
     handleTouchStart(e) {
         if (this.isAnimating) return;
+
+        // Prevent swipe if interacting with scrollable details
+        if (e.target.closest('.vo-expert-details')) {
+            return;
+        }
+
         this.startX = e.touches[0].clientX;
         this.startY = e.touches[0].clientY;
         this.activeCard.style.transition = 'none'; // Disable transition for drag
@@ -122,19 +124,12 @@ class SwipeableStack {
         const diffX = this.currentX - this.startX;
         const diffY = this.currentY - this.startY;
 
-        // Only move if swipe is predominantly vertical (swiping UP)
-        // and greater than horizontal movement to avoid blocking scroll (optional)
-        // For tinder style, we usually follow finger exactly
+        if (diffY > 0) return; // Allow scroll down
 
-        // If swiping DOWN (positive diffY), let page scroll normally (don't preventDefault)
-        if (diffY > 0) return;
-
-        // If swiping UP, capture it
+        // Capture swipe up
         if (Math.abs(diffY) > Math.abs(diffX) && diffY < 0) {
             if (e.cancelable) e.preventDefault();
-
-            // Move card
-            const rotate = diffX * 0.1; // Slight rotation based on X
+            const rotate = diffX * 0.1;
             this.activeCard.style.transform = `translate(${diffX}px, ${diffY}px) rotate(${rotate}deg)`;
         }
     }
@@ -144,21 +139,16 @@ class SwipeableStack {
 
         const diffX = this.currentX - this.startX;
         const diffY = this.currentY - this.startY;
-
-        // Threshold for swipe
-        const threshold = -100; // Swipe up distance
+        const threshold = -100;
 
         this.activeCard.style.transition = 'transform 0.5s ease-out, opacity 0.4s ease-out';
 
         if (diffY < threshold) {
-            // Swiped UP successfully
             this.swipeOut();
         } else {
-            // Snap back
             this.activeCard.style.transform = '';
         }
 
-        // Reset touch coordinates (fixes potential bug where tap triggers weirdness)
         this.startX = 0;
         this.startY = 0;
         this.currentX = 0;
@@ -167,43 +157,38 @@ class SwipeableStack {
 
     swipeOut() {
         this.isAnimating = true;
-
-        // Add swipe-out class for animation
         this.activeCard.classList.add('vo-swipe-out-left');
 
-
-
-        // Wait for animation
         setTimeout(() => {
-            this.currentIndex++;
+            // INFINITE LOOP LOGIC:
+            // Take the swiped card (index 0)
+            const swipedCard = this.cards.shift();
 
-            if (this.currentIndex >= this.cards.length) {
-                // Stack is empty - reveal final content
-                const finalContent = this.container.querySelector('.vo-swipe-final-content');
-                if (finalContent) {
-                    finalContent.style.display = 'flex';
-                    // Optional: Fade in
-                    finalContent.style.opacity = '0';
-                    requestAnimationFrame(() => {
-                        finalContent.style.transition = 'opacity 0.5s ease';
-                        finalContent.style.opacity = '1';
-                    });
-                }
-            } else {
-                this.updateStack();
-            }
+            // Clean it up
+            swipedCard.classList.remove('vo-swipe-out-left');
+            swipedCard.classList.remove('vo-text-card'); // Reset text mode
+            swipedCard.style.transform = '';
+            swipedCard.style.opacity = '0'; // Initially hidden as it goes to back
+            swipedCard.style.zIndex = '0';
+
+            // Move it to the end of the array
+            this.cards.push(swipedCard);
+
+            // Re-render stack
+            this.updateStack();
 
             this.isAnimating = false;
-        }, 300); // Wait for transition
+        }, 300);
     }
 
-    resetStackLoop() {
-        this.currentIndex = 0;
-        this.cards.forEach(card => {
-            card.classList.remove('vo-swipe-out-left');
-            card.style.display = 'block';
-        });
-        this.updateStack();
+    handleClick(e) {
+        // If clicking on a link or button, don't toggle
+        if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return;
+
+        // Toggle the text card mode
+        if (this.activeCard) {
+            this.activeCard.classList.toggle('vo-text-card');
+        }
     }
 
     cleanup() {
@@ -212,7 +197,6 @@ class SwipeableStack {
             card.style.transform = '';
             card.style.display = '';
             card.classList.remove('vo-swipe-out-left');
-            // Remove listeners (optional if we check window width in handlers)
         });
     }
 }
@@ -222,8 +206,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Find all stack containers
     const stacks = document.querySelectorAll('.vo-swipe-container');
     stacks.forEach(container => {
-        // We can scope the init by ID if needed, using class for now
-        new SwipeableStack('.vo-swipe-container');
+        // Pass the element directly to support multiple instances
+        new SwipeableStack(container);
+
         // Initialize Comparison Carousel (Mobile)
         if (window.innerWidth <= 768) {
             initComparisonCarousel();
@@ -234,9 +219,11 @@ document.addEventListener('DOMContentLoaded', () => {
 function initComparisonCarousel() {
     const compGrid = document.querySelector('.vo-comparison-grid');
     const cards = document.querySelectorAll('.vo-comp-card');
-    const prevBtn = document.querySelector('.vo-arrow-btn.prev');
-    const nextBtn = document.querySelector('.vo-arrow-btn.next');
+    const prevBtn = document.querySelector('.vo-comp-arrows .vo-arrow-btn.prev');
+    const nextBtn = document.querySelector('.vo-comp-arrows .vo-arrow-btn.next');
+    const arrowsContainer = document.querySelector('.vo-comp-arrows');
     const featuredCard = document.querySelector('.vo-comp-card.vo-featured');
+
 
     if (compGrid && cards.length) {
         // 1. Center "Coaching" on Load

@@ -57,10 +57,12 @@
 
         if (!popup) return;
 
-        const pageKey = "voPopupShown_" + window.location.pathname;
-        // let hasShown = sessionStorage.getItem(pageKey) === "true"; 
+        let popupDismissed = false; // Track if user clicked "Not now"
 
         window.addEventListener("scroll", () => {
+            // Don't show if user already dismissed
+            if (popupDismissed) return;
+
             // Logic: if scrolled > 80%
             const scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             if (scrollTotal <= 0) return;
@@ -73,12 +75,14 @@
                 if (entry && entry.classList.contains('active')) return;
 
                 popup.classList.add("show");
-                sessionStorage.setItem(pageKey, "true");
             }
         });
 
         if (closeBtn) {
-            closeBtn.addEventListener("click", () => popup.classList.remove("show"));
+            closeBtn.addEventListener("click", () => {
+                popup.classList.remove("show");
+                popupDismissed = true; // Prevent popup from showing again until page refresh
+            });
         }
     }
 

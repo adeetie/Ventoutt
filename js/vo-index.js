@@ -278,6 +278,52 @@ document.addEventListener('DOMContentLoaded', () => {
     // Stop checking after 5s
     setTimeout(() => clearInterval(checkFooter), 5000);
 
+    /* =========================================
+       9. Expert Pointers Auto-Scroll (Cloned Loop)
+       ========================================= */
+    const pointersTrack = document.getElementById('expertPointersTrack');
+    if (pointersTrack) {
+        const originals = Array.from(pointersTrack.children);
+        // Clone 3 sets for smooth infinite loop
+        for (let i = 0; i < 3; i++) {
+            originals.forEach(item => pointersTrack.appendChild(item.cloneNode(true)));
+        }
+
+        // Calculate scroll width
+        const itemWidth = originals[0] ? originals[0].getBoundingClientRect().width : 280;
+        const gap = 20;
+        const scrollDist = (itemWidth + gap) * originals.length;
+
+        pointersTrack.style.setProperty('--scroll-distance', `${scrollDist}px`);
+
+        // Duration ~ 40px/s
+        const dur = scrollDist / 40;
+        pointersTrack.style.animation = `pointer-scroll ${dur}s linear infinite`;
+
+        pointersTrack.addEventListener('mouseenter', () => pointersTrack.style.animationPlayState = 'paused');
+        pointersTrack.addEventListener('mouseleave', () => pointersTrack.style.animationPlayState = 'running');
+    }
+
+    /* =========================================
+       10. Bubble Arrow Carousel Logic (General)
+       ========================================= */
+    const carousels = document.querySelectorAll('.vo-carousel-wrapper');
+    carousels.forEach(wrapper => {
+        const track = wrapper.querySelector('.vo-carousel-track');
+        const prevBtn = wrapper.querySelector('.vo-bubble-arrow.prev');
+        const nextBtn = wrapper.querySelector('.vo-bubble-arrow.next');
+
+        if (!track || !prevBtn || !nextBtn) return;
+
+        prevBtn.addEventListener('click', () => {
+            track.scrollBy({ left: -320, behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            track.scrollBy({ left: 320, behavior: 'smooth' });
+        });
+    });
+
 
 
 

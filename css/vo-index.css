@@ -940,26 +940,7 @@
 
 @media (max-width: 768px) {
 
-    /* Real Experts Section - Mobile Vertical Layout */
-    .vo-therapist-banner {
-        min-height: auto;
-        padding: 60px 20px;
-        display: block;
-        /* Stack content vertically */
-    }
 
-    /* Hide desktop expert grid interactions */
-    .vo-experts-grid,
-    .vo-experts-content,
-    .vo-banner-content {
-        display: none !important;
-    }
-
-    /* Ensure only swipe container is visible */
-    .vo-swipe-container {
-        display: block !important;
-        margin: 0 auto;
-    }
 
     .vo-figma-container {
         flex-direction: column;
@@ -1140,7 +1121,9 @@
         padding: 30px;
     }
 
-    .vo-feature-image {}
+    .vo-feature-image {
+        display: none;
+    }
 }
 
 /* =========================================
@@ -2090,6 +2073,8 @@ h2,
 .vo-logo-track {
     display: flex;
     gap: 20px;
+    padding-right: 20px;
+    /* Fix for seamless loop calculation */
     width: max-content;
     will-change: transform;
     animation: vo-scroll-logos 10s linear infinite;
@@ -2118,7 +2103,7 @@ h2,
     }
 
     100% {
-        transform: translateX(-50%);
+        transform: translateX(-16.6667%);
     }
 
     /* Assumes duplication */
@@ -2135,6 +2120,8 @@ h2,
 .vo-therapist-track {
     display: flex;
     gap: 20px;
+    padding-right: 20px;
+    /* Fix for seamless loop calculation */
     width: max-content;
     will-change: transform;
     /* Animation handled by JS or CSS if size known, 
@@ -2210,7 +2197,7 @@ h2,
 
 @keyframes vo-scroll-reverse {
     0% {
-        transform: translateX(-50%);
+        transform: translateX(-25%);
     }
 
     100% {
@@ -2499,10 +2486,13 @@ h2,
 
 .vo-experts-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    grid-template-columns: 350px 1fr;
+    /* Title Left, Content Right */
+    gap: 50px;
     max-width: 1200px;
     margin: 0 auto 60px;
+    align-items: start;
+    position: relative;
 }
 
 .vo-expert-card {
@@ -2557,8 +2547,22 @@ h2,
     letter-spacing: 0.5px;
 }
 
-.vo-expert-content {
-    padding: 0 5px;
+
+.vo-expert-info-box {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.vo-expert-card:hover .vo-expert-info-box {
+    transform: translateY(-5px);
 }
 
 .vo-expert-name {
@@ -2569,30 +2573,54 @@ h2,
     color: var(--vo-color-dark-gray);
 }
 
-.vo-expert-role {
+.vo-expert-title-text {
+    font-family: var(--vo-font-body);
+    font-size: 14px;
+    color: #666;
+}
+
+/* Hide detailed lists on desktop grid default view to match clean reference */
+.vo-expert-details {
+    display: none;
+}
+
+/* Inner Grid for Cards */
+.vo-experts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.vo-experts-footer {
+    margin-top: 50px;
+    text-align: left;
+    max-width: 600px;
+}
+
+.vo-experts-description {
     font-family: var(--vo-font-body);
     font-size: 16px;
-    color: #666;
-}
-
-.vo-experts-actions {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.vo-experts-actions p {
-    font-family: var(--vo-font-body);
-    font-size: 18px;
-    color: #666;
-    margin-bottom: 30px;
+    color: #333;
     line-height: 1.6;
+    margin-bottom: 25px;
 }
 
-.vo-experts-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+.vo-btn-learn-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #F57F17;
+    color: #fff;
+    font-family: var(--vo-font-body);
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.vo-btn-learn-more:hover {
+    background: #e6750f;
 }
 
 .vo-btn-outline {
@@ -3432,47 +3460,50 @@ h2 {
 }
 
 .vo-spec-card {
-    background-color: #F0ECE6;
-    /* Beige/Tan card background */
-    border: 2px solid #212121;
-    border-radius: 20px;
+    background-color: #FFFBF7;
+    /* Softer Cream/White */
+    border: 1px solid #EAEAEA;
+    border-radius: 24px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .vo-spec-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+    /* Elevated shadow */
 }
 
 .vo-spec-image {
     width: 100%;
     height: 180px;
-    /* Adjust as needed */
     background-size: cover;
     background-position: center;
-    border-radius: 12px;
-    border: 2px solid #212121;
+    border-radius: 16px;
+    border: none;
+    /* No Border */
     margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .vo-spec-label {
     width: 100%;
-    background-color: transparent;
-    border: 2px solid #212121;
-    border-radius: 8px;
-    padding: 12px 10px;
+    background-color: #F3F4F6;
+    /* Gray-100 */
+    border: none;
+    /* No Border */
+    border-radius: 12px;
+    padding: 14px 10px;
     font-family: var(--vo-font-heading);
-    /* Serif font for label */
     font-weight: 700;
     font-size: 16px;
-    color: #212121;
+    color: #333;
     text-align: center;
-    /* Resembles the button look in reference */
-    background: #F0ECE6;
+    transition: background 0.2s;
 }
 
 
@@ -3627,14 +3658,13 @@ h2 {
     }
 
     /* General Card Style */
+
     .vo-comp-card {
         min-width: 75vw !important;
-        /* 75vw allows next card peek like Image 2 */
         scroll-snap-align: center;
         border: none !important;
         border-radius: 20px !important;
         padding: 25px 30px !important;
-        /* Match inner spacing */
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
         display: flex;
         flex-direction: column;
@@ -3642,265 +3672,2957 @@ h2 {
         background: #000;
         /* Default Black */
 
-        /* General Card Style */
-        .vo-comp-card {
-            min-width: 75vw !important;
-            scroll-snap-align: center;
-            border: none !important;
-            border-radius: 20px !important;
-            padding: 25px 30px !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            background: #000;
-            /* Default Black */
+        /* Default State: Smaller but FULLY VISIBLE */
+        transform: scale(0.9) !important;
+        opacity: 1 !important;
+        /* User reported 'faded', so strictly 1 */
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    }
 
-            /* Default State: Smaller but FULLY VISIBLE */
-            transform: scale(0.9) !important;
-            opacity: 1 !important;
-            /* User reported 'faded', so strictly 1 */
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-        }
+    /* ACTIVE CENTER CARD: Grows Big */
+    .vo-comp-card.vo-card-active {
+        transform: scale(1.05) !important;
+        /* Grow Big */
+        z-index: 10;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+    }
 
-        /* ACTIVE CENTER CARD: Grows Big */
-        .vo-comp-card.vo-card-active {
-            transform: scale(1.05) !important;
-            /* Grow Big */
-            z-index: 10;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
-        }
+    /* 1. Venting Card - Black */
+    .vo-comp-card:nth-child(1) {
+        background: #000000 !important;
+    }
 
-        /* 1. Venting Card - Black */
-        .vo-comp-card:nth-child(1) {
-            background: #000000 !important;
-        }
+    /* 2. Coaching Card (Featured) - Green */
+    .vo-comp-card.vo-featured {
+        background-color: #1F4D3E !important;
+    }
 
-        /* 2. Coaching Card (Featured) - Green */
-        .vo-comp-card.vo-featured {
-            background-color: #1F4D3E !important;
-        }
+    /* 3. Therapy Card - Black */
+    .vo-comp-card:last-child {
+        background: #000000 !important;
+    }
 
-        /* 3. Therapy Card - Black */
-        .vo-comp-card:last-child {
-            background: #000000 !important;
-        }
+    /* Typography Override for "Inside Content Styling" */
+    .vo-comp-card h3 {
+        font-family: var(--vo-font-heading);
+        color: white !important;
+        font-size: 32px !important;
+        /* Matches "Venting" size */
+        margin-bottom: 5px !important;
+        text-align: left !important;
+    }
 
-        /* Typography Override for "Inside Content Styling" */
-        .vo-comp-card h3 {
-            font-family: var(--vo-font-heading);
-            color: white !important;
-            font-size: 32px !important;
-            /* Matches "Venting" size */
-            margin-bottom: 5px !important;
-            text-align: left !important;
-        }
+    .vo-comp-card .vo-comp-role {
+        color: rgba(255, 255, 255, 0.7) !important;
+        font-size: 14px !important;
+        text-align: left !important;
+        margin-bottom: 20px !important;
+        font-weight: 400 !important;
+    }
 
-        .vo-comp-card .vo-comp-role {
-            color: rgba(255, 255, 255, 0.7) !important;
-            font-size: 14px !important;
-            text-align: left !important;
-            margin-bottom: 20px !important;
-            font-weight: 400 !important;
-        }
+    .vo-comp-card .vo-comp-price {
+        color: #fff !important;
+        font-size: 26px !important;
+        font-weight: 700 !important;
+        text-align: left !important;
+        margin-bottom: 25px !important;
+    }
 
-        .vo-comp-card .vo-comp-price {
-            color: #fff !important;
-            font-size: 26px !important;
-            font-weight: 700 !important;
-            text-align: left !important;
-            margin-bottom: 25px !important;
-        }
+    /* Checklists */
+    .vo-comp-features li {
+        color: rgba(255, 255, 255, 0.95) !important;
+        font-size: 15px !important;
+        margin-bottom: 12px !important;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        line-height: 1.4;
+    }
 
-        /* Checklists */
-        .vo-comp-features li {
-            color: rgba(255, 255, 255, 0.95) !important;
-            font-size: 15px !important;
-            margin-bottom: 12px !important;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            line-height: 1.4;
-        }
+    .vo-comp-features li span {
+        color: #F57F17 !important;
+        /* Orange Checks */
+        font-weight: 800;
+        font-size: 18px;
+    }
 
-        .vo-comp-features li span {
-            color: #F57F17 !important;
-            /* Orange Checks */
-            font-weight: 800;
-            font-size: 18px;
-        }
+    /* Buttons */
+    .vo-comp-card .vo-btn-comp {
+        width: 100% !important;
+        text-align: center !important;
+        padding: 14px 0 !important;
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        border-radius: 30px !important;
+        margin-top: auto !important;
+        border: none !important;
+    }
 
-        /* Buttons */
-        .vo-comp-card .vo-btn-comp {
-            width: 100% !important;
-            text-align: center !important;
-            padding: 14px 0 !important;
-            font-size: 16px !important;
-            font-weight: 700 !important;
-            border-radius: 30px !important;
-            margin-top: auto !important;
-            border: none !important;
-        }
+    /* Venting & Therapy Button: Orange */
+    .vo-comp-card:nth-child(1) .vo-btn-comp,
+    .vo-comp-card:last-child .vo-btn-comp {
+        background: #F57F17 !important;
+        color: white !important;
+    }
 
-        /* Venting & Therapy Button: Orange */
-        .vo-comp-card:nth-child(1) .vo-btn-comp,
-        .vo-comp-card:last-child .vo-btn-comp {
-            background: #F57F17 !important;
-            color: white !important;
-        }
+    /* Coaching Button: White */
+    .vo-comp-card.vo-featured .vo-btn-comp {
+        background: white !important;
+        color: #1F4D3E !important;
+    }
 
-        /* Coaching Button: White */
-        .vo-comp-card.vo-featured .vo-btn-comp {
-            background: white !important;
-            color: #1F4D3E !important;
-        }
+    /* Scrollbar Hidden */
+    .vo-comparison-grid::-webkit-scrollbar {
+        display: none;
+    }
 
-        /* Scrollbar Hidden */
-        .vo-comparison-grid::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* =========================================
+    /* =========================================
    MOBILE TIMELINE OVERRIDE (How It Works)
    ========================================= */
-        @media (max-width: 768px) {
-            .vo-how-section {
-                padding: 60px 20px;
-                background-color: #212121 !important;
-                /* Dark Background */
-            }
 
-            /* Grid becomes Block for Timeline */
-            .vo-steps-grid {
-                display: block !important;
-                position: relative;
-                max-width: 100%;
-                margin: 0;
-                padding-left: 0;
-            }
-
-            /* Central Line */
-            .vo-steps-grid::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 50%;
-                width: 2px;
-                background: #FEFCEF;
-                /* Cream Line */
-                transform: translateX(-50%);
-                z-index: 0;
-            }
-
-            /* Remove Blue Progress segment */
-            .vo-steps-grid::after {
-                display: none;
-            }
-
-            /* Card Wrapper resets - Transparent BG */
-            .vo-step-card {
-                position: relative;
-                width: 42% !important;
-                background: transparent !important;
-                box-shadow: none !important;
-                padding: 0 !important;
-                border-radius: 0 !important;
-                height: auto !important;
-                margin-bottom: 60px !important;
-                display: flex !important;
-                flex-direction: column !important;
-                justify-content: center;
-                z-index: 2;
-                border: none !important;
-            }
-
-            /* Step Number (Text Only, No Pill) */
-            .vo-step-number {
-                font-family: var(--vo-font-heading);
-                font-weight: 700;
-                font-size: 24px !important;
-                letter-spacing: 0px;
-                background: transparent !important;
-                /* No Pill BG */
-                color: #FEFCEF !important;
-                /* Cream Text */
-                padding: 0 !important;
-                border-radius: 0 !important;
-                box-shadow: none !important;
-                display: block;
-                margin-bottom: 8px !important;
-                text-transform: none;
-                /* "Step 1" case */
-                width: auto;
-                text-shadow: none !important;
-                line-height: 1.2 !important;
-            }
-
-            /* Description (Light Text) */
-            .vo-step-description {
-                font-family: var(--vo-font-body) !important;
-                font-size: 14px !important;
-                line-height: 1.5 !important;
-                color: rgba(254, 252, 239, 0.8) !important;
-                /* Cream opacity */
-                text-shadow: none !important;
-                letter-spacing: normal !important;
-            }
-
-            /* --- Alternating Layout --- */
-
-            /* ODD: LEFT */
-            .vo-step-card:nth-child(odd) {
-                float: left;
-                clear: both;
-                text-align: right;
-                align-items: flex-end;
-                margin-right: 50%;
-                padding-right: 30px !important;
-            }
-
-            /* EVEN: RIGHT */
-            .vo-step-card:nth-child(even) {
-                float: right;
-                clear: both;
-                text-align: left;
-                align-items: flex-start;
-                margin-left: 50%;
-                padding-left: 30px !important;
-            }
-
-            /* --- Connector Dots --- */
-            .vo-step-card::after {
-                content: '';
-                position: absolute;
-                top: 8px;
-                /* Align near top of text */
-                width: 16px;
-                height: 16px;
-                background: #FEFCEF;
-                /* Cream Dot */
-                border: none;
-                border-radius: 50%;
-                z-index: 5;
-            }
-
-            /* Left Card Dot */
-            .vo-step-card:nth-child(odd)::after {
-                right: -39px;
-                /* Adjusted for line width */
-            }
-
-            /* Right Card Dot */
-            .vo-step-card:nth-child(even)::after {
-                left: -39px;
-            }
-
-            /* Clearfloats */
-            .vo-steps-grid::after {
-                content: '';
-                display: table;
-                clear: both;
-            }
-        }
+    .vo-how-section {
+        padding: 40px 20px;
+        background-color: #F4EDE4 !important;
+        /* Beige/Cream Background */
     }
+
+    .vo-how-title {
+        color: #212121 !important;
+        font-family: var(--vo-font-heading);
+        font-size: 28px !important;
+        font-style: italic;
+        font-weight: 700;
+        text-align: left !important;
+        margin-bottom: 30px !important;
+    }
+
+    /* Grid becomes Block for Timeline */
+    .vo-steps-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        position: relative;
+        max-width: 100%;
+        margin: 0;
+        padding-left: 50%;
+    }
+
+    /* Central Line */
+    .vo-steps-grid::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 2px;
+        background: #212121;
+        /* Dark Line */
+        transform: translateX(-50%);
+        z-index: 0;
+    }
+
+    /* Remove Blue Progress segment */
+    .vo-steps-grid::after {
+        display: none;
+    }
+
+    /* Card Wrapper resets */
+    .vo-step-card {
+        position: relative;
+        width: calc(50vw - 50px) !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        height: auto !important;
+        margin-bottom: 30px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start;
+        z-index: 2;
+        border: none !important;
+        float: none !important;
+        clear: none !important;
+    }
+
+    /* Step Number Badge (Dark Background) */
+    .vo-step-number {
+        font-family: var(--vo-font-body);
+        font-weight: 600;
+        font-size: 11px !important;
+        letter-spacing: 0px;
+        background: #212121 !important;
+        /* Dark Badge */
+        color: #FFFFFF !important;
+        /* White Text */
+        padding: 5px 12px !important;
+        border-radius: 3px !important;
+        box-shadow: none !important;
+        display: inline-block;
+        margin-bottom: 8px !important;
+        text-transform: none;
+        width: fit-content;
+        text-shadow: none !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Description (Dark Text) */
+    .vo-step-description {
+        font-family: var(--vo-font-body) !important;
+        font-size: 10px !important;
+        line-height: 1.4 !important;
+        color: #212121 !important;
+        /* Dark Text */
+        text-shadow: none !important;
+        letter-spacing: normal !important;
+    }
+
+    /* --- Alternating Layout --- */
+
+    /* ODD: LEFT side of line */
+    .vo-step-card:nth-child(odd) {
+        text-align: left;
+        align-items: flex-end;
+        margin-left: calc(-50vw + 30px) !important;
+        margin-right: 0 !important;
+        padding-right: 20px !important;
+        padding-left: 0 !important;
+    }
+
+    .vo-step-card:nth-child(odd) .vo-step-description {
+        text-align: right;
+    }
+
+    /* EVEN: RIGHT side of line */
+    .vo-step-card:nth-child(even) {
+        text-align: left;
+        align-items: flex-start;
+        margin-left: 20px !important;
+        margin-right: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .vo-step-card:nth-child(even) .vo-step-description {
+        text-align: left;
+    }
+
+    /* --- Connector Dots --- */
+    .vo-step-card::after {
+        content: '';
+        position: absolute;
+        top: 5px;
+        /* Align near top of badge */
+        width: 10px;
+        height: 10px;
+        background: #212121;
+        /* Dark Dot */
+        border: none;
+        border-radius: 50%;
+        z-index: 5;
+    }
+
+    /* Left Card Dot (on right edge near line) */
+    .vo-step-card:nth-child(odd)::after {
+        right: 14px;
+    }
+
+    /* Right Card Dot (on left edge near line) */
+    .vo-step-card:nth-child(even)::after {
+        left: -26px;
+    }
+
+}
+
+/* =========================================
+       ROBUST DESKTOP RESETS (Fixes Disappearance)
+       ========================================= */
+@media (min-width: 769px) {
+    .vo-swipe-container {
+        display: none !important;
+        /* HIde swipe on desktop */
+    }
+
+    /* Container becomes 2 columns: Left (Title+Cards) | Right (Cards+Footer) */
+    .vo-experts-container {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 60px !important;
+        align-items: start !important;
+    }
+
+    /* The grids inside columns should be vertical stacks */
+    .vo-experts-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 30px !important;
+        margin-bottom: 40px;
+        /* Space before footer */
+    }
+
+    .vo-expert-card {
+        width: 100%;
+        height: 450px;
+        /* Taller styling from services */
+    }
+
+    /* Ensure overlay info box works */
+    .vo-expert-info-box {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        background: white;
+        padding: 20px;
+        border-radius: 16px;
+        text-align: left;
+    }
+}
+
+/* =========================================
+       MOBILE ADJUSTMENTS (Fixes Overlap)
+       ========================================= */
+@media (max-width: 768px) {
+
+    /* Disable Sticky Title on Mobile to prevent scrolling clashes */
+    .vo-experts-title-block {
+        position: relative !important;
+        top: auto !important;
+        margin-bottom: 20px !important;
+    }
+
+    .vo-experts-right-col {
+        display: block !important;
+        height: auto !important;
+    }
+
+    /* Force Container Height so Footer is pushed down */
+    .vo-swipe-container {
+        display: block !important;
+        position: relative !important;
+        height: 600px !important;
+        /* Increased height for details */
+        min-height: 600px !important;
+        margin-top: 20px !important;
+        margin-bottom: 40px !important;
+        z-index: 1;
+    }
+
+    /* Centering Fix: Use margin auto instead of transform/negative margins */
+    .vo-swipe-card {
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 auto !important;
+        width: 320px !important;
+        height: 520px !important;
+        /* Ensure details are visible */
+        overflow: visible !important;
+        box-shadow: none !important;
+        /* FIX: Remove wrapper shadow */
+        filter: none !important;
+    }
+
+    .vo-swipe-card .vo-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: none !important;
+        /* Removed shadow per user request */
+        border: 1px solid #eee;
+        /* Add light border for definition instead */
+    }
+
+    .vo-swipe-card .vo-card-image {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* White Info Bubble Overlay */
+    .vo-swipe-card .vo-card-info {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        background: white;
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        /* Kept bubble shadow */
+        z-index: 2;
+        text-align: left;
+        height: auto !important;
+        /* Fix content truncation */
+        max-height: 60%;
+        /* Prevent it from covering the whole image */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .vo-swipe-card .vo-card-name {
+        font-family: var(--vo-font-heading, "Playfair Display", serif);
+        font-size: 22px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 4px;
+    }
+
+    .vo-swipe-card .vo-card-title {
+        font-family: var(--vo-font-body, "Lato", sans-serif);
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 10px;
+    }
+
+    /* Make details visible ONLY in text card mode (Tap Interaction) */
+    .vo-swipe-card .vo-expert-details {
+        display: none !important;
+    }
+
+    /* TEXT CARD STLYING (Active State) */
+    .vo-swipe-card.vo-text-card {
+        background: white !important;
+        padding: 30px 25px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center;
+        /* Center content vertically */
+        align-items: center;
+        text-align: center;
+        box-shadow: none !important;
+        border: 1px solid #eee;
+    }
+
+    /* Hide image in text mode */
+    .vo-swipe-card.vo-text-card .vo-card-image {
+        display: none !important;
+    }
+
+    /* Reveal details in text mode */
+    .vo-swipe-card.vo-text-card .vo-expert-details {
+        display: block !important;
+        margin-top: 20px;
+        max-height: none !important;
+        overflow: visible !important;
+        font-size: 15px !important;
+        line-height: 1.6;
+        color: #444;
+        width: 100%;
+        text-align: left;
+        /* List items look better left aligned */
+    }
+
+    /* Adjust info container position in text mode */
+    .vo-swipe-card.vo-text-card .vo-card-info {
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        height: auto !important;
+        max-height: none !important;
+        width: 100%;
+    }
+
+    .vo-swipe-card.vo-text-card .vo-card-name {
+        font-size: 26px !important;
+        color: #333 !important;
+        margin-bottom: 5px !important;
+        font-family: var(--vo-font-heading);
+    }
+
+    .vo-swipe-card .vo-detail-expertise,
+    .vo-swipe-card .vo-detail-meta {
+        margin-bottom: 8px;
+    }
+
+    .vo-swipe-card ul {
+        padding-left: 20px;
+        margin: 5px 0;
+    }
+
+    /* Hide Desktop Grids on Mobile */
+    .vo-experts-grid,
+    .vo-experts-desktop-layout {
+        display: none !important;
+    }
+
+    /* Ensure container stacks */
+    .vo-experts-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        /* Help center children */
+    }
+
+    /* Footer Visibility */
+    .vo-experts-footer {
+        position: relative !important;
+        z-index: 5;
+        margin-top: 20px !important;
+        text-align: center;
+    }
+}
+
+
+/* Restored Experts Grid Layout (Matches Therapy Page) */
+@media (min-width: 769px) {
+    .vo-experts-desktop-layout {
+        display: block;
+        /* Reset flex */
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 40px;
+    }
+
+
+    .vo-experts-accordion,
+    .vo-experts-left-col,
+    .vo-experts-mobile-layout {
+        /* Added mobile layout hiding */
+        display: none !important;
+    }
+}
+
+/* Experts Grid Styles (Copied from vo-therapy.css) */
+.experts-section {
+    padding: 60px 80px;
+}
+
+.experts-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.experts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.expert-card {
+    background: #f0f0f0;
+    border-radius: 20px;
+    position: relative;
+    height: 450px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.expert-card:hover {
+    transform: translateY(-5px);
+}
+
+.expert-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.expert-rating {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 12px;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.expert-rating .star {
+    color: #FFB800;
+    font-size: 14px;
+}
+
+.expert-rating .score {
+    font-weight: 700;
+    font-size: 18px;
+    color: #333;
+}
+
+.expert-rating .score-label {
+    font-size: 10px;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.expert-info-box {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    z-index: 3;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.expert-name {
+    font-family: var(--vo-font-body);
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    margin: 0;
+}
+
+.expert-title {
+    font-family: var(--vo-font-body);
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.expert-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    padding-top: 0;
+}
+
+.expert-card:hover .expert-details {
+    max-height: 500px;
+    opacity: 1;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.detail-credentials {
+    font-size: 12px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.detail-expertise {
+    font-size: 13px;
+    color: #333;
+}
+
+.detail-expertise strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.detail-expertise ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.detail-expertise li {
+    margin-bottom: 3px;
+}
+
+.detail-meta {
+    font-size: 11px;
+    color: #888;
+    text-align: center;
+    margin-top: 10px;
+    border-top: 1px solid #eee;
+    padding-top: 5px;
+}
+
+/* =========================================
+   Expert Pointers (Carousel from Therapy Page)
+   ========================================= */
+.expert-pointers-carousel-container {
+    width: 100%;
+    overflow: hidden;
+    margin: 30px 0;
+    position: relative;
+    padding: 10px 0;
+}
+
+.expert-pointers-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    /* JS animation sets exact width */
+    cursor: pointer;
+}
+
+.expert-pointer-card {
+    min-width: 280px;
+    background: #F8FAF9;
+    /* Soft light background */
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 20px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.expert-pointer-card:hover {
+    transform: translateY(-3px);
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-color: #CBD5E1;
+}
+
+.expert-pointer-title {
+    font-family: var(--vo-font-body);
+    font-weight: 700;
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.expert-pointer-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: #E0F2FE;
+    color: #0284C7;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.expert-pointer-desc {
+    font-family: var(--vo-font-body);
+    font-size: 13px;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* Animation Keyframes */
+@keyframes pointer-scroll {
+    to {
+        transform: translateX(calc(-1 * var(--scroll-distance)));
+    }
+}
+
+
+/* =========================================
+   Carousel & Bubble Arrows (Common)
+   ========================================= */
+.vo-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    /* Space for shadow/hover */
+}
+
+.vo-carousel-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 5px;
+    /* Inner padding */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.vo-carousel-track::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+.vo-bubble-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    /* Slightly larger for 'cuter' feel */
+    height: 48px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    /* Softer, floaty shadow */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    /* Subtle border definition */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: #555;
+    z-index: 10;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* Bouncy transition */
+}
+
+.vo-bubble-arrow:hover {
+    background: #F57F17;
+    color: white;
+    transform: translateY(-50%) scale(1.15);
+    /* More pop */
+    box-shadow: 0 12px 25px rgba(245, 127, 23, 0.3);
+    /* Colored shadow glow */
+}
+
+.vo-bubble-arrow.prev {
+    left: 10px;
+}
+
+.vo-bubble-arrow.next {
+    right: 10px;
+}
+
+/* Remove Border from Specialized Cards & Style for Carousel */
+.vo-spec-card {
+    border: none !important;
+    /* Remove black border requirement */
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    /* Softer shadow */
+    min-width: 280px;
+    /* Fixed width for carousel */
+    flex-shrink: 0;
+}
+
+/* Blog Cards in Carousel */
+.vo-blog-card {
+    min-width: 300px;
+    flex-shrink: 0;
+}
+
+/* Ensure images fit */
+.vo-spec-image,
+.vo-blog-image {
+    width: 100%;
+    height: 180px;
+    /* Consistent height */
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+
+
+/* =========================================
+   Experts Section Split Layout (Desktop)
+   ========================================= */
+@media (min-width: 769px) {
+    .vo-experts-desktop-layout {
+        display: block !important;
+        padding: 40px 0;
+    }
+
+    .vo-experts-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        /* Center vertically */
+        justify-content: space-between;
+        gap: 60px;
+        /* Space between text and grid */
+    }
+
+    .vo-experts-text-side {
+        flex: 1;
+        max-width: 450px;
+        /* Limit text width */
+        text-align: left;
+    }
+
+    .vo-experts-grid-side {
+        flex: 1.2;
+        /* Give grid slightly more space */
+    }
+
+    /* Override previous grid/header styles if needed */
+    .vo-experts-wrapper .experts-header {
+        margin-bottom: 25px;
+        text-align: left;
+    }
+
+    .vo-experts-wrapper .experts-title {
+        font-size: 48px;
+        /* Larger title */
+        line-height: 1.1;
+    }
+
+    .vo-experts-wrapper .experts-description {
+        margin-bottom: 35px;
+        font-size: 18px;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    /* Orange Pill Button */
+    .vo-btn-orange-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #F97316;
+        /* Orange 500 */
+        color: white;
+        padding: 12px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: transform 0.2s, background-color 0.2s;
+        border: none;
+    }
+
+    .vo-btn-orange-pill:hover {
+        background-color: #EA580C;
+        /* Orange 600 */
+        transform: translateY(-2px);
+    }
+}
+
+/* Ensure mobile layout elements are stacked properly */
+@media (max-width: 768px) {
+
+    /* Hide desktop layout wrapper */
+    .vo-experts-desktop-layout {
+        display: none !important;
+    }
+
+    /* Show mobile specific elements */
+    .vo-experts-mobile-layout {
+        display: block !important;
+        padding-bottom: 40px;
+        /* Space for desc/btn */
+    }
+
+    .vo-swipe-card.vo-text-card {
+        background: white !important;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 20px !important;
+        text-align: center;
+    }
+
+    .vo-text-card .expert-name {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .vo-text-card .expert-title {
+        font-size: 16px;
+        font-style: italic;
+        color: #777;
+        margin-bottom: 20px;
+    }
+
+    .vo-text-card .detail-expertise {
+        text-align: left;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .vo-text-card .detail-expertise strong {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #333;
+    }
+
+    .vo-text-card .detail-expertise ul {
+        padding-left: 20px;
+    }
+
+    .vo-text-card .detail-expertise li {
+        margin-bottom: 8px;
+        font-size: 15px;
+        color: #444;
+    }
+
+    .vo-text-card .vo-card-image {
+        display: none !important;
+    }
+
+    .vo-text-card .vo-card-info {
+        display: none !important;
+    }
+
+    .vo-text-card .vo-expert-details {
+        display: block !important;
+        max-height: none !important;
+        opacity: 1 !important;
+        width: 100%;
+    }
+}
+/* =========================================
+   EXPERTS SECTION - FINAL DESIGN (Ref Images)
+   ========================================= */
+
+/* Desktop Split Layout */
+@media (min-width: 769px) {
+    .vo-experts-desktop-layout {
+        display: block !important;
+        background: #fff;
+        padding: 80px 60px;
+    }
+
+    .vo-experts-wrapper {
+        display: flex !important;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 80px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .vo-experts-text-side {
+        flex: 0 0 35%;
+        max-width: 380px;
+        position: sticky;
+        top: 120px;
+    }
+
+    .experts-label {
+        font-family: var(--vo-font-body);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    .experts-title {
+        font-family: var(--vo-font-heading);
+        font-size: 48px;
+        font-weight: 700;
+        font-style: italic;
+        line-height: 1.15;
+        color: #1a1a1a;
+        margin-bottom: 25px;
+    }
+
+    .experts-description {
+        font-family: var(--vo-font-body);
+        font-size: 16px;
+        line-height: 1.7;
+        color: #555;
+        margin-bottom: 30px;
+    }
+
+    .vo-btn-orange-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #F57F17;
+        color: white;
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-family: var(--vo-font-body);
+        font-weight: 600;
+        font-size: 16px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .vo-btn-orange-pill:hover {
+        background: #E65100;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(245, 127, 23, 0.3);
+    }
+
+    .vo-experts-grid-side {
+        flex: 1;
+        max-width: 750px;
+    }
+
+    .experts-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 25px !important;
+    }
+
+    .expert-card {
+        background: #F5F5F5;
+        border-radius: 20px;
+        position: relative;
+        height: 380px;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .expert-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    .expert-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .expert-rating {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: white;
+        border-radius: 10px;
+        padding: 8px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 5;
+    }
+
+    .expert-rating .star { color: #FFB800; font-size: 12px; }
+    .expert-rating .score { font-weight: 700; font-size: 16px; color: #333; line-height: 1.1; }
+    .expert-rating .score-label { font-size: 9px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    .expert-info-box {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+        background: white;
+        border-radius: 14px;
+        padding: 18px 20px;
+        z-index: 4;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        max-height: 85px;
+        overflow: hidden;
+    }
+
+    .expert-name {
+        font-family: var(--vo-font-body);
+        font-size: 18px;
+        font-weight: 700;
+        color: #1a1a1a;
+        text-align: center;
+        margin: 0 0 4px 0;
+    }
+
+    .expert-title {
+        font-family: var(--vo-font-body);
+        font-size: 13px;
+        color: #777;
+        text-align: center;
+        font-style: italic;
+        margin: 0;
+    }
+
+    .expert-details {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+        padding-top: 0;
+        border-top: 1px solid transparent;
+    }
+
+    .expert-card:hover .expert-info-box {
+        max-height: 350px;
+        bottom: 20px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .expert-card:hover .expert-details {
+        max-height: 250px;
+        opacity: 1;
+        padding-top: 12px;
+        margin-top: 10px;
+        border-top: 1px solid #eee;
+    }
+
+    .detail-credentials {
+        font-family: var(--vo-font-body);
+        font-size: 13px;
+        color: #777;
+        text-align: center;
+        font-style: italic;
+        margin-bottom: 10px;
+    }
+
+    .detail-expertise {
+        font-family: var(--vo-font-body);
+        font-size: 13px;
+        color: #333;
+        text-align: left;
+    }
+
+    .detail-expertise strong { display: block; font-weight: 700; margin-bottom: 8px; font-size: 13px; }
+    .detail-expertise ul { padding-left: 18px; margin: 0; }
+    .detail-expertise li { margin-bottom: 4px; line-height: 1.4; }
+
+    .detail-meta {
+        font-size: 11px;
+        color: #777;
+        text-align: center;
+        margin-top: 10px;
+        padding-top: 8px;
+        border-top: 1px solid #eee;
+        font-style: italic;
+    }
+
+    .vo-experts-mobile-layout { display: none !important; }
+}
+
+@media (max-width: 768px) {
+    .vo-experts-desktop-layout { display: none !important; }
+
+    .vo-experts-mobile-layout {
+        display: block !important;
+        background: #fff;
+        padding: 60px 20px;
+    }
+
+    .vo-experts-header { text-align: left; margin-bottom: 30px; }
+
+    .vo-experts-label {
+        font-family: var(--vo-font-body);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #666;
+        margin-bottom: 10px;
+    }
+
+    .vo-experts-title {
+        font-family: var(--vo-font-heading);
+        font-size: 32px;
+        font-weight: 700;
+        font-style: italic;
+        line-height: 1.2;
+        color: #1a1a1a;
+        margin: 0;
+    }
+
+    .vo-swipe-container {
+        display: block !important;
+        position: relative;
+        height: 480px;
+        margin: 20px 0 30px;
+    }
+
+    .vo-swipe-card {
+        position: absolute;
+        width: 300px;
+        height: 420px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        background: #f5f5f5;
+        cursor: pointer;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .vo-swipe-card .vo-card-inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .vo-swipe-card .vo-card-image {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .vo-swipe-card .vo-card-rating {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: white;
+        border-radius: 10px;
+        padding: 6px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        z-index: 5;
+    }
+
+    .vo-swipe-card .vo-card-rating .star { color: #FFB800; font-size: 12px; }
+    .vo-swipe-card .vo-card-rating .score { font-weight: 700; font-size: 16px; color: #333; }
+    .vo-swipe-card .vo-card-rating .label { font-size: 9px; color: #888; text-transform: uppercase; }
+
+    .vo-swipe-card .vo-card-info {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+        background: white;
+        border-radius: 14px;
+        padding: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        z-index: 4;
+    }
+
+    .vo-swipe-card .vo-card-name {
+        font-family: var(--vo-font-body);
+        font-size: 18px;
+        font-weight: 700;
+        color: #1a1a1a;
+        text-align: center;
+        margin: 0 0 3px 0;
+    }
+
+    .vo-swipe-card .vo-card-title {
+        font-family: var(--vo-font-body);
+        font-size: 13px;
+        color: #777;
+        text-align: center;
+        font-style: italic;
+        margin: 0;
+    }
+
+    .vo-swipe-card .vo-expert-details { display: none !important; }
+
+    .vo-swipe-card.vo-text-card {
+        background: white !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .vo-swipe-card.vo-text-card .vo-card-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 25px;
+    }
+
+    .vo-swipe-card.vo-text-card .vo-card-image { display: none !important; }
+
+    .vo-swipe-card.vo-text-card .vo-card-info {
+        position: static !important;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .vo-swipe-card.vo-text-card .vo-card-name { font-size: 26px; margin-bottom: 5px; }
+    .vo-swipe-card.vo-text-card .vo-card-title { font-size: 15px; color: #666; }
+
+    .vo-swipe-card.vo-text-card .vo-expert-details {
+        display: block !important;
+        width: 100%;
+        text-align: left;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
+        margin-top: 10px;
+    }
+
+    .vo-swipe-card.vo-text-card .vo-detail-credentials {
+        font-size: 13px;
+        color: #777;
+        text-align: center;
+        font-style: italic;
+        margin-bottom: 15px;
+    }
+
+    .vo-swipe-card.vo-text-card .vo-detail-expertise { font-size: 14px; color: #333; }
+    .vo-swipe-card.vo-text-card .vo-detail-expertise strong { display: block; font-weight: 700; margin-bottom: 10px; }
+    .vo-swipe-card.vo-text-card .vo-detail-expertise ul { padding-left: 20px; margin: 0; }
+    .vo-swipe-card.vo-text-card .vo-detail-expertise li { margin-bottom: 6px; line-height: 1.5; }
+
+    .vo-experts-description, .experts-description {
+        font-family: var(--vo-font-body);
+        font-size: 14px;
+        line-height: 1.6;
+        color: #555;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .vo-experts-footer { text-align: left; }
+
+    .vo-btn-learn-more, .btn-learn-more {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--vo-font-body);
+        font-size: 14px;
+        font-weight: 600;
+        color: #1a1a1a;
+        text-decoration: none;
+        border-bottom: 1px solid #1a1a1a;
+        padding-bottom: 2px;
+        transition: color 0.2s;
+    }
+
+    .vo-btn-learn-more:hover, .btn-learn-more:hover {
+        color: #F57F17;
+        border-color: #F57F17;
+    }
+}
+
+/* =========================================
+   STATS SECTION - MOBILE 1x4 GRID (Override)
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-stats-section {
+        padding: 40px 15px !important;
+        overflow: visible !important;
+    }
+
+    .vo-stats-title {
+        font-size: 24px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .vo-stats-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 10px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        animation: none !important;
+        transform: none !important;
+    }
+
+    /* Hide duplicate stats (no carousel) */
+    .vo-stats-duplicates {
+        display: none !important;
+    }
+
+    .vo-stat-card {
+        padding: 15px 8px !important;
+        border-radius: 16px !important;
+        min-height: auto !important;
+        width: auto !important;
+        flex-shrink: 1 !important;
+        height: auto !important;
+    }
+
+    .vo-stat-icon {
+        width: 50px !important;
+        height: 50px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .vo-stat-icon img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+    }
+
+    .vo-stat-number {
+        font-size: 18px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .vo-stat-label {
+        font-size: 10px !important;
+        font-weight: 700 !important;
+        margin-bottom: 5px !important;
+        line-height: 1.2 !important;
+    }
+
+    .vo-stat-desc {
+        font-size: 8px !important;
+        line-height: 1.3 !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+}
+
+/* =========================================
+   STATS SECTION - REFINED DESIGN (Final)
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-stats-section {
+        padding: 50px 20px !important;
+        background-color: #F5F0EB !important; /* Cream background */
+    }
+
+    .vo-stats-title {
+        font-size: 28px !important;
+        margin-bottom: 40px !important;
+        color: #1a1a1a !important;
+    }
+
+    .vo-stats-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 12px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        animation: none !important;
+        transform: none !important;
+    }
+
+    .vo-stats-duplicates {
+        display: none !important;
+    }
+
+    .vo-stat-card {
+        background: #212121 !important;
+        padding: 25px 12px 20px !important;
+        border-radius: 20px !important;
+        min-height: auto !important;
+        width: auto !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .vo-stat-icon {
+        width: 70px !important;
+        height: 70px !important;
+        margin-bottom: 20px !important;
+        background: white !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-family: var(--vo-font-body) !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        color: #212121 !important;
+    }
+
+    .vo-stat-icon img {
+        display: none !important;
+    }
+
+    .vo-stat-number {
+        font-size: 28px !important;
+        font-weight: 700 !important;
+        color: white !important;
+        margin-bottom: 8px !important;
+        line-height: 1.1 !important;
+    }
+
+    .vo-stat-label {
+        font-size: 12px !important;
+        font-weight: 700 !important;
+        color: white !important;
+        margin-bottom: 10px !important;
+        line-height: 1.3 !important;
+    }
+
+    .vo-stat-desc {
+        font-size: 10px !important;
+        line-height: 1.4 !important;
+        color: rgba(255,255,255,0.7) !important;
+        max-width: 100% !important;
+    }
+}
+
+/* =========================================
+   STATS CARDS - TEXT LABELS IN CIRCLES (Final Fix)
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-stat-card {
+        background: #212121 !important;
+        border-radius: 20px !important;
+        padding: 30px 15px 25px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        min-height: auto !important;
+        height: auto !important;
+    }
+
+    .vo-stat-icon {
+        width: 80px !important;
+        height: 80px !important;
+        margin-bottom: 20px !important;
+        background: white !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+
+    /* Hide the placeholder image */
+    .vo-stat-icon img {
+        opacity: 0 !important;
+        position: absolute !important;
+    }
+
+    /* Show label text inside circle using data from sibling */
+    .vo-stat-card:nth-child(1) .vo-stat-icon::after { content: "Users"; }
+    .vo-stat-card:nth-child(2) .vo-stat-icon::after { content: "Hours"; }
+    .vo-stat-card:nth-child(3) .vo-stat-icon::after { content: "Countries"; }
+    .vo-stat-card:nth-child(4) .vo-stat-icon::after { content: "Stars"; }
+
+    .vo-stat-icon::after {
+        font-family: var(--vo-font-body) !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        color: #212121 !important;
+        text-align: center !important;
+    }
+
+    .vo-stat-number {
+        font-size: 24px !important;
+        font-weight: 700 !important;
+        color: white !important;
+        margin-bottom: 8px !important;
+        line-height: 1.2 !important;
+    }
+
+    .vo-stat-label {
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        color: white !important;
+        margin-bottom: 8px !important;
+        line-height: 1.3 !important;
+    }
+
+    .vo-stat-desc {
+        font-size: 9px !important;
+        line-height: 1.4 !important;
+        color: rgba(255,255,255,0.7) !important;
+    }
+}
+
+/* =========================================
+   STATS CARDS - FINAL OVERRIDE (Match Image 2)
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-stats-section {
+        padding: 50px 15px !important;
+        background-color: #F5F0EB !important;
+        overflow: visible !important;
+    }
+
+    .vo-stats-title {
+        font-size: 26px !important;
+        margin-bottom: 35px !important;
+        text-align: left !important;
+    }
+
+    .vo-stats-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 15px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        animation: none !important;
+        transform: none !important;
+        will-change: unset !important;
+    }
+
+    .vo-stats-duplicates {
+        display: none !important;
+    }
+
+    .vo-stat-card {
+        background: #212121 !important;
+        border-radius: 18px !important;
+        padding: 25px 10px 20px !important;
+        min-height: unset !important;
+        height: auto !important;
+        width: auto !important;
+        flex-shrink: unset !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        box-shadow: none !important;
+    }
+
+    .vo-stat-icon {
+        width: 65px !important;
+        height: 65px !important;
+        margin-bottom: 15px !important;
+        background: white !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: relative !important;
+    }
+
+    .vo-stat-icon img {
+        opacity: 0 !important;
+        position: absolute !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+
+    .vo-stat-card:nth-child(1) .vo-stat-icon::after { content: "Users" !important; }
+    .vo-stat-card:nth-child(2) .vo-stat-icon::after { content: "Hours" !important; }
+    .vo-stat-card:nth-child(3) .vo-stat-icon::after { content: "Countries" !important; }
+    .vo-stat-card:nth-child(4) .vo-stat-icon::after { content: "Stars" !important; }
+
+    .vo-stat-icon::after {
+        font-family: var(--vo-font-body), sans-serif !important;
+        font-size: 11px !important;
+        font-weight: 600 !important;
+        color: #212121 !important;
+        text-align: center !important;
+        display: block !important;
+    }
+
+    .vo-stat-number {
+        font-size: 22px !important;
+        font-weight: 700 !important;
+        color: white !important;
+        margin-bottom: 6px !important;
+        line-height: 1.2 !important;
+    }
+
+    .vo-stat-label {
+        font-size: 10px !important;
+        font-weight: 700 !important;
+        color: white !important;
+        margin-bottom: 8px !important;
+        line-height: 1.3 !important;
+    }
+
+    .vo-stat-desc {
+        font-size: 8px !important;
+        line-height: 1.3 !important;
+        color: rgba(255,255,255,0.65) !important;
+        max-width: 100% !important;
+    }
+}
+@media (max-width: 768px) {
+    .vo-stat-icon {
+        width: 60px !important;
+        height: 60px !important;
+        margin-bottom: 15px !important;
+        background: white !important;
+        border-radius: 50%
+50%
+ !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: relative !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .vo-stat-number {
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        color: white !important;
+        margin-bottom: 6px !important;
+        line-height: 1.2 !important;
+    }
+/* =========================================
+   STATS CARDS - REDUCED 30% (Per User Request)
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-stats-section {
+        padding: 35px 12px !important;
+    }
+
+    .vo-stats-title {
+        font-size: 18px !important;
+        margin-bottom: 25px !important;
+    }
+
+    .vo-stats-grid {
+        gap: 10px !important;
+    }
+
+    .vo-stat-card {
+        padding: 18px 8px 14px !important;
+        border-radius: 14px !important;
+    }
+
+    .vo-stat-icon {
+        width: 45px !important;
+        height: 45px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .vo-stat-icon::after {
+        font-size: 8px !important;
+    }
+
+    .vo-stat-number {
+        font-size: 15px !important;
+        margin-bottom: 4px !important;
+    }
+
+    .vo-stat-label {
+        font-size: 7px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .vo-stat-desc {
+        font-size: 6px !important;
+    }
+}
+
+/* =========================================
+   STATS CARDS - MAKE MORE SQUARE
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-stat-card {
+        aspect-ratio: 1 / 1.1 !important;
+        padding: 12px 6px 10px !important;
+        justify-content: center !important;
+    }
+
+    .vo-stat-icon {
+        margin-bottom: 8px !important;
+    }
+
+    .vo-stat-number {
+        margin-bottom: 3px !important;
+    }
+
+    .vo-stat-label {
+        margin-bottom: 4px !important;
+    }
+
+    .vo-stat-desc {
+        display: none !important;
+    }
+}
+
+/* =========================================
+   STATS CARDS - FIX BLEEDING/OVERFLOW
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-stats-section {
+        padding: 40px 20px !important;
+        overflow: visible !important;
+    }
+
+    .vo-stats-grid {
+        width: calc(100% - 0px) !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
+    }
+
+    .vo-stat-card {
+        overflow: hidden !important;
+        min-width: 0 !important;
+    }
+}
+
+/* =========================================
+   STATS CARDS - MATCH IMAGE 2 EXACTLY
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-stats-section {
+        padding: 50px 20px !important;
+        background-color: #F5F0EB !important;
+    }
+
+    .vo-stats-title {
+        font-size: 28px !important;
+        font-style: italic !important;
+        margin-bottom: 40px !important;
+        text-align: left !important;
+    }
+
+    .vo-stats-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 12px !important;
+        width: 100% !important;
+        animation: none !important;
+        transform: none !important;
+    }
+
+    .vo-stats-duplicates {
+        display: none !important;
+    }
+
+    .vo-stat-card {
+        background: #212121 !important;
+        border-radius: 20px !important;
+        padding: 20px 10px 18px !important;
+        min-height: auto !important;
+        height: auto !important;
+        width: auto !important;
+        aspect-ratio: unset !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        min-width: 0 !important;
+    }
+
+    .vo-stat-icon {
+        width: 55px !important;
+        height: 55px !important;
+        margin-bottom: 12px !important;
+        background: white !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .vo-stat-icon img {
+        display: none !important;
+    }
+
+    .vo-stat-card:nth-child(1) .vo-stat-icon::after { content: "Users" !important; }
+    .vo-stat-card:nth-child(2) .vo-stat-icon::after { content: "Hours" !important; }
+    .vo-stat-card:nth-child(3) .vo-stat-icon::after { content: "Countries" !important; }
+    .vo-stat-card:nth-child(4) .vo-stat-icon::after { content: "Stars" !important; }
+
+    .vo-stat-icon::after {
+        font-family: var(--vo-font-body) !important;
+        font-size: 10px !important;
+        font-weight: 600 !important;
+        color: #212121 !important;
+    }
+
+    .vo-stat-number {
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        color: white !important;
+        margin-bottom: 5px !important;
+        line-height: 1.2 !important;
+    }
+
+    .vo-stat-label {
+        font-size: 9px !important;
+        font-weight: 700 !important;
+        color: white !important;
+        margin-bottom: 6px !important;
+        line-height: 1.3 !important;
+        display: block !important;
+    }
+
+    .vo-stat-desc {
+        font-size: 7px !important;
+        line-height: 1.3 !important;
+        color: rgba(255,255,255,0.6) !important;
+        display: block !important;
+    }
+}
+
+/* =========================================
+   STATS CARDS - SMALLER ICONS, NO DESC
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-stat-icon {
+        width: 40px !important;
+        height: 40px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .vo-stat-icon::after {
+        font-size: 8px !important;
+    }
+
+    .vo-stat-number {
+        font-size: 16px !important;
+        margin-bottom: 4px !important;
+    }
+
+    .vo-stat-label {
+        font-size: 8px !important;
+        margin-bottom: 0 !important;
+    }
+
+    .vo-stat-desc {
+        display: none !important;
+    }
+
+    .vo-stat-card {
+        padding: 15px 8px 12px !important;
+    }
+}
+
+/* =========================================
+   STATS CARDS - CENTER ALL CONTENT
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-stat-card {
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+
+    .vo-stat-icon {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .vo-stat-number,
+    .vo-stat-label,
+    .vo-stat-desc {
+        text-align: center !important;
+        width: 100% !important;
+    }
+}
+
+/* =========================================
+   STATS CARDS - STAR EMOJI INSTEAD OF TEXT
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-stat-card:nth-child(4) .vo-stat-icon::after {
+        content: "⭐" !important;
+        font-size: 16px !important;
+    }
+}
+
+/* =========================================
+   STATS CARDS - REPLACE "stars" WITH EMOJI IN NUMBER
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-stat-card:nth-child(4) .vo-stat-number {
+        font-size: 0 !important;
+    }
+    .vo-stat-card:nth-child(4) .vo-stat-number::after {
+        content: "Avg. 9.5 ⭐" !important;
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        color: white !important;
+    }
+}
+
+/* =========================================
+   BANNER SECTIONS - MOBILE LAYOUT (All Pages)
+   ========================================= */
+@media (max-width: 768px) {
+    /* Common Banner Mobile Styles */
+    .vo-therapist-banner,
+    .venting-banner-figma {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+        padding: 50px 20px !important;
+        min-height: auto !important;
+    }
+
+    .vo-figma-container,
+    .figma-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 30px !important;
+        max-width: 100% !important;
+    }
+
+    /* Image/Graphics First on Mobile */
+    .vo-graphics-wrapper,
+    .graphics-wrapper {
+        order: 1 !important;
+        width: 100% !important;
+        max-width: 280px !important;
+        margin: 0 auto !important;
+    }
+
+    .vo-image-frame,
+    .image-frame {
+        width: 100% !important;
+        aspect-ratio: 1 / 1 !important;
+        border-radius: 50% !important;
+        overflow: hidden !important;
+        border: 4px solid #F57F17 !important;
+    }
+
+    .vo-banner-slideshow-inner,
+    .banner-slideshow-inner {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .vo-blob-slide,
+    .blob-slide {
+        width: 100% !important;
+        height: 100% !important;
+        background-size: cover !important;
+        background-position: center !important;
+    }
+
+    /* Content Below Image */
+    .vo-content-wrapper,
+    .content-wrapper {
+        order: 2 !important;
+        width: 100% !important;
+        text-align: left !important;
+        padding: 0 !important;
+    }
+
+    .vo-figma-title,
+    .figma-title {
+        font-family: var(--vo-font-heading) !important;
+        font-size: 28px !important;
+        font-weight: 700 !important;
+        font-style: italic !important;
+        color: white !important;
+        line-height: 1.2 !important;
+        margin-bottom: 20px !important;
+    }
+
+    .vo-figma-description,
+    .figma-description {
+        color: rgba(255,255,255,0.85) !important;
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 20px !important;
+    }
+
+    .vo-figma-description p,
+    .figma-description p {
+        margin-bottom: 15px !important;
+    }
+
+    .vo-figma-description ul,
+    .figma-description ul {
+        list-style: disc !important;
+        padding-left: 20px !important;
+        margin: 15px 0 !important;
+    }
+
+    .vo-figma-description li,
+    .figma-description li {
+        margin-bottom: 8px !important;
+        color: rgba(255,255,255,0.85) !important;
+    }
+
+    .vo-figma-footer,
+    .figma-footer {
+        font-family: var(--vo-font-heading) !important;
+        font-size: 16px !important;
+        font-style: italic !important;
+        color: #F57F17 !important;
+        margin-top: 20px !important;
+    }
+
+    .btn-venting-banner {
+        display: inline-block !important;
+        background: #F57F17 !important;
+        color: white !important;
+        padding: 12px 30px !important;
+        border-radius: 50px !important;
+        font-weight: 600 !important;
+        text-decoration: none !important;
+        margin-top: 15px !important;
+    }
+}
+
+/* =========================================
+   MOBILE ARROW STYLES (Blog, Specialize, Comparison)
+   ========================================= */
+@media (max-width: 768px) {
+    
+    /* --- 1. Light Outlined Circle with Dark Chevron (Default State) --- */
+    .vo-bubble-arrow {
+        border-radius: 50% !important;
+        background: transparent !important;
+        border: 2px solid #D4D4D4 !important;
+        box-shadow: none !important;
+        font-size: 0 !important; /* Hide text */
+        color: transparent !important;
+    }
+    
+    .vo-bubble-arrow::before {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-right: 2.5px solid #212121;
+        border-bottom: 2.5px solid #212121;
+        transform: rotate(-45deg);
+        margin-left: -3px;
+    }
+    
+    .vo-bubble-arrow.prev::before {
+        transform: rotate(135deg);
+        margin-left: 3px;
+        margin-right: -3px;
+    }
+    
+    /* Hover/Active: Solid dark circle with white chevron */
+    .vo-bubble-arrow:hover,
+    .vo-bubble-arrow:active {
+        background: #212121 !important;
+        border-color: #212121 !important;
+    }
+    
+    .vo-bubble-arrow:hover::before,
+    .vo-bubble-arrow:active::before {
+        border-color: #FFFFFF;
+    }
+    
+    /* --- 2. Comparison Section: Solid Dark Triangle Arrows --- */
+    .vo-comp-arrows .vo-arrow-btn {
+        width: 0 !important;
+        height: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        font-size: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Next Arrow (Right Triangle) */
+    .vo-comp-arrows .vo-arrow-btn.next {
+        border-top: 12px solid transparent !important;
+        border-bottom: 12px solid transparent !important;
+        border-left: 16px solid #212121 !important;
+    }
+    
+    /* Prev Arrow (Left Triangle) */
+    .vo-comp-arrows .vo-arrow-btn.prev {
+        border-top: 12px solid transparent !important;
+        border-bottom: 12px solid transparent !important;
+        border-right: 16px solid #212121 !important;
+    }
+}
+
+/* =========================================
+   BANNER SECTIONS - MOBILE FIX (Match Image 2)
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-therapist-banner,
+    .venting-banner-figma {
+        background: #1a1a1a !important;
+        padding: 40px 25px 50px !important;
+        min-height: auto !important;
+    }
+
+    .vo-figma-container,
+    .figma-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0 !important;
+        max-width: 100% !important;
+    }
+
+    /* Title First */
+    .vo-content-wrapper,
+    .content-wrapper {
+        order: 1 !important;
+        width: 100% !important;
+        text-align: left !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .vo-figma-title,
+    .figma-title {
+        order: 1 !important;
+        font-family: var(--vo-font-heading) !important;
+        font-size: 26px !important;
+        font-weight: 700 !important;
+        font-style: italic !important;
+        color: white !important;
+        line-height: 1.2 !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* Image in Middle */
+    .vo-graphics-wrapper,
+    .graphics-wrapper {
+        order: 2 !important;
+        width: 250px !important;
+        height: 250px !important;
+        margin: 20px auto 30px !important;
+        position: relative !important;
+    }
+
+    .vo-image-frame,
+    .image-frame {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 50% !important;
+        overflow: visible !important;
+        border: none !important;
+        position: relative !important;
+    }
+
+    .vo-image-frame::before,
+    .image-frame::before {
+        content: '' !important;
+        position: absolute !important;
+        top: -10px !important;
+        right: -30px !important;
+        width: 100px !important;
+        height: 200px !important;
+        background: #F57F17 !important;
+        border-radius: 0 100px 100px 0 !important;
+        z-index: 0 !important;
+    }
+
+    .vo-banner-slideshow-inner,
+    .banner-slideshow-inner {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 50% !important;
+        overflow: hidden !important;
+        position: relative !important;
+        z-index: 1 !important;
+    }
+
+    .vo-blob-slide,
+    .blob-slide {
+        width: 100% !important;
+        height: 100% !important;
+        background-size: cover !important;
+        background-position: center !important;
+        border-radius: 50% !important;
+    }
+
+    /* Description Below Image */
+    .vo-figma-description,
+    .figma-description {
+        order: 3 !important;
+        color: rgba(255,255,255,0.9) !important;
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 15px !important;
+        text-align: left !important;
+    }
+
+    .vo-figma-description p,
+    .figma-description p {
+        margin-bottom: 12px !important;
+    }
+
+    .vo-figma-description ul,
+    .figma-description ul {
+        list-style: disc !important;
+        padding-left: 18px !important;
+        margin: 12px 0 !important;
+    }
+
+    .vo-figma-description li,
+    .figma-description li {
+        margin-bottom: 6px !important;
+        font-size: 12px !important;
+    }
+
+    /* Footer */
+    .vo-figma-footer,
+    .figma-footer {
+        order: 4 !important;
+        font-family: var(--vo-font-heading) !important;
+        font-size: 15px !important;
+        font-style: italic !important;
+        color: #F57F17 !important;
+        margin-top: 15px !important;
+    }
+}
+
+/* =========================================
+   BANNER - IMAGE BETWEEN TITLE AND CONTENT
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-figma-container,
+    .figma-container {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* Title gets order 1 */
+    .vo-content-wrapper .vo-figma-title,
+    .content-wrapper .figma-title {
+        order: 1 !important;
+    }
+
+    /* Graphics wrapper gets order 2 to appear after title */
+    .vo-graphics-wrapper,
+    .graphics-wrapper {
+        order: 2 !important;
+        margin: 25px auto 30px !important;
+    }
+
+    /* Description/content area gets order 3 */
+    .vo-figma-description,
+    .figma-description {
+        order: 3 !important;
+    }
+
+    /* Footer gets order 4 */
+    .vo-figma-footer,
+    .figma-footer {
+        order: 4 !important;
+    }
+
+    /* Content wrapper must be display: contents to allow children ordering */
+    .vo-content-wrapper,
+    .content-wrapper {
+        display: contents !important;
+    }
+}
+
+/* =========================================
+   BANNER - REMOVE ORANGE GRAPHICS
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-image-frame::before,
+    .image-frame::before {
+        display: none !important;
+        content: none !important;
+    }
+
+    .vo-image-frame::after,
+    .image-frame::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    .vo-graphics-wrapper,
+    .graphics-wrapper {
+        width: 220px !important;
+        height: 220px !important;
+        background: none !important;
+    }
+
+    .vo-image-frame,
+    .image-frame {
+        border: none !important;
+        background: none !important;
+        box-shadow: none !important;
+    }
+
+    .vo-banner-slideshow-inner,
+    .banner-slideshow-inner {
+        border-radius: 50% !important;
+        overflow: hidden !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+    }
+}
+
+/* =========================================
+   BANNER - REMOVE ALL ORANGE, INCREASE GAP
+   ========================================= */
+@media (max-width: 768px) {
+    /* Remove ALL orange decorations */
+    .vo-therapist-banner *::before,
+    .vo-therapist-banner *::after,
+    .venting-banner-figma *::before,
+    .venting-banner-figma *::after {
+        display: none !important;
+        content: none !important;
+        background: none !important;
+        border: none !important;
+    }
+
+    .vo-figma-container,
+    .figma-container {
+        gap: 35px !important;
+    }
+
+    .vo-graphics-wrapper,
+    .graphics-wrapper {
+        margin: 30px auto 35px !important;
+        background: transparent !important;
+    }
+
+    .vo-image-frame,
+    .image-frame {
+        background: transparent !important;
+        border: none !important;
+    }
+
+    /* Just the image, circular */
+    .vo-banner-slideshow-inner,
+    .banner-slideshow-inner {
+        border-radius: 50% !important;
+        overflow: hidden !important;
+        background: transparent !important;
+    }
+
+    .vo-blob-slide.active,
+    .blob-slide.active {
+        border-radius: 50% !important;
+    }
+}
+
+/* =========================================
+   BANNER - REMOVE ALL GRAPHICS (ORANGE & BLACK)
+   ========================================= */
+@media (max-width: 768px) {
+    /* Remove absolutely everything decorative */
+    .vo-graphics-wrapper svg,
+    .graphics-wrapper svg,
+    .vo-graphics-wrapper canvas,
+    .graphics-wrapper canvas,
+    .vo-graphics-wrapper .blob,
+    .graphics-wrapper .blob,
+    .vo-graphics-wrapper > *:not(.vo-image-frame):not(.image-frame),
+    .graphics-wrapper > *:not(.vo-image-frame):not(.image-frame) {
+        display: none !important;
+    }
+
+    .vo-image-frame > *:not(.vo-banner-slideshow-inner):not(.banner-slideshow-inner),
+    .image-frame > *:not(.vo-banner-slideshow-inner):not(.banner-slideshow-inner) {
+        display: none !important;
+    }
+
+    /* Clean image only */
+    .vo-graphics-wrapper,
+    .graphics-wrapper {
+        width: 200px !important;
+        height: 200px !important;
+        margin: 30px auto 40px !important;
+        background: none !important;
+        overflow: visible !important;
+    }
+
+    .vo-image-frame,
+    .image-frame {
+        width: 100% !important;
+        height: 100% !important;
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        overflow: hidden !important;
+        border-radius: 50% !important;
+    }
+
+    .vo-banner-slideshow-inner,
+    .banner-slideshow-inner {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 50% !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2) !important;
+    }
+}
+
+/* =========================================
+   BANNER - REDUCE TITLE-IMAGE GAP
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-figma-title,
+    .figma-title {
+        margin-bottom: 10px !important;
+    }
+
+    .vo-graphics-wrapper,
+    .graphics-wrapper {
+        margin: 15px auto 25px !important;
+    }
+
+    .vo-figma-container,
+    .figma-container {
+        gap: 15px !important;
+    }
+}
+
+/* =========================================
+   BANNER - ADJUST IMAGE GAPS (less top, more bottom)
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-figma-title,
+    .figma-title {
+        margin-bottom: 5px !important;
+    }
+
+    .vo-graphics-wrapper,
+    .graphics-wrapper {
+        margin: 10px auto 35px !important;
+    }
+}
+
+/* =========================================
+   BANNER - MINIMAL TOP, 55px BOTTOM
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-graphics-wrapper,
+    .graphics-wrapper {
+        margin: 0 auto 55px !important;
+    }
+
+    .vo-figma-title,
+    .figma-title {
+        margin-bottom: 0 !important;
+    }
+}
+
+/* =========================================
+   COMPARISON ARROWS - FIX POINTER EVENTS
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-comp-arrows {
+        display: flex !important;
+        pointer-events: auto !important;
+    }
+
+    .vo-comp-arrows .vo-arrow-btn {
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        z-index: 10 !important;
+    }
+}
+
+/* =========================================
+   BANNER - INCREASE BOTTOM GAP BY 60px
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-graphics-wrapper,
+    .graphics-wrapper {
+        margin: 0 auto 115px !important;
+    }
+}
+
+/* =========================================
+   BANNER - REDUCE TOP GAP BY 30px
+   ========================================= */
+@media (max-width: 768px) {
+    .vo-graphics-wrapper,
+    .graphics-wrapper {
+        margin: -30px auto 115px !important;
+    }
+}
+
+/* =========================================
+   BANNER - BUTTONS AT BOTTOM
+   ========================================= */
+@media (max-width: 768px) {
+    .btn-venting-banner,
+    .vo-therapist-banner .btn,
+    .venting-banner-figma .btn,
+    .content-wrapper .btn,
+    .vo-content-wrapper .btn,
+    a[class*="btn-venting"],
+    a[class*="btn-coaching"],
+    .figma-description + a,
+    .vo-figma-description + a {
+        order: 5 !important;
+        margin-top: 20px !important;
+    }
+}
+
+/* =========================================
+   EXPERTS SECTION - COMPREHENSIVE STYLES
+   ========================================= */
+.vo-experts-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.vo-experts-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.vo-experts-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.vo-experts-label {
+    color: #666;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.vo-experts-title {
+    font-size: 36px;
+    color: #333;
+    margin-top: 10px;
+}
+
+.vo-swipe-container {
+    display: none;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .vo-swipe-container {
+        display: flex;
+    }
+}
+
+.vo-swipe-card {
+    flex: 0 0 auto;
+    width: 280px;
+    margin-right: 15px;
+    scroll-snap-align: start;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.vo-card-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.vo-card-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.vo-card-rating {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.vo-card-rating .star {
+    color: gold;
+    margin-right: 5px;
+}
+
+.vo-card-rating .score {
+    font-weight: bold;
+    margin-right: 3px;
+}
+
+.vo-card-rating .label {
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.vo-card-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.vo-card-name {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.vo-card-title {
+    color: #666;
+    font-size: 16px;
+}
+
+.vo-experts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .vo-experts-grid {
+        display: none;
+    }
+}
+
+.vo-expert-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.vo-expert-photo {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.vo-expert-rating {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #eee;
+    color: #333;
+    font-size: 14px;
+}
+
+.vo-expert-rating .star {
+    color: gold;
+    margin-right: 5px;
+}
+
+.vo-expert-rating .score {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.vo-expert-rating .score-label {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.vo-expert-info-box {
+    padding: 15px;
+    flex-grow: 1;
+}
+
+.vo-expert-name {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.vo-expert-title-text {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.vo-expert-details {
+    margin-top: 15px;
+}
+
+.vo-detail-credentials {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.vo-detail-expertise ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.vo-detail-expertise li {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 3px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.vo-detail-expertise li::before {
+    content: '•';
+    color: #007bff;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.vo-detail-meta {
+    font-size: 14px;
+    color: #555;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.vo-experts-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.vo-experts-description {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.vo-btn-learn-more {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.vo-btn-learn-more:hover {
+    background-color: #0056b3;
+}
+
+.vo-btn-learn-more .arrow {
+    margin-left: 5px;
+}
+
+/* =========================================
+   EXPERTS - ORANGE LEARN MORE BUTTON
+   ========================================= */
+.vo-btn-learn-more {
+    background-color: #F57F17 !important;
+    color: #fff !important;
+    padding: 12px 25px !important;
+    border-radius: 50px !important;
+    font-weight: 600 !important;
+}
+
+.vo-btn-learn-more:hover {
+    background-color: #E65100 !important;
+}
+
+/* =========================================
+   EXPERTS - HOVER ACCORDION EFFECT (Desktop)
+   ========================================= */
+@media (min-width: 769px) {
+    .vo-expert-card {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .vo-expert-card .vo-expert-details {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .vo-expert-card:hover .vo-expert-details {
+        max-height: 500px;
+        opacity: 1;
+    }
+
+    .vo-expert-card:hover .vo-expert-info-box {
+        background: #f9f9f9;
+    }
+
+    .vo-expert-card:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        transform: translateY(-5px);
+    }
+}
