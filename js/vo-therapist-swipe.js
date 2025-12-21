@@ -48,7 +48,7 @@ class SwipeableStack {
     updateStack() {
         this.cards.forEach((card, index) => {
             // Reset styles first for everyone to ensure clean state
-            card.style.transition = 'transform 0.4s ease, opacity 0.4s ease';
+            card.style.transition = 'transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s ease';
             card.style.display = 'block'; // Always block in infinite loop
 
             // Remove listeners from all cards first
@@ -62,7 +62,7 @@ class SwipeableStack {
                 card.style.opacity = '1';
                 card.style.opacity = '1';
                 card.style.backgroundColor = 'white';
-                card.classList.remove('vo-text-card'); // Ensure reset
+                // card.classList.remove('vo-text-card'); // DISABLED: We now use permanent text cards, do not strip class
 
                 // Activate interaction
                 this.addListeners(card);
@@ -92,7 +92,8 @@ class SwipeableStack {
         card.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: true });
         card.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
         card.addEventListener('touchend', this.handleTouchEnd.bind(this), { passive: true });
-        card.addEventListener('click', this.handleClick.bind(this));
+        // Click to flip disabled as we are using separate text cards now
+        // card.addEventListener('click', this.handleClick.bind(this));
     }
 
     removeListeners(card) {
@@ -105,10 +106,8 @@ class SwipeableStack {
     handleTouchStart(e) {
         if (this.isAnimating) return;
 
-        // Prevent swipe if interacting with scrollable details
-        if (e.target.closest('.vo-expert-details')) {
-            return;
-        }
+        // ALLOW swipe even on details (since "Details Card" is fully swipable now)
+        // Previous check for .vo-expert-details blocked interaction on the new card type
 
         this.startX = e.touches[0].clientX;
         this.startY = e.touches[0].clientY;
@@ -124,14 +123,20 @@ class SwipeableStack {
         const diffX = this.currentX - this.startX;
         const diffY = this.currentY - this.startY;
 
-        if (diffY > 0) return; // Allow scroll down
+        // if (diffY > 0) return; // Allow scroll down? No, standard logic for now
 
-        // Capture swipe up
-        if (Math.abs(diffY) > Math.abs(diffX) && diffY < 0) {
-            if (e.cancelable) e.preventDefault();
-            const rotate = diffX * 0.1;
-            this.activeCard.style.transform = `translate(${diffX}px, ${diffY}px) rotate(${rotate}deg)`;
-        }
+        // Capture swipe up (or mainly vertical)
+        // if (Math.abs(diffY) > Math.abs(diffX) && diffY < 0) { // Enforce mostly vertical?
+        //     if (e.cancelable) e.preventDefault();
+        //     const rotate = diffX * 0.1;
+        //     this.activeCard.style.transform = `translate(${diffX}px, ${diffY}px) rotate(${rotate}deg)`;
+        // }
+
+        // RELAXED SWIPE: Allow movement in all directions to track finger, but dismiss only on UP
+        if (e.cancelable && diffY < 0) e.preventDefault(); // Prevent page scroll when swiping up
+
+        const rotate = diffX * 0.1;
+        this.activeCard.style.transform = `translate(${diffX}px, ${diffY}px) rotate(${rotate}deg)`;
     }
 
     handleTouchEnd(e) {
@@ -139,7 +144,7 @@ class SwipeableStack {
 
         const diffX = this.currentX - this.startX;
         const diffY = this.currentY - this.startY;
-        const threshold = -100;
+        const threshold = -80; // Slightly easier threshold
 
         this.activeCard.style.transition = 'transform 0.5s ease-out, opacity 0.4s ease-out';
 
@@ -166,7 +171,7 @@ class SwipeableStack {
 
             // Clean it up
             swipedCard.classList.remove('vo-swipe-out-left');
-            swipedCard.classList.remove('vo-text-card'); // Reset text mode
+            // swipedCard.classList.remove('vo-text-card'); // DISABLED: Stick to permanent classes
             swipedCard.style.transform = '';
             swipedCard.style.opacity = '0'; // Initially hidden as it goes to back
             swipedCard.style.zIndex = '0';
@@ -203,15 +208,27 @@ class SwipeableStack {
 
 // Initialize on load
 document.addEventListener('DOMContentLoaded', () => {
-    // Find all stack containers
+    // Find all stack containers and initialize swipe functionality
     const stacks = document.querySelectorAll('.vo-swipe-container');
     stacks.forEach(container => {
         // Pass the element directly to support multiple instances
         new SwipeableStack(container);
+    });
 
-        // Initialize Comparison Carousel (Mobile)
+    // Initialize Comparison Carousel (Mobile) - only once, independent of swipe containers
+    if (window.innerWidth <= 768) {
+        initComparisonCarousel();
+    }
+
+    // Also handle resize events for comparison carousel
+    window.addEventListener('resize', () => {
         if (window.innerWidth <= 768) {
-            initComparisonCarousel();
+            // Re-init only if not already initialized
+            const compGrid = document.querySelector('.vo-comparison-grid');
+            const arrows = document.querySelector('.vo-comp-arrows');
+            if (compGrid && arrows && !arrows.dataset.initialized) {
+                initComparisonCarousel();
+            }
         }
     });
 }); // End of DOMContentLoaded

@@ -485,26 +485,26 @@
         </section>
 
         <!-- 7. Caring & Expert Members (Exact Match) -->
-        <section class="vo-experts-section">
-            <div class="vo-experts-container">
-                <div>
-                    <div class="vo-experts-header">
-                        <div class="vo-experts-label">MEET OUR EXPERTS</div>
-                        <h2 class="vo-experts-title">Caring & Expert Members</h2>
+        <section class="experts-section" id="verified-partners">
+            <div class="experts-container">
+                <div style="min-width: 0;">
+                    <div class="experts-header">
+                        <div class="experts-label">MEET OUR EXPERTS</div>
+                        <h2 class="experts-title">Caring & Expert Members</h2>
                     </div>
 
-                    <!-- Mobile Swipeable Cards (Tinder Style) -->
+                    <!-- Mobile Swipeable Cards (Photo -> Details Sequence) -->
                     <div class="vo-swipe-container">
-                        <!-- Card 1 -->
-                        <div class="vo-swipe-card">
+                        <!-- Expert 1: Photo -->
+                        <div class="vo-swipe-card -photo">
                             <div class="vo-card-inner">
                                 <div class="vo-card-image"
                                     style="background-image: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80');">
-                                    <div class="vo-card-rating">
-                                        <span class="star">★</span>
-                                        <span class="score">4.9</span>
-                                        <span class="label">SCORE</span>
-                                    </div>
+                                </div>
+                                <div class="expert-rating-circle">
+                                    <span class="star">★</span>
+                                    <span class="score">4.9</span>
+                                    <span class="label">SCORE</span>
                                 </div>
                                 <div class="vo-card-info">
                                     <h3 class="vo-card-name">Pulkita W.</h3>
@@ -512,77 +512,20 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Card 2 -->
-                        <div class="vo-swipe-card">
+                        <!-- Expert 1: Details (Text Card) -->
+                        <div class="vo-swipe-card vo-text-card"> <!-- Added class explicitly -->
                             <div class="vo-card-inner">
-                                <div class="vo-card-image"
-                                    style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80');">
-                                    <div class="vo-card-rating">
-                                        <span class="star">★</span>
-                                        <span class="score">4.7</span>
-                                        <span class="label">SCORE</span>
-                                    </div>
-                                </div>
-                                <div class="vo-card-info">
-                                    <h3 class="vo-card-name">Muskan K.</h3>
-                                    <p class="vo-card-title">CBT & Couples Counselor</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Card 3 -->
-                        <div class="vo-swipe-card">
-                            <div class="vo-card-inner">
-                                <div class="vo-card-image"
-                                    style="background-image: url('https://images.unsplash.com/photo-1554151228-14d9def656ec?w=400&q=80');">
-                                    <div class="vo-card-rating">
-                                        <span class="star">★</span>
-                                        <span class="score">4.5</span>
-                                        <span class="label">SCORE</span>
-                                    </div>
-                                </div>
-                                <div class="vo-card-info">
-                                    <h3 class="vo-card-name">Nishi</h3>
-                                    <p class="vo-card-title">Clinical Psychiatrist</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Card 4 -->
-                        <div class="vo-swipe-card">
-                            <div class="vo-card-inner">
-                                <div class="vo-card-image"
-                                    style="background-image: url('https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&q=80');">
-                                    <div class="vo-card-rating">
-                                        <span class="star">★</span>
-                                        <span class="score">4.8</span>
-                                        <span class="label">SCORE</span>
-                                    </div>
-                                </div>
-                                <div class="vo-card-info">
-                                    <h3 class="vo-card-name">Dr. Sarah M.</h3>
-                                    <p class="vo-card-title">Clinical Psychiatrist</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="vo-experts-grid">
-                        <div class="vo-expert-card">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
-                                alt="Pulkita W." class="vo-expert-photo">
-                            <div class="vo-expert-rating"><span class="star">★</span>
-                                <div class="score">4.9</div><span class="score-label">score</span>
-                            </div>
-                            <div class="vo-expert-info-box">
-                                <div class="vo-expert-name">Pulkita W.</div>
-                                <div class="vo-expert-title-text">Psychoanalytic Therapist</div>
-                                <div class="vo-expert-details">
+                                <h3 class="vo-card-name">Pulkita W.</h3>
+                                <p class="vo-card-title">Psychoanalytic Therapist</p>
+                                <div class="vo-expert-details" style="display: block !important;">
                                     <div class="vo-detail-credentials">Masters Psychology | Psychoanalytic Fellowship
-                                        (Washington–Baltimore, USA)</div>
-                                    <div class="vo-detail-expertise"><strong>Specialized Expertise:</strong>
+                                    </div>
+                                    <div class="vo-detail-expertise">
+                                        <strong>Specialized Expertise:</strong>
                                         <ul>
                                             <li>Psychoanalytic Therapy</li>
                                             <li>Sexual & Identity Issues</li>
                                             <li>Family Systems Therapy</li>
-                                            <li>Career-Related Stress</li>
                                             <li>Deep Psychological Exploration</li>
                                         </ul>
                                     </div>
@@ -590,90 +533,255 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="vo-expert-card">
-                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80"
-                                alt="Muskan K." class="vo-expert-photo">
-                            <div class="vo-expert-rating"><span class="star">★</span>
-                                <div class="score">4.7</div><span class="score-label">score</span>
+
+                        <!-- Expert 2: Photo -->
+                        <div class="vo-swipe-card -photo">
+                            <div class="vo-card-inner">
+                                <div class="vo-card-image"
+                                    style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80');">
+                                </div>
+                                <div class="expert-rating-circle">
+                                    <span class="star">★</span>
+                                    <span class="score">4.7</span>
+                                    <span class="label">SCORE</span>
+                                </div>
+                                <div class="vo-card-info">
+                                    <h3 class="vo-card-name">Muskan K.</h3>
+                                    <p class="vo-card-title">CBT & Couples Counselor</p>
+                                </div>
                             </div>
-                            <div class="vo-expert-info-box">
-                                <div class="vo-expert-name">Muskan K.</div>
-                                <div class="vo-expert-title-text">CBT & Couples Counselor</div>
-                                <div class="vo-expert-details">
-                                    <div class="vo-detail-expertise"><strong>Specialized Expertise:</strong>
+                        </div>
+                        <!-- Expert 2: Details (Text Card) -->
+                        <div class="vo-swipe-card vo-text-card">
+                            <div class="vo-card-inner">
+                                <h3 class="vo-card-name">Muskan K.</h3>
+                                <p class="vo-card-title">CBT & Couples Counselor</p>
+                                <div class="vo-expert-details" style="display: block !important;">
+                                    <div class="vo-detail-expertise">
+                                        <strong>Specialized Expertise:</strong>
                                         <ul>
                                             <li>Solution-Focused Brief Therapy</li>
                                             <li>Cognitive Behavioral Therapy (CBT)</li>
                                             <li>Couples & Relationship Counseling</li>
-                                            <li>Goal-Oriented Treatment Plans</li>
                                         </ul>
                                     </div>
-                                    <div class="vo-detail-meta"><strong>90% satisfaction rate with North American
-                                            clients</strong></div>
+                                    <div class="vo-detail-meta"><strong>90% satisfaction rate</strong></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="vo-experts-grid">
-                        <div class="vo-expert-card">
-                            <img src="https://images.unsplash.com/photo-1554151228-14d9def656ec?w=400&q=80" alt="Nishi"
-                                class="vo-expert-photo">
-                            <div class="vo-expert-rating"><span class="star">★</span>
-                                <div class="score">4.5</div><span class="score-label">score</span>
+
+                        <!-- Expert 3: Photo -->
+                        <div class="vo-swipe-card -photo">
+                            <div class="vo-card-inner">
+                                <div class="vo-card-image"
+                                    style="background-image: url('https://images.unsplash.com/photo-1554151228-14d9def656ec?w=400&q=80');">
+                                </div>
+                                <div class="expert-rating-circle">
+                                    <span class="star">★</span>
+                                    <span class="score">4.5</span>
+                                    <span class="label">SCORE</span>
+                                </div>
+                                <div class="vo-card-info">
+                                    <h3 class="vo-card-name">Nishi</h3>
+                                    <p class="vo-card-title">Clinical Psychiatrist</p>
+                                </div>
                             </div>
-                            <div class="vo-expert-info-box">
-                                <div class="vo-expert-name">Nishi</div>
-                                <div class="vo-expert-title-text">Clinical Psychiatrist</div>
-                                <div class="vo-expert-details">
-                                    <div class="vo-detail-credentials">MSc Clinical Psychology (Neuropsychology
-                                        Specialist)
-                                    </div>
-                                    <div class="vo-detail-expertise"><strong>Specialized Expertise:</strong>
+                        </div>
+                        <!-- Expert 3: Details -->
+                        <div class="vo-swipe-card vo-text-card">
+                            <div class="vo-card-inner">
+                                <h3 class="vo-card-name">Nishi</h3>
+                                <p class="vo-card-title">Clinical Psychiatrist</p>
+                                <div class="vo-expert-details" style="display: block !important;">
+                                    <div class="vo-detail-credentials">MSc Clinical Psychology</div>
+                                    <div class="vo-detail-expertise">
+                                        <strong>Specialized Expertise:</strong>
                                         <ul>
                                             <li>LGBTQ+ Affirming Therapy</li>
                                             <li>Adolescent & Childhood Trauma</li>
                                             <li>Grief & Loss Counseling</li>
-                                            <li>Phobias & OCD Treatment</li>
-                                            <li>Identity Exploration & Body Image</li>
                                         </ul>
                                     </div>
                                     <div class="vo-detail-meta"><strong>3+ years serving US clients</strong></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="vo-expert-card">
-                            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&q=80"
-                                alt="Dr. Sarah M." class="vo-expert-photo">
-                            <div class="vo-expert-rating"><span class="star">★</span>
-                                <div class="score">4.8</div><span class="score-label">score</span>
+
+                        <!-- Expert 4: Photo -->
+                        <div class="vo-swipe-card -photo">
+                            <div class="vo-card-inner">
+                                <div class="vo-card-image"
+                                    style="background-image: url('https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&q=80');">
+                                </div>
+                                <div class="expert-rating-circle">
+                                    <span class="star">★</span>
+                                    <span class="score">4.8</span>
+                                    <span class="label">SCORE</span>
+                                </div>
+                                <div class="vo-card-info">
+                                    <h3 class="vo-card-name">Dr. Sarah M.</h3>
+                                    <p class="vo-card-title">Clinical Psychiatrist</p>
+                                </div>
                             </div>
-                            <div class="vo-expert-info-box">
-                                <div class="vo-expert-name">Dr. Sarah M.</div>
-                                <div class="vo-expert-title-text">Clinical Psychiatrist</div>
-                                <div class="vo-expert-details">
-                                    <div class="vo-detail-credentials">Clinical Psychiatrist</div>
-                                    <div class="vo-detail-expertise"><strong>Specialized Expertise:</strong>
+                        </div>
+                        <!-- Expert 4: Details -->
+                        <div class="vo-swipe-card vo-text-card">
+                            <div class="vo-card-inner">
+                                <h3 class="vo-card-name">Dr. Sarah M.</h3>
+                                <p class="vo-card-title">Clinical Psychiatrist</p>
+                                <div class="vo-expert-details" style="display: block !important;">
+                                    <div class="vo-detail-credentials">Double Gold Medalist in Clinical Psychology</div>
+                                    <div class="vo-detail-expertise">
+                                        <strong>Specialized Expertise:</strong>
                                         <ul>
                                             <li>Anxiety & Depression Treatment</li>
                                             <li>Stress Management</li>
                                             <li>Mindfulness-Based Therapy</li>
-                                            <li>Emotional Regulation</li>
                                         </ul>
                                     </div>
-                                    <div class="vo-detail-meta"><strong>Certified mental health professional</strong>
-                                    </div>
+                                    <div class="vo-detail-meta"><strong>8+ years of experience</strong></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="vo-experts-content">
-                        <p class="vo-experts-description">Our team consists of compassionate and skilled professionals
-                            dedicated to providing personalized support and effective solutions for your well-being.</p>
-                        <a href="#" class="vo-btn-learn-more">Learn More <span class="arrow">→</span></a>
+                </div>
+            </div>
+            </div>
+            </div>
+
+            <div class="experts-grid">
+                <!-- Desktop Card 1: Pulkita -->
+                <div class="expert-card">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80" alt="Pulkita W."
+                        class="expert-photo">
+                    <!-- New Circular Rating -->
+                    <div class="expert-rating-circle">
+                        <span class="star">★</span>
+                        <span class="score">4.9</span>
+                        <span class="label">SCORE</span>
+                    </div>
+                    <div class="expert-info-box">
+                        <div class="expert-name">Pulkita W.</div>
+                        <div class="expert-title">Psychoanalytic Therapist</div>
+                        <div class="expert-details">
+                            <div class="detail-credentials">Masters Psychology | Psychoanalytic Fellowship</div>
+                            <div class="detail-expertise">
+                                <strong>Specialized Expertise:</strong>
+                                <ul>
+                                    <li>Psychoanalytic Therapy</li>
+                                    <li>Sexual & Identity Issues</li>
+                                    <li>Family Systems Therapy</li>
+                                </ul>
+                            </div>
+                            <div class="detail-meta">USA-trained psychoanalyst</div>
+                            <!-- View Profile Button REMOVED -->
+                        </div>
                     </div>
                 </div>
+
+                <!-- Desktop Card 2: Muskan -->
+                <div class="expert-card">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80" alt="Muskan K."
+                        class="expert-photo">
+                    <div class="expert-rating-circle">
+                        <span class="star">★</span>
+                        <span class="score">4.7</span>
+                        <span class="label">SCORE</span>
+                    </div>
+                    <div class="expert-info-box">
+                        <div class="expert-name">Muskan K.</div>
+                        <div class="expert-title">CBT & Couples Counselor</div>
+                        <div class="expert-details">
+                            <div class="detail-expertise">
+                                <strong>Specialized Expertise:</strong>
+                                <ul>
+                                    <li>Solution-Focused Brief Therapy</li>
+                                    <li>Cognitive Behavioral Therapy (CBT)</li>
+                                    <li>Couples & Relationship Counseling</li>
+                                </ul>
+                            </div>
+                            <div class="detail-meta">90% satisfaction rate</div>
+                            <!-- View Profile Button REMOVED -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div style="min-width: 0;">
+                <div class="experts-grid">
+                    <!-- Desktop Card 3: Nishi -->
+                    <div class="expert-card">
+                        <img src="https://images.unsplash.com/photo-1554151228-14d9def656ec?w=400&q=80" alt="Nishi"
+                            class="expert-photo">
+                        <div class="expert-rating-circle">
+                            <span class="star">★</span>
+                            <span class="score">4.5</span>
+                            <span class="label">SCORE</span>
+                        </div>
+                        <div class="expert-info-box">
+                            <div class="expert-name">Nishi</div>
+                            <div class="expert-title">Clinical Psychiatrist</div>
+                            <div class="expert-details">
+                                <div class="detail-credentials">MSc Clinical Psychology</div>
+                                <div class="detail-expertise">
+                                    <strong>Specialized Expertise:</strong>
+                                    <ul>
+                                        <li>LGBTQ+ Affirming Therapy</li>
+                                        <li>Adolescent & Childhood Trauma</li>
+                                        <li>Grief & Loss Counseling</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-meta">3+ years serving US clients</div>
+                                <!-- View Profile Button REMOVED -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Desktop Card 4: Dr. Sarah M. -->
+                    <div class="expert-card">
+                        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&q=80"
+                            alt="Dr. Sarah M." class="expert-photo">
+                        <div class="expert-rating-circle">
+                            <span class="star">★</span>
+                            <span class="score">4.8</span>
+                            <span class="label">SCORE</span>
+                        </div>
+                        <div class="expert-info-box">
+                            <div class="expert-name">Dr. Sarah M.</div>
+                            <div class="expert-title">Clinical Psychiatrist</div>
+                            <div class="expert-details">
+                                <div class="detail-credentials">Certified mental health professional</div>
+                                <div class="detail-expertise">
+                                    <strong>Specialized Expertise:</strong>
+                                    <ul>
+                                        <li>Anxiety & Depression Treatment</li>
+                                        <li>Stress Management</li>
+                                        <li>Mindfulness-Based Therapy</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-meta">8+ Years Experience</div>
+                                <!-- View Profile Button REMOVED -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experts-content experts-content-home" style="overflow: hidden;">
+                    <!-- Overflow hidden added to contain carousel -->
+                    <p class="experts-description"
+                        style="margin-top: 30px; font-size: 16px; color: #555; line-height: 1.6;">
+                        Our team consists of compassionate and skilled professionals dedicated to providing
+                        personalized support and effective solutions for your well-being.
+                    </p>
+                    <div style="margin-top: 30px;">
+                        <!-- Using vo-btn-hero class for Default Orange Button style -->
+                        <a href="#" class="vo-btn-hero"
+                            style="width: auto; padding: 12px 30px; display: inline-flex;">Learn More <span
+                                class="arrow" style="margin-left:8px;">→</span></a>
+                    </div>
+                </div>
+            </div>
             </div>
         </section>
 
