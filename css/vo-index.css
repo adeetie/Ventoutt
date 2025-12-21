@@ -4002,7 +4002,8 @@ h2 {
     }
 
     /* The grids inside columns should be vertical stacks */
-    .vo-experts-grid {
+    .vo-experts-grid,
+    .experts-grid {
         display: flex !important;
         flex-direction: column !important;
         gap: 30px !important;

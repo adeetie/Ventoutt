@@ -123,20 +123,21 @@ class SwipeableStack {
         const diffX = this.currentX - this.startX;
         const diffY = this.currentY - this.startY;
 
-        // if (diffY > 0) return; // Allow scroll down? No, standard logic for now
+        // Check if movement is mostly horizontal (Swipe) or vertical (Scroll)
+        const isHorizontal = Math.abs(diffX) > Math.abs(diffY);
+        const isVertical = Math.abs(diffY) > Math.abs(diffX);
 
-        // Capture swipe up (or mainly vertical)
-        // if (Math.abs(diffY) > Math.abs(diffX) && diffY < 0) { // Enforce mostly vertical?
-        //     if (e.cancelable) e.preventDefault();
-        //     const rotate = diffX * 0.1;
-        //     this.activeCard.style.transform = `translate(${diffX}px, ${diffY}px) rotate(${rotate}deg)`;
-        // }
+        if (isHorizontal) {
+            // It's a swipe: blocks scroll and moves card
+            if (e.cancelable) e.preventDefault();
 
-        // RELAXED SWIPE: Allow movement in all directions to track finger, but dismiss only on UP
-        if (e.cancelable && diffY < 0) e.preventDefault(); // Prevent page scroll when swiping up
-
-        const rotate = diffX * 0.1;
-        this.activeCard.style.transform = `translate(${diffX}px, ${diffY}px) rotate(${rotate}deg)`;
+            const rotate = diffX * 0.1;
+            this.activeCard.style.transform = `translate(${diffX}px, ${diffY * 0.2}px) rotate(${rotate}deg)`;
+            // Reduced Y movement during swipe for cleaner feel
+        } else {
+            // It's a scroll: do nothing, let browser handle page scroll
+            return;
+        }
     }
 
     handleTouchEnd(e) {
