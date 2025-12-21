@@ -253,7 +253,7 @@ body {
     font-family: var(--font-body);
     color: var(--text-dark);
     line-height: 1.5;
-    background-color: #F4EDE4;
+    background-color: #FFFDF7;
     /* Light cream background */
     overflow-x: hidden;
     /* Prevent horizontal scroll */
@@ -3787,7 +3787,7 @@ section {
 /* ========== Block-Based Section Styling ========== */
 /* For sections with dark backgrounds that need padding and rounding */
 .content-block-wrapper {
-    background: #F4EDE4;
+    background: #FFFDF7;
     padding: 10px;
 }
 
