@@ -484,16 +484,17 @@
             </div>
         </section>
 
-        <!-- 7. Caring & Expert Members (Exact Match) -->
+        <!-- 7. Caring & Expert Members (Grid Layout) -->
         <section class="experts-section" id="verified-partners">
             <div class="experts-container">
-                <div style="min-width: 0;">
+                <div class="vo-experts-grid-layout">
+                    <!-- 1. Header (Spans 2 cols on Desktop) -->
                     <div class="experts-header">
                         <div class="experts-label">MEET OUR EXPERTS</div>
                         <h2 class="experts-title">Caring & Expert Members</h2>
                     </div>
 
-                    <!-- Mobile Swipeable Cards (Photo -> Details Sequence) -->
+                    <!-- 2. Mobile Swipe Container (Hidden on Desktop) -->
                     <div class="vo-swipe-container">
                         <!-- Expert 1: Photo -->
                         <div class="vo-swipe-card -photo">
@@ -512,8 +513,8 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Expert 1: Details (Text Card) -->
-                        <div class="vo-swipe-card vo-text-card"> <!-- Added class explicitly -->
+                        <!-- Expert 1: Details -->
+                        <div class="vo-swipe-card vo-text-card">
                             <div class="vo-card-inner">
                                 <h3 class="vo-card-name">Pulkita W.</h3>
                                 <p class="vo-card-title">Psychoanalytic Therapist</p>
@@ -551,7 +552,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Expert 2: Details (Text Card) -->
+                        <!-- Expert 2: Details -->
                         <div class="vo-swipe-card vo-text-card">
                             <div class="vo-card-inner">
                                 <h3 class="vo-card-name">Muskan K.</h3>
@@ -644,75 +645,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            </div>
-            </div>
 
-            <div class="experts-grid">
-                <!-- Desktop Card 1: Pulkita -->
-                <div class="expert-card">
-                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80" alt="Pulkita W."
-                        class="expert-photo">
-                    <!-- New Circular Rating -->
-                    <div class="expert-rating-circle">
-                        <span class="star">★</span>
-                        <span class="score">4.9</span>
-                        <span class="label">SCORE</span>
-                    </div>
-                    <div class="expert-info-box">
-                        <div class="expert-name">Pulkita W.</div>
-                        <div class="expert-title">Psychoanalytic Therapist</div>
-                        <div class="expert-details">
-                            <div class="detail-credentials">Masters Psychology | Psychoanalytic Fellowship</div>
-                            <div class="detail-expertise">
-                                <strong>Specialized Expertise:</strong>
-                                <ul>
-                                    <li>Psychoanalytic Therapy</li>
-                                    <li>Sexual & Identity Issues</li>
-                                    <li>Family Systems Therapy</li>
-                                </ul>
-                            </div>
-                            <div class="detail-meta">USA-trained psychoanalyst</div>
-                            <!-- View Profile Button REMOVED -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Desktop Card 2: Muskan -->
-                <div class="expert-card">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80" alt="Muskan K."
-                        class="expert-photo">
-                    <div class="expert-rating-circle">
-                        <span class="star">★</span>
-                        <span class="score">4.7</span>
-                        <span class="label">SCORE</span>
-                    </div>
-                    <div class="expert-info-box">
-                        <div class="expert-name">Muskan K.</div>
-                        <div class="expert-title">CBT & Couples Counselor</div>
-                        <div class="expert-details">
-                            <div class="detail-expertise">
-                                <strong>Specialized Expertise:</strong>
-                                <ul>
-                                    <li>Solution-Focused Brief Therapy</li>
-                                    <li>Cognitive Behavioral Therapy (CBT)</li>
-                                    <li>Couples & Relationship Counseling</li>
-                                </ul>
-                            </div>
-                            <div class="detail-meta">90% satisfaction rate</div>
-                            <!-- View Profile Button REMOVED -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-
-            <div style="min-width: 0;">
-                <div class="experts-grid">
-                    <!-- Desktop Card 3: Nishi -->
-                    <div class="expert-card">
-                        <img src="https://images.unsplash.com/photo-1554151228-14d9def656ec?w=400&q=80" alt="Nishi"
+                    <!-- 3. Desktop Cards (Reordered for Layout Flow) -->
+                    <!-- Row 1: Nishi & Sarah -->
+                    <!-- Nishi (Card 3) -->
+                    <div class="expert-card" id="expert-nishi">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80" alt="Nishi"
                             class="expert-photo">
                         <div class="expert-rating-circle">
                             <span class="star">★</span>
@@ -733,13 +671,12 @@
                                     </ul>
                                 </div>
                                 <div class="detail-meta">3+ years serving US clients</div>
-                                <!-- View Profile Button REMOVED -->
                             </div>
                         </div>
                     </div>
 
-                    <!-- Desktop Card 4: Dr. Sarah M. -->
-                    <div class="expert-card">
+                    <!-- Sarah (Card 4) -->
+                    <div class="expert-card" id="expert-sarah">
                         <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&q=80"
                             alt="Dr. Sarah M." class="expert-photo">
                         <div class="expert-rating-circle">
@@ -761,27 +698,74 @@
                                     </ul>
                                 </div>
                                 <div class="detail-meta">8+ Years Experience</div>
-                                <!-- View Profile Button REMOVED -->
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="experts-content experts-content-home" style="overflow: hidden;">
-                    <!-- Overflow hidden added to contain carousel -->
-                    <p class="experts-description"
-                        style="margin-top: 30px; font-size: 16px; color: #555; line-height: 1.6;">
-                        Our team consists of compassionate and skilled professionals dedicated to providing
-                        personalized support and effective solutions for your well-being.
-                    </p>
-                    <div style="margin-top: 30px;">
-                        <!-- Using vo-btn-hero class for Default Orange Button style -->
-                        <a href="#" class="vo-btn-hero"
-                            style="width: auto; padding: 12px 30px; display: inline-flex;">Learn More <span
-                                class="arrow" style="margin-left:8px;">→</span></a>
+                    <!-- Row 2: Pulkita & Muskan -->
+                    <!-- Pulkita (Card 1) -->
+                    <div class="expert-card" id="expert-pulkita">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
+                            alt="Pulkita W." class="expert-photo">
+                        <div class="expert-rating-circle">
+                            <span class="star">★</span>
+                            <span class="score">4.9</span>
+                            <span class="label">SCORE</span>
+                        </div>
+                        <div class="expert-info-box">
+                            <div class="expert-name">Pulkita W.</div>
+                            <div class="expert-title">Psychoanalytic Therapist</div>
+                            <div class="expert-details">
+                                <div class="detail-credentials">Masters Psychology | Psychoanalytic Fellowship</div>
+                                <div class="detail-expertise">
+                                    <strong>Specialized Expertise:</strong>
+                                    <ul>
+                                        <li>Psychoanalytic Therapy</li>
+                                        <li>Sexual & Identity Issues</li>
+                                        <li>Family Systems Therapy</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-meta">USA-trained psychoanalyst</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Muskan (Card 2) -->
+                    <div class="expert-card" id="expert-muskan">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80" alt="Muskan K."
+                            class="expert-photo">
+                        <div class="expert-rating-circle">
+                            <span class="star">★</span>
+                            <span class="score">4.7</span>
+                            <span class="label">SCORE</span>
+                        </div>
+                        <div class="expert-info-box">
+                            <div class="expert-name">Muskan K.</div>
+                            <div class="expert-title">CBT & Couples Counselor</div>
+                            <div class="expert-details">
+                                <div class="detail-expertise">
+                                    <strong>Specialized Expertise:</strong>
+                                    <ul>
+                                        <li>Solution-Focused Brief Therapy</li>
+                                        <li>Cognitive Behavioral Therapy (CBT)</li>
+                                        <li>Couples & Relationship Counseling</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-meta">90% satisfaction rate</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Text Content (Bottom Right or Side) -->
+                    <div class="experts-content-block">
+                        <p class="experts-description">
+                            Our team consists of compassionate and skilled professionals dedicated to providing
+                            personalized support and effective solutions for your well-being.
+                        </p>
+                        <a href="#" class="vo-btn-hero vo-btn-learn-more-custom">Learn More <span
+                                class="arrow">→</span></a>
                     </div>
                 </div>
-            </div>
             </div>
         </section>
 
