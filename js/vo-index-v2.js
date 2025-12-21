@@ -12,6 +12,36 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('VO-Index: Initializing homepage logic...');
 
     /* =========================================
+       1b. Dynamic Greeting (Language Switcher)
+       ========================================= */
+    const greetingEl = document.getElementById('dynamic-hello');
+    if (greetingEl) {
+        const hellos = [
+            'hello..',
+            'नमस्ते..',     // Hindi
+            'hola..',        // Spanish
+            'こんにちは..',   // Japanese
+            'bonjour..',    // French
+            'ciao..',       // Italian
+            'hallo..',      // German
+            'olá..'         // Portuguese
+        ];
+        let currentHello = 0;
+
+        setInterval(() => {
+            greetingEl.style.opacity = 0;
+            setTimeout(() => {
+                currentHello = (currentHello + 1) % hellos.length;
+                greetingEl.textContent = hellos[currentHello];
+                greetingEl.style.opacity = 1;
+            }, 500);
+        }, 3000);
+
+        // Ensure initial transition support
+        greetingEl.style.transition = 'opacity 0.5s ease-in-out';
+    }
+
+    /* =========================================
        2. Hero Slideshow (Homepage)
        ========================================= */
     const heroSlides = document.querySelectorAll('.vo-hero-slide');
@@ -158,81 +188,161 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* =========================================
-       5. Testimonials Video Handling (YouTube)
+       5. 3D Testimonial Loop & Video Logic
        ========================================= */
-    const carouselWrapper = document.querySelector('.vo-testimonials-wrapper');
-    if (carouselWrapper) {
-        const track = carouselWrapper.querySelector('.vo-testimonials-track');
+    /* =========================================
+       5. JS-Driven Marquee Testimonial Loop
+       ========================================= */
+    const initTestimonials = () => {
+        const marquee = document.querySelector('.marquee');
+        const marqueeInner = document.querySelector('.marquee-inner');
+
+        if (!marquee || !marqueeInner) return;
+
+        // 1. Setup Clones
+        // We need enough content to scroll infinitely. 
+        // Simple approach: Clone the original set once, giving us [A, B, C, ... A, B, C ...]
+        // When we scroll past the end of the first set, we jump back to proper start.
+
+        const originals = Array.from(marqueeInner.children);
+        if (originals.length === 0) return;
+
+        // Clone them
+        originals.forEach(item => {
+            const clone = item.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            marqueeInner.appendChild(clone);
+        });
+
+        // 2. Animation Logic
+        let currentTx = 0;
+        const speed = 0.6; // Slower, smoother speed
         let isPaused = false;
-        let controller = null;
+        let animationId;
 
-        const setRunning = (running) => {
-            if (!track) return;
-            isPaused = !running;
-            track.style.setProperty('animation-play-state', running ? 'running' : 'paused', 'important');
+        // Concave 3D Settings
+        const perspective = 1000;
+
+        const updateCards3D = () => {
+            const viewportCenter = marquee.offsetWidth / 2;
+            const allCards = marqueeInner.children;
+
+            Array.from(allCards).forEach(card => {
+                // Get position relative to the moving track
+                // We can't trust getBoundingClientRect because of the transform? 
+                // Actually getBoundingClientRect works but might be jittery if we read/write in loop.
+                // Better: calculate relative pos.
+                // But simply reading `rect` is easiest for prototypes.
+
+                const rect = card.getBoundingClientRect();
+                const cardCenter = rect.left + rect.width / 2;
+                const dist = cardCenter - viewportCenter;
+
+                // Normalize distance (-1 to 1 approx across screen)
+                const norm = dist / viewportCenter; // -1 (left edge) to 1 (right edge)
+
+                // Concave Effect (Surround/Bowtie):
+                const rotateY = norm * -30; // Reduced rotation for tighter look
+
+                // Depth Strategy: Minimal pushback to just curve slightly
+                const z = (1 - Math.abs(norm)) * -60;
+
+                // Apply transform
+                card.style.transform = `perspective(${perspective}px) rotateY(${rotateY}deg) translateZ(${z}px)`;
+                card.style.zIndex = Math.round(Math.abs(norm) * 100) + 10; // Base 10
+            });
         };
 
-        const toggleBy = (el) => {
+        const calculateScrollWidth = () => {
+            // Total width is roughly half the inner width (after cloning)
+            // Safety check
+            if (marqueeInner.scrollWidth === 0) return 0;
+            return marqueeInner.scrollWidth / 2;
+        };
+
+        let scrollLimit = calculateScrollWidth();
+
+        window.addEventListener('resize', () => {
+            scrollLimit = calculateScrollWidth();
+        });
+
+        const animate = () => {
             if (!isPaused) {
-                controller = el;
-                setRunning(false);
-            } else {
-                if (controller === el) {
-                    setRunning(true);
-                    controller = null;
-                } else {
-                    controller = el;
-                    // Switch controller
+                currentTx -= speed;
+
+                // Infinite Loop Reset
+                if (Math.abs(currentTx) >= scrollLimit) {
+                    currentTx = 0;
                 }
+
+                marqueeInner.style.transform = `translate3d(${currentTx}px, 0, 0)`;
+
+                // Update 3D visual for every frame
+                updateCards3D();
             }
+            animationId = requestAnimationFrame(animate);
         };
 
-        // Text cards pause on click
-        const textCards = carouselWrapper.querySelectorAll('.vo-testimonial-card:not(:has(iframe))');
-        textCards.forEach(card => {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleBy(card);
-            });
+        // Start
+        animationId = requestAnimationFrame(animate);
+
+        // 3. Pause functionality
+        marquee.addEventListener('mouseenter', () => {
+            isPaused = true;
         });
 
-        // Hover behavior
-        carouselWrapper.addEventListener('mouseenter', () => setRunning(false));
-        carouselWrapper.addEventListener('mouseleave', () => setRunning(true));
+        marquee.addEventListener('mouseleave', () => {
+            isPaused = false;
+        });
 
-
-        // Initialize YouTube API
-        const iframes = carouselWrapper.querySelectorAll('iframe[src*="youtube.com/embed"]');
-        iframes.forEach((ifr, idx) => {
-            if (!ifr.id) ifr.id = `vo-yt-frame-${idx}`;
-            try {
-                const u = new URL(ifr.src, window.location.href);
-                if (!u.searchParams.has('enablejsapi')) {
-                    u.searchParams.set('enablejsapi', '1');
-                    u.searchParams.set('origin', window.location.origin);
-                    ifr.src = u.toString();
+        // 4. Video Interaction & Fixes
+        const allCards = marqueeInner.querySelectorAll('.vo-testimonial-card');
+        allCards.forEach((card, index) => {
+            // Fix Loop Video Clones: Reset SRC to ensure loading
+            const iframe = card.querySelector('iframe');
+            if (iframe) {
+                iframe.id = `vo-yt-frame-marquee-${index}`;
+                // Convert shorts/ to embed/ if needed for better thumbnail support
+                let src = iframe.src;
+                if (src.includes('/shorts/')) {
+                    src = src.replace('/shorts/', '/embed/');
                 }
-            } catch (e) { }
+                // Ensure params
+                const u = new URL(src);
+                u.searchParams.set('enablejsapi', '1');
+                u.searchParams.set('rel', '0');
+                u.searchParams.set('modestbranding', '1');
+            }
         });
 
-        function subscribeToYTEvents() {
+        // Inject YT API listeners
+        const iframes = marqueeInner.querySelectorAll('iframe');
+        const injectYTEvents = () => {
             iframes.forEach(ifr => {
-                if (ifr.contentWindow) {
-                    ifr.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: ifr.id }), '*');
-                    ifr.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'addEventListener', args: ['onStateChange'], id: ifr.id }), '*');
-                }
+                try {
+                    // Ensure enablejsapi
+                    const u = new URL(ifr.src);
+                    if (!u.searchParams.has('enablejsapi')) {
+                        u.searchParams.set('enablejsapi', '1');
+                        ifr.src = u.toString();
+                    }
+                    // Send events
+                    if (ifr.contentWindow) {
+                        ifr.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: ifr.id }), '*');
+                        ifr.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'addEventListener', args: ['onStateChange'], id: ifr.id }), '*');
+                    }
+                } catch (e) { }
             });
-        }
+        };
+        // Give iframes a moment to load
+        setTimeout(injectYTEvents, 2000);
+    };
 
-        window.addEventListener('message', (e) => {
-            let data;
-            try { data = JSON.parse(e.data); } catch { return; }
-            if (!data || data.event !== 'onStateChange' || data.info === undefined) return;
-            if (data.info === 1) setRunning(false); // Playing
-        });
-
-        window.addEventListener('load', () => setTimeout(subscribeToYTEvents, 1500));
+    // Initialize
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTestimonials);
+    } else {
+        initTestimonials();
     }
 
     /* =========================================
@@ -357,4 +467,56 @@ window.toggleVoChallengesList = function () {
         btn.classList.remove('expanded');
     }
 };
+
+
+/* Mobile Menu Logic (Appended for Index V2/V3) */
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.vo-mobile-header__hamburger');
+    const overlay = document.querySelector('.vo-mobile-menu');
+    const closeBtn = document.querySelector('.vo-mobile-menu__close');
+    const backdrop = document.querySelector('.vo-mobile-menu__backdrop');
+    const sections = document.querySelectorAll('.vo-mobile-menu__section');
+
+    if (hamburger && overlay) {
+        const openMenu = () => {
+            overlay.classList.add('active');
+            if (backdrop) backdrop.classList.add('active');
+            hamburger.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeMenu = () => {
+            overlay.classList.remove('active');
+            if (backdrop) backdrop.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        hamburger.addEventListener('click', openMenu);
+        if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+        if (backdrop) backdrop.addEventListener('click', closeMenu);
+
+        // Sections (Accordions)
+        sections.forEach(section => {
+            const header = section.querySelector('.vo-mobile-menu__item-header');
+            if (header) {
+                header.addEventListener('click', () => {
+                    section.classList.toggle('active');
+                    const chevron = section.querySelector('.vo-mobile-menu__chevron');
+                    if (chevron) {
+                         // Chevron rotation handled by CSS .section.active .chevron
+                    }
+                });
+            }
+        });
+
+        // Close on link click
+        const links = document.querySelectorAll('.vo-mobile-menu__link, .vo-mobile-menu__sublink');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                setTimeout(closeMenu, 100);
+            });
+        });
+    }
+});
 

@@ -208,31 +208,37 @@ class SwipeableStack {
 }
 
 // Initialize on load
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize on load
+function initAllMobileFeatures() {
     // Find all stack containers and initialize swipe functionality
     const stacks = document.querySelectorAll('.vo-swipe-container');
     stacks.forEach(container => {
         // Pass the element directly to support multiple instances
-        new SwipeableStack(container);
+        // Check if already initialized to prevent double-binding
+        if (!container.dataset.swipeInitialized) {
+            new SwipeableStack(container);
+            container.dataset.swipeInitialized = 'true';
+        }
     });
 
-    // Initialize Comparison Carousel (Mobile) - only once, independent of swipe containers
+    // Initialize Comparison Carousel (Mobile)
     if (window.innerWidth <= 768) {
         initComparisonCarousel();
     }
+}
 
-    // Also handle resize events for comparison carousel
-    window.addEventListener('resize', () => {
-        if (window.innerWidth <= 768) {
-            // Re-init only if not already initialized
-            const compGrid = document.querySelector('.vo-comparison-grid');
-            const arrows = document.querySelector('.vo-comp-arrows');
-            if (compGrid && arrows && !arrows.dataset.initialized) {
-                initComparisonCarousel();
-            }
-        }
-    });
-}); // End of DOMContentLoaded
+// Run on DOM Ready
+document.addEventListener('DOMContentLoaded', initAllMobileFeatures);
+
+// Run again on Window Load to ensure images/CSS allow correct sizing
+window.addEventListener('load', initAllMobileFeatures);
+
+// Also handle resize events for comparison carousel
+window.addEventListener('resize', () => {
+    if (window.innerWidth <= 768) {
+        initComparisonCarousel();
+    }
+});
 
 function initComparisonCarousel() {
     const compGrid = document.querySelector('.vo-comparison-grid');
@@ -244,6 +250,11 @@ function initComparisonCarousel() {
 
 
     if (compGrid && cards.length) {
+        // Ensure arrows are visible on mobile
+        if (arrowsContainer) {
+            arrowsContainer.style.display = 'flex';
+            arrowsContainer.style.pointerEvents = 'none'; // Container pass-through
+        }
         // 1. Center "Coaching" on Load
         setTimeout(() => {
             if (featuredCard) {

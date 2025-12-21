@@ -1739,17 +1739,17 @@ footer * {
     max-width: 600px;
 }
 
-.about-hero-pill {
-    display: inline-block;
-    background: #FFFFFF;
-    border: 1px solid var(--border-grey);
-    border-radius: 20px;
-    padding: 8px 20px;
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--dark-gray);
-    margin-bottom: 24px;
+.vo-hero-greeting {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 80px;
+    font-weight: 700;
+    font-style: italic;
+    color: #F57F17;
+    /* Toolvo Orange */
+    margin-bottom: 0px;
+    line-height: 1.1;
+    min-height: 90px;
 }
 
 .about-hero-title {
@@ -1759,6 +1759,7 @@ footer * {
     font-style: italic;
     line-height: 1.2;
     color: var(--dark-gray);
+    /* Consider #212121 explicitly */
     margin-bottom: 20px;
 }
 
@@ -1768,26 +1769,30 @@ footer * {
     line-height: 1.6;
     color: var(--text-muted);
     margin-bottom: 32px;
+    max-width: 480px;
 }
 
 .btn-about-hero {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    background: var(--dark-gray);
+    background: #6A9E7D;
+    /* Green from reference */
     color: #FFFFFF;
-    padding: 14px 28px;
+    padding: 14px 32px;
     border-radius: 50px;
     text-decoration: none;
     font-family: var(--font-body);
-    font-weight: 500;
+    font-weight: 600;
     font-size: 16px;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(106, 158, 125, 0.4);
 }
 
 .btn-about-hero:hover {
-    background: #333;
+    background: #568567;
     transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(106, 158, 125, 0.5);
 }
 
 .btn-user-avatar {
@@ -1795,12 +1800,33 @@ footer * {
     height: 32px;
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 .about-hero-image-wrapper {
     position: relative;
     flex: 1;
     max-width: 500px;
+    /* Restored to original dimension */
+    height: 700px;
+    /* Increased height for proper portrait slideshow */
+    transform: rotate(3deg);
+    border: 15px solid #fff;
+    border-radius: 40px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    background: #fff;
+    /* Ensure bg is white */
+    z-index: 2;
+}
+
+/* Ensure Slideshow fits perfectly */
+.about-hero-image-wrapper .vo-hero-slides {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    /* Inner radius matching wrapper minus border */
+    overflow: hidden;
+    position: relative;
 }
 
 .about-hero-image {
@@ -1810,15 +1836,21 @@ footer * {
     object-fit: cover;
 }
 
-.squiggle-bottom-right {
+.squiggle-top-left {
     position: absolute;
-    bottom: -20px;
-    right: -20px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50% 0 50% 50%;
-    opacity: 0.4;
-    z-index: -1;
+    top: -50px;
+    left: -40px;
+    width: 100px;
+    height: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='40' viewBox='0 0 100 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 35C20 35 25 5 40 5C55 5 60 35 75 35C90 35 95 5 110 5' stroke='%236A9E7D' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 1;
+    /* Behind image wrapper? No, image wrapper has z-index 2. Wait, squiggle is INSIDE wrapper? */
+    /* If squiggle is a sibling of wrapper, positioned relative to parent. */
+    /* If squiggle is inside wrapper, it will be clipped and rotated. */
+    /* Reference image: Squiggle is BEHIND top-left corner. */
+    /* So it should be OUTSIDE the wrapper, or absolute relative to the section/parent. */
 }
 
 /* Infinite Image Carousel Section */

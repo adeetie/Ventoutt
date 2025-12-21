@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="css/global.css">
 
     <!-- Page Specific Styles -->
-    <link rel="stylesheet" href="css/vo-index.css">
+    <link rel="stylesheet" href="css/vo-index-v2.css">
+    <link rel="stylesheet" href="css/vo-about.css">
 
     <!-- Component Styles -->
     <link rel="stylesheet" href="css/components/vo-header.css">
@@ -19,6 +20,7 @@
     <link rel="stylesheet" href="css/components/vo-popups.css">
     <link rel="stylesheet" href="css/components/vo-therapist-card.css">
     <script src="js/vo-therapist-swipe.js" defer></script>
+    <script src="js/vo-index-v2.js" defer></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,48 +32,158 @@
 
 <body>
 
-    <!-- Scripts will inject Header here automatically -->
+    <!-- Header V2 (Floating) -->
+    <header class="vo-header-v2">
+        <div class="vo-header-inner">
+            <!-- Logo -->
+            <a href="#" class="vo-logo-v2">VentOutt</a>
+
+            <!-- Nav -->
+            <nav class="vo-nav-v2">
+                <a href="#" class="vo-nav-link">About Us</a>
+                <a href="#" class="vo-nav-link">Services</a>
+                <a href="#" class="vo-nav-link">Therapists</a>
+                <a href="#" class="vo-nav-link">Blogs</a>
+                <a href="#" class="vo-nav-link">Get Involved</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="vo-header-actions">
+                <!-- Shopping Cart Icon (SVG) - Mimicking image -->
+                <div class="vo-action-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9 20C9 21.1046 8.10457 22 7 22C5.89543 22 5 21.1046 5 20C5 18.8954 5.89543 18 7 18C8.10457 18 9 18.8954 9 20Z"
+                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                            d="M20 20C20 21.1046 19.1046 22 18 22C16.8954 22 16 21.1046 16 20C16 18.8954 16.8954 18 18 18C19.1046 18 20 18.8954 20 20Z"
+                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                            d="M1 1H4L6.68 14.39C6.77144 14.8504 7.02191 15.264 7.38755 15.5583C7.75318 15.8526 8.2107 16.009 8.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6"
+                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <!-- Search Icon (SVG) -->
+                <div class="vo-action-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M21 21L15.5 15.5M17 10.5C17 14.0899 14.0899 17 10.5 17C6.91015 17 4 14.0899 4 10.5C4 6.91015 6.91015 4 10.5 4C14.0899 4 17 6.91015 17 10.5Z"
+                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Header (Fixed Top) -->
+    <header class="vo-mobile-header">
+        <div class="vo-mobile-header__content">
+            <a href="index.html" class="vo-mobile-header__logo">
+                <img src="https://www.ventoutt.com/wp-content/uploads/2025/06/cropped-cropped-cropped-cropped-cropped-cropped-Ventoutt-Logo-1-3-1.png"
+                    alt="Ventoutt Logo">
+            </a>
+            <button class="vo-mobile-header__hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="vo-mobile-menu">
+        <div class="vo-mobile-menu__header">
+            <div class="vo-mobile-menu__logo">Ventoutt</div>
+            <button class="vo-mobile-menu__close" aria-label="Close Menu">&times;</button>
+        </div>
+
+        <div class="vo-mobile-menu__content">
+            <!-- Main Navigation Items -->
+            <a href="index.html" class="vo-mobile-menu__link">Home</a>
+
+            <!-- Services Section -->
+            <div class="vo-mobile-menu__section">
+                <div class="vo-mobile-menu__item-header">
+                    Services
+                    <span class="vo-mobile-menu__chevron">▼</span>
+                </div>
+                <div class="vo-mobile-menu__submenu">
+                    <a href="vo-therapy.html" class="vo-mobile-menu__sublink">Online Therapy</a>
+                    <a href="vo-venting.html" class="vo-mobile-menu__sublink">Online Venting</a>
+                    <a href="vo-coaching.html" class="vo-mobile-menu__sublink">Career Coaching</a>
+                </div>
+            </div>
+
+            <a href="#" class="vo-mobile-menu__link">Join Us</a>
+            <a href="#" class="vo-mobile-menu__link">Internships</a>
+            <a href="vo-about.html" class="vo-mobile-menu__link">About Us</a>
+            <a href="#" class="vo-mobile-menu__link">Help</a>
+            <a href="#" class="vo-mobile-menu__link">Blog</a>
+
+            <!-- Quote -->
+            <div class="vo-mobile-menu__quote">
+                for young adults by young adults
+            </div>
+
+            <!-- Find a Therapist CTA -->
+            <button class="vo-mobile-menu__cta">Talk to Chatbot</button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Backdrop -->
+    <div class="vo-mobile-menu__backdrop"></div>
+
+    <div class="vo-header-v2-spacer" style="height: 60px; background: transparent;"></div>
 
     <main>
 
-        <!-- 1. Hero Section (Slideshow) -->
-        <section class="vo-hero-slider">
-            <div class="vo-hero-slides">
-                <!-- Slide 1 -->
-                <div class="vo-hero-slide active"
-                    style="--bg-url: url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=1600&auto=format&fit=crop');">
-                    <div class="vo-hero-overlay"></div>
-                    <div class="vo-hero-content">
-                        <h1 class="vo-hero-title">You don’t have to do it alone.</h1>
-                        <p class="vo-hero-subtitle">Begin your journey with a conversation that’s just for you. Speak
-                            freely. Feel lighter. Heal slowly.</p>
-                        <a href="vo-services.html" class="vo-btn-hero">Learn More</a>
-                    </div>
-                </div>
-                <!-- Slide 2 -->
-                <div class="vo-hero-slide"
-                    style="--bg-url: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1600&auto=format&fit=crop');">
-                    <div class="vo-hero-overlay"></div>
-                    <div class="vo-hero-content">
-                        <h1 class="vo-hero-title">Let’s find someone who listens, just for you.</h1>
-                        <p class="vo-hero-subtitle">Because feeling heard is the first step toward feeling better.
-                            Explore therapists who understand your world, your pace, your voice.</p>
-                        <a href="services.html#demo-therapy" class="vo-btn-hero">Online Therapy</a>
-                    </div>
-                </div>
-                <!-- Slide 3 -->
-                <div class="vo-hero-slide"
-                    style="--bg-url: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1600&auto=format&fit=crop');">
-                    <div class="vo-hero-overlay"></div>
-                    <div class="vo-hero-content">
-                        <h1 class="vo-hero-title">Start venting. Feel the shift.</h1>
-                        <p class="vo-hero-subtitle">Sometimes, saying it out loud is all it takes to feel lighter. Begin
-                            the conversation you’ve been holding in for too long.</p>
-                        <a href="services.html#demo-venting" class="vo-btn-hero">Instant Venting</a>
+        <!-- About-Style Hero Section -->
+        <section class="about-hero-section">
+            <div class="about-hero-content">
+                <!-- Dynamic Hello (Large Text) -->
+                <h2 class="vo-hero-greeting" id="dynamic-hello">hello..</h2>
+                <h1 class="about-hero-title">Creating a safe space for mental health.</h1>
+                <p class="about-hero-desc">
+                    We believe that mental health is just as important as physical health, and our mission is to provide
+                    support, education, and a judgment-free space for everyone.
+                </p>
+                <a href="#" class="btn-about-hero">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Avatar"
+                        class="btn-user-avatar">
+                    Let's talk with us
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" style="margin-left: 5px;">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Image Column Wrapper -->
+            <div style="position: relative; flex: 1; display: flex; justify-content: center;">
+
+
+                <div class="about-hero-image-wrapper">
+                    <!-- Internal Slideshow -->
+                    <div class="vo-hero-slides">
+                        <!-- Slide 1 -->
+                        <div class="vo-hero-slide active"
+                            style="--bg-url: url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=1600&auto=format&fit=crop');">
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="vo-hero-slide"
+                            style="--bg-url: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1600&auto=format&fit=crop');">
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="vo-hero-slide"
+                            style="--bg-url: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1600&auto=format&fit=crop');">
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
+
 
         <!-- 2. How Can We Help (Expanding Gallery) -->
         <section class="vo-help-section" id="how-we-help">
@@ -126,199 +238,91 @@
             </div>
         </section>
 
-        <!-- 3. Stats Section -->
-        <section class="vo-stats-section">
-            <h2 class="vo-stats-title">Here's How Far We've Come Together</h2>
-            <div class="vo-stats-grid">
-                <!-- Stat 1 -->
-                <div class="vo-stat-card">
-                    <div class="vo-stat-icon">
-                        <img src="https://placehold.co/140x140/FFFDF7/212121?text=Users" alt="Users">
-                    </div>
-                    <div class="vo-stat-number" data-odometer data-increment="0.5">36615</div>
-                    <div class="vo-stat-label">Users</div>
-                    <p class="vo-stat-desc">People who found someone to talk to</p>
-                </div>
-                <!-- Stat 2 -->
-                <div class="vo-stat-card">
-                    <div class="vo-stat-icon">
-                        <img src="https://placehold.co/140x140/FFFDF7/212121?text=Hours" alt="Hours">
-                    </div>
-                    <div class="vo-stat-number" data-odometer data-increment="2">265315</div>
-                    <div class="vo-stat-label">Hours of Conversation</div>
-                    <p class="vo-stat-desc">Total hours of conversation and care</p>
-                </div>
-                <!-- Stat 3 -->
-                <div class="vo-stat-card">
-                    <div class="vo-stat-icon">
-                        <img src="https://placehold.co/140x140/FFFDF7/212121?text=Countries" alt="Countries">
-                    </div>
-                    <div class="vo-stat-number">170+</div>
-                    <div class="vo-stat-label">Countries</div>
-                    <p class="vo-stat-desc">Spread across 170 countries and counting</p>
-                </div>
-                <!-- Stat 4 -->
-                <div class="vo-stat-card">
-                    <div class="vo-stat-icon">
-                        <img src="https://placehold.co/140x140/FFFDF7/212121?text=Stars" alt="Stars">
-                    </div>
-                    <div class="vo-stat-number">Avg. 9.5 stars</div>
-                    <div class="vo-stat-label">Feedback</div>
-                    <p class="vo-stat-desc">Loved by our community</p>
-                </div>
-                <!-- Duplicate stats for seamless carousel loop (mobile only) -->
-                <div class="vo-stats-duplicates">
-                    <!-- Stat 1 (Duplicate) -->
-                    <div class="vo-stat-card">
-                        <div class="vo-stat-icon">
-                            <img src="https://placehold.co/140x140/FFFDF7/212121?text=Users" alt="Users">
-                        </div>
-                        <div class="vo-stat-number" data-odometer data-increment="0.5">36615</div>
-                        <div class="vo-stat-label">Users</div>
-                        <p class="vo-stat-desc">People who found someone to talk to</p>
-                    </div>
-                    <!-- Stat 2 (Duplicate) -->
-                    <div class="vo-stat-card">
-                        <div class="vo-stat-icon">
-                            <img src="https://placehold.co/140x140/FFFDF7/212121?text=Hours" alt="Hours">
-                        </div>
-                        <div class="vo-stat-number" data-odometer data-increment="2">265315</div>
-                        <div class="vo-stat-label">Hours of Conversation</div>
-                        <p class="vo-stat-desc">Total hours of conversation and care</p>
-                    </div>
-                    <!-- Stat 3 (Duplicate) -->
-                    <div class="vo-stat-card">
-                        <div class="vo-stat-icon">
-                            <img src="https://placehold.co/140x140/FFFDF7/212121?text=Countries" alt="Countries">
-                        </div>
-                        <div class="vo-stat-number">170+</div>
-                        <div class="vo-stat-label">Countries</div>
-                        <p class="vo-stat-desc">Spread across 170 countries and counting</p>
-                    </div>
-                    <!-- Stat 4 (Duplicate) -->
-                    <div class="vo-stat-card">
-                        <div class="vo-stat-icon">
-                            <img src="https://placehold.co/140x140/FFFDF7/212121?text=Stars" alt="Stars">
-                        </div>
-                        <div class="vo-stat-number">Avg. 9.5 stars</div>
-                        <div class="vo-stat-label">Feedback</div>
-                        <p class="vo-stat-desc">Loved by our community</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+
 
         <!-- 4. Testimonials Section -->
         <section class="vo-testimonials-section">
-            <h2 class="vo-testimonials-title">What Our Users Say</h2>
-            <div class="vo-testimonials-wrapper">
-                <div class="vo-testimonials-track">
-                    <!-- Group A -->
-                    <div class="vo-testimonial-card vo-orange">
+            <h2 class="vo-testimonials-title">Great conversations begin with great listeners and trusted support</h2>
+            <div class="marquee">
+                <div class="marquee-inner">
+                    <!-- Cards will be populated and cloned by JS -->
+
+                    <!-- 1. Emma (Text) -->
+                    <div class="vo-testimonial-card">
                         <div class="vo-testimonial-name">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"
-                                alt="Emma"> Emma, England
+                            <img src="images/testimonials/emma.jpg" alt="Emma" loading="lazy">
+                            <span>Emma, England</span>
                         </div>
                         <p>Ventoutt is my go-to place when I need to vent. The anonymous chat feature allows me to
                             express my feelings freely without judgment. It's incredible how talking to strangers online
                             has helped me manage my stress and anxiety.</p>
                     </div>
 
-                    <div class="vo-testimonial-card">
+                    <!-- 2. Iya (Video) -->
+                    <div class="vo-testimonial-card vo-video-card">
                         <div class="vo-video-container">
-                            <iframe src="https://www.youtube.com/embed/bEA_lVQtXGo?enablejsapi=1"
-                                title="Ewa video testimonial"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen></iframe>
+                            <iframe width="100%" height="100%"
+                                src="https://www.youtube.com/embed/fFk_z0jpqjo?enablejsapi=1&rel=0&modestbranding=1"
+                                title="Iya Testimonial" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen loading="lazy"></iframe>
                         </div>
-                        <div class="vo-testimonial-location">Ewa, France</div>
+                        <div class="vo-video-caption">Iya, Bosnia and Herzegovina</div>
                     </div>
 
-                    <div class="vo-testimonial-card vo-yellow">
-                        <div class="vo-testimonial-name">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
-                                alt="Sarah"> Sarah M., USA
-                        </div>
-                        <p>I was honestly really unsure about trying online therapy at first especially with a therapist
-                            from another country. But honestly, my therapist was amazing. They were there 24/7 whenever
-                            I needed support, and the cost was something I could actually afford.</p>
-                    </div>
-
+                    <!-- 3. Jennifer (Text) -->
                     <div class="vo-testimonial-card">
-                        <div class="vo-video-container">
-                            <iframe src="https://www.youtube.com/embed/wS1ljs6nQX0?enablejsapi=1"
-                                title="Iya video testimonial"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen></iframe>
-                        </div>
-                        <div class="vo-testimonial-location">Iya, Bosnia and Herzegovina</div>
-                    </div>
-
-                    <div class="vo-testimonial-card vo-green">
                         <div class="vo-testimonial-name">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80"
-                                alt="Jennifer"> Jennifer R., USA
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jennifer R."
+                                loading="lazy">
+                            <span>Jennifer R., USA</span>
                         </div>
                         <p>I struggled with anxiety for years and was skeptical about finding the right support. Then I
                             connected with my therapist, and everything shifted. They really understood what I was going
                             through, made me feel heard, and gave me tools that actually worked in my daily life.</p>
                     </div>
 
-                    <!-- Group B (Duplicate for Loop) -->
-                    <div class="vo-testimonial-card vo-orange">
-                        <div class="vo-testimonial-name">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"
-                                alt="Emma"> Emma, England
-                        </div>
-                        <p>Ventoutt is my go-to place when I need to vent. The anonymous chat feature allows me to
-                            express my feelings freely without judgment. It's incredible how talking to strangers online
-                            has helped me manage my stress and anxiety.</p>
-                    </div>
-
+                    <!-- 4. Sarah (Text) -->
                     <div class="vo-testimonial-card">
-                        <div class="vo-video-container">
-                            <iframe src="https://www.youtube.com/embed/bEA_lVQtXGo?enablejsapi=1"
-                                title="Ewa video testimonial"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen></iframe>
-                        </div>
-                        <div class="vo-testimonial-location">Ewa, France</div>
-                    </div>
-
-                    <div class="vo-testimonial-card vo-yellow">
                         <div class="vo-testimonial-name">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
-                                alt="Sarah"> Sarah M., USA
+                            <img src="images/testimonials/sarah.jpg" alt="Sarah M." loading="lazy">
+                            <span>Sarah M., USA</span>
                         </div>
                         <p>I was honestly really unsure about trying online therapy at first especially with a therapist
                             from another country. But honestly, my therapist was amazing. They were there 24/7 whenever
                             I needed support, and the cost was something I could actually afford.</p>
                     </div>
 
-                    <div class="vo-testimonial-card">
+                    <!-- 5. Ewa (Video) -->
+                    <div class="vo-testimonial-card vo-video-card">
                         <div class="vo-video-container">
-                            <iframe src="https://www.youtube.com/embed/wS1ljs6nQX0?enablejsapi=1"
-                                title="Iya video testimonial"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen></iframe>
+                            <iframe width="100%" height="100%"
+                                src="https://www.youtube.com/embed/t3D9OqoxLpM?enablejsapi=1&rel=0&modestbranding=1"
+                                title="Ewa Testimonial" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen loading="lazy"></iframe>
                         </div>
-                        <div class="vo-testimonial-location">Iya, Bosnia and Herzegovina</div>
+                        <div class="vo-video-caption">Ewa, France</div>
                     </div>
 
-                    <div class="vo-testimonial-card vo-green">
-                        <div class="vo-testimonial-name">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80"
-                                alt="Jennifer"> Jennifer R., USA
-                        </div>
-                        <p>I struggled with anxiety for years and was skeptical about finding the right support. Then I
-                            connected with my therapist, and everything shifted. They really understood what I was going
-                            through, made me feel heard, and gave me tools that actually worked in my daily life.</p>
-                    </div>
                 </div>
             </div>
-            <p style="text-align:center; color:#999; font-size:0.8rem; margin-top:20px;">
-                💡 Tip: Hover over any card to pause the carousel.
-            </p>
+            <!-- CTA Section -->
+            <div class="vo-marquee-cta-container">
+                <p class="vo-marquee-cta-text">
+                    Professional support, trusted advice, and unmatched reliability that’s the VentOutt way. We
+                    understand the journey, the growth, and the tools that make it happen.
+                </p>
+                <a href="vo-services.html" class="vo-btn-pill-arrow">
+                    <span>EXPLORE SERVICES</span>
+                    <div class="vo-btn-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
         </section>
 
         <!-- 5. Real Experts Slideshow (Figma Banner) -->
@@ -1500,11 +1504,11 @@
 
     <!-- Scripts -->
     <!-- Logics -->
-    <script src="js/vo-index.js"></script>
+    <script src="js/vo-index-v2.js"></script>
     <script src="js/vo-therapist-swipe.js"></script>
 
     <!-- Loaders -->
-    <script src="js/vo-header.js"></script>
+
     <script src="js/vo-footer.js"></script>
     <script src="js/vo-chatbot.js"></script>
     <script src="js/vo-popups.js"></script>

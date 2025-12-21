@@ -4,20 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Ventoutt</title>
+    <title>About V2 - Ventoutt</title>
     <meta name="description"
         content="Learn about Ventoutt's mission to bridge the gap between venting and professional therapy.">
 
     <!-- Global Design System -->
     <link rel="stylesheet" href="css/global.css">
 
-
     <!-- Page Specific Styles -->
     <link rel="stylesheet" href="css/vo-about.css">
-    <link rel="stylesheet" href="css/vo-index.css">
+    <link rel="stylesheet" href="css/vo-index-v2.css">
 
     <!-- Component Styles -->
     <link rel="stylesheet" href="css/components/vo-header.css">
+    <script src="js/vo-therapist-swipe.js" defer></script>
     <link rel="stylesheet" href="css/components/vo-footer.css">
     <link rel="stylesheet" href="css/components/vo-chatbot.css">
     <link rel="stylesheet" href="css/components/vo-popups.css">
@@ -32,41 +32,169 @@
 
 <body>
 
-    <!-- Scripts will inject Header here automatically -->
+    <!-- Header V2 (Floating) -->
+    <header class="vo-header-v2">
+        <div class="vo-header-inner">
+            <!-- Logo -->
+            <a href="#" class="vo-logo-v2">VentOutt</a>
 
-    <main>
-        <!-- Redesigned About Hero Section (Split Layout) -->
-        <section class="about-hero-section">
-            <!-- Decoration Squiggle Top Left (Already via CSS ::before) -->
+            <!-- Nav -->
+            <nav class="vo-nav-v2">
+                <a href="#" class="vo-nav-link">About Us</a>
+                <a href="#" class="vo-nav-link">Services</a>
+                <a href="#" class="vo-nav-link">Therapists</a>
+                <a href="#" class="vo-nav-link">Blogs</a>
+                <a href="#" class="vo-nav-link">Get Involved</a>
+            </nav>
 
-            <div class="about-hero-content">
-                <span class="about-hero-pill">Who we are</span>
-                <h1 class="about-hero-title">Creating a safe space for mental health</h1>
-                <p class="about-hero-desc">
-                    We believe that mental health is just as important as physical health, and our mission is to provide
-                    support, education.
-                </p>
-                <a href="#" class="btn-about-hero">
-                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Avatar"
-                        class="btn-user-avatar">
-                    Let's talk with us
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" style="margin-left: 5px;">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
+            <!-- Actions -->
+            <div class="vo-header-actions">
+                <!-- Shopping Cart Icon (SVG) -->
+                <div class="vo-action-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9 20C9 21.1046 8.10457 22 7 22C5.89543 22 5 21.1046 5 20C5 18.8954 5.89543 18 7 18C8.10457 18 9 18.8954 9 20Z"
+                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                            d="M20 20C20 21.1046 19.1046 22 18 22C16.8954 22 16 21.1046 16 20C16 18.8954 16.8954 18 18 18C19.1046 18 20 18.8954 20 20Z"
+                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                            d="M1 1H4L6.68 14.39C6.77144 14.8504 7.02191 15.264 7.38755 15.5583C7.75318 15.8526 8.2107 16.009 8.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6"
+                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-                </a>
+                </div>
+                <!-- Search Icon (SVG) -->
+                <div class="vo-action-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M21 21L15.5 15.5M17 10.5C17 14.0899 14.0899 17 10.5 17C6.91015 17 4 14.0899 4 10.5C4 6.91015 6.91015 4 10.5 4C14.0899 4 17 6.91015 17 10.5Z"
+                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Header (Fixed Top) -->
+    <header class="vo-mobile-header">
+        <div class="vo-mobile-header__content">
+            <a href="index.html" class="vo-mobile-header__logo">
+                <img src="https://www.ventoutt.com/wp-content/uploads/2025/06/cropped-cropped-cropped-cropped-cropped-cropped-Ventoutt-Logo-1-3-1.png"
+                    alt="Ventoutt Logo">
+            </a>
+            <button class="vo-mobile-header__hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="vo-mobile-menu">
+        <div class="vo-mobile-menu__header">
+            <div class="vo-mobile-menu__logo">Ventoutt</div>
+            <button class="vo-mobile-menu__close" aria-label="Close Menu">&times;</button>
+        </div>
+
+        <div class="vo-mobile-menu__content">
+            <!-- Main Navigation Items -->
+            <a href="index.html" class="vo-mobile-menu__link">Home</a>
+
+            <!-- Services Section -->
+            <div class="vo-mobile-menu__section">
+                <div class="vo-mobile-menu__item-header">
+                    Services
+                    <span class="vo-mobile-menu__chevron">▼</span>
+                </div>
+                <div class="vo-mobile-menu__submenu">
+                    <a href="vo-therapy.html" class="vo-mobile-menu__sublink">Online Therapy</a>
+                    <a href="vo-venting.html" class="vo-mobile-menu__sublink">Online Venting</a>
+                    <a href="vo-coaching.html" class="vo-mobile-menu__sublink">Career Coaching</a>
+                </div>
             </div>
 
-            <div class="about-hero-image-wrapper">
-                <!-- Dummy Image (Unsplash) -->
-                <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80" alt="Smiling Woman"
-                    class="about-hero-image">
-                <div class="squiggle-bottom-right"></div>
+            <a href="#" class="vo-mobile-menu__link">Join Us</a>
+            <a href="#" class="vo-mobile-menu__link">Internships</a>
+            <a href="vo-about.html" class="vo-mobile-menu__link">About Us</a>
+            <a href="#" class="vo-mobile-menu__link">Help</a>
+            <a href="#" class="vo-mobile-menu__link">Blog</a>
+
+            <!-- Quote -->
+            <div class="vo-mobile-menu__quote">
+                for young adults by young adults
+            </div>
+
+            <!-- Find a Therapist CTA -->
+            <button class="vo-mobile-menu__cta">Talk to Chatbot</button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Backdrop -->
+    <div class="vo-mobile-menu__backdrop"></div>
+
+    <div class="vo-header-v2-spacer"></div>
+
+    <main>
+
+        <!-- Hero V2 Section -->
+        <section class="hero-v2">
+            <div class="hero-v2-grid">
+                <!-- Left Column -->
+                <div class="hero-left-col">
+                    <!-- Greeting -->
+                    <div class="hero-cell-greeting">
+                        <h1>About Us</h1>
+                    </div>
+
+                    <!-- Tagline -->
+                    <div class="hero-tagline">
+                        <h2>Creating a safe space<br>for mental health.</h2>
+                    </div>
+
+                    <!-- Stat Blocks Row -->
+                    <div class="hero-stat-row">
+                        <div class="hero-stat-block-new">
+                            <span class="hero-stat-number" data-odometer data-increment="0.5">36,615</span>
+                            <span class="hero-stat-label">Users worldwide</span>
+                        </div>
+                        <div class="hero-stat-block-new">
+                            <span class="hero-stat-number" data-odometer data-increment="2">265,315</span>
+                            <span class="hero-stat-label">Hours of care</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Section -->
+                    <div class="hero-cta-section">
+                        <p class="hero-cta-subtext">Learn more about our mission and values.</p>
+                        <a href="#" class="hero-cta-btn">Let's Talk</a>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="hero-right-col">
+                    <!-- Slideshow Image -->
+                    <div class="hero-cell-slideshow">
+                        <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=1600&auto=format&fit=crop"
+                            alt="About Us" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+
+                    <!-- Metrics Text Below Slideshow -->
+                    <div class="hero-metrics-text">
+                        <div class="hero-metric-item">
+                            <span class="hero-metric-value">170+</span>
+                            <span class="hero-metric-label">Countries reached</span>
+                        </div>
+                        <div class="hero-metric-item">
+                            <span class="hero-metric-value">9.5 ⭐</span>
+                            <span class="hero-metric-label">Avg. User Feedback</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Infinite Image Carousel (Reference Image 1 Strip) -->
+        <!-- Infinite Image Carousel -->
         <section class="image-carousel-section">
             <div class="carousel-track" id="carouselTrack">
                 <!-- Item 1: Right D -->
@@ -358,10 +486,10 @@
     <!-- Scripts -->
     <!-- Logics -->
     <script src="js/vo-about.js"></script>
+    <script src="js/vo-index-v2.js"></script>
     <script src="js/scroll-animations.js"></script>
 
     <!-- Loaders -->
-    <script src="js/vo-header.js"></script>
     <script src="js/vo-footer.js"></script>
     <script src="js/vo-chatbot.js"></script>
     <script src="js/vo-popups.js"></script>

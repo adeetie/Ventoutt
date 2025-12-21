@@ -1,23 +1,224 @@
 /* vo-index.css - Homepage Specific Styles */
 
 /* =========================================
-   1. Hero Slider Section
+   0. Image Carousel Section (for v3 layout)
    ========================================= */
-.vo-hero-slider {
-    position: relative;
-    width: 100%;
-    height: 710px;
-    /* Match Figma height */
+.image-carousel-section {
+    background-color: var(--vo-color-secondary-light);
+    padding: 20px 0 60px 0;
     overflow: hidden;
 }
 
-.vo-hero-slides {
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    animation: scrollCarousel 30s linear infinite;
+    width: max-content;
+}
+
+.carousel-item {
     position: relative;
+    flex-shrink: 0;
+    width: 280px;
+    height: 320px;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.carousel-item img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
     height: 100%;
 }
 
-.vo-hero-slide {
+.carousel-item:hover .carousel-overlay {
+    opacity: 1;
+}
+
+.overlay-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--vo-color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+}
+
+.overlay-text {
+    color: white;
+    font-family: var(--vo-font-body);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+@keyframes scrollCarousel {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pause animation on hover */
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+/* =========================================
+   1. Hero Section (v2 Redesign - Two Column Layout)
+   ========================================= */
+.hero-v2 {
+    padding: 60px 0;
+    background-color: var(--vo-color-secondary-light);
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-v2-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    width: 100%;
+    align-items: start;
+}
+
+/* Left Column */
+.hero-left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Greeting */
+.hero-cell-greeting h1 {
+    font-family: var(--vo-font-heading);
+    font-size: 64px;
+    margin-bottom: 0;
+    color: #000;
+    font-weight: 700;
+}
+
+/* Tagline */
+.hero-tagline h2 {
+    font-family: var(--vo-font-heading);
+    font-size: 42px;
+    line-height: 1.2;
+    color: var(--vo-color-black);
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Stat Blocks Row */
+.hero-stat-row {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.hero-stat-block-new {
+    background-color: #9E9E9E;
+    border-radius: 24px;
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    min-width: 160px;
+    flex: 1;
+    max-width: 200px;
+}
+
+.hero-stat-block-new .hero-stat-number {
+    font-size: 28px;
+    font-weight: 700;
+    font-family: var(--vo-font-body);
+    color: #fff;
+}
+
+.hero-stat-block-new .hero-stat-label {
+    font-size: 14px;
+    font-family: var(--vo-font-body);
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 4px;
+}
+
+/* CTA Section */
+.hero-cta-section {
+    margin-top: 24px;
+}
+
+.hero-cta-subtext {
+    font-family: var(--vo-font-body);
+    font-size: 16px;
+    color: var(--vo-color-gray-600);
+    margin-bottom: 16px;
+}
+
+.hero-cta-btn {
+    display: inline-block;
+    background-color: var(--vo-color-primary);
+    color: #fff;
+    padding: 14px 36px;
+    border-radius: 30px;
+    font-family: var(--vo-font-body);
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.hero-cta-btn:hover {
+    background-color: var(--vo-color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 127, 23, 0.3);
+}
+
+/* Right Column */
+.hero-right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Slideshow */
+.hero-cell-slideshow {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero-cell-slideshow .vo-hero-slides {
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.hero-cell-slideshow .vo-hero-slide {
     position: absolute;
     top: 0;
     left: 0;
@@ -25,18 +226,16 @@
     height: 100%;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 150px;
-    padding-right: 150px;
-    box-sizing: border-box;
     z-index: 1;
-    overflow: hidden;
 }
 
-/* Flipped Background using pseudo-element */
-.vo-hero-slide::before {
+.hero-cell-slideshow .vo-hero-slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Background using pseudo-element */
+.hero-cell-slideshow .vo-hero-slide::before {
     content: "";
     position: absolute;
     top: 0;
@@ -46,111 +245,135 @@
     background-image: var(--bg-url);
     background-size: cover;
     background-position: center;
-    transform: scaleX(-1);
     z-index: -1;
 }
 
-.vo-hero-slide.active {
+/* Support for index-v3.html About Hero Slideshow */
+.about-hero-image-wrapper .vo-hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    z-index: 1;
+}
+
+.about-hero-image-wrapper .vo-hero-slide.active {
     opacity: 1;
     z-index: 2;
 }
 
-.vo-hero-content {
-    position: relative;
-    z-index: 3;
-    max-width: 800px;
-    color: var(--vo-color-white);
-    display: flex;
-    flex-direction: column;
-    gap: 35px;
-}
-
-.vo-hero-overlay {
+.about-hero-image-wrapper .vo-hero-slide::before {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%);
-    z-index: 1;
-    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    background-image: var(--bg-url);
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    border-radius: inherit;
+    /* Inherit border radius from wrapper if any */
 }
 
-.vo-hero-title {
-    font-family: var(--vo-font-heading);
-    font-weight: 400;
-    font-size: 64px;
-    line-height: 88px;
-    letter-spacing: -0.5px;
-    color: var(--vo-color-white);
-    margin: 0;
-    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
-    max-width: 1000px;
-}
-
-.vo-hero-subtitle {
-    font-family: var(--vo-font-body);
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 26px;
-    color: var(--vo-color-white);
-    margin: 0;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
-    max-width: 682px;
-}
-
-.vo-btn-hero {
-    box-sizing: border-box;
+/* Metrics Text Below Slideshow */
+.hero-metrics-text {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 12px 45px;
-    gap: 10px;
-    width: 240px;
-    height: 50px;
-    background: var(--vo-color-primary);
-    /* #F57F17 */
-    border: 1px solid var(--vo-color-white);
-    border-radius: 10px;
-    font-family: var(--vo-font-body);
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 26px;
-    text-align: center;
-    letter-spacing: 0.5px;
-    color: var(--vo-color-white);
-    text-decoration: none;
-    transition: transform 0.2s, background-color 0.2s;
+    gap: 40px;
+    padding: 8px 0;
 }
 
-.vo-btn-hero:hover {
-    background-color: #E66A2E;
-    transform: translateY(-2px);
+.hero-metric-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.hero-metric-value {
+    font-family: var(--vo-font-body);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--vo-color-black);
+}
+
+.hero-metric-label {
+    font-family: var(--vo-font-body);
+    font-size: 14px;
+    color: var(--vo-color-gray-500);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .hero-v2-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .hero-cell-greeting h1 {
+        font-size: 52px;
+    }
+
+    .hero-tagline h2 {
+        font-size: 36px;
+    }
+
+    .hero-cell-slideshow {
+        height: 350px;
+    }
 }
 
 @media (max-width: 768px) {
-    .vo-hero-slide {
-        padding: 0 5%;
-        align-items: center;
-        text-align: center;
+    .hero-v2 {
+        padding: 40px 0;
     }
 
-    .vo-hero-title {
-        font-size: 36px;
-        line-height: 1.2;
+    .hero-v2-grid {
+        padding: 0 24px;
     }
 
-    .vo-hero-content {
-        align-items: center;
+    .hero-cell-greeting h1 {
+        font-size: 42px;
+    }
+
+    .hero-tagline h2 {
+        font-size: 28px;
+    }
+
+    .hero-stat-row {
+        flex-direction: row;
+        gap: 12px;
+    }
+
+    .hero-stat-block-new {
+        padding: 20px 24px;
+        min-width: 140px;
+    }
+
+    .hero-stat-block-new .hero-stat-number {
+        font-size: 24px;
+    }
+
+    .hero-cell-slideshow {
+        height: 300px;
+    }
+
+    .hero-metrics-text {
+        flex-wrap: wrap;
+        gap: 24px;
     }
 }
+
 
 /* =========================================
    2. How Can We Help (Expanding Gallery)
    ========================================= */
 .vo-help-section {
     padding: 100px 0;
-    background-color: var(--vo-color-white);
+    background-color: var(--vo-color-secondary-light);
 }
 
 .vo-help-container {
@@ -496,7 +719,7 @@
    ========================================= */
 .vo-stats-section {
     padding: 100px 5%;
-    background-color: var(--vo-color-bg-primary);
+    background-color: var(--vo-color-secondary-light);
     /* Cream/White background */
     text-align: center;
 }
@@ -597,12 +820,13 @@
 
 
 /* =========================================
-   5. Testimonials (Carousel)
+   5. Testimonials (3D Cylinder Loop)
    ========================================= */
 .vo-testimonials-section {
-    padding: 80px 0;
-    background-color: var(--vo-color-bg-light);
+    padding: 80px 0 120px;
+    background-color: var(--vo-color-secondary-light);
     overflow: hidden;
+    position: relative;
 }
 
 .vo-testimonials-title {
@@ -610,70 +834,281 @@
     font-size: 48px;
     text-align: center;
     margin-bottom: 60px;
-    color: var(--vo-color-dark-gray);
+    color: var(--vo-color-black);
+    line-height: 1.3;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
 }
 
-.vo-testimonials-wrapper {
+.marquee {
     position: relative;
     width: 100%;
     overflow: hidden;
-    padding: 20px 0;
+    background: transparent;
+    padding: 60px 0;
 }
 
-.vo-testimonials-track {
+.marquee-inner {
     display: flex;
-    gap: 20px;
     width: max-content;
-    animation: vo-scroll-left 40s linear infinite;
+    /* Important: Fit content width */
     will-change: transform;
+    transform-style: preserve-3d;
+    /* Crucial for correct Z-ordering */
+    /* transform handled by JS */
 }
 
-.vo-testimonials-track:hover {
-    animation-play-state: paused;
+/* Masks */
+.marquee-mask-left,
+.marquee-mask-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    /* Fade width */
+    z-index: 2;
+    pointer-events: none;
+    /* Let clicks pass through */
 }
 
-@keyframes vo-scroll-left {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
+.marquee-mask-left {
+    left: 0;
+    background: linear-gradient(to right, #FFFBF5, transparent);
 }
 
+.marquee-mask-right {
+    right: 0;
+    background: linear-gradient(to left, #FFFBF5, transparent);
+}
+
+/* Card Styling - Square Box Clean Look */
 .vo-testimonial-card {
-    width: 350px;
-    height: 450px;
-    border-radius: 20px;
-    overflow: hidden;
     position: relative;
-    flex-shrink: 0;
+    width: 380px;
+    /* Square Box */
+    height: 380px;
+    border-radius: 32px;
+    /* More rounded */
+    overflow: hidden;
     background: #fff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08),
+        0 8px 32px rgba(0, 0, 0, 0.12);
     display: flex;
     flex-direction: column;
-    padding: 30px;
-    transition: transform 0.3s ease;
+    justify-content: space-between;
+    /* Push content apart */
+    padding: 32px;
+    margin-right: 6px;
+    /* Ultra tight gap (60% reduction from 15px) */
+    flex-shrink: 0;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Ensure z-index is handled by 3D or hover */
 }
 
 .vo-testimonial-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.02);
+    /* Slight scale to emphasize */
+    box-shadow:
+        0 12px 24px rgba(0, 0, 0, 0.12),
+        0 4px 8px rgba(0, 0, 0, 0.06);
+    z-index: 100;
+    /* Ensure active card is clickable and on top */
 }
 
-.vo-testimonial-card.vo-orange {
-    background: #FFF3E0;
-    border: 1px solid #FFE0B2;
+/* Video specific fixes */
+.vo-video-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    /* Match internal radius roughly */
+    overflow: hidden;
+    position: relative;
+    background: #000;
+    z-index: 20;
+    /* High z-index for iframe interaction */
+    pointer-events: auto;
+    /* Ensure clickable */
 }
 
-.vo-testimonial-card.vo-yellow {
-    background: #FEFCEF;
-    border: 1px solid #FFF59D;
+.vo-video-container iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: auto;
+    /* Explicitly allow pointer events */
 }
 
-.vo-testimonial-card.vo-green {
-    background: #E8F5E9;
-    border: 1px solid #C8E6C9;
+.vo-video-caption {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    color: #fff;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 25;
+    /* Text above video */
+    font-size: 16px;
+    pointer-events: none;
+    /* Let clicks pass through text to video */
+}
+
+/* Redesigned Text Layout: Quote First, Profile Bottom */
+.vo-testimonial-name {
+    order: 2;
+    /* Move to bottom */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 18px;
+    color: var(--vo-color-black);
+}
+
+.vo-testimonial-name img {
+    width: 120px;
+    /* Bigger Avatar (120px) */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #f8f9fa;
+    /* Subtle border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.vo-testimonial-card p {
+    order: 1;
+    /* Move to top */
+    font-family: var(--vo-font-body);
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--vo-color-dark-gray);
+    flex-grow: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    position: relative;
+    font-style: italic;
+    /* Quote style */
+}
+
+/* Video Card Styling */
+.vo-testimonial-card.vo-video-card {
+    padding: 0;
+    background: #000;
+}
+
+.vo-video-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.vo-video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.vo-testimonial-location {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-weight: 500;
+    text-align: left;
+    backdrop-filter: blur(4px);
+    z-index: 2;
+}
+
+/* Ensure content flow */
+.vo-testimonial-name {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: var(--vo-color-black);
+}
+
+.vo-testimonial-name img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.vo-testimonial-card p {
+    font-family: var(--vo-font-body);
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--vo-color-dark-gray);
+    flex-grow: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+/* Video Card Styling */
+.vo-testimonial-card.vo-video-card {
+    padding: 0;
+    background: #000;
+}
+
+.vo-video-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.vo-video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.vo-testimonial-location {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-weight: 500;
+    text-align: left;
+    backdrop-filter: blur(4px);
+    z-index: 2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+    /* Inherit smaller sizes from desktop default */
+    .vo-testimonial-title {
+        font-size: 32px;
+    }
+}
+
+.vo-testimonial-card.vo-video-card .vo-video-container {
+    flex: 1;
+    border-radius: 24px 24px 0 0;
+    overflow: hidden;
+}
+
+.vo-testimonial-card.vo-video-card .vo-testimonial-location {
+    padding: 16px;
+    background: #fff;
+    border-radius: 0 0 24px 24px;
 }
 
 .vo-testimonial-name {
@@ -696,17 +1131,15 @@
 
 .vo-testimonial-card p {
     font-family: var(--vo-font-body);
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.6;
     color: #555;
 }
 
 .vo-video-container {
     width: 100%;
-    height: 100%;
-    border-radius: 10px;
+    height: 280px;
     overflow: hidden;
-    margin-bottom: 10px;
 }
 
 .vo-video-container iframe {
@@ -720,7 +1153,34 @@
     font-size: 0.9rem;
     color: #666;
     text-align: center;
-    margin-top: auto;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .vo-testimonials-title {
+        font-size: 36px;
+    }
+
+    .vo-testimonial-card {
+        width: 260px;
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .vo-testimonials-title {
+        font-size: 28px;
+    }
+
+    .vo-testimonial-card {
+        width: 240px;
+        min-height: 320px;
+        padding: 20px;
+    }
+
+    .vo-testimonials-track {
+        gap: 20px;
+    }
 }
 
 /* =========================================
@@ -1624,7 +2084,7 @@ h2,
    ========================================= */
 .vo-faq-section {
     padding: 80px 20px;
-    background: #f9f9f9;
+    background: var(--vo-color-secondary-light);
 }
 
 .vo-faq-container {
@@ -1676,7 +2136,7 @@ h2,
    13. Specializations (Corrected)
    ========================================= */
 .vo-specs-section {
-    background-color: var(--vo-color-cream);
+    background-color: var(--vo-color-secondary-light);
     padding: 100px 5%;
     text-align: center;
 }
@@ -1808,7 +2268,7 @@ h2,
    ========================================= */
 .vo-comparison-section {
     padding: 100px 5%;
-    background-color: #FAFAFA;
+    background-color: var(--vo-color-secondary-light);
 }
 
 .vo-comparison-header {
@@ -2044,7 +2504,7 @@ h2,
    17. How It Works (Redesigned)
    ========================================= */
 .vo-how-section {
-    background-color: var(--vo-color-cream);
+    background-color: var(--vo-color-secondary-light);
     padding: 80px 0;
     text-align: center;
 }
@@ -2470,7 +2930,7 @@ h2 {
    ========================================= */
 .vo-specs-section {
     padding: 80px 20px;
-    background-color: #FFFCF8;
+    background-color: var(--vo-color-secondary-light);
     /* Creamy white background */
     text-align: center;
 }
@@ -2536,7 +2996,7 @@ h2 {
    ========================================= */
 .vo-common-challenges {
     padding: 0 20px 80px;
-    background-color: #FFFCF8;
+    background-color: var(--vo-color-secondary-light);
     /* Matches Specialize section */
 }
 
@@ -2806,7 +3266,7 @@ h2 {
 
     .vo-how-section {
         padding: 40px 20px;
-        background-color: #F4EDE4 !important;
+        background-color: var(--vo-color-secondary-light) !important;
         /* Beige/Cream Background */
     }
 
@@ -3500,7 +3960,7 @@ h2 {
 
     .vo-stats-section {
         padding: 50px 20px !important;
-        background-color: #F5F0EB !important;
+        background-color: var(--vo-color-secondary-light) !important;
         overflow: visible !important;
     }
 
@@ -4912,15 +5372,6 @@ h2 {
         scrollbar-width: none;
     }
 
-    .vo-testimonial-card {
-        min-width: 85vw !important;
-        /* Mobile Card Width */
-        max-width: 85vw !important;
-        flex: 0 0 auto;
-        margin: 0 !important;
-        /* Reset component margins */
-    }
-
     /* 3. Real Experts Banner (Figma Container) */
     .vo-figma-container {
         display: flex !important;
@@ -5003,9 +5454,275 @@ h2 {
         /* Ensure animations don't break layout width */
     }
 
-    .vo-partners-container,
-    .therapists-carousel-wrapper {
-        width: 100% !important;
-        overflow-x: hidden !important;
+    /* =========================================
+   Redesigned Expert Banner (Blob + Flip Card)
+   ========================================= */
+    .vo-expert-redesign-section {
+        padding: 100px 5%;
+        background-color: var(--vo-color-bg-primary);
+        /* Beige Base */
+        overflow: hidden;
     }
-}
+
+    .vo-expert-redesign-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 80px;
+    }
+
+    /* Left: Blob Image */
+    .vo-expert-image-col {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+
+    .vo-blob-shape {
+        position: relative;
+        width: 450px;
+        height: 450px;
+        /* Organic Blob Shape */
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        background-color: #ff6b35;
+        /* Toolvo Orange Base */
+        overflow: hidden;
+        box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s ease;
+    }
+
+    .vo-blob-shape:hover {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+
+    .vo-expert-blob-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        mix-blend-mode: multiply;
+        /* Optional blending */
+        opacity: 0.9;
+    }
+
+    /* Right: Content */
+    .vo-expert-content-col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .vo-expert-heading {
+        font-family: var(--vo-font-heading);
+        font-size: 48px;
+        line-height: 1.1;
+        font-weight: 400;
+        color: #000;
+        /* "Heading will on top black" */
+        font-style: italic;
+    }
+
+    /* Flip Card Component */
+    .vo-expert-flip-card {
+        background-color: transparent;
+        width: 100%;
+        max-width: 550px;
+        height: 350px;
+        /* Fixed Height for Flip */
+        perspective: 1000px;
+        /* Enable 3D */
+        cursor: pointer;
+    }
+
+    .vo-flip-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: left;
+        transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transform-style: preserve-3d;
+        border-radius: 32px;
+    }
+
+    /* Trigger Flip on Hover */
+    .vo-expert-flip-card:hover .vo-flip-inner {
+        transform: rotateY(180deg);
+    }
+
+    .vo-flip-front,
+    .vo-flip-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 32px;
+        padding: 40px;
+        background-color: #000;
+        /* Black Card */
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* Front Styling */
+    .vo-flip-front {
+        /* Default State */
+    }
+
+    .vo-expert-intro {
+        font-family: var(--vo-font-body);
+        font-size: 18px;
+        margin-bottom: 24px;
+        opacity: 0.9;
+        line-height: 1.5;
+    }
+
+    .vo-expert-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .vo-expert-list li {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 12px;
+        font-size: 16px;
+        opacity: 0.85;
+    }
+
+    .vo-expert-list li::before {
+        content: "•";
+        color: #ff6b35;
+        /* Orange Bullet */
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+    }
+
+    /* Back Styling */
+    .vo-flip-back {
+        transform: rotateY(180deg);
+        background-color: #111;
+        /* Slightly lighter black/grey for contrast? Or stick to black */
+        align-items: center;
+        /* Center Content */
+        text-align: center;
+    }
+
+    .vo-expert-highlight {
+        font-family: var(--vo-font-heading);
+        font-size: 28px;
+        font-style: italic;
+        margin-bottom: 32px;
+    }
+
+    /* CTA Buttons */
+    .vo-btn-pill-white {
+        display: inline-block;
+        padding: 12px 32px;
+        background: #fff;
+        color: #000;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 16px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .vo-btn-pill-white:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Tablet/Mobile Responsiveness */
+    @media (max-width: 1024px) {
+        .vo-expert-redesign-container {
+            flex-direction: column;
+            text-align: center;
+            gap: 40px;
+        }
+
+        .vo-expert-content-col {
+            align-items: center;
+        }
+
+        .vo-expert-heading {
+            font-size: 36px;
+            text-align: center;
+        }
+
+        .vo-blob-shape {
+            width: 350px;
+            height: 350px;
+        }
+    }
+
+    /* CTA Below Marquee */
+    .vo-marquee-cta-container {
+        text-align: center;
+        max-width: 800px;
+        margin: 60px auto 0;
+        padding: 0 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+    }
+
+    .vo-marquee-cta-text {
+        font-family: var(--vo-font-body);
+        font-size: 18px;
+        line-height: 1.6;
+        color: var(--vo-color-dark-gray);
+        max-width: 600px;
+    }
+
+    /* Pill Button Style (Reference Image) */
+    .vo-btn-pill-arrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 6px 6px 6px 24px;
+        /* Left padding for text, small padding right for circle */
+        border: 1px solid #1a1a1a;
+        border-radius: 50px;
+        background: transparent;
+        text-decoration: none;
+        color: #1a1a1a;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        gap: 16px;
+    }
+
+    .vo-btn-pill-arrow span {
+        white-space: nowrap;
+    }
+
+    .vo-btn-icon {
+        width: 40px;
+        height: 40px;
+        background: #ff6b35;
+        /* Toolvo Orange */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+    }
+
+    .vo-btn-pill-arrow:hover {
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .vo-btn-pill-arrow:hover .vo-btn-icon {
+        transform: translateX(2px);
+        background: #e55a2b;
+    }

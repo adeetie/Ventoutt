@@ -1,161 +1,101 @@
-/* ========== VentOutt Header Component ========== */
+/* ========== VentOutt Header Component (Upgraded V2) ========== */
+/* Modern Floating Header Design */
 
-/* Desktop Header */
-.vo-header {
-    position: absolute;
-    top: 0;
+.vo-header-v2-spacer {
+    height: 140px;
+    /* Space for the fixed header + spacing */
+}
+
+/* Renaming classes to generic .vo-header where possible or keeping v2 and mapping */
+/* We keep V2 classes to match index-v3.html structure */
+
+.vo-header-v2 {
+    position: fixed;
+    top: 20px;
     left: 0;
     width: 100%;
-    height: 100px;
-    background: transparent !important;
-    /* Force transparent */
+    z-index: 1000;
+    padding: 0 5%;
+}
+
+.vo-header-inner {
+    background: #FFFFFF;
+    border-radius: 50px;
+    /* Large pill shape */
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 75px;
-    z-index: var(--vo-z-fixed);
-    box-sizing: border-box;
-    transition: background-color var(--vo-transition-base);
+    padding: 0 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    /* Soft shadow */
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-/* State: Solid Background (Disabled/Transparent per user request) */
-.vo-header--solid {
-    position: fixed;
-    /* Keep fixed positioning behavior if needed, but transparent bg */
-    background: transparent !important;
-    margin-bottom: 0;
-    backdrop-filter: none;
-    /* Remove blur if present */
-}
-
-/* State: Dark Text (for light backgrounds) */
-.vo-header--dark-text .vo-header__link,
-.vo-header--dark-text .vo-header__split-btn,
-.vo-header--dark-text .vo-header__dropdown-toggle {
-    color: var(--vo-text-primary) !important;
-}
-
-.vo-header--dark-text .vo-header__link:hover,
-.vo-header--dark-text .vo-header__split-btn:hover {
-    background: rgba(0, 0, 0, 0.05);
-}
-
-.vo-header--dark-text .vo-header__arrow path {
-    stroke: var(--vo-text-primary);
-}
-
-/* Logo */
-.vo-header__logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.vo-header__logo-img {
-    height: 50px;
-    width: auto;
-    object-fit: contain;
-}
-
-/* Navigation */
-.vo-header__nav {
-    display: flex;
-    align-items: center;
-    gap: var(--vo-space-2);
-}
-
-.vo-header__link {
-    font-family: var(--vo-font-body);
-    font-weight: var(--vo-font-medium);
-    font-size: var(--vo-text-base);
-    color: var(--vo-color-white);
+/* 1. Logo */
+.vo-logo-v2 {
+    font-family: var(--vo-font-heading);
+    font-size: 28px;
+    /* Prominent size */
+    font-weight: 400;
+    /* Regular weight like Kitcy */
+    color: #000;
     text-decoration: none;
-    padding: 6px 12px;
-    border-radius: 20px;
-    transition: background-color var(--vo-transition-fast);
+    letter-spacing: -0.5px;
 }
 
-.vo-header__link:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-/* Navigation Dropdown */
-.vo-header__dropdown {
-    position: relative;
-}
-
-.vo-header__split-btn {
+/* 2. Navigation */
+.vo-nav-v2 {
     display: flex;
-    align-items: center;
-    gap: 6px;
-    padding-right: 6px;
-}
-
-.vo-header__dropdown-toggle {
-    background: none;
-    border: none;
-    padding: 4px;
-    cursor: pointer;
-    color: inherit;
-    display: flex;
-    align-items: center;
-}
-
-.vo-header__arrow {
-    transition: transform var(--vo-transition-base);
-}
-
-.vo-header__dropdown.active .vo-header__arrow {
-    transform: rotate(180deg);
-}
-
-.vo-header__dropdown-menu {
+    gap: 40px;
     position: absolute;
-    top: 100%;
-    left: 0;
-    background: rgba(0, 0, 0, 0.95);
-    border-radius: var(--vo-radius-sm);
-    padding: var(--vo-space-2) 0;
-    min-width: 180px;
-    display: none;
-    z-index: var(--vo-z-dropdown);
-    margin-top: var(--vo-space-2);
-    box-shadow: var(--vo-shadow-base);
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.vo-header__dropdown.active .vo-header__dropdown-menu {
-    display: flex;
-    flex-direction: column;
-}
-
-.vo-header__dropdown-item {
-    padding: 12px 20px !important;
-    font-size: 16px !important;
-    color: var(--vo-color-white) !important;
-    white-space: nowrap;
-    display: block;
-    text-decoration: none;
+.vo-nav-link {
     font-family: var(--vo-font-body);
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+    text-transform: uppercase;
+    /* Standard modern minimalist feel */
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s;
 }
 
-.vo-header__dropdown-item:hover {
-    background: rgba(255, 255, 255, 0.2);
+.vo-nav-link:hover {
+    opacity: 0.6;
 }
 
-/* Tagline */
-.vo-header__tagline {
-    font-family: var(--vo-font-heading) !important;
-    font-weight: 800 !important;
-    font-style: italic !important;
-    font-size: 24px;
-    color: var(--vo-color-primary);
-    margin-right: 40px;
-    transform: rotate(-3deg) translateY(6px);
-    white-space: nowrap;
-    display: inline-block;
+/* 3. Actions (Right Side) */
+.vo-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-/* ========== Mobile Navigation ========== */
+.vo-action-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.vo-action-icon:hover {
+    transform: scale(1.1);
+}
+
+.vo-action-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: #000;
+    stroke-width: 1.5;
+}
+
+/* ========== Mobile Navigation (Legacy Support) ========== */
 
 /* Hide mobile elements on desktop */
 .vo-mobile-header,
@@ -375,8 +315,9 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
-    .vo-header {
+    .vo-header-v2 {
         display: none;
+        /* Hide Desktop Header V2 */
     }
 
     .vo-mobile-header,
@@ -396,7 +337,6 @@
     .vo-mobile-header,
     .vo-mobile-menu,
     .vo-mobile-menu__backdrop {
-        /* Use !important to override any JS inline styles */
         display: none !important;
     }
 }
