@@ -5823,3 +5823,112 @@ h2 {
         background: #e55a2b;
     }
 }
+
+/* =========================================
+   NUCLEAR OPTION V2: FINAL STICKY FIX
+   Appended to end of file for max specificity
+   ========================================= */
+@media (max-width: 768px) {
+
+    /* 1. Reset Ancestors - Critical for Sticky */
+    html,
+    body,
+    main,
+    .content-block-wrapper,
+    .vo-why-love-section,
+    .vo-scroll-slider-wrapper {
+        overflow: visible !important;
+        overflow-x: visible !important;
+        /* Risk of horizontal scroll, but needed for sticky */
+        overflow-y: visible !important;
+        transform: none !important;
+        clip-path: none !important;
+        contain: none !important;
+    }
+
+    /* 2. Track Container */
+    .vo-scroll-slider-track {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 30px !important;
+        /* Slightly more gap */
+        overflow: visible !important;
+        height: auto !important;
+        padding-bottom: 200px !important;
+        /* Extra scroll space at bottom */
+    }
+
+    /* 3. Cards Sticky Logic */
+    .vo-feature-card {
+        display: flex !important;
+        flex-direction: column !important;
+        position: -webkit-sticky !important;
+        position: sticky !important;
+        top: 100px !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin-bottom: 40px !important;
+        background: #fff !important;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08) !important;
+        border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    }
+
+    /* 4. Enforce Z-Index explicitly */
+    .vo-feature-card:nth-child(1) {
+        z-index: 10 !important;
+    }
+
+    .vo-feature-card:nth-child(2) {
+        z-index: 20 !important;
+    }
+
+    .vo-feature-card:nth-child(3) {
+        z-index: 30 !important;
+    }
+
+    .vo-feature-card:nth-child(4) {
+        z-index: 40 !important;
+    }
+
+    .vo-feature-card:nth-child(5) {
+        z-index: 50 !important;
+    }
+
+    .vo-feature-card:nth-child(6) {
+        z-index: 60 !important;
+    }
+
+    .vo-feature-card:nth-child(7) {
+        z-index: 70 !important;
+    }
+
+    .vo-feature-card:nth-child(8) {
+        z-index: 80 !important;
+    }
+
+    .vo-feature-card:nth-child(9) {
+        z-index: 90 !important;
+    }
+
+    /* 5. Clean Layout (Text Top, Image Bottom) */
+    .vo-feature-card .vo-feature-card-content,
+    .vo-feature-card:nth-child(even) .vo-feature-card-content {
+        order: 0 !important;
+        margin-bottom: 20px !important;
+        text-align: left !important;
+    }
+
+    .vo-feature-card .vo-feature-card-image,
+    .vo-feature-card:nth-child(even) .vo-feature-card-image {
+        order: 1 !important;
+        margin-top: 0 !important;
+        width: 100% !important;
+        height: 240px !important;
+    }
+
+    .vo-feature-card-image img {
+        height: 100% !important;
+        width: 100% !important;
+        object-fit: cover !important;
+    }
+}
