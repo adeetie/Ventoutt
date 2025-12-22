@@ -148,7 +148,7 @@ button,
 .hero-title {
     font-family: var(--vo-font-heading);
     /* Use global heading font */
-    font-size: 64px;
+    font-size: var(--vo-text-6xl);
     line-height: 1.2;
     color: var(--vo-color-white);
     margin: 0;
@@ -160,7 +160,7 @@ button,
 .hero-subtitle {
     font-family: var(--vo-font-body);
     /* Use global body font */
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     line-height: 1.5;
     color: var(--vo-color-white);
     margin: 0;
@@ -170,7 +170,7 @@ button,
 
 /* Ensure specializations match global styling */
 .specializations-section {
-    padding: 80px 0;
+    padding: var(--vo-space-20) 0;
 }
 
 @media (max-width: 1024px) {
@@ -588,7 +588,8 @@ footer * {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 75px;
+    justify-content: space-between;
+    padding: 0 var(--vo-space-20);
     z-index: 100;
     box-sizing: border-box;
 }
@@ -621,7 +622,7 @@ footer * {
 
 .service-nav .logo-text {
     font-family: var(--vo-font-heading);
-    font-size: 1.5rem;
+    font-size: var(--vo-text-2xl);
     font-weight: 700;
     color: white;
 }
@@ -629,20 +630,20 @@ footer * {
 .service-nav-links {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--vo-space-3);
     /* Reduced gap */
 }
 
 .service-nav-links a {
     font-family: var(--vo-font-body);
     font-weight: 500;
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     /* Smaller font */
     line-height: normal;
     color: var(--vo-color-white);
     text-decoration: none;
     padding: 6px 12px;
-    border-radius: 20px;
+    border-radius: var(--vo-radius-full);
     transition: background 0.2s;
 }
 
@@ -658,14 +659,14 @@ footer * {
 .nav-split-btn {
     font-family: var(--vo-font-body);
     font-weight: 500;
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     /* Smaller font */
     line-height: normal;
     color: var(--vo-color-white);
     background: none;
     border: none;
     padding: 6px 12px;
-    border-radius: 20px;
+    border-radius: var(--vo-radius-full);
     cursor: default;
     /* formatting container */
     display: flex;
@@ -700,13 +701,13 @@ footer * {
     /* Previous styles kept just in case, but we are migrating */
     font-family: var(--vo-font-body);
     font-weight: 500;
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     line-height: 26px;
     color: var(--vo-color-white);
     background: none;
     border: none;
     padding: 2px 20px;
-    border-radius: 22px;
+    border-radius: var(--vo-radius-full);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -747,7 +748,7 @@ footer * {
 
 .nav-dropdown-menu a {
     padding: 12px 20px !important;
-    font-size: 16px !important;
+    font-size: var(--vo-text-base) !important;
     white-space: nowrap;
     display: block;
 }
@@ -775,7 +776,7 @@ footer * {
 .language-selector span {
     font-family: var(--vo-font-body);
     font-weight: 500;
-    font-size: 15px;
+    font-size: var(--vo-text-sm);
     color: var(--vo-color-white) !important;
 }
 
@@ -788,7 +789,7 @@ footer * {
 .service-footer {
     background: #111111;
     /* Darker black */
-    padding: 80px 5% 40px;
+    padding: var(--vo-space-20) 5% var(--vo-space-10);
     position: relative;
     margin-top: -50px;
     /* Maximum overlap to eliminate grey line */
@@ -800,11 +801,11 @@ footer * {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: var(--vo-space-10);
     max-width: 1400px;
     margin: 0 auto 60px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 40px;
+    padding-bottom: var(--vo-space-10);
 }
 
 /* Columns */
@@ -813,7 +814,7 @@ footer * {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: var(--vo-space-5);
 }
 
 .footer-col {
@@ -834,7 +835,7 @@ footer * {
 
 .footer-social-icons {
     display: flex;
-    gap: 15px;
+    gap: var(--vo-space-4);
     margin-top: 10px;
 }
 
@@ -853,7 +854,7 @@ footer * {
 .footer-heading {
     font-family: var(--vo-font-heading);
     font-weight: 700;
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     color: var(--vo-color-white);
     margin-bottom: 24px;
 }
@@ -873,7 +874,7 @@ footer * {
     text-decoration: none;
     color: #CCCCCC;
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     transition: color 0.2s;
 }
 
@@ -886,7 +887,7 @@ footer * {
 .footer-contact-block {
     margin-bottom: 20px;
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     color: #CCCCCC;
     line-height: 1.6;
 }
@@ -912,7 +913,7 @@ footer * {
     justify-content: center;
     align-items: center;
     /* Vertical center alignment */
-    gap: 20px;
+    gap: var(--vo-space-5);
     margin-bottom: 40px;
     flex-wrap: wrap;
 }
@@ -921,10 +922,10 @@ footer * {
     background: #3A7F56;
     border: 1px solid var(--vo-color-white);
     border-radius: 10px;
-    padding: 12px 45px;
+    padding: var(--vo-space-3) var(--vo-space-12);
     font-family: var(--vo-font-body);
     font-weight: 600;
-    font-size: 24px;
+    font-size: var(--vo-text-2xl);
     line-height: 31px;
     color: var(--vo-color-white);
     text-decoration: none;
@@ -944,7 +945,7 @@ footer * {
     max-width: 1000px;
     margin: 0 auto 40px;
     font-family: var(--vo-font-body);
-    font-size: 13px;
+    font-size: var(--vo-text-sm);
     color: #AAAAAA;
     line-height: 1.6;
 }
@@ -963,7 +964,7 @@ footer * {
 
 .privacy-note {
     margin-top: 15px;
-    font-size: 12px;
+    font-size: var(--vo-text-xs);
     color: #888888;
 }
 
@@ -973,7 +974,7 @@ footer * {
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     color: #888888;
 }
 
@@ -981,7 +982,7 @@ footer * {
 @media (max-width: 900px) {
     .footer-primary-content {
         flex-direction: column;
-        gap: 40px;
+        gap: var(--vo-space-10);
     }
 
     .footer-brand-col {
@@ -1003,7 +1004,7 @@ footer * {
 .cta-nav {
     background: var(--primary-orange);
     color: white;
-    padding: 0.5rem 1.25rem;
+    padding: var(--vo-space-2) var(--vo-space-5);
     border-radius: 50px;
     font-weight: 600;
     transition: background 0.2s, transform 0.2s;
@@ -1057,10 +1058,10 @@ footer * {
 .btn-hero {
     background: var(--dark-gray);
     color: var(--white);
-    padding: 18px 40px;
+    padding: var(--vo-space-5) var(--vo-space-10);
     border-radius: 50px;
     font-family: var(--vo-font-body);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     font-weight: 600;
     text-decoration: none;
     display: inline-block;
@@ -1074,13 +1075,13 @@ footer * {
 
 .btn-orange {
     display: inline-block;
-    padding: 12px 28px;
+    padding: var(--vo-space-3) var(--vo-space-7);
     background: var(--primary-orange);
     color: white;
     border-radius: 10px;
     text-decoration: none;
     font-weight: 500;
-    font-size: 15px;
+    font-size: var(--vo-text-base);
     transition: background 0.3s ease, transform 0.2s;
     border: 1px solid transparent;
 }
@@ -1147,7 +1148,7 @@ footer * {
 
 /* ========== Comparison Cards Section ========== */
 .comparison-section {
-    padding: 80px 20px;
+    padding: var(--vo-space-20) 5%;
     background: #fff;
 }
 
@@ -1159,14 +1160,14 @@ footer * {
 .comparison-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: var(--vo-space-8);
     align-items: stretch;
 }
 
 .comp-card {
     border: 1px solid #e0e0e0;
     border-radius: 12px;
-    padding: 40px 30px;
+    padding: var(--vo-space-10) var(--vo-space-8);
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -1203,7 +1204,7 @@ footer * {
 
 .comp-title {
     font-family: var(--vo-font-heading);
-    font-size: 24px;
+    font-size: var(--vo-text-2xl);
     font-weight: 700;
     font-style: italic;
     margin-bottom: 5px;
@@ -1212,7 +1213,7 @@ footer * {
 
 .comp-role {
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     color: #ccc;
     margin-bottom: 20px;
 }
@@ -1223,7 +1224,7 @@ footer * {
 
 .comp-investment {
     font-family: var(--vo-font-heading);
-    font-size: 36px;
+    font-size: var(--vo-text-4xl);
     font-weight: 700;
     margin-bottom: 30px;
     color: #fff;
@@ -1238,11 +1239,11 @@ footer * {
 
 .comp-features-list li {
     font-family: var(--vo-font-body);
-    font-size: 15px;
+    font-size: var(--vo-text-base);
     line-height: 1.6;
     margin-bottom: 15px;
     align-items: flex-start;
-    gap: 12px;
+    gap: var(--vo-space-3);
     color: #fff;
 }
 
@@ -1257,7 +1258,7 @@ footer * {
 }
 
 .comp-label {
-    font-size: 13px;
+    font-size: var(--vo-text-sm);
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #999;
@@ -1346,11 +1347,11 @@ footer * {
     height: 100%;
     display: flex;
     flex-wrap: wrap;
-    padding: 0 40px;
+    padding: 0 var(--vo-space-10);
     align-items: center;
     justify-content: center;
     /* Changed from space-between to center */
-    gap: 40px;
+    gap: var(--vo-space-10);
     /* Bring image closer */
 }
 
@@ -1371,7 +1372,7 @@ footer * {
     font-family: var(--vo-font-heading);
     font-style: italic;
     font-weight: 700;
-    font-size: 56px;
+    font-size: var(--vo-text-6xl);
     line-height: 1.2;
     letter-spacing: -0.5px;
     color: var(--vo-color-white);
@@ -1383,7 +1384,7 @@ footer * {
     font-family: var(--vo-font-body);
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     line-height: 1.5;
     letter-spacing: -0.5px;
     color: var(--vo-color-white);
@@ -1395,7 +1396,7 @@ footer * {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 16px 40px;
+    padding: var(--vo-space-4) var(--vo-space-10);
     background: var(--vo-color-primary);
     border: 1px solid var(--vo-color-white);
     border-radius: 10px;
@@ -1403,7 +1404,7 @@ footer * {
     text-decoration: none;
     font-family: var(--vo-font-body);
     font-weight: 500;
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     transition: all 0.3s ease;
 }
 
@@ -1503,14 +1504,14 @@ footer * {
 
 /* ========== Related Blogs Section (Global) ========== */
 .related-blogs-section {
-    padding: 80px 20px;
+    padding: var(--vo-space-20) 5%;
     text-align: center;
 }
 
 .blogs-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    gap: var(--vo-space-8);
     max-width: 1200px;
     margin: 40px auto 0;
 }
@@ -1531,7 +1532,7 @@ footer * {
 }
 
 .blog-content {
-    padding: 20px;
+    padding: var(--vo-space-5);
 }
 
 .blog-tag {
@@ -1540,13 +1541,13 @@ footer * {
     color: #fff;
     padding: 5px 10px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: var(--vo-text-xs);
     margin-bottom: 10px;
 }
 
 .blog-title {
     font-family: var(--vo-font-heading);
-    font-size: 24px;
+    font-size: var(--vo-text-2xl);
     font-weight: 700;
     margin-bottom: 15px;
     color: var(--dark-gray);
@@ -1560,7 +1561,7 @@ footer * {
 
 /* ========== FAQ Section (Global) ========== */
 .faq-section {
-    padding: 80px 20px;
+    padding: var(--vo-space-20) 5%;
 
     background: #f9f9f9;
 }
@@ -1611,12 +1612,12 @@ footer * {
     position: relative;
     z-index: 2;
     max-width: 800px;
-    padding: 0 20px;
+    padding: 0 var(--vo-space-5);
 }
 
 .healing-journey-title {
     font-family: var(--vo-font-heading);
-    font-size: 56px;
+    font-size: var(--vo-text-6xl);
     font-weight: 700;
     font-style: italic;
     margin-bottom: 24px;
@@ -1626,7 +1627,7 @@ footer * {
 
 .healing-journey-desc {
     font-family: var(--vo-font-body);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     margin-bottom: 40px;
     opacity: 0.9;
     max-width: 600px;
@@ -1637,7 +1638,7 @@ footer * {
 
 .healing-journey-btn-wrapper {
     display: flex;
-    gap: 20px;
+    gap: var(--vo-space-5);
     justify-content: center;
     align-items: center;
 }
@@ -1651,13 +1652,13 @@ footer * {
     backdrop-filter: blur(10px);
     border: none;
     /* Removed border to eliminate "grey line" */
-    padding: 14px 32px;
-    border-radius: 50px;
+    padding: var(--vo-space-4) var(--vo-space-8);
+    border-radius: var(--vo-radius-full);
     color: var(--vo-color-white);
     text-decoration: none;
     font-family: var(--vo-font-body);
     font-weight: 500;
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     transition: all 0.3s ease;
 }
 
@@ -1688,13 +1689,13 @@ footer * {
 }
 
 .faq-item summary {
-    padding: 20px;
+    padding: var(--vo-space-5);
     cursor: pointer;
     font-weight: 600;
     list-style: none;
     position: relative;
     font-family: var(--vo-font-heading);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
 }
 
 .faq-item summary::-webkit-details-marker {
@@ -1705,7 +1706,7 @@ footer * {
     content: '+';
     position: absolute;
     right: 20px;
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     color: var(--vo-color-primary);
 }
 
@@ -1714,7 +1715,7 @@ footer * {
 }
 
 .faq-item p {
-    padding: 0 20px 20px;
+    padding: 0 var(--vo-space-5) var(--vo-space-5);
     color: #666;
     line-height: 1.6;
     font-family: var(--vo-font-body);
@@ -1729,7 +1730,7 @@ footer * {
     align-items: center;
     justify-content: space-between;
     gap: 60px;
-    padding: 100px 5%;
+    padding: var(--vo-space-24) 5%;
     background: var(--bg-beige);
     overflow: hidden;
 }
@@ -1742,7 +1743,7 @@ footer * {
 .vo-hero-greeting {
     display: block;
     font-family: var(--vo-font-heading);
-    font-size: 80px;
+    font-size: var(--vo-text-7xl);
     font-weight: 700;
     font-style: italic;
     color: var(--vo-color-primary);
@@ -1754,7 +1755,7 @@ footer * {
 
 .about-hero-title {
     font-family: var(--vo-font-heading);
-    font-size: 56px;
+    font-size: var(--vo-text-6xl);
     font-weight: 700;
     font-style: italic;
     line-height: 1.2;
@@ -1765,7 +1766,7 @@ footer * {
 
 .about-hero-desc {
     font-family: var(--vo-font-body);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     line-height: 1.6;
     color: var(--text-muted);
     margin-bottom: 32px;
@@ -1779,12 +1780,12 @@ footer * {
     background: #6A9E7D;
     /* Green from reference */
     color: var(--vo-color-white);
-    padding: 14px 32px;
-    border-radius: 50px;
+    padding: var(--vo-space-4) var(--vo-space-8);
+    border-radius: var(--vo-radius-full);
     text-decoration: none;
     font-family: var(--vo-font-body);
     font-weight: 600;
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(106, 158, 125, 0.4);
 }
@@ -1855,14 +1856,14 @@ footer * {
 
 /* Infinite Image Carousel Section */
 .image-carousel-section {
-    padding: 60px 0;
+    padding: var(--vo-space-16) 0;
     background: var(--bg-cream);
     overflow: hidden;
 }
 
 .carousel-track {
     display: flex;
-    gap: 24px;
+    gap: var(--vo-space-6);
     animation: scroll-carousel 30s linear infinite;
 }
 
@@ -1921,7 +1922,7 @@ footer * {
 }
 
 .overlay-icon {
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     color: var(--vo-color-white);
     font-weight: 300;
 }
@@ -1937,8 +1938,8 @@ footer * {
 /* Empower Section */
 .empower-section {
     display: flex;
-    gap: 40px;
-    padding: 80px 5%;
+    gap: var(--vo-space-10);
+    padding: var(--vo-space-20) 5%;
     background: var(--bg-cream);
     align-items: stretch;
 }
@@ -1956,7 +1957,7 @@ footer * {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: var(--vo-space-8);
 }
 
 .empower-text-content {
@@ -1969,10 +1970,10 @@ footer * {
     display: inline-block;
     background: var(--vo-color-white);
     border: 1px solid var(--border-grey);
-    border-radius: 20px;
-    padding: 8px 20px;
+    border-radius: var(--vo-radius-lg);
+    padding: var(--vo-space-2) var(--vo-space-5);
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     font-weight: 500;
     color: var(--dark-gray);
     width: fit-content;
@@ -1980,7 +1981,7 @@ footer * {
 
 .empower-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     font-weight: 700;
     font-style: italic;
     line-height: 1.2;
@@ -1989,7 +1990,7 @@ footer * {
 
 .empower-desc {
     font-family: var(--vo-font-body);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     line-height: 1.6;
     color: var(--text-muted);
 }
@@ -2004,7 +2005,7 @@ footer * {
 /* Mission & Values Section */
 .dark-mission-section {
     background: var(--dark-gray);
-    padding: 80px 5%;
+    padding: var(--vo-space-20) 5%;
     color: var(--vo-color-white);
 }
 
@@ -2031,7 +2032,7 @@ footer * {
 
 .mission-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     font-weight: 700;
     font-style: italic;
     line-height: 1.3;
@@ -2041,13 +2042,13 @@ footer * {
 .mission-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: var(--vo-space-6);
 }
 
 .mission-card {
     position: relative;
     height: 300px;
-    border-radius: 20px;
+    border-radius: var(--vo-radius-lg);
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -2069,26 +2070,26 @@ footer * {
     left: 0;
     right: 0;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 100%);
-    padding: 30px;
+    padding: var(--vo-space-8);
     color: var(--vo-color-white);
 }
 
 .mission-card-overlay h3 {
     font-family: var(--vo-font-heading);
-    font-size: 24px;
+    font-size: var(--vo-text-2xl);
     font-weight: 700;
     margin-bottom: 8px;
 }
 
 .mission-card-overlay p {
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     opacity: 0.9;
 }
 
 /* Founders Section */
 .founders-section {
-    padding: 80px 5%;
+    padding: var(--vo-space-20) 5%;
     background: var(--bg-beige);
 }
 
@@ -2104,12 +2105,12 @@ footer * {
     max-width: 450px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: var(--vo-space-6);
 }
 
 .founders-info-card h2 {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     font-weight: 700;
     font-style: italic;
     color: white;
@@ -2117,7 +2118,7 @@ footer * {
 
 .founders-info-card p {
     font-family: var(--vo-font-body);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     line-height: 1.6;
     color: white;
 }
@@ -2128,12 +2129,12 @@ footer * {
     gap: 8px;
     background: var(--dark-gray);
     color: var(--vo-color-white);
-    padding: 12px 24px;
+    padding: var(--vo-space-3) var(--vo-space-6);
     border-radius: 50px;
     text-decoration: none;
     font-family: var(--vo-font-body);
     font-weight: 500;
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     width: fit-content;
     transition: all 0.3s ease;
 }
@@ -2147,7 +2148,7 @@ footer * {
     flex: 1;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 30px;
+    gap: var(--vo-space-8);
 }
 
 .founder-card {
@@ -2173,7 +2174,7 @@ footer * {
 
 .founder-name {
     font-family: var(--vo-font-heading);
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     font-weight: 700;
     color: var(--dark-gray);
 }
@@ -2187,7 +2188,7 @@ footer * {
 /* Testimonial Section */
 .testimonial-section {
     position: relative;
-    padding: 80px 5%;
+    padding: var(--vo-space-20) 5%;
     background: var(--bg-cream);
 }
 
@@ -2232,7 +2233,7 @@ footer * {
     z-index: 2;
     max-width: 700px;
     text-align: center;
-    padding: 40px;
+    padding: var(--vo-space-10);
     color: var(--vo-color-white);
 }
 
@@ -2240,10 +2241,10 @@ footer * {
     display: inline-block;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 8px 20px;
+    border-radius: var(--vo-radius-lg);
+    padding: var(--vo-space-2) var(--vo-space-5);
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     font-weight: 500;
     color: var(--vo-color-white);
     margin-bottom: 24px;
@@ -2251,7 +2252,7 @@ footer * {
 
 .testimonial-quote {
     font-family: var(--vo-font-heading);
-    font-size: 32px;
+    font-size: var(--vo-text-3xl);
     font-weight: 600;
     font-style: italic;
     line-height: 1.4;
@@ -2260,14 +2261,14 @@ footer * {
 
 .testimonial-author {
     font-family: var(--vo-font-body);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     font-weight: 600;
     margin-bottom: 4px;
 }
 
 .testimonial-role {
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     opacity: 0.8;
 }
 
@@ -2294,7 +2295,7 @@ footer * {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 40px;
+    font-size: var(--vo-text-4xl);
     color: var(--vo-color-white);
     background: rgba(0, 0, 0, 0.6);
     border-radius: 50%;
@@ -2307,13 +2308,13 @@ footer * {
 
 /* FAQ Section for About Page */
 .vo-faq-section {
-    padding: 80px 5%;
+    padding: var(--vo-space-20) 5%;
     background: var(--bg-beige);
 }
 
 .vo-section-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     font-weight: 700;
     font-style: italic;
     color: var(--dark-gray);
@@ -2334,10 +2335,10 @@ footer * {
 }
 
 .vo-faq-item summary {
-    padding: 24px 28px;
+    padding: var(--vo-space-6) var(--vo-space-7);
     cursor: pointer;
     font-family: var(--vo-font-heading);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     font-weight: 700;
     color: var(--dark-gray);
     list-style: none;
@@ -2352,7 +2353,7 @@ footer * {
     content: '+';
     position: absolute;
     right: 28px;
-    font-size: 24px;
+    font-size: var(--vo-text-2xl);
     color: var(--primary-orange);
     font-weight: 300;
 }
@@ -2362,9 +2363,9 @@ footer * {
 }
 
 .vo-faq-item p {
-    padding: 0 28px 24px;
+    padding: 0 var(--vo-space-7) var(--vo-space-6);
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     line-height: 1.6;
     color: var(--text-muted);
 }
@@ -2409,12 +2410,12 @@ footer * {
 
 /* ========== Specializations Section (Global) ========== */
 .specializations-section {
-    padding: 80px 0;
+    padding: var(--vo-space-20) 0;
 }
 
 .specializations-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     font-weight: 700;
     font-style: italic;
     line-height: 66px;
@@ -2426,7 +2427,7 @@ footer * {
 
 .specializations-subtitle {
     font-family: var(--vo-font-body);
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     line-height: 26px;
     text-align: center;
     color: var(--dark-gray);
@@ -2447,7 +2448,7 @@ footer * {
     border: none;
     border-radius: 24px;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.04);
-    padding: 20px;
+    padding: var(--vo-space-5);
     width: 100%;
     box-sizing: border-box;
     text-align: center;
@@ -2475,7 +2476,7 @@ footer * {
 .specialization-label {
     font-family: 'DM Sans', var(--vo-font-body);
     font-weight: 700;
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     line-height: 22px;
     text-align: center;
     color: #050505;
@@ -2542,7 +2543,7 @@ footer * {
     font-family: 'Lora', serif !important;
     font-weight: 800 !important;
     font-style: italic !important;
-    font-size: 24px;
+    font-size: var(--vo-text-2xl);
     color: var(--vo-color-primary);
     margin-left: 0;
     /* Let flex space-between handle it */
@@ -2564,11 +2565,11 @@ footer * {
 /* ========== About Page Hero Redesign ========== */
 .about-hero-section {
     position: relative;
-    padding: 80px 150px;
+    padding: var(--vo-space-20) 10%;
     background: var(--bg-cream);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: var(--vo-space-12);
     align-items: center;
     overflow: hidden;
 }
@@ -2591,7 +2592,7 @@ footer * {
 /* ... existing styles ... */
 
 .image-carousel-section {
-    padding: 100px 0;
+    padding: var(--vo-space-24) 0;
     /* Huge padding as requested (50% increase from standard) */
     background: var(--vo-color-white);
     overflow: hidden;
@@ -2642,7 +2643,7 @@ footer * {
     opacity: 0;
     transition: opacity 0.3s ease;
     text-decoration: none;
-    padding: 20px;
+    padding: var(--vo-space-5);
     box-sizing: border-box;
 }
 
@@ -2661,13 +2662,13 @@ footer * {
     margin-bottom: 12px;
     color: var(--primary-orange);
     font-weight: bold;
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
 }
 
 .overlay-text {
     font-family: var(--vo-font-body);
     font-weight: 600;
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     color: var(--vo-color-white);
     text-align: center;
 }
@@ -2736,7 +2737,7 @@ footer * {
 
 .about-hero-title {
     font-family: var(--vo-font-heading);
-    font-size: 64px;
+    font-size: var(--vo-text-6xl);
     line-height: 1.1;
     font-weight: 700;
     font-style: italic;
@@ -2749,7 +2750,7 @@ footer * {
 
 .about-hero-desc {
     font-family: var(--vo-font-body);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     line-height: 1.6;
     color: var(--text-muted);
     margin-bottom: 40px;
@@ -2788,7 +2789,7 @@ footer * {
 .about-hero-image-wrapper {
     position: relative;
     z-index: 2;
-    padding: 20px;
+    padding: var(--vo-space-5);
     /* White frame padding */
     background: var(--vo-color-white);
     border-radius: 30px;
@@ -2821,7 +2822,7 @@ footer * {
         grid-template-columns: 1fr;
         padding: 60px 40px;
         text-align: center;
-        gap: 40px;
+        gap: var(--vo-space-10);
     }
 
     .about-hero-content {
@@ -2841,11 +2842,11 @@ footer * {
 
 /* ========== Empower Section (New Reference Image 3) ========== */
 .empower-section {
-    padding: 80px 150px;
+    padding: var(--vo-space-20) 10%;
     background: var(--vo-color-white);
     display: grid;
     grid-template-columns: 0.8fr 1.2fr;
-    gap: 40px;
+    gap: var(--vo-space-10);
     align-items: start;
 }
 
@@ -2874,7 +2875,7 @@ footer * {
     padding: 6px 14px;
     border-radius: 20px;
     font-family: var(--vo-font-body);
-    font-size: 13px;
+    font-size: var(--vo-text-xs);
     font-weight: 600;
     color: var(--dark-gray);
     margin-bottom: 20px;
@@ -2882,7 +2883,7 @@ footer * {
 
 .empower-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     font-weight: 500;
     color: #0E3C26;
     line-height: 1.2;
@@ -2891,7 +2892,7 @@ footer * {
 
 .empower-desc {
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     line-height: 1.6;
     color: var(--text-muted);
     max-width: 500px;
@@ -2919,7 +2920,7 @@ footer * {
 /* ========== Dark Mission & Values Grid ========== */
 .dark-mission-section {
     background-color: #111111;
-    padding: 100px 5%;
+    padding: var(--vo-space-24) 5%;
     /* Responsive padding */
     color: var(--vo-color-white);
 }
@@ -2943,7 +2944,7 @@ footer * {
 .mission-eyebrow {
     display: block;
     font-family: var(--vo-font-body);
-    font-size: 12px;
+    font-size: var(--vo-text-xs);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 20px;
@@ -2952,7 +2953,7 @@ footer * {
 
 .mission-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     line-height: 1.2;
     font-weight: 500;
     color: var(--vo-color-white);
@@ -2965,7 +2966,7 @@ footer * {
     color: var(--vo-color-white);
     text-decoration: none;
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     transition: all 0.3s ease;
 }
 
@@ -2980,7 +2981,7 @@ footer * {
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: min-content;
     /* Allow varied row heights if needed, but we used fixed card heights */
-    gap: 20px;
+    gap: var(--vo-space-5);
 }
 
 .mission-col {
@@ -3025,14 +3026,14 @@ footer * {
     left: 0;
     width: 100%;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-    padding: 30px;
+    padding: var(--vo-space-8);
     box-sizing: border-box;
     z-index: 2;
 }
 
 .mission-card-overlay h3 {
     font-family: var(--vo-font-body);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     font-weight: 600;
     margin-bottom: 8px;
     color: var(--vo-color-white);
@@ -3040,7 +3041,7 @@ footer * {
 
 .mission-card-overlay p {
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     color: #DDDDDD;
     margin: 0;
     line-height: 1.4;
@@ -3061,7 +3062,7 @@ footer * {
         /* 4 Columns: 2 Small, 1 Medium-Tall, 1 Large-Wide */
         grid-template-rows: repeat(2, 280px);
         /* Fixed height rows */
-        gap: 20px;
+        gap: var(--vo-space-5);
         grid-template-areas:
             "priv  comm  vis   miss"
             "incl  acce  vis   miss";
@@ -3130,14 +3131,14 @@ footer * {
         flex-direction: column;
         justify-content: flex-end;
         align-items: flex-start;
-        padding: 20px;
+        padding: var(--vo-space-5);
         text-align: left;
         color: var(--vo-color-white);
     }
 
     .mission-card h3 {
         font-family: var(--vo-font-heading);
-        font-size: 18px;
+        font-size: var(--vo-text-lg);
         font-weight: 700;
         margin-bottom: 4px;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -3145,7 +3146,7 @@ footer * {
 
     .mission-card p {
         font-family: var(--vo-font-body);
-        font-size: 13px;
+        font-size: var(--vo-text-xs);
         text-transform: uppercase;
         letter-spacing: 0.5px;
         opacity: 0.9;
@@ -3210,7 +3211,7 @@ footer * {
 
 /* ========== Founders Section (Experts) ========== */
 .founders-section {
-    padding: 100px 5%;
+    padding: var(--vo-space-24) 5%;
     background-color: var(--bg-cream);
     /* Or white */
 }
@@ -3221,14 +3222,14 @@ footer * {
     display: grid;
     grid-template-columns: 1fr 3fr;
     /* 1/4 Left, 3/4 Right */
-    gap: 30px;
+    gap: var(--vo-space-8);
 }
 
 .founders-info-card {
     background-color: var(--vo-color-black)000;
     /* Dark Green from reference */
-    border-radius: 20px;
-    padding: 40px 30px;
+    border-radius: var(--vo-radius-lg);
+    padding: var(--vo-space-10) var(--vo-space-8);
     color: var(--vo-color-white);
     display: flex;
     flex-direction: column;
@@ -3239,14 +3240,14 @@ footer * {
 
 .founders-info-card h2 {
     font-family: var(--vo-font-heading);
-    font-size: 36px;
+    font-size: var(--vo-text-4xl);
     margin-bottom: 20px;
     font-weight: 400;
 }
 
 .founders-info-card p {
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     line-height: 1.5;
     margin-bottom: 40px;
     opacity: 0.9;
@@ -3257,13 +3258,13 @@ footer * {
     align-items: center;
     background-color: var(--vo-color-white);
     color: #122F2A;
-    padding: 12px 24px;
+    padding: var(--vo-space-3) var(--vo-space-6);
     border-radius: 30px;
     text-decoration: none;
     font-family: var(--vo-font-body);
     font-weight: 600;
     width: fit-content;
-    gap: 8px;
+    gap: var(--vo-space-2);
     transition: transform 0.2s;
 }
 
@@ -3274,12 +3275,12 @@ footer * {
 .founders-grid-right {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: var(--vo-space-5);
 }
 
 .founder-card {
     background: var(--vo-color-white);
-    border-radius: 20px;
+    border-radius: var(--vo-radius-lg);
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
     display: flex;
@@ -3305,13 +3306,13 @@ footer * {
 }
 
 .founder-details {
-    padding: 20px;
+    padding: var(--vo-space-5);
     text-align: left;
 }
 
 .founder-name {
     font-family: var(--vo-font-heading);
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     color: var(--text-dark);
     margin-bottom: 5px;
     font-weight: 600;
@@ -3359,7 +3360,7 @@ footer * {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 24px;
-    padding: 60px;
+    padding: var(--vo-space-16);
     max-width: 550px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -3380,7 +3381,7 @@ footer * {
     padding: 8px 16px;
     border-radius: 20px;
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     font-weight: 600;
     margin-bottom: 24px;
     text-transform: uppercase;
@@ -3389,7 +3390,7 @@ footer * {
 
 .testimonial-quote {
     font-family: var(--vo-font-heading);
-    font-size: 32px;
+    font-size: var(--vo-text-3xl);
     line-height: 1.3;
     color: #122F2A;
     /* Dark Green */
@@ -3400,7 +3401,7 @@ footer * {
 
 .testimonial-author {
     font-family: var(--vo-font-body);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     font-weight: 700;
     color: #122F2A;
     margin-bottom: 5px;
@@ -3408,7 +3409,7 @@ footer * {
 
 .testimonial-role {
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     color: #555555;
 }
 
@@ -3477,7 +3478,7 @@ footer * {
 
 /* ========== FAQ Section ========== */
 .faq-section {
-    padding: 100px 5%;
+    padding: var(--vo-space-24) 5%;
     background-color: #FAFAFA;
     /* Off-white */
 }
@@ -3494,14 +3495,14 @@ footer * {
 
 .faq-title {
     font-family: var(--vo-font-heading);
-    font-size: 36px;
+    font-size: var(--vo-text-4xl);
     color: #122F2A;
     margin-bottom: 16px;
 }
 
 .faq-subtitle {
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     color: #555555;
 }
 
@@ -3512,7 +3513,7 @@ footer * {
 
 .faq-question {
     width: 100%;
-    padding: 24px 0;
+    padding: var(--vo-space-6) 0;
     text-align: left;
     background: none;
     border: none;
@@ -3521,7 +3522,7 @@ footer * {
     justify-content: space-between;
     align-items: center;
     font-family: var(--vo-font-heading);
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     color: #122F2A;
     font-weight: 500;
     list-style: none;
@@ -3539,7 +3540,7 @@ footer * {
 
 /* ========== Specializations Section ========== */
 .specializations-section {
-    padding: 80px 20px;
+    padding: var(--vo-space-20) 20px;
     background: #FAF6F1;
     /* Lighter shade */
     text-align: center;
@@ -3547,7 +3548,7 @@ footer * {
 
 .specializations-title {
     font-family: 'DM Serif Display', 'Lora', serif;
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     font-weight: 400;
     font-style: normal;
     letter-spacing: -0.5px;
@@ -3557,7 +3558,7 @@ footer * {
 
 .specializations-subtitle {
     font-family: 'DM Sans', var(--vo-font-body);
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     font-weight: 400;
     font-style: normal;
     color: #050505;
@@ -3613,7 +3614,7 @@ footer * {
 
 .specialization-label {
     font-family: 'DM Sans', var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     font-weight: 700;
     font-style: normal;
     line-height: 22px;
@@ -3660,7 +3661,7 @@ footer * {
     font-family: 'DM Sans', var(--vo-font-body);
     font-style: normal;
     font-weight: 500;
-    font-size: 24px;
+    font-size: var(--vo-text-2xl);
     line-height: 31px;
     color: #050505;
     text-align: center;
@@ -3696,7 +3697,7 @@ footer * {
     font-family: 'DM Sans', var(--vo-font-body);
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     line-height: 26px;
     color: #050505;
 }
@@ -3721,7 +3722,7 @@ footer * {
     font-family: 'DM Sans', var(--vo-font-body);
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     line-height: 26px;
     color: var(--vo-color-charcoal);
     background: transparent;
@@ -3794,7 +3795,7 @@ section {
 .dark-section-block {
     background: var(--vo-color-charcoal);
     margin: 10px;
-    padding: 60px 20px;
+    padding: var(--vo-space-16) 20px;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -3802,7 +3803,7 @@ section {
 /* Stats section - dark cards on light background */
 .stats-section {
     background: transparent !important;
-    padding: 80px 20px;
+    padding: var(--vo-space-20) 20px;
 }
 
 .stat-card {
@@ -3827,7 +3828,7 @@ section {
 
 
 .faq-icon {
-    font-size: 24px;
+    font-size: var(--vo-text-2xl);
     color: #709D80;
     transition: transform 0.3s ease;
 }
@@ -3840,7 +3841,7 @@ section {
 .faq-answer {
     padding-bottom: 24px;
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     line-height: 1.6;
     color: #555555;
     animation: fadeDown 0.3s ease-in-out;
@@ -3950,7 +3951,7 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 180px 100px 80px;
+    padding: var(--vo-space-48) 100px 80px;
     background: var(--bg-cream);
     /* Updated to theme cream */
     gap: 60px;
@@ -3965,7 +3966,7 @@ section {
 
 .hero-text-content h1 {
     font-family: var(--vo-font-heading);
-    font-size: 64px;
+    font-size: var(--vo-text-6xl);
     line-height: 1.1;
     color: var(--dark-gray);
     margin-bottom: 24px;
@@ -3974,7 +3975,7 @@ section {
 
 .hero-text-content p {
     font-family: var(--vo-font-body);
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     line-height: 1.5;
     color: var(--text-dark);
     margin-bottom: 40px;
@@ -3985,16 +3986,16 @@ section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 15px;
+    gap: var(--vo-space-4);
 }
 
 .btn-explore {
     background: var(--dark-gray);
     color: var(--white);
-    padding: 15px 30px;
+    padding: var(--vo-space-4) var(--vo-space-8);
     border-radius: 8px;
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     font-weight: 500;
     text-decoration: none;
     transition: transform 0.2s;
@@ -4007,7 +4008,7 @@ section {
 
 .link-discover {
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     color: var(--text-dark);
     margin: 0;
 }
@@ -4016,15 +4017,15 @@ section {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: var(--vo-space-5);
 }
 
 .stat-card {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 30px;
-    border-radius: 12px;
+    padding: var(--vo-space-8);
+    border-radius: var(--vo-radius-lg);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
@@ -4049,7 +4050,7 @@ section {
 .stat-number {
     font-family: var(--vo-font-heading);
     /* Use heading font for numbers per typical design */
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     font-weight: 400;
     color: var(--dark-gray);
     line-height: 1;
@@ -4063,7 +4064,7 @@ section {
 
 .stat-label {
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     color: #333;
     font-weight: 500;
     white-space: nowrap;
@@ -4073,7 +4074,7 @@ section {
 .stat-desc {
     flex: 1;
     font-family: var(--vo-font-body);
-    font-size: 15px;
+    font-size: var(--vo-text-base);
     line-height: 1.4;
     color: #333;
 }
@@ -4083,7 +4084,7 @@ section {
         flex-direction: column;
         padding: 50px 20px;
         text-align: center;
-        gap: 40px;
+        gap: var(--vo-space-10);
     }
 
     .hero-text-content {
@@ -4133,7 +4134,7 @@ section {
 .service-text-content-wrapper {
     background-color: #FFFEFA;
     /* Off-white */
-    padding: 80px 20px;
+    padding: var(--vo-space-20) 20px;
     text-align: center;
 }
 
@@ -4141,7 +4142,7 @@ section {
     font-family: var(--vo-font-heading);
     font-weight: 700;
     font-style: italic;
-    font-size: 56px;
+    font-size: var(--vo-text-6xl);
     line-height: 1.1;
     color: var(--vo-color-charcoal);
     /* Dark text */
@@ -4153,7 +4154,7 @@ section {
 
 .service-hero-subtitle-dark {
     font-family: var(--vo-font-body);
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     line-height: 1.6;
     color: #444;
     margin-bottom: 50px;
@@ -4165,7 +4166,7 @@ section {
 .service-hero-buttons-col {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: var(--vo-space-4);
     justify-content: center;
     align-items: center;
 }
@@ -4175,12 +4176,12 @@ section {
     background: #437d57;
     /* Green from screenshot */
     color: var(--vo-color-white);
-    padding: 16px 40px;
+    padding: var(--vo-space-4) var(--vo-space-10);
     border-radius: 8px;
     /* Rounded corners but not pill */
     font-family: var(--vo-font-body);
     font-weight: 600;
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     text-decoration: none;
     min-width: 320px;
     text-align: center;
@@ -4196,7 +4197,7 @@ section {
 /* ========== Therapist/Experts Section (Migrated from services.html) ========== */
 .experts-section {
     background-color: #fff;
-    padding: 80px 150px;
+    padding: var(--vo-space-20) 10%;
     position: relative;
 }
 
@@ -4206,7 +4207,7 @@ section {
 
 .experts-label {
     font-family: var(--vo-font-heading);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -4216,7 +4217,7 @@ section {
 
 .experts-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     line-height: 1.2;
     font-weight: 700;
     font-style: italic;
@@ -4227,19 +4228,19 @@ section {
 .experts-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: var(--vo-space-10);
     align-items: start;
 }
 
 .experts-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: var(--vo-space-8);
 }
 
 .expert-card {
     background: #f0f0f0;
-    border-radius: 20px;
+    border-radius: var(--vo-radius-lg);
     position: relative;
     height: 450px;
     overflow: hidden;
@@ -4275,12 +4276,12 @@ section {
 
 .expert-rating .star {
     color: #FFB800;
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
 }
 
 .expert-rating .score {
     font-weight: 700;
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     color: #333;
 }
 
@@ -4297,7 +4298,7 @@ section {
     right: 15px;
     background: white;
     border-radius: 15px;
-    padding: 20px;
+    padding: var(--vo-space-5);
     z-index: 3;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -4308,7 +4309,7 @@ section {
 
 .expert-name {
     font-family: var(--vo-font-body);
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     font-weight: 700;
     color: #333;
     text-align: center;
@@ -4317,7 +4318,7 @@ section {
 
 .expert-title {
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     color: #666;
     text-align: center;
     margin-bottom: 5px;
@@ -4339,7 +4340,7 @@ section {
 }
 
 .detail-credentials {
-    font-size: 12px;
+    font-size: var(--vo-text-xs);
     color: #555;
     text-align: center;
     margin-bottom: 10px;
@@ -4347,7 +4348,7 @@ section {
 }
 
 .detail-expertise {
-    font-size: 13px;
+    font-size: var(--vo-text-xs);
     color: #333;
 }
 
@@ -4375,12 +4376,12 @@ section {
 }
 
 .experts-content {
-    padding: 40px 0;
+    padding: var(--vo-space-10) 0;
 }
 
 .experts-description {
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     line-height: 1.7;
     color: var(--dark-gray);
     margin-bottom: 30px;
@@ -4389,15 +4390,15 @@ section {
 .btn-learn-more {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--vo-space-2);
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     font-weight: 500;
     color: var(--dark-gray);
     text-decoration: none;
     border: 2px solid var(--dark-gray);
     border-radius: 30px;
-    padding: 12px 30px;
+    padding: var(--vo-space-3) var(--vo-space-8);
     transition: all 0.3s ease;
 }
 
@@ -4407,7 +4408,7 @@ section {
 }
 
 .btn-learn-more .arrow {
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
 }
 
 @media (max-width: 1200px) {
@@ -4445,12 +4446,12 @@ section {
 /* ========== How It Works Section (Migrated from services.html) ========== */
 .how-it-works-section {
     background: var(--bg-light-green);
-    padding: 80px 0;
+    padding: var(--vo-space-20) 0;
 }
 
 .how-it-works-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     font-weight: 700;
     font-style: italic;
     line-height: 66px;
@@ -4463,7 +4464,7 @@ section {
 .steps-grid {
     display: grid;
     grid-template-columns: repeat(5, 220px);
-    gap: 20px;
+    gap: var(--vo-space-5);
     justify-content: center;
     max-width: 1180px;
     margin: 0 auto 60px;
@@ -4472,7 +4473,7 @@ section {
 .step-card {
     background: var(--dark-gray);
     border-radius: 20px;
-    padding: 30px 20px;
+    padding: 30px var(--vo-space-5);
     box-shadow: var(--shadow-light);
     text-align: center;
     height: 220px;
@@ -4480,7 +4481,7 @@ section {
 
 .step-number {
     font-family: var(--vo-font-body);
-    font-size: 32px;
+    font-size: var(--vo-text-4xl);
     line-height: 42px;
     letter-spacing: -0.5px;
     color: var(--bg-cream);
@@ -4490,7 +4491,7 @@ section {
 
 .step-description {
     font-family: var(--vo-font-body);
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     line-height: 26px;
     letter-spacing: -0.5px;
     color: var(--bg-cream);
@@ -4518,7 +4519,7 @@ section {
 /* ========== Feature Cards Section ========== */
 .service-features {
     background: var(--bg-cream);
-    padding: 60px 130px;
+    padding: var(--vo-space-16) 10%;
 }
 
 .feature-cards-grid {
@@ -4538,7 +4539,7 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: var(--vo-space-5);
     text-align: center;
 }
 
@@ -4568,7 +4569,7 @@ section {
 .feature-card-box .label {
     font-family: var(--vo-font-body);
     font-weight: 500;
-    font-size: 24px;
+    font-size: var(--vo-text-2xl);
     line-height: 31px;
     color: var(--vo-color-secondary);
 }
@@ -4576,7 +4577,7 @@ section {
 /* ========== Pricing Section ========== */
 .service-pricing {
     position: relative;
-    padding: 80px 150px;
+    padding: var(--vo-space-20) 10%;
     background: #FFE4AD;
 }
 
@@ -4604,7 +4605,7 @@ section {
     font-family: var(--vo-font-heading);
     font-weight: 700;
     font-style: italic;
-    font-size: 36px;
+    font-size: var(--vo-text-4xl);
     line-height: 47px;
     color: var(--vo-color-charcoal);
     margin-bottom: 20px;
@@ -4613,7 +4614,7 @@ section {
 .pricing-subtitle {
     font-family: var(--vo-font-body);
     font-weight: 400;
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     line-height: 26px;
     color: var(--vo-color-black)000;
     margin-bottom: 40px;
@@ -4627,10 +4628,10 @@ section {
 
 .pricing-table th,
 .pricing-table td {
-    padding: 25px 20px;
+    padding: var(--vo-space-6) var(--vo-space-5);
     text-align: left;
     font-family: var(--vo-font-body);
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     line-height: 26px;
     letter-spacing: -0.5px;
     vertical-align: middle;
@@ -4638,7 +4639,7 @@ section {
 
 .pricing-table th {
     font-weight: 500;
-    font-size: 28px;
+    font-size: var(--vo-text-2xl);
     line-height: 36px;
     color: var(--vo-color-charcoal);
     border-bottom: 2.5px solid var(--vo-color-black)000;
@@ -4672,13 +4673,13 @@ section {
 /* ========== App Offer Section ========== */
 .service-app-offer {
     background: #FFE4AD;
-    padding: 60px 150px;
+    padding: var(--vo-space-16) 150px;
 }
 
 .app-offer-note {
     font-family: var(--vo-font-body);
     font-weight: 400;
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     line-height: 26px;
     color: var(--vo-color-black)000;
     margin-bottom: 10px;
@@ -4687,7 +4688,7 @@ section {
 .app-offer-link {
     font-family: var(--vo-font-body);
     font-weight: 700;
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     line-height: 26px;
     color: #43A047;
     text-decoration: none;
@@ -4701,7 +4702,7 @@ section {
     font-family: var(--vo-font-heading);
     font-weight: 600;
     font-style: italic;
-    font-size: 36px;
+    font-size: var(--vo-text-4xl);
     line-height: 47px;
     color: var(--vo-color-primary);
     margin: 40px 0 30px;
@@ -4716,7 +4717,7 @@ section {
 .app-offer-list li {
     font-family: var(--vo-font-body);
     font-weight: 400;
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     line-height: 26px;
     color: var(--vo-color-black)000;
     padding-left: 25px;
@@ -4738,14 +4739,14 @@ section {
 /* ========== Emotional Support Section ========== */
 .service-support {
     background: var(--bg-cream);
-    padding: 80px 150px;
+    padding: var(--vo-space-20) 150px;
 }
 
 .support-title {
     font-family: var(--vo-font-heading);
     font-weight: 600;
     font-style: italic;
-    font-size: 32px;
+    font-size: var(--vo-text-3xl);
     line-height: 42px;
     color: var(--vo-color-black)000;
     margin-bottom: 30px;
@@ -4807,12 +4808,12 @@ section {
     }
 
     .service-hero-title {
-        font-size: 32px;
+        font-size: var(--vo-text-3xl);
         line-height: 42px;
     }
 
     .service-hero-subtitle {
-        font-size: 16px;
+        font-size: var(--vo-text-base);
         line-height: 22px;
     }
 
@@ -4823,7 +4824,7 @@ section {
     }
 
     .feature-card-box .label {
-        font-size: 18px;
+        font-size: var(--vo-text-lg);
     }
 
     .service-pricing,
@@ -4834,7 +4835,7 @@ section {
 
     .pricing-title,
     .app-offer-title {
-        font-size: 28px;
+        font-size: var(--vo-text-3xl);
         line-height: 36px;
     }
 
@@ -4844,33 +4845,33 @@ section {
     }
 
     .support-title {
-        font-size: 24px;
+        font-size: var(--vo-text-2xl);
         line-height: 32px;
     }
 
     .support-text {
-        font-size: 16px;
+        font-size: var(--vo-text-base);
         line-height: 22px;
     }
 }
 
 /* ========== Testimonials Section (Copied from Index) ========== */
 .testimonials-section {
-    padding: 80px 0;
+    padding: var(--vo-space-20) 0;
     overflow: hidden;
     background: var(--vo-color-secondary);
 }
 
 .testimonials-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     font-weight: 700;
     font-style: italic;
     line-height: 66px;
     letter-spacing: -0.5px;
     text-align: center;
     color: var(--dark-gray);
-    margin-bottom: 60px;
+    margin-bottom: var(--vo-space-16);
 }
 
 /* Carousel Wrapper */
@@ -4909,7 +4910,7 @@ section {
     height: 500px;
     background-color: #4E4E4E;
     /* medium-gray fallback */
-    border-radius: 20px;
+    border-radius: var(--vo-radius-lg);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     overflow: hidden;
     text-align: center;
@@ -4936,12 +4937,12 @@ section {
     width: 100%;
     height: 100%;
     border: none;
-    border-radius: 10px;
+    border-radius: var(--vo-radius-md);
 }
 
 .card .location {
     margin-top: auto;
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     font-weight: 600;
     background: #4E4E4E;
     color: white;
@@ -4984,7 +4985,7 @@ section {
     font-weight: 600;
     margin-bottom: 25px;
     padding: 0 33px;
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     line-height: 26px;
     font-family: var(--vo-font-body);
 }
@@ -4993,14 +4994,14 @@ section {
     width: 150px;
     height: 150px;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: var(--vo-radius-full);
     display: block;
     margin: 30px auto 25px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .card.orange p {
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     line-height: 21px;
     margin: 0;
     padding: 0 35px 35px;
@@ -5025,19 +5026,19 @@ section {
 
 /* ========== Detailed Services Section ========== */
 .detailed-services-section {
-    padding: 100px 100px;
+    padding: var(--vo-space-24) 10%;
     background: var(--vo-color-secondary);
     /* Cream background */
     display: flex;
     flex-direction: column;
-    gap: 100px;
+    gap: var(--vo-space-24);
 }
 
 .service-detail-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 80px;
+    gap: var(--vo-space-20);
 }
 
 /* Alternating layout: Even rows have image on left */
@@ -5052,7 +5053,7 @@ section {
 
 .service-detail-title {
     font-family: var(--vo-font-heading);
-    font-size: 40px;
+    font-size: var(--vo-text-5xl);
     font-weight: 700;
     font-style: italic;
     line-height: 1.2;
@@ -5062,7 +5063,7 @@ section {
 
 .service-detail-desc {
     font-family: var(--vo-font-body);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     line-height: 1.6;
     color: var(--text-muted);
     margin-bottom: 30px;
@@ -5076,7 +5077,7 @@ section {
 
 .service-detail-list li {
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     line-height: 1.5;
     color: var(--dark-gray);
     margin-bottom: 12px;
@@ -5088,7 +5089,7 @@ section {
     content: '•';
     color: var(--primary-orange);
     font-weight: bold;
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     position: absolute;
     left: 0;
     top: -2px;
@@ -5097,7 +5098,7 @@ section {
 .service-detail-image-box {
     flex: 1;
     height: 400px;
-    border-radius: 20px;
+    border-radius: var(--vo-radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-card);
 }
@@ -5125,7 +5126,7 @@ section {
     }
 
     .service-detail-title {
-        font-size: 32px;
+        font-size: var(--vo-text-4xl);
     }
 }
 
@@ -5163,7 +5164,7 @@ section {
 
 .detailed-services-eyebrow {
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     letter-spacing: 1px;
     text-transform: uppercase;
     color: var(--primary-orange);
@@ -5174,7 +5175,7 @@ section {
 
 .detailed-services-main-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     font-weight: 700;
     font-style: italic;
     line-height: 1.2;
@@ -5184,7 +5185,7 @@ section {
 
 @media (max-width: 768px) {
     .detailed-services-main-title {
-        font-size: 32px;
+        font-size: var(--vo-text-4xl);
     }
 }
 
@@ -5197,7 +5198,7 @@ section {
     color: #1565C0;
     /* Dark Blue */
     font-family: var(--vo-font-body);
-    font-size: 12px;
+    font-size: var(--vo-text-xs);
     font-weight: 700;
     text-transform: uppercase;
     padding: 6px 12px;
@@ -5211,9 +5212,9 @@ section {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: var(--vo-space-2);
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     font-weight: 600;
     color: var(--vo-color-charcoal);
     text-decoration: none;
@@ -5234,14 +5235,14 @@ section {
 .interim-solution-block {
     background-color: #F0FDF4;
     /* Mint Green */
-    border-radius: 20px;
+    border-radius: var(--vo-radius-lg);
     padding: 40px;
     margin: 60px auto;
     max-width: 1000px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 40px;
+    gap: var(--vo-space-10);
     border: 1px solid #DCFCE7;
 }
 
@@ -5251,7 +5252,7 @@ section {
 
 .interim-title {
     font-family: var(--vo-font-heading);
-    font-size: 28px;
+    font-size: var(--vo-text-3xl);
     font-weight: 600;
     font-style: italic;
     color: #14532D;
@@ -5261,7 +5262,7 @@ section {
 
 .interim-text {
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     color: #166534;
     /* Medium Green */
     line-height: 1.5;
@@ -5270,7 +5271,7 @@ section {
 .btn-interim-cta {
     background-color: #166534;
     color: white;
-    padding: 12px 24px;
+    padding: var(--vo-space-3) var(--vo-space-6);
     border-radius: 8px;
     font-weight: 600;
     text-decoration: none;
@@ -5284,7 +5285,7 @@ section {
 
 .directory-disclaimer {
     font-family: var(--vo-font-body);
-    font-size: 12px;
+    font-size: var(--vo-text-xs);
     color: #666;
     text-align: center;
     margin-top: 20px;
@@ -5320,7 +5321,7 @@ section {
 .banner-cta-stack {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: var(--vo-space-2);
     /* Reduced gap as requested */
     width: 100%;
     max-width: 300px;
@@ -5335,7 +5336,7 @@ section {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: var(--vo-space-20);
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 60px;
@@ -5351,7 +5352,7 @@ section {
 
 .why-love-main-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     line-height: 1.15;
     color: var(--vo-color-charcoal);
     margin-bottom: 50px;
@@ -5385,7 +5386,7 @@ section {
 
 .why-love-point-title {
     font-family: var(--vo-font-heading);
-    font-size: 22px;
+    font-size: var(--vo-text-2xl);
     font-weight: 700;
     color: var(--vo-color-charcoal);
     margin-bottom: 12px;
@@ -5393,7 +5394,7 @@ section {
 
 .why-love-point-desc {
     font-family: var(--vo-font-body);
-    font-size: 17px;
+    font-size: var(--vo-text-base);
     line-height: 1.6;
     color: #555;
     margin: 0;
@@ -5413,7 +5414,7 @@ section {
     width: 100%;
     max-width: 500px;
     /* Limit size for aesthetics */
-    border-radius: 20px;
+    border-radius: var(--vo-radius-lg);
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
     aspect-ratio: 4/5;
@@ -5490,7 +5491,7 @@ section {
 .banner-cta-stack {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: var(--vo-space-2);
     width: 100%;
     max-width: 320px;
     /* Constrain width matches buttons */
@@ -5505,14 +5506,14 @@ section {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    padding: 14px 24px;
+    padding: var(--vo-space-4) var(--vo-space-6);
     border-radius: 8px;
     font-family: var(--vo-font-body);
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
     cursor: pointer;
-    font-size: 16px;
+    font-size: var(--vo-text-base);
 }
 
 /* Ensure Green Button style */
@@ -5558,7 +5559,7 @@ section {
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    padding: 30px 20px;
+    padding: var(--vo-space-8) 20px;
     opacity: 0;
     transition: opacity 0.3s ease;
     text-decoration: none;
@@ -5573,24 +5574,26 @@ section {
     position: absolute;
     top: 20px;
     right: 20px;
-    font-size: 28px;
+    font-size: var(--vo-text-3xl);
     color: white;
     font-weight: 300;
 }
 
 .overlay-text {
     font-family: var(--vo-font-body);
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     font-weight: 600;
     color: white;
     text-align: center;
 }
 
+
+
 /* ================================================== 
    IMAGE CAROUSEL SECTION - CIRCULAR HOVER DESIGN
    ================================================== */
 .image-carousel-section {
-    padding: 80px 0;
+    padding: var(--vo-space-20) 0;
     background: var(--vo-color-secondary);
     overflow: hidden;
     position: relative;
@@ -5598,9 +5601,9 @@ section {
 
 .carousel-track {
     display: flex;
-    gap: 30px;
+    gap: var(--vo-space-8);
     animation: scroll-carousel 40s linear infinite;
-    padding: 20px 0;
+    padding: var(--vo-space-5) 0;
 }
 
 .carousel-track:hover {
@@ -5622,108 +5625,7 @@ section {
     flex-shrink: 0;
     width: 280px;
     height: 280px;
-    border-radius: 50%;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.4s ease;
-}
-
-.carousel-item:hover {
-    transform: scale(1.05);
-}
-
-.carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.carousel-item:hover img {
-    transform: scale(1.1);
-}
-
-.carousel-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(245, 127, 23, 0.85);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-decoration: none;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.carousel-item:hover .carousel-overlay {
-    opacity: 1;
-}
-
-.overlay-icon {
-    width: 50px;
-    height: 50px;
-    background: white;
-    color: var(--vo-color-charcoal);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 16px;
-}
-
-.overlay-text {
-    font-family: var(--vo-font-body);
-    font-size: 18px;
-    font-weight: 600;
-    text-align: center;
-    letter-spacing: 0.5px;
-}
-
-
-/* ================================================== 
-   IMAGE CAROUSEL SECTION - CIRCULAR HOVER DESIGN
-   ================================================== */
-.image-carousel-section {
-    padding: 80px 0;
-    background: var(--vo-color-secondary);
-    overflow: hidden;
-    position: relative;
-}
-
-.carousel-track {
-    display: flex;
-    gap: 30px;
-    animation: scroll-carousel 40s linear infinite;
-    padding: 20px 0;
-}
-
-.carousel-track:hover {
-    animation-play-state: paused;
-}
-
-@keyframes scroll-carousel {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-33.333%);
-    }
-}
-
-.carousel-item {
-    position: relative;
-    flex-shrink: 0;
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
+    border-radius: var(--vo-radius-full);
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.4s ease;
@@ -5770,18 +5672,18 @@ section {
     height: 50px;
     background: white;
     color: var(--vo-color-charcoal);
-    border-radius: 50%;
+    border-radius: var(--vo-radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     font-weight: bold;
     margin-bottom: 16px;
 }
 
 .overlay-text {
     font-family: var(--vo-font-body);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     font-weight: 600;
     text-align: center;
     letter-spacing: 0.5px;
@@ -5793,7 +5695,7 @@ section {
    TEAM BENTO BOX GRID - MASONRY LAYOUT
    ================================================== */
 .team-bento-section {
-    padding: 100px 20px;
+    padding: var(--vo-space-24) 20px;
     background: #1A1A1A;
     min-height: 600px;
 }
@@ -5804,12 +5706,12 @@ section {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 280px);
-    gap: 16px;
+    gap: var(--vo-space-4);
 }
 
 .team-card {
     position: relative;
-    border-radius: 16px;
+    border-radius: var(--vo-radius-md);
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -5830,14 +5732,14 @@ section {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 20px;
+    padding: var(--vo-space-5);
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 60%, transparent 100%);
     color: white;
 }
 
 .team-name {
     font-family: var(--vo-font-heading);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     font-weight: 600;
     margin: 0 0 4px 0;
     color: white;
@@ -5845,7 +5747,7 @@ section {
 
 .team-role {
     font-family: var(--vo-font-body);
-    font-size: 11px;
+    font-size: var(--vo-text-xs);
     font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -5878,299 +5780,12 @@ section {
 }
 
 
-
-/* ================================================== 
-   IMAGE CAROUSEL SECTION - CIRCULAR HOVER DESIGN
-   ================================================== */
-.image-carousel-section {
-    padding: 80px 0;
-    background: var(--vo-color-secondary);
-    overflow: hidden;
-    position: relative;
-}
-
-.carousel-track {
-    display: flex;
-    gap: 30px;
-    animation: scroll-carousel 40s linear infinite;
-    padding: 20px 0;
-}
-
-.carousel-track:hover {
-    animation-play-state: paused;
-}
-
-@keyframes scroll-carousel {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-33.333%);
-    }
-}
-
-.carousel-item {
-    position: relative;
-    flex-shrink: 0;
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.4s ease;
-}
-
-.carousel-item:hover {
-    transform: scale(1.05);
-}
-
-.carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.carousel-item:hover img {
-    transform: scale(1.1);
-}
-
-.carousel-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 235, 59, 0.9);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: var(--vo-color-charcoal);
-    text-decoration: none;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.carousel-item:hover .carousel-overlay {
-    opacity: 1;
-}
-
-.overlay-icon {
-    width: 50px;
-    height: 50px;
-    background: white;
-    color: var(--vo-color-charcoal);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 16px;
-}
-
-.overlay-text {
-    font-family: var(--vo-font-body);
-    font-size: 18px;
-    font-weight: 600;
-    text-align: center;
-    letter-spacing: 0.5px;
-    color: var(--vo-color-charcoal);
-}
-
-/* ================================================== 
-   TEAM BENTO BOX GRID - MASONRY LAYOUT
-   ================================================== */
-.team-bento-section {
-    padding: 100px 20px;
-    background: #1A1A1A;
-    min-height: 600px;
-}
-
-.team-bento-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 280px);
-    gap: 16px;
-}
-
-.team-card {
-    position: relative;
-    border-radius: 16px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.team-card:hover {
-    transform: scale(1.02);
-}
-
-.team-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.team-card-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 60%, transparent 100%);
-    color: white;
-}
-
-.team-name {
-    font-family: var(--vo-font-heading);
-    font-size: 18px;
-    font-weight: 600;
-    margin: 0 0 4px 0;
-    color: white;
-}
-
-.team-role {
-    font-family: var(--vo-font-body);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin: 0;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-    .team-bento-container {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: auto;
-    }
-
-    .team-card {
-        grid-area: auto !important;
-    }
-}
-
-@media (max-width: 768px) {
-    .team-bento-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
-    .team-bento-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ================================================== 
-   IMAGE CAROUSEL SECTION - CIRCULAR HOVER DESIGN
-   ================================================== */
-.image-carousel-section {
-    padding: 80px 0;
-    background: var(--vo-color-secondary);
-    overflow: hidden;
-    position: relative;
-}
-
-.carousel-track {
-    display: flex;
-    gap: 30px;
-    animation: scroll-carousel 40s linear infinite;
-    padding: 20px 0;
-}
-
-.carousel-track:hover {
-    animation-play-state: paused;
-}
-
-@keyframes scroll-carousel {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-33.333%);
-    }
-}
-
-.carousel-item {
-    position: relative;
-    flex-shrink: 0;
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.4s ease;
-}
-
-.carousel-item:hover {
-    transform: scale(1.05);
-}
-
-.carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.carousel-item:hover img {
-    transform: scale(1.1);
-}
-
-.carousel-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.75);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: var(--vo-color-white);
-    text-decoration: none;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    border-radius: 50%;
-    z-index: 10;
-}
-
-.carousel-item:hover .carousel-overlay {
-    opacity: 1;
-}
-
-.overlay-icon {
-    font-size: 48px;
-    color: var(--vo-color-white);
-    font-weight: 300;
-    margin-bottom: 12px;
-    line-height: 1;
-}
-
-.overlay-text {
-    font-family: var(--vo-font-heading);
-    font-size: 24px;
-    font-weight: 600;
-    font-style: italic;
-    text-align: center;
-    letter-spacing: 0;
-    color: var(--vo-color-white);
-}
 
 /* ================================================== 
    MISSION SECTION BENTO BOX STYLING
    ================================================== */
 .dark-mission-section {
-    padding: 100px 40px;
+    padding: var(--vo-space-24) 40px;
     background: #1A1A1A;
 }
 
@@ -6180,12 +5795,12 @@ section {
 }
 
 .mission-header-row {
-    margin-bottom: 60px;
+    margin-bottom: var(--vo-space-16);
     text-align: flex-start;
 }
 
 .mission-eyebrow {
-    font-size: 12px;
+    font-size: var(--vo-text-xs);
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -6196,7 +5811,7 @@ section {
 
 .mission-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     font-weight: 700;
     font-style: italic;
     color: white;
@@ -6209,45 +5824,39 @@ section {
     grid-template-columns: 1fr 1fr 1.5fr 2fr;
     /* 2 small columns, 1 medium, 1 large */
     grid-template-rows: repeat(2, 300px);
-    gap: 20px;
+    gap: var(--vo-space-5);
     margin: 0 auto;
     max-width: 1400px;
 }
 
-/* Bento-style grid layout matching image 2 reference */
-/* Top-left small card */
+/* Bento-style grid layout */
 .mission-card:nth-child(1) {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
 }
 
-/* Top-middle-left small card */
 .mission-card:nth-child(2) {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
 }
 
-/* Middle tall card - spans both rows */
 .mission-card:nth-child(3) {
     grid-column: 3 / 4;
     grid-row: 1 / 3;
     height: 620px;
 }
 
-/* Right large tall card - spans both rows */
 .mission-card:nth-child(4) {
     grid-column: 4 / 5;
     grid-row: 1 / 3;
     height: 620px;
 }
 
-/* Bottom-left small card */
 .mission-card:nth-child(5) {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
 }
 
-/* Bottom-middle-left small card */
 .mission-card:nth-child(6) {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
@@ -6255,7 +5864,7 @@ section {
 
 .mission-card {
     position: relative;
-    border-radius: 20px;
+    border-radius: var(--vo-radius-lg);
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -6282,7 +5891,7 @@ section {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 30px;
+    padding: var(--vo-space-8);
     background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 60%, transparent 100%);
     color: white;
     display: flex;
@@ -6292,7 +5901,7 @@ section {
 
 .mission-card-overlay h3 {
     font-family: var(--vo-font-heading);
-    font-size: 24px;
+    font-size: var(--vo-text-2xl);
     font-weight: 600;
     margin: 0;
     color: white;
@@ -6300,7 +5909,7 @@ section {
 
 .mission-card-overlay p {
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     margin: 0;
     color: rgba(255, 255, 255, 0.9);
 }
@@ -6319,26 +5928,11 @@ section {
     }
 
     .mission-title {
-        font-size: 36px;
+        font-size: var(--vo-text-4xl);
     }
 }
 
-
-/* ================================================== 
-   CAROUSEL HOVER FIX - HIGH SPECIFICITY OVERRIDE
-   ================================================== */
-section.image-carousel-section .carousel-item:hover .carousel-overlay {
-    opacity: 1 !important;
-}
-
-section.image-carousel-section .carousel-overlay {
-    border-radius: 50%;
-}
-
-
-/* ================================================== 
-   CAROUSEL HOVER FIX - HIGH SPECIFICITY OVERRIDE
-   ================================================== */
+/* Carousel Hover Fix */
 section.image-carousel-section .carousel-item:hover .carousel-overlay {
     opacity: 1 !important;
 }

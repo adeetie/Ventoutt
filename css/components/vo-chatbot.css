@@ -3,8 +3,8 @@
 /* Container & Global Scope */
 .vo-chatbot {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
+    bottom: var(--vo-space-6);
+    right: var(--vo-space-6);
     z-index: 999999;
     font-family: var(--vo-font-body);
 }
@@ -12,8 +12,8 @@
 /* 1. Trigger Button */
 .vo-chatbot__trigger {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
+    bottom: var(--vo-space-6);
+    right: var(--vo-space-6);
     width: 60px;
     height: 60px;
     background: var(--vo-color-primary);
@@ -36,15 +36,15 @@
 /* Helper Bubble */
 .vo-chatbot__trigger-bubble {
     position: absolute;
-    bottom: 80px;
+    bottom: var(--vo-space-20);
     right: 0;
     background: var(--vo-color-white);
     color: var(--vo-color-black);
-    padding: 12px 20px;
-    border-radius: 20px 20px 0 20px;
+    padding: var(--vo-space-3) var(--vo-space-5);
+    border-radius: var(--vo-radius-2xl) var(--vo-radius-2xl) 0 var(--vo-radius-2xl);
     box-shadow: var(--vo-shadow-base);
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     font-weight: 500;
     white-space: nowrap;
     z-index: 999997;
@@ -75,7 +75,7 @@
     height: 560px;
     background: var(--vo-color-white);
     border: 1px solid var(--vo-border-light);
-    border-radius: 18px;
+    border-radius: var(--vo-radius-lg);
     box-shadow: var(--vo-shadow-card);
     display: none;
     /* Hidden by default */
@@ -103,7 +103,7 @@
 /* Header */
 .vo-chatbot__header {
     flex: 0 0 56px;
-    padding: 0 16px;
+    padding: 0 var(--vo-space-4);
     background: var(--vo-color-white);
     border-bottom: 1px solid var(--vo-border-light);
     display: flex;
@@ -114,7 +114,7 @@
 .vo-chatbot__title {
     font-family: var(--vo-font-heading);
     font-weight: 700;
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     color: var(--vo-text-primary);
 }
 
@@ -133,10 +133,10 @@
 .vo-chatbot__messages {
     flex: 1;
     overflow-y: auto;
-    padding: 16px;
+    padding: var(--vo-space-4);
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--vo-space-3);
     background: var(--vo-color-white);
     scroll-behavior: smooth;
 }
@@ -152,15 +152,15 @@
 
 /* Message Bubbles */
 .vo-chatbot__bubble {
-    padding: 12px 14px;
-    font-size: 14px;
+    padding: var(--vo-space-3) 14px;
+    font-size: var(--vo-text-sm);
     line-height: 1.5;
     position: relative;
     max-width: 85%;
     word-wrap: break-word;
     margin-bottom: 4px;
     white-space: pre-wrap;
-    border-radius: 16px;
+    border-radius: var(--vo-radius-xl);
 }
 
 .vo-chatbot__bubble--bot {
@@ -178,7 +178,7 @@
 }
 
 .vo-chatbot__time {
-    font-size: 11px;
+    font-size: var(--vo-text-xs);
     color: var(--vo-text-tertiary);
     margin-bottom: 0px;
 }
@@ -212,11 +212,11 @@
 /* Disclaimer */
 .vo-chatbot__disclaimer {
     width: 100%;
-    padding: 12px;
+    padding: var(--vo-space-3);
     background: var(--vo-color-white);
     border: 1px solid var(--vo-border-light);
-    border-radius: 12px;
-    font-size: 11px;
+    border-radius: var(--vo-radius-base);
+    font-size: var(--vo-text-xs);
     color: var(--vo-text-tertiary);
     margin-bottom: 8px;
     line-height: 1.4;
@@ -240,8 +240,8 @@
     background: var(--vo-color-primary);
     color: var(--vo-color-white);
     border: none;
-    border-radius: 20px;
-    font-size: 14px;
+    border-radius: var(--vo-radius-2xl);
+    font-size: var(--vo-text-sm);
     font-weight: 600;
     cursor: pointer;
     transition: opacity 0.2s;
@@ -262,16 +262,16 @@
     border-top: 1px solid var(--vo-border-light);
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--vo-space-3);
 }
 
 .vo-chatbot__input {
     flex: 1;
     height: 36px;
     border: 1px solid var(--vo-border-light);
-    border-radius: 18px;
-    padding: 0 12px;
-    font-size: 14px;
+    border-radius: var(--vo-radius-lg);
+    padding: 0 var(--vo-space-3);
+    font-size: var(--vo-text-sm);
     outline: none;
     color: var(--vo-text-primary);
     font-family: var(--vo-font-body);
@@ -291,9 +291,9 @@
 
 /* Typing Indicator */
 .vo-chatbot__typing {
-    padding: 12px 14px;
+    padding: var(--vo-space-3) 14px;
     background: var(--vo-color-secondary);
-    border-radius: 16px;
+    border-radius: var(--vo-radius-xl);
     align-self: flex-start;
     display: inline-flex;
     gap: 4px;
@@ -350,7 +350,7 @@
         right: auto;
         bottom: auto;
         transform: translate(-50%, -50%);
-        border-radius: 18px;
+        border-radius: var(--vo-radius-lg);
         position: fixed;
         display: flex;
         /* Override previous display check */

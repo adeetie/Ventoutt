@@ -7,7 +7,7 @@
     position: relative;
     width: 320px;
     height: 480px;
-    margin: 40px auto;
+    margin: var(--vo-space-10) auto;
     perspective: 1000px;
     /* Essential for 3D effect */
 }
@@ -19,7 +19,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 24px;
+    border-radius: var(--vo-radius-xl);
     background-color: var(--vo-color-white);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
@@ -33,7 +33,7 @@
 .vo-card-inner {
     width: 100%;
     height: 100%;
-    border-radius: 24px;
+    border-radius: var(--vo-radius-xl);
     overflow: hidden;
     position: relative;
     background: var(--vo-color-white);
@@ -54,7 +54,7 @@
 
 /* Info Section (Bottom ~20%) */
 .vo-card-info {
-    padding: 20px;
+    padding: var(--vo-space-5);
     background: var(--vo-color-white);
     height: 22%;
     display: flex;
@@ -66,14 +66,14 @@
     font-family: var(--vo-font-heading, serif);
     /* Ensure font var exists or fallback */
     font-weight: 700;
-    font-size: 22px;
-    margin: 0 0 5px 0;
+    font-size: var(--vo-text-2xl);
+    margin: 0 0 var(--vo-space-1) 0;
     color: var(--vo-color-black);
 }
 
 .vo-card-title {
     font-family: var(--vo-font-body, sans-serif);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     color: var(--vo-text-secondary);
     margin: 0;
 }
@@ -81,11 +81,11 @@
 /* Rating Badge */
 .vo-card-rating {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: var(--vo-space-5);
+    right: var(--vo-space-5);
     background: var(--vo-color-white);
-    padding: 8px 12px;
-    border-radius: 12px;
+    padding: var(--vo-space-2) var(--vo-space-3);
+    border-radius: var(--vo-radius-base);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -95,13 +95,13 @@
 
 .vo-card-rating .star {
     color: var(--vo-color-accent-yellow);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     margin-bottom: 2px;
 }
 
 .vo-card-rating .score {
     font-weight: 800;
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     color: var(--vo-color-charcoal);
 }
 
@@ -124,14 +124,14 @@
 /* Second Card (Index 1) - Behind */
 .vo-swipe-card:nth-child(2) {
     z-index: 2;
-    transform: scale(0.95) translateY(15px);
+    transform: scale(0.95) translateY(var(--vo-space-4));
     opacity: 0.8;
 }
 
 /* Third Card (Index 2) - Far Behind */
 .vo-swipe-card:nth-child(3) {
     z-index: 1;
-    transform: scale(0.9) translateY(30px);
+    transform: scale(0.9) translateY(var(--vo-space-8));
     opacity: 0.6;
 }
 
@@ -139,7 +139,7 @@
 .vo-swipe-card:nth-child(n+4) {
     z-index: 0;
     opacity: 0;
-    transform: scale(0.85) translateY(45px);
+    transform: scale(0.85) translateY(var(--vo-space-12));
     pointer-events: none;
 }
 

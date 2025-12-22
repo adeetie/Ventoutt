@@ -26,7 +26,7 @@
 }
 
 .vo-popup-scroll.show {
-    bottom: 24px;
+    bottom: var(--vo-space-6);
 }
 
 /* 2. ENTRY MODAL (Centered Overlay) */
@@ -55,7 +55,7 @@
     width: 440px;
     max-width: 90%;
     background: var(--vo-color-white);
-    padding: 30px;
+    padding: var(--vo-space-8);
     border-radius: var(--vo-radius-lg);
     box-shadow: var(--vo-shadow-2xl);
     text-align: center;
@@ -73,7 +73,7 @@
 /* SHARED STYLES */
 .vo-popup__title {
     font-family: var(--vo-font-heading);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     /* Scroll popup size. Modal was 22px, consolidating to 20px maybe? */
     font-weight: 600;
     font-style: italic;
@@ -83,12 +83,12 @@
 }
 
 .vo-modal-entry__card .vo-popup__title {
-    font-size: 22px;
+    font-size: var(--vo-text-2xl);
 }
 
 .vo-popup__desc {
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     color: var(--vo-text-primary);
     margin: 0;
     text-align: center;
@@ -96,7 +96,7 @@
 }
 
 .vo-modal-entry__card .vo-popup__desc {
-    font-size: 15px;
+    font-size: var(--vo-text-base);
     color: var(--vo-text-secondary);
 }
 
@@ -110,8 +110,8 @@
 /* Buttons */
 .vo-btn--popup {
     width: 100%;
-    padding: 12px;
-    font-size: 15px;
+    padding: var(--vo-space-3);
+    font-size: var(--vo-text-base);
     /* Reset regular btn styles if needed, but .vo-btn--primary gives good base */
 }
 
@@ -120,11 +120,11 @@
     background: none;
     border: none;
     color: var(--vo-text-tertiary);
-    font-size: 13px;
+    font-size: var(--vo-text-xs);
     cursor: pointer;
     text-align: center;
     text-decoration: underline;
-    padding: 5px;
+    padding: var(--vo-space-1);
     font-family: var(--vo-font-body);
 }
 
@@ -134,7 +134,7 @@
 
 /* Micro Copy */
 .vo-popup__micro {
-    font-size: 11px;
+    font-size: var(--vo-text-xs);
     color: var(--vo-text-tertiary);
     text-align: center;
 }

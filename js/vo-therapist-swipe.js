@@ -29,25 +29,20 @@ class SwipeableStack {
     }
 
     init() {
-        // Use matchMedia for robust responsive checks
-        const mobileQuery = window.matchMedia('(max-width: 768px)');
+        // Only initialize swipe logic on mobile/tablet
+        if (window.innerWidth > 768) return;
 
-        // Handler for screen changes
-        const handleScreenChange = (e) => {
-            if (e.matches) {
-                // Mobile: Initialize Stack
-                this.updateStack();
-            } else {
-                // Desktop: Cleanup
+        // Add event listeners to the top card
+        this.updateStack();
+
+        // Listen for resize to disable/enable
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
                 this.cleanup();
+            } else {
+                this.updateStack();
             }
-        };
-
-        // Initial check
-        handleScreenChange(mobileQuery);
-
-        // Listen for changes
-        mobileQuery.addEventListener('change', handleScreenChange);
+        });
     }
 
     updateStack() {

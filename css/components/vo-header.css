@@ -11,22 +11,22 @@
 
 .vo-header-v2 {
     position: fixed;
-    top: 20px;
+    top: var(--vo-space-5);
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: var(--vo-z-fixed);
     padding: 0 5%;
 }
 
 .vo-header-inner {
     background: rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
+    border-radius: var(--vo-radius-2xl);
     /* Large pill shape */
     height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 40px;
+    padding: 0 var(--vo-space-10);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     /* Soft shadow */
     max-width: 1400px;
@@ -49,7 +49,7 @@
 /* 2. Navigation */
 .vo-nav-v2 {
     display: flex;
-    gap: 40px;
+    gap: var(--vo-space-10);
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -75,12 +75,12 @@
 .vo-header-actions {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: var(--vo-space-5);
 }
 
 .vo-action-icon {
-    width: 24px;
-    height: 24px;
+    width: var(--vo-space-6);
+    height: var(--vo-space-6);
     cursor: pointer;
     transition: transform 0.2s;
 }
@@ -105,7 +105,7 @@
 .vo-header__split-btn {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: var(--vo-space-1);
 }
 
 .vo-header__dropdown-toggle {
@@ -133,11 +133,11 @@
     transform: translateX(-50%);
     width: 200px;
     background: var(--vo-color-white);
-    border-radius: 12px;
-    padding: 8px 0;
+    border-radius: var(--vo-radius-base);
+    padding: var(--vo-space-2) 0;
     display: none;
-    z-index: 1002;
-    margin-top: 12px;
+    z-index: var(--vo-z-dropdown);
+    margin-top: var(--vo-space-3);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     flex-direction: column;
     border: 1px solid rgba(0, 0, 0, 0.05);
@@ -151,7 +151,7 @@
     font-family: var(--vo-font-body);
     font-size: var(--vo-text-sm);
     color: var(--vo-color-black);
-    padding: 10px 20px;
+    padding: 10px var(--vo-space-5);
     text-decoration: none;
     transition: background 0.2s;
     font-weight: 500;
@@ -179,7 +179,7 @@
     width: 100%;
     height: 60px;
     background: rgba(255, 255, 255, 0.5);
-    z-index: 1000;
+    z-index: var(--vo-z-fixed);
     box-shadow: var(--vo-shadow-sm);
     backdrop-filter: blur(10px);
 }
@@ -188,12 +188,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 var(--vo-space-5);
     height: 100%;
 }
 
 .vo-mobile-header__logo img {
-    height: 40px;
+    height: var(--vo-space-10);
     width: auto;
 }
 
@@ -202,10 +202,10 @@
     background: none;
     border: none;
     cursor: pointer;
-    padding: 5px;
+    padding: var(--vo-space-1);
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: var(--vo-space-1);
     z-index: 1001;
 }
 
@@ -239,7 +239,7 @@
     max-width: 400px;
     height: 100vh;
     background: rgba(255, 255, 255, 0.95);
-    z-index: 1100;
+    z-index: var(--vo-z-sticky);
     overflow-y: auto;
     transition: right var(--vo-transition-base);
     box-shadow: -2px 0 20px rgba(0, 0, 0, 0.1);
@@ -254,13 +254,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: var(--vo-space-5);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .vo-mobile-menu__logo {
     font-family: var(--vo-font-heading);
-    font-size: 24px;
+    font-size: var(--vo-text-2xl);
     font-weight: 700;
     color: var(--vo-color-black);
 }
@@ -275,7 +275,7 @@
 }
 
 .vo-mobile-menu__content {
-    padding: 30px 40px;
+    padding: 30px var(--vo-space-10);
 }
 
 /* Mobile Menu Items */
@@ -283,7 +283,7 @@
 .vo-mobile-menu__link {
     font-family: var(--vo-font-body);
     font-weight: 600;
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     color: var(--vo-color-black);
     padding: 15px 0;
     cursor: pointer;
@@ -310,7 +310,7 @@
 /* Mobile Submenu */
 .vo-mobile-menu__submenu {
     display: none;
-    padding-left: 20px;
+    padding-left: var(--vo-space-5);
     margin-top: 10px;
 }
 
@@ -320,7 +320,7 @@
 
 .vo-mobile-menu__sublink {
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     color: var(--vo-text-secondary);
     padding: 12px 0;
     display: block;
@@ -333,15 +333,15 @@
 
 /* Mobile Quote */
 .vo-mobile-menu__quote {
-    padding: 24px;
+    padding: var(--vo-space-6);
     text-align: center;
     font-family: var(--vo-font-heading);
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     font-style: italic;
     color: var(--vo-color-primary);
     font-weight: 600;
     letter-spacing: 0.5px;
-    margin: 30px 0 20px;
+    margin: 30px 0 var(--vo-space-5);
 }
 
 /* Mobile CTA */
@@ -353,12 +353,12 @@
     /* Center button */
     background: var(--vo-color-primary);
     border: 1px solid var(--vo-color-white);
-    border-radius: 50px;
+    border-radius: var(--vo-radius-full);
     /* Pill shape preferred */
-    padding: 15px 30px;
+    padding: var(--vo-space-4) var(--vo-space-8);
     font-family: var(--vo-font-body);
     font-weight: 600;
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     color: var(--vo-color-white);
     cursor: pointer;
     transition: background var(--vo-transition-base);
