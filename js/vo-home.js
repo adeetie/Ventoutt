@@ -157,8 +157,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* =========================================
-       5. 3D Scroll Effect (Hero Recedes, Services Rise)
+       5. 3D Scroll Effect (Disabled as Hero is no longer sticky)
        ========================================= */
+    /*
     const heroSection = document.querySelector('.vo-hero');
     const helpSection = document.querySelector('.vo-help-section');
     const statsSection = document.querySelector('.vo-stats-section-floating'); // Identify Stats
@@ -202,4 +203,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, { passive: true });
     }
+    */
 });

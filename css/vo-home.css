@@ -5,13 +5,30 @@
     background-color: var(--vo-color-secondary-light);
     padding: var(--vo-space-16) 0 var(--vo-space-20);
     /* Increased top padding */
-    position: sticky;
-    /* Sticky for rising effect */
-    top: 0;
-    z-index: 0;
+    position: relative;
+    /* Reverted to relative as requested */
+    z-index: 1;
     /* Behind the services section */
     width: 100%;
     /* overflow: hidden; Removed to prevent doodle clipping */
+}
+
+/* =========================================
+   4. Stats Section (Improvised Floating Design)
+   ========================================= */
+.vo-stats-section-floating {
+    padding: 6rem 1.5rem;
+    background-color: #222222;
+    /* Darker Charcoal from image */
+    position: relative;
+    overflow: hidden;
+    z-index: 20;
+    /* border-radius removed for clean rise-up effect */
+    margin-top: -60px;
+    /* Increased overlap for stronger rise effect */
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15);
+    color: #ffffff;
+    min-height: 80vh;
 }
 
 .vo-hero__container {
@@ -260,23 +277,14 @@
     /* Reverted to relative to allow full scrolling of content */
     /* top: 0; removed */
     z-index: 10;
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
-    margin-top: -20px;
-    /* Mobile overlap */
-    box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.08);
-    /* Deeper shadow for 3D feel */
+    /* border-radius removed for clean rise-up effect */
+    margin-top: -40px;
+    /* Overlap creates rise-up effect */
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05);
     min-height: 100vh;
 }
 
-@media (min-width: 768px) {
-    .vo-help-section {
-        border-top-left-radius: 40px;
-        border-top-right-radius: 40px;
-        margin-top: -40px;
-        /* Desktop overlap */
-    }
-}
+
 
 .vo-help-container {
     max-width: 1240px;
@@ -643,9 +651,8 @@
 
 @media (min-width: 768px) {
     .vo-stats-section-floating {
-        border-top-left-radius: 40px;
-        border-top-right-radius: 40px;
-        margin-top: -40px;
+        margin-top: -80px;
+        /* Stronger overlap on desktop */
         padding: 8rem 2rem;
     }
 }
