@@ -5,13 +5,13 @@
    ========================================= */
 .image-carousel-section {
     background-color: var(--vo-color-secondary-light);
-    padding: 20px 0 60px 0;
+    padding: var(--vo-space-5) 0 var(--vo-space-16) 0;
     overflow: hidden;
 }
 
 .carousel-track {
     display: flex;
-    gap: 20px;
+    gap: var(--vo-space-5);
     animation: scrollCarousel 30s linear infinite;
     width: max-content;
 }
@@ -21,7 +21,7 @@
     flex-shrink: 0;
     width: 280px;
     height: 320px;
-    border-radius: 24px;
+    border-radius: var(--vo-radius-xl);
     overflow: hidden;
 }
 
@@ -36,7 +36,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 20px;
+    padding: var(--vo-space-5);
     background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
     display: flex;
     align-items: flex-end;
@@ -89,7 +89,7 @@
    1. Hero Section (v2 Redesign - Two Column Layout)
    ========================================= */
 .hero-v2 {
-    padding: 60px 0;
+    padding: var(--vo-space-16) 0;
     background-color: var(--vo-color-secondary-light);
     min-height: 80vh;
     display: flex;
@@ -99,10 +99,10 @@
 .hero-v2-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: var(--vo-space-16);
     max-width: 1240px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 var(--vo-space-10);
     width: 100%;
     align-items: start;
 }
@@ -111,13 +111,13 @@
 .hero-left-col {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: var(--vo-space-6);
 }
 
 /* Greeting */
 .hero-cell-greeting h1 {
     font-family: var(--vo-font-heading);
-    font-size: 64px;
+    font-size: var(--vo-text-6xl);
     margin-bottom: 0;
     color: var(--vo-color-black);
     font-weight: 700;
@@ -126,7 +126,8 @@
 /* Tagline */
 .hero-tagline h2 {
     font-family: var(--vo-font-heading);
-    font-size: 42px;
+    font-size: var(--vo-text-4xl);
+    /* 36px approx 42px? keeping scale */
     line-height: 1.2;
     color: var(--vo-color-black);
     font-weight: 700;
@@ -142,8 +143,8 @@
 
 .hero-stat-block-new {
     background-color: var(--vo-color-gray-400);
-    border-radius: 24px;
-    padding: 28px 32px;
+    border-radius: var(--vo-radius-xl);
+    padding: var(--vo-space-6) var(--vo-space-8);
     display: flex;
     flex-direction: column;
     min-width: 160px;
@@ -310,7 +311,7 @@
 @media (max-width: 1024px) {
     .hero-v2-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: var(--vo-space-10);
     }
 
     .hero-cell-greeting h1 {
@@ -328,11 +329,11 @@
 
 @media (max-width: 768px) {
     .hero-v2 {
-        padding: 40px 0;
+        padding: var(--vo-space-10) 0;
     }
 
     .hero-v2-grid {
-        padding: 0 24px;
+        padding: 0 var(--vo-space-6);
     }
 
     .hero-cell-greeting h1 {
@@ -349,7 +350,7 @@
     }
 
     .hero-stat-block-new {
-        padding: 20px 24px;
+        padding: var(--vo-space-5) var(--vo-space-6);
         min-width: 140px;
     }
 
@@ -372,19 +373,19 @@
    2. How Can We Help (Expanding Gallery)
    ========================================= */
 .vo-help-section {
-    padding: 100px 0;
+    padding: var(--vo-space-24) 0;
     background-color: var(--vo-color-secondary-light);
 }
 
 .vo-help-container {
     max-width: 1240px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 var(--vo-space-6);
 }
 
 .vo-help-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: var(--vo-space-16);
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -392,10 +393,10 @@
 
 .vo-section-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     line-height: 1.1;
     color: var(--vo-color-black);
-    margin-bottom: 24px;
+    margin-bottom: var(--vo-space-6);
     font-weight: 700;
 }
 
@@ -408,7 +409,7 @@
 
 .vo-expanding-gallery {
     display: flex;
-    gap: 20px;
+    gap: var(--vo-space-5);
     height: 600px;
     width: 100%;
 }
@@ -418,7 +419,7 @@
     position: relative;
     background-size: cover;
     background-position: center;
-    border-radius: 24px;
+    border-radius: var(--vo-radius-xl);
     overflow: hidden;
     cursor: pointer;
     transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
@@ -444,7 +445,7 @@
 }
 
 .vo-gallery-content {
-    padding: 40px;
+    padding: var(--vo-space-10);
     width: 100%;
     transform: translateY(0);
     text-align: left;
@@ -601,16 +602,16 @@
         /* Orange button */
         color: #fff !important;
         font-weight: 700 !important;
-        padding: 12px 0 !important;
-        border-radius: 8px !important;
+        padding: var(--vo-space-3) 0 !important;
+        border-radius: var(--vo-radius-sm) !important;
         text-transform: none !important;
     }
 
     .vo-expanding-gallery {
         display: flex;
         flex-direction: row;
-        gap: 10px;
-        padding: 0 20px 20px;
+        gap: var(--vo-space-3);
+        padding: 0 var(--vo-space-5) var(--vo-space-5);
         height: 250px;
     }
 
@@ -618,7 +619,7 @@
         flex: 1;
         min-width: 0;
         height: 250px;
-        border-radius: 25px;
+        border-radius: var(--vo-radius-xl);
         transition: flex 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
@@ -717,25 +718,27 @@
 /* =========================================
    4. Stats Section (Dark Cards)
    ========================================= */
-.vo-stats-section {
-    padding: 100px 5%;
-    background-color: var(--vo-color-secondary-light);
+.vo-quiz-prompt {
+    text-align: center;
+    margin-top: var(--vo-space-10);
+    padding-bottom: var(--vo-space-5);
+    font-family: var(--vo-font-body);
     /* Cream/White background */
     text-align: center;
 }
 
 .vo-stats-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     font-style: italic;
     color: var(--vo-color-dark-gray);
-    margin-bottom: 60px;
+    margin-bottom: var(--vo-space-16);
 }
 
 .vo-stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    gap: var(--vo-space-8);
     max-width: 1240px;
     margin: 0 auto;
 }
@@ -743,8 +746,8 @@
 .vo-stat-card {
     background-color: var(--vo-color-charcoal);
     /* Dark card background */
-    border-radius: 20px;
-    padding: 40px 20px;
+    border-radius: var(--vo-radius-lg);
+    padding: var(--vo-space-10) var(--vo-space-5);
     text-align: center;
     color: var(--vo-color-white);
     display: flex;
@@ -766,7 +769,7 @@
     background-color: var(--vo-color-secondary);
     /* Off-white circle placeholder */
     border-radius: 50%;
-    margin: 0 auto 30px;
+    margin: 0 auto var(--vo-space-8);
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -782,10 +785,10 @@
 
 .vo-stat-number {
     font-family: var(--vo-font-body);
-    font-size: 36px;
+    font-size: var(--vo-text-4xl);
     font-weight: 700;
     color: var(--vo-color-white);
-    margin-bottom: 15px;
+    margin-bottom: var(--vo-space-4);
 }
 
 .vo-stat-label {
@@ -823,7 +826,7 @@
    5. Testimonials (3D Cylinder Loop)
    ========================================= */
 .vo-testimonials-section {
-    padding: 80px 0 120px;
+    padding: var(--vo-space-20) 0 7.5rem;
     background-color: var(--vo-color-secondary-light);
     overflow: hidden;
     position: relative;
@@ -831,9 +834,9 @@
 
 .vo-testimonials-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: var(--vo-space-16);
     color: var(--vo-color-black);
     line-height: 1.3;
     max-width: 800px;
@@ -849,7 +852,7 @@
     width: 100%;
     overflow: hidden;
     background: transparent;
-    padding: 60px 0;
+    padding: var(--vo-space-16) 0;
 }
 
 .marquee-inner {
@@ -1021,7 +1024,8 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 16px;
+    width: 100%;
+    padding: var(--vo-space-4);
     background: rgba(0, 0, 0, 0.6);
     color: #fff;
     font-weight: 500;
@@ -1034,10 +1038,10 @@
 .vo-testimonial-name {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: var(--vo-space-4);
     font-weight: 700;
-    margin-bottom: 20px;
-    font-size: 20px;
+    margin-bottom: var(--vo-space-5);
+    font-size: var(--vo-text-xl);
     color: var(--vo-color-black);
 }
 
@@ -1050,7 +1054,7 @@
 
 .vo-testimonial-card p {
     font-family: var(--vo-font-body);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     line-height: 1.6;
     color: var(--vo-color-dark-gray);
     flex-grow: 1;
@@ -1058,37 +1062,7 @@
     scrollbar-width: thin;
 }
 
-/* Video Card Styling */
-.vo-testimonial-card.vo-video-card {
-    padding: 0;
-    background: var(--vo-color-black);
-}
 
-.vo-video-container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.vo-video-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-.vo-testimonial-location {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 16px;
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    font-weight: 500;
-    text-align: left;
-    backdrop-filter: blur(4px);
-    z-index: 2;
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -1101,25 +1075,25 @@
 
 .vo-testimonial-card.vo-video-card .vo-video-container {
     flex: 1;
-    border-radius: 24px 24px 0 0;
+    border-radius: var(--vo-radius-xl) var(--vo-radius-xl) 0 0;
     overflow: hidden;
 }
 
 .vo-testimonial-card.vo-video-card .vo-testimonial-location {
-    padding: 16px;
+    padding: var(--vo-space-4);
     background: #fff;
-    border-radius: 0 0 24px 24px;
+    border-radius: 0 0 var(--vo-radius-xl) var(--vo-radius-xl);
 }
 
 .vo-testimonial-name {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: var(--vo-space-4);
     font-family: var(--vo-font-body);
     font-weight: 700;
-    font-size: 1rem;
+    font-size: var(--vo-text-base);
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: var(--vo-space-5);
 }
 
 .vo-testimonial-name img {
@@ -1175,11 +1149,11 @@
     .vo-testimonial-card {
         width: 240px;
         min-height: 320px;
-        padding: 20px;
+        padding: var(--vo-space-5);
     }
 
     .vo-testimonials-track {
-        gap: 20px;
+        gap: var(--vo-space-5);
     }
 }
 
@@ -1201,7 +1175,7 @@
    9. Comparison Section
    ========================================= */
 .vo-comparison-section {
-    padding: 80px 20px;
+    padding: var(--vo-space-20) var(--vo-space-5);
     background: #fff;
     text-align: center;
 }
@@ -1214,7 +1188,7 @@
 .vo-comp-grid {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: var(--vo-space-8);
     flex-wrap: wrap;
     align-items: flex-start;
 }
@@ -1225,8 +1199,8 @@
     max-width: 360px;
     background: #fff;
     border: 1px solid #E0E0E0;
-    border-radius: 20px;
-    padding: 30px;
+    border-radius: var(--vo-radius-lg);
+    padding: var(--vo-space-8);
     text-align: left;
     transition: all 0.3s ease;
 }
@@ -1242,8 +1216,8 @@
 
 .vo-comp-header {
     border-bottom: 1px solid #eee;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
+    padding-bottom: var(--vo-space-5);
+    margin-bottom: var(--vo-space-5);
 }
 
 .vo-comp-title {
@@ -1260,22 +1234,22 @@
 }
 
 .vo-comp-investment {
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     font-weight: 700;
     color: var(--vo-color-primary);
-    margin-bottom: 20px;
+    margin-bottom: var(--vo-space-5);
 }
 
 .vo-comp-list {
     list-style: none;
     padding: 0;
-    margin-bottom: 30px;
+    margin-bottom: var(--vo-space-8);
 }
 
 .vo-comp-list li {
     display: flex;
-    gap: 10px;
-    margin-bottom: 12px;
+    gap: var(--vo-space-3);
+    margin-bottom: var(--vo-space-3);
     font-size: 0.95rem;
     color: #444;
 }
@@ -1288,7 +1262,7 @@
 .vo-btn-comp {
     display: block;
     width: 100%;
-    padding: 12px 0;
+    padding: var(--vo-space-3) 0;
     text-align: center;
     border-radius: 10px;
     text-decoration: none;
@@ -1317,41 +1291,41 @@
 .vo-why-love-section {
     background: var(--vo-color-bg-tertiary);
     /* Cream/Beige */
-    padding: 120px 0;
+    padding: 7.5rem 0;
     position: relative;
 }
 
 .vo-why-love-title {
     font-family: var(--vo-font-heading);
-    font-size: 56px;
+    font-size: var(--vo-text-6xl);
     line-height: 1.1;
     text-align: center;
     color: var(--vo-color-dark-gray);
-    margin-bottom: 80px;
+    margin-bottom: var(--vo-space-20);
 }
 
 .vo-scroll-slider-wrapper {
     width: 100%;
     max-width: 1240px;
     margin: 0 auto;
-    padding: 0 20px 100px;
+    padding: 0 var(--vo-space-5) var(--vo-space-24);
     position: relative;
 }
 
 .vo-scroll-slider-track {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: var(--vo-space-10);
     align-items: center;
 }
 
 .vo-feature-card {
     background: white;
     border-radius: 40px;
-    padding: 40px;
+    padding: var(--vo-space-10);
     display: flex;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: var(--vo-space-16);
     align-items: center;
     min-height: 380px;
     position: sticky;
@@ -1439,7 +1413,7 @@ h2,
     /* Only disable for specific elements if needed, but User wants IT ALL */
 
     .vo-scroll-slider-wrapper {
-        padding: 0 20px 40px;
+        padding: 0 var(--vo-space-5) var(--vo-space-10);
         overflow: visible !important;
         /* Ensure no clipping */
     }
@@ -1448,12 +1422,12 @@ h2,
         display: flex !important;
         flex-direction: column !important;
         min-height: auto;
-        padding: 30px 20px;
+        padding: var(--vo-space-8) var(--vo-space-5);
         position: sticky !important;
         /* Restore Sticky */
         top: 100px !important;
         /* Adjusted for mobile styling */
-        margin-bottom: 20px;
+        margin-bottom: var(--vo-space-5);
         height: auto;
         /* z-index: auto; REMOVING this helps, but we rely on explicit z-index below */
         box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
@@ -1506,7 +1480,7 @@ h2,
     .vo-feature-card .vo-feature-card-image,
     .vo-feature-card:nth-child(even) .vo-feature-card-image {
         order: 1 !important;
-        margin-top: 20px;
+        margin-top: var(--vo-space-5);
         width: 100%;
         height: 220px;
         /* Constrain image height on mobile */
@@ -1516,7 +1490,7 @@ h2,
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 20px;
+        border-radius: var(--vo-radius-lg);
     }
 
 }
@@ -1525,7 +1499,7 @@ h2,
     object-fit: cover;
     height: 100%;
     width: 100%;
-    border-radius: 20px;
+    border-radius: var(--vo-radius-lg);
 }
 
 /* =========================================
@@ -1551,7 +1525,7 @@ h2,
         display: flex !important;
         flex-direction: column !important;
         /* Stack vertically for scroll */
-        gap: 20px !important;
+        gap: var(--vo-space-5) !important;
         overflow: visible !important;
         height: auto !important;
         min-height: 200vh !important;
@@ -1570,7 +1544,7 @@ h2,
         /* Stick at 100px from top */
         height: auto !important;
         min-height: auto !important;
-        margin-bottom: 40px !important;
+        margin-bottom: var(--vo-space-10) !important;
         /* Allow space for next card */
         background: #fff !important;
         z-index: 1;
@@ -1625,7 +1599,7 @@ h2,
     .vo-feature-card .vo-feature-card-image,
     .vo-feature-card:nth-child(even) .vo-feature-card-image {
         order: 1 !important;
-        margin-top: 20px !important;
+        margin-top: var(--vo-space-5) !important;
     }
 
     .vo-feature-card-image {
@@ -1645,7 +1619,7 @@ h2,
     background: var(--vo-color-secondary-light);
     /* Cream Background */
     width: 100%;
-    padding: 80px 0;
+    padding: var(--vo-space-20) 0;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -1656,9 +1630,9 @@ h2,
     font-family: var(--vo-font-heading);
     font-style: italic;
     font-weight: 700;
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     line-height: 1.2;
-    margin-bottom: 60px;
+    margin-bottom: var(--vo-space-16);
     color: var(--vo-color-black);
     /* Black Title */
     text-align: center;
@@ -1674,8 +1648,8 @@ h2,
     align-items: center;
     justify-content: center;
     /* Center content */
-    padding: 0 20px;
-    gap: 60px;
+    padding: 0 var(--vo-space-5);
+    gap: var(--vo-space-16);
 }
 
 .vo-graphics-wrapper {
@@ -1728,7 +1702,7 @@ h2,
     flex: 1 1 600px;
     background: var(--vo-color-charcoal);
     border-radius: 30px;
-    padding: 40px 50px;
+    padding: var(--vo-space-10) var(--vo-space-12);
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -1740,25 +1714,25 @@ h2,
 
 .vo-figma-description {
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     line-height: 1.6;
     color: #fff;
-    margin-bottom: 30px;
+    margin-bottom: var(--vo-space-8);
 }
 
 .vo-figma-description p {
-    margin-bottom: 20px;
+    margin-bottom: var(--vo-space-5);
 }
 
 .vo-figma-description ul {
     list-style: none;
     padding: 0;
-    margin: 20px 0;
+    margin: var(--vo-space-5) 0;
 }
 
 .vo-figma-description li {
-    margin-bottom: 12px;
-    padding-left: 20px;
+    margin-bottom: var(--vo-space-3);
+    padding-left: var(--vo-space-5);
     position: relative;
     font-size: 15px;
 }
@@ -1774,7 +1748,7 @@ h2,
 
 .vo-figma-footer {
     font-family: var(--vo-font-heading);
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     font-style: italic;
     font-weight: 400;
     /* Standard Lora Italic */
@@ -1797,7 +1771,7 @@ h2,
     /* Swipe Card specific styling to match Reference Image */
     .vo-swipe-card {
         position: absolute;
-        top: 20px;
+        top: var(--vo-space-5);
         left: 50%;
         margin-left: -160px;
         /* Center 320px wide card */
@@ -1806,7 +1780,7 @@ h2,
         /* Fixed height for consistency */
         background: #CBE6F6;
         /* Fallback Light Blue for stack background appearance */
-        border-radius: 20px;
+        border-radius: var(--vo-radius-lg);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         overflow: hidden;
         /* Ensure image fills */
@@ -1818,11 +1792,11 @@ h2,
     /* Rating Badge - Top Right */
     .vo-swipe-card .vo-expert-rating {
         position: absolute;
-        top: 20px;
-        right: 20px;
+        top: var(--vo-space-5);
+        right: var(--vo-space-5);
         background: white;
-        padding: 5px 10px;
-        border-radius: 12px;
+        padding: var(--vo-space-1) var(--vo-space-3);
+        border-radius: var(--vo-radius-base);
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         display: flex;
         flex-direction: column;
@@ -1835,13 +1809,13 @@ h2,
 
     .vo-swipe-card .vo-expert-rating .star {
         color: var(--vo-color-primary);
-        font-size: 14px;
+        font-size: var(--vo-text-sm);
         margin-bottom: 2px;
     }
 
     .vo-swipe-card .vo-expert-rating .score {
         font-weight: 700;
-        font-size: 16px;
+        font-size: var(--vo-text-base);
         color: #333;
     }
 
@@ -1855,12 +1829,12 @@ h2,
     /* Info Bubble - Bottom Overlay */
     .vo-swipe-card .vo-expert-info-box {
         position: absolute;
-        bottom: 20px;
-        left: 20px;
-        right: 20px;
+        bottom: var(--vo-space-5);
+        left: var(--vo-space-5);
+        right: var(--vo-space-5);
         background: white;
-        padding: 15px 20px;
-        border-radius: 16px;
+        padding: var(--vo-space-4) var(--vo-space-5);
+        border-radius: var(--vo-radius-lg);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         text-align: left;
         z-index: 2;
@@ -1868,10 +1842,10 @@ h2,
 
     .vo-swipe-card .vo-expert-name {
         font-family: var(--vo-font-heading);
-        font-size: 20px;
+        font-size: var(--vo-text-xl);
         font-weight: 700;
         color: #333;
-        margin-bottom: 4px;
+        margin-bottom: var(--vo-space-1);
     }
 
     .vo-swipe-card .vo-expert-title-text {
@@ -1900,24 +1874,24 @@ h2,
 
     .vo-therapist-banner {
         min-height: auto;
-        padding: 80px 20px;
+        padding: var(--vo-space-20) var(--vo-space-5);
     }
 }
 
 @media (max-width: 768px) {
     .vo-therapist-banner {
-        padding: 60px 0;
+        padding: var(--vo-space-16) 0;
     }
 
     .vo-figma-title {
-        font-size: 32px;
-        margin-bottom: 40px;
-        padding: 0 20px;
+        font-size: var(--vo-text-3xl);
+        margin-bottom: var(--vo-space-10);
+        padding: 0 var(--vo-space-5);
     }
 
     .vo-figma-container {
         flex-direction: column;
-        gap: 40px;
+        gap: var(--vo-space-10);
     }
 
     .vo-graphics-wrapper {
@@ -1931,22 +1905,22 @@ h2,
     .vo-content-wrapper {
         width: 100%;
         flex: auto;
-        padding: 30px 20px;
-        border-radius: 20px;
+        padding: var(--vo-space-8) var(--vo-space-5);
+        border-radius: var(--vo-radius-lg);
     }
 }
 
 .vo-feature-card-title {
     font-family: var(--vo-font-heading);
-    font-size: 40px;
+    font-size: var(--vo-text-5xl);
     line-height: 1.1;
-    margin-bottom: 16px;
+    margin-bottom: var(--vo-space-4);
     color: var(--vo-color-dark-gray);
 }
 
 .vo-feature-card-desc {
     font-family: var(--vo-font-body);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     line-height: 1.5;
     color: var(--vo-color-gray-600);
 }
@@ -1968,7 +1942,7 @@ h2,
 @media (max-width: 968px) {
     .vo-feature-card {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: var(--vo-space-8);
         min-height: auto;
     }
 
@@ -1989,7 +1963,7 @@ h2,
    ========================================= */
 .vo-partners-section {
     background-color: var(--vo-color-charcoal);
-    padding: 100px 0;
+    padding: var(--vo-space-24) 0;
     color: white;
     position: relative;
     overflow: hidden;
@@ -2002,15 +1976,15 @@ h2,
     /* Title left, Logos right */
     align-items: center;
     justify-content: space-between;
-    gap: 80px;
-    padding: 0 20px;
-    margin-bottom: 60px;
+    gap: var(--vo-space-20);
+    padding: 0 var(--vo-space-5);
+    margin-bottom: var(--vo-space-16);
     /* Spacing before carousel */
 }
 
 .vo-partners-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     font-style: italic;
     font-weight: 700;
     line-height: 1.1;
@@ -2026,8 +2000,8 @@ h2,
 
 .vo-logo-track {
     display: flex;
-    gap: 20px;
-    padding-right: 20px;
+    gap: var(--vo-space-5);
+    padding-right: var(--vo-space-5);
     /* Fix for seamless loop calculation */
     width: max-content;
     will-change: transform;
@@ -2066,15 +2040,15 @@ h2,
 /* Therapists Loop (Reverse) */
 .vo-therapists-wrapper {
     max-width: 1240px;
-    margin: 60px auto 0;
-    padding: 0 40px;
+    margin: var(--vo-space-16) auto 0;
+    padding: 0 var(--vo-space-10);
     overflow: hidden;
 }
 
 .vo-therapist-track {
     display: flex;
-    gap: 20px;
-    padding-right: 20px;
+    gap: var(--vo-space-5);
+    padding-right: var(--vo-space-5);
     /* Fix for seamless loop calculation */
     width: max-content;
     will-change: transform;
@@ -2086,8 +2060,8 @@ h2,
 .vo-therapist-card {
     background: var(--vo-color-white);
     border: 3px solid #3A7F56;
-    border-radius: 16px;
-    padding: 20px 15px;
+    border-radius: var(--vo-radius-lg);
+    padding: var(--vo-space-5) var(--vo-space-4);
     width: 280px;
     flex-shrink: 0;
     display: flex;
@@ -2104,9 +2078,9 @@ h2,
 .vo-therapist-head {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: var(--vo-space-3);
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: var(--vo-space-4);
 }
 
 .vo-therapist-avatar {
@@ -2118,7 +2092,7 @@ h2,
 
 .vo-therapist-info h3 {
     font-family: var(--vo-font-heading);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     font-weight: 700;
     color: var(--vo-color-black);
     margin: 0;
@@ -2127,7 +2101,7 @@ h2,
 .vo-swipe-card .vo-card-name {
     font-family: 'Lora', serif;
     /* Updated to Lora */
-    font-size: 24px;
+    font-size: var(--vo-text-2xl);
     font-weight: 700;
     color: #333;
     margin: 0;
@@ -2137,9 +2111,9 @@ h2,
     background: #fff;
     border: 0.5px solid rgba(0, 0, 0, 0.5);
     border-radius: 6px;
-    padding: 8px 10px;
+    padding: var(--vo-space-2) var(--vo-space-3);
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: var(--vo-space-4);
     font-size: 12px;
     color: #4E4E4E;
     text-align: left;
@@ -2148,7 +2122,7 @@ h2,
 .vo-btn-book {
     display: block;
     width: 100%;
-    padding: 8px 0;
+    padding: var(--vo-space-2) 0;
     background: var(--vo-color-primary);
     /* Orange from reference image */
     color: white;
@@ -2224,8 +2198,8 @@ h2,
 
 .vo-blog-title {
     font-family: var(--vo-font-heading);
-    font-size: 24px;
-    margin-bottom: 15px;
+    font-size: var(--vo-text-2xl);
+    margin-bottom: var(--vo-space-4);
     color: var(--vo-color-dark-gray);
 }
 
@@ -2239,31 +2213,31 @@ h2,
    13. FAQ Section
    ========================================= */
 .vo-faq-section {
-    padding: 80px 20px;
+    padding: var(--vo-space-20) var(--vo-space-5);
     background: var(--vo-color-secondary-light);
 }
 
 .vo-faq-container {
     max-width: 800px;
-    margin: 40px auto 0;
+    margin: var(--vo-space-10) auto 0;
 }
 
 .vo-faq-item {
     background: #fff;
-    border-radius: 10px;
-    margin-bottom: 15px;
+    border-radius: var(--vo-radius-base);
+    margin-bottom: var(--vo-space-4);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     overflow: hidden;
 }
 
 .vo-faq-item summary {
-    padding: 20px;
+    padding: var(--vo-space-5);
     cursor: pointer;
     font-weight: 600;
     list-style: none;
     position: relative;
     font-family: var(--vo-font-heading);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
 }
 
 .vo-faq-item summary::-webkit-details-marker {
@@ -2273,9 +2247,9 @@ h2,
 .vo-faq-item summary::after {
     content: '+';
     position: absolute;
-    right: 20px;
+    right: var(--vo-space-5);
     color: var(--vo-color-primary);
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
 }
 
 .vo-faq-item[open] summary::after {
@@ -2283,7 +2257,7 @@ h2,
 }
 
 .vo-faq-item p {
-    padding: 0 20px 20px;
+    padding: 0 var(--vo-space-5) var(--vo-space-5);
     color: #666;
     line-height: 1.6;
 }
@@ -2293,7 +2267,7 @@ h2,
    ========================================= */
 .vo-specs-section {
     background-color: var(--vo-color-secondary-light);
-    padding: 100px 5%;
+    padding: var(--vo-space-24) 5%;
     text-align: center;
 }
 
@@ -2301,15 +2275,15 @@ h2,
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     /* 4 cols */
-    gap: 30px;
+    gap: var(--vo-space-8);
     max-width: 1240px;
-    margin: 40px auto 60px;
+    margin: var(--vo-space-10) auto var(--vo-space-16);
 }
 
 .vo-spec-card {
     background: var(--vo-color-bg-light);
     border: 0.25px solid var(--vo-color-black);
-    border-radius: 20px;
+    border-radius: var(--vo-radius-lg);
     box-shadow: var(--vo-shadow-light);
     height: 300px;
 }
@@ -2317,9 +2291,9 @@ h2,
 .vo-spec-image {
     width: 202px;
     height: 224px;
-    margin: 20px auto;
+    margin: var(--vo-space-5) auto;
     border: 0.25px solid var(--vo-color-black);
-    border-radius: 20px;
+    border-radius: var(--vo-radius-lg);
     background-size: cover;
     background-position: center;
 }
@@ -2327,10 +2301,10 @@ h2,
 .vo-spec-label {
     font-family: var(--vo-font-body);
     font-weight: 600;
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     color: var(--vo-color-dark-gray);
     border: 0.25px solid var(--vo-color-black);
-    padding: 10px;
+    padding: var(--vo-space-3);
     display: inline-block;
     background: #fff;
     /* fallback */
@@ -2341,17 +2315,17 @@ h2,
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    gap: var(--vo-space-4);
     max-width: 1240px;
     margin: 0 auto;
 }
 
 .vo-challenge-item {
     font-family: var(--vo-font-body);
-    font-size: 16px;
-    padding: 10px 20px;
+    font-size: var(--vo-text-base);
+    padding: var(--vo-space-3) var(--vo-space-5);
     border: 1px solid #ddd;
-    border-radius: 30px;
+    border-radius: var(--vo-radius-xl);
     background: #fff;
 }
 
@@ -2360,7 +2334,7 @@ h2,
 }
 
 .vo-btn-see-more {
-    margin-top: 30px;
+    margin-top: var(--vo-space-8);
     background: none;
     border: none;
     color: var(--vo-color-primary);
@@ -2428,33 +2402,33 @@ h2,
    18. Find Your Right Fit (Comparison) - NEW
    ========================================= */
 .vo-comparison-section {
-    padding: 100px 5%;
+    padding: var(--vo-space-24) 5%;
     background-color: var(--vo-color-secondary-light);
 }
 
 .vo-comparison-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: var(--vo-space-16);
 }
 
 .vo-section-title-center {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     font-style: italic;
     color: var(--vo-color-dark-gray);
-    margin-bottom: 10px;
+    margin-bottom: var(--vo-space-3);
 }
 
 .vo-section-subtitle-center {
     font-family: var(--vo-font-body);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     color: #666;
 }
 
 .vo-comparison-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: var(--vo-space-8);
     max-width: 1240px;
     margin: 0 auto;
     align-items: center;
@@ -2462,8 +2436,8 @@ h2,
 
 .vo-comp-card {
     background: #111;
-    border-radius: 20px;
-    padding: 40px 30px;
+    border-radius: var(--vo-radius-lg);
+    padding: var(--vo-space-10) var(--vo-space-8);
     color: #fff;
     position: relative;
     display: flex;
@@ -2481,12 +2455,12 @@ h2,
 }
 
 .vo-comp-top {
-    margin-bottom: 30px;
+    margin-bottom: var(--vo-space-8);
 }
 
 .vo-comp-top h3 {
     font-family: var(--vo-font-heading);
-    font-size: 32px;
+    font-size: var(--vo-text-3xl);
     font-weight: 700;
     font-style: italic;
     margin-bottom: 5px;
@@ -2495,43 +2469,43 @@ h2,
 
 .vo-comp-role {
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     opacity: 0.7;
-    margin-bottom: 20px;
+    margin-bottom: var(--vo-space-5);
 }
 
 .vo-comp-tag {
     display: inline-block;
     background: rgba(255, 255, 255, 0.2);
-    padding: 4px 10px;
+    padding: var(--vo-space-1) var(--vo-space-3);
     border-radius: 4px;
     font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
-    margin-bottom: 15px;
+    margin-bottom: var(--vo-space-4);
     font-family: var(--vo-font-body);
 }
 
 .vo-comp-price {
     font-family: var(--vo-font-body);
-    font-size: 28px;
+    font-size: var(--vo-text-3xl);
     font-weight: 600;
 }
 
 .vo-comp-features {
     list-style: none;
     padding: 0;
-    margin: 0 0 40px;
+    margin: 0 0 var(--vo-space-10);
     flex: 1;
 }
 
 .vo-comp-features li {
     font-family: var(--vo-font-body);
-    font-size: 15px;
-    margin-bottom: 15px;
+    font-size: var(--vo-text-base);
+    margin-bottom: var(--vo-space-4);
     display: flex;
     align-items: flex-start;
-    gap: 10px;
+    gap: var(--vo-space-3);
     line-height: 1.4;
 }
 
@@ -2543,9 +2517,9 @@ h2,
 .vo-btn-comp {
     display: block;
     width: 100%;
-    padding: 15px 0;
+    padding: var(--vo-space-4) 0;
     text-align: center;
-    border-radius: 30px;
+    border-radius: var(--vo-radius-xl);
     font-family: var(--vo-font-body);
     font-weight: 600;
     text-decoration: none;
@@ -2604,30 +2578,30 @@ h2,
 
 
 .vo-experts-content {
-    padding: 40px 0;
+    padding: var(--vo-space-10) 0;
 }
 
 .vo-experts-description {
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     line-height: 1.7;
     color: var(--vo-color-dark-gray);
-    margin-bottom: 30px;
+    margin-bottom: var(--vo-space-8);
 }
 
 .vo-btn-learn-more {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--vo-space-3);
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     font-weight: 500;
     color: var(--vo-color-dark-gray);
     text-decoration: none;
     border: 1px solid var(--vo-color-dark-gray);
-    border-radius: 50px;
+    border-radius: var(--vo-radius-full);
     /* Pill shape */
-    padding: 10px 24px;
+    padding: var(--vo-space-3) var(--vo-space-6);
     transition: all 0.3s ease;
     background: transparent;
 }
@@ -2639,7 +2613,7 @@ h2,
 
 @media (max-width: 1200px) {
     .vo-experts-section {
-        padding: 60px 80px;
+        padding: var(--vo-space-16) var(--vo-space-20);
     }
 
     .vo-experts-container {
@@ -2666,17 +2640,17 @@ h2,
    ========================================= */
 .vo-how-section {
     background-color: var(--vo-color-secondary-light);
-    padding: 80px 0;
+    padding: var(--vo-space-20) 0;
     text-align: center;
 }
 
 .vo-how-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: var(--vo-text-5xl);
     line-height: 66px;
     letter-spacing: -0.5px;
     color: var(--vo-color-dark-gray);
-    margin-bottom: 60px;
+    margin-bottom: var(--vo-space-16);
     font-style: italic;
     font-weight: 700;
 }
@@ -2684,17 +2658,17 @@ h2,
 .vo-steps-grid {
     display: grid;
     grid-template-columns: repeat(5, 220px);
-    gap: 20px;
+    gap: var(--vo-space-5);
     justify-content: center;
     max-width: 1240px;
-    margin: 0 auto 60px;
+    margin: 0 auto var(--vo-space-16);
 }
 
 .vo-step-card {
     background: var(--vo-color-charcoal);
     /* Ensure dark bg */
-    border-radius: 20px;
-    padding: 30px 20px;
+    border-radius: var(--vo-radius-lg);
+    padding: var(--vo-space-8) var(--vo-space-5);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     height: 220px;
@@ -2713,17 +2687,17 @@ h2,
 
 .vo-step-number {
     font-family: var(--vo-font-body);
-    font-size: 32px;
+    font-size: var(--vo-text-3xl);
     line-height: 42px;
     letter-spacing: -0.5px;
     color: var(--vo-color-cream);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin-bottom: 14px;
+    margin-bottom: var(--vo-space-4);
 }
 
 .vo-step-description {
     font-family: var(--vo-font-body);
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     line-height: 26px;
     letter-spacing: -0.5px;
     color: var(--vo-color-cream);
@@ -2733,7 +2707,7 @@ h2,
 @media (max-width: 1200px) {
     .vo-steps-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        padding: 0 20px;
+        padding: 0 var(--vo-space-5);
     }
 }
 
@@ -2743,13 +2717,13 @@ h2,
 .vo-challenges-grid-full {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px 40px;
+    gap: var(--vo-space-4) var(--vo-space-10);
     /* Matches main.css */
     max-width: 1240px;
     margin: 0 auto;
     text-align: left;
     /* Alignment from main.css */
-    padding: 0 20px;
+    padding: 0 var(--vo-space-5);
 }
 
 .vo-challenge-item {
@@ -2757,7 +2731,7 @@ h2,
     /* Using variable but kept DM Sans fallbacks if needed */
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     /* Original size */
     line-height: 26px;
     color: #050505;
@@ -2783,7 +2757,7 @@ h2,
 @media (max-width: 768px) {
     .vo-challenges-grid-full {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: var(--vo-space-4);
     }
 }
 
@@ -2791,39 +2765,39 @@ h2,
 .vo-challenges-list {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin-bottom: 30px;
+    gap: var(--vo-space-10);
+    margin-bottom: var(--vo-space-8);
     flex-wrap: wrap;
 }
 
 .vo-see-more-wrapper {
-    padding: 12px 0;
-    margin-top: 30px;
+    padding: var(--vo-space-3) 0;
+    margin-top: var(--vo-space-8);
     text-align: center;
 }
 
 .vo-see-more-btn {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: var(--vo-space-3);
     font-family: var(--vo-font-body);
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     line-height: 26px;
     color: var(--vo-color-charcoal);
     background: transparent;
     border: none;
     cursor: pointer;
     position: relative;
-    padding-bottom: 6px;
+    padding-bottom: var(--vo-space-2);
 }
 
 .vo-see-more-btn::after {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 24px;
+    left: var(--vo-space-6);
     right: 24px;
     height: 2px;
     background: var(--vo-color-charcoal);
