@@ -50,7 +50,7 @@
 
 .vo-footer-cta__title {
     font-family: var(--vo-font-heading);
-    font-size: 56px;
+    font-size: var(--vo-text-6xl);
     font-weight: 700;
     font-style: italic;
     margin-bottom: var(--vo-space-6);
@@ -60,7 +60,7 @@
 
 .vo-footer-cta__desc {
     font-family: var(--vo-font-body);
-    font-size: 18px;
+    font-size: var(--vo-text-lg);
     margin-bottom: 40px;
     opacity: 0.9;
     max-width: 600px;
@@ -90,7 +90,7 @@
     text-decoration: none;
     font-family: var(--vo-font-body);
     font-weight: 500;
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     transition: all var(--vo-transition-base);
 }
 
@@ -188,7 +188,7 @@
 .vo-footer__heading {
     font-family: var(--vo-font-heading);
     font-weight: 700;
-    font-size: 20px;
+    font-size: var(--vo-text-xl);
     color: var(--vo-color-white);
     margin-bottom: 24px;
     font-style: normal;
@@ -211,7 +211,7 @@
     color: var(--vo-color-gray-400);
     /* Was var(--vo-color-gray-300) */
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     transition: color var(--vo-transition-fast);
 }
 
@@ -224,7 +224,7 @@
 .vo-footer__contact-block {
     margin-bottom: 20px;
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     color: var(--vo-color-gray-300);
     line-height: 1.6;
 }
@@ -262,8 +262,8 @@
     padding: 12px 45px;
     font-family: var(--vo-font-body);
     font-weight: 600;
-    font-size: 24px;
-    line-height: 31px;
+    font-size: var(--vo-text-2xl);
+    line-height: 1.3;
     color: var(--vo-color-white);
     text-decoration: none;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -273,7 +273,7 @@
 }
 
 .vo-btn--footer:hover {
-    background: #2d6644;
+    filter: brightness(0.9);
 }
 
 /* Disclaimer */
@@ -282,7 +282,7 @@
     max-width: 1000px;
     margin: 0 auto 40px;
     font-family: var(--vo-font-body);
-    font-size: 13px;
+    font-size: var(--vo-text-xs);
     color: var(--vo-color-gray-400);
     line-height: 1.6;
 }
@@ -301,7 +301,7 @@
 
 .vo-footer__privacy-note {
     margin-top: 15px;
-    font-size: 12px;
+    font-size: var(--vo-text-xs);
     color: var(--vo-color-gray-400);
 }
 
@@ -311,7 +311,7 @@
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     color: var(--vo-color-gray-400);
 }
 
@@ -350,7 +350,7 @@
 
     .vo-btn--footer {
         min-width: 280px;
-        font-size: 18px;
+        font-size: var(--vo-text-lg);
         padding: 10px 30px;
     }
 }

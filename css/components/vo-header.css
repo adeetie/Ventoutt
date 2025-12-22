@@ -37,7 +37,7 @@
 /* 1. Logo */
 .vo-logo-v2 {
     font-family: var(--vo-font-heading);
-    font-size: 28px;
+    font-size: var(--vo-text-3xl);
     /* Prominent size */
     font-weight: 400;
     /* Regular weight like Kitcy */
@@ -57,7 +57,7 @@
 
 .vo-nav-link {
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     font-weight: 500;
     color: var(--vo-color-black);
     text-transform: uppercase;
@@ -149,7 +149,7 @@
 
 .vo-header__dropdown-item {
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     color: var(--vo-color-black);
     padding: 10px 20px;
     text-decoration: none;
@@ -275,7 +275,7 @@
 }
 
 .vo-mobile-menu__content {
-    padding: 20px;
+    padding: 30px 40px;
 }
 
 /* Mobile Menu Items */
@@ -346,17 +346,23 @@
 
 /* Mobile CTA */
 .vo-mobile-menu__cta {
-    width: 100%;
+    width: auto;
+    min-width: 200px;
+    display: block;
+    margin: 40px auto 0;
+    /* Center button */
     background: var(--vo-color-primary);
     border: 1px solid var(--vo-color-white);
-    border-radius: 10px;
-    padding: 15px 20px;
+    border-radius: 50px;
+    /* Pill shape preferred */
+    padding: 15px 30px;
     font-family: var(--vo-font-body);
     font-weight: 600;
     font-size: 16px;
     color: var(--vo-color-white);
     cursor: pointer;
     transition: background var(--vo-transition-base);
+    text-align: center;
 }
 
 .vo-mobile-menu__cta:hover {

@@ -1,62 +1,72 @@
-/* Service Pages Styles - Based on Figma Design */
+/* Service Pages Styles - Mobile First Architecture */
 /* Header and Footer styles have been moved to main.css */
 
 /* ========== Hero Section ========== */
-/* ========== Hero Section ========== */
-/* ========== Hero Section ========== */
 .new-services-hero-section {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 180px 100px 80px;
+    padding: 50px 20px;
     background: var(--vo-color-secondary);
-    /* Updated to theme cream */
-    gap: 60px;
-    max-width: 1440px;
+    gap: 40px;
+    width: 100%;
     margin: 0 auto;
+    text-align: center;
 }
 
 .hero-text-content {
     flex: 1;
-    max-width: 600px;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero-text-content h1 {
     font-family: var(--vo-font-heading);
-    font-size: 64px;
-    line-height: 1.1;
+    font-size: 32px;
+    /* Mobile Default */
+    line-height: 1.2;
     color: var(--vo-color-charcoal);
-    margin-bottom: 24px;
+    margin-bottom: var(--vo-space-4);
     font-weight: 700;
 }
 
 .hero-text-content p {
     font-family: var(--vo-font-body);
-    font-size: 20px;
+    font-size: var(--vo-text-base);
     line-height: 1.5;
     color: var(--vo-text-primary);
-    margin-bottom: 40px;
-    max-width: 480px;
+    margin: 0 auto 30px;
+    max-width: 100%;
 }
 
 .hero-actions {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 15px;
+    width: 100%;
 }
 
 .btn-explore {
     background: var(--vo-color-charcoal);
     color: var(--vo-color-white);
     padding: 15px 30px;
-    border-radius: 8px;
+    border-radius: var(--vo-radius-sm);
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     font-weight: 500;
     text-decoration: none;
     transition: transform 0.2s, background-color 0.2s;
-    box-shadow: var(--shadow-light);
+    box-shadow: var(--vo-shadow-base);
+    width: 100%;
+    /* Mobile full width */
+    max-width: 300px;
+    display: inline-flex;
+    justify-content: center;
 }
 
 .btn-explore:hover {
@@ -66,49 +76,53 @@
 
 .link-discover {
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     color: var(--vo-text-primary);
     margin: 0;
 }
 
+/* Stats Section within Hero */
 .hero-stats-content {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
 }
 
 .stat-card {
     display: flex;
     flex-direction: row;
+    /* Keep row for icon+text even on mobile */
     align-items: center;
-    padding: 30px;
-    border-radius: 12px;
+    padding: 20px;
+    border-radius: var(--vo-radius-base);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    text-align: left;
 }
 
 .stat-card.white-card {
     background: var(--vo-color-white);
-    border: 1px solid var(--border-grey);
+    border: 1px solid var(--vo-border-light);
 }
 
 .stat-card.beige-card {
     background: var(--vo-color-white);
-    /* High contrast card */
+    /* Keep uniform cards */
     color: var(--vo-color-charcoal);
     border: none;
 }
 
 .stat-card-left {
-    min-width: 140px;
-    padding-right: 20px;
+    min-width: 100px;
+    padding-right: 15px;
     text-align: left;
 }
 
 .stat-number {
     font-family: var(--vo-font-heading);
-    /* Use heading font for numbers per typical design */
-    font-size: 48px;
+    font-size: 36px;
+    /* Mobile Size */
     font-weight: 400;
     color: var(--vo-color-charcoal);
     line-height: 1;
@@ -116,50 +130,78 @@
 }
 
 .stat-number span {
-    color: var(--accent-rust);
-    /* Closest to the dusty pink/brown in design */
+    color: var(--vo-color-accent-rust);
 }
 
 .stat-label {
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     color: var(--vo-color-charcoal);
     font-weight: 500;
     white-space: nowrap;
-    /* Prevent wrapping if possible */
 }
 
 .stat-desc {
     flex: 1;
     font-family: var(--vo-font-body);
-    font-size: 15px;
+    font-size: var(--vo-text-sm);
     line-height: 1.4;
     color: var(--vo-color-charcoal);
 }
 
-@media (max-width: 1024px) {
+/* --- Desktop Overrides (Min-width) --- */
+@media (min-width: 1024px) {
     .new-services-hero-section {
-        flex-direction: column;
-        padding: 50px 20px;
-        text-align: center;
-        gap: 40px;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 180px 100px 80px;
+        text-align: left;
+        gap: 60px;
+        max-width: 1440px;
     }
 
     .hero-text-content {
-        max-width: 100%;
-        align-items: center;
+        align-items: flex-start;
+        max-width: 600px;
+    }
+
+    .hero-text-content h1 {
+        font-size: var(--vo-text-6xl);
+        /* Desktop Size */
+        margin-bottom: 24px;
     }
 
     .hero-text-content p {
-        margin: 0 auto 30px;
+        font-size: 20px;
+        /* Larger body for hero */
+        margin-bottom: 40px;
+        max-width: 480px;
     }
 
     .hero-actions {
-        align-items: center;
+        align-items: flex-start;
+    }
+
+    .btn-explore {
+        width: auto;
+        /* Revert full width */
     }
 
     .stat-card {
-        text-align: left;
+        padding: 30px;
+    }
+
+    .stat-card-left {
+        min-width: 140px;
+        padding-right: 20px;
+    }
+
+    .stat-number {
+        font-size: 48px;
+    }
+
+    .stat-desc {
+        font-size: 15px;
     }
 }
 
@@ -502,45 +544,50 @@
 }
 
 /* ========== How It Works Section (Migrated from services.html) ========== */
+/* ========== How It Works Section (Mobile First) ========== */
 .how-it-works-section {
-    background: var(--bg-light-green);
-    padding: 80px 0;
+    background: var(--vo-color-accent-green-pale, #E8F5E9);
+    /* Fallback */
+    padding: 60px 20px;
 }
 
 .how-it-works-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: 36px;
+    /* Mobile Size */
     font-weight: 700;
     font-style: italic;
-    line-height: 66px;
+    line-height: 1.2;
     letter-spacing: -0.5px;
     text-align: center;
     color: var(--vo-color-charcoal);
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 .steps-grid {
     display: grid;
-    grid-template-columns: repeat(5, 220px);
+    grid-template-columns: 1fr;
+    /* Stacked by default */
     gap: 20px;
     justify-content: center;
     max-width: 1180px;
-    margin: 0 auto 60px;
+    margin: 0 auto 40px;
 }
 
 .step-card {
     background: var(--vo-color-charcoal);
-    border-radius: 20px;
+    border-radius: var(--vo-radius-lg);
     padding: 30px 20px;
-    box-shadow: var(--shadow-light);
+    box-shadow: var(--vo-shadow-base);
     text-align: center;
-    height: 220px;
+    height: auto;
+    min-height: 200px;
 }
 
 .step-number {
     font-family: var(--vo-font-body);
     font-size: 32px;
-    line-height: 42px;
+    line-height: 1.2;
     letter-spacing: -0.5px;
     color: var(--vo-color-secondary);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -549,50 +596,35 @@
 
 .step-description {
     font-family: var(--vo-font-body);
-    font-size: 20px;
-    line-height: 26px;
+    font-size: var(--vo-text-lg);
+    line-height: 1.4;
     letter-spacing: -0.5px;
     color: var(--vo-color-secondary);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-@media (max-width: 1200px) {
-    .steps-grid {
-        grid-template-columns: repeat(3, 1fr);
-        padding: 0 40px;
-    }
-}
-
-@media (max-width: 768px) {
-    .steps-grid {
-        grid-template-columns: 1fr;
-        padding: 0 20px;
-    }
-
-    .how-it-works-title {
-        font-size: 36px;
-    }
-}
-
-/* ========== Feature Cards Section ========== */
+/* ========== Feature Cards Section (Mobile First) ========== */
 .service-features {
     background: var(--vo-color-secondary);
-    padding: 60px 130px;
+    padding: 60px 20px;
 }
 
 .feature-cards-grid {
     display: flex;
+    flex-direction: column;
+    /* Stacked on Mobile */
     justify-content: center;
+    align-items: center;
     gap: 20px;
-    flex-wrap: nowrap;
 }
 
 .feature-card-box {
-    width: 220px;
+    width: 100%;
+    max-width: 280px;
     height: 250px;
     background: var(--vo-color-charcoal);
-    border-radius: 20px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: var(--vo-radius-lg);
+    box-shadow: var(--vo-shadow-base);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -628,23 +660,64 @@
     font-family: var(--vo-font-body);
     font-weight: 500;
     font-size: 24px;
-    line-height: 31px;
+    line-height: 1.3;
     color: var(--vo-color-cream);
 }
 
-/* ========== Pricing Section ========== */
+/* --- Desktop Overrides --- */
+@media (min-width: 1024px) {
+    .how-it-works-section {
+        padding: 80px 0;
+    }
+
+    .how-it-works-title {
+        font-size: var(--vo-text-5xl);
+        line-height: 1.4;
+    }
+
+    .steps-grid {
+        grid-template-columns: repeat(5, 1fr);
+        /* 5 columns grid */
+        gap: 20px;
+        margin-bottom: 60px;
+    }
+
+    .step-card {
+        height: 220px;
+        /* Fixed height for consistent look */
+    }
+
+    .service-features {
+        padding: 60px 130px;
+    }
+
+    .feature-cards-grid {
+        flex-direction: row;
+        /* Row layout */
+        flex-wrap: wrap;
+        /* Allow wrapping if needed, but intended for single line */
+    }
+
+    .feature-card-box {
+        width: 220px;
+        /* Fixed width desktop */
+    }
+}
+
+/* ========== Pricing Section (Mobile First) ========== */
 .service-pricing {
     position: relative;
-    padding: 80px 150px;
+    padding: 60px 20px;
+    /* Mobile Padding */
     background: var(--vo-color-secondary);
 }
 
 .pricing-bg-wave {
     position: absolute;
-    top: -100px;
+    top: -50px;
     left: 0;
     width: 100%;
-    height: 200px;
+    height: 100px;
     background: var(--vo-color-secondary);
 }
 
@@ -654,7 +727,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100px;
+    height: 50px;
     background: var(--vo-color-secondary);
     border-radius: 100% 100% 0 0;
 }
@@ -663,8 +736,9 @@
     font-family: var(--vo-font-heading);
     font-weight: 700;
     font-style: italic;
-    font-size: 36px;
-    line-height: 47px;
+    font-size: 32px;
+    /* Mobile Size */
+    line-height: 1.2;
     color: var(--vo-color-charcoal);
     margin-bottom: 20px;
 }
@@ -672,8 +746,8 @@
 .pricing-subtitle {
     font-family: var(--vo-font-body);
     font-weight: 400;
-    font-size: 20px;
-    line-height: 26px;
+    font-size: var(--vo-text-base);
+    line-height: 1.5;
     color: var(--vo-color-black);
     margin-bottom: 40px;
 }
@@ -682,63 +756,72 @@
     width: 100%;
     max-width: 1140px;
     border-collapse: collapse;
+    display: block;
+    /* Scrollable on mobile */
+    overflow-x: auto;
 }
 
 .pricing-table th,
 .pricing-table td {
-    padding: 25px 20px;
+    padding: 15px 10px;
     text-align: left;
     font-family: var(--vo-font-body);
-    font-size: 20px;
-    line-height: 26px;
+    font-size: var(--vo-text-base);
+    line-height: 1.4;
     letter-spacing: -0.5px;
     vertical-align: middle;
 }
 
 .pricing-table th {
     font-weight: 500;
-    font-size: 28px;
-    line-height: 36px;
+    font-size: var(--vo-text-lg);
+    line-height: 1.3;
     color: var(--vo-color-charcoal);
-    border-bottom: 2.5px solid var(--vo-color-black);
+    border-bottom: 2px solid var(--vo-color-black);
 }
 
 .pricing-table td {
     font-weight: 400;
     color: var(--vo-color-charcoal);
-    border-bottom: 1.5px solid var(--vo-color-black);
+    border-bottom: 1px solid var(--vo-color-black);
 }
 
 .pricing-table .plan-col {
-    width: 30%;
-    border-right: 2.5px solid var(--vo-color-black);
+    width: auto;
+    border-right: none;
+    font-weight: 700;
 }
 
 .pricing-table .price-col {
-    width: 20%;
-    text-align: center;
-    border-right: 1.5px solid var(--vo-color-black);
+    width: auto;
+    text-align: right;
+    border-right: none;
+    font-weight: 700;
 }
 
 .pricing-table .details-col {
-    width: 50%;
+    width: auto;
+    display: table-cell;
+    /* Show on mobile but maybe compacted */
 }
 
 .pricing-table tr:last-child td {
     border-bottom: none;
 }
 
-/* ========== App Offer Section ========== */
+/* ========== App Offer Section (Mobile First) ========== */
 .service-app-offer {
     background: var(--vo-color-secondary);
-    padding: 60px 150px;
+    padding: 60px 20px;
+    text-align: center;
+    /* Centered on mobile */
 }
 
 .app-offer-note {
     font-family: var(--vo-font-body);
     font-weight: 400;
-    font-size: 20px;
-    line-height: 26px;
+    font-size: var(--vo-text-base);
+    line-height: 1.5;
     color: var(--vo-color-black);
     margin-bottom: 10px;
 }
@@ -746,8 +829,8 @@
 .app-offer-link {
     font-family: var(--vo-font-body);
     font-weight: 700;
-    font-size: 20px;
-    line-height: 26px;
+    font-size: var(--vo-text-lg);
+    line-height: 1.5;
     color: var(--vo-color-accent-green);
     text-decoration: none;
 }
@@ -760,8 +843,9 @@
     font-family: var(--vo-font-heading);
     font-weight: 600;
     font-style: italic;
-    font-size: 36px;
-    line-height: 47px;
+    font-size: 32px;
+    /* Mobile Size */
+    line-height: 1.2;
     color: var(--vo-color-primary);
     margin: 40px 0 30px;
 }
@@ -769,14 +853,16 @@
 .app-offer-list {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
+    display: inline-block;
+    text-align: left;
 }
 
 .app-offer-list li {
     font-family: var(--vo-font-body);
     font-weight: 400;
-    font-size: 20px;
-    line-height: 26px;
+    font-size: var(--vo-text-base);
+    line-height: 1.5;
     color: var(--vo-color-black);
     padding-left: 25px;
     position: relative;
@@ -788,16 +874,92 @@
     position: absolute;
     left: 0;
     top: 10px;
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
     background: var(--vo-color-charcoal);
     border-radius: 50%;
 }
 
-/* ========== Emotional Support Section ========== */
+/* --- Desktop Overrides --- */
+@media (min-width: 1024px) {
+    .service-pricing {
+        padding: 80px 150px;
+    }
+
+    .pricing-bg-wave {
+        top: -100px;
+        height: 200px;
+    }
+
+    .pricing-bg-wave::after {
+        height: 100px;
+    }
+
+    .pricing-title {
+        font-size: 36px;
+        line-height: 47px;
+    }
+
+    .pricing-subtitle {
+        font-size: 20px;
+    }
+
+    .pricing-table {
+        display: table;
+        overflow-x: visible;
+    }
+
+    .pricing-table th,
+    .pricing-table td {
+        padding: 25px 20px;
+        font-size: 20px;
+    }
+
+    .pricing-table th {
+        font-size: 28px;
+    }
+
+    .pricing-table .plan-col {
+        width: 30%;
+        border-right: 2.5px solid var(--vo-color-black);
+    }
+
+    .pricing-table .price-col {
+        width: 20%;
+        text-align: center;
+        border-right: 1.5px solid var(--vo-color-black);
+    }
+
+    .pricing-table .details-col {
+        width: 50%;
+    }
+
+    .service-app-offer {
+        padding: 60px 150px;
+        text-align: left;
+    }
+
+    .app-offer-note,
+    .app-offer-link {
+        font-size: 20px;
+    }
+
+    .app-offer-title {
+        font-size: 36px;
+        margin: 40px 0 30px;
+    }
+
+    .app-offer-list li {
+        font-size: 20px;
+    }
+}
+
+/* ========== Emotional Support Section (Mobile First) ========== */
 .service-support {
     background: var(--vo-color-secondary);
-    padding: 80px 150px;
+    padding: 60px 20px;
+    text-align: center;
+    /* Center on mobile */
 }
 
 .support-title {
@@ -805,131 +967,62 @@
     font-weight: 600;
     font-style: italic;
     font-size: 32px;
-    line-height: 42px;
+    /* Mobile Size */
+    line-height: 1.2;
     color: var(--vo-color-black);
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .support-text {
     font-family: var(--vo-font-body);
     font-weight: 400;
-    font-size: 20px;
-    line-height: 26px;
+    font-size: var(--vo-text-base);
+    line-height: 1.5;
     color: var(--vo-color-black);
-    max-width: 804px;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
-/* ========== Responsive Styles ========== */
-@media (max-width: 1200px) {
-
-    .service-hero-content,
-    .service-pricing,
-    .service-app-offer,
+/* --- Desktop Overrides --- */
+@media (min-width: 1024px) {
     .service-support {
-        padding-left: 60px;
-        padding-right: 60px;
-    }
-
-    .service-features {
-        padding: 60px 40px;
-    }
-}
-
-@media (max-width: 992px) {
-    .feature-cards-grid {
-        flex-wrap: wrap;
-    }
-
-    .feature-card-box {
-        width: calc(50% - 10px);
-        max-width: 220px;
-    }
-
-    .pricing-table th,
-    .pricing-table td {
-        padding: 15px 10px;
-        font-size: 16px;
-    }
-
-    .pricing-table th {
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    .service-hero {
-        height: 250px;
-    }
-
-    .service-hero-content {
-        padding: 280px 20px 40px;
-    }
-
-    .service-hero-title {
-        font-size: 32px;
-        line-height: 42px;
-    }
-
-    .service-hero-subtitle {
-        font-size: 16px;
-        line-height: 22px;
-    }
-
-    .feature-card-box {
-        width: 100%;
-        max-width: 280px;
-        height: 200px;
-    }
-
-    .feature-card-box .label {
-        font-size: 18px;
-    }
-
-    .service-pricing,
-    .service-app-offer,
-    .service-support {
-        padding: 40px 20px;
-    }
-
-    .pricing-title,
-    .app-offer-title {
-        font-size: 28px;
-        line-height: 36px;
-    }
-
-    .pricing-table {
-        display: block;
-        overflow-x: auto;
+        padding: 80px 150px;
+        text-align: left;
     }
 
     .support-title {
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 32px;
+        /* Keep same or slightly larger */
+        margin-bottom: 30px;
     }
 
     .support-text {
-        font-size: 16px;
-        line-height: 22px;
+        font-size: 20px;
+        max-width: 804px;
+        margin: 0;
     }
 }
 
-/* ========== Testimonials Section (Copied from Index) ========== */
+/* ========== Testimonials Section (Mobile First) ========== */
+/* Note: This logic duplicates vo-index-v2.css. Consider shared component later. */
 .testimonials-section {
-    padding: 80px 0;
+    padding: 60px 0;
     overflow: hidden;
     background: var(--vo-color-cream);
 }
 
 .testimonials-title {
     font-family: var(--vo-font-heading);
-    font-size: 48px;
+    font-size: 32px;
+    /* Mobile Size */
     font-weight: 700;
     font-style: italic;
-    line-height: 66px;
+    line-height: 1.2;
     letter-spacing: -0.5px;
     text-align: center;
     color: var(--vo-color-charcoal);
-    margin-bottom: 60px;
+    margin-bottom: 40px;
+    padding: 0 20px;
 }
 
 /* Carousel Wrapper */
@@ -937,13 +1030,13 @@
     width: 100%;
     overflow: hidden;
     position: relative;
-    margin: 56px 0;
+    margin: 40px 0;
     padding: 0 16px;
 }
 
 .carousel-track {
     display: flex;
-    gap: 40px;
+    gap: 20px;
     width: max-content;
     animation: scroll 20s linear infinite;
 }
@@ -964,12 +1057,12 @@
 
 /* Testimonial Cards */
 .card {
-    width: 366px;
-    height: 500px;
+    width: 300px;
+    /* Mobile Width */
+    height: 450px;
     background-color: var(--vo-color-gray-600);
-    /* medium-gray fallback */
-    border-radius: 20px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: var(--vo-radius-lg);
+    box-shadow: var(--vo-shadow-base);
     overflow: hidden;
     text-align: center;
     padding: 0;
@@ -979,15 +1072,11 @@
     flex-direction: column;
 }
 
-.card:hover {
-    transform: scale(1.03);
-}
-
 /* Video cards */
 .card .video-container {
-    width: 300px;
-    height: 400px;
-    margin: 25px auto 0;
+    width: 260px;
+    height: 350px;
+    margin: 20px auto 0;
     position: relative;
 }
 
@@ -995,24 +1084,23 @@
     width: 100%;
     height: 100%;
     border: none;
-    border-radius: 10px;
+    border-radius: var(--vo-radius-base);
 }
 
 .card .location {
     margin-top: auto;
-    font-size: 20px;
+    font-size: var(--vo-text-base);
     font-weight: 600;
     background: var(--vo-color-gray-600);
     color: white;
     padding: 15px;
     font-family: var(--vo-font-body);
-    line-height: 26px;
+    line-height: 1.4;
 }
 
-/* Text cards with different colors */
+/* Text cards */
 .card.orange {
     background-color: var(--vo-color-primary);
-    /* primary-orange */
     color: white;
     padding: 0;
     display: flex;
@@ -1023,119 +1111,183 @@
 
 .card.orange.yellow {
     background-color: var(--vo-color-accent-yellow);
-    /* accent-yellow */
     color: var(--vo-color-charcoal);
 }
 
 .card.orange.green {
     background-color: var(--vo-color-accent-green);
-    /* accent-green-light */
     color: #fff;
 }
 
 .card.orange.beige {
     background-color: var(--vo-color-secondary);
-    /* bg-beige */
     color: var(--vo-color-charcoal);
 }
 
 .card.orange .name {
     font-weight: 600;
-    margin-bottom: 25px;
-    padding: 0 33px;
-    font-size: 20px;
-    line-height: 26px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    font-size: var(--vo-text-lg);
+    line-height: 1.4;
     font-family: var(--vo-font-body);
 }
 
 .card .name img {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
     border-radius: 50%;
     display: block;
-    margin: 30px auto 25px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 30px auto 20px;
+    box-shadow: var(--vo-shadow-sm);
 }
 
 .card.orange p {
-    font-size: 16px;
-    line-height: 21px;
+    font-size: var(--vo-text-base);
+    line-height: 1.5;
     margin: 0;
-    padding: 0 35px 35px;
+    padding: 0 30px 30px;
     font-family: var(--vo-font-body);
 }
 
-/* Responsive adjustments */
-@media (max-width: 420px) {
+/* --- Desktop Overrides --- */
+@media (min-width: 1024px) {
+    .testimonials-section {
+        padding: 80px 0;
+    }
+
+    .testimonials-title {
+        font-size: var(--vo-text-5xl);
+        margin-bottom: 60px;
+    }
+
     .carousel-wrapper {
-        margin: 40px 0;
-        padding: 0 12px;
+        margin: 56px 0;
     }
 
     .carousel-track {
-        gap: 28px;
+        gap: 40px;
     }
 
     .card {
+        width: 366px;
+        height: 500px;
+    }
+
+    .card:hover {
+        transform: scale(1.03);
+    }
+
+    .card .video-container {
         width: 300px;
+        height: 400px;
+        margin: 25px auto 0;
+    }
+
+    .card .location {
+        font-size: 20px;
+    }
+
+    .card .name img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .card.orange .name {
+        font-size: 20px;
+        padding: 0 33px;
     }
 }
 
-/* ========== Detailed Services Section ========== */
+/* ========== Detailed Services Section (Mobile First) ========== */
 .detailed-services-section {
-    padding: 100px 100px;
+    padding: 60px 20px;
     background: var(--vo-color-cream);
-    /* Cream background */
     display: flex;
     flex-direction: column;
-    gap: 100px;
+    gap: 60px;
 }
 
-.service-detail-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 80px;
+.detailed-services-header {
+    width: 100%;
+    text-align: center;
+    /* Center on mobile */
+    margin: 0 auto;
 }
 
-/* Alternating layout: Even rows have image on left */
-.service-detail-row:nth-child(even) {
-    flex-direction: row-reverse;
+.detailed-services-eyebrow {
+    font-family: var(--vo-font-body);
+    font-size: var(--vo-text-sm);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--vo-color-primary);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 20px;
 }
 
-.service-detail-text {
-    flex: 1;
-    max-width: 500px;
-}
-
-.service-detail-title {
+.detailed-services-main-title {
     font-family: var(--vo-font-heading);
-    font-size: 40px;
+    font-size: 32px;
+    /* Mobile Size */
     font-weight: 700;
     font-style: italic;
     line-height: 1.2;
     color: var(--vo-color-charcoal);
-    margin-bottom: 24px;
+    margin-bottom: 40px;
+}
+
+.service-detail-row {
+    display: flex;
+    flex-direction: column;
+    /* Stacked Mobile */
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+}
+
+/* No alternating row-reverse on mobile, just image then text or vice versa. 
+   Keeping natural order: Text then Image usually better for SEO/Context, 
+   but Image then Text better for visual. Let's stick to Source Order (Text first). */
+
+.service-detail-text {
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
+}
+
+.service-detail-title {
+    font-family: var(--vo-font-heading);
+    font-size: 32px;
+    /* Mobile Size */
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.2;
+    color: var(--vo-color-charcoal);
+    margin-bottom: 15px;
 }
 
 .service-detail-desc {
     font-family: var(--vo-font-body);
-    font-size: 18px;
+    font-size: var(--vo-text-base);
     line-height: 1.6;
-    color: var(--text-muted);
-    margin-bottom: 30px;
+    color: var(--vo-text-secondary);
+    /* Standardized var */
+    margin-bottom: 20px;
 }
 
 .service-detail-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 32px 0;
+    margin: 0 0 20px 0;
+    text-align: left;
+    display: inline-block;
 }
 
 .service-detail-list li {
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     line-height: 1.5;
     color: var(--vo-color-charcoal);
     margin-bottom: 12px;
@@ -1145,7 +1297,7 @@
 
 .service-detail-list li::before {
     content: '•';
-    color: var(--primary-orange);
+    color: var(--vo-color-primary);
     font-weight: bold;
     font-size: 20px;
     position: absolute;
@@ -1154,11 +1306,11 @@
 }
 
 .service-detail-image-box {
-    flex: 1;
-    height: 400px;
-    border-radius: 20px;
+    width: 100%;
+    height: 300px;
+    border-radius: var(--vo-radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--vo-shadow-base);
 }
 
 .service-detail-image {
@@ -1168,116 +1320,36 @@
     transition: transform 0.5s ease;
 }
 
-.service-detail-row:hover .service-detail-image {
-    transform: scale(1.05);
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-    .detailed-services-section {
-        padding: 60px 40px;
-        gap: 60px;
-    }
-
-    .service-detail-row {
-        gap: 40px;
-    }
-
-    .service-detail-title {
-        font-size: 32px;
-    }
-}
-
-@media (max-width: 768px) {
-    .detailed-services-section {
-        padding: 40px 20px;
-    }
-
-    .service-detail-row,
-    .service-detail-row:nth-child(even) {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-    }
-
-    .service-detail-text {
-        max-width: 100%;
-    }
-
-    .service-detail-list {
-        text-align: left;
-        display: inline-block;
-    }
-
-    .service-detail-image-box {
-        width: 100%;
-        height: 250px;
-    }
-}
-
-/* Detailed Services Section Header */
-.detailed-services-header {
-    max-width: 800px;
-}
-
-.detailed-services-eyebrow {
-    font-family: var(--vo-font-body);
-    font-size: 14px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--primary-orange);
-    font-weight: 700;
-    display: block;
-    margin-bottom: 20px;
-}
-
-.detailed-services-main-title {
-    font-family: var(--vo-font-heading);
-    font-size: 48px;
-    font-weight: 700;
-    font-style: italic;
-    line-height: 1.2;
-    color: var(--vo-color-charcoal);
-    margin-bottom: 40px;
-}
-
-@media (max-width: 768px) {
-    .detailed-services-main-title {
-        font-size: 32px;
-    }
-}
-
-/* ========== Premium Directory Features (Therapy Page) ========== */
+/* ========== Premium Directory Features (Mobile First) ========== */
 
 /* Verified Partner Badge */
 .verified-badge {
     background-color: #E3F2FD;
-    /* Light Blue */
+    /* Keep specific color or make token? Keep for now */
     color: #1565C0;
-    /* Dark Blue */
     font-family: var(--vo-font-body);
-    font-size: 12px;
+    font-size: var(--vo-text-xs);
     font-weight: 700;
     text-transform: uppercase;
     padding: 6px 12px;
-    border-radius: 4px;
+    border-radius: var(--vo-radius-sm);
     display: inline-block;
     margin-bottom: 10px;
 }
 
-/* External Profile Button (Outline) */
+/* External Profile Button */
 .btn-external-profile {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     font-family: var(--vo-font-body);
-    font-size: 14px;
+    font-size: var(--vo-text-sm);
     font-weight: 600;
     color: var(--vo-color-charcoal);
     text-decoration: none;
     border: 1px solid var(--vo-color-charcoal);
-    border-radius: 8px;
+    border-radius: var(--vo-radius-sm);
     padding: 10px 20px;
     width: 100%;
     margin-top: 15px;
@@ -1293,15 +1365,15 @@
 .interim-solution-block {
     background-color: #F0FDF4;
     /* Mint Green */
-    border-radius: 20px;
-    padding: 40px;
-    margin: 60px auto;
-    max-width: 1000px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
+    border-radius: var(--vo-radius-lg);
+    padding: 30px;
+    margin: 40px 20px;
     border: 1px solid #DCFCE7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
 }
 
 .interim-content {
@@ -1310,7 +1382,8 @@
 
 .interim-title {
     font-family: var(--vo-font-heading);
-    font-size: 28px;
+    font-size: 24px;
+    /* Mobile Size */
     font-weight: 600;
     font-style: italic;
     color: #14532D;
@@ -1320,7 +1393,7 @@
 
 .interim-text {
     font-family: var(--vo-font-body);
-    font-size: 16px;
+    font-size: var(--vo-text-base);
     color: #166534;
     /* Medium Green */
     line-height: 1.5;
@@ -1330,11 +1403,15 @@
     background-color: #166534;
     color: white;
     padding: 12px 24px;
-    border-radius: 8px;
+    border-radius: var(--vo-radius-sm);
     font-weight: 600;
     text-decoration: none;
     transition: background 0.2s;
     white-space: nowrap;
+    width: 100%;
+    /* Full width mobile */
+    text-align: center;
+    display: inline-block;
 }
 
 .btn-interim-cta:hover {
@@ -1343,24 +1420,87 @@
 
 .directory-disclaimer {
     font-family: var(--vo-font-body);
-    font-size: 12px;
+    font-size: var(--vo-text-xs);
     color: var(--vo-text-secondary);
     text-align: center;
     margin-top: 20px;
     font-style: italic;
 }
 
-@media (max-width: 768px) {
+/* --- Desktop Overrides (Min-width) --- */
+@media (min-width: 1024px) {
+    .detailed-services-section {
+        padding: 100px;
+        gap: 100px;
+    }
+
+    .detailed-services-header {
+        text-align: left;
+        max-width: 800px;
+    }
+
+    .detailed-services-main-title {
+        font-size: 48px;
+        margin-bottom: 40px;
+    }
+
+    .service-detail-row {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 80px;
+        text-align: left;
+    }
+
+    /* Alternating layout Desktop */
+    .service-detail-row:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    .service-detail-text {
+        max-width: 500px;
+    }
+
+    .service-detail-title {
+        font-size: 40px;
+        margin-bottom: 24px;
+    }
+
+    .service-detail-desc {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+    .service-detail-list {
+        margin: 0 0 32px 0;
+    }
+
+    .service-detail-image-box {
+        flex: 1;
+        height: 400px;
+        /* Fixed height for consistency */
+    }
+
+    .service-detail-row:hover .service-detail-image {
+        transform: scale(1.05);
+    }
+
+    /* Interim Block Desktop */
     .interim-solution-block {
-        flex-direction: column;
-        text-align: center;
-        padding: 30px;
-        margin: 40px 20px;
+        padding: 40px;
+        margin: 60px auto;
+        max-width: 1000px;
+        flex-direction: row;
+        text-align: left;
+        gap: 40px;
+    }
+
+    .interim-title {
+        font-size: 28px;
     }
 
     .btn-interim-cta {
-        width: 100%;
-        text-align: center;
+        width: auto;
     }
 }
 
