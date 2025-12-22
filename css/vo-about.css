@@ -6,7 +6,7 @@
 
 /* Force Font Consistency */
 * {
-    font-family: var(--font-body) !important;
+    font-family: var(--vo-font-body) !important;
 }
 
 /* Heading Hierarchy - CORRECTED */
@@ -16,13 +16,13 @@ h2,
 .specializations-title,
 .experts-title,
 .healing-journey-title {
-    font-family: var(--font-heading) !important;
+    font-family: var(--vo-font-heading) !important;
     font-weight: 700 !important;
     font-style: italic !important;
 }
 
 h3 {
-    font-family: var(--font-heading) !important;
+    font-family: var(--vo-font-heading) !important;
     font-weight: 600 !important;
     font-style: italic !important;
 }
@@ -33,7 +33,7 @@ h6,
 .specialization-label,
 .expert-name,
 .experts-label {
-    font-family: var(--font-heading) !important;
+    font-family: var(--vo-font-heading) !important;
     font-weight: 700 !important;
     font-style: normal !important;
 }
@@ -48,7 +48,7 @@ button,
 .specializations-subtitle,
 .experts-description,
 .healing-journey-desc {
-    font-family: var(--font-body) !important;
+    font-family: var(--vo-font-body) !important;
     font-style: normal !important;
 }
 
@@ -56,7 +56,7 @@ button,
 .service-nav-links a,
 .language-selector span,
 .nav-dropdown-menu a {
-    font-family: var(--font-body) !important;
+    font-family: var(--vo-font-body) !important;
     font-style: normal !important;
 }
 
@@ -67,7 +67,7 @@ button,
 .footer-contact,
 .footer-contact p,
 .footer-buttons .btn-footer {
-    font-family: var(--font-body) !important;
+    font-family: var(--vo-font-body) !important;
     font-style: normal !important;
 }
 
@@ -146,11 +146,11 @@ button,
 }
 
 .hero-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     /* Use global heading font */
     font-size: 64px;
     line-height: 1.2;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     margin: 0;
     text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
     font-weight: 700;
@@ -158,11 +158,11 @@ button,
 }
 
 .hero-subtitle {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     /* Use global body font */
     font-size: 20px;
     line-height: 1.5;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     margin: 0;
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
     max-width: 700px;
@@ -204,14 +204,14 @@ button,
 /* Main Design System */
 :root {
     /* Global Design Tokens (Updated Color Palette) */
-    --primary-orange: #F57F17;
+    --primary-orange: var(--vo-color-primary);
     --primary-orange-dark: #E65100;
     --primary-orange-light: #FDA84D;
 
     /* Backgrounds */
-    --bg-cream: #FFFDF7;
-    --bg-beige: #F4EDE4;
-    --bg-light-cream: #FBF4E4;
+    --bg-cream: var(--vo-color-secondary);
+    --bg-beige: var(--vo-color-secondary);
+    --bg-light-cream: var(--vo-color-secondary);
     --bg-yellow: #FFE4AD;
     --bg-light-green: #C8EAC9;
 
@@ -223,21 +223,21 @@ button,
     --accent-rust: #B75F4C;
 
     /* Neutrals */
-    --dark-gray: #212121;
+    --dark-gray: var(--vo-color-charcoal);
     --medium-gray: #4E4E4E;
     --border-grey: #E5E7EB;
-    --text-dark: #212121;
+    --text-dark: var(--vo-color-charcoal);
     --text-muted: #4E4E4E;
-    --white: #FFFFFF;
+    --white: var(--vo-color-white);
 
     /* Legacy Compat - Updated */
-    --primary-green: #F57F17;
-    --secondary-pale: #F4EDE4;
-    --soft-grey: #FFFDF7;
-    --dark-text: #212121;
+    --primary-green: var(--vo-color-primary);
+    --secondary-pale: var(--vo-color-secondary);
+    --soft-grey: var(--vo-color-secondary);
+    --dark-text: var(--vo-color-charcoal);
     --text-sub: #4E4E4E;
     --light-green-bg: #C8EAC9;
-    --grey-bubble-bg: #F4EDE4;
+    --grey-bubble-bg: var(--vo-color-secondary);
 
     /* Typography */
     --font-heading: 'Lora', serif;
@@ -250,10 +250,10 @@ button,
 
 body {
     margin: 0;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     color: var(--text-dark);
     line-height: 1.5;
-    background-color: #FFFDF7;
+    background-color: var(--vo-color-secondary);
     /* Light cream background */
     overflow-x: hidden;
     /* Prevent horizontal scroll */
@@ -469,7 +469,7 @@ label {
 .step-card *,
 footer,
 footer * {
-    color: #FFFFFF !important;
+    color: var(--vo-color-white) !important;
 }
 
 /* Ensure CTA and hero sections keep white text */
@@ -478,7 +478,7 @@ footer * {
 .hero-content *,
 .hero-title,
 .hero-subtitle {
-    color: #FFFFFF !important;
+    color: var(--vo-color-white) !important;
 }
 
 /* Dark text on light background sections - less aggressive */
@@ -486,7 +486,7 @@ footer * {
 .faq-section *,
 .specializations-section,
 .specializations-section * {
-    color: #212121;
+    color: var(--vo-color-charcoal);
 }
 
 /* Header Specific Overrides */
@@ -596,7 +596,7 @@ footer * {
 /* Variant for pages without hero image (solid background) */
 .service-nav.nav-solid {
     position: relative;
-    background: #212121;
+    background: var(--vo-color-charcoal);
     margin-bottom: 0;
 }
 
@@ -620,7 +620,7 @@ footer * {
 }
 
 .service-nav .logo-text {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 1.5rem;
     font-weight: 700;
     color: white;
@@ -634,12 +634,12 @@ footer * {
 }
 
 .service-nav-links a {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 500;
     font-size: 16px;
     /* Smaller font */
     line-height: normal;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     text-decoration: none;
     padding: 6px 12px;
     border-radius: 20px;
@@ -656,12 +656,12 @@ footer * {
 }
 
 .nav-split-btn {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 500;
     font-size: 16px;
     /* Smaller font */
     line-height: normal;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     background: none;
     border: none;
     padding: 6px 12px;
@@ -698,11 +698,11 @@ footer * {
 /* Legacy support or removal? Keeping .nav-dropdown-btn for now if needed, but redefining for legacy? No, just replace. */
 .nav-dropdown-btn {
     /* Previous styles kept just in case, but we are migrating */
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 500;
     font-size: 20px;
     line-height: 26px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     background: none;
     border: none;
     padding: 2px 20px;
@@ -761,7 +761,7 @@ footer * {
     align-items: center;
     gap: 5px;
     padding: 7px 8px;
-    border: 0.5px solid #FFFFFF;
+    border: 0.5px solid var(--vo-color-white);
     border-radius: 10px;
     cursor: pointer;
 }
@@ -773,14 +773,14 @@ footer * {
 }
 
 .language-selector span {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 500;
     font-size: 15px;
-    color: #FFFFFF !important;
+    color: var(--vo-color-white) !important;
 }
 
 .venting-banner-figma .figma-description p {
-    color: #FFFFFF !important;
+    color: var(--vo-color-white) !important;
     /* Force white on p tag */
 }
 
@@ -793,7 +793,7 @@ footer * {
     margin-top: -50px;
     /* Maximum overlap to eliminate grey line */
     /* z-index: 5; */
-    color: #FFFFFF;
+    color: var(--vo-color-white);
 }
 
 .footer-primary-content {
@@ -839,7 +839,7 @@ footer * {
 }
 
 .footer-social-icons a {
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     width: 24px;
     height: 24px;
     transition: color 0.3s;
@@ -851,10 +851,10 @@ footer * {
 
 /* Headings */
 .footer-heading {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-weight: 700;
     font-size: 20px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     margin-bottom: 24px;
 }
 
@@ -872,27 +872,27 @@ footer * {
 .footer-links a {
     text-decoration: none;
     color: #CCCCCC;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     transition: color 0.2s;
 }
 
 .footer-links a:hover {
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     text-decoration: underline;
 }
 
 /* Contact Info */
 .footer-contact-block {
     margin-bottom: 20px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     color: #CCCCCC;
     line-height: 1.6;
 }
 
 .contact-label {
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     font-weight: 600;
     margin-bottom: 4px;
 }
@@ -903,7 +903,7 @@ footer * {
 }
 
 .footer-contact-block a:hover {
-    color: #FFFFFF;
+    color: var(--vo-color-white);
 }
 
 /* Download Buttons (Preserved) */
@@ -919,14 +919,14 @@ footer * {
 
 .btn-footer {
     background: #3A7F56;
-    border: 1px solid #FFFFFF;
+    border: 1px solid var(--vo-color-white);
     border-radius: 10px;
     padding: 12px 45px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 600;
     font-size: 24px;
     line-height: 31px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     text-decoration: none;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-align: center;
@@ -943,7 +943,7 @@ footer * {
     text-align: center;
     max-width: 1000px;
     margin: 0 auto 40px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 13px;
     color: #AAAAAA;
     line-height: 1.6;
@@ -972,7 +972,7 @@ footer * {
     text-align: center;
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     color: #888888;
 }
@@ -1059,7 +1059,7 @@ footer * {
     color: var(--white);
     padding: 18px 40px;
     border-radius: 50px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 18px;
     font-weight: 600;
     text-decoration: none;
@@ -1172,7 +1172,7 @@ footer * {
     gap: 15px;
     /* Ensure spacing */
     transition: background 0.3s ease;
-    background: #212121;
+    background: var(--vo-color-charcoal);
     /* Charcoal for side cards */
     border: 1px solid #333;
     /* Subtle border */
@@ -1202,7 +1202,7 @@ footer * {
 }
 
 .comp-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 24px;
     font-weight: 700;
     font-style: italic;
@@ -1211,7 +1211,7 @@ footer * {
 }
 
 .comp-role {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 16px;
     color: #ccc;
     margin-bottom: 20px;
@@ -1222,7 +1222,7 @@ footer * {
 }
 
 .comp-investment {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 30px;
@@ -1237,7 +1237,7 @@ footer * {
 }
 
 .comp-features-list li {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 15px;
     line-height: 1.6;
     margin-bottom: 15px;
@@ -1283,7 +1283,7 @@ footer * {
     margin-top: auto;
     /* Force to bottom */
     transition: all 0.3s;
-    background: #F57F17;
+    background: var(--vo-color-primary);
     /* Orange Button */
     border: none;
     color: #fff;
@@ -1327,7 +1327,7 @@ footer * {
 /* ========== Venting Banner (Figma Match) ========== */
 .venting-banner-figma {
     position: relative;
-    background: #212121;
+    background: var(--vo-color-charcoal);
     width: 100%;
     min-height: 800px;
     /* Match homepage exact height */
@@ -1368,25 +1368,25 @@ footer * {
 }
 
 .venting-banner-figma .figma-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-style: italic;
     font-weight: 700;
     font-size: 56px;
     line-height: 1.2;
     letter-spacing: -0.5px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     margin-bottom: 24px;
     /* Reduced margin */
 }
 
 .venting-banner-figma .figma-description {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 1.5;
     letter-spacing: -0.5px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     margin-bottom: 24px;
     /* Reduced from 50px */
 }
@@ -1396,12 +1396,12 @@ footer * {
     align-items: center;
     justify-content: center;
     padding: 16px 40px;
-    background: #F57F17;
-    border: 1px solid #FFFFFF;
+    background: var(--vo-color-primary);
+    border: 1px solid var(--vo-color-white);
     border-radius: 10px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     text-decoration: none;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 500;
     font-size: 18px;
     transition: all 0.3s ease;
@@ -1409,8 +1409,8 @@ footer * {
 
 .btn-venting-banner:hover {
     background: #FFF;
-    color: #F57F17;
-    border-color: #F57F17;
+    color: var(--vo-color-primary);
+    border-color: var(--vo-color-primary);
 }
 
 /* Graphics Layer (Right) */
@@ -1536,7 +1536,7 @@ footer * {
 
 .blog-tag {
     display: inline-block;
-    background: #F57F17;
+    background: var(--vo-color-primary);
     color: #fff;
     padding: 5px 10px;
     border-radius: 20px;
@@ -1545,7 +1545,7 @@ footer * {
 }
 
 .blog-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 15px;
@@ -1553,7 +1553,7 @@ footer * {
 }
 
 .blog-link {
-    color: #F57F17;
+    color: var(--vo-color-primary);
     text-decoration: none;
     font-weight: 600;
 }
@@ -1582,7 +1582,7 @@ footer * {
     align-items: center;
     text-align: center;
     padding-bottom: 80px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     overflow: hidden;
 }
 
@@ -1615,24 +1615,24 @@ footer * {
 }
 
 .healing-journey-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 56px;
     font-weight: 700;
     font-style: italic;
     margin-bottom: 24px;
     line-height: 1.2;
-    color: #FFFFFF !important;
+    color: var(--vo-color-white) !important;
 }
 
 .healing-journey-desc {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 18px;
     margin-bottom: 40px;
     opacity: 0.9;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
-    color: #FFFFFF !important;
+    color: var(--vo-color-white) !important;
 }
 
 .healing-journey-btn-wrapper {
@@ -1653,17 +1653,17 @@ footer * {
     /* Removed border to eliminate "grey line" */
     padding: 14px 32px;
     border-radius: 50px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     text-decoration: none;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 500;
     font-size: 16px;
     transition: all 0.3s ease;
 }
 
 .btn-healing-cta:hover {
-    background: #FFFFFF;
-    color: #212121;
+    background: var(--vo-color-white);
+    color: var(--vo-color-charcoal);
     transform: translateY(-2px);
 }
 
@@ -1693,7 +1693,7 @@ footer * {
     font-weight: 600;
     list-style: none;
     position: relative;
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 18px;
 }
 
@@ -1706,7 +1706,7 @@ footer * {
     position: absolute;
     right: 20px;
     font-size: 20px;
-    color: #F57F17;
+    color: var(--vo-color-primary);
 }
 
 .faq-item[open] summary::after {
@@ -1717,7 +1717,7 @@ footer * {
     padding: 0 20px 20px;
     color: #666;
     line-height: 1.6;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
 }
 
 /* ========== About Page Specific Sections ========== */
@@ -1741,11 +1741,11 @@ footer * {
 
 .vo-hero-greeting {
     display: block;
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 80px;
     font-weight: 700;
     font-style: italic;
-    color: #F57F17;
+    color: var(--vo-color-primary);
     /* Toolvo Orange */
     margin-bottom: 0px;
     line-height: 1.1;
@@ -1753,18 +1753,18 @@ footer * {
 }
 
 .about-hero-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 56px;
     font-weight: 700;
     font-style: italic;
     line-height: 1.2;
     color: var(--dark-gray);
-    /* Consider #212121 explicitly */
+    /* Consider var(--vo-color-charcoal) explicitly */
     margin-bottom: 20px;
 }
 
 .about-hero-desc {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 18px;
     line-height: 1.6;
     color: var(--text-muted);
@@ -1778,11 +1778,11 @@ footer * {
     gap: 12px;
     background: #6A9E7D;
     /* Green from reference */
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     padding: 14px 32px;
     border-radius: 50px;
     text-decoration: none;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 600;
     font-size: 16px;
     transition: all 0.3s ease;
@@ -1922,15 +1922,15 @@ footer * {
 
 .overlay-icon {
     font-size: 48px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     font-weight: 300;
 }
 
 .overlay-text {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 24px;
     font-weight: 600;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     text-align: center;
 }
 
@@ -1967,11 +1967,11 @@ footer * {
 
 .empower-pill {
     display: inline-block;
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     border: 1px solid var(--border-grey);
     border-radius: 20px;
     padding: 8px 20px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     font-weight: 500;
     color: var(--dark-gray);
@@ -1979,7 +1979,7 @@ footer * {
 }
 
 .empower-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     font-weight: 700;
     font-style: italic;
@@ -1988,7 +1988,7 @@ footer * {
 }
 
 .empower-desc {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 18px;
     line-height: 1.6;
     color: var(--text-muted);
@@ -2005,7 +2005,7 @@ footer * {
 .dark-mission-section {
     background: var(--dark-gray);
     padding: 80px 5%;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
 }
 
 .mission-container {
@@ -2020,7 +2020,7 @@ footer * {
 
 .mission-eyebrow {
     display: inline-block;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     font-weight: 600;
     color: var(--primary-orange);
@@ -2030,12 +2030,12 @@ footer * {
 }
 
 .mission-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     font-weight: 700;
     font-style: italic;
     line-height: 1.3;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
 }
 
 .mission-grid {
@@ -2070,18 +2070,18 @@ footer * {
     right: 0;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 100%);
     padding: 30px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
 }
 
 .mission-card-overlay h3 {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 8px;
 }
 
 .mission-card-overlay p {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 16px;
     opacity: 0.9;
 }
@@ -2108,7 +2108,7 @@ footer * {
 }
 
 .founders-info-card h2 {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     font-weight: 700;
     font-style: italic;
@@ -2116,7 +2116,7 @@ footer * {
 }
 
 .founders-info-card p {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 18px;
     line-height: 1.6;
     color: white;
@@ -2127,11 +2127,11 @@ footer * {
     align-items: center;
     gap: 8px;
     background: var(--dark-gray);
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     padding: 12px 24px;
     border-radius: 50px;
     text-decoration: none;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 500;
     font-size: 16px;
     width: fit-content;
@@ -2172,14 +2172,14 @@ footer * {
 }
 
 .founder-name {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 20px;
     font-weight: 700;
     color: var(--dark-gray);
 }
 
 .founder-role {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     color: var(--text-muted);
 }
@@ -2233,7 +2233,7 @@ footer * {
     max-width: 700px;
     text-align: center;
     padding: 40px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
 }
 
 .testimonial-pill {
@@ -2242,15 +2242,15 @@ footer * {
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 8px 20px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     font-weight: 500;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     margin-bottom: 24px;
 }
 
 .testimonial-quote {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 32px;
     font-weight: 600;
     font-style: italic;
@@ -2259,14 +2259,14 @@ footer * {
 }
 
 .testimonial-author {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 4px;
 }
 
 .testimonial-role {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     opacity: 0.8;
 }
@@ -2295,7 +2295,7 @@ footer * {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 40px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     background: rgba(0, 0, 0, 0.6);
     border-radius: 50%;
     width: 60px;
@@ -2312,7 +2312,7 @@ footer * {
 }
 
 .vo-section-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     font-weight: 700;
     font-style: italic;
@@ -2326,7 +2326,7 @@ footer * {
 }
 
 .vo-faq-item {
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     border-radius: 15px;
     margin-bottom: 16px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -2336,7 +2336,7 @@ footer * {
 .vo-faq-item summary {
     padding: 24px 28px;
     cursor: pointer;
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 18px;
     font-weight: 700;
     color: var(--dark-gray);
@@ -2363,7 +2363,7 @@ footer * {
 
 .vo-faq-item p {
     padding: 0 28px 24px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 16px;
     line-height: 1.6;
     color: var(--text-muted);
@@ -2413,7 +2413,7 @@ footer * {
 }
 
 .specializations-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     font-weight: 700;
     font-style: italic;
@@ -2425,7 +2425,7 @@ footer * {
 }
 
 .specializations-subtitle {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 20px;
     line-height: 26px;
     text-align: center;
@@ -2443,7 +2443,7 @@ footer * {
 }
 
 .specialization-card {
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     border: none;
     border-radius: 24px;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.04);
@@ -2473,13 +2473,13 @@ footer * {
 }
 
 .specialization-label {
-    font-family: 'DM Sans', var(--font-body);
+    font-family: 'DM Sans', var(--vo-font-body);
     font-weight: 700;
     font-size: 16px;
     line-height: 22px;
     text-align: center;
     color: #050505;
-    border: 1px solid #212121;
+    border: 1px solid var(--vo-color-charcoal);
     padding: 8px 16px;
     border-radius: 6px;
 }
@@ -2503,7 +2503,7 @@ footer * {
 .service-nav.nav-light .service-nav-links a,
 .service-nav.nav-light .nav-split-btn,
 .service-nav.nav-light .nav-split-link {
-    color: #FFFFFF !important;
+    color: var(--vo-color-white) !important;
 }
 
 .service-nav.nav-light .service-nav-links a:hover,
@@ -2512,7 +2512,7 @@ footer * {
 }
 
 .service-nav.nav-light .dropdown-arrow path {
-    stroke: #FFFFFF;
+    stroke: var(--vo-color-white);
 }
 
 /* Modifier: Dark Text (for Light Heroes like About Us) */
@@ -2543,7 +2543,7 @@ footer * {
     font-weight: 800 !important;
     font-style: italic !important;
     font-size: 24px;
-    color: #F57F17;
+    color: var(--vo-color-primary);
     margin-left: 0;
     /* Let flex space-between handle it */
     margin-right: 40px;
@@ -2593,7 +2593,7 @@ footer * {
 .image-carousel-section {
     padding: 100px 0;
     /* Huge padding as requested (50% increase from standard) */
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -2651,7 +2651,7 @@ footer * {
 }
 
 .overlay-icon {
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -2665,10 +2665,10 @@ footer * {
 }
 
 .overlay-text {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 600;
     font-size: 18px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     text-align: center;
 }
 
@@ -2727,7 +2727,7 @@ footer * {
     /* Light Grey Pill */
     padding: 8px 16px;
     border-radius: 20px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     font-weight: 600;
     color: var(--dark-gray);
@@ -2735,7 +2735,7 @@ footer * {
 }
 
 .about-hero-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 64px;
     line-height: 1.1;
     font-weight: 700;
@@ -2748,7 +2748,7 @@ footer * {
 }
 
 .about-hero-desc {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 18px;
     line-height: 1.6;
     color: var(--text-muted);
@@ -2765,9 +2765,9 @@ footer * {
     padding: 12px 30px 12px 12px;
     /* Extra left padding for avatar if needed, normal for now */
     border-radius: 50px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     text-decoration: none;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 600;
     transition: all 0.3s ease;
 }
@@ -2782,7 +2782,7 @@ footer * {
     height: 32px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #FFFFFF;
+    border: 2px solid var(--vo-color-white);
 }
 
 .about-hero-image-wrapper {
@@ -2790,7 +2790,7 @@ footer * {
     z-index: 2;
     padding: 20px;
     /* White frame padding */
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     border-radius: 30px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     transform: rotate(2deg);
@@ -2842,7 +2842,7 @@ footer * {
 /* ========== Empower Section (New Reference Image 3) ========== */
 .empower-section {
     padding: 80px 150px;
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     display: grid;
     grid-template-columns: 0.8fr 1.2fr;
     gap: 40px;
@@ -2873,7 +2873,7 @@ footer * {
     background: #E0E0E0;
     padding: 6px 14px;
     border-radius: 20px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 13px;
     font-weight: 600;
     color: var(--dark-gray);
@@ -2881,7 +2881,7 @@ footer * {
 }
 
 .empower-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     font-weight: 500;
     color: #0E3C26;
@@ -2890,7 +2890,7 @@ footer * {
 }
 
 .empower-desc {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 16px;
     line-height: 1.6;
     color: var(--text-muted);
@@ -2921,7 +2921,7 @@ footer * {
     background-color: #111111;
     padding: 100px 5%;
     /* Responsive padding */
-    color: #FFFFFF;
+    color: var(--vo-color-white);
 }
 
 .mission-container {
@@ -2942,7 +2942,7 @@ footer * {
 
 .mission-eyebrow {
     display: block;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -2951,26 +2951,26 @@ footer * {
 }
 
 .mission-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     line-height: 1.2;
     font-weight: 500;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
 }
 
 .btn-mission-cta {
     padding: 12px 24px;
-    border: 1px solid #FFFFFF;
+    border: 1px solid var(--vo-color-white);
     border-radius: 30px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     text-decoration: none;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     transition: all 0.3s ease;
 }
 
 .btn-mission-cta:hover {
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     color: #111111;
 }
 
@@ -3031,15 +3031,15 @@ footer * {
 }
 
 .mission-card-overlay h3 {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 8px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
 }
 
 .mission-card-overlay p {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     color: #DDDDDD;
     margin: 0;
@@ -3132,11 +3132,11 @@ footer * {
         align-items: flex-start;
         padding: 20px;
         text-align: left;
-        color: #FFFFFF;
+        color: var(--vo-color-white);
     }
 
     .mission-card h3 {
-        font-family: var(--font-heading);
+        font-family: var(--vo-font-heading);
         font-size: 18px;
         font-weight: 700;
         margin-bottom: 4px;
@@ -3144,7 +3144,7 @@ footer * {
     }
 
     .mission-card p {
-        font-family: var(--font-body);
+        font-family: var(--vo-font-body);
         font-size: 13px;
         text-transform: uppercase;
         letter-spacing: 0.5px;
@@ -3225,11 +3225,11 @@ footer * {
 }
 
 .founders-info-card {
-    background-color: #000000;
+    background-color: var(--vo-color-black)000;
     /* Dark Green from reference */
     border-radius: 20px;
     padding: 40px 30px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -3238,14 +3238,14 @@ footer * {
 }
 
 .founders-info-card h2 {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 36px;
     margin-bottom: 20px;
     font-weight: 400;
 }
 
 .founders-info-card p {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 16px;
     line-height: 1.5;
     margin-bottom: 40px;
@@ -3255,12 +3255,12 @@ footer * {
 .btn-founders-all {
     display: inline-flex;
     align-items: center;
-    background-color: #FFFFFF;
+    background-color: var(--vo-color-white);
     color: #122F2A;
     padding: 12px 24px;
     border-radius: 30px;
     text-decoration: none;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 600;
     width: fit-content;
     gap: 8px;
@@ -3278,7 +3278,7 @@ footer * {
 }
 
 .founder-card {
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
@@ -3310,7 +3310,7 @@ footer * {
 }
 
 .founder-name {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 20px;
     color: var(--text-dark);
     margin-bottom: 5px;
@@ -3318,7 +3318,7 @@ footer * {
 }
 
 .founder-role {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     color: var(--text-muted);
 }
@@ -3379,7 +3379,7 @@ footer * {
     /* Dark Green */
     padding: 8px 16px;
     border-radius: 20px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 24px;
@@ -3388,7 +3388,7 @@ footer * {
 }
 
 .testimonial-quote {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 32px;
     line-height: 1.3;
     color: #122F2A;
@@ -3399,7 +3399,7 @@ footer * {
 }
 
 .testimonial-author {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 18px;
     font-weight: 700;
     color: #122F2A;
@@ -3407,7 +3407,7 @@ footer * {
 }
 
 .testimonial-role {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     color: #555555;
 }
@@ -3424,7 +3424,7 @@ footer * {
     z-index: 10;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    border: 3px solid #FFFFFF;
+    border: 3px solid var(--vo-color-white);
     transition: transform 0.3s ease;
 }
 
@@ -3493,14 +3493,14 @@ footer * {
 }
 
 .faq-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 36px;
     color: #122F2A;
     margin-bottom: 16px;
 }
 
 .faq-subtitle {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 16px;
     color: #555555;
 }
@@ -3520,7 +3520,7 @@ footer * {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 20px;
     color: #122F2A;
     font-weight: 500;
@@ -3556,7 +3556,7 @@ footer * {
 }
 
 .specializations-subtitle {
-    font-family: 'DM Sans', var(--font-body);
+    font-family: 'DM Sans', var(--vo-font-body);
     font-size: 20px;
     font-weight: 400;
     font-style: normal;
@@ -3577,7 +3577,7 @@ footer * {
 }
 
 .specialization-card {
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     border: none;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.04);
     border-radius: 24px;
@@ -3612,14 +3612,14 @@ footer * {
 }
 
 .specialization-label {
-    font-family: 'DM Sans', var(--font-body);
+    font-family: 'DM Sans', var(--vo-font-body);
     font-size: 16px;
     font-weight: 700;
     font-style: normal;
     line-height: 22px;
     color: #050505;
     text-align: center;
-    border: 1px solid #212121;
+    border: 1px solid var(--vo-color-charcoal);
     padding: 8px 16px;
     border-radius: 6px;
 }
@@ -3657,7 +3657,7 @@ footer * {
 }
 
 .common-challenges-title {
-    font-family: 'DM Sans', var(--font-body);
+    font-family: 'DM Sans', var(--vo-font-body);
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
@@ -3693,7 +3693,7 @@ footer * {
 }
 
 .challenge-item {
-    font-family: 'DM Sans', var(--font-body);
+    font-family: 'DM Sans', var(--vo-font-body);
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -3708,7 +3708,7 @@ footer * {
 
 /* See More Button */
 .see-more-wrapper {
-    /* background: #FFFDF7; */
+    /* background: var(--vo-color-secondary); */
     padding: 12px 0;
     margin-top: 30px;
     text-align: center;
@@ -3718,12 +3718,12 @@ footer * {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    font-family: 'DM Sans', var(--font-body);
+    font-family: 'DM Sans', var(--vo-font-body);
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     background: transparent;
     border: none;
     cursor: pointer;
@@ -3738,7 +3738,7 @@ footer * {
     left: 24px;
     right: 24px;
     height: 2px;
-    background: #212121;
+    background: var(--vo-color-charcoal);
     border-radius: 4px;
 }
 
@@ -3787,12 +3787,12 @@ section {
 /* ========== Block-Based Section Styling ========== */
 /* For sections with dark backgrounds that need padding and rounding */
 .content-block-wrapper {
-    background: #FFFDF7;
+    background: var(--vo-color-secondary);
     padding: 10px;
 }
 
 .dark-section-block {
-    background: #212121;
+    background: var(--vo-color-charcoal);
     margin: 10px;
     padding: 60px 20px;
     border-radius: 16px;
@@ -3839,7 +3839,7 @@ section {
 
 .faq-answer {
     padding-bottom: 24px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 16px;
     line-height: 1.6;
     color: #555555;
@@ -3870,7 +3870,7 @@ section {
 }
 
 .specialization-card {
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     /* White cards, darker than section background */
     border: none;
     /* No border */
@@ -3909,14 +3909,14 @@ section {
 }
 
 .specialization-label {
-    font-family: 'DM Sans', var(--font-body);
+    font-family: 'DM Sans', var(--vo-font-body);
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 22px;
     color: #050505;
     text-align: center;
-    border: 1px solid #212121;
+    border: 1px solid var(--vo-color-charcoal);
     /* Label has a thin border box */
     padding: 8px 16px;
     border-radius: 6px;
@@ -3964,7 +3964,7 @@ section {
 }
 
 .hero-text-content h1 {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 64px;
     line-height: 1.1;
     color: var(--dark-gray);
@@ -3973,7 +3973,7 @@ section {
 }
 
 .hero-text-content p {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 20px;
     line-height: 1.5;
     color: var(--text-dark);
@@ -3993,7 +3993,7 @@ section {
     color: var(--white);
     padding: 15px 30px;
     border-radius: 8px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 16px;
     font-weight: 500;
     text-decoration: none;
@@ -4006,7 +4006,7 @@ section {
 }
 
 .link-discover {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     color: var(--text-dark);
     margin: 0;
@@ -4047,7 +4047,7 @@ section {
 }
 
 .stat-number {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     /* Use heading font for numbers per typical design */
     font-size: 48px;
     font-weight: 400;
@@ -4062,7 +4062,7 @@ section {
 }
 
 .stat-label {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     color: #333;
     font-weight: 500;
@@ -4072,7 +4072,7 @@ section {
 
 .stat-desc {
     flex: 1;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 15px;
     line-height: 1.4;
     color: #333;
@@ -4138,12 +4138,12 @@ section {
 }
 
 .service-hero-title-dark {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-weight: 700;
     font-style: italic;
     font-size: 56px;
     line-height: 1.1;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     /* Dark text */
     margin-bottom: 24px;
     max-width: 900px;
@@ -4152,7 +4152,7 @@ section {
 }
 
 .service-hero-subtitle-dark {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 20px;
     line-height: 1.6;
     color: #444;
@@ -4174,11 +4174,11 @@ section {
     display: inline-block;
     background: #437d57;
     /* Green from screenshot */
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     padding: 16px 40px;
     border-radius: 8px;
     /* Rounded corners but not pill */
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 600;
     font-size: 18px;
     text-decoration: none;
@@ -4205,7 +4205,7 @@ section {
 }
 
 .experts-label {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -4215,7 +4215,7 @@ section {
 }
 
 .experts-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     line-height: 1.2;
     font-weight: 700;
@@ -4307,7 +4307,7 @@ section {
 }
 
 .expert-name {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 20px;
     font-weight: 700;
     color: #333;
@@ -4316,7 +4316,7 @@ section {
 }
 
 .expert-title {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     color: #666;
     text-align: center;
@@ -4379,7 +4379,7 @@ section {
 }
 
 .experts-description {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 16px;
     line-height: 1.7;
     color: var(--dark-gray);
@@ -4390,7 +4390,7 @@ section {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 16px;
     font-weight: 500;
     color: var(--dark-gray);
@@ -4449,7 +4449,7 @@ section {
 }
 
 .how-it-works-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     font-weight: 700;
     font-style: italic;
@@ -4479,7 +4479,7 @@ section {
 }
 
 .step-number {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 32px;
     line-height: 42px;
     letter-spacing: -0.5px;
@@ -4489,7 +4489,7 @@ section {
 }
 
 .step-description {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 20px;
     line-height: 26px;
     letter-spacing: -0.5px;
@@ -4531,7 +4531,7 @@ section {
 .feature-card-box {
     width: 220px;
     height: 250px;
-    background: #212121;
+    background: var(--vo-color-charcoal);
     border-radius: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -4555,7 +4555,7 @@ section {
     width: 60px;
     height: 60px;
     fill: none;
-    stroke: #FFFDF7;
+    stroke: var(--vo-color-secondary);
     stroke-width: 2;
 }
 
@@ -4566,11 +4566,11 @@ section {
 }
 
 .feature-card-box .label {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 500;
     font-size: 24px;
     line-height: 31px;
-    color: #FFFDF7;
+    color: var(--vo-color-secondary);
 }
 
 /* ========== Pricing Section ========== */
@@ -4601,21 +4601,21 @@ section {
 }
 
 .pricing-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-weight: 700;
     font-style: italic;
     font-size: 36px;
     line-height: 47px;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     margin-bottom: 20px;
 }
 
 .pricing-subtitle {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
-    color: #000000;
+    color: var(--vo-color-black)000;
     margin-bottom: 40px;
 }
 
@@ -4629,7 +4629,7 @@ section {
 .pricing-table td {
     padding: 25px 20px;
     text-align: left;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 20px;
     line-height: 26px;
     letter-spacing: -0.5px;
@@ -4640,25 +4640,25 @@ section {
     font-weight: 500;
     font-size: 28px;
     line-height: 36px;
-    color: #212121;
-    border-bottom: 2.5px solid #000000;
+    color: var(--vo-color-charcoal);
+    border-bottom: 2.5px solid var(--vo-color-black)000;
 }
 
 .pricing-table td {
     font-weight: 400;
-    color: #212121;
-    border-bottom: 1.5px solid #000000;
+    color: var(--vo-color-charcoal);
+    border-bottom: 1.5px solid var(--vo-color-black)000;
 }
 
 .pricing-table .plan-col {
     width: 30%;
-    border-right: 2.5px solid #000000;
+    border-right: 2.5px solid var(--vo-color-black)000;
 }
 
 .pricing-table .price-col {
     width: 20%;
     text-align: center;
-    border-right: 1.5px solid #000000;
+    border-right: 1.5px solid var(--vo-color-black)000;
 }
 
 .pricing-table .details-col {
@@ -4676,16 +4676,16 @@ section {
 }
 
 .app-offer-note {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
-    color: #000000;
+    color: var(--vo-color-black)000;
     margin-bottom: 10px;
 }
 
 .app-offer-link {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 700;
     font-size: 20px;
     line-height: 26px;
@@ -4698,12 +4698,12 @@ section {
 }
 
 .app-offer-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-weight: 600;
     font-style: italic;
     font-size: 36px;
     line-height: 47px;
-    color: #F57F17;
+    color: var(--vo-color-primary);
     margin: 40px 0 30px;
 }
 
@@ -4714,11 +4714,11 @@ section {
 }
 
 .app-offer-list li {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
-    color: #000000;
+    color: var(--vo-color-black)000;
     padding-left: 25px;
     position: relative;
     margin-bottom: 15px;
@@ -4731,7 +4731,7 @@ section {
     top: 10px;
     width: 5px;
     height: 5px;
-    background: #212121;
+    background: var(--vo-color-charcoal);
     border-radius: 50%;
 }
 
@@ -4742,21 +4742,21 @@ section {
 }
 
 .support-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-weight: 600;
     font-style: italic;
     font-size: 32px;
     line-height: 42px;
-    color: #000000;
+    color: var(--vo-color-black)000;
     margin-bottom: 30px;
 }
 
 .support-text {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
-    color: #000000;
+    color: var(--vo-color-black)000;
     max-width: 804px;
 }
 
@@ -4858,11 +4858,11 @@ section {
 .testimonials-section {
     padding: 80px 0;
     overflow: hidden;
-    background: #FFFDF7;
+    background: var(--vo-color-secondary);
 }
 
 .testimonials-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     font-weight: 700;
     font-style: italic;
@@ -4946,13 +4946,13 @@ section {
     background: #4E4E4E;
     color: white;
     padding: 15px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     line-height: 26px;
 }
 
 /* Text cards with different colors */
 .card.orange {
-    background-color: #F57F17;
+    background-color: var(--vo-color-primary);
     /* primary-orange */
     color: white;
     padding: 0;
@@ -4965,7 +4965,7 @@ section {
 .card.orange.yellow {
     background-color: #FFD54F;
     /* accent-yellow */
-    color: #212121;
+    color: var(--vo-color-charcoal);
 }
 
 .card.orange.green {
@@ -4975,9 +4975,9 @@ section {
 }
 
 .card.orange.beige {
-    background-color: #F4EDE4;
+    background-color: var(--vo-color-secondary);
     /* bg-beige */
-    color: #212121;
+    color: var(--vo-color-charcoal);
 }
 
 .card.orange .name {
@@ -4986,7 +4986,7 @@ section {
     padding: 0 33px;
     font-size: 20px;
     line-height: 26px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
 }
 
 .card .name img {
@@ -5004,7 +5004,7 @@ section {
     line-height: 21px;
     margin: 0;
     padding: 0 35px 35px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
 }
 
 /* Responsive adjustments */
@@ -5026,7 +5026,7 @@ section {
 /* ========== Detailed Services Section ========== */
 .detailed-services-section {
     padding: 100px 100px;
-    background: #FFFDF7;
+    background: var(--vo-color-secondary);
     /* Cream background */
     display: flex;
     flex-direction: column;
@@ -5051,7 +5051,7 @@ section {
 }
 
 .service-detail-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 40px;
     font-weight: 700;
     font-style: italic;
@@ -5061,7 +5061,7 @@ section {
 }
 
 .service-detail-desc {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 18px;
     line-height: 1.6;
     color: var(--text-muted);
@@ -5075,7 +5075,7 @@ section {
 }
 
 .service-detail-list li {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 16px;
     line-height: 1.5;
     color: var(--dark-gray);
@@ -5162,7 +5162,7 @@ section {
 }
 
 .detailed-services-eyebrow {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -5173,7 +5173,7 @@ section {
 }
 
 .detailed-services-main-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     font-weight: 700;
     font-style: italic;
@@ -5196,7 +5196,7 @@ section {
     /* Light Blue */
     color: #1565C0;
     /* Dark Blue */
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
@@ -5212,12 +5212,12 @@ section {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     font-weight: 600;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     text-decoration: none;
-    border: 1px solid #212121;
+    border: 1px solid var(--vo-color-charcoal);
     border-radius: 8px;
     padding: 10px 20px;
     width: 100%;
@@ -5226,8 +5226,8 @@ section {
 }
 
 .btn-external-profile:hover {
-    background-color: #212121;
-    color: #FFFFFF;
+    background-color: var(--vo-color-charcoal);
+    color: var(--vo-color-white);
 }
 
 /* Interim Solution Block */
@@ -5250,7 +5250,7 @@ section {
 }
 
 .interim-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 28px;
     font-weight: 600;
     font-style: italic;
@@ -5260,7 +5260,7 @@ section {
 }
 
 .interim-text {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 16px;
     color: #166534;
     /* Medium Green */
@@ -5283,7 +5283,7 @@ section {
 }
 
 .directory-disclaimer {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 12px;
     color: #666;
     text-align: center;
@@ -5307,7 +5307,7 @@ section {
 
 /* ========== Why People Love Ventoutt - Scroll Section (Native Sticky) ========== */
 .why-love-scroll-section {
-    background: #FFFDF7;
+    background: var(--vo-color-secondary);
     height: 150vh;
     /* Reduced to 150vh to extremely minimize whitespace */
     position: relative;
@@ -5350,10 +5350,10 @@ section {
 }
 
 .why-love-main-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     line-height: 1.15;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     margin-bottom: 50px;
     font-weight: 700;
     font-style: italic;
@@ -5384,15 +5384,15 @@ section {
 }
 
 .why-love-point-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 22px;
     font-weight: 700;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     margin-bottom: 12px;
 }
 
 .why-love-point-desc {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 17px;
     line-height: 1.6;
     color: #555;
@@ -5507,7 +5507,7 @@ section {
     align-items: center;
     padding: 14px 24px;
     border-radius: 8px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -5529,8 +5529,8 @@ section {
 
 /* Ensure Orange Button style (Chatbot) - Matches branding */
 .banner-cta-stack .btn-venting-banner {
-    background: var(--primary-orange, #F57F17);
-    /* Fallback #F57F17 */
+    background: var(--primary-orange, var(--vo-color-primary));
+    /* Fallback var(--vo-color-primary) */
     color: white;
     border: 1px solid transparent;
 }
@@ -5579,7 +5579,7 @@ section {
 }
 
 .overlay-text {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 20px;
     font-weight: 600;
     color: white;
@@ -5591,7 +5591,7 @@ section {
    ================================================== */
 .image-carousel-section {
     padding: 80px 0;
-    background: #FFFDF7;
+    background: var(--vo-color-secondary);
     overflow: hidden;
     position: relative;
 }
@@ -5668,7 +5668,7 @@ section {
     width: 50px;
     height: 50px;
     background: white;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -5679,7 +5679,7 @@ section {
 }
 
 .overlay-text {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 18px;
     font-weight: 600;
     text-align: center;
@@ -5692,7 +5692,7 @@ section {
    ================================================== */
 .image-carousel-section {
     padding: 80px 0;
-    background: #FFFDF7;
+    background: var(--vo-color-secondary);
     overflow: hidden;
     position: relative;
 }
@@ -5755,7 +5755,7 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     text-decoration: none;
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -5769,7 +5769,7 @@ section {
     width: 50px;
     height: 50px;
     background: white;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -5780,12 +5780,12 @@ section {
 }
 
 .overlay-text {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 18px;
     font-weight: 600;
     text-align: center;
     letter-spacing: 0.5px;
-    color: #212121;
+    color: var(--vo-color-charcoal);
 }
 
 
@@ -5836,7 +5836,7 @@ section {
 }
 
 .team-name {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 18px;
     font-weight: 600;
     margin: 0 0 4px 0;
@@ -5844,7 +5844,7 @@ section {
 }
 
 .team-role {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 1px;
@@ -5884,7 +5884,7 @@ section {
    ================================================== */
 .image-carousel-section {
     padding: 80px 0;
-    background: #FFFDF7;
+    background: var(--vo-color-secondary);
     overflow: hidden;
     position: relative;
 }
@@ -5947,7 +5947,7 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     text-decoration: none;
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -5961,7 +5961,7 @@ section {
     width: 50px;
     height: 50px;
     background: white;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -5972,12 +5972,12 @@ section {
 }
 
 .overlay-text {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 18px;
     font-weight: 600;
     text-align: center;
     letter-spacing: 0.5px;
-    color: #212121;
+    color: var(--vo-color-charcoal);
 }
 
 /* ================================================== 
@@ -6027,7 +6027,7 @@ section {
 }
 
 .team-name {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 18px;
     font-weight: 600;
     margin: 0 0 4px 0;
@@ -6035,7 +6035,7 @@ section {
 }
 
 .team-role {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 1px;
@@ -6073,7 +6073,7 @@ section {
    ================================================== */
 .image-carousel-section {
     padding: 80px 0;
-    background: #FFFDF7;
+    background: var(--vo-color-secondary);
     overflow: hidden;
     position: relative;
 }
@@ -6136,7 +6136,7 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     text-decoration: none;
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -6150,20 +6150,20 @@ section {
 
 .overlay-icon {
     font-size: 48px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     font-weight: 300;
     margin-bottom: 12px;
     line-height: 1;
 }
 
 .overlay-text {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 24px;
     font-weight: 600;
     font-style: italic;
     text-align: center;
     letter-spacing: 0;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
 }
 
 /* ================================================== 
@@ -6195,7 +6195,7 @@ section {
 }
 
 .mission-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     font-weight: 700;
     font-style: italic;
@@ -6291,7 +6291,7 @@ section {
 }
 
 .mission-card-overlay h3 {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 24px;
     font-weight: 600;
     margin: 0;
@@ -6299,7 +6299,7 @@ section {
 }
 
 .mission-card-overlay p {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     margin: 0;
     color: rgba(255, 255, 255, 0.9);

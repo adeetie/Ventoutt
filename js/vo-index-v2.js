@@ -173,24 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Migrated to vo-marquee.js to separate concerns.
 
     /* =========================================
-       6. Scroll Scroll Reveal
+       6. Scroll Scroll Reveal - DISABLED
        ========================================= */
-    // Auto-tag sections that aren't already tagged
-    // Exclude sticky section (.vo-why-love-section) to prevent transform breaking position:sticky
-    // Exclude experts section (.experts-section) to prevent transform interfering with swipe/touch behaviors
-    document.querySelectorAll('main section:not(.vo-why-love-section):not(.experts-section)').forEach(sec => {
-        sec.classList.add('vo-reveal');
-    });
+    // Animations removed as per user request. 
+    // This also mitigates potential conflicts with sticky/swipe elements.
 
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-
-    document.querySelectorAll('.vo-reveal').forEach(el => revealObserver.observe(el));
 
 
     /* =========================================

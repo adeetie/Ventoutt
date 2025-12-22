@@ -36,7 +36,7 @@
             rgba(17, 17, 17, 0.6) 60%,
             rgba(17, 17, 17, 0.85) 80%,
             rgba(17, 17, 17, 1) 92%,
-            #111111 100%);
+            var(--vo-color-black) 100%);
     z-index: 1;
     pointer-events: none;
 }
@@ -113,14 +113,14 @@
 
 /* 2. Global Footer */
 .vo-footer {
-    background: #111111;
+    background: var(--vo-color-black);
     padding: 80px 5% 40px;
     position: relative;
     /* Negative margin to pull it up into the gradient if needed, 
        but standard flow usually works fine with the gradient logic.
        The original had -50px. We'll stick to 0 for a cleaner default unless
        the CTA is present above it. 
-       Actually, the gradient on CTA ends in #111111, so standard flow is perfect.
+       Actually, the gradient on CTA ends in var(--vo-color-black), so standard flow is perfect.
        If we want overlap, we can add it, but clean flow is Safer.
     */
     color: var(--vo-color-white);
@@ -209,7 +209,7 @@
 .vo-footer__links a {
     text-decoration: none;
     color: var(--vo-color-gray-400);
-    /* Was #CCCCCC */
+    /* Was var(--vo-color-gray-300) */
     font-family: var(--vo-font-body);
     font-size: 14px;
     transition: color var(--vo-transition-fast);
@@ -225,7 +225,7 @@
     margin-bottom: 20px;
     font-family: var(--vo-font-body);
     font-size: 14px;
-    color: #CCCCCC;
+    color: var(--vo-color-gray-300);
     line-height: 1.6;
 }
 
@@ -236,7 +236,7 @@
 }
 
 .vo-footer__contact-block a {
-    color: #CCCCCC;
+    color: var(--vo-color-gray-300);
     text-decoration: none;
 }
 
@@ -283,26 +283,26 @@
     margin: 0 auto 40px;
     font-family: var(--vo-font-body);
     font-size: 13px;
-    color: #AAAAAA;
+    color: var(--vo-color-gray-400);
     line-height: 1.6;
 }
 
 .vo-footer__emergency {
     display: block;
-    color: #FF4444;
+    color: var(--vo-color-error);
     text-decoration: underline;
     margin: 15px 0;
     font-weight: 600;
 }
 
 .vo-footer__emergency:hover {
-    color: #FF0000;
+    color: var(--vo-color-error);
 }
 
 .vo-footer__privacy-note {
     margin-top: 15px;
     font-size: 12px;
-    color: #888888;
+    color: var(--vo-color-gray-400);
 }
 
 /* Copyright */
@@ -312,7 +312,7 @@
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-family: var(--vo-font-body);
     font-size: 14px;
-    color: #888888;
+    color: var(--vo-color-gray-400);
 }
 
 /* Responsive */

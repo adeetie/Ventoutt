@@ -109,7 +109,7 @@
     width: 240px;
     height: 50px;
     background: var(--vo-color-primary);
-    /* #F57F17 */
+    /* var(--vo-color-primary) */
     border: 1px solid var(--vo-color-white);
     border-radius: 10px;
     font-family: var(--vo-font-body);
@@ -150,7 +150,7 @@
    ========================================= */
 .vo-help-section {
     padding: 100px 0;
-    background-color: var(--vo-color-white);
+    background-color: var(--vo-color-secondary);
 }
 
 .vo-help-container {
@@ -334,7 +334,7 @@
         font-family: var(--vo-font-heading);
         font-size: 18px;
         font-weight: 700;
-        color: #212121;
+        color: var(--vo-color-charcoal);
     }
 
     .vo-stat-number {
@@ -368,7 +368,7 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
-    color: #212121;
+    color: var(--vo-color-charcoal);
 }
 
 .vo-quiz-text {
@@ -427,12 +427,12 @@
 }
 
 .vo-stat-card {
-    background-color: #212121;
+    background-color: var(--vo-color-charcoal);
     /* Dark card background */
     border-radius: 20px;
     padding: 40px 20px;
     text-align: center;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -449,7 +449,7 @@
 .vo-stat-icon {
     width: 140px;
     height: 140px;
-    background-color: #FFFDF7;
+    background-color: var(--vo-color-secondary);
     /* Off-white circle placeholder */
     border-radius: 50%;
     margin: 0 auto 30px;
@@ -470,7 +470,7 @@
     font-family: var(--vo-font-body);
     font-size: 36px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     margin-bottom: 15px;
 }
 
@@ -478,7 +478,7 @@
     font-family: var(--vo-font-heading);
     font-weight: 700;
     font-size: 20px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     margin-bottom: 15px;
     line-height: 1.2;
 }
@@ -506,7 +506,7 @@
    ========================================= */
 .vo-testimonials-section {
     padding: 80px 0;
-    background-color: var(--vo-color-bg-light);
+    background-color: var(--vo-color-secondary);
     overflow: hidden;
 }
 
@@ -554,7 +554,7 @@
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
-    background: #fff;
+    background: var(--vo-color-white);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -567,17 +567,17 @@
 }
 
 .vo-testimonial-card.vo-orange {
-    background: #FFF3E0;
+    background: var(--vo-color-white);
     border: 1px solid #FFE0B2;
 }
 
 .vo-testimonial-card.vo-yellow {
-    background: #FEFCEF;
+    background: var(--vo-color-white);
     border: 1px solid #FFF59D;
 }
 
 .vo-testimonial-card.vo-green {
-    background: #E8F5E9;
+    background: var(--vo-color-white);
     border: 1px solid #C8E6C9;
 }
 
@@ -633,7 +633,7 @@
    ========================================= */
 .vo-therapist-banner {
     position: relative;
-    background: #212121;
+    background: var(--vo-color-charcoal);
     width: 100%;
     min-height: 800px;
     overflow: hidden;
@@ -826,7 +826,7 @@
     width: 100%;
     max-width: 1000px;
     height: 400px;
-    background: #fff;
+    background: var(--vo-color-white);
     border-radius: 30px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     display: flex;
@@ -899,7 +899,7 @@
 /* This section was "Meet Our Experts" in index.html, styled by .experts-section 
        There was also a "Therapist Banner" above. This is the grid of profiles. */
 .vo-experts-section {
-    background-color: #fff;
+    background-color: var(--vo-color-white);
     padding: 80px 150px;
     position: relative;
 }
@@ -1042,16 +1042,16 @@
     font-family: var(--vo-font-body);
     font-size: 16px;
     font-weight: 500;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     text-decoration: none;
-    border: 2px solid #212121;
+    border: 2px solid var(--vo-color-charcoal);
     border-radius: 30px;
     padding: 12px 30px;
     transition: all 0.3s ease;
 }
 
 .vo-btn-learn:hover {
-    background: #212121;
+    background: var(--vo-color-charcoal);
     color: white;
 }
 
@@ -1081,7 +1081,7 @@
    ========================================= */
 .vo-comparison-section {
     padding: 80px 20px;
-    background: #fff;
+    background: var(--vo-color-white);
     text-align: center;
 }
 
@@ -1102,7 +1102,7 @@
     flex: 1;
     min-width: 300px;
     max-width: 360px;
-    background: #fff;
+    background: var(--vo-color-white);
     border: 1px solid #E0E0E0;
     border-radius: 20px;
     padding: 30px;
@@ -1112,7 +1112,7 @@
 
 .vo-comp-card.featured {
     border: 2px solid var(--vo-color-primary);
-    /* #F57F17 */
+    /* var(--vo-color-primary) */
     transform: scale(1.05);
     box-shadow: 0 10px 30px rgba(245, 127, 23, 0.15);
     position: relative;
@@ -1316,7 +1316,7 @@ h2,
    ========================================= */
 .vo-therapist-banner {
     position: relative;
-    background: #212121;
+    background: var(--vo-color-charcoal);
     width: 100%;
     min-height: 800px;
     overflow: hidden;
@@ -1366,7 +1366,7 @@ h2,
     overflow: hidden;
     height: 300px;
     cursor: pointer;
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     /* White card */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1412,7 +1412,7 @@ h2,
 .vo-content-wrapper {
     flex: 1 1 40%;
     padding: 20px;
-    color: #fff;
+    color: var(--vo-color-white);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1427,7 +1427,7 @@ h2,
     font-size: 64px;
     line-height: 1.1;
     margin-bottom: 30px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
 }
 
 .vo-figma-description {
@@ -1586,7 +1586,7 @@ h2,
    11. Partners & Therapists (Dark Section)
    ========================================= */
 .vo-partners-section {
-    background-color: #212121;
+    background-color: var(--vo-color-charcoal);
     padding: 100px 0;
     color: white;
     position: relative;
@@ -1675,7 +1675,7 @@ h2,
 }
 
 .vo-therapist-card {
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     border: 3px solid #3A7F56;
     border-radius: 16px;
     padding: 20px 15px;
@@ -1716,7 +1716,7 @@ h2,
 }
 
 .vo-therapist-tags {
-    background: #fff;
+    background: var(--vo-color-white);
     border: 0.5px solid rgba(0, 0, 0, 0.5);
     border-radius: 6px;
     padding: 8px 10px;
@@ -1731,13 +1731,17 @@ h2,
     display: block;
     width: 100%;
     padding: 8px 0;
-    background: #F57F17;
+    background: var(--vo-color-primary);
     /* Orange from reference image */
     color: white;
     text-align: center;
     border-radius: 6px;
     text-decoration: none;
     font-weight: 700;
+}
+
+.vo-btn-book:hover {
+    background: var(--vo-color-primary-dark);
 }
 
 @keyframes vo-scroll-reverse {
@@ -1764,7 +1768,7 @@ h2,
 .vo-blogs-section {
     padding: 80px 20px;
     text-align: center;
-    background: #fff;
+    background: var(--vo-color-white);
 }
 
 .vo-blogs-grid {
@@ -1776,7 +1780,7 @@ h2,
 }
 
 .vo-blog-card {
-    background: #fff;
+    background: var(--vo-color-white);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -1797,7 +1801,7 @@ h2,
 .vo-blog-tag {
     display: inline-block;
     background: var(--vo-color-primary);
-    color: #fff;
+    color: var(--vo-color-white);
     padding: 5px 10px;
     border-radius: 20px;
     font-size: 12px;
@@ -1831,7 +1835,7 @@ h2,
 }
 
 .vo-faq-item {
-    background: #fff;
+    background: var(--vo-color-white);
     border-radius: 10px;
     margin-bottom: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -1874,6 +1878,7 @@ h2,
 /* =========================================
    15. Global Scroll Animations (Migrated)
    ========================================= */
+/* Animations removed per user request
 .vo-reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -1886,33 +1891,24 @@ h2,
     transform: translateY(0);
 }
 
-/* Staggered delays for children if needed */
-.vo-reveal-stagger>* {
+.vo-reveal-stagger > * {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-.vo-reveal-stagger.active>* {
+.vo-reveal-stagger.active > * {
     opacity: 1;
     transform: translateY(0);
 }
+*/
 
-.vo-reveal-stagger.active>*:nth-child(1) {
-    transition-delay: 0.1s;
-}
-
-.vo-reveal-stagger.active>*:nth-child(2) {
-    transition-delay: 0.2s;
-}
-
-.vo-reveal-stagger.active>*:nth-child(3) {
-    transition-delay: 0.3s;
-}
-
-.vo-reveal-stagger.active>*:nth-child(4) {
-    transition-delay: 0.4s;
-}
+/*
+.vo-reveal-stagger.active>*:nth-child(1) { transition-delay: 0.1s; }
+.vo-reveal-stagger.active>*:nth-child(2) { transition-delay: 0.2s; }
+.vo-reveal-stagger.active>*:nth-child(3) { transition-delay: 0.3s; }
+.vo-reveal-stagger.active>*:nth-child(4) { transition-delay: 0.4s; }
+*/
 
 /* =========================================
    16. Caring & Expert Members (Grid) - NEW
@@ -1995,7 +1991,7 @@ h2,
 }
 
 .vo-expert-rating .star {
-    color: #F57F17;
+    color: var(--vo-color-primary);
 }
 
 .vo-expert-rating .score-label {
@@ -2047,9 +2043,9 @@ h2,
 .vo-btn-outline {
     display: inline-block;
     padding: 12px 30px;
-    border: 1px solid #212121;
+    border: 1px solid var(--vo-color-charcoal);
     border-radius: 50px;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     text-decoration: none;
     font-family: var(--vo-font-body);
     font-weight: 600;
@@ -2057,8 +2053,8 @@ h2,
 }
 
 .vo-btn-outline:hover {
-    background: #212121;
-    color: #fff;
+    background: var(--vo-color-charcoal);
+    color: var(--vo-color-white);
 }
 
 .vo-btn-chat {
@@ -2069,7 +2065,7 @@ h2,
     font-weight: 600;
     cursor: pointer;
     font-size: 16px;
-    color: #212121;
+    color: var(--vo-color-charcoal);
 }
 
 
@@ -2079,7 +2075,7 @@ h2,
    ========================================= */
 .vo-comparison-section {
     padding: 100px 5%;
-    background-color: #FAFAFA;
+    background-color: var(--vo-color-secondary);
 }
 
 .vo-comparison-header {
@@ -2114,7 +2110,7 @@ h2,
     background: #111;
     border-radius: 20px;
     padding: 40px 30px;
-    color: #fff;
+    color: var(--vo-color-white);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -2140,7 +2136,7 @@ h2,
     font-weight: 700;
     font-style: italic;
     margin-bottom: 5px;
-    color: #fff;
+    color: var(--vo-color-white);
 }
 
 .vo-comp-role {
@@ -2186,7 +2182,7 @@ h2,
 }
 
 .vo-comp-features li span {
-    color: #F57F17;
+    color: var(--vo-color-primary);
     font-weight: bold;
 }
 
@@ -2207,21 +2203,21 @@ h2,
 }
 
 .vo-btn-comp.orange {
-    background: #F57F17;
-    color: #fff;
+    background: var(--vo-color-primary);
+    color: var(--vo-color-white);
 }
 
 .vo-btn-comp.white {
-    background: #fff;
+    background: var(--vo-color-white);
     color: #1B4D3E;
 }
 
 /* Force User Preference for Partners Title */
 .vo-partners-title {
-    font-family: 'Lora', serif !important;
+    font-family: var(--vo-font-heading) !important;
     font-style: italic !important;
     font-weight: 700 !important;
-    color: #FFFFFF !important;
+    color: var(--vo-color-white) !important;
 }
 
 @media (max-width: 1024px) {
@@ -2256,7 +2252,7 @@ h2,
    16. Caring & Expert Members (Exact Match)
    ========================================= */
 .vo-experts-section {
-    background-color: #fff;
+    background-color: var(--vo-color-white);
     padding: 80px 150px;
     position: relative;
 }
@@ -2539,7 +2535,7 @@ h2,
 }
 
 .vo-step-card {
-    background: #212121;
+    background: var(--vo-color-charcoal);
     /* Ensure dark bg */
     border-radius: 20px;
     padding: 30px 20px;
@@ -2600,7 +2596,7 @@ h2,
 .vo-figma-title,
 h1,
 h2 {
-    font-family: 'Lora', serif !important;
+    font-family: var(--vo-font-heading) !important;
     font-weight: 700 !important;
     font-style: italic !important;
 }
@@ -2611,7 +2607,7 @@ h2 {
 
 /* --- Partners & Therapists (User Provided) --- */
 .partners-section {
-    background-color: #212121;
+    background-color: var(--vo-color-charcoal);
     /* Dark background from Figma */
     padding: 100px 0;
     color: white;
@@ -2634,7 +2630,7 @@ h2 {
     line-height: 1.1;
     font-weight: 700;
     font-style: italic;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     max-width: 500px;
     flex-shrink: 0;
 }
@@ -2702,7 +2698,7 @@ h2 {
 }
 
 .therapist-card {
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     border: 3px solid #3A7F56;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 16px;
@@ -2769,7 +2765,7 @@ h2 {
 /* Specialization Box */
 .therapist-specialization {
     box-sizing: border-box;
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     border: 0.5px solid rgba(0, 0, 0, 0.5);
     border-radius: 6px;
     padding: 8px 10px;
@@ -2785,7 +2781,7 @@ h2 {
 
 .therapist-specialization strong {
     font-weight: 700;
-    color: #212121;
+    color: var(--vo-color-charcoal);
 }
 
 /* Button */
@@ -2796,8 +2792,8 @@ h2 {
     padding: 8px 16px;
     width: 100%;
     max-width: 480px;
-    background: #F57F17;
-    border: 1px solid #FFFFFF;
+    background: var(--vo-color-primary);
+    border: 1px solid var(--vo-color-white);
     border-radius: 6px;
     font-family: var(--vo-font-body);
     font-weight: 700;
@@ -2805,7 +2801,7 @@ h2 {
     line-height: 1.4;
     text-align: center;
     letter-spacing: 0.5px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     text-decoration: none;
     transition: all 0.2s;
 }
@@ -2818,12 +2814,12 @@ h2 {
 
 /* ========== Services Hero Redesign (Team Grid) ========== */
 .services-hero-redesign {
-    background-color: #FFFDF7;
+    background-color: var(--vo-color-secondary);
     /* Default Light Theme (Cream) */
     padding: 140px 60px 80px;
     /* Top padding for Navbar overlap */
     font-family: var(--font-body);
-    color: #212121;
+    color: var(--vo-color-charcoal);
     /* Dark Text */
     position: relative;
     z-index: 1;
@@ -2848,7 +2844,7 @@ h2 {
     line-height: 1.1;
     max-width: 600px;
     margin: 0;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     /* Dark Title */
     font-weight: 700;
     font-style: italic;
@@ -2930,7 +2926,7 @@ h2 {
 .item-6 {
     grid-column: 4;
     grid-row: 2;
-    background-color: var(--primary-orange, #F57F17);
+    background-color: var(--primary-orange, var(--vo-color-primary));
     /* Theme Orange */
     display: flex;
     align-items: center;
@@ -2973,7 +2969,7 @@ h2 {
     line-height: 1.4;
     font-style: italic;
     margin-bottom: 8px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     display: -webkit-box;
     -webkit-line-clamp: 3;
     line-clamp: 3;
@@ -2997,7 +2993,7 @@ h2 {
     height: 0;
     border-top: 12px solid transparent;
     border-bottom: 12px solid transparent;
-    border-left: 20px solid #FFFFFF;
+    border-left: 20px solid var(--vo-color-white);
 }
 
 @media (max-width: 1024px) {
@@ -3054,9 +3050,9 @@ h2 {
 }
 
 .services-header-centered h2 {
-    font-family: 'Lora', serif;
+    font-family: var(--vo-font-heading);
     font-size: 48px;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     margin-bottom: 15px;
     font-weight: 700;
     font-style: italic;
@@ -3068,7 +3064,7 @@ h2 {
     max-width: 1600px;
     margin: 0 auto 80px;
     padding: 0 80px;
-    background: #FFFDF7;
+    background: var(--vo-color-secondary);
 }
 
 /* Grid Container with Horizontal Scroll */
@@ -3127,10 +3123,10 @@ h2 {
 
 /* Card Title */
 .service-card-title {
-    font-family: 'Lora', serif;
+    font-family: var(--vo-font-heading);
     font-size: 22px;
     font-weight: 700;
-    color: #FFFDF7;
+    color: var(--vo-color-secondary);
     text-align: center;
     margin: 20px 20px 10px 20px;
     line-height: 1.3;
@@ -3142,7 +3138,7 @@ h2 {
     font-family: var(--font-body), sans-serif;
     font-size: 14px;
     line-height: 1.5;
-    color: #FFFDF7;
+    color: var(--vo-color-secondary);
     text-align: center;
     margin: 0 20px 25px 20px;
     padding: 0;
@@ -3153,7 +3149,7 @@ h2 {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: #212121;
+    background: var(--vo-color-charcoal);
     border: none;
     border-radius: 50%;
     width: 50px;
@@ -3195,7 +3191,7 @@ h2 {
 
 /* ========== Detailed Services Section ========== */
 .detailed-services-section {
-    background: #fff;
+    background: var(--vo-color-white);
     padding: 80px 150px;
 }
 
@@ -3211,18 +3207,18 @@ h2 {
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #F57F17;
+    color: var(--vo-color-primary);
     display: block;
     margin-bottom: 15px;
 }
 
 .detailed-services-main-title {
-    font-family: 'Lora', serif;
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     line-height: 1.3;
     font-weight: 400;
     font-style: italic;
-    color: #212121;
+    color: var(--vo-color-charcoal);
 }
 
 .service-detail-row {
@@ -3247,11 +3243,11 @@ h2 {
 }
 
 .service-detail-title {
-    font-family: 'Lora', serif;
+    font-family: var(--vo-font-heading);
     font-size: 32px;
     line-height: 1.3;
     font-weight: 600;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     margin-bottom: 20px;
 }
 
@@ -3281,7 +3277,7 @@ h2 {
 
 .service-detail-list li:before {
     content: "•";
-    color: #F57F17;
+    color: var(--vo-color-primary);
     font-size: 20px;
     position: absolute;
     left: 0;
@@ -3304,7 +3300,7 @@ h2 {
 .btn-orange {
     display: inline-block;
     padding: 14px 32px;
-    background: #F57F17;
+    background: var(--vo-color-primary);
     color: white;
     text-decoration: none;
     border-radius: 50px;
@@ -3388,7 +3384,7 @@ h2 {
 /* ========== What We Specialize In Section ========== */
 .vo-specs-section {
     padding: 80px 20px;
-    background-color: #FFFCF8;
+    background-color: var(--vo-color-secondary);
     text-align: center;
 }
 
@@ -3402,7 +3398,7 @@ h2 {
 
 .vo-spec-card {
     background-color: #F0ECE6;
-    border: 2px solid #212121;
+    border: 2px solid var(--vo-color-charcoal);
     border-radius: 20px;
     padding: 20px;
     display: flex;
@@ -3422,20 +3418,20 @@ h2 {
     background-size: cover;
     background-position: center;
     border-radius: 12px;
-    border: 2px solid #212121;
+    border: 2px solid var(--vo-color-charcoal);
     margin-bottom: 20px;
 }
 
 .vo-spec-label {
     width: 100%;
     background-color: transparent;
-    border: 2px solid #212121;
+    border: 2px solid var(--vo-color-charcoal);
     border-radius: 8px;
     padding: 12px 10px;
     font-family: var(--vo-font-heading);
     font-weight: 700;
     font-size: 16px;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     text-align: center;
     background: #F0ECE6;
 }
@@ -3443,7 +3439,7 @@ h2 {
 /* ========== Common Challenges Section ========== */
 .vo-common-challenges {
     padding: 0 20px 80px;
-    background-color: #FFFCF8;
+    background-color: var(--vo-color-secondary);
 }
 
 .vo-challenges-list,
@@ -3540,7 +3536,7 @@ h2 {
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
-    background: #fff;
+    background: var(--vo-color-white);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -3619,7 +3615,7 @@ h2 {
    ================================================== */
 .vo-therapist-banner {
     position: relative;
-    background: #212121;
+    background: var(--vo-color-charcoal);
     width: 100%;
     min-height: 800px;
     overflow: hidden;
@@ -3768,7 +3764,7 @@ h2 {
     /* This section was "Meet Our Experts" in index.html, styled by .experts-section 
        There was also a "Therapist Banner" above. This is the grid of profiles. */
     .vo-experts-section {
-        background-color: #fff;
+        background-color: var(--vo-color-white);
         padding: 80px 150px;
         position: relative;
     }
@@ -3911,16 +3907,16 @@ h2 {
         font-family: var(--vo-font-body);
         font-size: 16px;
         font-weight: 500;
-        color: #212121;
+        color: var(--vo-color-charcoal);
         text-decoration: none;
-        border: 2px solid #212121;
+        border: 2px solid var(--vo-color-charcoal);
         border-radius: 30px;
         padding: 12px 30px;
         transition: all 0.3s ease;
     }
 
     .vo-btn-learn:hover {
-        background: #212121;
+        background: var(--vo-color-charcoal);
         color: white;
     }
 
@@ -3953,7 +3949,7 @@ h2 {
    ========================================= */
     .vo-comparison-section {
         padding: 80px 20px;
-        background: #fff;
+        background: var(--vo-color-white);
         text-align: center;
     }
 
@@ -3974,7 +3970,7 @@ h2 {
         flex: 1;
         min-width: 300px;
         max-width: 360px;
-        background: #fff;
+        background: var(--vo-color-white);
         border: 1px solid #E0E0E0;
         border-radius: 20px;
         padding: 30px;
@@ -3984,7 +3980,7 @@ h2 {
 
     .vo-comp-card.featured {
         border: 2px solid var(--vo-color-primary);
-        /* #F57F17 */
+        /* var(--vo-color-primary) */
         transform: scale(1.05);
         box-shadow: 0 10px 30px rgba(245, 127, 23, 0.15);
         position: relative;
@@ -4143,7 +4139,7 @@ h2 {
    11. Partners & Therapists (Dark Section)
    ========================================= */
     .vo-partners-section {
-        background-color: #212121;
+        background-color: var(--vo-color-charcoal);
         padding: 100px 0;
         color: white;
         position: relative;
@@ -4232,7 +4228,7 @@ h2 {
     }
 
     .vo-therapist-card {
-        background: #FFFFFF;
+        background: var(--vo-color-white);
         border: 3px solid #3A7F56;
         border-radius: 16px;
         padding: 20px 15px;
@@ -4278,7 +4274,7 @@ h2 {
 }
 
 .vo-therapist-tags {
-    background: #fff;
+    background: var(--vo-color-white);
     border: 0.5px solid rgba(0, 0, 0, 0.5);
     border-radius: 6px;
     padding: 8px 10px;
@@ -4293,7 +4289,7 @@ h2 {
     display: block;
     width: 100%;
     padding: 8px 0;
-    background: #F57F17;
+    background: var(--vo-color-primary);
     /* Orange from reference image */
     color: white;
     text-align: center;
@@ -4326,7 +4322,7 @@ h2 {
 .vo-blogs-section {
     padding: 80px 20px;
     text-align: center;
-    background: #fff;
+    background: var(--vo-color-white);
 }
 
 .vo-blogs-grid {
@@ -4338,7 +4334,7 @@ h2 {
 }
 
 .vo-blog-card {
-    background: #fff;
+    background: var(--vo-color-white);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -4359,7 +4355,7 @@ h2 {
 .vo-blog-tag {
     display: inline-block;
     background: var(--vo-color-primary);
-    color: #fff;
+    color: var(--vo-color-white);
     padding: 5px 10px;
     border-radius: 20px;
     font-size: 12px;
@@ -4393,7 +4389,7 @@ h2 {
 }
 
 .vo-faq-item {
-    background: #fff;
+    background: var(--vo-color-white);
     border-radius: 10px;
     margin-bottom: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -4478,7 +4474,7 @@ h2 {
    ========================================= */
 .vo-comparison-section {
     padding: 100px 5%;
-    background-color: #FAFAFA;
+    background-color: var(--vo-color-secondary);
 }
 
 .vo-comparison-header {
@@ -4513,7 +4509,7 @@ h2 {
     background: #111;
     border-radius: 20px;
     padding: 40px 30px;
-    color: #fff;
+    color: var(--vo-color-white);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -4539,7 +4535,7 @@ h2 {
     font-weight: 700;
     font-style: italic;
     margin-bottom: 5px;
-    color: #fff;
+    color: var(--vo-color-white);
 }
 
 .vo-comp-role {
@@ -4585,7 +4581,7 @@ h2 {
 }
 
 .vo-comp-features li span {
-    color: #F57F17;
+    color: var(--vo-color-primary);
     font-weight: bold;
 }
 
@@ -4606,21 +4602,21 @@ h2 {
 }
 
 .vo-btn-comp.orange {
-    background: #F57F17;
-    color: #fff;
+    background: var(--vo-color-primary);
+    color: var(--vo-color-white);
 }
 
 .vo-btn-comp.white {
-    background: #fff;
+    background: var(--vo-color-white);
     color: #1B4D3E;
 }
 
 /* Force User Preference for Partners Title */
 .vo-partners-title {
-    font-family: 'Lora', serif !important;
+    font-family: var(--vo-font-heading) !important;
     font-style: italic !important;
     font-weight: 700 !important;
-    color: #FFFFFF !important;
+    color: var(--vo-color-white) !important;
 }
 
 @media (max-width: 1024px) {
@@ -4655,7 +4651,7 @@ h2 {
    16. Caring & Expert Members (Exact Match)
    ========================================= */
 .vo-experts-section {
-    background-color: #fff;
+    background-color: var(--vo-color-white);
     padding: 80px 150px;
     position: relative;
 }
@@ -4680,7 +4676,7 @@ h2 {
    ================================================== */
 .venting-banner-figma {
     position: relative;
-    background: #212121;
+    background: var(--vo-color-charcoal);
     width: 100%;
     min-height: 800px;
     /* Match homepage exact height */
@@ -4727,7 +4723,7 @@ h2 {
     font-size: 56px;
     line-height: 1.2;
     letter-spacing: -0.5px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     margin-bottom: 24px;
     /* Reduced margin */
 }
@@ -4739,7 +4735,7 @@ h2 {
     font-size: 20px;
     line-height: 1.5;
     letter-spacing: -0.5px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     margin-bottom: 24px;
     /* Reduced from 50px */
 }
@@ -4749,10 +4745,10 @@ h2 {
     align-items: center;
     justify-content: center;
     padding: 16px 40px;
-    background: #F57F17;
-    border: 1px solid #FFFFFF;
+    background: var(--vo-color-primary);
+    border: 1px solid var(--vo-color-white);
     border-radius: 10px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     text-decoration: none;
     font-family: var(--font-body);
     font-weight: 500;
@@ -4762,8 +4758,8 @@ h2 {
 
 .btn-venting-banner:hover {
     background: #FFF;
-    color: #F57F17;
-    border-color: #F57F17;
+    color: var(--vo-color-primary);
+    border-color: var(--vo-color-primary);
 }
 
 /* Graphics Layer (Right) */

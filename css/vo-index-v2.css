@@ -100,7 +100,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
-    max-width: 1400px;
+    max-width: 1240px;
     margin: 0 auto;
     padding: 0 40px;
     width: 100%;
@@ -119,7 +119,7 @@
     font-family: var(--vo-font-heading);
     font-size: 64px;
     margin-bottom: 0;
-    color: #000;
+    color: var(--vo-color-black);
     font-weight: 700;
 }
 
@@ -141,7 +141,7 @@
 }
 
 .hero-stat-block-new {
-    background-color: #9E9E9E;
+    background-color: var(--vo-color-gray-400);
     border-radius: 24px;
     padding: 28px 32px;
     display: flex;
@@ -377,7 +377,7 @@
 }
 
 .vo-help-container {
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
     padding: 0 24px;
 }
@@ -506,13 +506,13 @@
 
     /* Partners & Therapists Section Mobile Override */
     .partners-section {
-        background-color: #212121 !important;
+        background-color: var(--vo-color-charcoal) !important;
         /* Dark background from image */
         padding: 60px 20px !important;
     }
 
     .partners-title {
-        color: #FFFFFF !important;
+        color: var(--vo-color-white) !important;
         text-align: center;
         font-size: 32px !important;
         margin-bottom: 20px !important;
@@ -540,7 +540,7 @@
 
     /* Therapist Card Styling to Match Image 2 */
     .therapist-card {
-        background: #FFFFFF !important;
+        background: var(--vo-color-white) !important;
         border: 2px solid #3A7F56 !important;
         /* Green border/shadow hint */
         border-radius: 20px !important;
@@ -597,7 +597,7 @@
 
     .therapist-booking-btn {
         width: 100% !important;
-        background-color: #F57F17 !important;
+        background-color: var(--vo-color-primary) !important;
         /* Orange button */
         color: #fff !important;
         font-weight: 700 !important;
@@ -682,7 +682,7 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
-    color: #212121;
+    color: var(--vo-color-charcoal);
 }
 
 .vo-quiz-text {
@@ -736,17 +736,17 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
 }
 
 .vo-stat-card {
-    background-color: #212121;
+    background-color: var(--vo-color-charcoal);
     /* Dark card background */
     border-radius: 20px;
     padding: 40px 20px;
     text-align: center;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -763,7 +763,7 @@
 .vo-stat-icon {
     width: 140px;
     height: 140px;
-    background-color: #FFFDF7;
+    background-color: var(--vo-color-secondary);
     /* Off-white circle placeholder */
     border-radius: 50%;
     margin: 0 auto 30px;
@@ -784,7 +784,7 @@
     font-family: var(--vo-font-body);
     font-size: 36px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     margin-bottom: 15px;
 }
 
@@ -792,7 +792,7 @@
     font-family: var(--vo-font-heading);
     font-weight: 700;
     font-size: 20px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     margin-bottom: 15px;
     line-height: 1.2;
 }
@@ -929,7 +929,7 @@
     /* Match internal radius roughly */
     overflow: hidden;
     position: relative;
-    background: #000;
+    background: var(--vo-color-black);
     z-index: 20;
     /* High z-index for iframe interaction */
     pointer-events: auto;
@@ -1001,7 +1001,7 @@
 /* Video Card Styling */
 .vo-testimonial-card.vo-video-card {
     padding: 0;
-    background: #000;
+    background: var(--vo-color-black);
 }
 
 .vo-video-container {
@@ -1061,7 +1061,7 @@
 /* Video Card Styling */
 .vo-testimonial-card.vo-video-card {
     padding: 0;
-    background: #000;
+    background: var(--vo-color-black);
 }
 
 .vo-video-container {
@@ -1207,7 +1207,7 @@
 }
 
 .vo-comp-wrapper {
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
 }
 
@@ -1233,7 +1233,7 @@
 
 .vo-comp-card.featured {
     border: 2px solid var(--vo-color-primary);
-    /* #F57F17 */
+    /* var(--vo-color-primary) */
     transform: scale(1.05);
     box-shadow: 0 10px 30px rgba(245, 127, 23, 0.15);
     position: relative;
@@ -1332,7 +1332,7 @@
 
 .vo-scroll-slider-wrapper {
     width: 100%;
-    max-width: 1050px;
+    max-width: 1240px;
     margin: 0 auto;
     padding: 0 20px 100px;
     position: relative;
@@ -1637,41 +1637,62 @@ h2,
 /* =========================================
    6. Real Experts Section (Slideshow)
    ========================================= */
+/* =========================================
+   6. Real Experts Section (Slideshow)
+   ========================================= */
 .vo-therapist-banner {
     position: relative;
-    background: #212121;
+    background: var(--vo-color-secondary-light);
+    /* Cream Background */
     width: 100%;
-    min-height: 800px;
+    padding: 80px 0;
     overflow: hidden;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+}
+
+.vo-figma-title {
+    font-family: var(--vo-font-heading);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.2;
+    margin-bottom: 60px;
+    color: var(--vo-color-black);
+    /* Black Title */
+    text-align: center;
+    max-width: 800px;
 }
 
 .vo-figma-container {
     position: relative;
-    width: 1440px;
-    max-width: 100%;
-    height: 100%;
+    width: 100%;
+    max-width: 1240px;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    /* Center content */
     padding: 0 20px;
+    gap: 60px;
 }
 
 .vo-graphics-wrapper {
     position: relative;
-    width: 800px;
-    height: 800px;
-    flex: 1 1 50%;
-    min-width: 400px;
+    width: 500px;
+    height: 500px;
+    flex: 0 0 auto;
+    /* Removed min-width to prevent overflow */
 }
 
+/* Maintain slideshow structure */
 .vo-image-frame {
     position: absolute;
-    width: 766px;
-    height: 650px;
-    left: 0px;
-    top: 100px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
     z-index: 2;
     overflow: visible;
 }
@@ -1681,6 +1702,9 @@ h2,
     height: 100%;
     position: relative;
     overflow: hidden;
+    border-radius: 40px 40px 40px 180px;
+    /* Approximate Blob Shape from image */
+    /* Shadow removed as per user request */
 }
 
 .vo-blob-slide {
@@ -1699,51 +1723,31 @@ h2,
     opacity: 1;
 }
 
-
-
-.vo-blob-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1.5s ease;
-}
-
-.vo-blob-slide.active {
-    opacity: 1;
-}
-
+/* Black Card Styling */
 .vo-content-wrapper {
-    flex: 1 1 40%;
-    padding: 20px;
+    flex: 1 1 600px;
+    background: var(--vo-color-charcoal);
+    border-radius: 30px;
+    padding: 40px 50px;
     color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     z-index: 3;
-    max-width: 600px;
-}
-
-.vo-figma-title {
-    font-family: var(--vo-font-heading);
-    font-style: italic;
-    font-weight: 400;
-    font-size: 48px;
-    line-height: 1.1;
-    margin-bottom: 30px;
-    color: #FFFFFF;
+    max-width: 750px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .vo-figma-description {
     font-family: var(--vo-font-body);
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 40px;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.vo-figma-description p {
+    margin-bottom: 20px;
 }
 
 .vo-figma-description ul {
@@ -1756,11 +1760,13 @@ h2,
     margin-bottom: 12px;
     padding-left: 20px;
     position: relative;
+    font-size: 15px;
 }
 
 .vo-figma-description li::before {
     content: "•";
-    color: var(--vo-color-primary);
+    color: #fff;
+    /* White bullets */
     position: absolute;
     left: 0;
     font-weight: bold;
@@ -1768,9 +1774,12 @@ h2,
 
 .vo-figma-footer {
     font-family: var(--vo-font-heading);
-    font-size: 24px;
+    font-size: 20px;
     font-style: italic;
+    font-weight: 400;
+    /* Standard Lora Italic */
     color: var(--vo-color-primary);
+    /* Orange Text */
 }
 
 @media (max-width: 768px) {
@@ -1825,7 +1834,7 @@ h2,
     }
 
     .vo-swipe-card .vo-expert-rating .star {
-        color: #F57F17;
+        color: var(--vo-color-primary);
         font-size: 14px;
         margin-bottom: 2px;
     }
@@ -1895,6 +1904,38 @@ h2,
     }
 }
 
+@media (max-width: 768px) {
+    .vo-therapist-banner {
+        padding: 60px 0;
+    }
+
+    .vo-figma-title {
+        font-size: 32px;
+        margin-bottom: 40px;
+        padding: 0 20px;
+    }
+
+    .vo-figma-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .vo-graphics-wrapper {
+        width: 100%;
+        height: 300px;
+        /* Scaled down blob */
+        max-width: 350px;
+        /* Constraint */
+    }
+
+    .vo-content-wrapper {
+        width: 100%;
+        flex: auto;
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+}
+
 .vo-feature-card-title {
     font-family: var(--vo-font-heading);
     font-size: 40px;
@@ -1947,7 +1988,7 @@ h2,
    11. Partners & Therapists (Dark Section)
    ========================================= */
 .vo-partners-section {
-    background-color: #212121;
+    background-color: var(--vo-color-charcoal);
     padding: 100px 0;
     color: white;
     position: relative;
@@ -1955,7 +1996,7 @@ h2,
 }
 
 .vo-partners-container {
-    max-width: 1100px;
+    max-width: 1240px;
     margin: 0 auto;
     display: flex;
     /* Title left, Logos right */
@@ -2024,7 +2065,7 @@ h2,
 
 /* Therapists Loop (Reverse) */
 .vo-therapists-wrapper {
-    max-width: 1100px;
+    max-width: 1240px;
     margin: 60px auto 0;
     padding: 0 40px;
     overflow: hidden;
@@ -2043,7 +2084,7 @@ h2,
 }
 
 .vo-therapist-card {
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     border: 3px solid #3A7F56;
     border-radius: 16px;
     padding: 20px 15px;
@@ -2079,7 +2120,7 @@ h2,
     font-family: var(--vo-font-heading);
     font-size: 18px;
     font-weight: 700;
-    color: #000;
+    color: var(--vo-color-black);
     margin: 0;
 }
 
@@ -2108,7 +2149,7 @@ h2,
     display: block;
     width: 100%;
     padding: 8px 0;
-    background: #F57F17;
+    background: var(--vo-color-primary);
     /* Orange from reference image */
     color: white;
     text-align: center;
@@ -2148,7 +2189,7 @@ h2,
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 40px auto 0;
 }
 
@@ -2261,13 +2302,13 @@ h2,
     grid-template-columns: repeat(4, 1fr);
     /* 4 cols */
     gap: 30px;
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 40px auto 60px;
 }
 
 .vo-spec-card {
     background: var(--vo-color-bg-light);
-    border: 0.25px solid #000;
+    border: 0.25px solid var(--vo-color-black);
     border-radius: 20px;
     box-shadow: var(--vo-shadow-light);
     height: 300px;
@@ -2277,7 +2318,7 @@ h2,
     width: 202px;
     height: 224px;
     margin: 20px auto;
-    border: 0.25px solid #000;
+    border: 0.25px solid var(--vo-color-black);
     border-radius: 20px;
     background-size: cover;
     background-position: center;
@@ -2288,7 +2329,7 @@ h2,
     font-weight: 600;
     font-size: 16px;
     color: var(--vo-color-dark-gray);
-    border: 0.25px solid #000;
+    border: 0.25px solid var(--vo-color-black);
     padding: 10px;
     display: inline-block;
     background: #fff;
@@ -2301,7 +2342,7 @@ h2,
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
-    max-width: 1000px;
+    max-width: 1240px;
     margin: 0 auto;
 }
 
@@ -2334,6 +2375,7 @@ h2,
 /* =========================================
    15. Global Scroll Animations (Migrated)
    ========================================= */
+/* Animations disabled by user request
 .vo-reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -2346,21 +2388,25 @@ h2,
     transform: translateY(0);
 }
 
-/* Staggered delays for children if needed */
-.vo-reveal-stagger>* {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+.vo-reveal-stagger > * {
+   opacity: 0;
+   transform: translateY(20px); 
+   transition: all 0.5s ease;
 }
+*/
+/* orphaned styles removed */
 
-.vo-reveal-stagger.active>* {
+/* 
+.vo-reveal-stagger.active > * {
     opacity: 1;
     transform: translateY(0);
 }
 
-.vo-reveal-stagger.active>*:nth-child(1) {
-    transition-delay: 0.1s;
-}
+.vo-reveal-stagger.active > *:nth-child(1) { transition-delay: 0.1s; }
+.vo-reveal-stagger.active > *:nth-child(2) { transition-delay: 0.2s; }
+.vo-reveal-stagger.active > *:nth-child(3) { transition-delay: 0.3s; }
+.vo-reveal-stagger.active > *:nth-child(4) { transition-delay: 0.4s; }
+*/
 
 .vo-reveal-stagger.active>*:nth-child(2) {
     transition-delay: 0.2s;
@@ -2409,7 +2455,7 @@ h2,
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
     align-items: center;
 }
@@ -2490,7 +2536,7 @@ h2,
 }
 
 .vo-comp-features li span {
-    color: #F57F17;
+    color: var(--vo-color-primary);
     font-weight: bold;
 }
 
@@ -2511,7 +2557,7 @@ h2,
 }
 
 .vo-btn-comp.orange {
-    background: #F57F17;
+    background: var(--vo-color-primary);
     color: #fff;
 }
 
@@ -2525,7 +2571,7 @@ h2,
     font-family: 'Lora', serif !important;
     font-style: italic !important;
     font-weight: 700 !important;
-    color: #FFFFFF !important;
+    color: var(--vo-color-white) !important;
 }
 
 @media (max-width: 1024px) {
@@ -2640,12 +2686,12 @@ h2,
     grid-template-columns: repeat(5, 220px);
     gap: 20px;
     justify-content: center;
-    max-width: 1180px;
+    max-width: 1240px;
     margin: 0 auto 60px;
 }
 
 .vo-step-card {
-    background: #212121;
+    background: var(--vo-color-charcoal);
     /* Ensure dark bg */
     border-radius: 20px;
     padding: 30px 20px;
@@ -2699,7 +2745,7 @@ h2,
     grid-template-columns: repeat(3, 1fr);
     gap: 16px 40px;
     /* Matches main.css */
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
     text-align: left;
     /* Alignment from main.css */
@@ -2765,7 +2811,7 @@ h2,
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     background: transparent;
     border: none;
     cursor: pointer;
@@ -2780,7 +2826,7 @@ h2,
     left: 24px;
     right: 24px;
     height: 2px;
-    background: #212121;
+    background: var(--vo-color-charcoal);
     border-radius: 4px;
 }
 
@@ -2836,7 +2882,7 @@ h2 {
 
 /* --- Partners & Therapists (User Provided) --- */
 .partners-section {
-    background-color: #212121;
+    background-color: var(--vo-color-charcoal);
     /* Dark background from Figma */
     padding: 100px 0;
     color: white;
@@ -2859,7 +2905,7 @@ h2 {
     line-height: 1.1;
     font-weight: 700;
     font-style: italic;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     max-width: 500px;
     flex-shrink: 0;
 }
@@ -2927,7 +2973,7 @@ h2 {
 }
 
 .therapist-card {
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     border: 3px solid #3A7F56;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 16px;
@@ -2979,7 +3025,7 @@ h2 {
     font-weight: 700;
     font-size: 18px;
     line-height: 1.2;
-    color: #000000;
+    color: var(--vo-color-black)000;
     text-transform: uppercase;
 }
 
@@ -2994,7 +3040,7 @@ h2 {
 /* Specialization Box */
 .therapist-specialization {
     box-sizing: border-box;
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     border: 0.5px solid rgba(0, 0, 0, 0.5);
     border-radius: 6px;
     padding: 8px 10px;
@@ -3010,7 +3056,7 @@ h2 {
 
 .therapist-specialization strong {
     font-weight: 700;
-    color: #212121;
+    color: var(--vo-color-charcoal);
 }
 
 /* Button */
@@ -3021,8 +3067,8 @@ h2 {
     padding: 8px 16px;
     width: 100%;
     max-width: 480px;
-    background: #F57F17;
-    border: 1px solid #FFFFFF;
+    background: var(--vo-color-primary);
+    border: 1px solid var(--vo-color-white);
     border-radius: 6px;
     font-family: var(--vo-font-body);
     font-weight: 700;
@@ -3030,7 +3076,7 @@ h2 {
     line-height: 1.4;
     text-align: center;
     letter-spacing: 0.5px;
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     text-decoration: none;
     transition: all 0.2s;
 }
@@ -3054,7 +3100,7 @@ h2 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 60px auto 0;
 }
 
@@ -3234,7 +3280,7 @@ h2 {
 
     .vo-arrow-btn:active {
         transform: scale(0.9);
-        background: #F57F17;
+        background: var(--vo-color-primary);
         color: white;
     }
 
@@ -3268,7 +3314,7 @@ h2 {
         display: flex;
         flex-direction: column;
         position: relative;
-        background: #000;
+        background: var(--vo-color-black);
         /* Default Black */
 
         /* Default State: Smaller but FULLY VISIBLE */
@@ -3288,7 +3334,7 @@ h2 {
 
     /* 1. Venting Card - Black */
     .vo-comp-card:nth-child(1) {
-        background: #000000 !important;
+        background: var(--vo-color-black)000 !important;
     }
 
     /* 2. Coaching Card (Featured) - Green */
@@ -3298,7 +3344,7 @@ h2 {
 
     /* 3. Therapy Card - Black */
     .vo-comp-card:last-child {
-        background: #000000 !important;
+        background: var(--vo-color-black)000 !important;
     }
 
     /* Typography Override for "Inside Content Styling" */
@@ -3339,7 +3385,7 @@ h2 {
     }
 
     .vo-comp-features li span {
-        color: #F57F17 !important;
+        color: var(--vo-color-primary) !important;
         /* Orange Checks */
         font-weight: 800;
         font-size: 18px;
@@ -3360,7 +3406,7 @@ h2 {
     /* Venting & Therapy Button: Orange */
     .vo-comp-card:nth-child(1) .vo-btn-comp,
     .vo-comp-card:last-child .vo-btn-comp {
-        background: #F57F17 !important;
+        background: var(--vo-color-primary) !important;
         color: white !important;
     }
 
@@ -3386,7 +3432,7 @@ h2 {
     }
 
     .vo-how-title {
-        color: #212121 !important;
+        color: var(--vo-color-charcoal) !important;
         font-family: var(--vo-font-heading);
         font-size: 28px !important;
         font-style: italic;
@@ -3413,7 +3459,7 @@ h2 {
         bottom: 0;
         left: 50%;
         width: 2px;
-        background: #212121;
+        background: var(--vo-color-charcoal);
         /* Dark Line */
         transform: translateX(-50%);
         z-index: 0;
@@ -3449,9 +3495,9 @@ h2 {
         font-weight: 600;
         font-size: 11px !important;
         letter-spacing: 0px;
-        background: #212121 !important;
+        background: var(--vo-color-charcoal) !important;
         /* Dark Badge */
-        color: #FFFFFF !important;
+        color: var(--vo-color-white) !important;
         /* White Text */
         padding: 5px 12px !important;
         border-radius: 3px !important;
@@ -3469,7 +3515,7 @@ h2 {
         font-family: var(--vo-font-body) !important;
         font-size: 10px !important;
         line-height: 1.4 !important;
-        color: #212121 !important;
+        color: var(--vo-color-charcoal) !important;
         /* Dark Text */
         text-shadow: none !important;
         letter-spacing: normal !important;
@@ -3513,7 +3559,7 @@ h2 {
         /* Align near top of badge */
         width: 10px;
         height: 10px;
-        background: #212121;
+        background: var(--vo-color-charcoal);
         /* Dark Dot */
         border: none;
         border-radius: 50%;
@@ -3893,7 +3939,7 @@ h2 {
 }
 
 .vo-bubble-arrow:hover {
-    background: #F57F17;
+    background: var(--vo-color-primary);
     color: white;
     transform: translateY(-50%) scale(1.15);
     /* More pop */
@@ -4099,7 +4145,7 @@ h2 {
     }
 
     .vo-stat-card {
-        background: #212121 !important;
+        background: var(--vo-color-charcoal) !important;
         border-radius: 20px !important;
         padding: 15px 8px 12px !important;
         display: flex !important;
@@ -4150,7 +4196,7 @@ h2 {
         font-family: var(--vo-font-body) !important;
         font-size: 8px !important;
         font-weight: 600 !important;
-        color: #212121 !important;
+        color: var(--vo-color-charcoal) !important;
     }
 
     .vo-stat-number {
@@ -4222,7 +4268,7 @@ h2 {
         aspect-ratio: 1 / 1 !important;
         border-radius: 50% !important;
         overflow: hidden !important;
-        border: 4px solid #F57F17 !important;
+        border: 4px solid var(--vo-color-primary) !important;
     }
 
     .vo-banner-slideshow-inner,
@@ -4290,13 +4336,13 @@ h2 {
         font-family: var(--vo-font-heading) !important;
         font-size: 16px !important;
         font-style: italic !important;
-        color: #F57F17 !important;
+        color: var(--vo-color-primary) !important;
         margin-top: 20px !important;
     }
 
     .btn-venting-banner {
         display: inline-block !important;
-        background: #F57F17 !important;
+        background: var(--vo-color-primary) !important;
         color: white !important;
         padding: 12px 30px !important;
         border-radius: 50px !important;
@@ -4326,8 +4372,8 @@ h2 {
         content: '';
         width: 10px;
         height: 10px;
-        border-right: 2.5px solid #212121;
-        border-bottom: 2.5px solid #212121;
+        border-right: 2.5px solid var(--vo-color-charcoal);
+        border-bottom: 2.5px solid var(--vo-color-charcoal);
         transform: rotate(-45deg);
         margin-left: -3px;
     }
@@ -4341,13 +4387,13 @@ h2 {
     /* Hover/Active: Solid dark circle with white chevron */
     .vo-bubble-arrow:hover,
     .vo-bubble-arrow:active {
-        background: #212121 !important;
-        border-color: #212121 !important;
+        background: var(--vo-color-charcoal) !important;
+        border-color: var(--vo-color-charcoal) !important;
     }
 
     .vo-bubble-arrow:hover::before,
     .vo-bubble-arrow:active::before {
-        border-color: #FFFFFF;
+        border-color: var(--vo-color-white);
     }
 
     /* --- 2. Comparison Section: Solid Dark Triangle Arrows --- */
@@ -4366,14 +4412,14 @@ h2 {
     .vo-comp-arrows .vo-arrow-btn.next {
         border-top: 12px solid transparent !important;
         border-bottom: 12px solid transparent !important;
-        border-left: 16px solid #212121 !important;
+        border-left: 16px solid var(--vo-color-charcoal) !important;
     }
 
     /* Prev Arrow (Left Triangle) */
     .vo-comp-arrows .vo-arrow-btn.prev {
         border-top: 12px solid transparent !important;
         border-bottom: 12px solid transparent !important;
-        border-right: 16px solid #212121 !important;
+        border-right: 16px solid var(--vo-color-charcoal) !important;
     }
 }
 
@@ -4450,7 +4496,7 @@ h2 {
         width: 80px !important;
         /* Slightly smaller for mobile */
         height: 180px !important;
-        background: #F57F17 !important;
+        background: var(--vo-color-primary) !important;
         border-radius: 0 100px 100px 0 !important;
         z-index: 0 !important;
     }
@@ -4530,7 +4576,7 @@ h2 {
         font-family: var(--vo-font-heading) !important;
         font-size: 15px !important;
         font-style: italic !important;
-        color: #F57F17 !important;
+        color: var(--vo-color-primary) !important;
         margin-top: 15px !important;
     }
 
@@ -4920,7 +4966,7 @@ h2 {
 }
 
 .vo-btn-learn-more-custom:hover {
-    color: #F57F17;
+    color: var(--vo-color-primary);
 }
 
 /* --- Desktop Card Styling (Scoped to >768px to protect mobile) --- */
@@ -4977,7 +5023,7 @@ h2 {
     }
 
     .expert-rating-circle .star {
-        color: #F57F17;
+        color: var(--vo-color-primary);
         font-size: 10px;
         line-height: 1;
         margin-bottom: 2px;
@@ -4986,7 +5032,7 @@ h2 {
     .expert-rating-circle .score {
         font-size: 14px;
         font-weight: 800;
-        color: #212121;
+        color: var(--vo-color-charcoal);
         line-height: 1;
     }
 
@@ -5054,7 +5100,7 @@ h2 {
     .expert-name {
         font-family: var(--vo-font-heading);
         font-size: 22px;
-        color: #212121;
+        color: var(--vo-color-charcoal);
         margin-bottom: 2px;
         font-weight: 700;
         /* Force serif if var is wrong */
@@ -5197,7 +5243,7 @@ h2 {
 
     .vo-swipe-card .expert-rating-circle .star {
         font-size: 12px;
-        color: #F57F17;
+        color: var(--vo-color-primary);
         margin-bottom: 2px;
     }
 
@@ -5252,7 +5298,7 @@ h2 {
 @media (min-width: 769px) {
     .vo-experts-grid-layout {
         display: grid;
-        width: 1400px;
+        width: 1240px;
         /* Fixed width as requested */
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: auto auto;
@@ -5615,7 +5661,7 @@ h2 {
         font-size: 48px;
         line-height: 1.1;
         font-weight: 400;
-        color: #000;
+        color: var(--vo-color-black);
         /* "Heading will on top black" */
         font-style: italic;
     }
@@ -5656,7 +5702,7 @@ h2 {
         backface-visibility: hidden;
         border-radius: 32px;
         padding: 40px;
-        background-color: #000;
+        background-color: var(--vo-color-black);
         /* Black Card */
         color: #fff;
         display: flex;
@@ -5666,7 +5712,9 @@ h2 {
 
     /* Front Styling */
     .vo-flip-front {
-        /* Default State */
+        /* Default State - Content flows naturally */
+        position: relative;
+        /* Ensure stacking context */
     }
 
     .vo-expert-intro {
@@ -5721,7 +5769,7 @@ h2 {
         display: inline-block;
         padding: 12px 32px;
         background: #fff;
-        color: #000;
+        color: var(--vo-color-black);
         border-radius: 50px;
         text-decoration: none;
         font-weight: 700;

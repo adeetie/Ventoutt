@@ -19,8 +19,8 @@
 }
 
 .vo-header-inner {
-    background: #FFFFFF;
-    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
     /* Large pill shape */
     height: 70px;
     display: flex;
@@ -31,6 +31,7 @@
     /* Soft shadow */
     max-width: 1400px;
     margin: 0 auto;
+    backdrop-filter: blur(10px);
 }
 
 /* 1. Logo */
@@ -40,7 +41,7 @@
     /* Prominent size */
     font-weight: 400;
     /* Regular weight like Kitcy */
-    color: #000;
+    color: var(--vo-color-black);
     text-decoration: none;
     letter-spacing: -0.5px;
 }
@@ -58,7 +59,7 @@
     font-family: var(--vo-font-body);
     font-size: 14px;
     font-weight: 500;
-    color: #000;
+    color: var(--vo-color-black);
     text-transform: uppercase;
     /* Standard modern minimalist feel */
     text-decoration: none;
@@ -131,7 +132,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: 200px;
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     border-radius: 12px;
     padding: 8px 0;
     display: none;
@@ -149,7 +150,7 @@
 .vo-header__dropdown-item {
     font-family: var(--vo-font-body);
     font-size: 14px;
-    color: #000;
+    color: var(--vo-color-black);
     padding: 10px 20px;
     text-decoration: none;
     transition: background 0.2s;
@@ -177,9 +178,10 @@
     left: 0;
     width: 100%;
     height: 60px;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(255, 255, 255, 0.5);
     z-index: 1000;
     box-shadow: var(--vo-shadow-sm);
+    backdrop-filter: blur(10px);
 }
 
 .vo-mobile-header__content {
@@ -211,7 +213,7 @@
     display: block;
     width: 25px;
     height: 3px;
-    background: var(--vo-color-white);
+    background: var(--vo-color-black);
     transition: all var(--vo-transition-base);
     border-radius: 2px;
 }
@@ -236,11 +238,12 @@
     width: 80%;
     max-width: 400px;
     height: 100vh;
-    background: var(--vo-color-black);
+    background: rgba(255, 255, 255, 0.95);
     z-index: 1100;
     overflow-y: auto;
     transition: right var(--vo-transition-base);
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: -2px 0 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
 }
 
 .vo-mobile-menu.active {
@@ -252,20 +255,20 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .vo-mobile-menu__logo {
     font-family: var(--vo-font-heading);
     font-size: 24px;
     font-weight: 700;
-    color: var(--vo-color-white);
+    color: var(--vo-color-black);
 }
 
 .vo-mobile-menu__close {
     background: none;
     border: none;
-    color: var(--vo-color-white);
+    color: var(--vo-color-black);
     font-size: 32px;
     cursor: pointer;
     padding: 0;
@@ -281,7 +284,7 @@
     font-family: var(--vo-font-body);
     font-weight: 600;
     font-size: 18px;
-    color: var(--vo-color-white);
+    color: var(--vo-color-black);
     padding: 15px 0;
     cursor: pointer;
     display: flex;
@@ -318,14 +321,14 @@
 .vo-mobile-menu__sublink {
     font-family: var(--vo-font-body);
     font-size: 16px;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--vo-text-secondary);
     padding: 12px 0;
     display: block;
     text-decoration: none;
 }
 
 .vo-mobile-menu__sublink:hover {
-    color: var(--vo-color-white);
+    color: var(--vo-color-black);
 }
 
 /* Mobile Quote */

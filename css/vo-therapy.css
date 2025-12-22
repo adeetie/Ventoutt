@@ -9,7 +9,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 180px 100px 80px;
-    background: var(--bg-cream);
+    background: var(--vo-color-secondary);
     /* Updated to theme cream */
     gap: 60px;
     max-width: 1440px;
@@ -22,19 +22,19 @@
 }
 
 .hero-text-content h1 {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 64px;
     line-height: 1.1;
-    color: var(--dark-gray);
+    color: var(--vo-color-charcoal);
     margin-bottom: 24px;
     font-weight: 700;
 }
 
 .hero-text-content p {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 20px;
     line-height: 1.5;
-    color: var(--text-dark);
+    color: var(--vo-text-primary);
     margin-bottom: 40px;
     max-width: 480px;
 }
@@ -47,26 +47,27 @@
 }
 
 .btn-explore {
-    background: var(--dark-gray);
-    color: var(--white);
+    background: var(--vo-color-charcoal);
+    color: var(--vo-color-white);
     padding: 15px 30px;
     border-radius: 8px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 16px;
     font-weight: 500;
     text-decoration: none;
-    transition: transform 0.2s;
+    transition: transform 0.2s, background-color 0.2s;
     box-shadow: var(--shadow-light);
 }
 
 .btn-explore:hover {
     transform: scale(1.05);
+    background-color: var(--vo-color-black);
 }
 
 .link-discover {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
-    color: var(--text-dark);
+    color: var(--vo-text-primary);
     margin: 0;
 }
 
@@ -87,14 +88,14 @@
 }
 
 .stat-card.white-card {
-    background: var(--white);
+    background: var(--vo-color-white);
     border: 1px solid var(--border-grey);
 }
 
 .stat-card.beige-card {
-    background: var(--bg-beige);
-    /* Theme beige */
-    color: var(--dark-gray);
+    background: var(--vo-color-white);
+    /* High contrast card */
+    color: var(--vo-color-charcoal);
     border: none;
 }
 
@@ -105,11 +106,11 @@
 }
 
 .stat-number {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     /* Use heading font for numbers per typical design */
     font-size: 48px;
     font-weight: 400;
-    color: var(--dark-gray);
+    color: var(--vo-color-charcoal);
     line-height: 1;
     margin-bottom: 5px;
 }
@@ -120,9 +121,9 @@
 }
 
 .stat-label {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
-    color: #333;
+    color: var(--vo-color-charcoal);
     font-weight: 500;
     white-space: nowrap;
     /* Prevent wrapping if possible */
@@ -130,10 +131,10 @@
 
 .stat-desc {
     flex: 1;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 15px;
     line-height: 1.4;
-    color: #333;
+    color: var(--vo-color-charcoal);
 }
 
 @media (max-width: 1024px) {
@@ -164,7 +165,7 @@
 
 /* ========== Services Layout Re-architecture (Banner + Text) ========== */
 .service-nav-wrapper {
-    background-color: #9E9E9E;
+    background-color: var(--vo-color-gray-400);
     /* Match the grey header in screenshot */
     width: 100%;
 }
@@ -172,7 +173,7 @@
 .service-img-banner {
     width: 100%;
     height: 100vh;
-    background-color: #F8F4E9;
+    background-color: var(--vo-color-secondary);
     /* Beige background */
     display: flex;
     justify-content: center;
@@ -189,19 +190,19 @@
 }
 
 .service-text-content-wrapper {
-    background-color: #FFFEFA;
+    background-color: var(--vo-color-secondary);
     /* Off-white */
     padding: 80px 20px;
     text-align: center;
 }
 
 .service-hero-title-dark {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-weight: 700;
     font-style: italic;
     font-size: 56px;
     line-height: 1.1;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     /* Dark text */
     margin-bottom: 24px;
     max-width: 900px;
@@ -210,10 +211,10 @@
 }
 
 .service-hero-subtitle-dark {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 20px;
     line-height: 1.6;
-    color: #444;
+    color: var(--vo-color-gray-700);
     margin-bottom: 50px;
     max-width: 800px;
     margin-left: auto;
@@ -230,13 +231,13 @@
 
 .btn-green-download {
     display: inline-block;
-    background: #437d57;
+    background: var(--vo-color-accent-green);
     /* Green from screenshot */
-    color: #FFFFFF;
+    color: var(--vo-color-white);
     padding: 16px 40px;
     border-radius: 8px;
     /* Rounded corners but not pill */
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 600;
     font-size: 18px;
     text-decoration: none;
@@ -248,12 +249,12 @@
 
 .btn-green-download:hover {
     transform: translateY(-2px);
-    background: #366646;
+    background: var(--vo-color-accent-green-dark);
 }
 
 /* ========== Therapist/Experts Section (Migrated from services.html) ========== */
 .experts-section {
-    background-color: #fff;
+    background-color: var(--vo-color-secondary);
     padding: 80px 150px;
     position: relative;
 }
@@ -263,22 +264,22 @@
 }
 
 .experts-label {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--dark-gray);
+    color: var(--vo-color-charcoal);
     margin-bottom: 15px;
 }
 
 .experts-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     line-height: 1.2;
     font-weight: 700;
     font-style: italic;
-    color: var(--dark-gray);
+    color: var(--vo-color-charcoal);
     max-width: 400px;
 }
 
@@ -296,7 +297,7 @@
 }
 
 .expert-card {
-    background: #f0f0f0;
+    background: var(--vo-color-gray-200);
     border-radius: 20px;
     position: relative;
     height: 450px;
@@ -332,19 +333,19 @@
 }
 
 .expert-rating .star {
-    color: #FFB800;
+    color: var(--vo-color-accent-yellow);
     font-size: 14px;
 }
 
 .expert-rating .score {
     font-weight: 700;
     font-size: 18px;
-    color: #333;
+    color: var(--vo-color-charcoal);
 }
 
 .expert-rating .score-label {
     font-size: 10px;
-    color: #666;
+    color: var(--vo-text-secondary);
     text-transform: uppercase;
 }
 
@@ -365,18 +366,18 @@
 }
 
 .expert-name {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 20px;
     font-weight: 700;
-    color: #333;
+    color: var(--vo-color-charcoal);
     text-align: center;
     margin: 0;
 }
 
 .expert-title {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
-    color: #666;
+    color: var(--vo-text-secondary);
     text-align: center;
     margin-bottom: 5px;
 }
@@ -393,12 +394,12 @@
     max-height: 500px;
     opacity: 1;
     padding-top: 15px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--vo-border-light);
 }
 
 .detail-credentials {
     font-size: 12px;
-    color: #555;
+    color: var(--vo-text-secondary);
     text-align: center;
     margin-bottom: 10px;
     font-style: italic;
@@ -406,7 +407,7 @@
 
 .detail-expertise {
     font-size: 13px;
-    color: #333;
+    color: var(--vo-color-charcoal);
 }
 
 .detail-expertise strong {
@@ -425,10 +426,10 @@
 
 .detail-meta {
     font-size: 11px;
-    color: #888;
+    color: var(--vo-text-tertiary);
     text-align: center;
     margin-top: 10px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--vo-border-light);
     padding-top: 5px;
 }
 
@@ -437,10 +438,10 @@
 }
 
 .experts-description {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 16px;
     line-height: 1.7;
-    color: var(--dark-gray);
+    color: var(--vo-color-charcoal);
     margin-bottom: 30px;
 }
 
@@ -448,19 +449,19 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 16px;
     font-weight: 500;
-    color: var(--dark-gray);
+    color: var(--vo-color-charcoal);
     text-decoration: none;
-    border: 2px solid var(--dark-gray);
+    border: 2px solid var(--vo-color-charcoal);
     border-radius: 30px;
     padding: 12px 30px;
     transition: all 0.3s ease;
 }
 
 .btn-learn-more:hover {
-    background: var(--dark-gray);
+    background: var(--vo-color-charcoal);
     color: white;
 }
 
@@ -507,14 +508,14 @@
 }
 
 .how-it-works-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     font-weight: 700;
     font-style: italic;
     line-height: 66px;
     letter-spacing: -0.5px;
     text-align: center;
-    color: var(--dark-gray);
+    color: var(--vo-color-charcoal);
     margin-bottom: 60px;
 }
 
@@ -528,7 +529,7 @@
 }
 
 .step-card {
-    background: var(--dark-gray);
+    background: var(--vo-color-charcoal);
     border-radius: 20px;
     padding: 30px 20px;
     box-shadow: var(--shadow-light);
@@ -537,21 +538,21 @@
 }
 
 .step-number {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 32px;
     line-height: 42px;
     letter-spacing: -0.5px;
-    color: var(--bg-cream);
+    color: var(--vo-color-secondary);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-bottom: 14px;
 }
 
 .step-description {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 20px;
     line-height: 26px;
     letter-spacing: -0.5px;
-    color: var(--bg-cream);
+    color: var(--vo-color-secondary);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -575,7 +576,7 @@
 
 /* ========== Feature Cards Section ========== */
 .service-features {
-    background: var(--bg-cream);
+    background: var(--vo-color-secondary);
     padding: 60px 130px;
 }
 
@@ -589,7 +590,7 @@
 .feature-card-box {
     width: 220px;
     height: 250px;
-    background: #212121;
+    background: var(--vo-color-charcoal);
     border-radius: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -613,7 +614,7 @@
     width: 60px;
     height: 60px;
     fill: none;
-    stroke: #FFFDF7;
+    stroke: var(--vo-color-cream);
     stroke-width: 2;
 }
 
@@ -624,18 +625,18 @@
 }
 
 .feature-card-box .label {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 500;
     font-size: 24px;
     line-height: 31px;
-    color: #FFFDF7;
+    color: var(--vo-color-cream);
 }
 
 /* ========== Pricing Section ========== */
 .service-pricing {
     position: relative;
     padding: 80px 150px;
-    background: #FFE4AD;
+    background: var(--vo-color-secondary);
 }
 
 .pricing-bg-wave {
@@ -644,7 +645,7 @@
     left: 0;
     width: 100%;
     height: 200px;
-    background: var(--bg-cream);
+    background: var(--vo-color-secondary);
 }
 
 .pricing-bg-wave::after {
@@ -654,26 +655,26 @@
     left: 0;
     width: 100%;
     height: 100px;
-    background: #FFE4AD;
+    background: var(--vo-color-secondary);
     border-radius: 100% 100% 0 0;
 }
 
 .pricing-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-weight: 700;
     font-style: italic;
     font-size: 36px;
     line-height: 47px;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     margin-bottom: 20px;
 }
 
 .pricing-subtitle {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
-    color: #000000;
+    color: var(--vo-color-black);
     margin-bottom: 40px;
 }
 
@@ -687,7 +688,7 @@
 .pricing-table td {
     padding: 25px 20px;
     text-align: left;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 20px;
     line-height: 26px;
     letter-spacing: -0.5px;
@@ -698,25 +699,25 @@
     font-weight: 500;
     font-size: 28px;
     line-height: 36px;
-    color: #212121;
-    border-bottom: 2.5px solid #000000;
+    color: var(--vo-color-charcoal);
+    border-bottom: 2.5px solid var(--vo-color-black);
 }
 
 .pricing-table td {
     font-weight: 400;
-    color: #212121;
-    border-bottom: 1.5px solid #000000;
+    color: var(--vo-color-charcoal);
+    border-bottom: 1.5px solid var(--vo-color-black);
 }
 
 .pricing-table .plan-col {
     width: 30%;
-    border-right: 2.5px solid #000000;
+    border-right: 2.5px solid var(--vo-color-black);
 }
 
 .pricing-table .price-col {
     width: 20%;
     text-align: center;
-    border-right: 1.5px solid #000000;
+    border-right: 1.5px solid var(--vo-color-black);
 }
 
 .pricing-table .details-col {
@@ -729,25 +730,25 @@
 
 /* ========== App Offer Section ========== */
 .service-app-offer {
-    background: #FFE4AD;
+    background: var(--vo-color-secondary);
     padding: 60px 150px;
 }
 
 .app-offer-note {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
-    color: #000000;
+    color: var(--vo-color-black);
     margin-bottom: 10px;
 }
 
 .app-offer-link {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 700;
     font-size: 20px;
     line-height: 26px;
-    color: #43A047;
+    color: var(--vo-color-accent-green);
     text-decoration: none;
 }
 
@@ -756,12 +757,12 @@
 }
 
 .app-offer-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-weight: 600;
     font-style: italic;
     font-size: 36px;
     line-height: 47px;
-    color: #F57F17;
+    color: var(--vo-color-primary);
     margin: 40px 0 30px;
 }
 
@@ -772,11 +773,11 @@
 }
 
 .app-offer-list li {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
-    color: #000000;
+    color: var(--vo-color-black);
     padding-left: 25px;
     position: relative;
     margin-bottom: 15px;
@@ -789,32 +790,32 @@
     top: 10px;
     width: 5px;
     height: 5px;
-    background: #212121;
+    background: var(--vo-color-charcoal);
     border-radius: 50%;
 }
 
 /* ========== Emotional Support Section ========== */
 .service-support {
-    background: var(--bg-cream);
+    background: var(--vo-color-secondary);
     padding: 80px 150px;
 }
 
 .support-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-weight: 600;
     font-style: italic;
     font-size: 32px;
     line-height: 42px;
-    color: #000000;
+    color: var(--vo-color-black);
     margin-bottom: 30px;
 }
 
 .support-text {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
-    color: #000000;
+    color: var(--vo-color-black);
     max-width: 804px;
 }
 
@@ -916,18 +917,18 @@
 .testimonials-section {
     padding: 80px 0;
     overflow: hidden;
-    background: #FFFDF7;
+    background: var(--vo-color-cream);
 }
 
 .testimonials-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     font-weight: 700;
     font-style: italic;
     line-height: 66px;
     letter-spacing: -0.5px;
     text-align: center;
-    color: var(--dark-gray);
+    color: var(--vo-color-charcoal);
     margin-bottom: 60px;
 }
 
@@ -965,7 +966,7 @@
 .card {
     width: 366px;
     height: 500px;
-    background-color: #4E4E4E;
+    background-color: var(--vo-color-gray-600);
     /* medium-gray fallback */
     border-radius: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -1001,16 +1002,16 @@
     margin-top: auto;
     font-size: 20px;
     font-weight: 600;
-    background: #4E4E4E;
+    background: var(--vo-color-gray-600);
     color: white;
     padding: 15px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     line-height: 26px;
 }
 
 /* Text cards with different colors */
 .card.orange {
-    background-color: #F57F17;
+    background-color: var(--vo-color-primary);
     /* primary-orange */
     color: white;
     padding: 0;
@@ -1021,21 +1022,21 @@
 }
 
 .card.orange.yellow {
-    background-color: #FFD54F;
+    background-color: var(--vo-color-accent-yellow);
     /* accent-yellow */
-    color: #212121;
+    color: var(--vo-color-charcoal);
 }
 
 .card.orange.green {
-    background-color: #43A047;
+    background-color: var(--vo-color-accent-green);
     /* accent-green-light */
     color: #fff;
 }
 
 .card.orange.beige {
-    background-color: #F4EDE4;
+    background-color: var(--vo-color-secondary);
     /* bg-beige */
-    color: #212121;
+    color: var(--vo-color-charcoal);
 }
 
 .card.orange .name {
@@ -1044,7 +1045,7 @@
     padding: 0 33px;
     font-size: 20px;
     line-height: 26px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
 }
 
 .card .name img {
@@ -1062,7 +1063,7 @@
     line-height: 21px;
     margin: 0;
     padding: 0 35px 35px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
 }
 
 /* Responsive adjustments */
@@ -1084,7 +1085,7 @@
 /* ========== Detailed Services Section ========== */
 .detailed-services-section {
     padding: 100px 100px;
-    background: #FFFDF7;
+    background: var(--vo-color-cream);
     /* Cream background */
     display: flex;
     flex-direction: column;
@@ -1109,17 +1110,17 @@
 }
 
 .service-detail-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 40px;
     font-weight: 700;
     font-style: italic;
     line-height: 1.2;
-    color: var(--dark-gray);
+    color: var(--vo-color-charcoal);
     margin-bottom: 24px;
 }
 
 .service-detail-desc {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 18px;
     line-height: 1.6;
     color: var(--text-muted);
@@ -1133,10 +1134,10 @@
 }
 
 .service-detail-list li {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 16px;
     line-height: 1.5;
-    color: var(--dark-gray);
+    color: var(--vo-color-charcoal);
     margin-bottom: 12px;
     position: relative;
     padding-left: 24px;
@@ -1220,7 +1221,7 @@
 }
 
 .detailed-services-eyebrow {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -1231,12 +1232,12 @@
 }
 
 .detailed-services-main-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     font-weight: 700;
     font-style: italic;
     line-height: 1.2;
-    color: var(--dark-gray);
+    color: var(--vo-color-charcoal);
     margin-bottom: 40px;
 }
 
@@ -1254,7 +1255,7 @@
     /* Light Blue */
     color: #1565C0;
     /* Dark Blue */
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
@@ -1270,12 +1271,12 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 14px;
     font-weight: 600;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     text-decoration: none;
-    border: 1px solid #212121;
+    border: 1px solid var(--vo-color-charcoal);
     border-radius: 8px;
     padding: 10px 20px;
     width: 100%;
@@ -1284,8 +1285,8 @@
 }
 
 .btn-external-profile:hover {
-    background-color: #212121;
-    color: #FFFFFF;
+    background-color: var(--vo-color-charcoal);
+    color: var(--vo-color-white);
 }
 
 /* Interim Solution Block */
@@ -1308,7 +1309,7 @@
 }
 
 .interim-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 28px;
     font-weight: 600;
     font-style: italic;
@@ -1318,7 +1319,7 @@
 }
 
 .interim-text {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 16px;
     color: #166534;
     /* Medium Green */
@@ -1341,9 +1342,9 @@
 }
 
 .directory-disclaimer {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 12px;
-    color: #666;
+    color: var(--vo-text-secondary);
     text-align: center;
     margin-top: 20px;
     font-style: italic;
@@ -1365,7 +1366,7 @@
 
 /* ========== Why People Love Ventoutt - Scroll Section (Native Sticky) ========== */
 .why-love-scroll-section {
-    background: #FFFDF7;
+    background: var(--vo-color-cream);
     height: 150vh;
     /* Reduced to 150vh to extremely minimize whitespace */
     position: relative;
@@ -1408,10 +1409,10 @@
 }
 
 .why-love-main-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 48px;
     line-height: 1.15;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     margin-bottom: 50px;
     font-weight: 700;
     font-style: italic;
@@ -1474,18 +1475,18 @@ html {
 }
 
 .why-love-point-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-size: 22px;
     font-weight: 700;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     margin-bottom: 12px;
 }
 
 .why-love-point-desc {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 17px;
     line-height: 1.6;
-    color: #555;
+    color: var(--vo-text-secondary);
     margin: 0;
 }
 
@@ -1597,7 +1598,7 @@ html {
     align-items: center;
     padding: 14px 24px;
     border-radius: 8px;
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -1619,8 +1620,8 @@ html {
 
 /* Ensure Orange Button style (Chatbot) - Matches branding */
 .banner-cta-stack .btn-venting-banner {
-    background: var(--primary-orange, #F57F17);
-    /* Fallback #F57F17 */
+    background: var(--primary-orange, var(--vo-color-primary));
+    /* Fallback var(--vo-color-primary) */
     color: white;
     border: 1px solid transparent;
 }
@@ -1720,7 +1721,7 @@ html {
    WHY PEOPLE LOVE VENTOUTT SECTION (SCROLL-TRIGGERED)
    ================================================== */
 .why-love-section {
-    background: #FFFDF7;
+    background: var(--vo-color-cream);
     min-height: 400vh;
     /* Tall section for scrolling */
     position: relative;
@@ -1744,12 +1745,12 @@ html {
 }
 
 .why-love-title {
-    font-family: var(--font-heading);
+    font-family: var(--vo-font-heading);
     font-style: italic;
     font-weight: 700;
     font-size: 56px;
     line-height: 1.2;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     margin-bottom: 60px;
 }
 
@@ -1809,15 +1810,15 @@ html {
     font-weight: 500;
     font-size: 28px;
     line-height: 1.3;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     margin-bottom: 16px;
 }
 
 .why-love-description {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 18px;
     line-height: 1.6;
-    color: #666;
+    color: var(--vo-text-secondary);
     max-width: 500px;
 }
 
@@ -1872,7 +1873,7 @@ html {
    VETTING PROCESS SECTION (REDESIGNED)
    ================================================== */
 .vetting-redesign-section {
-    background: #FFFDF7;
+    background: var(--vo-color-cream);
     padding: 100px 150px;
 }
 
@@ -1893,12 +1894,12 @@ html {
 }
 
 .vetting-eyebrow {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #666;
+    color: var(--vo-text-secondary);
     display: block;
     margin-bottom: 16px;
 }
@@ -1909,20 +1910,20 @@ html {
     font-weight: 700;
     font-size: 48px;
     line-height: 1.2;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     margin: 0;
 }
 
 .vetting-learn-btn {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 16px;
-    color: #212121;
+    color: var(--vo-color-charcoal);
     text-decoration: underline;
     transition: color 0.3s ease;
 }
 
 .vetting-learn-btn:hover {
-    color: #F57F17;
+    color: var(--vo-color-primary);
 }
 
 /* Timeline */
@@ -1952,11 +1953,11 @@ html {
 }
 
 .vetting-dot.green {
-    background: #43A047;
+    background: var(--vo-color-accent-green);
 }
 
 .vetting-dot.orange {
-    background: #F57F17;
+    background: var(--vo-color-primary);
 }
 
 .vetting-dot:nth-child(2) {
@@ -1981,7 +1982,7 @@ html {
 }
 
 .vetting-card {
-    background: #FFFFFF;
+    background: var(--vo-color-white);
     border-radius: 12px;
     padding: 40px 30px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -1994,18 +1995,18 @@ html {
 }
 
 .vetting-card-number {
-    font-family: var(--font-body);
+    font-family: var(--vo-font-body);
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 20px;
 }
 
 .vetting-card-number.green {
-    color: #43A047;
+    color: var(--vo-color-accent-green);
 }
 
 .vetting-card-number.orange {
-    color: #F57F17;
+    color: var(--vo-color-primary);
 }
 
 .vetting-card-title {
@@ -2022,7 +2023,7 @@ html {
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.6;
-    color: #666;
+    color: var(--vo-text-secondary);
     margin: 0;
 }
 

@@ -20,7 +20,7 @@
     width: 100%;
     height: 100%;
     border-radius: 24px;
-    background-color: white;
+    background-color: var(--vo-color-white);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
     /* Center origin for transforms */
@@ -36,7 +36,7 @@
     border-radius: 24px;
     overflow: hidden;
     position: relative;
-    background: #fff;
+    background: var(--vo-color-white);
 
     /* 3D Tilted Look (Default state for top card) */
     transform: rotateX(2deg) rotateY(0deg);
@@ -55,7 +55,7 @@
 /* Info Section (Bottom ~20%) */
 .vo-card-info {
     padding: 20px;
-    background: white;
+    background: var(--vo-color-white);
     height: 22%;
     display: flex;
     flex-direction: column;
@@ -68,13 +68,13 @@
     font-weight: 700;
     font-size: 22px;
     margin: 0 0 5px 0;
-    color: #212121;
+    color: var(--vo-color-black);
 }
 
 .vo-card-title {
     font-family: var(--vo-font-body, sans-serif);
     font-size: 14px;
-    color: #666;
+    color: var(--vo-text-secondary);
     margin: 0;
 }
 
@@ -83,7 +83,7 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    background: white;
+    background: var(--vo-color-white);
     padding: 8px 12px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -94,7 +94,7 @@
 }
 
 .vo-card-rating .star {
-    color: #FFB800;
+    color: var(--vo-color-accent-yellow);
     font-size: 14px;
     margin-bottom: 2px;
 }
@@ -102,13 +102,13 @@
 .vo-card-rating .score {
     font-weight: 800;
     font-size: 18px;
-    color: #333;
+    color: var(--vo-color-charcoal);
 }
 
 .vo-card-rating .label {
     font-size: 8px;
     text-transform: uppercase;
-    color: #999;
+    color: var(--vo-text-tertiary);
     letter-spacing: 1px;
     margin-top: 2px;
 }

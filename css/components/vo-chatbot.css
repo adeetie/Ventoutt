@@ -303,7 +303,7 @@
 .vo-chatbot__dot {
     width: 6px;
     height: 6px;
-    background: #888;
+    background: var(--vo-color-gray-400);
     border-radius: 50%;
     animation: vo-typing 1.4s infinite ease-in-out both;
 }

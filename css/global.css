@@ -14,7 +14,8 @@
     /* Secondary Colors - Cream/Beige */
     --vo-color-secondary: #F4EDE4;
     --vo-color-secondary-dark: #E8DFD4;
-    --vo-color-secondary-light: #FFFDF7;
+    --vo-color-secondary-light: #F4EDE4;
+    /* Consolidated */
 
     /* Accent Colors */
     --vo-color-accent-green: #43A047;
@@ -26,8 +27,11 @@
     /* Neutral Colors */
     --vo-color-white: #FFFFFF;
     --vo-color-black: #212121;
-    --vo-color-cream: #FBF4E4;
-    --vo-color-gray-50: #FFFDF7;
+    --vo-color-charcoal: #212121;
+    --vo-color-cream: #F4EDE4;
+    /* Consolidated */
+    --vo-color-gray-50: #F4EDE4;
+    /* Consolidated */
     --vo-color-gray-100: #F4EDE4;
     --vo-color-gray-200: #E5E5E5;
     --vo-color-gray-300: #D4D4D4;
@@ -46,9 +50,9 @@
     --vo-color-info: #58766A;
 
     /* Background Colors */
-    --vo-bg-primary: var(--vo-color-secondary-light);
-    --vo-bg-secondary: var(--vo-color-secondary);
-    --vo-bg-tertiary: var(--vo-color-cream);
+    --vo-bg-primary: #F4EDE4;
+    --vo-bg-secondary: #F4EDE4;
+    --vo-bg-tertiary: #F4EDE4;
     --vo-bg-overlay: rgba(0, 0, 0, 0.5);
 
     /* Text Colors */
@@ -273,6 +277,28 @@ button {
 
 .vo-btn--primary:hover {
     background-color: var(--vo-color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--vo-shadow-base);
+}
+
+.vo-btn--secondary {
+    background-color: var(--vo-color-accent-green);
+    color: var(--vo-color-white);
+}
+
+.vo-btn--secondary:hover {
+    background-color: var(--vo-color-accent-green-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--vo-shadow-base);
+}
+
+.vo-btn--charcoal {
+    background-color: var(--vo-color-charcoal);
+    color: var(--vo-color-white);
+}
+
+.vo-btn--charcoal:hover {
+    background-color: #000000;
     transform: translateY(-2px);
     box-shadow: var(--vo-shadow-base);
 }
