@@ -8,38 +8,44 @@
  * Dedicated controller for the new Clean Slate Experts Section
  * Handles swipe gestures, card stacking, and prevents unauthorized redirects
  */
-class ExpertSwipeControllerV2 {
-    constructor() {
-        this.container = document.getElementById('voExpertsSwipeV2');
+/**
+ * Swipeable Therapist Cards (Tinder-style)
+ * Handles touch gestures, card stacking logic, and swipe animations
+ */
+class SwipeableStack {
+    constructor(containerOrSelector) {
+        if (typeof containerOrSelector === 'string') {
+            this.container = document.querySelector(containerOrSelector);
+        } else {
+            this.container = containerOrSelector;
+        }
+
         if (!this.container) return;
 
-        this.cards = Array.from(this.container.querySelectorAll('.vo-experts-v2-swipe-card'));
-        if (!this.cards.length) return;
-
+        this.cards = Array.from(this.container.querySelectorAll('.vo-swipe-card'));
+        this.currentIndex = 0;
         this.isAnimating = false;
+
+        // Touch state
         this.startX = 0;
+        this.startY = 0;
         this.currentX = 0;
+        this.currentY = 0;
         this.activeCard = null;
 
-        // Stack visual settings
-        this.scales = [1, 0.95, 0.90, 0.85];
-        this.offsetY = [0, 15, 30, 45];
-        this.zIndexes = [100, 90, 80, 70];
-
+        // Initialize stack
         this.init();
     }
 
     init() {
-        // Run only on mobile breakpoint
+        // Only initialize swipe logic on mobile/tablet (Matched to CSS breakpoint 900px)
         if (window.innerWidth > 900) return;
 
         this.updateStack();
 
-        // Window resize handler (debounce in prod, simple here)
         window.addEventListener('resize', () => {
             if (window.innerWidth > 900) {
-                // If we move to desktop, maybe reset styles? 
-                // But CSS handles visibility mostly.
+                this.cleanup();
             } else {
                 this.updateStack();
             }
@@ -48,128 +54,126 @@ class ExpertSwipeControllerV2 {
 
     updateStack() {
         this.cards.forEach((card, index) => {
-            // Clean state
             card.style.transition = 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease';
-            card.style.display = 'flex'; // Ensure flex layout is kept
+            card.style.display = 'block';
 
-            // Strip old listeners to avoid dupes
+            // Reset listeners
             this.removeListeners(card);
 
-            // Determine visual slot
-            const slot = index < 4 ? index : 3; // Cap at 4th slot visual
-
-            card.style.zIndex = this.zIndexes[slot];
-            card.style.transform = `scale(${this.scales[slot]}) translateY(${this.offsetY[slot]}px)`;
-            card.style.opacity = index < 3 ? '1' : '0'; // Hide cards deep in stack
-
-            // Active card logic
+            // Stack Visuals
             if (index === 0) {
-                this.activeCard = card;
+                // Top Card
+                card.style.zIndex = '100';
+                card.style.transform = 'scale(1) translateY(0) rotate(0deg)';
+                card.style.opacity = '1';
                 this.addListeners(card);
-                card.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)'; // High shadow for top
+                this.activeCard = card;
+            } else if (index === 1) {
+                // Second
+                card.style.zIndex = '90';
+                card.style.transform = 'scale(0.95) translateY(15px) rotate(3deg)';
+                card.style.opacity = '1';
+            } else if (index === 2) {
+                // Third
+                card.style.zIndex = '80';
+                card.style.transform = 'scale(0.90) translateY(30px) rotate(-3deg)';
+                card.style.opacity = '1';
             } else {
-                card.style.boxShadow = '0 5px 15px rgba(0,0,0,0.05)'; // Low shadow for back
+                // Hidden
+                card.style.zIndex = '10';
+                card.style.transform = 'scale(0.85) translateY(45px) rotate(0deg)';
+                card.style.opacity = '0';
             }
         });
     }
 
     addListeners(card) {
-        // Touch events
         card.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: false });
         card.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
         card.addEventListener('touchend', this.handleTouchEnd.bind(this), { passive: false });
 
-        // Mouse events (for desktop testing or hybrid devices)
-        card.addEventListener('mousedown', this.handleTouchStart.bind(this));
-
-        // CLICK SAFETY: Stop links/clicks if swiping
         card.onclick = (e) => {
-            if (this.isAnimating || Math.abs(this.currentX - this.startX) > 10) {
-                e.preventDefault();
-                e.stopPropagation();
-                return false;
-            }
+            // Block defaults on ALL clicks to prevent redirects
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (this.isAnimating) return;
+
+            // Only toggle text if needed (for text card logic)
+            // But since we strictly use Image/Text pairs, we might not need toggle?
+            // Legacy reused the SAME card for text sometimes? 
+            // Current Legacy HTML has PAIRS: ImageCard, TextCard.
+            // So clicking ImageCard doesn't toggle, it just sits there. 
+            // But let's keep click safety.
+            this.handleClick(e);
         };
     }
 
     removeListeners(card) {
-        // Clone node is nuclear option, here we just trust the loop updates only usage
-        // But for safety, we could remove specific listeners if we stored references.
-        // Simplest: The logic only attaches to Index 0.
-        // If a card moves to Index 1, it naturally stops receiving events because we don't attach them there.
-        // However, we must ensure OLD listeners don't fire.
-        // Since we bind(this), they are new functions. 
-        // We will use a flag on the element itself in a robust app, 
-        // but here we just rely on pointer-events or checks in handler.
+        card.onclick = null;
+        // cloning or removing event listeners is harder without refs, 
+        // but since we only attach to index 0, logic holds.
     }
 
     handleTouchStart(e) {
         if (this.isAnimating) return;
-
-        const touch = e.touches ? e.touches[0] : e;
-        this.startX = touch.clientX;
-        this.currentX = this.startX;
-
-        this.activeCard.style.transition = 'none'; // Direct control
+        this.startX = e.touches[0].clientX;
+        this.startY = e.touches[0].clientY;
+        this.activeCard.style.transition = 'none';
     }
 
     handleTouchMove(e) {
         if (!this.activeCard || this.isAnimating) return;
-
-        const touch = e.touches ? e.touches[0] : e;
-        this.currentX = touch.clientX;
+        this.currentX = e.touches[0].clientX;
+        this.currentY = e.touches[0].clientY;
         const diffX = this.currentX - this.startX;
+        const diffY = this.currentY - this.startY;
 
-        // 1. Prevent vertical scroll interfering if we are swiping horizontally properly
-        // BUT allow vertical scroll if intent is clearly vertical
-        // Since we set touch-action: pan-y, browser handles vertical.
-        // We only care about horizontal card movement.
-
-        // Move card
-        const rotate = diffX * 0.05;
-        this.activeCard.style.transform = `translateX(${diffX}px) rotate(${rotate}deg)`;
+        // Force Horizontal Swipe
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+            if (e.cancelable) e.preventDefault();
+            const rotate = diffX * 0.1;
+            this.activeCard.style.transform = `translate(${diffX}px, ${diffY * 0.2}px) rotate(${rotate}deg)`;
+        }
     }
 
     handleTouchEnd(e) {
         if (!this.activeCard || this.isAnimating) return;
-
         const diffX = this.currentX - this.startX;
-        const threshold = 100;
-
-        // Restore transition
         this.activeCard.style.transition = 'transform 0.5s ease-out, opacity 0.4s ease-out';
 
-        if (diffX > threshold) {
-            this.swipeOut('right');
-        } else if (diffX < -threshold) {
-            this.swipeOut('left');
+        if (Math.abs(diffX) > 80) {
+            this.swipeOut(diffX > 0 ? 'right' : 'left');
         } else {
-            // Reset
-            this.activeCard.style.transform = `scale(1) translateY(0)`;
+            this.activeCard.style.transform = '';
         }
-
-        this.startX = 0;
-        this.currentX = 0;
     }
 
     swipeOut(dir) {
         this.isAnimating = true;
         const width = window.innerWidth;
-        const moveX = dir === 'right' ? width : -width;
+        const MoveX = dir === 'right' ? width : -width;
 
-        // Animate out
-        this.activeCard.style.transform = `translateX(${moveX}px) rotate(${dir === 'right' ? 30 : -30}deg)`;
+        this.activeCard.style.transform = `translate(${MoveX}px, 50px) rotate(${dir === 'right' ? 30 : -30}deg)`;
         this.activeCard.style.opacity = '0';
 
         setTimeout(() => {
-            // Logic: Move top card to bottom
-            const movedCard = this.cards.shift();
-            this.cards.push(movedCard);
-
-            // Re-render
+            const card = this.cards.shift();
+            this.cards.push(card);
             this.updateStack();
             this.isAnimating = false;
         }, 300);
+    }
+
+    handleClick(e) {
+        // Optional logic for tap
+    }
+
+    cleanup() {
+        this.cards.forEach(card => {
+            card.style.transform = '';
+            card.style.display = '';
+        });
     }
 }
 
@@ -181,7 +185,7 @@ function initAllMobileFeatures() {
     const stacks = document.querySelectorAll('.vo-swipe-container');
     stacks.forEach(container => {
         if (!container.dataset.swipeInitialized) {
-            // new SwipeableStack(container); // LEGACY CLASS DELETED
+            new SwipeableStack(container); // LEGACY CLASS RESTORED
             container.dataset.swipeInitialized = 'true';
         }
     });

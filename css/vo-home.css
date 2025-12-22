@@ -1755,6 +1755,8 @@
         margin: 0 auto;
         overflow: visible;
         margin-top: 20px;
+        touch-action: pan-y pinch-zoom;
+        /* Better touch handling */
     }
 
     .vo-swipe-card {
@@ -1869,8 +1871,9 @@
         padding: 0;
     }
 
+    /* Hide desktop footer content on mobile to prevent accidental clicks */
     .vo-experts-v2-content {
-        text-align: center;
+        display: none !important;
     }
 
     /* Mobile Title Size Override if needed */
