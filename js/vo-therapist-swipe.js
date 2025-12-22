@@ -25,6 +25,7 @@ class SwipeableStack {
         this.cards = Array.from(this.container.querySelectorAll('.vo-swipe-card'));
         this.currentIndex = 0;
         this.isAnimating = false;
+        this.isActive = false;
 
         // Touch state
         this.startX = 0;
@@ -38,21 +39,33 @@ class SwipeableStack {
     }
 
     init() {
-        // Only initialize swipe logic on mobile/tablet (Matched to CSS breakpoint 900px)
-        if (window.innerWidth > 900) return;
-
-        this.updateStack();
+        this.checkState();
 
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 900) {
-                this.cleanup();
-            } else {
-                this.updateStack();
-            }
+            this.checkState();
         });
     }
 
+    checkState() {
+        if (window.innerWidth <= 900) {
+            // Should be active
+            if (!this.isActive) {
+                this.updateStack();
+                this.isActive = true;
+            }
+        } else {
+            // Should be inactive
+            if (this.isActive) {
+                this.cleanup();
+                this.isActive = false;
+            }
+        }
+    }
+
     updateStack() {
+        // Re-query cards in case DOM changed (optional, but good safety)
+        this.cards = Array.from(this.container.querySelectorAll('.vo-swipe-card'));
+
         this.cards.forEach((card, index) => {
             card.style.transition = 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease';
             card.style.display = 'block';
@@ -88,33 +101,34 @@ class SwipeableStack {
     }
 
     addListeners(card) {
-        card.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: false });
-        card.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
-        card.addEventListener('touchend', this.handleTouchEnd.bind(this), { passive: false });
+        // Touch
+        card.ontouchstart = this.handleTouchStart.bind(this);
+        card.ontouchmove = this.handleTouchMove.bind(this);
+        card.ontouchend = this.handleTouchEnd.bind(this);
+
+        // Mouse (for desktop/testing)
+        card.onmousedown = this.handleMouseDown.bind(this);
 
         card.onclick = (e) => {
-            // Block defaults on ALL clicks to prevent redirects
             e.preventDefault();
             e.stopPropagation();
-
             if (this.isAnimating) return;
-
-            // Only toggle text if needed (for text card logic)
-            // But since we strictly use Image/Text pairs, we might not need toggle?
-            // Legacy reused the SAME card for text sometimes? 
-            // Current Legacy HTML has PAIRS: ImageCard, TextCard.
-            // So clicking ImageCard doesn't toggle, it just sits there. 
-            // But let's keep click safety.
             this.handleClick(e);
         };
     }
 
     removeListeners(card) {
         card.onclick = null;
-        // cloning or removing event listeners is harder without refs, 
-        // but since we only attach to index 0, logic holds.
+        card.ontouchstart = null;
+        card.ontouchmove = null;
+        card.ontouchend = null;
+        card.onmousedown = null;
+        card.onmousemove = null;
+        card.onmouseup = null;
+        card.onmouseleave = null;
     }
 
+    // --- Touch Handlers ---
     handleTouchStart(e) {
         if (this.isAnimating) return;
         this.startX = e.touches[0].clientX;
@@ -129,7 +143,6 @@ class SwipeableStack {
         const diffX = this.currentX - this.startX;
         const diffY = this.currentY - this.startY;
 
-        // Force Horizontal Swipe
         if (Math.abs(diffX) > Math.abs(diffY)) {
             if (e.cancelable) e.preventDefault();
             const rotate = diffX * 0.1;
@@ -140,8 +153,47 @@ class SwipeableStack {
     handleTouchEnd(e) {
         if (!this.activeCard || this.isAnimating) return;
         const diffX = this.currentX - this.startX;
-        this.activeCard.style.transition = 'transform 0.5s ease-out, opacity 0.4s ease-out';
+        this.finishSwipe(diffX);
+    }
 
+    // --- Mouse Handlers ---
+    handleMouseDown(e) {
+        if (this.isAnimating) return;
+        e.preventDefault(); // Prevent text selection
+        this.startX = e.clientX;
+        this.startY = e.clientY;
+        this.activeCard.style.transition = 'none';
+
+        // Bind usage-specific listeners to document to catch dragging outside card
+        this.boundMouseMove = this.handleMouseMove.bind(this);
+        this.boundMouseUp = this.handleMouseUp.bind(this);
+        document.addEventListener('mousemove', this.boundMouseMove);
+        document.addEventListener('mouseup', this.boundMouseUp);
+    }
+
+    handleMouseMove(e) {
+        if (!this.activeCard || this.isAnimating) return;
+        this.currentX = e.clientX;
+        this.currentY = e.clientY;
+        const diffX = this.currentX - this.startX;
+        const diffY = this.currentY - this.startY;
+
+        const rotate = diffX * 0.1;
+        this.activeCard.style.transform = `translate(${diffX}px, ${diffY * 0.2}px) rotate(${rotate}deg)`;
+    }
+
+    handleMouseUp(e) {
+        // Cleanup document listeners
+        document.removeEventListener('mousemove', this.boundMouseMove);
+        document.removeEventListener('mouseup', this.boundMouseUp);
+
+        if (!this.activeCard || this.isAnimating) return;
+        const diffX = this.currentX - this.startX;
+        this.finishSwipe(diffX);
+    }
+
+    finishSwipe(diffX) {
+        this.activeCard.style.transition = 'transform 0.5s ease-out, opacity 0.4s ease-out';
         if (Math.abs(diffX) > 80) {
             this.swipeOut(diffX > 0 ? 'right' : 'left');
         } else {
@@ -171,8 +223,14 @@ class SwipeableStack {
 
     cleanup() {
         this.cards.forEach(card => {
+            // We don't want to completely remove styles as CSS handles desktop layout mostly
+            // But for safety, we remove the JS-injected inline styles
             card.style.transform = '';
             card.style.display = '';
+            card.style.zIndex = '';
+            card.style.opacity = '';
+            card.style.transition = '';
+            this.removeListeners(card);
         });
     }
 }

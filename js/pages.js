@@ -485,3 +485,84 @@ document.addEventListener('DOMContentLoaded', () => {
     initVentingBanner();
     initFitInteraction();
 });
+
+
+/* =========================================
+   Shared Functions (Blogs, Specs, Challenges)
+   ========================================= */
+
+// Horizontal scroll functions for blogs and specializations
+function scrollBlogs(direction) {
+    const grid = document.querySelector('.vo-blogs-grid');
+    if (!grid) return;
+    const scrollAmount = grid.offsetWidth * 0.9;
+    grid.scrollBy({
+        left: direction === 'next' ? scrollAmount : -scrollAmount,
+        behavior: 'smooth'
+    });
+}
+
+function scrollSpecs(direction) {
+    const grid = document.querySelector('.vo-specs-grid');
+    if (!grid) return;
+    const scrollAmount = grid.offsetWidth * 0.9;
+    grid.scrollBy({
+        left: direction === 'next' ? scrollAmount : -scrollAmount,
+        behavior: 'smooth'
+    });
+}
+
+// Common Challenges Toggle
+function toggleVoChallengesList() {
+    const expandedList = document.querySelector('.vo-challenges-expanded');
+    const toggleBtnText = document.querySelector('#voToggleText');
+    const toggleBtnIcon = document.querySelector('#voToggleChallenges .chevron-right');
+
+    if (expandedList.style.display === 'none') {
+        expandedList.style.display = 'block';
+        toggleBtnText.textContent = 'See Less';
+        if (toggleBtnIcon) toggleBtnIcon.style.transform = 'rotate(180deg)';
+    } else {
+        expandedList.style.display = 'none';
+        toggleBtnText.textContent = 'See More';
+        if (toggleBtnIcon) toggleBtnIcon.style.transform = 'rotate(0deg)';
+    }
+}
+
+
+/* =========================================
+   About Us Page Scripts
+   ========================================= */
+
+// Infinite Carousel Logic
+function initInfiniteCarousel() {
+    const track = document.getElementById('carouselTrack');
+    if (track) {
+        // Clone content twice to ensure seamless scrolling
+        const content = track.innerHTML;
+        track.innerHTML = content + content + content;
+    }
+}
+
+// Testimonial Auto-Slider
+function initTestimonialSlider() {
+    const slides = document.querySelectorAll('.testimonial-slide');
+    let currentSlide = 0;
+
+    if (slides.length > 0) {
+        setInterval(() => {
+            // Remove active from current
+            slides[currentSlide].classList.remove('active');
+            // Next slide
+            currentSlide = (currentSlide + 1) % slides.length;
+            // Add active to next
+            slides[currentSlide].classList.add('active');
+        }, 5000); // 5 seconds
+    }
+}
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', () => {
+    initInfiniteCarousel();
+    initTestimonialSlider();
+});
