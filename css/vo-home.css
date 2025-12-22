@@ -2330,3 +2330,330 @@
         /* Allow arrows to sit on edge */
     }
 }
+
+/* ================================================== 
+   HOW IT WORKS (SCROLLYTELLING ANIMATION)
+   ================================================== */
+.how-scroll-wrapper {
+    height: 350vh;
+    /* Tall enough to scroll through 5 steps comfortably */
+    position: relative;
+    background: var(--vo-color-cream);
+}
+
+.how-sticky-content {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+}
+
+.how-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 20px;
+}
+
+.how-header {
+    margin-bottom: 40px;
+}
+
+.how-eyebrow {
+    font-family: var(--vo-font-body);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--vo-text-secondary);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.how-title {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 42px;
+    color: var(--vo-color-charcoal);
+    margin: 0;
+}
+
+.how-content-row {
+    position: relative;
+    display: flex;
+    /* Mobile: Flex Row [Lines | Cards] */
+    gap: 20px;
+}
+
+/* --- TIMELINE COLUMN (Mobile: Vertical on Left) --- */
+.how-timeline-col {
+    position: relative;
+    width: 30px;
+    /* Narrow vertical strip */
+    display: flex;
+    flex-direction: column;
+}
+
+.how-timeline-track {
+    position: absolute;
+    top: 0;
+    left: 14px;
+    /* Center in 30px width */
+    width: 2px;
+    height: 100%;
+    /* Vertical Line */
+    background: #E0E0E0;
+    transform: none;
+    /* No scaling */
+}
+
+/* Progress Fill Line */
+.how-timeline-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Full width of the 2px track */
+    height: 0%;
+    /* Animate height */
+    background: linear-gradient(to bottom, #FF9F40, #1B4B43);
+    /* Orange to Green */
+    transition: height 0.1s linear;
+    /* Smooth fill */
+}
+
+/* Dots */
+.how-dot {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ccc;
+    /* Inactive Color */
+    transform: translateX(-50%);
+    left: 50%;
+    /* Center relative to col */
+    z-index: 2;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.how-dot.active {
+    background: #1B4B43;
+    /* Active Color (Green default) */
+    transform: translateX(-50%) scale(1.3);
+}
+
+/* Gradient Colors for Active Dots */
+.how-dot.active[data-step="1"] {
+    background: #FF9F40;
+}
+
+/* Orange */
+.how-dot.active[data-step="2"] {
+    background: #E68638;
+}
+
+.how-dot.active[data-step="3"] {
+    background: #CD6D30;
+}
+
+.how-dot.active[data-step="4"] {
+    background: #856E3A;
+}
+
+.how-dot.active[data-step="5"] {
+    background: #1B4B43;
+}
+
+/* Green */
+
+
+/* Dots Vertical Positions (Mobile) */
+.how-dot[data-step="1"] {
+    top: 10%;
+}
+
+.how-dot[data-step="2"] {
+    top: 30%;
+}
+
+.how-dot[data-step="3"] {
+    top: 50%;
+}
+
+.how-dot[data-step="4"] {
+    top: 70%;
+}
+
+.how-dot[data-step="5"] {
+    top: 90%;
+}
+
+
+/* --- CARDS GRID (Mobile: Vertical Stack) --- */
+.how-cards-grid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Match dot spacing */
+    height: 400px;
+    /* Fixed height container to distribute cards */
+}
+
+.how-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    opacity: 0.3;
+    /* Default hidden/dim */
+    transform: translateX(20px);
+    transition: all 0.5s ease;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.how-card.active {
+    opacity: 1;
+    transform: translateX(0);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.how-card-number {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ccc;
+    transition: color 0.3s;
+}
+
+/* Number Colors match dots */
+.how-card.active .how-card-number {
+    color: inherit;
+}
+
+.how-card[data-step="1"].active .how-card-number {
+    color: #FF9F40;
+}
+
+.how-card[data-step="5"].active .how-card-number {
+    color: #1B4B43;
+}
+
+.how-card-desc {
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--vo-text-secondary);
+    margin: 0;
+}
+
+
+/* =========================================
+   DESKTOP (Horizontal Layout)
+   ========================================= */
+@media (min-width: 900px) {
+    .how-scroll-wrapper {
+        height: 300vh;
+        /* Slightly shorter scroll on desktop */
+    }
+
+    .how-content-row {
+        flex-direction: column;
+        /* Stack timeline above cards */
+        gap: 60px;
+    }
+
+    /* Horizontal Timeline */
+    .how-timeline-col {
+        width: 100%;
+        height: 30px;
+        flex-direction: row;
+    }
+
+    .how-timeline-track {
+        top: 14px;
+        /* Center vertically */
+        left: 0;
+        width: 100%;
+        height: 2px;
+    }
+
+    .how-timeline-progress {
+        width: 0%;
+        /* Animate width */
+        height: 100%;
+        background: linear-gradient(to right, #FF9F40, #1B4B43);
+        transition: width 0.1s linear;
+    }
+
+    .how-dot {
+        top: 50%;
+        transform: translateY(-50%);
+        /* left set by inline/css logic below */
+    }
+
+    .how-dot.active {
+        transform: translateY(-50%) scale(1.3);
+    }
+
+    /* Horizontal Dot Positions */
+    .how-dot[data-step="1"] {
+        left: 0%;
+        top: 50%;
+    }
+
+    .how-dot[data-step="2"] {
+        left: 25%;
+        top: 50%;
+    }
+
+    .how-dot[data-step="3"] {
+        left: 50%;
+        top: 50%;
+    }
+
+    .how-dot[data-step="4"] {
+        left: 75%;
+        top: 50%;
+    }
+
+    .how-dot[data-step="5"] {
+        left: 100%;
+        top: 50%;
+        right: 0;
+    }
+
+    /* Horizontal Cards */
+    .how-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+        height: auto;
+    }
+
+    .how-card {
+        flex-direction: column;
+        text-align: left;
+        align-items: flex-start;
+        padding: 30px 20px;
+        height: 100%;
+        opacity: 0;
+        /* Fully hidden initially */
+        transform: translateY(30px);
+    }
+
+    .how-card.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .how-card-number {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+}

@@ -5960,3 +5960,358 @@ h2 {
         object-fit: cover !important;
     }
 }
+
+
+/* ========== VentOutt Services Page Styles ========== */
+
+/* 1. Hero Section */
+.vo-svc-hero {
+    background-color: var(--vo-color-secondary-light);
+    /* Cream */
+    padding: var(--vo-space-12) 0 var(--vo-space-20);
+    text-align: center;
+}
+
+.vo-svc-hero__content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.vo-svc-hero__title {
+    font-family: var(--vo-font-heading);
+    font-size: var(--vo-text-5xl);
+    color: var(--vo-color-black);
+    line-height: 1.1;
+    margin-bottom: var(--vo-space-5);
+}
+
+.vo-svc-hero__title em {
+    color: var(--vo-color-primary);
+    /* Orange */
+    font-style: italic;
+}
+
+.vo-svc-hero__desc {
+    font-family: var(--vo-font-body);
+    font-size: var(--vo-text-lg);
+    color: var(--vo-text-secondary);
+    line-height: 1.6;
+}
+
+/* 2. Services Grid (Cards) */
+.vo-svc-cards-section {
+    padding: 0 0 var(--vo-space-24);
+    background-color: var(--vo-color-secondary-light);
+    /* Continuation of Hero BG */
+    margin-top: -2rem;
+    /* Pull up slightly */
+}
+
+.vo-svc-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--vo-space-6);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (min-width: 900px) {
+    .vo-svc-grid {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: start;
+    }
+}
+
+/* Card Styling */
+.vo-svc-card {
+    background: var(--vo-color-white);
+    border-radius: var(--vo-radius-xl);
+    padding: var(--vo-space-8) var(--vo-space-6);
+    box-shadow: var(--vo-shadow-base);
+    text-align: center;
+    transition: transform var(--vo-transition-base);
+    position: relative;
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.vo-svc-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--vo-shadow-lg);
+}
+
+/* Featured Card Override */
+.vo-svc-card--featured {
+    border: 2px solid var(--vo-color-primary);
+    transform: scale(1.05);
+    z-index: 2;
+    box-shadow: var(--vo-shadow-xl);
+}
+
+.vo-svc-card--featured:hover {
+    transform: scale(1.05) translateY(-8px);
+}
+
+.vo-svc-card__badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--vo-color-primary);
+    color: var(--vo-color-white);
+    padding: 4px 12px;
+    border-radius: var(--vo-radius-full);
+    font-size: var(--vo-text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Card Internals */
+.vo-svc-card__icon-wrap {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--vo-space-5);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--vo-color-secondary);
+}
+
+.vo-svc-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vo-svc-card__title {
+    font-family: var(--vo-font-heading);
+    font-size: var(--vo-text-2xl);
+    font-weight: 700;
+    margin-bottom: var(--vo-space-2);
+}
+
+.vo-svc-card__price {
+    font-family: var(--vo-font-body);
+    font-size: var(--vo-text-lg);
+    font-weight: 600;
+    color: var(--vo-color-accent-green);
+    margin-bottom: var(--vo-space-4);
+}
+
+.vo-svc-card__text {
+    font-size: var(--vo-text-sm);
+    color: var(--vo-text-secondary);
+    line-height: 1.5;
+    margin-bottom: var(--vo-space-6);
+    flex-grow: 1;
+}
+
+.vo-svc-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--vo-space-6);
+    text-align: left;
+    display: inline-block;
+}
+
+.vo-svc-card__list li {
+    font-size: var(--vo-text-sm);
+    margin-bottom: var(--vo-space-2);
+    position: relative;
+    padding-left: 20px;
+    color: var(--vo-color-gray-700);
+}
+
+.vo-svc-card__list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--vo-color-primary);
+    font-weight: bold;
+}
+
+.vo-svc-card__btn {
+    width: 100%;
+}
+
+/* 3. Comparison Section */
+.vo-svc-compare {
+    padding: var(--vo-space-20) 0;
+    background: var(--vo-color-white);
+}
+
+.vo-compare-table-wrapper {
+    overflow-x: auto;
+    margin-top: var(--vo-space-10);
+}
+
+.vo-compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+    /* Ensure scrolling on mobile */
+}
+
+.vo-compare-table th,
+.vo-compare-table td {
+    padding: var(--vo-space-4) var(--vo-space-6);
+    text-align: left;
+    border-bottom: 1px solid var(--vo-border-light);
+    font-family: var(--vo-font-body);
+}
+
+.vo-compare-table th {
+    font-family: var(--vo-font-heading);
+    font-size: var(--vo-text-lg);
+    font-weight: 700;
+    color: var(--vo-color-black);
+    background-color: var(--vo-bg-primary);
+}
+
+.vo-compare-table td {
+    color: var(--vo-text-secondary);
+}
+
+.vo-compare-table tr:hover td {
+    background-color: rgba(244, 237, 228, 0.3);
+    /* Slight cream tint on hover */
+}
+
+/* 4. Detailed Sections (Alternating) */
+.vo-svc-detail {
+    padding: var(--vo-space-20) 0;
+    background-color: var(--vo-color-white);
+    border-top: 1px solid var(--vo-border-light);
+}
+
+.vo-svc-detail--alt {
+    background-color: var(--vo-color-secondary-light);
+    /* Cream BG */
+}
+
+.vo-svc-detail__container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--vo-space-10);
+    align-items: center;
+}
+
+@media (min-width: 900px) {
+    .vo-svc-detail__container {
+        flex-direction: row;
+        gap: var(--vo-space-20);
+    }
+
+    /* Swap order for alt section */
+    .vo-svc-detail--alt .vo-svc-detail__container {
+        flex-direction: row-reverse;
+    }
+}
+
+.vo-svc-detail__content {
+    flex: 1;
+}
+
+.vo-svc-detail__visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.vo-svc-detail__tag {
+    display: inline-block;
+    background-color: var(--vo-color-primary-pale);
+    color: var(--vo-color-primary-dark);
+    padding: 6px 12px;
+    border-radius: var(--vo-radius-md);
+    font-size: var(--vo-text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: var(--vo-space-3);
+}
+
+.vo-svc-detail__title {
+    font-family: var(--vo-font-heading);
+    font-size: var(--vo-text-4xl);
+    margin-bottom: var(--vo-space-4);
+    color: var(--vo-color-black);
+}
+
+.vo-svc-detail__desc {
+    font-size: var(--vo-text-lg);
+    line-height: 1.6;
+    color: var(--vo-text-secondary);
+    margin-bottom: var(--vo-space-6);
+}
+
+.vo-svc-detail__features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: var(--vo-space-8);
+}
+
+.vo-svc-detail__features li {
+    font-family: var(--vo-font-heading);
+    /* Lora feels nice for this list */
+    font-style: italic;
+    font-size: var(--vo-text-lg);
+    margin-bottom: var(--vo-space-2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--vo-color-black);
+}
+
+.vo-svc-detail__features li::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--vo-color-primary);
+    border-radius: 50%;
+}
+
+/* Blob Images */
+.vo-svc-blob-img {
+    width: 100%;
+    max-width: 450px;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    /* Organic shape */
+    box-shadow: var(--vo-shadow-lg);
+    animation: vo-morph 8s ease-in-out infinite;
+}
+
+@keyframes vo-morph {
+    0% {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+
+    50% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+
+    100% {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+}
+
+/* Mobile Tweaks */
+@media (max-width: 768px) {
+    .vo-svc-hero__title {
+        font-size: 2.5rem;
+    }
+
+    .vo-svc-card--featured {
+        transform: none;
+        /* Disable scale on mobile */
+    }
+
+    .vo-svc-detail__title {
+        font-size: 2rem;
+    }
+}

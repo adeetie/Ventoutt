@@ -223,5 +223,58 @@ document.addEventListener('DOMContentLoaded', () => {
             fitCards.forEach(card => observer.observe(card));
         }
     }
+    /* =========================================
+       How It Works - Scrollytelling Animation
+       ========================================= */
+    const howWrapper = document.querySelector('.how-scroll-wrapper');
+    const howProgress = document.querySelector('.how-timeline-progress');
+    const howDots = document.querySelectorAll('.how-dot');
+    const howCards = document.querySelectorAll('.how-card');
 
+    if (howWrapper && howProgress) {
+        const handleScroll = () => {
+            const rect = howWrapper.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+
+            // Calculate progress
+            const totalScrollableDistance = howWrapper.offsetHeight - windowHeight;
+            let scrolled = -rect.top;
+
+            // Normalize to 0 - 1
+            let progress = scrolled / totalScrollableDistance;
+
+            // Clamp
+            progress = Math.max(0, Math.min(1, progress));
+
+            // Update Progress Bar
+            const percent = progress * 100;
+
+            if (window.innerWidth >= 900) {
+                howProgress.style.width = `${percent}%`;
+                howProgress.style.height = '100%';
+            } else {
+                howProgress.style.height = `${percent}%`;
+                howProgress.style.width = '100%';
+            }
+
+            // Trigger Active States for 5 Steps
+            const stepSize = 1 / 5; // 0.2
+
+            howDots.forEach((dot, index) => {
+                const threshold = stepSize * index;
+                // Relaxed threshold for Step 1
+                if (progress > threshold + 0.05 || (index === 0 && progress >= 0)) {
+                    dot.classList.add('active');
+                    howCards[index].classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                    howCards[index].classList.remove('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        // Run once on load to set initial state
+        handleScroll();
+    }
 });
