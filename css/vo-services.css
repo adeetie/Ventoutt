@@ -4850,3 +4850,122 @@ h2 {
         border-radius: 20px;
     }
 }
+/* =========================================
+   Services Page Mobile Hero
+   ========================================= */
+
+/* Mobile base (320px-767px) */
+@media (max-width: 767px) {
+    .services-hero-redesign {
+        padding: 60px 20px;
+        background-color: var(--vo-color-secondary-light);
+    }
+    
+    .services-hero-container {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Stack title on top */
+    .services-hero-header {
+        order: -1;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .services-hero-title {
+        font-family: var(--vo-font-heading);
+        font-size: 2rem;
+        font-style: italic;
+        line-height: 1.2;
+        margin-bottom: 20px;
+    }
+    
+    /* Grid becomes 2x2 */
+    .services-hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 15px;
+        margin-bottom: 0;
+    }
+    
+    /* Woman image - top left */
+    .item-1 {
+        grid-column: 1;
+        grid-row: 1;
+        height: 200px;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    
+    .item-1 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    /* Building image - top right */
+    .item-2 {
+        grid-column: 2;
+        grid-row: 1;
+        height: 200px;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    
+    .item-2 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    /* Play button - bottom left */
+    .item-6 {
+        grid-column: 1;
+        grid-row: 2;
+        background: var(--vo-color-primary);
+        border-radius: 12px;
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    
+    .play-btn-triangle {
+        width: 0;
+        height: 0;
+        border-left: 30px solid white;
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+        margin-left: 8px;
+    }
+    
+    /* Description text - bottom right */
+    .services-hero-text {
+        grid-column: 2;
+        grid-row: 2;
+        font-size: 14px;
+        text-align: left;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        line-height: 1.5;
+    }
+    
+    /* Hide desktop-only items on mobile */
+    .item-3, .item-4, .item-5 {
+        display: none !important;
+    }
+}
+
+/* Desktop - keep original layout */
+@media (min-width: 768px) {
+    .item-1, .item-2, .item-3, .item-4, .item-5, .item-6 {
+        display: block;
+    }
+}

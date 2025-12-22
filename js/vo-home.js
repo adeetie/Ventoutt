@@ -223,6 +223,70 @@ document.addEventListener('DOMContentLoaded', () => {
             fitCards.forEach(card => observer.observe(card));
         }
     }
+
+    /* =========================================
+       Partners Logo Marquee V3 (Smart Cloning)
+       ========================================= */
+    const initPartnersV3 = () => {
+        const track = document.getElementById('voPartnersTrackV3');
+        if (!track) return;
+
+        // 0. Reset for idempotent runs ( e.g. resize )
+        // We'll trust the first run for now, but resizing logic can be added if needed.
+        if (track.dataset.init === 'true') return;
+        track.dataset.init = 'true';
+
+        const originals = Array.from(track.children);
+        const originalWidth = track.scrollWidth; // Approx width of one set
+        const windowWidth = window.innerWidth;
+
+        // 1. Calculate how many sets we need to cover the screen width atleast twice
+        // This ensures no gaps before the loop point.
+        // We add +2 buffer sets just to be safe.
+        const setsNeeded = Math.ceil(windowWidth / originalWidth) + 2;
+
+        const fragment = document.createDocumentFragment();
+
+        // 2. Build the "Base Strip" (enough to cover screen)
+        for (let i = 0; i < setsNeeded; i++) {
+            originals.forEach(item => {
+                const clone = item.cloneNode(true);
+                clone.setAttribute('aria-hidden', 'true');
+                fragment.appendChild(clone);
+            });
+        }
+
+        // 3. Clear and append base strip
+        track.innerHTML = '';
+        track.appendChild(fragment);
+
+        // 4. DUPLICATE Base Strip for CSS Loop
+        // The CSS animates -50%, so we need exactly 2 identical halves.
+        const baseChildren = Array.from(track.children);
+        baseChildren.forEach(item => {
+            const clone = item.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            track.appendChild(clone);
+        });
+
+        // 5. Calculate Animation Duration based on Constant Velocity
+        // Target: ~150px per second on Mobile (Fast), ~100px on Desktop
+        const totalWidth = track.scrollWidth;
+        const widthToTravel = totalWidth / 2; // -50%
+
+        const isMobile = windowWidth < 768;
+        const velocity = isMobile ? 150 : 100; // pixels per second
+
+        const duration = widthToTravel / velocity;
+
+        track.style.animationDuration = `${duration}s`;
+
+        console.log(`[VO-Partners-V3] Sets: ${setsNeeded}, Duplicated: Yes, Duration: ${duration.toFixed(2)}s`);
+    };
+
+    // Run Init
+    initPartnersV3();
+
     /* =========================================
        How It Works - Scrollytelling Animation
        ========================================= */
@@ -278,3 +342,24 @@ document.addEventListener('DOMContentLoaded', () => {
         handleScroll();
     }
 });
+
+// Horizontal scroll functions for blogs and specializations
+function scrollBlogs(direction) {
+    const grid = document.querySelector('.vo-blogs-grid');
+    if (!grid) return;
+    const scrollAmount = grid.offsetWidth * 0.9;
+    grid.scrollBy({
+        left: direction === 'next' ? scrollAmount : -scrollAmount,
+        behavior: 'smooth'
+    });
+}
+
+function scrollSpecs(direction) {
+    const grid = document.querySelector('.vo-specs-grid');
+    if (!grid) return;
+    const scrollAmount = grid.offsetWidth * 0.9;
+    grid.scrollBy({
+        left: direction === 'next' ? scrollAmount : -scrollAmount,
+        behavior: 'smooth'
+    });
+}
