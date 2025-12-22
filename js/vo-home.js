@@ -156,4 +156,50 @@ document.addEventListener('DOMContentLoaded', () => {
         odometerElements.forEach(el => odometerObserver.observe(el));
     }
 
+    /* =========================================
+       5. 3D Scroll Effect (Hero Recedes, Services Rise)
+       ========================================= */
+    const heroSection = document.querySelector('.vo-hero');
+    const helpSection = document.querySelector('.vo-help-section');
+    const statsSection = document.querySelector('.vo-stats-section-floating'); // Identify Stats
+
+    if (heroSection && helpSection) {
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const heroHeight = heroSection.offsetHeight;
+
+            // --- 1. Hero Recedes (as Services rises) ---
+            if (scrollY < heroHeight) {
+                const scale = 1 - (scrollY / heroHeight) * 0.1;
+                const opacity = 1 - (scrollY / heroHeight) * 0.5;
+
+                heroSection.style.transform = `scale(${Math.max(0.9, scale)})`;
+                heroSection.style.opacity = Math.max(0, opacity);
+            }
+
+            // --- 2. Services Recedes (as Stats rises) ---
+            // Animation triggers when Stats section is entering view
+            if (statsSection) {
+                const statsRect = statsSection.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // If Stats is coming up from the bottom (entering viewport)
+                if (statsRect.top < windowHeight && statsRect.top > 0) {
+                    // Calculate progress: 0 (just entering) -> 1 (fully covering)
+                    // Using a shorter range for faster effect as it covers
+                    const progress = 1 - (statsRect.top / windowHeight);
+
+                    const scaleHelp = 1 - (progress * 0.1);
+                    const opacityHelp = 1 - (progress * 0.5);
+
+                    helpSection.style.transform = `scale(${Math.max(0.9, scaleHelp)})`;
+                    helpSection.style.opacity = Math.max(0, opacityHelp);
+                } else if (statsRect.top >= windowHeight) {
+                    // Reset if scrolled back up
+                    helpSection.style.transform = 'scale(1)';
+                    helpSection.style.opacity = '1';
+                }
+            }
+        }, { passive: true });
+    }
 });

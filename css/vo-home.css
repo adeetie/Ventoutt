@@ -5,7 +5,12 @@
     background-color: var(--vo-color-secondary-light);
     padding: var(--vo-space-16) 0 var(--vo-space-20);
     /* Increased top padding */
-    position: relative;
+    position: sticky;
+    /* Sticky for rising effect */
+    top: 0;
+    z-index: 0;
+    /* Behind the services section */
+    width: 100%;
     /* overflow: hidden; Removed to prevent doodle clipping */
 }
 
@@ -250,7 +255,27 @@
    ========================================= */
 .vo-help-section {
     padding: var(--vo-space-24) 0;
-    background-color: var(--vo-color-secondary-light);
+    background-color: #ffffff;
+    position: relative;
+    /* Reverted to relative to allow full scrolling of content */
+    /* top: 0; removed */
+    z-index: 10;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    margin-top: -20px;
+    /* Mobile overlap */
+    box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.08);
+    /* Deeper shadow for 3D feel */
+    min-height: 100vh;
+}
+
+@media (min-width: 768px) {
+    .vo-help-section {
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+        margin-top: -40px;
+        /* Desktop overlap */
+    }
 }
 
 .vo-help-container {
@@ -593,93 +618,278 @@
 
 
 /* =========================================
-   4. Stats Section (Restored & Refined)
+   4. Stats Section (Clean Design)
+   4. Stats Section (Improvised Floating Design)
    ========================================= */
-.vo-stats-section {
-    padding: 1rem 0 4rem;
-    /* Closer to textmonials */
-    background-color: var(--vo-color-secondary-light);
-    /* Match Testimonials Beige */
+.vo-stats-section-floating {
+    padding: 6rem 1.5rem;
+    background-color: #2D2D2D;
+    /* Charcoal Background */
+    position: relative;
+    overflow: hidden;
+    /* Keep avatars inside */
+    z-index: 20;
+    /* Above Help Section */
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    margin-top: -20px;
+    /* Overlap */
+    box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.15);
+    /* Deep shadow */
+    color: #ffffff;
+    /* White text base */
+    min-height: 80vh;
 }
 
-.vo-stats-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    /* Mobile First: 1 col */
-    gap: var(--vo-space-5);
-    max-width: 1240px;
+@media (min-width: 768px) {
+    .vo-stats-section-floating {
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+        margin-top: -40px;
+        padding: 8rem 2rem;
+    }
+}
+
+.vo-stats-content-centered {
+    max-width: 900px;
+    width: 100%;
     margin: 0 auto;
-    padding: 0 var(--vo-space-6);
-}
-
-/* Mobile: Horizontal Scroll Option or Stack? 
-   User said "mobile first". Stack is standard. 
-   Maybe 2 columns on small tablets? */
-@media (min-width: 480px) {
-    .vo-stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 900px) {
-    .vo-stats-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: var(--vo-space-8);
-    }
-}
-
-.vo-stat-card {
-    background-color: var(--vo-color-charcoal);
-    border-radius: var(--vo-radius-xl);
-    padding: var(--vo-space-8) var(--vo-space-5);
+    padding: 0 var(--vo-space-5);
     text-align: center;
-    color: var(--vo-color-white);
+    position: relative;
+    z-index: 2;
+    /* Above avatars */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    /* Center content vertically too if height fixed, else auto */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
-    min-height: 200px;
-    /* Ensure some height consistency */
 }
 
-.vo-stat-card:hover {
-    transform: translateY(-5px);
-}
-
-/* Icons removed from HTML, so CSS block removed or unused */
-
-.vo-stat-number {
-    font-family: var(--vo-font-body);
-    font-size: 2.5rem;
-    /* Big number */
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: var(--vo-space-4);
-    line-height: 1.1;
-}
-
-.vo-stat-label {
-    font-family: var(--vo-font-body);
-    /* Looks like body font in image, maybe bold */
-    font-weight: 500;
-    font-size: var(--vo-text-lg);
-    color: #fff;
+/* Heading */
+.vo-stats-hero-heading {
+    font-family: var(--vo-font-heading);
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
     /* White */
-    margin-bottom: var(--vo-space-5);
     line-height: 1.3;
+    margin-bottom: 3rem;
+    text-align: center;
+    width: 100%;
 }
 
-.vo-stat-desc {
+@media (min-width: 768px) {
+    .vo-stats-hero-heading {
+        font-size: 3rem;
+    }
+}
+
+/* Hero Metric (Big Center) */
+.vo-stats-hero-metric {
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.vo-metric-number {
+    display: block;
+    font-family: var(--vo-font-heading);
+    font-size: 4rem;
+    font-weight: 700;
+    color: #ffffff;
+    /* White */
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .vo-metric-number {
+        font-size: 6rem;
+        /* Huge impact */
+    }
+}
+
+.vo-metric-label {
     font-family: var(--vo-font-body);
-    color: rgba(255, 255, 255, 0.8);
-    /* Lighter white */
-    font-size: var(--vo-text-sm);
-    line-height: 1.5;
-    max-width: 220px;
-    margin: 0 auto;
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.7);
+    /* Light gray for labels */
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Secondary Stats Grid */
+.vo-stats-secondary-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    /* border-top removed */
+    /* padding-top removed or reduced */
+}
+
+@media (min-width: 640px) {
+    .vo-stats-secondary-grid {
+        flex-direction: row;
+        gap: 4rem;
+    }
+}
+
+.vo-stat-item {
+    text-align: center;
+}
+
+/* Progress Divider Bar */
+.vo-stats-progress-divider {
+    width: 100%;
+    margin: 0 auto 4rem;
+    position: relative;
+    max-width: 800px;
+}
+
+.vo-progress-track {
+    width: 100%;
+    height: 32px;
+    /* Thicker bar */
+    background: linear-gradient(to right, var(--vo-color-secondary-light) 0%, rgba(255, 255, 255, 0.5) 100%);
+    /* Beige to transparent */
+    border-radius: 50px;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.vo-progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #F4D090;
+    /* Matching beige/orange tone from image */
+    background: linear-gradient(to right, #F9E4C8, #F0C484);
+    /* Beige Gradient */
+    border-radius: 50px;
+    z-index: 1;
+}
+
+.vo-progress-pill {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    /* Matches fill width */
+    transform: translate(-50%, -50%);
+    background: var(--vo-color-accent-green-dark);
+    /* #3A7F56 */
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-family: var(--vo-font-body);
+    font-size: 0.9rem;
+    font-weight: 700;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.vo-progress-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-family: var(--vo-font-body);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    /* Dim white */
+    font-weight: 500;
+}
+
+.vo-stat-sm-number {
+    display: block;
+    font-family: var(--vo-font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    /* White */
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.vo-stat-sm-label {
+    font-family: var(--vo-font-body);
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    /* Light gray */
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+/* Floating Avatars (Hidden on Mobile) */
+.vo-float-avatar {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 4px solid #fff;
+    z-index: 1;
+    display: none;
+    /* Hide on mobile */
+    animation: float 6s ease-in-out infinite;
+}
+
+.vo-float-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (min-width: 1024px) {
+    .vo-float-avatar {
+        display: block;
+    }
+
+    /* Positioning based on prototype visuals */
+    .vo-float-1 {
+        top: 15%;
+        left: 15%;
+        animation-delay: 0s;
+    }
+
+    .vo-float-2 {
+        top: 25%;
+        right: 15%;
+        animation-delay: 2s;
+    }
+
+    .vo-float-3 {
+        bottom: 20%;
+        left: 20%;
+        width: 50px;
+        height: 50px;
+        animation-delay: 1s;
+    }
+
+    .vo-float-4 {
+        bottom: 25%;
+        right: 20%;
+        width: 70px;
+        height: 70px;
+        animation-delay: 3s;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
 }
 
 /* =========================================

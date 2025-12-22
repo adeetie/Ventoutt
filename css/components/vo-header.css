@@ -65,6 +65,7 @@
     text-decoration: none;
     letter-spacing: 0.5px;
     transition: opacity 0.2s;
+    white-space: nowrap;
 }
 
 .vo-nav-link:hover {
@@ -171,18 +172,33 @@
     display: none;
 }
 
-/* Mobile Header Bar */
+/* Mobile Header Bar (Floating Pill) */
 .vo-mobile-header {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.5);
+    top: 20px;
+    left: 5%;
+    width: 90%;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.6);
+    /* Transparent like navbar */
     z-index: var(--vo-z-fixed);
-    box-shadow: var(--vo-shadow-sm);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    /* Soft shadow */
+    border-radius: 50px;
+    /* Pill Shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center content wrapper cant do this, content is space between */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
+
+.vo-mobile-header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
 
 .vo-mobile-header__content {
     display: flex;
@@ -230,24 +246,39 @@
     transform: rotate(-45deg) translate(8px, -8px);
 }
 
-/* Mobile Menu Drawer */
+/* Mobile Menu (Floating Card) */
 .vo-mobile-menu {
     position: fixed;
-    top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 400px;
-    height: 100vh;
-    background: rgba(255, 255, 255, 0.95);
-    z-index: var(--vo-z-sticky);
+    top: 110px;
+    /* Below header */
+    left: 5%;
+    width: 90%;
+    max-height: calc(100vh - 130px);
+    background: rgba(255, 255, 255, 0.6);
+    /* Transparent like navbar */
+    z-index: var(--vo-z-modal);
     overflow-y: auto;
-    transition: right var(--vo-transition-base);
-    box-shadow: -2px 0 20px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    /* Card Shape */
+    display: none;
+    /* Discrete toggle */
+    flex-direction: column;
+    padding: 30px;
+    /* Align with header padding if possible */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .vo-mobile-menu.active {
-    right: 0;
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+    right: auto;
+    /* Reset drawer logic */
 }
 
 .vo-mobile-menu__header {
@@ -275,20 +306,22 @@
 }
 
 .vo-mobile-menu__content {
-    padding: 30px var(--vo-space-10);
+    padding: 0;
+    width: 100%;
 }
 
-/* Mobile Menu Items */
+/* Mobile Menu Items Clean List */
 .vo-mobile-menu__item-header,
 .vo-mobile-menu__link {
     font-family: var(--vo-font-body);
-    font-weight: 600;
-    font-size: var(--vo-text-lg);
-    color: var(--vo-color-black);
-    padding: 15px 0;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: #333;
+    padding: 12px 0;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
+    /* Text left, Chevron right */
     align-items: center;
     text-decoration: none;
     background: none;
@@ -297,6 +330,13 @@
 
 .vo-mobile-menu__link:hover {
     color: var(--vo-color-primary);
+}
+
+/* Services Active Color */
+.vo-mobile-menu__section.active .vo-mobile-menu__item-header {
+    color: #E91E63;
+    /* Pink/Red from image */
+    font-weight: 600;
 }
 
 .vo-mobile-menu__chevron {
@@ -327,8 +367,14 @@
     text-decoration: none;
 }
 
-.vo-mobile-menu__sublink:hover {
-    color: var(--vo-color-black);
+.vo-mobile-menu__sublink {
+    font-family: var(--vo-font-body);
+    font-size: 1rem;
+    color: #666;
+    padding: 10px 0 10px 20px;
+    /* Indent */
+    display: block;
+    text-decoration: none;
 }
 
 /* Mobile Quote */
@@ -344,25 +390,25 @@
     margin: 30px 0 var(--vo-space-5);
 }
 
-/* Mobile CTA */
+/* Mobile CTA (Get Started) */
 .vo-mobile-menu__cta {
-    width: auto;
-    min-width: 200px;
+    width: 100%;
+    max-width: 250px;
     display: block;
-    margin: 40px auto 0;
-    /* Center button */
-    background: var(--vo-color-primary);
-    border: 1px solid var(--vo-color-white);
-    border-radius: var(--vo-radius-full);
-    /* Pill shape preferred */
-    padding: var(--vo-space-4) var(--vo-space-8);
+    margin: 40px 0 0;
+    /* Left align or center? Image has it sort of centered/leftish. Let's block left or auto */
+    background: #F57F17;
+    /* Orange */
+    border: none;
+    border-radius: 50px;
+    padding: 14px 20px;
     font-family: var(--vo-font-body);
     font-weight: 600;
-    font-size: var(--vo-text-base);
-    color: var(--vo-color-white);
+    font-size: 1rem;
+    color: #fff;
     cursor: pointer;
-    transition: background var(--vo-transition-base);
     text-align: center;
+    box-shadow: 0 4px 6px rgba(245, 127, 23, 0.2);
 }
 
 .vo-mobile-menu__cta:hover {
@@ -377,7 +423,8 @@
     width: 100%;
     height: 100vh;
     background: var(--vo-bg-overlay);
-    z-index: 1050;
+    z-index: var(--vo-z-modal-backdrop);
+    /* Ensure above header */
     opacity: 0;
     pointer-events: none;
     transition: opacity var(--vo-transition-base);
