@@ -156,4 +156,72 @@ document.addEventListener('DOMContentLoaded', () => {
         odometerElements.forEach(el => odometerObserver.observe(el));
     }
 
+
+    /* =========================================
+       15. Find Your Right Fit Interaction
+       ========================================= */
+    const fitTrack = document.getElementById('voFitTrack');
+    const fitFeatured = document.getElementById('fitFeatured');
+    const prevBtn = document.querySelector('.vo-fit-arrow.prev');
+    const nextBtn = document.querySelector('.vo-fit-arrow.next');
+
+    if (fitTrack && fitFeatured) {
+        // Initial Center on Mobile
+        if (window.innerWidth <= 768) {
+            // Delay to ensure layout rendering/paint is complete
+            setTimeout(() => {
+                fitFeatured.scrollIntoView({
+                    behavior: 'auto', // Instant snap
+                    block: 'nearest',
+                    inline: 'center'
+                });
+            }, 300);
+        }
+
+        // Arrow Navigation
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => {
+                fitTrack.scrollBy({
+                    left: -300, // Approx card width
+                    behavior: 'smooth'
+                });
+            });
+
+            nextBtn.addEventListener('click', () => {
+                fitTrack.scrollBy({
+                    left: 300,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Dynamic Mobile Scaling (Center = Big)
+        // Only run on mobile/tablet where horiz scroll exists
+        if (window.innerWidth <= 1024) {
+            const fitCards = document.querySelectorAll('.vo-fit-card');
+
+            // Observer to track which card is in the center "sweet spot"
+            const observerOptions = {
+                root: fitTrack,
+                // Shrink the detection area to the middle 40% of the container
+                // This ensures only the most central card is "intersecting"
+                rootMargin: '0px -30% 0px -30%',
+                threshold: 0.1 // Trigger as soon as it touches the center strip
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Remove scale-active from all, add to current
+                        // Note: We DO NOT touch 'featured' class so color stays permanent
+                        fitCards.forEach(c => c.classList.remove('scale-active'));
+                        entry.target.classList.add('scale-active');
+                    }
+                });
+            }, observerOptions);
+
+            fitCards.forEach(card => observer.observe(card));
+        }
+    }
+
 });

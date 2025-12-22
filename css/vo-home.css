@@ -1333,6 +1333,62 @@
     transition: transform 0.5s ease;
 }
 
+/* Mobile Stacking Tuning */
+@media (max-width: 768px) {
+    .love-v2-card {
+        top: 80px;
+        margin-bottom: 2rem;
+        height: auto;
+        min-height: 400px;
+    }
+
+    /* Clearer offsets for Mobile (+40px steps) */
+    .love-v2-card:nth-child(1) {
+        top: 80px;
+        z-index: 1;
+    }
+
+    .love-v2-card:nth-child(2) {
+        top: 120px;
+        z-index: 2;
+    }
+
+    .love-v2-card:nth-child(3) {
+        top: 160px;
+        z-index: 3;
+    }
+
+    .love-v2-card:nth-child(4) {
+        top: 200px;
+        z-index: 4;
+    }
+
+    .love-v2-card:nth-child(5) {
+        top: 240px;
+        z-index: 5;
+    }
+
+    .love-v2-card:nth-child(6) {
+        top: 280px;
+        z-index: 6;
+    }
+
+    .love-v2-card:nth-child(7) {
+        top: 320px;
+        z-index: 7;
+    }
+
+    .love-v2-card:nth-child(8) {
+        top: 360px;
+        z-index: 8;
+    }
+
+    .love-v2-card:nth-child(9) {
+        top: 400px;
+        z-index: 9;
+    }
+}
+
 /* Desktop Layout */
 @media (min-width: 768px) {
     .love-v2-card-inner {
@@ -1989,169 +2045,288 @@
 }
 
 /* =========================================
-   18. Comparison Section (Refactored)
+   14. Find Your Right Fit (Redesign V2)
    ========================================= */
-.vo-comparison-section {
-    padding: var(--vo-space-20) 5%;
+
+.vo-fit-section {
+    padding: 6rem 0;
     background-color: var(--vo-color-secondary-light);
+    overflow: hidden;
 }
 
-.vo-comparison-header {
+.vo-fit-header {
     text-align: center;
-    margin-bottom: var(--vo-space-16);
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    padding: 0 var(--vo-space-5);
 }
 
-.vo-comparison-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--vo-space-8);
+.vo-fit-title {
+    font-family: var(--vo-font-heading);
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--vo-color-black);
+    margin-bottom: 1rem;
+}
+
+.vo-fit-subtitle {
+    font-family: var(--vo-font-body);
+    font-size: 1.125rem;
+    color: var(--vo-color-gray-600);
+}
+
+.vo-fit-container {
     max-width: 1240px;
     margin: 0 auto;
-    align-items: center;
+    position: relative;
+    padding: 0 var(--vo-space-5);
 }
 
-.vo-comp-card {
-    background: #111;
-    border-radius: var(--vo-radius-lg);
-    padding: var(--vo-space-10) var(--vo-space-8);
-    color: #fff;
-    position: relative;
+/* Track for Scrolling/Grid */
+.vo-fit-track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-bottom: 3rem;
+    /* Space for shadows */
+}
+
+/* Card Styling */
+.vo-fit-card {
+    background: var(--vo-color-charcoal);
+    /* Default Dark BG as requested */
+    border-radius: 24px;
+    padding: 2.5rem;
     display: flex;
     flex-direction: column;
-    min-height: 500px;
-    transition: transform 0.3s;
-    box-shadow: none !important;
-    /* User request: No shadow/gradient */
-}
-
-/* Featured Card (Dark Green) */
-.vo-comp-card.vo-featured {
-    background: #1B4D3E;
-    transform: scale(1.05);
-    z-index: 1;
-    min-height: 540px;
-}
-
-.vo-comp-top {
-    margin-bottom: var(--vo-space-8);
-}
-
-.vo-comp-top h3 {
-    font-family: var(--vo-font-heading);
-    font-size: var(--vo-text-3xl);
-    font-weight: 700;
-    font-style: italic;
-    margin-bottom: 5px;
+    justify-content: space-between;
+    min-height: 480px;
+    position: relative;
+    transition: transform 0.3s ease;
     color: #fff;
+    /* White text on dark cards */
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.vo-comp-role {
+.vo-fit-card:hover {
+    transform: translateY(-8px);
+}
+
+/* Featured Card (Coaching) */
+.vo-fit-card.featured {
+    background: #1B4B43;
+    /* Dark Green from image */
+    border: none;
+    box-shadow: 0 20px 40px rgba(27, 75, 67, 0.25);
+    transform: scale(1.05);
+    /* Slightly larger */
+    z-index: 2;
+}
+
+.vo-fit-card.featured:hover {
+    transform: scale(1.05) translateY(-8px);
+}
+
+/* Card Header */
+.vo-fit-top {
+    margin-bottom: 2rem;
+}
+
+.vo-fit-top h3 {
+    font-family: var(--vo-font-heading);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    /* Always white on dark cards */
+}
+
+/* Role Label */
+.vo-fit-role {
     font-family: var(--vo-font-body);
-    font-size: var(--vo-text-sm);
-    opacity: 0.7;
-    margin-bottom: var(--vo-space-5);
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
 }
 
-.vo-comp-tag {
+/* Price Tag */
+.vo-fit-price {
+    font-family: var(--vo-font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 1rem;
+}
+
+/* Most Popular Tag */
+.vo-fit-tag {
     display: inline-block;
     background: rgba(255, 255, 255, 0.2);
-    padding: var(--vo-space-1) var(--vo-space-3);
-    border-radius: 4px;
-    font-size: var(--vo-text-xs);
+    color: #fff;
+    font-size: 0.75rem;
     font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
     text-transform: uppercase;
-    margin-bottom: var(--vo-space-4);
-    font-family: var(--vo-font-body);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
 }
 
-.vo-comp-price {
-    font-family: var(--vo-font-body);
-    font-size: var(--vo-text-3xl);
-    font-weight: 600;
-}
-
-.vo-comp-features {
+/* Features List */
+.vo-fit-features {
     list-style: none;
     padding: 0;
-    margin: 0 0 var(--vo-space-10);
-    flex: 1;
+    margin: 0 0 2rem 0;
+    flex-grow: 1;
 }
 
-.vo-comp-features li {
+.vo-fit-features li {
     font-family: var(--vo-font-body);
-    font-size: var(--vo-text-base);
-    margin-bottom: var(--vo-space-4);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
     display: flex;
     align-items: flex-start;
-    gap: var(--vo-space-3);
+    gap: 10px;
     line-height: 1.4;
+    color: rgba(255, 255, 255, 0.9);
 }
 
-.vo-comp-features li span {
-    color: var(--vo-color-primary);
+.vo-fit-features li span {
+    color: #FF9F40;
+    /* Orange Checkmarks */
     font-weight: bold;
 }
 
-.vo-btn-comp {
+/* Buttons */
+.vo-btn-fit {
     display: block;
-    width: 100%;
-    padding: var(--vo-space-4) 0;
     text-align: center;
-    border-radius: var(--vo-radius-xl);
-    font-family: var(--vo-font-body);
+    padding: 14px 24px;
+    border-radius: 50px;
     font-weight: 600;
     text-decoration: none;
-    transition: opacity 0.3s;
+    transition: all 0.3s ease;
 }
 
-.vo-btn-comp:hover {
-    opacity: 0.9;
+.vo-btn-fit.orange {
+    background: transparent;
+    border: 2px solid #FF9F40;
+    color: #FF9F40;
 }
 
-.vo-btn-comp.orange {
-    background: var(--vo-color-primary);
+.vo-btn-fit.orange:hover {
+    background: #FF9F40;
     color: #fff;
 }
 
-.vo-btn-comp.white {
-    background: #fff;
-    color: #1B4D3E;
+.vo-btn-fit.white {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border: none;
 }
 
+.vo-btn-fit.white:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+
+/* Mobile Arrows (Hidden on Desktop) */
+.vo-fit-arrow {
+    display: none;
+}
+
+/* =========================================
+   RESPONSIVE: MOBILE & TABLET
+   ========================================= */
 @media (max-width: 1024px) {
-    .vo-comparison-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .vo-comparison-grid {
-        grid-template-columns: 1fr;
+    .vo-fit-header {
+        margin-bottom: 2rem;
     }
 
-    /* Force Mobile Styles to Match Desktop (Dark Cards) */
-    .vo-comp-card {
-        background: #111 !important;
-        /* Force dark bg */
-        color: #fff !important;
-        box-shadow: none !important;
-        /* No shadows */
-        background-image: none !important;
-        /* Remove any gradients */
+    .vo-fit-track {
+        display: flex;
+        /* Horizontal Scroll */
+        gap: 1rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-top: 3rem;
+        /* Space for scaled card top */
+        padding-bottom: 3rem;
+        /* Space for scaled card bottom/shadow */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
-    .vo-comp-card.vo-featured {
-        background: #1B4D3E !important;
-        /* Force dark green */
-        transform: none;
+    .vo-fit-track::-webkit-scrollbar {
+        display: none;
+        /* Hide scrollbar Chrome */
     }
 
-    .vo-comp-top h3,
-    .vo-comp-price {
-        color: #fff !important;
+    .vo-fit-card {
+        min-width: 300px;
+        /* Card Width on Mobile */
+        width: 85%;
+        scroll-snap-align: center;
+        flex-shrink: 0;
     }
 
-    .vo-comp-role {
-        color: rgba(255, 255, 255, 0.7) !important;
+    .vo-fit-card.featured {
+        /* Featured keeps its Green Color, but scale is handles by .scale-active */
+        /* transform: scale(1.05);  <-- REMOVED static scale */
+        z-index: 5;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Dynamic Scale Class (Applied by IntersectionObserver) */
+    .vo-fit-card.scale-active {
+        transform: scale(1.05);
+        z-index: 10;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Show Arrows on Touch Devices - Simple Black Arrow */
+    .vo-fit-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 60px;
+        /* Larger hit area */
+        height: 60px;
+        background: transparent;
+        /* No circle */
+        border: none;
+        box-shadow: none;
+        z-index: 10;
+        cursor: pointer;
+        opacity: 0.8;
+        padding: 0;
+    }
+
+    .vo-fit-arrow:active {
+        opacity: 0.5;
+        transform: translateY(-50%) scale(0.9);
+    }
+
+    .vo-fit-arrow svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .vo-fit-arrow.prev {
+        left: -10px;
+    }
+
+    .vo-fit-arrow.next {
+        right: -10px;
+    }
+
+    .vo-fit-container {
+        padding: 0 10px;
+        /* Allow arrows to sit on edge */
     }
 }

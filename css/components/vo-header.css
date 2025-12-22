@@ -183,7 +183,8 @@
     /* Transparent like navbar */
     z-index: var(--vo-z-fixed);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    /* Soft shadow */
+    /* Soft shadow + DEBUG */
+    /* outline: 2px solid red; REMIVE THIS AFTER DEBUG */
     border-radius: 50px;
     /* Pill Shape */
     display: flex;
@@ -271,6 +272,8 @@
     transition: opacity 0.3s ease, transform 0.3s ease;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    pointer-events: none;
+    /* SAFETY: Prevent clicks when invisible */
 }
 
 .vo-mobile-menu.active {
@@ -279,6 +282,8 @@
     transform: translateY(0);
     right: auto;
     /* Reset drawer logic */
+    pointer-events: auto;
+    /* Re-enable clicks when open */
 }
 
 .vo-mobile-menu__header {

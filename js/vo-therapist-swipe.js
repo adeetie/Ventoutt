@@ -190,12 +190,12 @@ function initAllMobileFeatures() {
         }
     });
 
-    // V2 Clean Slate Initialization
-    const v2Stack = document.getElementById('voExpertsSwipeV2');
-    if (v2Stack && !v2Stack.dataset.init) {
-        new ExpertSwipeControllerV2();
-        v2Stack.dataset.init = 'true';
-    }
+    // V2 Clean Slate Initialization - REMOVED (Legacy Restore Active)
+    // const v2Stack = document.getElementById('voExpertsSwipeV2');
+    // if (v2Stack && !v2Stack.dataset.init) {
+    //    // new ExpertSwipeControllerV2(); // Class deleted
+    //    // v2Stack.dataset.init = 'true';
+    // }
 
 
     // Initialize Comparison Carousel (Mobile)

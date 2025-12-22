@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="css/components/vo-chatbot.css">
     <link rel="stylesheet" href="css/components/vo-popups.css">
     <link rel="stylesheet" href="css/components/vo-therapist-card.css">
-    <script src="js/vo-therapist-swipe.js" defer></script>
+    <script src="js/vo-therapist-swipe.js?v=2" defer></script>
     <script src="js/vo-home.js" defer></script>
     <script src="js/vo-index-v2.js" defer></script>
     <script src="js/vo-marquee.js" defer></script>
@@ -779,60 +779,74 @@
         </section>
 
 
-        <!-- 8. Find Your Right Fit (Comparison Section) -->
-        <section class="vo-comparison-section">
-            <div class="vo-comparison-header">
-                <h2 class="vo-section-title-center">Find Your Right Fit</h2>
-                <p class="vo-section-subtitle-center">Every path is valid. Choose what helps you today.</p>
+        <!-- 9. Find Your Right Fit (Comparison Redesign) -->
+        <section class="vo-fit-section">
+            <div class="vo-fit-header">
+                <h2 class="vo-fit-title">Find Your Right Fit</h2>
+                <p class="vo-fit-subtitle">Every path is valid. Choose what helps you today.</p>
             </div>
 
+            <div class="vo-fit-container">
+                <!-- Arrows (Mobile Only) -->
+                <button class="vo-fit-arrow prev" aria-label="Previous">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 17L9 12L14 7" stroke="black" stroke-width="3" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <button class="vo-fit-arrow next" aria-label="Next">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 17L15 12L10 7" stroke="black" stroke-width="3" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
 
-
-            <div class="vo-comparison-grid">
-                <!-- Venting -->
-                <div class="vo-comp-card">
-                    <div class="vo-comp-top">
-                        <h3>Venting</h3>
-                        <div class="vo-comp-role">Empathetic Listeners</div>
-                        <div class="vo-comp-price">Low Cost ($)</div>
+                <div class="vo-fit-track" id="voFitTrack">
+                    <!-- Card 1: Venting -->
+                    <div class="vo-fit-card">
+                        <div class="vo-fit-top">
+                            <h3>Venting</h3>
+                            <div class="vo-fit-role">Empathetic Listeners</div>
+                            <div class="vo-fit-price">Low Cost ($)</div>
+                        </div>
+                        <ul class="vo-fit-features">
+                            <li><span>✓</span> <strong>Goal:</strong> Instant Relief</li>
+                            <li><span>✓</span> <strong>Focus:</strong> "Feeling Heard"</li>
+                            <li><span>✓</span> <strong>Availability:</strong> Instant Access</li>
+                        </ul>
+                        <a href="#" class="vo-btn-fit orange">Start Chat</a>
                     </div>
-                    <ul class="vo-comp-features">
-                        <li><span>✓</span> <strong>Goal:</strong> Instant Relief</li>
-                        <li><span>✓</span> <strong>Focus:</strong> "Feeling Heard"</li>
-                        <li><span>✓</span> <strong>Availability:</strong> Instant Access</li>
-                    </ul>
-                    <a href="#" class="vo-btn-comp orange">Start Chat</a>
-                </div>
 
-                <!-- Coaching -->
-                <div class="vo-comp-card vo-featured">
-                    <div class="vo-comp-top">
-                        <h3>Coaching</h3>
-                        <div class="vo-comp-role">Qualified Psychologists</div>
-                        <div class="vo-comp-tag">Most Popular</div>
-                        <div class="vo-comp-price">Affordable ($$)</div>
+                    <!-- Card 2: Coaching (Featured) -->
+                    <div class="vo-fit-card featured" id="fitFeatured">
+                        <div class="vo-fit-top">
+                            <h3>Coaching</h3>
+                            <div class="vo-fit-role">Qualified Psychologists</div>
+                            <div class="vo-fit-tag">Most Popular</div>
+                            <div class="vo-fit-price">Affordable ($$)</div>
+                        </div>
+                        <ul class="vo-fit-features">
+                            <li><span>✓</span> <strong>Goal:</strong> Growth & Action Plans</li>
+                            <li><span>✓</span> <strong>Focus:</strong> "Building Skills"</li>
+                            <li><span>✓</span> <strong>Availability:</strong> Same-Day Priority</li>
+                        </ul>
+                        <a href="#" class="vo-btn-fit white">Get Matched</a>
                     </div>
-                    <ul class="vo-comp-features">
-                        <li><span>✓</span> <strong>Goal:</strong> Growth & Action Plans</li>
-                        <li><span>✓</span> <strong>Focus:</strong> "Building Skills"</li>
-                        <li><span>✓</span> <strong>Availability:</strong> Same-Day Priority</li>
-                    </ul>
-                    <a href="#" class="vo-btn-comp white">Get Matched</a>
-                </div>
 
-                <!-- Therapy -->
-                <div class="vo-comp-card">
-                    <div class="vo-comp-top">
-                        <h3>Therapy</h3>
-                        <div class="vo-comp-role">Licensed Clinicians</div>
-                        <div class="vo-comp-price">Premium ($$$$)</div>
+                    <!-- Card 3: Therapy -->
+                    <div class="vo-fit-card">
+                        <div class="vo-fit-top">
+                            <h3>Therapy</h3>
+                            <div class="vo-fit-role">Licensed Clinicians</div>
+                            <div class="vo-fit-price">Premium ($$$$)</div>
+                        </div>
+                        <ul class="vo-fit-features">
+                            <li><span>✓</span> <strong>Goal:</strong> Medical Diagnosis</li>
+                            <li><span>✓</span> <strong>Focus:</strong> "Deep Healing"</li>
+                            <li><span>✓</span> <strong>Availability:</strong> By Appointment</li>
+                        </ul>
+                        <a href="#" class="vo-btn-fit orange">Join Waitlist</a>
                     </div>
-                    <ul class="vo-comp-features">
-                        <li><span>✓</span> <strong>Goal:</strong> Medical Diagnosis</li>
-                        <li><span>✓</span> <strong>Focus:</strong> "Deep Healing"</li>
-                        <li><span>✓</span> <strong>Availability:</strong> By Appointment</li>
-                    </ul>
-                    <a href="#" class="vo-btn-comp orange">Join Waitlist</a>
                 </div>
             </div>
         </section>
