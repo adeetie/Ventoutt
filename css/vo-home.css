@@ -37,9 +37,6 @@
     margin-bottom: var(--vo-space-2);
 }
 
-.vo-hero__header {
-    /* margin-bottom handled by wrapper */
-}
 
 .vo-hero__greeting {
     font-family: var(--vo-font-heading);
@@ -62,10 +59,6 @@
     color: #2D2D2D;
     font-style: italic;
     margin-bottom: var(--vo-space-6);
-}
-
-.vo-hero__footer {
-    /* Container for Desc + CTA */
 }
 
 .vo-hero__description {
@@ -597,10 +590,8 @@
    4. Stats Section (Improvised Floating Design)
    ========================================= */
 .vo-stats-section-floating {
-    display: none;
-    /* Hidden as per user request */
-    padding: 6rem 0;
-    background-color: var(--vo-color-white);
+    padding: 3rem 0;
+    background-color: var(--vo-color-black);
     position: relative;
     overflow: hidden;
     /* Prevent horizontal scroll from avatars */
@@ -625,9 +616,9 @@
     font-family: var(--vo-font-heading);
     font-size: 2rem;
     font-weight: 600;
-    color: var(--vo-color-black);
+    color: var(--vo-color-white);
     line-height: 1.3;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     text-align: center;
     width: 100%;
 }
@@ -640,7 +631,7 @@
 
 /* Hero Metric (Big Center) */
 .vo-stats-hero-metric {
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -653,7 +644,7 @@
     font-family: var(--vo-font-heading);
     font-size: 4rem;
     font-weight: 700;
-    color: var(--vo-color-black);
+    color: var(--vo-color-white);
     line-height: 1;
     margin-bottom: 0.5rem;
     text-align: center;
@@ -669,7 +660,7 @@
 .vo-metric-label {
     font-family: var(--vo-font-body);
     font-size: 1.125rem;
-    color: var(--vo-text-secondary);
+    color: rgba(255, 255, 255, 0.7);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -699,7 +690,7 @@
 /* Progress Divider Bar */
 .vo-stats-progress-divider {
     width: 100%;
-    margin: 0 auto 4rem;
+    margin: 0 auto 2rem;
     position: relative;
     max-width: 800px;
 }
@@ -752,8 +743,30 @@
     margin-top: 1rem;
     font-family: var(--vo-font-body);
     font-size: 0.85rem;
-    color: var(--vo-text-secondary);
+    color: rgba(255, 255, 255, 0.7);
     font-weight: 500;
+}
+
+.vo-stats-secondary-stat {
+    text-align: center;
+}
+
+.vo-stats-secondary-number {
+    font-family: var(--vo-font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--vo-color-white);
+    display: block;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.vo-stats-secondary-label {
+    font-family: var(--vo-font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    display: block;
 }
 
 .vo-stat-sm-number {
@@ -761,27 +774,27 @@
     font-family: var(--vo-font-heading);
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--vo-color-black);
+    color: var(--vo-color-white);
     margin-bottom: 0.25rem;
 }
 
 .vo-stat-sm-label {
     font-family: var(--vo-font-body);
     font-size: 0.875rem;
-    color: var(--vo-text-secondary);
+    color: rgba(255, 255, 255, 0.7);
     font-weight: 500;
     text-transform: uppercase;
 }
 
-/* Floating Avatars (Hidden on Mobile) */
+/* Floating Avatars (Desktop Only) */
 .vo-float-avatar {
     position: absolute;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    border: 4px solid #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.3);
     z-index: 1;
     display: none;
     /* Hide on mobile */
@@ -985,5 +998,1157 @@
     .vo-testimonial-name img {
         width: 120px;
         height: 120px;
+    }
+}
+
+/* =========================================
+   8. Real Experts Section V2 - Mobile First
+   ========================================= */
+
+.experts-v2-section {
+    padding: 4rem 0 6rem;
+    background-color: var(--vo-color-secondary-light);
+}
+
+.experts-v2-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 var(--vo-space-5);
+}
+
+/* Header - Mobile Base */
+.experts-v2-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.experts-v2-title {
+    font-family: var(--vo-font-heading);
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--vo-color-black);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+.experts-v2-subtitle {
+    font-family: var(--vo-font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--vo-color-black);
+    line-height: 1.3;
+}
+
+/* Mobile Layout - Vertical Stack with Overlap */
+.experts-v2-content {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.experts-v2-image-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: -200px;
+    position: relative;
+    z-index: 1;
+}
+
+.experts-v2-blob {
+    width: 100%;
+    max-width: 550px;
+    aspect-ratio: 1;
+    background: none;
+    border-radius: 45% 55% 52% 48% / 48% 45% 55% 52%;
+    overflow: hidden;
+    box-shadow: none;
+    position: relative;
+}
+
+/* Slideshow inside blob */
+.experts-v2-blob .vo-banner-slideshow-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: inherit;
+}
+
+.experts-v2-blob .vo-blob-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+.experts-v2-blob .vo-blob-slide.active {
+    opacity: 1;
+}
+
+/* Content Card - Mobile */
+.experts-v2-card {
+    position: relative;
+    width: 90%;
+    max-width: 380px;
+    margin: 0 auto;
+    background-color: var(--vo-color-black);
+    color: #ffffff;
+    padding: 2rem 1.75rem;
+    border-radius: 32px;
+    box-shadow: none;
+    z-index: 10;
+}
+
+.experts-v2-intro {
+    font-family: var(--vo-font-body);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 1.25rem;
+}
+
+.experts-v2-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.75rem 0;
+}
+
+.experts-v2-list li {
+    font-family: var(--vo-font-body);
+    font-size: 0.9rem;
+    line-height: 1.1;
+    margin-bottom: 0.9rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.experts-v2-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #FF9F40;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.experts-v2-footer {
+    margin: 0;
+    padding-top: 1rem;
+}
+
+.experts-v2-tagline {
+    font-family: 'Lora', serif !important;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: #FF9F40;
+    font-style: italic !important;
+}
+
+/* Tablet Breakpoint */
+@media (min-width: 768px) {
+    .experts-v2-header {
+        margin-bottom: 4rem;
+    }
+
+    .experts-v2-title {
+        font-size: 2.5rem;
+    }
+
+    .experts-v2-subtitle {
+        font-size: 2rem;
+    }
+
+    .experts-v2-intro {
+        font-size: 1.0625rem;
+    }
+
+    .experts-v2-list li {
+        font-size: 1rem;
+    }
+
+    .experts-v2-card {
+        padding: 2.5rem 2rem;
+    }
+
+    .experts-v2-tagline {
+        font-size: 1.25rem;
+    }
+}
+
+/* Desktop Breakpoint - Side by Side Layout */
+@media (min-width: 1024px) {
+    .experts-v2-content {
+        display: flex;
+        flex-direction: row;
+        gap: 4rem;
+        align-items: center;
+        max-width: 1240px;
+    }
+
+    .experts-v2-image-wrap {
+        flex: 1;
+        margin-bottom: 0;
+    }
+
+    .experts-v2-blob {
+        max-width: 550px;
+    }
+
+    .experts-v2-card {
+        flex: 1.2;
+        max-width: 600px;
+        margin: 0;
+        padding: 3rem 2.5rem;
+    }
+}
+
+/* =========================================
+   9. Why People Love VentOutt (Sticky Stack V2)
+   ========================================= */
+
+.love-v2-section {
+    padding: 6rem 0;
+    background-color: #faf7f2;
+    /* Light beige/warm bg */
+    position: relative;
+    z-index: 5;
+}
+
+.love-v2-title {
+    font-family: var(--vo-font-heading);
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--vo-color-black);
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.love-v2-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 var(--vo-space-5);
+    position: relative;
+    /* Height is determined by content flow */
+}
+
+/* Card Base */
+.love-v2-card {
+    position: sticky;
+    top: 150px;
+    /* Base sticky position */
+    margin-bottom: 4rem;
+    /* Spacing between cards when scrolling */
+    height: 400px;
+    /* Fixed height for consistent stacking */
+    width: 100%;
+
+    /* Decoration */
+    background-color: var(--vo-color-white);
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Stacking Offsets for Deck Effect */
+.love-v2-card:nth-child(1) {
+    top: 120px;
+}
+
+.love-v2-card:nth-child(2) {
+    top: 135px;
+}
+
+.love-v2-card:nth-child(3) {
+    top: 150px;
+}
+
+.love-v2-card:nth-child(4) {
+    top: 165px;
+}
+
+.love-v2-card:nth-child(5) {
+    top: 180px;
+}
+
+.love-v2-card:nth-child(6) {
+    top: 195px;
+}
+
+.love-v2-card:nth-child(7) {
+    top: 210px;
+}
+
+.love-v2-card:nth-child(8) {
+    top: 225px;
+}
+
+.love-v2-card:nth-child(9) {
+    top: 240px;
+}
+
+/* Inner Layout */
+.love-v2-card-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.love-v2-content {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.love-v2-card-title {
+    font-family: var(--vo-font-heading);
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: var(--vo-color-black);
+}
+
+.love-v2-card-desc {
+    font-family: var(--vo-font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--vo-text-secondary);
+}
+
+.love-v2-image {
+    flex: 1;
+    overflow: hidden;
+}
+
+.love-v2-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Desktop Layout */
+@media (min-width: 768px) {
+    .love-v2-card-inner {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .love-v2-content {
+        flex: 1;
+        padding: 4rem;
+    }
+
+    .love-v2-image {
+        flex: 1;
+    }
+
+    /* Alternating Layout */
+    .love-v2-card:nth-child(even) .love-v2-card-inner {
+        flex-direction: row-reverse;
+    }
+}
+
+/* =========================================
+   10. Stats Section (Split Layout Redesign)
+   ========================================= */
+
+.vo-stats-split-section {
+    padding: 6rem 0;
+    background-color: #faf7f2;
+    position: relative;
+}
+
+.vo-stats-split-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 var(--vo-space-5);
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Outside Title */
+.vo-stats-main-title-outside {
+    font-family: 'Lora', serif;
+    font-size: 2.25rem;
+    /* Mobile Size */
+    font-weight: 700;
+    font-style: italic;
+    color: var(--vo-color-black);
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+    line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+    .vo-stats-main-title-outside {
+        font-size: 4rem;
+        /* Desktop Size matching image */
+    }
+}
+
+/* Left: Main Black Card */
+.vo-stats-main-card {
+    background-color: #1a1a1a;
+    border-radius: 32px;
+    padding: 3rem 2.5rem;
+    color: #ffffff;
+    flex: 1.5;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 320px;
+}
+
+/* Slider */
+.vo-stats-slider-container {
+    position: relative;
+    height: 120px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.vo-stats-slide {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%) translateX(20px);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    pointer-events: none;
+}
+
+.vo-stats-slide.active {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+    pointer-events: all;
+}
+
+/* Metric Number Styling */
+.vo-metric-number-big {
+    font-family: var(--vo-font-heading);
+    font-size: 4.5rem;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+}
+
+.vo-metric-label-big {
+    font-family: var(--vo-font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #FF9F40;
+    /* Orange accent from image */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Progress Bar */
+.vo-stats-progress-container {
+    width: 100%;
+}
+
+.vo-progress-bar-bg {
+    width: 100%;
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    position: relative;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+}
+
+.vo-progress-fill {
+    height: 100%;
+    background-color: #F3Dbad;
+    /* Beige/Gold color from image */
+    border-radius: 12px;
+}
+
+.vo-progress-pill {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    background-color: #2E5C46;
+    /* Green pill */
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.vo-progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+}
+
+.vo-stats-card-avatar {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    overflow: hidden;
+}
+
+.vo-stats-card-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =========================================
+   Experts Section V2 (Clean Slate Rebuild)
+   Matches vo-services.html on Desktop
+   Preserves Mobile Swipe Logic on Mobile
+   ========================================= */
+.vo-experts-v2-section {
+    padding: var(--vo-space-24) 0;
+    background-color: var(--vo-color-bg-light);
+}
+
+.vo-experts-v2-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+/* Header */
+.vo-experts-v2-header {
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.vo-experts-v2-label {
+    font-family: var(--vo-font-body);
+    font-size: var(--vo-text-sm);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--vo-color-dark-gray);
+    margin-bottom: 15px;
+}
+
+.vo-experts-v2-title {
+    font-family: var(--vo-font-heading);
+    font-size: var(--vo-text-5xl);
+    line-height: 1.1;
+    color: var(--vo-color-black);
+    font-weight: 700;
+}
+
+/* Sub-Grids */
+.vo-experts-v2-subgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Exact 2-column for cards */
+    gap: 30px;
+}
+
+.vo-experts-v2-col {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Card Styles (Gallery Expanding Style from Services) */
+.vo-experts-v2-card {
+    position: relative;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    height: 420px;
+    /* Fixed height for consistency */
+    display: flex;
+    flex-direction: column;
+}
+
+.vo-experts-v2-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.vo-experts-v2-photo-container {
+    flex: 1;
+    /* Take available space */
+    position: relative;
+    overflow: hidden;
+}
+
+.vo-experts-v2-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.vo-experts-v2-card:hover .vo-experts-v2-photo {
+    transform: scale(1.05);
+}
+
+/* Rating Badge */
+.vo-experts-v2-rating {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: white;
+    border-radius: 12px;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.vo-experts-v2-rating .star {
+    color: var(--vo-color-primary);
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+
+.vo-experts-v2-rating .score {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--vo-color-black);
+    line-height: 1;
+}
+
+.vo-experts-v2-rating .label {
+    font-size: 8px;
+    text-transform: uppercase;
+    color: #888;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+/* Info Box */
+.vo-experts-v2-info {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    z-index: 3;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.vo-experts-v2-card:hover .vo-experts-v2-info {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0;
+    /* Full width on hover/expand */
+    padding-bottom: 30px;
+    /* Extra padding for slide up */
+    transform: translateY(0);
+    /* Ensure it stays anchored */
+}
+
+.vo-experts-v2-name {
+    font-family: var(--vo-font-body);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--vo-color-black);
+    margin-bottom: 4px;
+}
+
+.vo-experts-v2-job {
+    font-family: var(--vo-font-body);
+    font-size: 13px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0;
+}
+
+/* Details (Hidden by default, expanding) */
+.vo-experts-v2-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    margin-top: 0;
+}
+
+.vo-experts-v2-card:hover .vo-experts-v2-details {
+    max-height: 200px;
+    /* Allow expansion */
+    opacity: 1;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.vo-experts-v2-detail-item {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+.vo-experts-v2-detail-item ul {
+    margin: 4px 0 4px 18px;
+    padding: 0;
+}
+
+/* Footer Content */
+.vo-experts-v2-content {
+    margin-top: auto;
+    /* Push to bottom of col */
+    padding-top: 20px;
+}
+
+.vo-experts-v2-desc {
+    font-family: var(--vo-font-body);
+    font-size: var(--vo-text-base);
+    color: var(--vo-color-charcoal);
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+/* Mobile & Responsive Logic */
+@media (max-width: 900px) {
+    .vo-experts-v2-container {
+        display: block !important;
+    }
+
+    .vo-experts-v2-subgrid {
+        display: none !important;
+        /* Hide Desktop Grid */
+    }
+
+    /* Swipe Container Fixes (Legacy Restored) */
+    .vo-swipe-container {
+        display: block !important;
+        position: relative;
+        width: 100%;
+        max-width: 340px;
+        height: 550px;
+        margin: 0 auto;
+        overflow: visible;
+        margin-top: 20px;
+    }
+
+    .vo-swipe-card {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+        background-color: #fff;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        cursor: grab;
+    }
+
+    .vo-swipe-card.vo-text-card {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .vo-swipe-card .vo-card-inner {
+        min-height: 480px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .vo-card-image {
+        height: 380px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px 20px 0 0;
+        position: relative;
+        width: 100%;
+    }
+
+    .vo-card-info {
+        padding: 20px;
+        text-align: center;
+        background: white;
+        border-radius: 0 0 20px 20px;
+        flex: 1;
+    }
+
+    .vo-card-name {
+        font-family: var(--vo-font-body);
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 5px;
+        color: var(--vo-color-black);
+    }
+
+    .vo-card-title {
+        font-size: 14px;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .expert-rating-circle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: white;
+        padding: 5px 10px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: auto;
+        min-width: 50px;
+    }
+
+    .expert-rating-circle .star {
+        color: var(--vo-color-primary);
+        font-size: 12px;
+    }
+
+    .expert-rating-circle .score {
+        font-weight: 800;
+        font-size: 14px;
+        color: var(--vo-color-black);
+    }
+
+    .expert-rating-circle .label {
+        font-size: 8px;
+        color: #888;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    /* Ensure Text Card Details are Styled */
+    .vo-expert-details {
+        padding: 20px;
+        text-align: left;
+        width: 100%;
+    }
+
+    .vo-detail-credentials,
+    .vo-detail-expertise,
+    .vo-detail-meta {
+        font-size: 13px;
+        margin-bottom: 12px;
+        color: #555;
+        line-height: 1.5;
+    }
+
+    .vo-detail-expertise ul {
+        margin: 5px 0 5px 20px;
+        padding: 0;
+    }
+
+    .vo-experts-v2-content {
+        text-align: center;
+    }
+
+    /* Mobile Title Size Override if needed */
+    .vo-experts-v2-title {
+        font-size: 36px;
+    }
+}
+
+@media (min-width: 901px) {
+    .vo-experts-v2-mobile-swipe {
+        display: none !important;
+    }
+}
+
+/* Right: List Side */
+.vo-stats-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1rem;
+}
+
+.vo-stat-list-item {
+    padding: 1rem 0;
+}
+
+.vo-stats-list-num {
+    display: block;
+    font-family: var(--vo-font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--vo-color-black);
+    line-height: 1.1;
+    margin-bottom: 0.25rem;
+}
+
+.vo-stats-list-desc {
+    display: block;
+    font-family: var(--vo-font-heading);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--vo-color-black);
+}
+
+.vo-stats-divider {
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.2);
+    /* Dark divider */
+    width: 100%;
+}
+
+/* Desktop Layout */
+@media (min-width: 900px) {
+    .vo-stats-split-container {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 4rem;
+    }
+
+    .vo-stats-list {
+        padding-left: 0;
+    }
+}
+
+/* =========================================
+   UTILITIES
+   ========================================= */
+.vo-desktop-only {
+    display: flex !important;
+}
+
+.vo-mobile-only {
+    display: none !important;
+}
+
+@media (max-width: 900px) {
+    .vo-desktop-only {
+        display: none !important;
+    }
+
+    .vo-mobile-only {
+        display: block !important;
+    }
+}
+
+/* Orange Button Variant */
+.vo-btn-orange {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--vo-space-3);
+    background-color: #F57F17;
+    /* Primary Orange */
+    color: #fff;
+    padding: 12px 32px;
+    border-radius: 50px;
+    font-family: var(--vo-font-body);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.vo-btn-orange:hover {
+    background-color: #E65100;
+    /* Darker Orange */
+    transform: translateY(-2px);
+}
+
+.vo-btn-orange .arrow {
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+/* =========================================
+   18. Comparison Section (Refactored)
+   ========================================= */
+.vo-comparison-section {
+    padding: var(--vo-space-20) 5%;
+    background-color: var(--vo-color-secondary-light);
+}
+
+.vo-comparison-header {
+    text-align: center;
+    margin-bottom: var(--vo-space-16);
+}
+
+.vo-comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--vo-space-8);
+    max-width: 1240px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.vo-comp-card {
+    background: #111;
+    border-radius: var(--vo-radius-lg);
+    padding: var(--vo-space-10) var(--vo-space-8);
+    color: #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
+    transition: transform 0.3s;
+    box-shadow: none !important;
+    /* User request: No shadow/gradient */
+}
+
+/* Featured Card (Dark Green) */
+.vo-comp-card.vo-featured {
+    background: #1B4D3E;
+    transform: scale(1.05);
+    z-index: 1;
+    min-height: 540px;
+}
+
+.vo-comp-top {
+    margin-bottom: var(--vo-space-8);
+}
+
+.vo-comp-top h3 {
+    font-family: var(--vo-font-heading);
+    font-size: var(--vo-text-3xl);
+    font-weight: 700;
+    font-style: italic;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.vo-comp-role {
+    font-family: var(--vo-font-body);
+    font-size: var(--vo-text-sm);
+    opacity: 0.7;
+    margin-bottom: var(--vo-space-5);
+}
+
+.vo-comp-tag {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: var(--vo-space-1) var(--vo-space-3);
+    border-radius: 4px;
+    font-size: var(--vo-text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: var(--vo-space-4);
+    font-family: var(--vo-font-body);
+}
+
+.vo-comp-price {
+    font-family: var(--vo-font-body);
+    font-size: var(--vo-text-3xl);
+    font-weight: 600;
+}
+
+.vo-comp-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--vo-space-10);
+    flex: 1;
+}
+
+.vo-comp-features li {
+    font-family: var(--vo-font-body);
+    font-size: var(--vo-text-base);
+    margin-bottom: var(--vo-space-4);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--vo-space-3);
+    line-height: 1.4;
+}
+
+.vo-comp-features li span {
+    color: var(--vo-color-primary);
+    font-weight: bold;
+}
+
+.vo-btn-comp {
+    display: block;
+    width: 100%;
+    padding: var(--vo-space-4) 0;
+    text-align: center;
+    border-radius: var(--vo-radius-xl);
+    font-family: var(--vo-font-body);
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.vo-btn-comp:hover {
+    opacity: 0.9;
+}
+
+.vo-btn-comp.orange {
+    background: var(--vo-color-primary);
+    color: #fff;
+}
+
+.vo-btn-comp.white {
+    background: #fff;
+    color: #1B4D3E;
+}
+
+@media (max-width: 1024px) {
+    .vo-comparison-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .vo-comparison-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Force Mobile Styles to Match Desktop (Dark Cards) */
+    .vo-comp-card {
+        background: #111 !important;
+        /* Force dark bg */
+        color: #fff !important;
+        box-shadow: none !important;
+        /* No shadows */
+        background-image: none !important;
+        /* Remove any gradients */
+    }
+
+    .vo-comp-card.vo-featured {
+        background: #1B4D3E !important;
+        /* Force dark green */
+        transform: none;
+    }
+
+    .vo-comp-top h3,
+    .vo-comp-price {
+        color: #fff !important;
+    }
+
+    .vo-comp-role {
+        color: rgba(255, 255, 255, 0.7) !important;
     }
 }

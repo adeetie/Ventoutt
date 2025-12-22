@@ -3,42 +3,43 @@
  * Handles touch gestures, card stacking logic, and swipe animations
  */
 
-class SwipeableStack {
-    constructor(containerOrSelector) {
-        if (typeof containerOrSelector === 'string') {
-            this.container = document.querySelector(containerOrSelector);
-        } else {
-            this.container = containerOrSelector;
-        }
-
+/**
+ * Expert Swipe Controller V2
+ * Dedicated controller for the new Clean Slate Experts Section
+ * Handles swipe gestures, card stacking, and prevents unauthorized redirects
+ */
+class ExpertSwipeControllerV2 {
+    constructor() {
+        this.container = document.getElementById('voExpertsSwipeV2');
         if (!this.container) return;
 
-        this.cards = Array.from(this.container.querySelectorAll('.vo-swipe-card'));
-        this.currentIndex = 0;
-        this.isAnimating = false;
+        this.cards = Array.from(this.container.querySelectorAll('.vo-experts-v2-swipe-card'));
+        if (!this.cards.length) return;
 
-        // Touch state
+        this.isAnimating = false;
         this.startX = 0;
-        this.startY = 0;
         this.currentX = 0;
-        this.currentY = 0;
         this.activeCard = null;
 
-        // Initialize stack
+        // Stack visual settings
+        this.scales = [1, 0.95, 0.90, 0.85];
+        this.offsetY = [0, 15, 30, 45];
+        this.zIndexes = [100, 90, 80, 70];
+
         this.init();
     }
 
     init() {
-        // Only initialize swipe logic on mobile/tablet
-        if (window.innerWidth > 768) return;
+        // Run only on mobile breakpoint
+        if (window.innerWidth > 900) return;
 
-        // Add event listeners to the top card
         this.updateStack();
 
-        // Listen for resize to disable/enable
+        // Window resize handler (debounce in prod, simple here)
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                this.cleanup();
+            if (window.innerWidth > 900) {
+                // If we move to desktop, maybe reset styles? 
+                // But CSS handles visibility mostly.
             } else {
                 this.updateStack();
             }
@@ -47,163 +48,128 @@ class SwipeableStack {
 
     updateStack() {
         this.cards.forEach((card, index) => {
-            // Reset styles first for everyone to ensure clean state
-            card.style.transition = 'transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s ease';
-            card.style.display = 'block'; // Always block in infinite loop
+            // Clean state
+            card.style.transition = 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease';
+            card.style.display = 'flex'; // Ensure flex layout is kept
 
-            // Remove listeners from all cards first
+            // Strip old listeners to avoid dupes
             this.removeListeners(card);
 
-            // Stack Visuals
-            if (index === 0) {
-                // Top Card (Active)
-                card.style.zIndex = '100';
-                card.style.transform = 'scale(1) translateY(0) rotate(0deg)';
-                card.style.opacity = '1';
-                card.style.opacity = '1';
-                card.style.backgroundColor = 'white';
-                // card.classList.remove('vo-text-card'); // DISABLED: We now use permanent text cards, do not strip class
+            // Determine visual slot
+            const slot = index < 4 ? index : 3; // Cap at 4th slot visual
 
-                // Activate interaction
-                this.addListeners(card);
+            card.style.zIndex = this.zIndexes[slot];
+            card.style.transform = `scale(${this.scales[slot]}) translateY(${this.offsetY[slot]}px)`;
+            card.style.opacity = index < 3 ? '1' : '0'; // Hide cards deep in stack
+
+            // Active card logic
+            if (index === 0) {
                 this.activeCard = card;
-            } else if (index === 1) {
-                // Second Card (Visible "In Back") - First Blue
-                card.style.zIndex = '90';
-                card.style.transform = 'scale(0.95) translateY(15px) rotate(3deg)';
-                card.style.opacity = '1';
-                card.style.backgroundColor = '#CBE6F6';
-            } else if (index === 2) {
-                // Third Card (Peeking) - Second Blue
-                card.style.zIndex = '80';
-                card.style.transform = 'scale(0.90) translateY(30px) rotate(-3deg)';
-                card.style.opacity = '1';
-                card.style.backgroundColor = '#9CCDE8';
+                this.addListeners(card);
+                card.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)'; // High shadow for top
             } else {
-                // Others hidden behind the stack
-                card.style.zIndex = '10';
-                card.style.transform = 'scale(0.85) translateY(45px) rotate(0deg)';
-                card.style.opacity = '0'; // Hide deeper cards
+                card.style.boxShadow = '0 5px 15px rgba(0,0,0,0.05)'; // Low shadow for back
             }
         });
     }
 
     addListeners(card) {
-        card.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: true });
+        // Touch events
+        card.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: false });
         card.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
-        card.addEventListener('touchend', this.handleTouchEnd.bind(this), { passive: true });
-        // Click to flip disabled as we are using separate text cards now
-        // card.addEventListener('click', this.handleClick.bind(this));
+        card.addEventListener('touchend', this.handleTouchEnd.bind(this), { passive: false });
+
+        // Mouse events (for desktop testing or hybrid devices)
+        card.addEventListener('mousedown', this.handleTouchStart.bind(this));
+
+        // CLICK SAFETY: Stop links/clicks if swiping
+        card.onclick = (e) => {
+            if (this.isAnimating || Math.abs(this.currentX - this.startX) > 10) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        };
     }
 
     removeListeners(card) {
-        // In this implementation, we simply don't add listeners to non-active cards.
-        // But to be safe if we were reusing elements strictly:
-        // Use cloneNode(true) to strip listeners OR just rely on logic. 
-        // Since we are re-assigning listeners only to index 0, logic holds.
+        // Clone node is nuclear option, here we just trust the loop updates only usage
+        // But for safety, we could remove specific listeners if we stored references.
+        // Simplest: The logic only attaches to Index 0.
+        // If a card moves to Index 1, it naturally stops receiving events because we don't attach them there.
+        // However, we must ensure OLD listeners don't fire.
+        // Since we bind(this), they are new functions. 
+        // We will use a flag on the element itself in a robust app, 
+        // but here we just rely on pointer-events or checks in handler.
     }
 
     handleTouchStart(e) {
         if (this.isAnimating) return;
 
-        // ALLOW swipe even on details (since "Details Card" is fully swipable now)
-        // Previous check for .vo-expert-details blocked interaction on the new card type
+        const touch = e.touches ? e.touches[0] : e;
+        this.startX = touch.clientX;
+        this.currentX = this.startX;
 
-        this.startX = e.touches[0].clientX;
-        this.startY = e.touches[0].clientY;
-        this.activeCard.style.transition = 'none'; // Disable transition for drag
+        this.activeCard.style.transition = 'none'; // Direct control
     }
 
     handleTouchMove(e) {
         if (!this.activeCard || this.isAnimating) return;
 
-        this.currentX = e.touches[0].clientX;
-        this.currentY = e.touches[0].clientY;
-
+        const touch = e.touches ? e.touches[0] : e;
+        this.currentX = touch.clientX;
         const diffX = this.currentX - this.startX;
-        const diffY = this.currentY - this.startY;
 
-        // Check if movement is mostly horizontal (Swipe) or vertical (Scroll)
-        const isHorizontal = Math.abs(diffX) > Math.abs(diffY);
-        const isVertical = Math.abs(diffY) > Math.abs(diffX);
+        // 1. Prevent vertical scroll interfering if we are swiping horizontally properly
+        // BUT allow vertical scroll if intent is clearly vertical
+        // Since we set touch-action: pan-y, browser handles vertical.
+        // We only care about horizontal card movement.
 
-        if (isHorizontal) {
-            // It's a swipe: blocks scroll and moves card
-            if (e.cancelable) e.preventDefault();
-
-            const rotate = diffX * 0.1;
-            this.activeCard.style.transform = `translate(${diffX}px, ${diffY * 0.2}px) rotate(${rotate}deg)`;
-            // Reduced Y movement during swipe for cleaner feel
-        } else {
-            // It's a scroll: do nothing, let browser handle page scroll
-            return;
-        }
+        // Move card
+        const rotate = diffX * 0.05;
+        this.activeCard.style.transform = `translateX(${diffX}px) rotate(${rotate}deg)`;
     }
 
     handleTouchEnd(e) {
         if (!this.activeCard || this.isAnimating) return;
 
         const diffX = this.currentX - this.startX;
-        const diffY = this.currentY - this.startY;
-        const threshold = -80; // Slightly easier threshold
+        const threshold = 100;
 
+        // Restore transition
         this.activeCard.style.transition = 'transform 0.5s ease-out, opacity 0.4s ease-out';
 
-        if (diffY < threshold) {
-            this.swipeOut();
+        if (diffX > threshold) {
+            this.swipeOut('right');
+        } else if (diffX < -threshold) {
+            this.swipeOut('left');
         } else {
-            this.activeCard.style.transform = '';
+            // Reset
+            this.activeCard.style.transform = `scale(1) translateY(0)`;
         }
 
         this.startX = 0;
-        this.startY = 0;
         this.currentX = 0;
-        this.currentY = 0;
     }
 
-    swipeOut() {
+    swipeOut(dir) {
         this.isAnimating = true;
-        this.activeCard.classList.add('vo-swipe-out-left');
+        const width = window.innerWidth;
+        const moveX = dir === 'right' ? width : -width;
+
+        // Animate out
+        this.activeCard.style.transform = `translateX(${moveX}px) rotate(${dir === 'right' ? 30 : -30}deg)`;
+        this.activeCard.style.opacity = '0';
 
         setTimeout(() => {
-            // INFINITE LOOP LOGIC:
-            // Take the swiped card (index 0)
-            const swipedCard = this.cards.shift();
+            // Logic: Move top card to bottom
+            const movedCard = this.cards.shift();
+            this.cards.push(movedCard);
 
-            // Clean it up
-            swipedCard.classList.remove('vo-swipe-out-left');
-            // swipedCard.classList.remove('vo-text-card'); // DISABLED: Stick to permanent classes
-            swipedCard.style.transform = '';
-            swipedCard.style.opacity = '0'; // Initially hidden as it goes to back
-            swipedCard.style.zIndex = '0';
-
-            // Move it to the end of the array
-            this.cards.push(swipedCard);
-
-            // Re-render stack
+            // Re-render
             this.updateStack();
-
             this.isAnimating = false;
         }, 300);
-    }
-
-    handleClick(e) {
-        // If clicking on a link or button, don't toggle
-        if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return;
-
-        // Toggle the text card mode
-        if (this.activeCard) {
-            this.activeCard.classList.toggle('vo-text-card');
-        }
-    }
-
-    cleanup() {
-        // Reset all for desktop
-        this.cards.forEach(card => {
-            card.style.transform = '';
-            card.style.display = '';
-            card.classList.remove('vo-swipe-out-left');
-        });
     }
 }
 
@@ -211,15 +177,22 @@ class SwipeableStack {
 // Initialize on load
 function initAllMobileFeatures() {
     // Find all stack containers and initialize swipe functionality
+    // LEGACY: Keeping this just in case, but primary now is V2
     const stacks = document.querySelectorAll('.vo-swipe-container');
     stacks.forEach(container => {
-        // Pass the element directly to support multiple instances
-        // Check if already initialized to prevent double-binding
         if (!container.dataset.swipeInitialized) {
-            new SwipeableStack(container);
+            // new SwipeableStack(container); // LEGACY CLASS DELETED
             container.dataset.swipeInitialized = 'true';
         }
     });
+
+    // V2 Clean Slate Initialization
+    const v2Stack = document.getElementById('voExpertsSwipeV2');
+    if (v2Stack && !v2Stack.dataset.init) {
+        new ExpertSwipeControllerV2();
+        v2Stack.dataset.init = 'true';
+    }
+
 
     // Initialize Comparison Carousel (Mobile)
     if (window.innerWidth <= 768) {

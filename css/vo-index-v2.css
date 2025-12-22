@@ -374,7 +374,7 @@
 /* =========================================
    2. How Can We Help (Expanding Gallery)
    ========================================= */
-/*
+
 .vo-help-section {
     padding: var(--vo-space-24) 0;
     background-color: var(--vo-color-secondary-light);
@@ -459,11 +459,11 @@
     font-family: var(--vo-font-heading);
     font-size: var(--vo-text-3xl);
     /* 32px is close to 30px (3xl) */
-color: var(--vo-color-white);
-margin-bottom: 12px;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
+    color: var(--vo-color-white);
+    margin-bottom: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .vo-gallery-card p {
@@ -498,7 +498,7 @@ text-overflow: ellipsis;
     height: auto;
 }
 
-*/ @media (max-width: 768px) {
+@media (max-width: 768px) {
 
     /* Hide original marquee on mobile */
     /* Restore therapist track on mobile */
