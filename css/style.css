@@ -2890,3 +2890,280 @@ button,
     background-color: transparent;
 }
 
+
+/* =========================================================
+   VentOutt Services Hero Section - Combined Desktop & Mobile
+   ========================================================= */
+
+/* ========== Desktop Styles (Laptop/Desktop) ========== */
+/* Base Hero Section */
+.services-hero-redesign {
+    background-color: var(--vo-color-secondary-light);
+    /* Cream/Light Background */
+    padding: 140px 60px 80px;
+    /* Desktop Padding */
+    font-family: var(--vo-font-body);
+    color: var(--vo-color-charcoal);
+    position: relative;
+    z-index: 1;
+}
+
+.services-hero-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Header (Title + Desktop Text) */
+.services-hero-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 60px;
+    gap: var(--vo-space-10);
+}
+
+.services-hero-title {
+    font-family: var(--vo-font-heading);
+    font-size: var(--vo-text-6xl);
+    line-height: 1.1;
+    max-width: 600px;
+    margin: 0;
+    color: var(--vo-color-charcoal);
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* Desktop-only text paragraph in header */
+.services-hero-text.desktop-only {
+    display: block;
+    font-family: var(--vo-font-body);
+    font-size: var(--vo-text-lg);
+    line-height: 1.6;
+    max-width: 450px;
+    color: #555555;
+    margin-top: 10px;
+}
+
+/* Ensure mobile-only elements are hidden on desktop */
+.mobile-only {
+    display: none;
+}
+
+/* Base Grid Layout (Desktop Default) */
+.services-hero-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 280px 220px;
+    gap: var(--vo-space-6);
+}
+
+.hero-grid-item {
+    border-radius: var(--vo-radius-lg);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.hero-grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.hero-grid-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Grid Item Placements (Desktop) */
+.item-1 {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.item-2 {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.item-3 {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+}
+
+.item-4 {
+    grid-column: 4;
+    grid-row: 1;
+}
+
+/* Item 5: Testimonial (Spans 2 Cols) */
+.item-5 {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    background-color: var(--accent-green, #3A7F56);
+    padding: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--vo-space-5);
+}
+
+/* Item 6: Video Block */
+.item-6 {
+    grid-column: 4;
+    grid-row: 2;
+    background-color: var(--primary-orange, var(--vo-color-primary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.item-6:hover {
+    background-color: #E65100;
+}
+
+/* Testimonial styles inside grid */
+.item-5 img.hero-testimonial-img {
+    width: 120px !important;
+    height: 120px !important;
+    border-radius: 12px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.hero-testimonial-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-quote {
+    font-size: var(--vo-text-base);
+    font-weight: 500;
+    line-height: 1.4;
+    font-style: italic;
+    margin-bottom: 8px;
+    color: var(--vo-color-white);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.hero-author {
+    font-size: 13px;
+    opacity: 0.9;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: block;
+    color: #E0E0E0;
+}
+
+/* Play Button */
+.play-btn-triangle {
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 20px solid var(--vo-color-white);
+}
+
+/* Mobile Text Item - Hidden on Desktop */
+.mobile-text-item {
+    display: none;
+}
+
+/* ========== Mobile Styles (Max Width 767px) ========== */
+@media (max-width: 767px) {
+    .services-hero-redesign {
+        padding: 40px 20px;
+        background-color: var(--vo-color-secondary-light);
+    }
+
+    /* Container adjusts for vertical stack */
+    .services-hero-container {
+        display: block;
+        max-width: 100%;
+    }
+
+    /* Header: Only Title Visible */
+    .services-hero-header {
+        display: block;
+        margin-bottom: 30px;
+        text-align: center;
+        gap: 0;
+    }
+
+    .services-hero-title {
+        font-family: var(--vo-font-heading);
+        font-size: 2rem;
+        /* Mobile size */
+        font-style: italic;
+        line-height: 1.2;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* Hide Desktop Text */
+    .services-hero-text.desktop-only {
+        display: none;
+    }
+
+    /* Mobile Grid Layout: 2 Columns x 2 Rows */
+    .services-hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* Two equal columns */
+        grid-template-rows: 200px 200px;
+        /* Two defined rows */
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    /* Override all items to fit mobile grid */
+
+    /* 1. Left Image: Tall Woman - Spans 2 Rows */
+    .item-1 {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        border-radius: 20px;
+    }
+
+    /* 2. Top Right: Modern House */
+    .item-2 {
+        grid-column: 2;
+        grid-row: 1;
+        border-radius: 20px;
+    }
+
+    /* 3. Bottom Right: Orange Video Block */
+    .item-6 {
+        grid-column: 2;
+        grid-row: 2;
+        border-radius: 20px;
+    }
+
+    /* Mobile Text Below Grid */
+    .services-hero-text.mobile-only.footer-text {
+        display: block;
+        font-family: var(--vo-font-body);
+        font-size: 14px;
+        line-height: 1.6;
+        color: #555555;
+        text-align: left;
+        margin: 0;
+        padding: 0 5px;
+        width: 100%;
+    }
+
+    /* Hide items not used in mobile grid */
+    .item-3,
+    .item-4,
+    .item-5,
+    .mobile-text-item {
+        display: none !important;
+    }
+}

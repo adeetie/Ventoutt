@@ -337,10 +337,151 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(`[Pages.js] Partners carousel initialized (${duration.toFixed(2)}s duration)`);
     };
 
+    /* =========================================
+       8. Expanding Gallery (Mobile Interaction)
+       ========================================= */
+    const initExpandingGallery = () => {
+        const galleryCards = document.querySelectorAll('.vo-gallery-card');
+        if (galleryCards.length > 0 && window.innerWidth <= 900) {
+            galleryCards.forEach(card => {
+                const handleExpand = (e) => {
+                    if (e.target.classList.contains('vo-gallery-link')) return;
+
+                    const isExpanded = card.classList.contains('expanded');
+                    galleryCards.forEach(c => c.classList.remove('expanded'));
+
+                    if (!isExpanded) {
+                        card.classList.add('expanded');
+                        setTimeout(() => {
+                            card.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'nearest',
+                                inline: 'center'
+                            });
+                        }, 100);
+                    }
+                };
+                card.addEventListener('click', handleExpand);
+            });
+            console.log('[Pages.js] Expanding gallery initialized');
+        }
+    };
+
+    /* =========================================
+       9. Stats Counter Animation (Infinite Odometer)
+       ========================================= */
+    const initStatsCounter = () => {
+        const odometerElements = document.querySelectorAll('[data-odometer]');
+
+        if (odometerElements.length > 0) {
+            const odometerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        if (element.dataset.started === 'true') return;
+                        element.dataset.started = 'true';
+
+                        let currentValue = parseFloat(element.textContent.replace(/[^0-9.]/g, '')) || 0;
+                        const incrementRate = parseFloat(element.getAttribute('data-increment')) || 1;
+                        const incrementPerFrame = incrementRate / 60;
+
+                        const updateDisplay = () => {
+                            currentValue += incrementPerFrame;
+                            element.textContent = Math.floor(currentValue).toLocaleString('en-US');
+
+                            if (incrementRate > 0) {
+                                requestAnimationFrame(updateDisplay);
+                            }
+                        };
+
+                        if (incrementRate > 0) {
+                            requestAnimationFrame(updateDisplay);
+                        }
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            odometerElements.forEach(el => odometerObserver.observe(el));
+            console.log('[Pages.js] Stats counter initialized');
+        }
+    };
+
+    /* =========================================
+       10. Venting Banner Slideshow
+       ========================================= */
+    const initVentingBanner = () => {
+        const figmaSlides = document.querySelectorAll('.venting-banner-figma .blob-slide');
+        if (figmaSlides.length > 0) {
+            let cur = 0;
+            setInterval(() => {
+                figmaSlides[cur].classList.remove('active');
+                cur = (cur + 1) % figmaSlides.length;
+                figmaSlides[cur].classList.add('active');
+            }, 4000);
+            console.log('[Pages.js] Venting banner slideshow initialized');
+        }
+    };
+
+    /* =========================================
+       11. Find Your Right Fit Interaction
+       ========================================= */
+    const initFitInteraction = () => {
+        const fitTrack = document.getElementById('voFitTrack');
+        const fitFeatured = document.getElementById('fitFeatured');
+        const prevBtn = document.querySelector('.vo-fit-arrow.prev');
+        const nextBtn = document.querySelector('.vo-fit-arrow.next');
+
+        if (fitTrack && fitFeatured) {
+            if (window.innerWidth <= 768) {
+                setTimeout(() => {
+                    fitFeatured.scrollIntoView({
+                        behavior: 'auto',
+                        block: 'nearest',
+                        inline: 'center'
+                    });
+                }, 300);
+            }
+
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', () => {
+                    fitTrack.scrollBy({ left: -300, behavior: 'smooth' });
+                });
+                nextBtn.addEventListener('click', () => {
+                    fitTrack.scrollBy({ left: 300, behavior: 'smooth' });
+                });
+            }
+
+            if (window.innerWidth <= 1024) {
+                const fitCards = document.querySelectorAll('.vo-fit-card');
+                const observerOptions = {
+                    root: fitTrack,
+                    rootMargin: '0px -30% 0px -30%',
+                    threshold: 0.1
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            fitCards.forEach(c => c.classList.remove('scale-active'));
+                            entry.target.classList.add('scale-active');
+                        }
+                    });
+                }, observerOptions);
+
+                fitCards.forEach(card => observer.observe(card));
+            }
+            console.log('[Pages.js] Fit interaction initialized');
+        }
+    };
+
     // Initialize all common components
     initTestimonials();
     initExpertCards();
     initHowItWorks();
     initFAQ();
     initPartnersCarousel();
+    initExpandingGallery();
+    initStatsCounter();
+    initVentingBanner();
+    initFitInteraction();
 });
