@@ -6,29 +6,7 @@
     padding: var(--vo-space-16) 0 var(--vo-space-20);
     /* Increased top padding */
     position: relative;
-    /* Reverted to relative as requested */
-    z-index: 1;
-    /* Behind the services section */
-    width: 100%;
     /* overflow: hidden; Removed to prevent doodle clipping */
-}
-
-/* =========================================
-   4. Stats Section (Improvised Floating Design)
-   ========================================= */
-.vo-stats-section-floating {
-    padding: 6rem 1.5rem;
-    background-color: #222222;
-    /* Darker Charcoal from image */
-    position: relative;
-    overflow: hidden;
-    z-index: 20;
-    /* border-radius removed for clean rise-up effect */
-    margin-top: -60px;
-    /* Increased overlap for stronger rise effect */
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15);
-    color: #ffffff;
-    min-height: 80vh;
 }
 
 .vo-hero__container {
@@ -155,8 +133,8 @@
     padding: 12px;
     border-radius: 32px;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    height: 420px;
+    width: 440px;
+    height: 540px;
     transform: rotate(-3deg);
     z-index: 5;
 }
@@ -198,7 +176,7 @@
 
 .vo-doodle {
     position: absolute;
-    z-index: 10;
+    z-index: 11;
     width: 80px;
     height: auto;
     animation: seesaw 3s ease-in-out infinite;
@@ -272,19 +250,8 @@
    ========================================= */
 .vo-help-section {
     padding: var(--vo-space-24) 0;
-    background-color: #ffffff;
-    position: relative;
-    /* Reverted to relative to allow full scrolling of content */
-    /* top: 0; removed */
-    z-index: 10;
-    /* border-radius removed for clean rise-up effect */
-    margin-top: -40px;
-    /* Overlap creates rise-up effect */
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05);
-    min-height: 100vh;
+    background-color: var(--vo-color-secondary-light);
 }
-
-
 
 .vo-help-container {
     max-width: 1240px;
@@ -476,8 +443,8 @@
     }
 
     .vo-hero__img-frame {
-        width: 280px;
-        height: 300px;
+        width: 300px;
+        height: 280px;
         border-width: 8px;
     }
 
@@ -586,13 +553,13 @@
 /* Doodles */
 .vo-doodle {
     position: absolute;
-    width: 60px;
+    width: 80px;
     /* Base size */
     height: auto;
-    z-index: 5;
+    z-index: 6;
     color: #65796E;
     /* Green Gray */
-    stroke-width: 14px;
+    stroke-width: 80px;
     /* Thicker */
     animation: seesaw 4s ease-in-out infinite;
     transform-origin: center;
@@ -612,13 +579,13 @@
 }
 
 .vo-doodle--top-left {
-    top: -3%;
+    top: 0%;
     left: -2%;
     transform: rotate(-15deg);
 }
 
 .vo-doodle--bottom-right {
-    bottom: -3%;
+    bottom: 0%;
     right: -2%;
     transform: rotate(165deg);
     color: #65796E;
@@ -630,31 +597,13 @@
    4. Stats Section (Improvised Floating Design)
    ========================================= */
 .vo-stats-section-floating {
-    padding: 6rem 1.5rem;
-    background-color: #2D2D2D;
-    /* Charcoal Background */
+    display: none;
+    /* Hidden as per user request */
+    padding: 6rem 0;
+    background-color: var(--vo-color-white);
     position: relative;
     overflow: hidden;
-    /* Keep avatars inside */
-    z-index: 20;
-    /* Above Help Section */
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
-    margin-top: -20px;
-    /* Overlap */
-    box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.15);
-    /* Deep shadow */
-    color: #ffffff;
-    /* White text base */
-    min-height: 80vh;
-}
-
-@media (min-width: 768px) {
-    .vo-stats-section-floating {
-        margin-top: -80px;
-        /* Stronger overlap on desktop */
-        padding: 8rem 2rem;
-    }
+    /* Prevent horizontal scroll from avatars */
 }
 
 .vo-stats-content-centered {
@@ -676,8 +625,7 @@
     font-family: var(--vo-font-heading);
     font-size: 2rem;
     font-weight: 600;
-    color: #ffffff;
-    /* White */
+    color: var(--vo-color-black);
     line-height: 1.3;
     margin-bottom: 3rem;
     text-align: center;
@@ -705,8 +653,7 @@
     font-family: var(--vo-font-heading);
     font-size: 4rem;
     font-weight: 700;
-    color: #ffffff;
-    /* White */
+    color: var(--vo-color-black);
     line-height: 1;
     margin-bottom: 0.5rem;
     text-align: center;
@@ -722,8 +669,7 @@
 .vo-metric-label {
     font-family: var(--vo-font-body);
     font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.7);
-    /* Light gray for labels */
+    color: var(--vo-text-secondary);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -806,8 +752,7 @@
     margin-top: 1rem;
     font-family: var(--vo-font-body);
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.6);
-    /* Dim white */
+    color: var(--vo-text-secondary);
     font-weight: 500;
 }
 
@@ -816,17 +761,14 @@
     font-family: var(--vo-font-heading);
     font-size: 2.5rem;
     font-weight: 700;
-    color: #ffffff;
-    /* White */
-    line-height: 1;
-    margin-bottom: 0.5rem;
+    color: var(--vo-color-black);
+    margin-bottom: 0.25rem;
 }
 
 .vo-stat-sm-label {
     font-family: var(--vo-font-body);
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.7);
-    /* Light gray */
+    font-size: 0.875rem;
+    color: var(--vo-text-secondary);
     font-weight: 500;
     text-transform: uppercase;
 }
