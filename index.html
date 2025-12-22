@@ -11,6 +11,7 @@
 
     <!-- Page Specific Styles -->
     <link rel="stylesheet" href="css/vo-index-v2.css">
+    <link rel="stylesheet" href="css/vo-home.css">
     <link rel="stylesheet" href="css/vo-about.css">
 
     <!-- Component Styles -->
@@ -20,6 +21,7 @@
     <link rel="stylesheet" href="css/components/vo-popups.css">
     <link rel="stylesheet" href="css/components/vo-therapist-card.css">
     <script src="js/vo-therapist-swipe.js" defer></script>
+    <script src="js/vo-home.js" defer></script>
     <script src="js/vo-index-v2.js" defer></script>
     <script src="js/vo-marquee.js" defer></script>
 
@@ -39,47 +41,72 @@
 
     <main>
 
-        <!-- About-Style Hero Section -->
-        <section class="about-hero-section">
-            <div class="about-hero-content">
-                <!-- Dynamic Hello (Large Text) -->
-                <h2 class="vo-hero-greeting" id="dynamic-hello">hello..</h2>
-                <h1 class="about-hero-title">Creating a safe space for mental health.</h1>
-                <p class="about-hero-desc">
-                    We believe that mental health is just as important as physical health, and our mission is to provide
-                    support, education, and a judgment-free space for everyone.
-                </p>
-                <a href="#" class="btn-about-hero">
-                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Avatar"
-                        class="btn-user-avatar">
-                    Let's talk with us
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" style="margin-left: 5px;">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
-            </div>
+        <!-- Redesigned Hero Section -->
+        <section class="vo-hero">
+            <div class="vo-hero__container">
+                <div class="vo-hero__content-wrapper">
+                    <!-- Greeting Wrapper (Fixed Height) -->
+                    <div class="vo-hero__greeting-wrapper">
+                        <h2 class="vo-hero__greeting" id="dynamic-hello">hello..</h2>
+                    </div>
 
-            <!-- Image Column Wrapper -->
-            <div style="position: relative; flex: 1; display: flex; justify-content: center;">
+                    <!-- Header Group -->
+                    <div class="vo-hero__header">
+                        <h1 class="vo-hero__title">Creating a safe space<br>for mental health.</h1>
+                    </div>
 
+                    <!-- Footer Group (Desc + CTA) -->
+                    <div class="vo-hero__footer">
+                        <p class="vo-hero__description">
+                            We believe that mental health is just as important as physical health, and our mission is to
+                            provide support, education, and a judgment-free space for everyone.
+                        </p>
+                        <a href="#" class="vo-btn--hero-new">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80"
+                                alt="Avatar" class="vo-btn__avatar">
+                            <span class="vo-btn__text">Let's talk with us</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="vo-btn__icon">
+                                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
 
-                <div class="about-hero-image-wrapper">
-                    <!-- Internal Slideshow -->
-                    <div class="vo-hero-slides">
-                        <!-- Slide 1 -->
-                        <div class="vo-hero-slide active"
-                            style="--bg-url: url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=1600&auto=format&fit=crop');">
+                <!-- Visual (Image Frame) -->
+                <div class="vo-hero__visual">
+                    <div class="vo-hero__frame-wrapper">
+                        <!-- Top Left Zigzag -->
+                        <svg class="vo-doodle vo-doodle--top-left" viewBox="0 0 140 50" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 25 Q 25 10, 40 25 T 70 25 T 100 25 T 130 25" stroke="currentColor"
+                                stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                        <!-- Frame & Image (Slideshow) -->
+                        <div class="vo-hero__img-frame">
+                            <div class="vo-hero-slides">
+                                <!-- Slide 1 -->
+                                <div class="vo-hero-slide active"
+                                    style="--bg-url: url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=800&auto=format&fit=crop');">
+                                </div>
+                                <!-- Slide 2 -->
+                                <div class="vo-hero-slide"
+                                    style="--bg-url: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=800&auto=format&fit=crop');">
+                                </div>
+                                <!-- Slide 3 -->
+                                <div class="vo-hero-slide"
+                                    style="--bg-url: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=800&auto=format&fit=crop');">
+                                </div>
+                            </div>
                         </div>
-                        <!-- Slide 2 -->
-                        <div class="vo-hero-slide"
-                            style="--bg-url: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1600&auto=format&fit=crop');">
-                        </div>
-                        <!-- Slide 3 -->
-                        <div class="vo-hero-slide"
-                            style="--bg-url: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1600&auto=format&fit=crop');">
-                        </div>
+
+                        <!-- Bottom Right Zigzag -->
+                        <svg class="vo-doodle vo-doodle--bottom-right" viewBox="0 0 140 50" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 25 Q 25 40, 40 25 T 70 25 T 100 25 T 130 25" stroke="currentColor"
+                                stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -209,21 +236,36 @@
 
                 </div>
             </div>
-            <!-- CTA Section -->
-            <div class="vo-marquee-cta-container">
-                <p class="vo-marquee-cta-text">
-                    Professional support, trusted advice, and unmatched reliability that’s the VentOutt way. We
-                    understand the journey, the growth, and the tools that make it happen.
-                </p>
-                <a href="vo-services.html" class="vo-btn-pill-arrow">
-                    <span>EXPLORE SERVICES</span>
-                    <div class="vo-btn-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </div>
-                </a>
+        </section>
+
+        <!-- 5. Professional Support CTA -->
+        <!-- 5. Stats Section (Restored) -->
+        <section class="vo-stats-section">
+            <div class="vo-stats-grid">
+                <!-- Stat 1 -->
+                <div class="vo-stat-card">
+                    <div class="vo-stat-number" data-odometer data-increment="0.5">36,539</div>
+                    <div class="vo-stat-label">Users</div>
+                    <div class="vo-stat-desc">People who found someone to talk to</div>
+                </div>
+                <!-- Stat 2 -->
+                <div class="vo-stat-card">
+                    <div class="vo-stat-number">100+</div>
+                    <div class="vo-stat-label">Countries</div>
+                    <div class="vo-stat-desc">Spread across 170 countries and counting</div>
+                </div>
+                <!-- Stat 3 -->
+                <div class="vo-stat-card">
+                    <div class="vo-stat-number" data-odometer data-increment="2">625,472</div>
+                    <div class="vo-stat-label">Hours of Conversation</div>
+                    <div class="vo-stat-desc">Total hours of conversation and care</div>
+                </div>
+                <!-- Stat 4 -->
+                <div class="vo-stat-card">
+                    <div class="vo-stat-number">Avg. 9.5 stars</div>
+                    <div class="vo-stat-label">Feedback</div>
+                    <div class="vo-stat-desc">Loved by our community</div>
+                </div>
             </div>
         </section>
 

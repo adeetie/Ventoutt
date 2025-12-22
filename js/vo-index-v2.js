@@ -12,8 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('VO-Index: Initializing homepage logic...');
 
     /* =========================================
-       1b. Dynamic Greeting (Language Switcher)
+       1b. Dynamic Greeting (Language Switcher) - MOVED TO vo-home.js
        ========================================= */
+    /*
     const greetingEl = document.getElementById('dynamic-hello');
     if (greetingEl) {
         const hellos = [
@@ -40,10 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Ensure initial transition support
         greetingEl.style.transition = 'opacity 0.5s ease-in-out';
     }
+    */
 
     /* =========================================
-       2. Hero Slideshow (Homepage)
+       2. Hero Slideshow (Homepage) - MOVED TO vo-home.js
        ========================================= */
+    /*
     const heroSlides = document.querySelectorAll('.vo-hero-slide');
     if (heroSlides.length > 1) {
         let currentSlide = 0;
@@ -62,10 +65,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Auto-rotate every 5 seconds
         setInterval(rotateSlides, 5000);
     }
+    */
 
     /* =========================================
-       3. Service Cards Touch Expansion (Mobile)
+       3. Service Cards Touch Expansion (Mobile) - MOVED TO vo-home.js
        ========================================= */
+    /*
     const galleryCards = document.querySelectorAll('.vo-gallery-card');
     if (galleryCards.length > 0 && window.innerWidth <= 768) {
         galleryCards.forEach(card => {
@@ -108,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, { passive: false });
         });
     }
+    */
 
     /* =========================================
        4. FAQ Toggle Logic
