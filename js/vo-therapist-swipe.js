@@ -212,9 +212,24 @@ class SwipeableStack {
         setTimeout(() => {
             const card = this.cards.shift();
             this.cards.push(card);
+
+            // 1. Update Layout for all cards
             this.updateStack();
+
+            // 2. CRITICAL FIX: Disable transition for the card that just moved to the bottom
+            // This prevents it from "flying back" visually from off-screen to the bottom position.
+            // It must snap instantly.
+            const movedCard = this.cards[this.cards.length - 1];
+            movedCard.style.transition = 'none';
+
+            // Force browser to apply the 'none' transition immediately
+            void movedCard.offsetHeight;
+
+            // 3. Re-enable transition for next interactions (optional, updateStack resets it anyway)
+            // But we leave it 'none' until next updateStack call or user interaction.
+
             this.isAnimating = false;
-        }, 300);
+        }, 500); // Wait for full 0.5s CSS transition to complete
     }
 
     handleClick(e) {

@@ -9221,9 +9221,27 @@ section.image-carousel-section .carousel-overlay {
 }
 
 /* --- Requests for Mobile Layout Fixes --- */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
 
-    /* 1. Empower Section: Hide Left Image, Show Right Image */
+    /* --- Founders Section Fixes (Restoring Laptop Style) --- */
+    .founders-section {
+        background-color: var(--vo-color-secondary-light) !important;
+        /* Restore Cream BG */
+        padding: 40px 20px;
+    }
+
+    .founders-info-card h2 {
+        color: #212121 !important;
+        /* Black Text */
+        font-family: var(--vo-font-heading);
+    }
+
+    .founders-info-card p {
+        color: #4a4a4a !important;
+        /* Dark Grey Text */
+    }
+
+    /* --- Empower Section: Hide Left Image, Show Right Image --- */
     .empower-left-img {
         display: none !important;
     }
@@ -9239,7 +9257,7 @@ section.image-carousel-section .carousel-overlay {
         /* Ensure it stays below text */
     }
 
-    /* Adjust Empower text to full width if needed */
+    /* Adjust Empower text to full width */
     .empower-section {
         grid-template-columns: 1fr !important;
         text-align: center;
@@ -9252,17 +9270,15 @@ section.image-carousel-section .carousel-overlay {
         flex-direction: column;
     }
 
-    /* 2. Mission Grid - Horizontal Swipe (Scrollytelling Swipe) */
+    /* --- Mission Grid: Scrollytelling (Horizontal Scroll) --- */
+    /* This overrides the Swipe Stack attempt if present */
     .mission-grid {
         display: flex !important;
         grid-template-columns: none !important;
-        /* Override grid */
         overflow-x: auto !important;
         scroll-snap-type: x mandatory;
         gap: 20px !important;
         padding-bottom: 30px;
-        /* Space for scrollbar or look */
-        /* Hide scrollbar for cleaner look */
         -ms-overflow-style: none;
         /* IE and Edge */
         scrollbar-width: none;
@@ -9275,22 +9291,15 @@ section.image-carousel-section .carousel-overlay {
 
     .mission-card {
         flex: 0 0 85% !important;
-        /* Show 85% of card to hint next one */
         width: 85% !important;
         scroll-snap-align: center;
         height: 400px !important;
-        /* Fixed height for consistency */
         margin-right: 0 !important;
-    }
-
-    /* Reset Grid Positioning for Flex items */
-    .mission-card:nth-child(n) {
         grid-column: auto !important;
         grid-row: auto !important;
-        height: 400px !important;
     }
 
-    /* 3. Speed up Carousel on Mobile */
+    /* --- Speed up Carousel on Mobile --- */
     .carousel-track {
         animation-duration: 6s !important;
     }
