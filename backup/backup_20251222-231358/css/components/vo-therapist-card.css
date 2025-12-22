@@ -1,0 +1,160 @@
+/* =========================================
+   Swipeable Therapist Cards (Tinder-style)
+   ========================================= */
+
+/* Container for the card stack */
+.vo-swipe-container {
+    position: relative;
+    width: 320px;
+    height: 480px;
+    margin: var(--vo-space-10) auto;
+    perspective: 1000px;
+    /* Essential for 3D effect */
+}
+
+/* Individual Card Wrapper */
+.vo-swipe-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--vo-radius-xl);
+    background-color: var(--vo-color-white);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+    /* Center origin for transforms */
+    transform-origin: 50% 100%;
+    will-change: transform, opacity;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+}
+
+/* 3D Tilt Effect applied to inner content or card itself */
+.vo-card-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--vo-radius-xl);
+    overflow: hidden;
+    position: relative;
+    background: var(--vo-color-white);
+
+    /* 3D Tilted Look (Default state for top card) */
+    transform: rotateX(2deg) rotateY(0deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Section (Top ~80%) */
+.vo-card-image {
+    width: 100%;
+    height: 78%;
+    background-size: cover;
+    background-position: center top;
+    position: relative;
+}
+
+/* Info Section (Bottom ~20%) */
+.vo-card-info {
+    padding: var(--vo-space-5);
+    background: var(--vo-color-white);
+    height: 22%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.vo-card-name {
+    font-family: var(--vo-font-heading, serif);
+    /* Ensure font var exists or fallback */
+    font-weight: 700;
+    font-size: var(--vo-text-2xl);
+    margin: 0 0 var(--vo-space-1) 0;
+    color: var(--vo-color-black);
+}
+
+.vo-card-title {
+    font-family: var(--vo-font-body, sans-serif);
+    font-size: var(--vo-text-sm);
+    color: var(--vo-text-secondary);
+    margin: 0;
+}
+
+/* Rating Badge */
+.vo-card-rating {
+    position: absolute;
+    top: var(--vo-space-5);
+    right: var(--vo-space-5);
+    background: var(--vo-color-white);
+    padding: var(--vo-space-2) var(--vo-space-3);
+    border-radius: var(--vo-radius-base);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 50px;
+}
+
+.vo-card-rating .star {
+    color: var(--vo-color-accent-yellow);
+    font-size: var(--vo-text-sm);
+    margin-bottom: 2px;
+}
+
+.vo-card-rating .score {
+    font-weight: 800;
+    font-size: var(--vo-text-lg);
+    color: var(--vo-color-charcoal);
+}
+
+.vo-card-rating .label {
+    font-size: 8px;
+    text-transform: uppercase;
+    color: var(--vo-text-tertiary);
+    letter-spacing: 1px;
+    margin-top: 2px;
+}
+
+/* --- Stack States --- */
+
+/* Top Card (Index 0) */
+.vo-swipe-card:nth-child(1) {
+    z-index: 3;
+    transform: scale(1) translateY(0);
+}
+
+/* Second Card (Index 1) - Behind */
+.vo-swipe-card:nth-child(2) {
+    z-index: 2;
+    transform: scale(0.95) translateY(var(--vo-space-4));
+    opacity: 0.8;
+}
+
+/* Third Card (Index 2) - Far Behind */
+.vo-swipe-card:nth-child(3) {
+    z-index: 1;
+    transform: scale(0.9) translateY(var(--vo-space-8));
+    opacity: 0.6;
+}
+
+/* Hidden Cards */
+.vo-swipe-card:nth-child(n+4) {
+    z-index: 0;
+    opacity: 0;
+    transform: scale(0.85) translateY(var(--vo-space-12));
+    pointer-events: none;
+}
+
+/* --- Animation Classes --- */
+
+/* Swipe Up-Left Animation */
+.vo-swipe-out-left {
+    transition: transform 0.5s ease-out, opacity 0.4s ease-out;
+    transform: translate(-100px, -120%) rotate(-15deg) !important;
+    opacity: 0 !important;
+}
+
+/* Desktop Fallback - HIDE swipe container to keep original desktop marquee */
+@media (min-width: 769px) {
+    .vo-swipe-container {
+        display: none !important;
+    }
+}

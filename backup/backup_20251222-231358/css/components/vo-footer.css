@@ -1,0 +1,356 @@
+/* ========== VentOutt Footer Component ========== */
+
+/* 1. Healing Journey CTA (Pre-Footer) */
+.vo-footer-cta {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    padding-bottom: var(--vo-space-20);
+    color: var(--vo-color-white);
+    overflow: hidden;
+    /* Ensure it handles the standard box model */
+    box-sizing: border-box;
+}
+
+/* Gradient Overlay - Seamless transition to footer */
+.vo-footer-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(17, 17, 17, 0) 0%,
+            rgba(17, 17, 17, 0.1) 20%,
+            rgba(17, 17, 17, 0.3) 40%,
+            rgba(17, 17, 17, 0.6) 60%,
+            rgba(17, 17, 17, 0.85) 80%,
+            rgba(17, 17, 17, 1) 92%,
+            var(--vo-color-black) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.vo-footer-cta__content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 var(--vo-space-5);
+}
+
+.vo-footer-cta__title {
+    font-family: var(--vo-font-heading);
+    font-size: var(--vo-text-6xl);
+    font-weight: 700;
+    font-style: italic;
+    margin-bottom: var(--vo-space-6);
+    line-height: 1.2;
+    color: var(--vo-color-white) !important;
+}
+
+.vo-footer-cta__desc {
+    font-family: var(--vo-font-body);
+    font-size: var(--vo-text-lg);
+    margin-bottom: var(--vo-space-10);
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--vo-color-white) !important;
+}
+
+.vo-footer-cta__btn-wrapper {
+    display: flex;
+    gap: var(--vo-space-5);
+    justify-content: center;
+    align-items: center;
+}
+
+/* CTA Button */
+.vo-btn--cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--vo-space-3);
+    background: rgba(33, 33, 33, 0.6);
+    backdrop-filter: blur(10px);
+    border: none;
+    padding: var(--vo-space-3) var(--vo-space-8);
+    border-radius: var(--vo-radius-full);
+    color: var(--vo-color-white);
+    text-decoration: none;
+    font-family: var(--vo-font-body);
+    font-weight: 500;
+    font-size: var(--vo-text-base);
+    transition: all var(--vo-transition-base);
+}
+
+.vo-btn--cta:hover {
+    background: var(--vo-color-white);
+    color: var(--vo-color-black);
+    transform: translateY(-2px);
+}
+
+.vo-btn--cta svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    transition: transform var(--vo-transition-base);
+}
+
+.vo-btn--cta:hover svg {
+    transform: translateX(4px);
+}
+
+/* 2. Global Footer */
+.vo-footer {
+    background: var(--vo-color-black);
+    padding: var(--vo-space-20) 5% var(--vo-space-10);
+    position: relative;
+    /* Negative margin to pull it up into the gradient if needed, 
+       but standard flow usually works fine with the gradient logic.
+       The original had -50px. We'll stick to 0 for a cleaner default unless
+       the CTA is present above it. 
+       Actually, the gradient on CTA ends in var(--vo-color-black), so standard flow is perfect.
+       If we want overlap, we can add it, but clean flow is Safer.
+    */
+    color: var(--vo-color-white);
+}
+
+.vo-footer__content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--vo-space-10);
+    max-width: 1400px;
+    margin: 0 auto var(--vo-space-16);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: var(--vo-space-10);
+}
+
+/* Columns */
+.vo-footer__col {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: var(--vo-space-5);
+    /* spacing for mobile wrap */
+}
+
+.vo-footer__col--brand {
+    flex: 1.2;
+    /* Slightly wider */
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--vo-space-5);
+}
+
+.vo-footer__col--contact {
+    flex: 1.2;
+    min-width: 250px;
+}
+
+/* Brand & Social */
+.vo-footer__logo {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+}
+
+.vo-footer__social {
+    display: flex;
+    gap: var(--vo-space-4);
+    margin-top: var(--vo-space-3);
+}
+
+.vo-footer__social-link {
+    color: var(--vo-color-white);
+    width: 24px;
+    height: 24px;
+    transition: color var(--vo-transition-base);
+}
+
+.vo-footer__social-link:hover {
+    color: var(--vo-color-primary);
+}
+
+/* Headings */
+.vo-footer__heading {
+    font-family: var(--vo-font-heading);
+    font-weight: 700;
+    font-size: var(--vo-text-xl);
+    color: var(--vo-color-white);
+    margin-bottom: var(--vo-space-6);
+    font-style: normal;
+    /* Override italic default if needed, based on legacy */
+}
+
+/* Links */
+.vo-footer__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.vo-footer__links li {
+    margin-bottom: var(--vo-space-3);
+}
+
+.vo-footer__links a {
+    text-decoration: none;
+    color: var(--vo-color-gray-400);
+    /* Was var(--vo-color-gray-300) */
+    font-family: var(--vo-font-body);
+    font-size: var(--vo-text-sm);
+    transition: color var(--vo-transition-fast);
+}
+
+.vo-footer__links a:hover {
+    color: var(--vo-color-primary);
+    text-decoration: underline;
+}
+
+/* Contact Block */
+.vo-footer__contact-block {
+    margin-bottom: var(--vo-space-5);
+    font-family: var(--vo-font-body);
+    font-size: var(--vo-text-sm);
+    color: var(--vo-color-gray-300);
+    line-height: 1.6;
+}
+
+.vo-footer__contact-label {
+    color: var(--vo-color-white);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.vo-footer__contact-block a {
+    color: var(--vo-color-gray-300);
+    text-decoration: none;
+}
+
+.vo-footer__contact-block a:hover {
+    color: var(--vo-color-white);
+}
+
+/* Footer Buttons */
+.vo-footer__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--vo-space-5);
+    margin-bottom: var(--vo-space-10);
+    flex-wrap: wrap;
+}
+
+.vo-btn--footer {
+    background: var(--vo-color-accent-green-dark);
+    /* #3A7F56 */
+    border: 1px solid var(--vo-color-white);
+    border-radius: var(--vo-radius-lg);
+    padding: var(--vo-space-3) var(--vo-space-12);
+    font-family: var(--vo-font-body);
+    font-weight: 600;
+    font-size: var(--vo-text-2xl);
+    line-height: 1.3;
+    color: var(--vo-color-white);
+    text-decoration: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    min-width: 348px;
+    transition: background var(--vo-transition-base);
+}
+
+.vo-btn--footer:hover {
+    filter: brightness(0.9);
+}
+
+/* Disclaimer */
+.vo-footer__disclaimer {
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto var(--vo-space-10);
+    font-family: var(--vo-font-body);
+    font-size: var(--vo-text-xs);
+    color: var(--vo-color-gray-400);
+    line-height: 1.6;
+}
+
+.vo-footer__emergency {
+    display: block;
+    color: var(--vo-color-error);
+    text-decoration: underline;
+    margin: var(--vo-space-4) 0;
+    font-weight: 600;
+}
+
+.vo-footer__emergency:hover {
+    color: var(--vo-color-error);
+}
+
+.vo-footer__privacy-note {
+    margin-top: var(--vo-space-4);
+    font-size: var(--vo-text-xs);
+    color: var(--vo-color-gray-400);
+}
+
+/* Copyright */
+.vo-footer__copyright {
+    text-align: center;
+    padding-top: var(--vo-space-5);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: var(--vo-font-body);
+    font-size: var(--vo-text-sm);
+    color: var(--vo-color-gray-400);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .vo-footer {
+        padding-left: var(--vo-space-16);
+        padding-right: var(--vo-space-16);
+    }
+}
+
+@media (max-width: 768px) {
+    .vo-footer {
+        padding: var(--vo-space-10) var(--vo-space-5);
+    }
+
+    .vo-footer__content {
+        flex-direction: column;
+        gap: var(--vo-space-10);
+    }
+
+    .vo-footer__col,
+    .vo-footer__col--brand,
+    .vo-footer__col--contact {
+        align-items: center;
+        text-align: center;
+    }
+
+    .vo-footer__social {
+        justify-content: center;
+    }
+
+    .vo-footer__links li {
+        margin-bottom: 16px;
+    }
+
+    .vo-btn--footer {
+        min-width: 280px;
+        font-size: var(--vo-text-lg);
+        padding: 10px 30px;
+    }
+}

@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - VentOutt</title>
+    <title>VentOutt - A Safe Space to Be Heard</title>
 
     <!-- Global Design System -->
     <link rel="stylesheet" href="css/global.css">
 
-    <!-- Page Specific Styles (Refactored) -->
-    <link rel="stylesheet" href="css/pages.css">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Page Specific Styles -->
+    <link rel="stylesheet" href="css/vo-index-v2.css">
+    <link rel="stylesheet" href="css/vo-home.css">
+    <!-- <link rel="stylesheet" href="css/vo-about.css"> -->
 
     <!-- Component Styles -->
     <link rel="stylesheet" href="css/components/vo-header.css">
@@ -19,8 +20,11 @@
     <link rel="stylesheet" href="css/components/vo-chatbot.css">
     <link rel="stylesheet" href="css/components/vo-popups.css">
     <link rel="stylesheet" href="css/components/vo-therapist-card.css">
-    <script src="js/vo-therapist-swipe.js" defer></script>
+    <script src="js/vo-therapist-swipe.js?v=2" defer></script>
+    <script src="js/vo-home.js" defer></script>
+    <script src="js/vo-index-v2.js" defer></script>
     <script src="js/vo-marquee.js" defer></script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,68 +35,186 @@
 
 <body>
 
-    <!-- Scripts will inject Header here automatically -->
+    <!-- Header Injected via JS -->
+
+    <div class="vo-header-v2-spacer" style="height: 60px; background: transparent;"></div>
 
     <main>
-        <!-- 1. Hero Section (Grid Layout) -->
-        <section class="services-hero-redesign">
-            <div class="services-hero-container">
-                <div class="services-hero-header">
-                    <h1 class="services-hero-title">Your partners in holistic wellness</h1>
-                    <p class="services-hero-text desktop-only">Our experienced team of psycologist therapists, and
-                        rehabilitation
-                        experts
-                        work together to create personalized care plans.</p>
+
+        <!-- Redesigned Hero Section -->
+        <section class="vo-hero">
+            <div class="vo-hero__container">
+                <div class="vo-hero__content-wrapper">
+                    <!-- Greeting Wrapper (Fixed Height) -->
+                    <div class="vo-hero__greeting-wrapper">
+                        <h2 class="vo-hero__greeting" id="dynamic-hello">hello..</h2>
+                    </div>
+
+                    <!-- Header Group -->
+                    <div class="vo-hero__header">
+                        <h1 class="vo-hero__title">Creating a safe space<br>for mental health.</h1>
+                    </div>
+
+                    <!-- Footer Group (Desc + CTA) -->
+                    <div class="vo-hero__footer">
+                        <p class="vo-hero__description">
+                            We believe that mental health is just as important as physical health, and our mission is to
+                            provide support, education, and a judgment-free space for everyone.
+                        </p>
+                        <a href="#" class="vo-btn--hero-new">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80"
+                                alt="Avatar" class="vo-btn__avatar">
+                            <span class="vo-btn__text">Let's talk with us</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="vo-btn__icon">
+                                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
 
-                <div class="services-hero-grid">
-                    <!-- Item 1: Woman Glasses -->
-                    <div class="hero-grid-item item-1">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80"
-                            alt="Therapist">
-                    </div>
+                <!-- Visual (Image Frame) -->
+                <div class="vo-hero__visual">
+                    <div class="vo-hero__frame-wrapper">
+                        <!-- Top Left Zigzag -->
+                        <svg class="vo-doodle vo-doodle--top-left" viewBox="0 0 140 50" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 25 Q 25 10, 40 25 T 70 25 T 100 25 T 130 25" stroke="currentColor"
+                                stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
 
-                    <!-- Item 2: Modern House -->
-                    <div class="hero-grid-item item-2">
-                        <img src="https://images.unsplash.com/photo-1600596542815-60c37c6525fa?auto=format&fit=crop&w=500&q=80"
-                            alt="Modern House">
-                    </div>
-
-                    <!-- Item 3: Centerpiece Woman -->
-                    <div class="hero-grid-item item-3">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80"
-                            alt="Senior Therapist">
-                    </div>
-
-                    <!-- Item 4: Woman Sitting -->
-                    <div class="hero-grid-item item-4">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80"
-                            alt="Relaxed Client">
-                    </div>
-
-                    <!-- Item 5: Testimonial -->
-                    <div class="hero-grid-item item-5">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80"
-                            alt="Brandon Wathson" class="hero-testimonial-img">
-                        <div class="hero-testimonial-content">
-                            <p class="hero-quote">"I feel more confident and at peace since starting therapy here."</p>
-                            <span class="hero-author">Brandon Wathson</span>
+                        <!-- Frame & Image (Slideshow) -->
+                        <div class="vo-hero__img-frame">
+                            <div class="vo-hero-slides">
+                                <!-- Slide 1 -->
+                                <div class="vo-hero-slide active"
+                                    style="--bg-url: url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=800&auto=format&fit=crop');">
+                                </div>
+                                <!-- Slide 2 -->
+                                <div class="vo-hero-slide"
+                                    style="--bg-url: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=800&auto=format&fit=crop');">
+                                </div>
+                                <!-- Slide 3 -->
+                                <div class="vo-hero-slide"
+                                    style="--bg-url: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=800&auto=format&fit=crop');">
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Item 6: Video Button -->
-                    <div class="hero-grid-item item-6">
-                        <div class="play-btn-triangle"></div>
+                        <!-- Bottom Right Zigzag -->
+                        <svg class="vo-doodle vo-doodle--bottom-right" viewBox="0 0 140 50" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 25 Q 25 40, 40 25 T 70 25 T 100 25 T 130 25" stroke="currentColor"
+                                stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
                     </div>
                 </div>
-
-                <!-- Mobile Only Text (Below Grid) -->
-                <p class="services-hero-text mobile-only footer-text">Our experienced team of psycologist therapists,
-                    and
-                    rehabilitation experts work together to create personalized care plans.</p>
             </div>
         </section>
 
+
+
+        <!-- 2. How Can We Help (Expanding Gallery) -->
+        <section class="vo-help-section" id="how-we-help">
+            <div class="vo-help-container">
+                <div class="vo-help-header">
+                    <h2 class="vo-section-title">Transforming mental health,<br>one step at a time</h2>
+                    <p class="vo-section-subtitle">We provide a wide range of services designed to support your mental
+                        well-being at every step of your journey.</p>
+                </div>
+
+                <div class="vo-expanding-gallery">
+                    <!-- Card 1 -->
+                    <div class="vo-gallery-card centered-bg"
+                        style="background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1600&auto=format&fit=crop');">
+                        <div class="vo-gallery-overlay">
+                            <div class="vo-gallery-content">
+                                <h3>Instant Venting</h3>
+                                <p>Say anything, anytime. No judgment, just someone to listen.</p>
+                                <span class="vo-gallery-link">View More</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="vo-gallery-card"
+                        style="background-image: url('https://images.unsplash.com/photo-1544717302-de2939b7ef71?q=80&w=1600&auto=format&fit=crop');">
+                        <div class="vo-gallery-overlay">
+                            <div class="vo-gallery-content">
+                                <h3>Coaching</h3>
+                                <p>Expert guidance to understand, heal, and achieve your goals.</p>
+                                <span class="vo-gallery-link">View More</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="vo-gallery-card"
+                        style="background-image: url('https://images.unsplash.com/photo-1531169509526-f8f1fdaa4a67?q=80&w=1600&auto=format&fit=crop');">
+                        <div class="vo-gallery-overlay">
+                            <div class="vo-gallery-content">
+                                <h3>Therapy</h3>
+                                <p>Private sessions with licensed professionals for deep healing.</p>
+                                <span class="vo-gallery-link">View More</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Prompt -->
+            <div class="vo-quiz-prompt">
+                <span class="vo-quiz-text">Not sure what you want? </span>
+                <a href="services.html?chatbot=open" class="vo-quiz-link">Talk to our chatbot.</a>
+            </div>
+        </section>
+
+        <!-- 4. Stats Section (Split Layout) - HIDDEN FOR NOW
+        <section class="vo-stats-split-section">
+            <h2 class="vo-stats-main-title-outside">Here's how far we've come together</h2>
+
+            <div class="vo-stats-split-container">
+                <div class="vo-stats-main-card">
+                    <div class="vo-stats-slider-container">
+                        <div class="vo-stats-slide active">
+                            <div class="vo-stats-metric-big">
+                                <span class="vo-metric-number-big" data-odometer data-increment="2">625,602</span>
+                                <span class="vo-metric-label-big">hour of conversation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vo-stats-progress-container">
+                        <div class="vo-progress-bar-bg">
+                            <div class="vo-progress-fill" style="width: 60%;"></div>
+                            <span class="vo-progress-pill">60%</span>
+                        </div>
+                        <div class="vo-progress-labels">
+                            <span>450k this year</span>
+                            <span>2023-2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vo-stats-list">
+                    <div class="vo-stats-list-item">
+                        <span class="vo-stats-list-num" data-odometer data-increment="0.5">36,555</span>
+                        <span class="vo-stats-list-desc">Users Worldwide</span>
+                    </div>
+                    <div class="vo-stats-divider"></div>
+
+                    <div class="vo-stats-list-item">
+                        <span class="vo-stats-list-num">100+</span>
+                        <span class="vo-stats-list-desc">Countries Supported</span>
+                    </div>
+                    <div class="vo-stats-divider"></div>
+
+                    <div class="vo-stats-list-item">
+                        <span class="vo-stats-list-num">9.5</span>
+                        <span class="vo-stats-list-desc">Average Rating</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        -->
 
         <!-- 4. Testimonials Section -->
         <section class="vo-testimonials-section">
@@ -162,211 +284,212 @@
                 </div>
             </div>
         </section>
-        <!-- Detailed Services Section (Coaching, Venting, Therapy) -->
-        <section class="detailed-services-section">
-            <!-- Section Header -->
-            <div class="detailed-services-header">
-                <span class="detailed-services-eyebrow">STEPS FROM CUSTOMERS</span>
-                <h2 class="detailed-services-main-title">Empowering You to Overcome Challenges, Find Inner Peace, and
-                    Thrive
-                    — Your Journey to Better Mental Health Starts Here.</h2>
-            </div>
 
-            <!-- Row 1: Therapy -->
-            <div class="service-detail-row">
-                <div class="service-detail-text">
-                    <h3 class="service-detail-title">Individual Therapy for Healing and Growing</h3>
-                    <p class="service-detail-desc">
-                        Personalized therapy designed to help you navigate life's challenges and find inner peace.
-                    </p>
-                    <ul class="service-detail-list">
-                        <li>Tailored sessions to address personal goals well-being.</li>
-                        <li>Proven therapeutic methods for emotional healing and growth.</li>
-                        <li>Safe, space to explore personal struggles and self-discovery.</li>
-                    </ul>
-                    <a href="vo-therapy.html" class="btn-orange">Learn more</a>
-                </div>
-                <div class="service-detail-image-box">
-                    <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=600&q=80"
-                        alt="Individual Therapy Session" class="service-detail-image">
-                </div>
-            </div>
+        <!-- 5. Professional Support CTA -->
+        <!-- 5. Stats Section (Restored) -->
+        <!-- 5. Stats Section (Redesigned Split Layout) -->
+        <!-- 5. Stats Section (Improvised Floating Design) -->
 
-            <!-- Row 2: Couple Therapy -->
-            <div class="service-detail-row">
-                <div class="service-detail-text">
-                    <h3 class="service-detail-title">Couple Therapy to Strengthen Your Relationship</h3>
-                    <p class="service-detail-desc">
-                        Rebuild connection and communication in your relationship with expert couple's therapy.
-                    </p>
-                    <ul class="service-detail-list">
-                        <li>Help with resolving conflicts and improving communication.</li>
-                        <li>Tools to enhance intimacy, trust, and mutual respect.</li>
-                        <li>Support for navigating transitions & life challenges together.</li>
-                    </ul>
-                    <a href="vo-therapy.html" class="btn-orange">Learn more</a>
-                </div>
-                <div class="service-detail-image-box">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80"
-                        alt="Couple Therapy Session" class="service-detail-image">
-                </div>
-            </div>
 
-            <!-- Row 2: Venting (replacing above couple interpretation to match category request) -->
-            <div class="service-detail-row">
-                <div class="service-detail-text">
-                    <h3 class="service-detail-title">Instant Venting for Emotional Relief</h3>
-                    <p class="service-detail-desc">
-                        Sometimes you just need to let it out. Connect anonymously with trained listeners 24/7.
-                    </p>
-                    <ul class="service-detail-list">
-                        <li>Judgment-free zone to express your thoughts freely.</li>
-                        <li>Immediate support whenever you feel overwhelmed.</li>
-                        <li>Completely anonymous and confidential interactions.</li>
-                    </ul>
-                    <a href="vo-venting.html" class="btn-orange">Start Venting</a>
+        <!-- 5. Real Experts Section -->
+        <section class="experts-v2-section">
+            <div class="experts-v2-container">
+                <!-- Section Heading -->
+                <div class="experts-v2-header">
+                    <h2 class="experts-v2-title">Real Experts. Real Care.</h2>
+                    <h3 class="experts-v2-subtitle">How We Choose Our Team.</h3>
                 </div>
-                <div class="service-detail-image-box">
-                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80"
-                        alt="Venting Session" class="service-detail-image">
+
+                <!-- Content Wrapper -->
+                <div class="experts-v2-content">
+                    <!-- Image Blob with Slideshow -->
+                    <div class="experts-v2-image-wrap">
+                        <div class="experts-v2-blob">
+                            <div class="vo-banner-slideshow-inner">
+                                <div class="vo-blob-slide active"
+                                    style="background-image: url('images/experts_bg_1.png');"></div>
+                                <div class="vo-blob-slide" style="background-image: url('images/experts_bg_2.png');">
+                                </div>
+                                <div class="vo-blob-slide" style="background-image: url('images/experts_bg_3.png');">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Card -->
+                    <div class="experts-v2-card">
+                        <p class="experts-v2-intro">
+                            Our therapist aren't just qualified – they've carefully selected to meet the emotional needs
+                            of young adults like you.
+                        </p>
+
+                        <ul class="experts-v2-list">
+                            <li>Top mental health professionals, educated at prestigious government-recognized
+                                universities to ensure world-class care</li>
+                            <li>Minimum 3+ years of experience</li>
+                            <li>Multi-stage selection ensures globally fluent, culturally sensitive therapists whose
+                                skills create real-world impact.</li>
+                            <li>Personally verified to meet global therapy standards</li>
+                            <li>With us, you're never just talking. You're growing – with professional guidance tailored
+                                to your needs, beliefs, and background.</li>
+                        </ul>
+
+                        <p class="experts-v2-footer">
+                            <span class="experts-v2-tagline"
+                                style="font-family: 'Lora', serif; font-style: italic;">Verified. Compassionate.
+                                Confidential.</span>
+                        </p>
+                    </div>
                 </div>
             </div>
-
-            <!-- Row 3: Coaching -->
-            <div class="service-detail-row">
-                <div class="service-detail-text">
-                    <h3 class="service-detail-title">Professional Coaching for Goal Achievement</h3>
-                    <p class="service-detail-desc">
-                        Unlock your full potential with actionable strategies and expert guidance.
-                    </p>
-                    <ul class="service-detail-list">
-                        <li>Define clear personal and professional goals.</li>
-                        <li>Develop practical skills to overcome obstacles.</li>
-                        <li>Accountability partners to keep you on track.</li>
-                    </ul>
-                    <a href="vo-coaching.html" class="btn-orange">Find a Coach</a>
-                </div>
-                <div class="service-detail-image-box">
-                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80"
-                        alt="Coaching Session" class="service-detail-image">
-                </div>
-            </div>
-
         </section>
 
-        <div class="services-header-centered" style="text-align: center; margin-bottom: 50px; margin-top: 20px;">
-            <h2
-                style="font-family: 'Lora', serif; font-size: 48px; color: #212121; margin-bottom: 15px; font-weight: 700; font-style: italic;">
-                Why
-                Choose Us?</h2>
-        </div>
-
-        <div class="services-carousel-wrapper">
-            <button class="carousel-btn prev" aria-label="Scroll Left">
-                <svg width="10" height="16" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 1L2 8L9 15" />
-                </svg>
-            </button>
-
-            <div class="services-grid-container">
-                <!-- Relationship Counseling -->
-                <div class="service-option-card">
-                    <div class="service-card-image">
-                        <img src="https://images.unsplash.com/photo-1621252179027-94459d27d3ee?w=300&q=80"
-                            alt="Relationship Counseling"
-                            style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+        <!-- 6. Why People Love VentOutt (Sticky Stack) -->
+        <section class="love-v2-section">
+            <h2 class="love-v2-title">Why People Love VentOutt</h2>
+            <div class="love-v2-container">
+                <!-- Card 1 -->
+                <div class="love-v2-card">
+                    <div class="love-v2-card-inner">
+                        <div class="love-v2-content">
+                            <h3 class="love-v2-card-title">Relationship Building</h3>
+                            <p class="love-v2-card-desc">Great relationships are built on trust, communication, and
+                                mutual respect. Taking the time to listen strengthens connections.</p>
+                        </div>
+                        <div class="love-v2-image">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80"
+                                alt="Relationship Building">
+                        </div>
                     </div>
-                    <span class="service-card-title">Relationship Counseling</span>
-                    <p class="service-card-desc">Professional relationship therapists and marriage counselors can help
-                        partners rebuild trust, resolve conflicts, and strengthen their bond.</p>
                 </div>
 
-                <!-- Family Counseling -->
-                <div class="service-option-card">
-                    <div class="service-card-image">
-                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=300&q=80"
-                            alt="Family Counseling"
-                            style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+                <!-- Card 2 -->
+                <div class="love-v2-card">
+                    <div class="love-v2-card-inner">
+                        <div class="love-v2-content">
+                            <h3 class="love-v2-card-title">Improved Mental Health</h3>
+                            <p class="love-v2-card-desc">Prioritize rest, mindfulness, and supportive relationships for
+                                a healthier mind and self-care routine.</p>
+                        </div>
+                        <div class="love-v2-image">
+                            <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800&q=80"
+                                alt="Improved Mental Health">
+                        </div>
                     </div>
-                    <span class="service-card-title">Family Counseling</span>
-                    <p class="service-card-desc">To address issues like communication gaps, intergenerational
-                        relationships,
-                        parenting challenges etc., Ventoutt provides affordable online family counseling.</p>
                 </div>
 
-                <!-- Private Venting Space -->
-                <div class="service-option-card">
-                    <div class="service-card-image">
-                        <img src="https://images.unsplash.com/photo-1493836512294-502baa1986e2?w=300&q=80"
-                            alt="Private Venting Space"
-                            style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+                <!-- Card 3 -->
+                <div class="love-v2-card">
+                    <div class="love-v2-card-inner">
+                        <div class="love-v2-content">
+                            <h3 class="love-v2-card-title">Emotional Support</h3>
+                            <p class="love-v2-card-desc">Being present and listening without judgment goes a long way in
+                                offering comfort and kindness.</p>
+                        </div>
+                        <div class="love-v2-image">
+                            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80"
+                                alt="Emotional Support">
+                        </div>
                     </div>
-                    <span class="service-card-title">Private Venting Space</span>
-                    <p class="service-card-desc">A safe, convenient and judgement free online venting space that
-                        protects
-                        your privacy, security and maintains ethical conduct.</p>
                 </div>
 
-                <!-- Individual Counseling -->
-                <div class="service-option-card">
-                    <div class="service-card-image">
-                        <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=300&q=80"
-                            alt="Individual Counseling"
-                            style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+                <!-- Card 4 -->
+                <div class="love-v2-card">
+                    <div class="love-v2-card-inner">
+                        <div class="love-v2-content">
+                            <h3 class="love-v2-card-title">Counseling and Therapy</h3>
+                            <p class="love-v2-card-desc">A safe space to heal, grow, and gain clarity. Seeking help is a
+                                step toward emotional well-being.</p>
+                        </div>
+                        <div class="love-v2-image">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80"
+                                alt="Counseling and Therapy">
+                        </div>
                     </div>
-                    <span class="service-card-title">Individual Counseling</span>
-                    <p class="service-card-desc">Get individual one-on-one therapy sessions which are tailored according
-                        to
-                        your needs varying from stress, anxiety, trauma to everyday mental health struggles.</p>
                 </div>
 
-                <!-- Youth Counseling Support -->
-                <div class="service-option-card">
-                    <div class="service-card-image">
-                        <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=300&q=80"
-                            alt="Youth Counseling Support"
-                            style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+                <!-- Card 5 -->
+                <div class="love-v2-card">
+                    <div class="love-v2-card-inner">
+                        <div class="love-v2-content">
+                            <h3 class="love-v2-card-title">Best Pricing</h3>
+                            <p class="love-v2-card-desc">Affordable therapy options connecting you with experienced
+                                professionals worldwide.</p>
+                        </div>
+                        <div class="love-v2-image">
+                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80"
+                                alt="Best Pricing">
+                        </div>
                     </div>
-                    <span class="service-card-title">Youth Counseling Support</span>
-                    <p class="service-card-desc">Find support for youth groups from age 18 to 34 by specialised youth
-                        counselors who understand your unique concerns.</p>
                 </div>
 
-                <!-- LGBTQ Counseling -->
-                <div class="service-option-card">
-                    <div class="service-card-image">
-                        <img src="https://images.unsplash.com/photo-1563823263595-5df882d9646b?w=300&q=80"
-                            alt="LGBTQ Counseling"
-                            style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+                <!-- Card 6 -->
+                <div class="love-v2-card">
+                    <div class="love-v2-card-inner">
+                        <div class="love-v2-content">
+                            <h3 class="love-v2-card-title">Community Support</h3>
+                            <p class="love-v2-card-desc">Join a supportive community where you can share, listen, and
+                                grow together.</p>
+                        </div>
+                        <div class="love-v2-image">
+                            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80"
+                                alt="Community Support">
+                        </div>
                     </div>
-                    <span class="service-card-title">LGBTQ Counseling</span>
-                    <p class="service-card-desc">Safe, inclusive and affirming LGBTQ+ therapy with trained
-                        professionals.
-                    </p>
                 </div>
 
-                <!-- Affordable Online Therapy -->
-                <div class="service-option-card">
-                    <div class="service-card-image">
-                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=300&q=80"
-                            alt="Affordable Online Therapy"
-                            style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+                <!-- Card 7 -->
+                <div class="love-v2-card">
+                    <div class="love-v2-card-inner">
+                        <div class="love-v2-content">
+                            <h3 class="love-v2-card-title">Certified Therapists</h3>
+                            <p class="love-v2-card-desc">At Ventoutt, we're committed to connecting you with certified
+                                and experienced therapists who provide professional and compassionate mental health
+                                support.</p>
+                        </div>
+                        <div class="love-v2-image">
+                            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80"
+                                alt="Certified Therapists">
+                        </div>
                     </div>
-                    <span class="service-card-title">Affordable Online Therapy</span>
-                    <p class="service-card-desc">Affordable, pocket-friendly therapy designed for young adult budgets
-                        without sacrificing expert quality accessible from anywhere in the world.</p>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="love-v2-card">
+                    <div class="love-v2-card-inner">
+                        <div class="love-v2-content">
+                            <h3 class="love-v2-card-title">Safe & Private Space</h3>
+                            <p class="love-v2-card-desc">At Ventoutt, your safety and privacy come first. Our platform
+                                is built to offer a secure space where you can express your thoughts and emotions
+                                freely.</p>
+                        </div>
+                        <div class="love-v2-image">
+                            <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80"
+                                alt="Safe & Private Space">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="love-v2-card">
+                    <div class="love-v2-card-inner">
+                        <div class="love-v2-content">
+                            <h3 class="love-v2-card-title">Personal Growth</h3>
+                            <p class="love-v2-card-desc">Unlock your potential through guided self-discovery and
+                                professional support.</p>
+                        </div>
+                        <div class="love-v2-image">
+                            <img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=800&q=80"
+                                alt="Personal Growth">
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <button class="carousel-btn next" aria-label="Scroll Right">
-                <svg width="10" height="16" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M1 1L8 8L1 15" />
-                </svg>
-            </button>
-        </div>
-
+        <!-- 7. Caring & Expert Members (Grid Layout) -->
+        <!-- 5. Experts Section (Redesigned) -->
+        <!-- 5. Experts Section V2 (Clean Slate) -->
         <section class="vo-experts-v2-section" id="verified-partners">
             <div class="vo-experts-v2-container">
                 <!-- Left Column -->
@@ -728,44 +851,10 @@
             </div>
         </section>
 
-        <!-- ========== FIND YOUR RIGHT FIT (Therapist Banner) ========== -->
-        <!-- ========== YOU'RE NOT ALONE IN THIS (Venting Banner) ========== -->
-        <section class="venting-banner-figma">
-            <div class="figma-container">
-                <!-- Left: Content -->
-                <div class="content-wrapper">
-                    <h2 class="figma-title">You're not alone in this.</h2>
-                    <div class="figma-description">
-                        <p>We know it's hard to open up, especially when everything feels overwhelming or nobody seems
-                            to
-                            get it.
-                            But even one small conversation can make a difference. Whether you want to vent, reflect, or
-                            heal,
-                            this space is yours. Whenever you're ready, we're here to listen.</p>
-                    </div>
-                    <!-- Button from Image: Talk to Our Chatbot -->
-                    <a href="#" class="btn-venting-banner">Talk to Our Chatbot</a>
-                </div>
 
-                <!-- Right: Graphics Layer -->
-                <div class="graphics-wrapper">
-                    <!-- Image Container (Slideshow) positioned relatively -->
-                    <div class="image-frame">
-                        <!-- Slideshow logic -->
-                        <div class="banner-slideshow-inner">
-                            <!-- Using uploaded_image_0 as Variant 1 placeholder, and the found variants 2 and 3 -->
-                            <div class="blob-slide active"
-                                style="background-image: url('/images/Property\ 1=Default\ \(1\).png');">
-                            </div>
-                            <div class="blob-slide"
-                                style="background-image: url('/images/Property\ 1=Variant2\ \(1\).png');"></div>
-                            <div class="blob-slide"
-                                style="background-image: url('/images/Property\ 1=Variant3\ \(1\).png');"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+
+
+
 
         <!-- 9. How It Works -->
         <!-- 9. How It Works (Redesigned with Scrollytelling) -->
@@ -1282,42 +1371,38 @@
         <!-- 11. Related Blogs -->
         <section class="vo-blogs-section">
             <h2 class="vo-section-title">Related Blogs</h2>
-            <div class="vo-carousel-wrapper"><button class="vo-arrow-btn prev" onclick="scrollBlogs('prev')"
-                    aria-label="Previous">‹</button>
-                <div class="vo-blogs-grid">
-                    <div class="vo-blog-card">
-                        <div class="vo-blog-image"
-                            style="background-image:url('https://images.unsplash.com/photo-1520962922320-2038eebab146?w=600&q=80')">
-                        </div>
-                        <div class="vo-blog-content">
-                            <span class="vo-blog-tag">Temper</span>
-                            <h3 class="vo-blog-title">Understanding and Managing Temper Issues</h3>
-                            <a href="#" class="vo-blog-link">Read More</a>
-                        </div>
+            <div class="vo-carousel-wrapper"><button class="vo-arrow-btn prev" onclick="scrollBlogs('prev')" aria-label="Previous">‹</button><div class="vo-blogs-grid">
+                <div class="vo-blog-card">
+                    <div class="vo-blog-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1520962922320-2038eebab146?w=600&q=80')">
                     </div>
-                    <div class="vo-blog-card">
-                        <div class="vo-blog-image"
-                            style="background-image:url('https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=600&q=80')">
-                        </div>
-                        <div class="vo-blog-content">
-                            <span class="vo-blog-tag">ADHD-C</span>
-                            <h3 class="vo-blog-title">Living with ADHD-C: Strategies for Success</h3>
-                            <a href="#" class="vo-blog-link">Read More</a>
-                        </div>
+                    <div class="vo-blog-content">
+                        <span class="vo-blog-tag">Temper</span>
+                        <h3 class="vo-blog-title">Understanding and Managing Temper Issues</h3>
+                        <a href="#" class="vo-blog-link">Read More</a>
                     </div>
-                    <div class="vo-blog-card">
-                        <div class="vo-blog-image"
-                            style="background-image:url('https://images.unsplash.com/photo-1627389955776-6644f2d70395?w=600&q=80')">
-                        </div>
-                        <div class="vo-blog-content">
-                            <span class="vo-blog-tag">Anxious-Avoidant</span>
-                            <h3 class="vo-blog-title">Navigating Anxious-Avoidant Attachment Styles</h3>
-                            <a href="#" class="vo-blog-link">Read More</a>
-                        </div>
+                </div>
+                <div class="vo-blog-card">
+                    <div class="vo-blog-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=600&q=80')">
                     </div>
-                </div><button class="vo-arrow-btn next" onclick="scrollBlogs('next')" aria-label="Next">›</button>
-            </div>
-            </div>
+                    <div class="vo-blog-content">
+                        <span class="vo-blog-tag">ADHD-C</span>
+                        <h3 class="vo-blog-title">Living with ADHD-C: Strategies for Success</h3>
+                        <a href="#" class="vo-blog-link">Read More</a>
+                    </div>
+                </div>
+                <div class="vo-blog-card">
+                    <div class="vo-blog-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1627389955776-6644f2d70395?w=600&q=80')">
+                    </div>
+                    <div class="vo-blog-content">
+                        <span class="vo-blog-tag">Anxious-Avoidant</span>
+                        <h3 class="vo-blog-title">Navigating Anxious-Avoidant Attachment Styles</h3>
+                        <a href="#" class="vo-blog-link">Read More</a>
+                    </div>
+                </div>
+            </div><button class="vo-arrow-btn next" onclick="scrollBlogs('next')" aria-label="Next">›</button></div></div>
         </section>
 
         <!-- 12. FAQ -->
@@ -1384,8 +1469,7 @@
                     </div>
                     <div class="vo-spec-label">Telehealth & Virtual Therapy</div>
                 </div>
-            </div><button class="vo-arrow-btn next" onclick="scrollSpecs('next')" aria-label="Next">›</button></div>
-            </div>
+            </div><button class="vo-arrow-btn next" onclick="scrollSpecs('next')" aria-label="Next">›</button></div></div>
 
             <!-- Common Challenges (Redesigned Grid without Toggle) -->
             <!-- Common Challenges We Help With (Restored Toggle) -->
@@ -1448,16 +1532,17 @@
 
     <!-- Scripts -->
     <!-- Logics -->
-    <script src="js/vo-services.js"></script>
-    <script src="js/vo-home.js"></script>
-    <script src="js/vo-therapist-swipe.js"></script>
-    <!-- Loaders -->
     <script src="js/vo-header.js"></script>
+    <script src="js/vo-index-v2.js"></script>
+    <script src="js/vo-therapist-swipe.js"></script>
+
+    <!-- Loaders -->
+
     <script src="js/vo-footer.js"></script>
     <script src="js/vo-chatbot.js"></script>
     <script src="js/vo-popups.js"></script>
 
-    <script src="js/vo-services.js"></script>
 </body>
 
 </html>
+
