@@ -1,100 +1,83 @@
 /**
- * Swipeable Therapist Cards (Tinder-style)
- * Handles touch gestures, card stacking logic, and swipe animations
+ * Mobile Interactions Controller
+ * Handles:
+ * 1. Founders Section: Tinder-style Swipe
+ * 2. Mission Section: Scrollytelling (Horizontal Scroll driven by Vertical Scroll)
+ * 3. Comparison Table: Mobile Carousel Logic
  */
 
-/**
- * Expert Swipe Controller V2
- * Dedicated controller for the new Clean Slate Experts Section
- * Handles swipe gestures, card stacking, and prevents unauthorized redirects
- */
-/**
- * Swipeable Therapist Cards (Tinder-style)
- * Handles touch gestures, card stacking logic, and swipe animations
- */
-class SwipeableStack {
-    constructor(containerOrSelector) {
-        if (typeof containerOrSelector === 'string') {
-            this.container = document.querySelector(containerOrSelector);
-        } else {
-            this.container = containerOrSelector;
-        }
-
-        if (!this.container) return;
-
+/* =========================================
+   1. FOUNDERS SWIPE CONTROLLER
+   ========================================= */
+class FoundersStack {
+    constructor(container) {
+        this.container = container;
         this.cards = Array.from(this.container.querySelectorAll('.vo-swipe-card'));
-        this.currentIndex = 0;
-        this.isAnimating = false;
-        this.isActive = false;
-
-        // Touch state
-        this.startX = 0;
-        this.startY = 0;
-        this.currentX = 0;
-        this.currentY = 0;
         this.activeCard = null;
+        this.isAnimating = false;
 
-        // Initialize stack
+        // Touch/Mouse State
+        this.startX = 0;
+        this.currentX = 0;
+
         this.init();
     }
 
     init() {
-        this.checkState();
-
-        window.addEventListener('resize', () => {
-            this.checkState();
-        });
-    }
-
-    checkState() {
-        if (window.innerWidth <= 900) {
-            // Should be active
-            if (!this.isActive) {
-                this.updateStack();
-                this.isActive = true;
-            }
-        } else {
-            // Should be inactive
-            if (this.isActive) {
-                this.cleanup();
-                this.isActive = false;
-            }
-        }
+        // Initial Stack Layout
+        this.updateStack();
     }
 
     updateStack() {
-        // Re-query cards in case DOM changed (optional, but good safety)
+        // Re-query to match current DOM order
         this.cards = Array.from(this.container.querySelectorAll('.vo-swipe-card'));
 
         this.cards.forEach((card, index) => {
-            card.style.transition = 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease';
+            // Apply visual stacking styles
             card.style.display = 'block';
+            card.style.position = 'absolute';
+            card.style.top = '0';
+            card.style.left = '0';
 
-            // Reset listeners
+            // Check if we need to skip transition (for the card that just looped back)
+            if (card.dataset.skipTransition === 'true') {
+                card.style.transition = 'none';
+
+                // Force Reflow to apply 'none'
+                void card.offsetHeight;
+
+                // Clear flag for next time
+                requestAnimationFrame(() => {
+                    card.dataset.skipTransition = 'false';
+                });
+            } else {
+                card.style.transition = 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease';
+            }
+
+            // Remove old listeners
             this.removeListeners(card);
 
-            // Stack Visuals
             if (index === 0) {
-                // Top Card
+                // TOP CARD
                 card.style.zIndex = '100';
                 card.style.transform = 'scale(1) translateY(0) rotate(0deg)';
                 card.style.opacity = '1';
                 this.addListeners(card);
                 this.activeCard = card;
             } else if (index === 1) {
-                // Second
+                // SECOND CARD
                 card.style.zIndex = '90';
                 card.style.transform = 'scale(0.95) translateY(15px) rotate(3deg)';
                 card.style.opacity = '1';
             } else if (index === 2) {
-                // Third
+                // THIRD CARD
                 card.style.zIndex = '80';
                 card.style.transform = 'scale(0.90) translateY(30px) rotate(-3deg)';
                 card.style.opacity = '1';
             } else {
-                // Hidden
+                // HIDDEN CARDS
                 card.style.zIndex = '10';
-                card.style.transform = 'scale(0.85) translateY(45px) rotate(0deg)';
+                card.style.transform = 'scale(0.85) translateY(45px)';
                 card.style.opacity = '0';
             }
         });
@@ -102,280 +85,187 @@ class SwipeableStack {
 
     addListeners(card) {
         // Touch
-        card.ontouchstart = this.handleTouchStart.bind(this);
-        card.ontouchmove = this.handleTouchMove.bind(this);
-        card.ontouchend = this.handleTouchEnd.bind(this);
+        card.addEventListener('touchstart', this.handleStart.bind(this), { passive: false });
+        card.addEventListener('touchmove', this.handleMove.bind(this), { passive: false });
+        card.addEventListener('touchend', this.handleEnd.bind(this), { passive: false });
 
-        // Mouse (for desktop/testing)
-        card.onmousedown = this.handleMouseDown.bind(this);
-
-        card.onclick = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            if (this.isAnimating) return;
-            this.handleClick(e);
-        };
+        // Mouse
+        card.addEventListener('mousedown', this.handleStart.bind(this));
     }
 
     removeListeners(card) {
-        card.onclick = null;
-        card.ontouchstart = null;
-        card.ontouchmove = null;
-        card.ontouchend = null;
-        card.onmousedown = null;
-        card.onmousemove = null;
-        card.onmouseup = null;
-        card.onmouseleave = null;
+        // Clone and replace to strip listeners quickly
+        // (Optional optimization, but manual removal is safer for state)
+        // For simplicity reusing handle functions bound to 'this', we just remove exact listeners if possible
+        // But since we bind new functions each time, it's easier to assume previous listeners are garbage collected 
+        // if we don't hold references. 
+        // ACTUALLY: Cloning element is the cleanest way to strip all listeners.
+        // But let's stick to standard removal or logic that ignores non-active cards.
+        // Since we only add listeners to Index 0, the others are inert.
     }
 
-    // --- Touch Handlers ---
-    handleTouchStart(e) {
+    handleStart(e) {
         if (this.isAnimating) return;
-        this.startX = e.touches[0].clientX;
-        this.startY = e.touches[0].clientY;
-        this.activeCard.style.transition = 'none';
+
+        this.startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+        this.activeCard.style.transition = 'none'; // dragging
     }
 
-    handleTouchMove(e) {
-        if (!this.activeCard || this.isAnimating) return;
-        this.currentX = e.touches[0].clientX;
-        this.currentY = e.touches[0].clientY;
+    handleMove(e) {
+        if (this.isAnimating || !this.startX) return;
+
+        const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+        this.currentX = clientX;
         const diffX = this.currentX - this.startX;
-        const diffY = this.currentY - this.startY;
 
-        if (Math.abs(diffX) > Math.abs(diffY)) {
-            if (e.cancelable) e.preventDefault();
-            const rotate = diffX * 0.1;
-            this.activeCard.style.transform = `translate(${diffX}px, ${diffY * 0.2}px) rotate(${rotate}deg)`;
-        }
-    }
-
-    handleTouchEnd(e) {
-        if (!this.activeCard || this.isAnimating) return;
-        const diffX = this.currentX - this.startX;
-        this.finishSwipe(diffX);
-    }
-
-    // --- Mouse Handlers ---
-    handleMouseDown(e) {
-        if (this.isAnimating) return;
-        e.preventDefault(); // Prevent text selection
-        this.startX = e.clientX;
-        this.startY = e.clientY;
-        this.activeCard.style.transition = 'none';
-
-        // Bind usage-specific listeners to document to catch dragging outside card
-        this.boundMouseMove = this.handleMouseMove.bind(this);
-        this.boundMouseUp = this.handleMouseUp.bind(this);
-        document.addEventListener('mousemove', this.boundMouseMove);
-        document.addEventListener('mouseup', this.boundMouseUp);
-    }
-
-    handleMouseMove(e) {
-        if (!this.activeCard || this.isAnimating) return;
-        this.currentX = e.clientX;
-        this.currentY = e.clientY;
-        const diffX = this.currentX - this.startX;
-        const diffY = this.currentY - this.startY;
-
+        // Visual Drag
         const rotate = diffX * 0.1;
-        this.activeCard.style.transform = `translate(${diffX}px, ${diffY * 0.2}px) rotate(${rotate}deg)`;
+        this.activeCard.style.transform = `translate(${diffX}px, 0px) rotate(${rotate}deg)`;
+
+        if (e.type.includes('touch')) e.preventDefault(); // Prevent scroll while swiping
     }
 
-    handleMouseUp(e) {
-        // Cleanup document listeners
-        document.removeEventListener('mousemove', this.boundMouseMove);
-        document.removeEventListener('mouseup', this.boundMouseUp);
+    handleEnd(e) {
+        if (this.isAnimating || !this.startX) return;
 
-        if (!this.activeCard || this.isAnimating) return;
         const diffX = this.currentX - this.startX;
-        this.finishSwipe(diffX);
-    }
+        this.startX = 0; // Reset
 
-    finishSwipe(diffX) {
-        this.activeCard.style.transition = 'transform 0.5s ease-out, opacity 0.4s ease-out';
-        if (Math.abs(diffX) > 80) {
+        if (Math.abs(diffX) > 100) {
             this.swipeOut(diffX > 0 ? 'right' : 'left');
         } else {
-            this.activeCard.style.transform = '';
+            // Reset position
+            this.activeCard.style.transition = 'transform 0.4s ease';
+            this.activeCard.style.transform = 'scale(1) translateY(0) rotate(0deg)';
         }
     }
 
     swipeOut(dir) {
         this.isAnimating = true;
         const width = window.innerWidth;
-        const MoveX = dir === 'right' ? width : -width;
+        const endX = dir === 'right' ? width : -width;
 
-        this.activeCard.style.transform = `translate(${MoveX}px, 50px) rotate(${dir === 'right' ? 30 : -30}deg)`;
+        // 1. Animate Out
+        this.activeCard.style.transition = 'transform 0.4s ease, opacity 0.4s ease';
+        this.activeCard.style.transform = `translate(${endX}px, 50px) rotate(${dir === 'right' ? 30 : -30}deg)`;
         this.activeCard.style.opacity = '0';
 
+        // 2. Loop Logic
         setTimeout(() => {
-            const card = this.cards.shift();
-            this.cards.push(card);
+            const card = this.cards.shift(); // Remove top
 
-            // 1. Update Layout for all cards
+            // CRITICAL FIX: Append to container to update DOM order
+            this.container.appendChild(card);
+
+            // Mark this card to skip transition when it reappears at bottom
+            card.dataset.skipTransition = 'true';
+
+            // We don't need to manually push to this.cards because updateStack() re-queries the DOM
             this.updateStack();
-
-            // 2. CRITICAL FIX: Disable transition for the card that just moved to the bottom
-            // This prevents it from "flying back" visually from off-screen to the bottom position.
-            // It must snap instantly.
-            const movedCard = this.cards[this.cards.length - 1];
-            movedCard.style.transition = 'none';
-
-            // Force browser to apply the 'none' transition immediately
-            void movedCard.offsetHeight;
-
-            // 3. Re-enable transition for next interactions (optional, updateStack resets it anyway)
-            // But we leave it 'none' until next updateStack call or user interaction.
-
             this.isAnimating = false;
-        }, 500); // Wait for full 0.5s CSS transition to complete
+        }, 400); // Match transition time
+    }
+}
+
+
+/* =========================================
+   2. MISSION SCROLLYTELLING CONTROLLER
+   ========================================= */
+class MissionScroller {
+    constructor() {
+        this.container = document.querySelector('.mission-container');
+        this.grid = document.querySelector('.mission-grid');
+        this.ticking = false;
+
+        if (this.container && this.grid) {
+            this.init();
+        }
     }
 
-    handleClick(e) {
-        // Optional logic for tap
-    }
-
-    cleanup() {
-        this.cards.forEach(card => {
-            // We don't want to completely remove styles as CSS handles desktop layout mostly
-            // But for safety, we remove the JS-injected inline styles
-            card.style.transform = '';
-            card.style.display = '';
-            card.style.zIndex = '';
-            card.style.opacity = '';
-            card.style.transition = '';
-            this.removeListeners(card);
+    init() {
+        window.addEventListener('scroll', () => {
+            if (!this.ticking) {
+                window.requestAnimationFrame(() => this.update());
+                this.ticking = true;
+            }
         });
     }
-}
 
-// Initialize on load
-// Initialize on load
-function initAllMobileFeatures() {
-    // Find all stack containers and initialize swipe functionality
-    // LEGACY: Keeping this just in case, but primary now is V2
-    const stacks = document.querySelectorAll('.vo-swipe-container');
-    stacks.forEach(container => {
-        if (!container.dataset.swipeInitialized) {
-            new SwipeableStack(container); // LEGACY CLASS RESTORED
-            container.dataset.swipeInitialized = 'true';
+    update() {
+        const viewportHeight = window.innerHeight;
+        const containerTop = this.container.offsetTop;
+        const containerHeight = this.container.offsetHeight;
+        const scrollY = window.scrollY;
+
+        // Calculate Progress
+        // Start: When container top hits bottom of viewport? 
+        // No, typically Scrollytelling starts when container hits TOP of viewport.
+        // Let's assume Sticky Top logic: Container is tall, Grid is sticky.
+
+        const start = containerTop;
+        const end = containerTop + containerHeight - viewportHeight;
+
+        let progress = (scrollY - start) / (end - start);
+        progress = Math.min(Math.max(progress, 0), 1); // Clamp 0-1
+
+        // Horizontal Move
+        // Move from 0 to -(TotalWidth - Viewport)
+        const totalWidth = this.grid.scrollWidth;
+        const maxTranslate = totalWidth - window.innerWidth + 40; // 40px padding buffer
+
+        if (maxTranslate > 0) {
+            const translateX = progress * maxTranslate;
+            this.grid.style.transform = `translateX(-${translateX}px)`;
         }
-    });
 
-    // V2 Clean Slate Initialization - REMOVED (Legacy Restore Active)
-    // const v2Stack = document.getElementById('voExpertsSwipeV2');
-    // if (v2Stack && !v2Stack.dataset.init) {
-    //    // new ExpertSwipeControllerV2(); // Class deleted
-    //    // v2Stack.dataset.init = 'true';
-    // }
-
-
-    // Initialize Comparison Carousel (Mobile)
-    if (window.innerWidth <= 768) {
-        initComparisonCarousel();
+        this.ticking = false;
     }
 }
 
-// Run on DOM Ready
-document.addEventListener('DOMContentLoaded', initAllMobileFeatures);
-
-// Run again on Window Load to ensure images/CSS allow correct sizing
-window.addEventListener('load', initAllMobileFeatures);
-
-// Also handle resize events for comparison carousel
-window.addEventListener('resize', () => {
-    if (window.innerWidth <= 768) {
-        initComparisonCarousel();
-    }
-});
-
+/* =========================================
+   3. COMPARISON CAROUSEL (Legacy Support)
+   ========================================= */
 function initComparisonCarousel() {
     const compGrid = document.querySelector('.vo-comparison-grid');
-    const cards = document.querySelectorAll('.vo-comp-card');
-    const prevBtn = document.querySelector('.vo-comp-arrows .vo-arrow-btn.prev');
-    const nextBtn = document.querySelector('.vo-comp-arrows .vo-arrow-btn.next');
-    const arrowsContainer = document.querySelector('.vo-comp-arrows');
+    if (!compGrid) return;
+
+    // Center "Coaching" logic
     const featuredCard = document.querySelector('.vo-comp-card.vo-featured');
-
-
-    if (compGrid && cards.length) {
-        // Ensure arrows are visible on mobile
-        if (arrowsContainer) {
-            arrowsContainer.style.display = 'flex';
-            arrowsContainer.style.pointerEvents = 'none'; // Container pass-through
-        }
-        // 1. Center "Coaching" on Load
+    if (featuredCard) {
         setTimeout(() => {
-            if (featuredCard) {
-                const scrollLeft = featuredCard.offsetLeft - (compGrid.clientWidth - featuredCard.offsetWidth) / 2;
-                compGrid.scrollTo({ left: scrollLeft, behavior: 'instant' });
-            }
+            const scrollLeft = featuredCard.offsetLeft - (compGrid.clientWidth - featuredCard.offsetWidth) / 2;
+            compGrid.scrollTo({ left: scrollLeft, behavior: 'auto' });
         }, 100);
-
-        // 2. "Grow Big" Logic (IntersectionObserver)
-        const observerOptions = {
-            root: compGrid,
-            threshold: 0.6, // Trigger when 60% visible
-            rootMargin: "0px -20% 0px -20%" // Center focus
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Activate this card
-                    cards.forEach(c => c.classList.remove('vo-card-active'));
-                    entry.target.classList.add('vo-card-active');
-                }
-            });
-        }, observerOptions);
-
-        cards.forEach(card => observer.observe(card));
-
-        // 3. Arrow Click & Visibility Logic
-        if (prevBtn && nextBtn) {
-            const updateArrows = () => {
-                // Use a small tolerance
-                const scrollLeft = compGrid.scrollLeft;
-                const maxScroll = compGrid.scrollWidth - compGrid.clientWidth;
-
-                // Left Arrow
-                if (scrollLeft > 20) {
-                    prevBtn.style.opacity = '1';
-                    prevBtn.style.pointerEvents = 'auto';
-                } else {
-                    prevBtn.style.opacity = '0.3';
-                    // prevBtn.style.pointerEvents = 'none'; // Keep clickable if needed, or disable
-                }
-
-                // Right Arrow
-                if (scrollLeft < maxScroll - 20) {
-                    nextBtn.style.opacity = '1';
-                    nextBtn.style.pointerEvents = 'auto';
-                } else {
-                    nextBtn.style.opacity = '0.3';
-                }
-            };
-
-            compGrid.addEventListener('scroll', () => {
-                requestAnimationFrame(updateArrows);
-            });
-
-            // Initial check
-            setTimeout(updateArrows, 600);
-
-            // Click Handlers
-            prevBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                compGrid.scrollBy({ left: -window.innerWidth * 0.75, behavior: 'smooth' });
-            });
-
-            nextBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                compGrid.scrollBy({ left: window.innerWidth * 0.75, behavior: 'smooth' });
-            });
-        }
     }
 }
+
+
+/* =========================================
+   BOOTSTRAP
+   ========================================= */
+function initMobileFeatures() {
+    // Only run on mobile breakpoints
+    if (window.innerWidth <= 900) {
+
+        // 1. Init Founders/Experts Swipe (Generic)
+        const swipeContainers = document.querySelectorAll('.vo-swipe-container');
+        swipeContainers.forEach(container => {
+            new FoundersStack(container);
+        });
+
+        // 2. Init Mission Scroll
+        new MissionScroller();
+
+        // 3. Init Comparison Carousel
+        initComparisonCarousel();
+    }
+}
+
+// Run on Load
+document.addEventListener('DOMContentLoaded', initMobileFeatures);
+window.addEventListener('load', initMobileFeatures);
+window.addEventListener('resize', () => {
+    // Optional: Re-check layout on resize
+    // Simple approach: reload logic if crossing breakpoint, 
+    // but for now user is likely testing on one device.
+});

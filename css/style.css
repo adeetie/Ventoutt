@@ -129,17 +129,17 @@
 
 /* Detailed Services Section (Steps From Customers) */
 .detailed-services-section {
-    padding: 80px 20px;
-    background-color: #fff;
-    font-family: var(--vo-font-body);
-    max-width: 1200px;
-    margin: 0 auto;
+    /* padding: 100px 100px; */
+    background: var(--vo-color-cream);
+    display: flex;
+    flex-direction: column;
+    gap: var(--vo-space-24);
 }
 
 .detailed-services-header {
     text-align: center;
-    max-width: 800px;
-    margin: 0 auto 60px;
+    /* max-width: 800px; */
+    margin: auto;
 }
 
 .detailed-services-eyebrow {
@@ -224,6 +224,16 @@
 }
 
 @media (max-width: 768px) {
+    .detailed-services-section {
+        padding: 2rem 20px 4rem;
+        /* background-color: #FDFBF7; */
+        position: relative;
+        z-index: 5;
+        width: 100vw;
+        /* margin-left: calc(-50vw + 50%); */
+        left: 0;
+    }
+
     .detailed-services-main-title {
         font-size: 28px;
     }
@@ -370,19 +380,52 @@
     .services-carousel-wrapper {
         padding: 0;
         margin-bottom: 60px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        /* Ensure controls are at bottom */
     }
 
     .services-grid-container {
-        padding: 20px 20px 40px;
+        padding: 20px 20px 0;
+        /* Removing bottom padding that was for scrollbar */
         gap: 15px;
+        order: 1;
+        /* Content first */
     }
 
     .service-option-card {
         flex: 0 0 280px;
     }
 
+    /* Mobile Controls Container - Implicitly created by ordering or we just position buttons relative to wrapper padding */
+    /* converting buttons to static blocks below content */
+
     .carousel-btn {
-        display: none;
+        display: flex;
+        position: absolute;
+        /* Keep absolute but position at bottom */
+        bottom: -50px;
+        top: auto;
+        transform: none;
+        width: 48px;
+        height: 48px;
+        background: var(--vo-color-white);
+        border: 1px solid #eee;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 20;
+        /* Ensure explicitly on top */
+    }
+
+    .carousel-btn.prev {
+        left: calc(50% - 60px);
+        /* Center-left */
+    }
+
+    .carousel-btn.next {
+        right: calc(50% - 60px);
+        /* Center-right */
+        left: auto;
     }
 }
 
@@ -1836,7 +1879,7 @@
 
 /* ========== Detailed Services Section ========== */
 .detailed-services-section {
-    padding: 100px 100px;
+    /* padding: 100px 100px; */
     background: var(--vo-color-cream);
     /* Cream background */
     display: flex;
@@ -1968,9 +2011,6 @@
 }
 
 /* Detailed Services Section Header */
-.detailed-services-header {
-    max-width: 800px;
-}
 
 .detailed-services-eyebrow {
     font-family: var(--vo-font-body);
@@ -8135,7 +8175,7 @@ section {
 
 /* ========== Detailed Services Section ========== */
 .detailed-services-section {
-    padding: var(--vo-space-24) 10%;
+    /* padding: var(--vo-space-24) 10%; */
     background: var(--vo-color-secondary);
     /* Cream background */
     display: flex;
@@ -8266,10 +8306,7 @@ section {
     }
 }
 
-/* Detailed Services Section Header */
-.detailed-services-header {
-    max-width: 800px;
-}
+
 
 .detailed-services-eyebrow {
     font-family: var(--vo-font-body);
@@ -9063,11 +9100,7 @@ section.image-carousel-section .carousel-overlay {
         display: none !important;
     }
 
-    /* Section becomes the green background container */
-    .founders-section {
-        background-color: #1B4B43 !important;
-        padding: 60px 20px;
-    }
+
 
     /* Flex container to enable reordering */
     .founders-container {
@@ -9221,86 +9254,495 @@ section.image-carousel-section .carousel-overlay {
 }
 
 /* --- Requests for Mobile Layout Fixes --- */
+/* LEGACY BLOCK REMOVED - Preventing Conflicts with V3 */
+/* =========================================
+   VO MOBILE V3 - CLEAN SLATE (Founders & Mission)
+   ========================================= */
+
 @media (max-width: 900px) {
 
-    /* --- Founders Section Fixes (Restoring Laptop Style) --- */
-    .founders-section {
-        background-color: var(--vo-color-secondary-light) !important;
-        /* Restore Cream BG */
-        padding: 40px 20px;
-    }
-
-    .founders-info-card h2 {
-        color: #212121 !important;
-        /* Black Text */
-        font-family: var(--vo-font-heading);
-    }
-
-    .founders-info-card p {
-        color: #4a4a4a !important;
-        /* Dark Grey Text */
-    }
-
-    /* --- Empower Section: Hide Left Image, Show Right Image --- */
-    .empower-left-img {
+    /* --- GLOBAL V3 UTILITIES --- */
+    .vo-v3-hidden {
         display: none !important;
     }
 
-    .empower-right-img {
+    .vo-v3-visible {
         display: block !important;
-        width: 100%;
-        height: 300px;
-        object-fit: cover;
-        border-radius: 20px;
-        margin-top: 24px;
-        order: 2;
-        /* Ensure it stays below text */
     }
 
-    /* Adjust Empower text to full width */
-    .empower-section {
-        grid-template-columns: 1fr !important;
+    /* CRITICAL: Hide Desktop Content on Mobile */
+    .vo-desktop-only {
+        display: none !important;
+    }
+
+    /* FIX STICKY SCROLL: Ensure parent doesn't clip */
+    .dark-mission-section,
+    .mission-container,
+    .vo-mission-section-v3 {
+        overflow: visible !important;
+    }
+
+    /* --- 1. FOUNDERS CARDS V3 (Tinder Style) --- */
+    .founders-section-v3 {
+        background-color: #FDFBF7 !important;
+        /* Cream Laptop Color */
+        padding: 50px 20px;
         text-align: center;
-        padding: 40px 20px !important;
+        overflow: hidden;
+        /* Prevent horizontal scroll from swipe */
     }
 
-    .empower-right-col {
-        padding: 0 !important;
+    .vo-founders-stack-v3 {
+        position: relative;
+        width: 100%;
+        max-width: 340px;
+        height: 500px;
+        margin: 30px auto;
+        /* Stack Context */
+    }
+
+    .vo-founder-card-v3 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        padding: 15px;
         display: flex;
         flex-direction: column;
+        /* Polaroid Style */
+        border: 10px solid #fff;
+        transform-origin: 50% 100%;
+        box-sizing: border-box;
     }
 
-    /* --- Mission Grid: Scrollytelling (Horizontal Scroll) --- */
-    /* This overrides the Swipe Stack attempt if present */
-    .mission-grid {
-        display: flex !important;
-        grid-template-columns: none !important;
-        overflow-x: auto !important;
-        scroll-snap-type: x mandatory;
-        gap: 20px !important;
-        padding-bottom: 30px;
-        -ms-overflow-style: none;
-        /* IE and Edge */
-        scrollbar-width: none;
-        /* Firefox */
+    .vo-founder-img-v3 {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 12px;
+        background-color: #eee;
     }
 
-    .mission-grid::-webkit-scrollbar {
-        display: none;
+    .vo-founder-info-v3 {
+        margin-top: 20px;
+        text-align: left;
     }
 
-    .mission-card {
-        flex: 0 0 85% !important;
-        width: 85% !important;
-        scroll-snap-align: center;
-        height: 400px !important;
-        margin-right: 0 !important;
-        grid-column: auto !important;
-        grid-row: auto !important;
+    .vo-founder-name-v3 {
+        font-family: var(--vo-font-heading, serif);
+        font-size: 1.6rem;
+        color: #212121;
+        margin: 0;
     }
 
-    /* --- Speed up Carousel on Mobile --- */
-    .carousel-track {
-        animation-duration: 6s !important;
+    .vo-founder-role-v3 {
+        color: #666;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* --- 2. MISSION SCROLLYTELLING V3 --- */
+    .vo-mission-section-v3 {
+        position: relative;
+        background: transparent !important;
+        /* Removed #111 */
+        margin-top: -20px;
+        /* Pull up to reduce gap from heading */
+    }
+
+    /* The Tall Container that creates scroll space */
+    .vo-mission-scroll-v3 {
+        height: 200vh;
+        /* Reduced from 300vh */
+        position: relative;
+    }
+
+    /* The Sticky Viewport */
+    .vo-mission-sticky-wrapper-v3 {
+        position: sticky;
+        top: 80px;
+        /* Offset from top so it doesn't hit edge */
+        height: 80vh;
+        /* Allow some space */
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-start;
+        /* Move to top instead of center */
+        padding-top: 10px;
+    }
+
+    /* The Moving Track */
+    .vo-mission-track-v3 {
+        display: flex;
+        gap: 20px;
+        padding-left: 20px;
+        /* Start offset */
+        transition: transform 0.1s linear;
+        /* Slight smoothing if JS isn't perfect */
+        will-change: transform;
+    }
+
+    .vo-mission-card-v3 {
+        flex: 0 0 85vw;
+        /* Wide cards */
+        height: 350px;
+        /* Reduced Image Size */
+        background: #222;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .vo-mission-img-v3 {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.6;
+    }
+
+    .vo-mission-overlay-v3 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 30px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    }
+
+    /* --- 2. MISSION SCROLLYTELLING V3 --- */
+    /* (Kept existing mission code here...) */
+
+    /* --- 3. EMPOWER SECTION (Mobile Override) --- */
+    @media (max-width: 900px) {
+        .empower-section {
+            display: flex !important;
+            flex-direction: column !important;
+            padding: 40px 20px !important;
+            text-align: left !important;
+            background: #fff;
+        }
+
+        /* HIDE Left Image */
+        .empower-left-img {
+            display: none !important;
+        }
+
+        .empower-right-col {
+            padding: 0 !important;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* TEXT STYLING */
+        .empower-text-content {
+            margin-bottom: 30px;
+        }
+
+        .empower-pill {
+            display: inline-block;
+            background-color: #E0E0E0;
+            color: #333;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .empower-title {
+            font-family: var(--vo-font-heading, serif);
+            color: #0F3D3E;
+            /* Dark Green */
+            font-size: 2.2rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .empower-desc {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* SHOW Right Image (Bottom) */
+        .empower-right-img {
+            display: block !important;
+            width: 100%;
+            height: 300px;
+            /* Adjust height */
+            object-fit: cover;
+            border-radius: 24px;
+            /* Rounded corners */
+        }
+    }
+}
+
+/* Hide V3 on Desktop */
+@media (min-width: 901px) {
+    .vo-mobile-only-v3 {
+        display: none !important;
+    }
+}
+
+/* --- 5. FOUNDERS STICKY STACK V3 (Mobile Logic) --- */
+@media (max-width: 900px) {
+
+    body,
+    main {
+        background-color: #FDFBF7 !important;
+    }
+
+    .founders-sticky-section-v3 {
+        padding: 2rem 20px 4rem;
+        /* background-color: #FDFBF7; */
+        position: relative;
+        z-index: 5;
+        width: 100vw;
+        /* margin-left: calc(-50vw + 50%); */
+        left: 0;
+    }
+
+    .founders-sticky-title-v3 {
+        font-family: var(--vo-font-heading, serif);
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #000;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .founders-sticky-container-v3 {
+        max-width: 100%;
+        position: relative;
+        padding-bottom: 2rem;
+    }
+
+    /* CARD STYLE & STICKY LOGIC */
+    .founders-sticky-card-v3 {
+        position: sticky;
+        top: 100px;
+        /* Base Top */
+        height: auto;
+        margin-bottom: 2rem;
+        width: 100%;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(0, 0, 0, 0.02);
+    }
+
+    /* STACKING OFFSETS */
+    .founders-sticky-card-v3:nth-child(1) {
+        top: 90px;
+        z-index: 10;
+    }
+
+    .founders-sticky-card-v3:nth-child(2) {
+        top: 120px;
+        z-index: 20;
+    }
+
+    .founders-sticky-card-v3:nth-child(3) {
+        top: 150px;
+        z-index: 30;
+    }
+
+    /* CARD CONTENT */
+    .founders-sticky-img-v3 {
+        width: 100%;
+        height: 350px;
+        position: relative;
+    }
+
+    .founders-sticky-img-v3 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .founders-sticky-content-v3 {
+        padding: 1.5rem;
+        text-align: left;
+        background: #fff;
+    }
+
+    .founders-sticky-name-v3 {
+        font-family: var(--vo-font-heading, serif);
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 0.25rem;
+    }
+
+    .founders-sticky-role-v3 {
+        font-family: var(--vo-font-body, sans-serif);
+        font-size: 0.9rem;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* BIO TEXT */
+    .founders-sticky-bio-v3 {
+        max-width: 400px;
+        margin: 2rem auto 0;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    .founders-sticky-bio-v3 p {
+        font-family: var(--vo-font-body, sans-serif);
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    /* --- 6. SERVICES STICKY STACK V3 (Mobile Logic) --- */
+    .services-sticky-section-v3 {
+        padding: 2rem 20px 4rem;
+        /* background-color: #FDFBF7; */
+        position: relative;
+        z-index: 5;
+        width: 100vw;
+        /* margin-left: calc(-50vw + 50%); */
+        left: 0;
+    }
+
+    .services-sticky-title-v3 {
+        font-family: var(--vo-font-heading, serif);
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #000;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .services-sticky-container-v3 {
+        max-width: 100%;
+        position: relative;
+        padding-bottom: 2rem;
+    }
+
+    .services-sticky-card-v3 {
+        position: sticky;
+        top: 100px;
+        /* Base Top */
+        height: auto;
+        margin-bottom: 2rem;
+        width: 100%;
+        /* max-width: 320px; REMOVED FOR FULL SCREEN EFFECT */
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(0, 0, 0, 0.02);
+    }
+
+    /* Enforce Button Styling in Sticky Cards */
+    .services-sticky-content-v3 .btn-orange {
+        display: inline-block;
+        background-color: #F68D2E !important;
+        /* Orange from reference */
+        color: #fff !important;
+        padding: 12px 32px !important;
+        /* Increased size */
+        border-radius: 50px !important;
+        font-family: var(--vo-font-body);
+        font-weight: 600;
+        font-size: 1rem;
+        /* Increased text size */
+        text-decoration: none;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(246, 141, 46, 0.3);
+    }
+
+    /* STACKING OFFSETS */
+    .services-sticky-card-v3:nth-child(1) {
+        top: 90px;
+        z-index: 10;
+    }
+
+    .services-sticky-card-v3:nth-child(2) {
+        top: 120px;
+        z-index: 20;
+    }
+
+    .services-sticky-card-v3:nth-child(3) {
+        top: 150px;
+        z-index: 30;
+    }
+
+    .services-sticky-card-v3:nth-child(4) {
+        top: 180px;
+        z-index: 40;
+    }
+
+    .services-sticky-img-v3 {
+        order: 2;
+        /* Ensure image is at bottom via Flex as well */
+        width: 100%;
+        height: 250px;
+        position: relative;
+    }
+
+    .services-sticky-img-v3 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .services-sticky-content-v3 {
+        order: 1;
+        /* Content first */
+        padding: 1.5rem;
+        text-align: left;
+        background: #fff;
+    }
+
+    .services-sticky-name-v3 {
+        font-family: var(--vo-font-heading, serif);
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 0.25rem;
+    }
+
+    .services-sticky-role-v3 {
+        font-family: var(--vo-font-body, sans-serif);
+        font-size: 0.9rem;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 1rem;
+    }
+
+    .services-sticky-desc-v3 {
+        font-family: var(--vo-font-body, sans-serif);
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #333;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Hide Original Detailed Services on Mobile */
+    .detailed-services-section {
+        display: none !important;
     }
 }

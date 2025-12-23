@@ -256,6 +256,42 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => clearInterval(checkFooter), 5000);
     };
 
+    /* =========================================
+       Why People Love Ventoutt (Tab Interaction)
+       ========================================= */
+    const initWhyPeopleLove = () => {
+        const points = document.querySelectorAll('.why-love-point');
+        const images = document.querySelectorAll('.why-love-photo');
+
+        if (points.length === 0 || images.length === 0) return;
+
+        points.forEach((point, index) => {
+            point.addEventListener('mouseenter', () => { // Hover for desktop
+                // Remove active class from all
+                points.forEach(p => p.classList.remove('active'));
+                images.forEach(img => img.classList.remove('active'));
+
+                // Add to current
+                point.classList.add('active');
+                if (images[index]) {
+                    images[index].classList.add('active');
+                }
+            });
+
+            point.addEventListener('click', () => { // Click for mobile
+                points.forEach(p => p.classList.remove('active'));
+                images.forEach(img => img.classList.remove('active'));
+
+                point.classList.add('active');
+                if (images[index]) {
+                    images[index].classList.add('active');
+                }
+            });
+        });
+
+        console.log('[Main.js] Why People Love interaction initialized');
+    };
+
     // Initialize all homepage features
     initHeroSlideshow();
     initDynamicGreeting();
@@ -264,6 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFindYourFit();
     initExpertBlobFade();
     initFooterCheck();
+    initWhyPeopleLove();
 });
 
 /* =========================================

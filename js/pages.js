@@ -566,3 +566,16 @@ document.addEventListener('DOMContentLoaded', () => {
     initInfiniteCarousel();
     initTestimonialSlider();
 });
+
+/* =========================================
+   8. Services 'Why Choose Us' Carousel
+   ========================================= */
+window.scrollServices = (direction) => {
+    const grid = document.querySelector('.services-grid-container');
+    if (!grid) return;
+    const scrollAmount = 340; // Approx card width + gap
+    grid.scrollBy({
+        left: direction === 'next' ? scrollAmount : -scrollAmount,
+        behavior: 'smooth'
+    });
+};
