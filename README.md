@@ -1,55 +1,130 @@
-# MentalBot Chatbot Demo
+# VentOutt Website
 
-## Overview
-A lightweight, sticky, bottom‑right psycho‑educational chatbot built with vanilla HTML, CSS, and JavaScript. It runs entirely in the browser – no backend required for the demo.
+A mental health and therapy platform featuring modular, reusable sections across multiple pages.
+
+## Pages
+
+| Page | File |
+|------|------|
+| Home | `index.html` |
+| Services | `vo-services.html` |
+| About | `vo-about.html` |
+| Therapy | `vo-therapy.html` |
+| Venting | `vo-venting.html` |
+| Coaching | `vo-coaching.html` |
+
+---
+
+## Shared Sections
+
+The following sections are reused across multiple pages. Some have page-specific variations.
+
+| Section | Home | Services | About | Therapy | Venting | Coaching |
+|---------|:----:|:--------:|:-----:|:-------:|:-------:|:--------:|
+| Testimonials | ✓ | ✓ | | ✓ | ✓ | ✓ |
+| Find Your Right Fit | ✓ | ✓ | | ✓ | ✓ | ✓ |
+| How It Works | ✓ | ✓ | | ✓ | ✓ | ✓ |
+| Related Blogs | ✓ | ✓ | | ✓ | ✓ | ✓ |
+| Specializations & Challenges | ✓ | ✓ | | ✓* | ✓ | ✓ |
+| Why People Love Ventoutt | | | | ✓ | ✓ | ✓ |
+| Venting Banner | | | | ✓ | ✓ | ✓ |
+| Partners & Therapists Carousel | ✓ | ✓ | | | | |
+| FAQ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Meet Our Experts | ✓ | ✓ | | ✓* | ✓ | ✓ |
+| Service Hero | | | | ✓ | ✓ | ✓ |
+
+> **`*`** = Has page-specific variation
+
+---
+
+## Section Variations
+
+### Experts Section
+
+**Standard** (Home, Services, Venting, Coaching):
+- Label: `MEET OUR EXPERTS`
+- Title: `Caring & Expert Members`
+
+**Therapy Page Variation**:
+- Label: `VERIFIED CLINICAL PARTNERS`
+- Title: `Caring & Expert Members`
+- Subtitle: `Expert Care, Independently Verified`
+- Includes **Expert Pointers Carousel**:
+  - Clinical Diagnosis
+  - Medication Management
+  - Long-term Recovery
+
+### How It Works Section
+
+**Main Version** (5 steps):
+- Eyebrow: `SIMPLE PROCESS`
+- Title: `How It Works`
+- Steps: Select service → Choose provider → Pick time → Pay → Session
+
+**Vetting Process Version** (Therapy page, 3 steps):
+- Eyebrow: `OUR VETTING PROCESS`
+- Title: `How We Choose Our Partners`
+- Steps: License Verification → Safety Check → Quality Assurance
+
+---
+
+## Technical Architecture
+
+The website uses a hybrid approach: static HTML for layouts and dynamic JavaScript for shared components and interactive features.
+
+### CSS Structure
+- **`css/global.css`**: Design tokens, resets, and utility classes used sitewide.
+- **`css/style.css` & `css/pages.css`**: Large consolidated stylesheets containing styles for various sections and pages (legacy/consolidated).
+- **`css/index.css`**: Specific overrides and unique styles for the Homepage.
+- **`css/components/`**: Modular styles for encapsulated components (Header, Footer, Chatbot, Popups).
+
+### JavaScript Architecture
+- **Dynamic Loading**: `vo-header.js` and `vo-footer.js` use the `fetch()` API to inject HTML from the `components/` directory into the DOM on page load.
+- **`js/main.js`**: Initializer for unique primary page features (Hero, Dynamic Greetings, Homepage-specific carousels).
+- **`js/pages.js`**: The core logic engine for shared components (Testimonials, FAQ, Partners, Scrollytelling transitions).
+- **`js/vo-therapist-swipe.js`**: Dedicated logic for mobile swipe interactions in expert/therapist sections.
+
+---
+
+## Logic Distribution Mapping
+
+| Feature | Primary Logic File | Mechanism |
+|---------|--------------------|-----------|
+| **Header/Navigation** | `js/vo-header.js` | Fetch & Auto-Init |
+| **Footer** | `js/vo-footer.js` | Fetch & Auto-Init |
+| **Testimonials** | `js/pages.js` | 3D CSS Transform Carousel |
+| **How It Works** | `js/pages.js` | Scroll-based Progress Tracking |
+| **Therapist Swipe** | `js/vo-therapist-swipe.js` | Touch Events / Gestures |
+| **Hero Greeting** | `js/main.js` | Typewriter Effect Interval |
+| **Chatbot** | `js/vo-chatbot.js` | DOM Manipulation & State |
+
+---
 
 ## Project Structure
+
 ```
-chatbot/
-├─ index.html               # Demo landing page (loads the chatbot)
-├─ demo-venting.html        # Demo page for the venting flow
-├─ demo-coaching.html       # Demo page for the coaching flow
-├─ demo-therapy.html        # Demo page for the therapy flow
-├─ css/
-│   └─ mentalbot.css        # Styles for the chatbot UI
-├─ js/
-│   ├─ utils.js            # Helper utilities (DOM, fetch, debounce)
-│   └─ mentalbot.js        # Core chatbot implementation
-├─ assets/
-│   └─ icons/*.svg         # SVG icons (optional)
-└─ README.md                # This file
+ventoutt-demo/
+├── index.html
+├── vo-about.html
+├── vo-coaching.html
+├── vo-services.html
+├── vo-therapy.html
+├── vo-venting.html
+├── full-site-preview.html
+├── css/
+│   ├── style.css
+│   ├── pages.css
+│   └── ...
+├── js/
+│   ├── main.js
+│   ├── pages.js
+│   └── ...
+└── images/
+    └── ...
 ```
 
-## Local Demo
-1. Open the **chatbot** folder in your editor.
-2. Open any of the HTML files (e.g. `index.html`, `demo-venting.html`) in a browser. You can use VS Code Live Server or simply double‑click the file.
-3. The chatbot pill appears in the bottom‑right corner. Click it to expand and interact.
-4. Test the three flows:
-   - **Vent** – click the *Vent* button.
-   - **Coaching** – click the *Coaching* button (US users will see a regional notice).
-   - **Therapy** – click the *Therapy* button.
-5. Type a crisis keyword such as `I want to kill myself` – the bot will display a crisis message and emit a `crisisRedirect` event.
+---
 
-## WordPress / Elementor Integration (later)
-1. Copy `css/mentalbot.css` and `js/mentalbot.js` (and `js/utils.js`) into your theme’s assets folder.
-2. Enqueue the files in `functions.php`:
-   ```php
-   wp_enqueue_style('mentalbot', get_stylesheet_directory_uri() . '/chatbot/css/mentalbot.css');
-   wp_enqueue_script('mentalbot', get_stylesheet_directory_uri() . '/chatbot/js/mentalbot.js', array(), null, true);
-   ```
-3. Insert the HTML snippet (the container with `id="mentalbot-shell"`) into your footer.php or an Elementor Global Footer block.
-4. Override URLs for helplines, coaching, and therapy links by editing `mentalbot.js` or by providing a custom `MB.on('crisisRedirect', ...)` handler.
+## Proprietary Notice
 
-## Customisation
-- **Styling** – edit `css/mentalbot.css` (colors, fonts, gradients).
-- **Content** – modify the welcome message and button labels in `mentalbot.js`.
-- **Crisis List** – update `CRISIS_KEYWORDS` in `mentalbot.js`.
-- **Analytics** – hook into `MB.on(event, handler)` or rely on the built‑in `dataLayer` pushes.
-
-## Accessibility
-- Uses `aria-live="polite"` for dynamic messages.
-- All interactive elements are native `<button>` elements and keyboard‑focusable.
-- Contrast ratios meet WCAG AA.
-
-## License
-Free to use for demos and non‑commercial projects. For commercial use, consider adding attribution and reviewing the code for your own compliance.
+Proprietary software of VentOutt. All rights reserved.

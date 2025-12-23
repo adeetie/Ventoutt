@@ -1,0 +1,18 @@
+# Migration Task List
+
+- [ ] Phase 1: Theme & Configuration
+    - [/] Analyze existing CSS for variables and theme tokens
+    - [ ] Create `theme.css` with CSS Variables
+    - [ ] Define `ANIMATION_SPEED` constants
+- [ ] Phase 2: Smart Component Architecture
+    - [ ] Analyze pages for reusable components (Hero, Cards, Grids)
+    - [ ] Implement `<Hero />` component with variants
+    - [ ] Implement generic `<Card />` and `<Section />` components
+    - [ ] Convert HTML to strict TSX
+- [ ] Phase 3: Page Assembly & Lazy Loading
+    - [ ] Setup React Router with Lazy Loading
+    - [ ] Assemble pages using smart components
+- [ ] Phase 4: Hybrid Integration Prep
+    - [ ] Create Portal-ready Header and Footer
+- [ ] Phase 5: Documentation
+    - [ ] Generate [README.md](file:///c:/Users/bajpa/Desktop/ventoutt-demo/README.md) with instructions
