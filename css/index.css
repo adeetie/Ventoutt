@@ -1019,55 +1019,57 @@
 /* Mobile Stacking Tuning */
 @media (max-width: 768px) {
     .love-v2-card {
-        top: 80px;
-        margin-bottom: 2rem;
+        top: 60px;
+        margin-bottom: 3rem;
         height: auto;
-        min-height: 400px;
+        min-height: 380px;
+        background-color: var(--vo-color-white);
     }
 
+    /* Stacking Offsets - Refined gaps to keep title/top area visible */
     .love-v2-card:nth-child(1) {
-        top: 80px;
-        z-index: 1;
+        top: 60px;
+        z-index: 10;
     }
 
     .love-v2-card:nth-child(2) {
-        top: 120px;
-        z-index: 2;
+        top: 110px;
+        z-index: 20;
     }
 
     .love-v2-card:nth-child(3) {
         top: 160px;
-        z-index: 3;
+        z-index: 30;
     }
 
     .love-v2-card:nth-child(4) {
-        top: 200px;
-        z-index: 4;
+        top: 210px;
+        z-index: 40;
     }
 
     .love-v2-card:nth-child(5) {
-        top: 240px;
-        z-index: 5;
+        top: 260px;
+        z-index: 50;
     }
 
     .love-v2-card:nth-child(6) {
-        top: 280px;
-        z-index: 6;
+        top: 310px;
+        z-index: 60;
     }
 
     .love-v2-card:nth-child(7) {
-        top: 320px;
-        z-index: 7;
+        top: 360px;
+        z-index: 70;
     }
 
     .love-v2-card:nth-child(8) {
-        top: 360px;
-        z-index: 8;
+        top: 410px;
+        z-index: 80;
     }
 
     .love-v2-card:nth-child(9) {
-        top: 400px;
-        z-index: 9;
+        top: 460px;
+        z-index: 90;
     }
 }
 
@@ -1178,3 +1180,4 @@
     .vo-v3-track {
         gap: 80px;
     }
+}

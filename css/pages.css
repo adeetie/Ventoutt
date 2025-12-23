@@ -17321,3 +17321,104 @@ h2 {
         /* Hide on mobile often helpful */
     }
 }
+/* =========================================
+   5. Testimonials (Shared Component)
+   ========================================= */
+.vo-testimonials-section {
+    padding: var(--vo-space-20) 0 7.5rem;
+    background-color: var(--vo-color-secondary-light);
+    overflow: hidden;
+    position: relative;
+}
+
+.vo-testimonials-title {
+    font-family: var(--vo-font-heading);
+    font-size: var(--vo-text-5xl);
+    text-align: center;
+    margin-bottom: var(--vo-space-16);
+    color: var(--vo-color-black);
+    line-height: 1.3;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: transparent;
+    padding: var(--vo-space-16) 0;
+}
+
+.marquee-inner {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    transform-style: preserve-3d;
+}
+
+.vo-testimonial-card {
+    position: relative;
+    width: 380px;
+    height: 380px;
+    border-radius: 32px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 8px 32px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px;
+    margin-right: 15px;
+    flex-shrink: 0;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vo-testimonial-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+    z-index: 100;
+}
+
+.vo-testimonial-name {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 700;
+    margin-top: 20px;
+    font-size: var(--vo-text-lg);
+    color: var(--vo-color-black);
+}
+
+.vo-testimonial-name img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.vo-testimonial-card p {
+    font-family: var(--vo-font-body);
+    font-size: var(--vo-text-lg);
+    line-height: 1.6;
+    color: var(--vo-color-dark-gray);
+    margin: 0;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .vo-testimonial-card {
+        width: 85vw;
+        height: auto;
+        min-height: 300px;
+        padding: 24px;
+    }
+    .vo-testimonials-title {
+        font-size: 32px;
+    }
+}

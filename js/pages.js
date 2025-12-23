@@ -565,6 +565,10 @@ function initTestimonialSlider() {
 document.addEventListener('DOMContentLoaded', () => {
     initInfiniteCarousel();
     initTestimonialSlider();
+    // Therapy-specific initializations
+    initTherapyHeroSlideshow();
+    initExpertPointersCarousel();
+    initWhyLoveScrollytelling();
 });
 
 /* =========================================
@@ -579,3 +583,112 @@ window.scrollServices = (direction) => {
         behavior: 'smooth'
     });
 };
+
+/* =========================================
+   9. Therapy Page Functions
+   ========================================= */
+
+// Slideshow for venting banner (blob slides)
+function initTherapyHeroSlideshow() {
+    const figmaSlides = document.querySelectorAll('.venting-banner-figma .blob-slide');
+    if (figmaSlides.length > 0) {
+        let cur = 0;
+        setInterval(() => {
+            figmaSlides[cur].classList.remove('active');
+            cur = (cur + 1) % figmaSlides.length;
+            figmaSlides[cur].classList.add('active');
+        }, 4000);
+    }
+}
+
+// Expert Pointers Carousel Animation
+function initExpertPointersCarousel() {
+    const track = document.getElementById('expertPointersTrack');
+    if (track) {
+        // Clone items for infinite loop
+        const originals = Array.from(track.children);
+        if (originals.length === 0) return;
+
+        // Clone set 1, 2, 3 to ensure enough width for infinite scroll
+        originals.forEach(item => track.appendChild(item.cloneNode(true)));
+        originals.forEach(item => track.appendChild(item.cloneNode(true)));
+        originals.forEach(item => track.appendChild(item.cloneNode(true)));
+
+        // Calculate widths
+        const gap = 20;
+        const itemWidth = originals[0].getBoundingClientRect().width || 280;
+        const totalItemWidth = itemWidth + gap;
+
+        // The distance to scroll is the width of the ORIGINAL set
+        const scrollDistance = totalItemWidth * originals.length;
+
+        // Set CSS variable and Animation
+        track.style.setProperty('--scroll-distance', `${scrollDistance}px`);
+
+        // Duration: 40px per second speed
+        const duration = scrollDistance / 40;
+
+        track.style.animation = `pointer-scroll ${duration}s linear infinite`;
+
+        // Pause on hover
+        track.addEventListener('mouseenter', () => track.style.animationPlayState = 'paused');
+        track.addEventListener('mouseleave', () => track.style.animationPlayState = 'running');
+    }
+}
+
+// Why People Love Ventoutt - Scroll-Triggered Behavior
+function initWhyLoveScrollytelling() {
+    const section = document.querySelector('.why-love-section');
+    if (!section) return;
+
+    let ticking = false;
+    let currentIndex = -1;
+
+    const handleScroll = () => {
+        const points = section.querySelectorAll('.why-love-point');
+        const photos = section.querySelectorAll('.why-love-photo');
+
+        if (points.length === 0) return;
+
+        const rect = section.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+
+        // Calculate scroll progress within the section
+        const scrollDistance = rect.height - viewportHeight;
+        let scrolled = -rect.top;
+
+        // Normalize to 0-1
+        let progress = scrolled / scrollDistance;
+        if (progress < 0) progress = 0;
+        if (progress > 1) progress = 1;
+
+        // Map to index
+        const totalPoints = points.length;
+        const index = Math.min(Math.floor(progress * totalPoints), totalPoints - 1);
+
+        // Only update if index changed
+        if (index !== currentIndex) {
+            currentIndex = index;
+
+            points.forEach((point, i) => {
+                point.classList.toggle('active', i === index);
+            });
+
+            photos.forEach((photo, i) => {
+                photo.classList.toggle('active', i === index);
+            });
+        }
+    };
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                handleScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+
+    handleScroll(); // Run once on load
+}
