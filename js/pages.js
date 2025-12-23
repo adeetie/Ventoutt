@@ -17,150 +17,107 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =========================================
        1. Testimonials Marquee (3D Infinite Carousel)
        ========================================= */
+    /* =========================================
+       1. Testimonials Marquee (3D Infinite Carousel)
+       ========================================= */
     const initTestimonials = () => {
-        const marquee = document.querySelector('.marquee');
-        const marqueeInner = document.querySelector('.marquee-inner');
+        const marquees = document.querySelectorAll('.marquee');
+        marquees.forEach(marquee => {
+            if (marquee.dataset.initialized === 'true') return;
+            marquee.dataset.initialized = 'true';
 
-        if (!marquee || !marqueeInner) return;
+            const marqueeInner = marquee.querySelector('.marquee-inner');
+            if (!marqueeInner) return;
 
-        // Clone original content for infinite loop
-        const originals = Array.from(marqueeInner.children);
-        if (originals.length === 0) return;
+            // Clone original content for infinite loop (prevent double cloning if already cloned in HTML)
+            const originals = Array.from(marqueeInner.querySelectorAll('.vo-testimonial-card:not(.clone)'));
+            if (originals.length === 0) return;
 
-        originals.forEach(item => {
-            const clone = item.cloneNode(true);
-            clone.setAttribute('aria-hidden', 'true');
-            marqueeInner.appendChild(clone);
-        });
+            // Clear clones if any (to avoid compounding on hot reload or multiple calls)
+            marqueeInner.querySelectorAll('.clone').forEach(c => c.remove());
 
-        // Animation state
-        let currentTx = 0;
-        const speed = 0.6; // Slower, smoother speed
-        let isPaused = false;
-        let animationId;
-
-        // 3D perspective settings
-        const perspective = 1000;
-
-        const updateCards3D = () => {
-            const viewportCenter = marquee.offsetWidth / 2;
-            const allCards = marqueeInner.children;
-
-            Array.from(allCards).forEach(card => {
-                const rect = card.getBoundingClientRect();
-                const cardCenter = rect.left + rect.width / 2;
-                const dist = cardCenter - viewportCenter;
-
-                // Normalize distance
-                const norm = dist / viewportCenter;
-
-                // Concave effect
-                const rotateY = norm * -30;
-                const z = (1 - Math.abs(norm)) * -60;
-
-                card.style.transform = `perspective(${perspective}px) rotateY(${rotateY}deg) translateZ(${z}px)`;
-                card.style.zIndex = Math.round(Math.abs(norm) * 100) + 10;
+            originals.forEach(item => {
+                const clone = item.cloneNode(true);
+                clone.classList.add('clone');
+                clone.setAttribute('aria-hidden', 'true');
+                marqueeInner.appendChild(clone);
             });
-        };
 
-        const calculateScrollWidth = () => {
-            if (marqueeInner.scrollWidth === 0) return 0;
-            return marqueeInner.scrollWidth / 2;
-        };
+            // Animation state
+            let currentTx = 0;
+            const speed = 0.6;
+            let isPaused = false;
+            let animationId;
 
-        let scrollLimit = calculateScrollWidth();
+            const perspective = 1000;
 
-        window.addEventListener('resize', () => {
-            scrollLimit = calculateScrollWidth();
-        });
+            const updateCards3D = () => {
+                const viewportCenter = marquee.offsetWidth / 2;
+                const allCards = marqueeInner.children;
 
-        const animate = () => {
-            if (!isPaused) {
-                currentTx -= speed;
+                Array.from(allCards).forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    const cardCenter = rect.left + rect.width / 2;
+                    const dist = cardCenter - viewportCenter;
+                    const norm = dist / viewportCenter;
 
-                // Infinite loop reset
-                if (Math.abs(currentTx) >= scrollLimit) {
-                    currentTx = 0;
+                    const rotateY = norm * -30;
+                    const z = (1 - Math.abs(norm)) * -60;
+
+                    card.style.transform = `perspective(${perspective}px) rotateY(${rotateY}deg) translateZ(${z}px)`;
+                    card.style.zIndex = Math.round(100 - Math.abs(norm) * 50); // Improved Z-index logic
+                });
+            };
+
+            const calculateScrollWidth = () => {
+                if (marqueeInner.scrollWidth === 0) return 0;
+                // Width of the original items only
+                const itemWidth = originals[0].offsetWidth + parseInt(window.getComputedStyle(marqueeInner).gap || 0);
+                return itemWidth * originals.length;
+            };
+
+            let scrollLimit = calculateScrollWidth();
+
+            window.addEventListener('resize', () => {
+                scrollLimit = calculateScrollWidth();
+            });
+
+            const animate = () => {
+                if (!isPaused) {
+                    currentTx -= speed;
+                    if (Math.abs(currentTx) >= scrollLimit) {
+                        currentTx = 0;
+                    }
+                    marqueeInner.style.transform = `translate3d(${currentTx}px, 0, 0)`;
+                    updateCards3D();
                 }
+                animationId = requestAnimationFrame(animate);
+            };
 
-                marqueeInner.style.transform = `translate3d(${currentTx}px, 0, 0)`;
-                updateCards3D();
-            }
             animationId = requestAnimationFrame(animate);
-        };
 
-        animationId = requestAnimationFrame(animate);
+            marquee.addEventListener('mouseenter', () => isPaused = true);
+            marquee.addEventListener('mouseleave', () => isPaused = false);
 
-        // Pause on hover
-        marquee.addEventListener('mouseenter', () => {
-            isPaused = true;
-        });
-
-        marquee.addEventListener('mouseleave', () => {
-            isPaused = false;
-        });
-
-        // 4. Video Interaction & Fixes
-        const allCards = marqueeInner.querySelectorAll('.vo-testimonial-card');
-        allCards.forEach((card, index) => {
-            // Fix Loop Video Clones: Reset SRC to ensure loading
-            const iframe = card.querySelector('iframe');
-            if (iframe) {
-                iframe.id = `vo-yt-frame-marquee-${index}`;
-                let src = iframe.src;
-                if (src.includes('/shorts/')) {
-                    src = src.replace('/shorts/', '/embed/');
+            // Manual resume/pause toggle
+            marquee.addEventListener('click', (e) => {
+                if (e.target.tagName !== 'IFRAME') {
+                    isPaused = !isPaused;
                 }
+            });
+
+            // Iframe/Video Support
+            const iframes = marqueeInner.querySelectorAll('iframe');
+            iframes.forEach((iframe, index) => {
+                iframe.id = `vo-yt-frame-${Date.now()}-${index}`;
+                let src = iframe.src;
+                if (src.includes('/shorts/')) src = src.replace('/shorts/', '/embed/');
                 const u = new URL(src);
                 u.searchParams.set('enablejsapi', '1');
-                u.searchParams.set('rel', '0');
-                u.searchParams.set('modestbranding', '1');
-
-                if (iframe.src !== u.toString()) {
-                    iframe.src = u.toString();
-                }
-            }
-        });
-
-        // Inject YT API listeners
-        const iframes = marqueeInner.querySelectorAll('iframe');
-        const injectYTEvents = () => {
-            iframes.forEach(ifr => {
-                try {
-                    const u = new URL(ifr.src);
-                    if (!u.searchParams.has('enablejsapi')) {
-                        u.searchParams.set('enablejsapi', '1');
-                        ifr.src = u.toString();
-                    }
-                    if (ifr.contentWindow) {
-                        ifr.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: ifr.id }), '*');
-                        ifr.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'addEventListener', args: ['onStateChange'], id: ifr.id }), '*');
-                    }
-                } catch (e) { }
+                if (iframe.src !== u.toString()) iframe.src = u.toString();
             });
-        };
-        setTimeout(injectYTEvents, 2000);
-
-        // Listen for YouTube API messages
-        window.addEventListener('message', (event) => {
-            try {
-                const data = JSON.parse(event.data);
-                if (data.event === 'onStateChange') {
-                    if (data.info === 1) { // Playing
-                        isPaused = true;
-                    }
-                }
-            } catch (e) { }
         });
-
-        // Manual resume/pause toggle
-        marquee.addEventListener('click', (e) => {
-            if (e.target.tagName !== 'IFRAME') {
-                isPaused = !isPaused;
-            }
-        });
-
-        console.log('[Pages.js] Testimonials marquee initialized with video support');
+        console.log('[Pages.js] Testimonials marquees initialized');
     };
 
     /* =========================================
@@ -169,75 +126,83 @@ document.addEventListener('DOMContentLoaded', () => {
     const initExpertCards = () => {
         // Mobile swipe functionality is handled by vo-therapist-swipe.js
         // Desktop hover effects are CSS-based
-        // This function can add any additional interactivity needed
-
-        const expertsSection = document.querySelector('.vo-experts-v2-section');
-        if (!expertsSection) return;
-
-        console.log('[Pages.js] Expert cards section found');
-        // Add any specific JavaScript needed for expert cards
+        // This function can handle any generic expert card setup if needed
+        const expertSections = document.querySelectorAll('.vo-experts-v2-section');
+        expertSections.forEach(section => {
+            if (section.dataset.initialized === 'true') return;
+            section.dataset.initialized = 'true';
+            console.log('[Pages.js] Expert cards section initialized');
+        });
     };
 
     /* =========================================
        3. How It Works (Scrollytelling Animation)
        ========================================= */
     const initHowItWorks = () => {
-        const howWrapper = document.querySelector('.how-scroll-wrapper');
-        const howProgress = document.querySelector('.how-timeline-progress');
-        const howDots = document.querySelectorAll('.how-dot');
-        const howCards = document.querySelectorAll('.how-card');
+        const wrappers = document.querySelectorAll('.how-scroll-wrapper');
 
-        if (!howWrapper || !howProgress) return;
+        wrappers.forEach(howWrapper => {
+            if (howWrapper.dataset.initialized === 'true') return;
+            howWrapper.dataset.initialized = 'true';
 
-        const handleScroll = () => {
-            const rect = howWrapper.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
+            const howProgress = howWrapper.querySelector('.how-timeline-progress');
+            const howDots = howWrapper.querySelectorAll('.how-dot');
+            const howCards = howWrapper.querySelectorAll('.how-card');
 
-            // Calculate progress
-            const totalScrollableDistance = howWrapper.offsetHeight - windowHeight;
-            let scrolled = -rect.top;
+            if (!howProgress) return;
 
-            // Normalize to 0-1
-            let progress = scrolled / totalScrollableDistance;
-            progress = Math.max(0, Math.min(1, progress));
+            const handleScroll = () => {
+                const rect = howWrapper.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
 
-            // Update progress bar
-            const percent = progress * 100;
+                // Calculate progress
+                const totalScrollableDistance = howWrapper.offsetHeight - windowHeight;
+                let scrolled = -rect.top;
 
-            if (window.innerWidth >= 900) {
-                howProgress.style.width = `${percent}%`;
-                howProgress.style.height = '100%';
-            } else {
-                howProgress.style.height = `${percent}%`;
-                howProgress.style.width = '100%';
-            }
+                // Normalize to 0-1
+                let progress = scrolled / totalScrollableDistance;
+                progress = Math.max(0, Math.min(1, progress));
 
-            // Activate steps
-            const stepSize = 1 / 5;
+                // Update progress bar
+                const percent = progress * 100;
 
-            howDots.forEach((dot, index) => {
-                const threshold = stepSize * index;
-                if (progress > threshold + 0.05 || (index === 0 && progress >= 0)) {
-                    dot.classList.add('active');
-                    howCards[index].classList.add('active');
+                if (window.innerWidth >= 900) {
+                    howProgress.style.width = `${percent}%`;
+                    howProgress.style.height = '100%';
                 } else {
-                    dot.classList.remove('active');
-                    howCards[index].classList.remove('active');
+                    howProgress.style.height = `${percent}%`;
+                    howProgress.style.width = '100%';
                 }
-            });
-        };
 
-        window.addEventListener('scroll', handleScroll);
-        handleScroll(); // Initial state
+                // Activate steps
+                const totalSteps = howCards.length;
+                const stepSize = 1 / totalSteps;
 
+                howDots.forEach((dot, index) => {
+                    const threshold = stepSize * index;
+                    if (progress > threshold + 0.05 || (index === 0 && progress >= 0)) {
+                        dot.classList.add('active');
+                        if (howCards[index]) howCards[index].classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                        if (howCards[index]) howCards[index].classList.remove('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            handleScroll();
+        });
         console.log('[Pages.js] How It Works scrollytelling initialized');
     };
 
     /* =========================================
        4. Blogs Horizontal Scroll
        ========================================= */
-    window.scrollBlogs = (direction) => {
-        const grid = document.querySelector('.vo-blogs-grid');
+    window.scrollBlogs = (direction, btn) => {
+        const section = btn ? btn.closest('.vo-blogs-section') : document.querySelector('.vo-blogs-section');
+        if (!section) return;
+        const grid = section.querySelector('.vo-blogs-grid');
         if (!grid) return;
         const scrollAmount = grid.offsetWidth * 0.9;
         grid.scrollBy({
@@ -250,33 +215,45 @@ document.addEventListener('DOMContentLoaded', () => {
        5. FAQ Accordion
        ========================================= */
     const initFAQ = () => {
-        const faqItems = document.querySelectorAll('.vo-faq-item');
+        const faqSections = document.querySelectorAll('.vo-faq-section');
 
-        faqItems.forEach(item => {
-            const question = item.querySelector('.vo-faq-question');
-            if (!question) return;
+        faqSections.forEach(section => {
+            if (section.dataset.initialized === 'true') return;
+            section.dataset.initialized = 'true';
 
-            question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
+            const faqItems = section.querySelectorAll('.vo-faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.vo-faq-question') || item.querySelector('summary');
+                if (!question) return;
 
-                // Close all FAQ items
-                faqItems.forEach(faq => faq.classList.remove('active'));
-
-                // Open clicked item if it wasn't active
-                if (!isActive) {
-                    item.classList.add('active');
-                }
+                question.addEventListener('click', (e) => {
+                    // If it's a details element, standard behavior applies unless we want one-at-a-time
+                    const isDetails = item.tagName === 'DETAILS';
+                    if (!isDetails) {
+                        const isActive = item.classList.contains('active');
+                        faqItems.forEach(faq => faq.classList.remove('active'));
+                        if (!isActive) item.classList.add('active');
+                    } else {
+                        // For details, close others
+                        if (!item.hasAttribute('open')) {
+                            faqItems.forEach(faq => {
+                                if (faq !== item) faq.removeAttribute('open');
+                            });
+                        }
+                    }
+                });
             });
         });
-
-        console.log('[Pages.js] FAQ accordion initialized');
+        console.log('[Pages.js] FAQ sections initialized');
     };
 
     /* =========================================
        6. Specializations Horizontal Scroll
        ========================================= */
-    window.scrollSpecs = (direction) => {
-        const grid = document.querySelector('.vo-specs-grid');
+    window.scrollSpecs = (direction, btn) => {
+        const section = btn ? btn.closest('.vo-specs-section') : document.querySelector('.vo-specs-section');
+        if (!section) return;
+        const grid = section.querySelector('.vo-specs-grid');
         if (!grid) return;
         const scrollAmount = grid.offsetWidth * 0.9;
         grid.scrollBy({
@@ -289,82 +266,78 @@ document.addEventListener('DOMContentLoaded', () => {
        7. Partners Logo Carousel
        ========================================= */
     const initPartnersCarousel = () => {
-        const track = document.getElementById('voPartnersTrackV3');
-        if (!track) return;
+        const tracks = document.querySelectorAll('.logo-track, #vtLogoTrack, #voPartnersTrackV3');
 
-        // Prevent double initialization
-        if (track.dataset.init === 'true') return;
-        track.dataset.init = 'true';
+        tracks.forEach(track => {
+            if (track.dataset.init === 'true') return;
+            track.dataset.init = 'true';
 
-        const originals = Array.from(track.children);
-        const originalWidth = track.scrollWidth;
-        const windowWidth = window.innerWidth;
+            const originals = Array.from(track.children);
+            if (originals.length === 0) return;
 
-        // Calculate sets needed to cover screen
-        const setsNeeded = Math.ceil(windowWidth / originalWidth) + 2;
+            const originalWidth = track.scrollWidth;
+            const windowWidth = window.innerWidth;
 
-        const fragment = document.createDocumentFragment();
+            // Calculate sets needed to cover screen
+            const setsNeeded = Math.ceil(windowWidth / (originalWidth || 1000)) + 2;
 
-        // Build base strip
-        for (let i = 0; i < setsNeeded; i++) {
-            originals.forEach(item => {
-                const clone = item.cloneNode(true);
-                clone.setAttribute('aria-hidden', 'true');
-                fragment.appendChild(clone);
-            });
-        }
+            const fragment = document.createDocumentFragment();
+            for (let i = 0; i < setsNeeded * 2; i++) { // Duplicate enough times
+                originals.forEach(item => {
+                    const clone = item.cloneNode(true);
+                    clone.setAttribute('aria-hidden', 'true');
+                    fragment.appendChild(clone);
+                });
+            }
 
-        track.innerHTML = '';
-        track.appendChild(fragment);
+            track.appendChild(fragment);
 
-        // Duplicate for CSS loop
-        const baseChildren = Array.from(track.children);
-        baseChildren.forEach(item => {
-            const clone = item.cloneNode(true);
-            clone.setAttribute('aria-hidden', 'true');
-            track.appendChild(clone);
+            // Calculate animation duration
+            const totalWidth = track.scrollWidth;
+            const isMobile = windowWidth < 768;
+            const velocity = isMobile ? 120 : 80;
+            const duration = (totalWidth / 3) / velocity; // Base duration on segment
+
+            track.style.animationDuration = `${duration}s`;
         });
-
-        // Calculate animation duration
-        const totalWidth = track.scrollWidth;
-        const widthToTravel = totalWidth / 2;
-        const isMobile = windowWidth < 768;
-        const velocity = isMobile ? 150 : 100;
-        const duration = widthToTravel / velocity;
-
-        track.style.animationDuration = `${duration}s`;
-
-        console.log(`[Pages.js] Partners carousel initialized (${duration.toFixed(2)}s duration)`);
+        console.log('[Pages.js] Partners carousels initialized');
     };
 
     /* =========================================
        8. Expanding Gallery (Mobile Interaction)
        ========================================= */
     const initExpandingGallery = () => {
-        const galleryCards = document.querySelectorAll('.vo-gallery-card');
-        if (galleryCards.length > 0 && window.innerWidth <= 900) {
-            galleryCards.forEach(card => {
-                const handleExpand = (e) => {
-                    if (e.target.classList.contains('vo-gallery-link')) return;
+        const gallerySections = document.querySelectorAll('.vo-help-section, .vo-expanding-gallery-section');
 
-                    const isExpanded = card.classList.contains('expanded');
-                    galleryCards.forEach(c => c.classList.remove('expanded'));
+        gallerySections.forEach(section => {
+            if (section.dataset.initialized === 'true') return;
+            section.dataset.initialized = 'true';
 
-                    if (!isExpanded) {
-                        card.classList.add('expanded');
-                        setTimeout(() => {
-                            card.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'nearest',
-                                inline: 'center'
-                            });
-                        }, 100);
-                    }
-                };
-                card.addEventListener('click', handleExpand);
-            });
-            console.log('[Pages.js] Expanding gallery initialized');
-        }
+            const galleryCards = section.querySelectorAll('.vo-gallery-card');
+            if (galleryCards.length > 0 && window.innerWidth <= 900) {
+                galleryCards.forEach(card => {
+                    const handleExpand = (e) => {
+                        if (e.target.classList.contains('vo-gallery-link')) return;
+
+                        const isExpanded = card.classList.contains('expanded');
+                        galleryCards.forEach(c => c.classList.remove('expanded'));
+
+                        if (!isExpanded) {
+                            card.classList.add('expanded');
+                            setTimeout(() => {
+                                card.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'nearest',
+                                    inline: 'center'
+                                });
+                            }, 100);
+                        }
+                    };
+                    card.addEventListener('click', handleExpand);
+                });
+            }
+        });
+        console.log('[Pages.js] Expanding galleries initialized');
     };
 
     /* =========================================
@@ -410,68 +383,82 @@ document.addEventListener('DOMContentLoaded', () => {
        10. Venting Banner Slideshow
        ========================================= */
     const initVentingBanner = () => {
-        const figmaSlides = document.querySelectorAll('.venting-banner-figma .blob-slide');
-        if (figmaSlides.length > 0) {
-            let cur = 0;
-            setInterval(() => {
-                figmaSlides[cur].classList.remove('active');
-                cur = (cur + 1) % figmaSlides.length;
-                figmaSlides[cur].classList.add('active');
-            }, 4000);
-            console.log('[Pages.js] Venting banner slideshow initialized');
-        }
+        const banners = document.querySelectorAll('.venting-banner-figma');
+
+        banners.forEach(banner => {
+            if (banner.dataset.initialized === 'true') return;
+            banner.dataset.initialized = 'true';
+
+            const figmaSlides = banner.querySelectorAll('.blob-slide');
+            if (figmaSlides.length > 0) {
+                let cur = 0;
+                setInterval(() => {
+                    figmaSlides[cur].classList.remove('active');
+                    cur = (cur + 1) % figmaSlides.length;
+                    figmaSlides[cur].classList.add('active');
+                }, 4000);
+            }
+        });
+        console.log('[Pages.js] Venting banners initialized');
     };
 
     /* =========================================
        11. Find Your Right Fit Interaction
        ========================================= */
     const initFitInteraction = () => {
-        const fitTrack = document.getElementById('voFitTrack');
-        const fitFeatured = document.getElementById('fitFeatured');
-        const prevBtn = document.querySelector('.vo-fit-arrow.prev');
-        const nextBtn = document.querySelector('.vo-fit-arrow.next');
+        const sections = document.querySelectorAll('.vo-fit-section');
 
-        if (fitTrack && fitFeatured) {
-            if (window.innerWidth <= 768) {
-                setTimeout(() => {
-                    fitFeatured.scrollIntoView({
-                        behavior: 'auto',
-                        block: 'nearest',
-                        inline: 'center'
+        sections.forEach(section => {
+            if (section.dataset.initialized === 'true') return;
+            section.dataset.initialized = 'true';
+
+            const fitTrack = section.querySelector('.vo-fit-track');
+            const fitFeatured = section.querySelector('.vo-fit-card.featured');
+            const prevBtn = section.querySelector('.vo-fit-arrow.prev');
+            const nextBtn = section.querySelector('.vo-fit-arrow.next');
+
+            if (fitTrack && fitFeatured) {
+                if (window.innerWidth <= 768) {
+                    setTimeout(() => {
+                        fitFeatured.scrollIntoView({
+                            behavior: 'auto',
+                            block: 'nearest',
+                            inline: 'center'
+                        });
+                    }, 300);
+                }
+
+                if (prevBtn && nextBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        fitTrack.scrollBy({ left: -300, behavior: 'smooth' });
                     });
-                }, 300);
-            }
-
-            if (prevBtn && nextBtn) {
-                prevBtn.addEventListener('click', () => {
-                    fitTrack.scrollBy({ left: -300, behavior: 'smooth' });
-                });
-                nextBtn.addEventListener('click', () => {
-                    fitTrack.scrollBy({ left: 300, behavior: 'smooth' });
-                });
-            }
-
-            if (window.innerWidth <= 1024) {
-                const fitCards = document.querySelectorAll('.vo-fit-card');
-                const observerOptions = {
-                    root: fitTrack,
-                    rootMargin: '0px -30% 0px -30%',
-                    threshold: 0.1
-                };
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            fitCards.forEach(c => c.classList.remove('scale-active'));
-                            entry.target.classList.add('scale-active');
-                        }
+                    nextBtn.addEventListener('click', () => {
+                        fitTrack.scrollBy({ left: 300, behavior: 'smooth' });
                     });
-                }, observerOptions);
+                }
 
-                fitCards.forEach(card => observer.observe(card));
+                if (window.innerWidth <= 1024) {
+                    const fitCards = section.querySelectorAll('.vo-fit-card');
+                    const observerOptions = {
+                        root: fitTrack,
+                        rootMargin: '0px -30% 0px -30%',
+                        threshold: 0.1
+                    };
+
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                fitCards.forEach(c => c.classList.remove('scale-active'));
+                                entry.target.classList.add('scale-active');
+                            }
+                        });
+                    }, observerOptions);
+
+                    fitCards.forEach(card => observer.observe(card));
+                }
             }
-            console.log('[Pages.js] Fit interaction initialized');
-        }
+        });
+        console.log('[Pages.js] Fit interactions initialized');
     };
 
     // Initialize all common components
@@ -484,6 +471,30 @@ document.addEventListener('DOMContentLoaded', () => {
     initStatsCounter();
     initVentingBanner();
     initFitInteraction();
+
+    /* =========================================
+       12. Navbar Dropdown Toggles (Migrated)
+       ========================================= */
+    const initDropdowns = () => {
+        const navSplitToggles = document.querySelectorAll('.nav-split-toggle');
+        navSplitToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const dropdown = toggle.closest('.nav-dropdown');
+                if (dropdown) dropdown.classList.toggle('active');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-dropdown')) {
+                document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+    };
+    initDropdowns();
 });
 
 
@@ -536,29 +547,35 @@ function toggleVoChallengesList() {
 
 // Infinite Carousel Logic
 function initInfiniteCarousel() {
-    const track = document.getElementById('carouselTrack');
-    if (track) {
+    const tracks = document.querySelectorAll('.carousel-track, #carouselTrack');
+    tracks.forEach(track => {
+        if (track.dataset.initialized === 'true') return;
+        track.dataset.initialized = 'true';
         // Clone content twice to ensure seamless scrolling
         const content = track.innerHTML;
         track.innerHTML = content + content + content;
-    }
+    });
 }
 
 // Testimonial Auto-Slider
 function initTestimonialSlider() {
-    const slides = document.querySelectorAll('.testimonial-slide');
-    let currentSlide = 0;
+    const sections = document.querySelectorAll('.testimonial-slider-section');
 
-    if (slides.length > 0) {
-        setInterval(() => {
-            // Remove active from current
-            slides[currentSlide].classList.remove('active');
-            // Next slide
-            currentSlide = (currentSlide + 1) % slides.length;
-            // Add active to next
-            slides[currentSlide].classList.add('active');
-        }, 5000); // 5 seconds
-    }
+    sections.forEach(section => {
+        if (section.dataset.initialized === 'true') return;
+        section.dataset.initialized = 'true';
+
+        const slides = section.querySelectorAll('.testimonial-slide');
+        let currentSlide = 0;
+
+        if (slides.length > 0) {
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, 5000);
+        }
+    });
 }
 
 // Initialize on load
@@ -574,8 +591,9 @@ document.addEventListener('DOMContentLoaded', () => {
 /* =========================================
    8. Services 'Why Choose Us' Carousel
    ========================================= */
-window.scrollServices = (direction) => {
-    const grid = document.querySelector('.services-grid-container');
+window.scrollServices = (direction, btn) => {
+    const section = btn ? btn.closest('.vo-services-hero, .services-grid-container') : document.querySelector('.services-grid-container');
+    const grid = section && section.classList.contains('services-grid-container') ? section : (section ? section.querySelector('.services-grid-container') : document.querySelector('.services-grid-container'));
     if (!grid) return;
     const scrollAmount = 340; // Approx card width + gap
     grid.scrollBy({
@@ -590,21 +608,32 @@ window.scrollServices = (direction) => {
 
 // Slideshow for venting banner (blob slides)
 function initTherapyHeroSlideshow() {
-    const figmaSlides = document.querySelectorAll('.venting-banner-figma .blob-slide');
-    if (figmaSlides.length > 0) {
-        let cur = 0;
-        setInterval(() => {
-            figmaSlides[cur].classList.remove('active');
-            cur = (cur + 1) % figmaSlides.length;
-            figmaSlides[cur].classList.add('active');
-        }, 4000);
-    }
+    const banners = document.querySelectorAll('.venting-banner-figma');
+
+    banners.forEach(banner => {
+        if (banner.dataset.initialized === 'true') return;
+        banner.dataset.initialized = 'true';
+
+        const figmaSlides = banner.querySelectorAll('.blob-slide');
+        if (figmaSlides.length > 0) {
+            let cur = 0;
+            setInterval(() => {
+                figmaSlides[cur].classList.remove('active');
+                cur = (cur + 1) % figmaSlides.length;
+                figmaSlides[cur].classList.add('active');
+            }, 4000);
+        }
+    });
 }
 
 // Expert Pointers Carousel Animation
 function initExpertPointersCarousel() {
-    const track = document.getElementById('expertPointersTrack');
-    if (track) {
+    const tracks = document.querySelectorAll('.expert-pointers-track, #expertPointersTrack');
+
+    tracks.forEach(track => {
+        if (track.dataset.initialized === 'true') return;
+        track.dataset.initialized = 'true';
+
         // Clone items for infinite loop
         const originals = Array.from(track.children);
         if (originals.length === 0) return;
@@ -633,62 +662,66 @@ function initExpertPointersCarousel() {
         // Pause on hover
         track.addEventListener('mouseenter', () => track.style.animationPlayState = 'paused');
         track.addEventListener('mouseleave', () => track.style.animationPlayState = 'running');
-    }
+    });
 }
 
 // Why People Love Ventoutt - Scroll-Triggered Behavior
 function initWhyLoveScrollytelling() {
-    const section = document.querySelector('.why-love-section');
-    if (!section) return;
+    const sections = document.querySelectorAll('.why-love-section');
 
-    let ticking = false;
-    let currentIndex = -1;
+    sections.forEach(section => {
+        if (section.dataset.scrollytellingInitialized === 'true') return;
+        section.dataset.scrollytellingInitialized = 'true';
 
-    const handleScroll = () => {
-        const points = section.querySelectorAll('.why-love-point');
-        const photos = section.querySelectorAll('.why-love-photo');
+        let currentIndex = -1;
 
-        if (points.length === 0) return;
+        const handleScroll = () => {
+            const points = section.querySelectorAll('.why-love-point');
+            const photos = section.querySelectorAll('.why-love-photo');
 
-        const rect = section.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
+            if (points.length === 0) return;
 
-        // Calculate scroll progress within the section
-        const scrollDistance = rect.height - viewportHeight;
-        let scrolled = -rect.top;
+            const rect = section.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
 
-        // Normalize to 0-1
-        let progress = scrolled / scrollDistance;
-        if (progress < 0) progress = 0;
-        if (progress > 1) progress = 1;
+            // Calculate scroll progress within the section
+            const scrollDistance = rect.height - viewportHeight;
+            let scrolled = -rect.top;
 
-        // Map to index
-        const totalPoints = points.length;
-        const index = Math.min(Math.floor(progress * totalPoints), totalPoints - 1);
+            // Normalize to 0-1
+            let progress = scrolled / (scrollDistance || 1);
+            if (progress < 0) progress = 0;
+            if (progress > 1) progress = 1;
 
-        // Only update if index changed
-        if (index !== currentIndex) {
-            currentIndex = index;
+            // Map to index
+            const totalPoints = points.length;
+            const index = Math.min(Math.floor(progress * totalPoints), totalPoints - 1);
 
-            points.forEach((point, i) => {
-                point.classList.toggle('active', i === index);
-            });
+            // Only update if index changed
+            if (index !== currentIndex) {
+                currentIndex = index;
 
-            photos.forEach((photo, i) => {
-                photo.classList.toggle('active', i === index);
-            });
-        }
-    };
+                points.forEach((point, i) => {
+                    point.classList.toggle('active', i === index);
+                });
 
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                handleScroll();
-                ticking = false;
-            });
-            ticking = true;
-        }
-    }, { passive: true });
+                photos.forEach((photo, i) => {
+                    photo.classList.toggle('active', i === index);
+                });
+            }
+        };
 
-    handleScroll(); // Run once on load
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        handleScroll(); // Run once on load
+    });
 }

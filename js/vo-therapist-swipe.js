@@ -172,9 +172,9 @@ class FoundersStack {
    2. MISSION SCROLLYTELLING CONTROLLER
    ========================================= */
 class MissionScroller {
-    constructor() {
-        this.container = document.querySelector('.mission-container');
-        this.grid = document.querySelector('.mission-grid');
+    constructor(container) {
+        this.container = container;
+        this.grid = container.querySelector('.mission-grid');
         this.ticking = false;
 
         if (this.container && this.grid) {
@@ -188,30 +188,25 @@ class MissionScroller {
                 window.requestAnimationFrame(() => this.update());
                 this.ticking = true;
             }
-        });
+        }, { passive: true });
     }
 
     update() {
+        if (!this.container || !this.grid) return;
         const viewportHeight = window.innerHeight;
-        const containerTop = this.container.offsetTop;
+        const rect = this.container.getBoundingClientRect();
+        const containerTop = rect.top + window.scrollY;
         const containerHeight = this.container.offsetHeight;
         const scrollY = window.scrollY;
-
-        // Calculate Progress
-        // Start: When container top hits bottom of viewport? 
-        // No, typically Scrollytelling starts when container hits TOP of viewport.
-        // Let's assume Sticky Top logic: Container is tall, Grid is sticky.
 
         const start = containerTop;
         const end = containerTop + containerHeight - viewportHeight;
 
         let progress = (scrollY - start) / (end - start);
-        progress = Math.min(Math.max(progress, 0), 1); // Clamp 0-1
+        progress = Math.min(Math.max(progress, 0), 1);
 
-        // Horizontal Move
-        // Move from 0 to -(TotalWidth - Viewport)
         const totalWidth = this.grid.scrollWidth;
-        const maxTranslate = totalWidth - window.innerWidth + 40; // 40px padding buffer
+        const maxTranslate = totalWidth - window.innerWidth + 40;
 
         if (maxTranslate > 0) {
             const translateX = progress * maxTranslate;
@@ -226,17 +221,20 @@ class MissionScroller {
    3. COMPARISON CAROUSEL (Legacy Support)
    ========================================= */
 function initComparisonCarousel() {
-    const compGrid = document.querySelector('.vo-comparison-grid');
-    if (!compGrid) return;
+    const containers = document.querySelectorAll('.vo-comparison-section, .vo-therapy-comparison');
 
-    // Center "Coaching" logic
-    const featuredCard = document.querySelector('.vo-comp-card.vo-featured');
-    if (featuredCard) {
-        setTimeout(() => {
-            const scrollLeft = featuredCard.offsetLeft - (compGrid.clientWidth - featuredCard.offsetWidth) / 2;
-            compGrid.scrollTo({ left: scrollLeft, behavior: 'auto' });
-        }, 100);
-    }
+    containers.forEach(container => {
+        const compGrid = container.querySelector('.vo-comparison-grid, .vo-therapy-comp-grid');
+        if (!compGrid) return;
+
+        const featuredCard = compGrid.querySelector('.vo-comp-card.vo-featured, .vo-fit-card.featured');
+        if (featuredCard) {
+            setTimeout(() => {
+                const scrollLeft = featuredCard.offsetLeft - (compGrid.clientWidth - featuredCard.offsetWidth) / 2;
+                compGrid.scrollTo({ left: scrollLeft, behavior: 'auto' });
+            }, 100);
+        }
+    });
 }
 
 
@@ -250,11 +248,18 @@ function initMobileFeatures() {
         // 1. Init Founders/Experts Swipe (Generic)
         const swipeContainers = document.querySelectorAll('.vo-swipe-container');
         swipeContainers.forEach(container => {
+            if (container.dataset.initialized === 'true') return;
+            container.dataset.initialized = 'true';
             new FoundersStack(container);
         });
 
         // 2. Init Mission Scroll
-        new MissionScroller();
+        const missionContainers = document.querySelectorAll('.mission-container');
+        missionContainers.forEach(container => {
+            if (container.dataset.initialized === 'true') return;
+            container.dataset.initialized = 'true';
+            new MissionScroller(container);
+        });
 
         // 3. Init Comparison Carousel
         initComparisonCarousel();

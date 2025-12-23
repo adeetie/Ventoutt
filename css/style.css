@@ -9751,7 +9751,9 @@ section.image-carousel-section .carousel-overlay {
     .detailed-services-section {
         display: none !important;
     }
-}/* Service Pages Styles - Based on Figma Design */
+}
+
+/* Service Pages Styles - Based on Figma Design */
 /* Header and Footer styles have been moved to main.css */
 
 /* ========== Hero Section ========== */
@@ -11384,13 +11386,6 @@ html {
 }
 
 /* === Inline Style Block 1 === */
-.expert-pointers-carousel-container {
-    width: 100%;
-    overflow: hidden;
-    margin-top: 30px;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-}
 
 .expert-pointers-track {
     display: flex;

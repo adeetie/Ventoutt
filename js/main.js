@@ -14,213 +14,82 @@ document.addEventListener('DOMContentLoaded', () => {
        Homepage Hero Slideshow
        ========================================= */
     const initHeroSlideshow = () => {
-        const slides = document.querySelectorAll('.vo-hero-slide');
-        if (slides.length === 0) return;
+        const sections = document.querySelectorAll('.vo-hero');
+        sections.forEach(section => {
+            if (section.dataset.initialized === 'true') return;
+            section.dataset.initialized = 'true';
 
-        let currentSlide = 0;
-        const slideInterval = 3000;
+            const slides = section.querySelectorAll('.vo-hero-slide');
+            if (slides.length === 0) return;
 
-        setInterval(() => {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }, slideInterval);
+            let currentSlide = 0;
+            const slideInterval = 3000;
 
-        console.log('[Main.js] Hero slideshow initialized');
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, slideInterval);
+        });
+        console.log('[Main.js] Hero slideshows initialized');
     };
 
     /* =========================================
        Dynamic Greeting (Typewriter Effect)
        ========================================= */
     const initDynamicGreeting = () => {
-        const greetingEl = document.getElementById('dynamic-hello');
-        if (!greetingEl) return;
+        const greetingEls = document.querySelectorAll('#dynamic-hello, .dynamic-greeting');
 
-        const hellos = [
-            'hello..',
-            'नमस्ते..',     // Hindi
-            'hola..',        // Spanish
-            'こんにちは..',   // Japanese
-            'bonjour..',    // French
-            'ciao..',       // Italian
-            'hallo..',      // German
-            'olá..'         // Portuguese
-        ];
+        greetingEls.forEach(greetingEl => {
+            if (greetingEl.dataset.initialized === 'true') return;
+            greetingEl.dataset.initialized = 'true';
 
-        let msgIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typeSpeed = 100;
+            const hellos = [
+                'hello..', 'नमस्ते..', 'hola..', 'こんにちは..',
+                'bonjour..', 'ciao..', 'hallo..', 'olá..'
+            ];
 
-        function type() {
-            const currentText = hellos[msgIndex];
+            let msgIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typeSpeed = 100;
 
-            if (isDeleting) {
-                greetingEl.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-                typeSpeed = 50;
-            } else {
-                greetingEl.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-                typeSpeed = 150;
+            function type() {
+                const currentText = hellos[msgIndex];
+
+                if (isDeleting) {
+                    greetingEl.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                    typeSpeed = 50;
+                } else {
+                    greetingEl.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
+                    typeSpeed = 150;
+                }
+
+                if (!isDeleting && charIndex === currentText.length) {
+                    isDeleting = true;
+                    typeSpeed = 2000;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    msgIndex = (msgIndex + 1) % hellos.length;
+                    typeSpeed = 500;
+                }
+
+                setTimeout(type, typeSpeed);
             }
 
-            if (!isDeleting && charIndex === currentText.length) {
-                isDeleting = true;
-                typeSpeed = 2000;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                msgIndex = (msgIndex + 1) % hellos.length;
-                typeSpeed = 500;
-            }
-
-            setTimeout(type, typeSpeed);
-        }
-
-        greetingEl.style.opacity = 1;
-        greetingEl.style.transition = 'none';
-        type();
-
-        console.log('[Main.js] Dynamic greeting initialized');
+            greetingEl.style.opacity = 1;
+            greetingEl.style.transition = 'none';
+            type();
+        });
+        console.log('[Main.js] Dynamic greetings initialized');
     };
 
     /* =========================================
        Expanding Gallery (Mobile Interaction)
        ========================================= */
-    const initExpandingGallery = () => {
-        const galleryCards = document.querySelectorAll('.vo-gallery-card');
-        if (galleryCards.length === 0 || window.innerWidth > 900) return;
-
-        galleryCards.forEach(card => {
-            const handleExpand = (e) => {
-                if (e.target.classList.contains('vo-gallery-link')) {
-                    return;
-                }
-
-                const isExpanded = card.classList.contains('expanded');
-                galleryCards.forEach(c => c.classList.remove('expanded'));
-
-                if (!isExpanded) {
-                    card.classList.add('expanded');
-                    setTimeout(() => {
-                        card.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'nearest',
-                            inline: 'center'
-                        });
-                    }, 100);
-                }
-            };
-
-            card.addEventListener('click', handleExpand);
-        });
-
-        console.log('[Main.js] Expanding gallery initialized');
-    };
-
-    /* =========================================
-       Stats Counter Animation (Odometer Effect)
-       ========================================= */
-    const initStatsCounter = () => {
-        const odometerElements = document.querySelectorAll('[data-odometer]');
-        if (odometerElements.length === 0) return;
-
-        const odometerObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const element = entry.target;
-
-                    if (element.dataset.started === 'true') return;
-                    element.dataset.started = 'true';
-
-                    let currentValue = parseFloat(element.textContent.replace(/[^0-9.]/g, '')) || 0;
-                    const incrementRate = parseFloat(element.getAttribute('data-increment')) || 1;
-                    const incrementPerFrame = incrementRate / 60;
-
-                    const updateDisplay = () => {
-                        currentValue += incrementPerFrame;
-                        element.textContent = Math.floor(currentValue).toLocaleString('en-US');
-
-                        if (incrementRate > 0) {
-                            requestAnimationFrame(updateDisplay);
-                        }
-                    };
-
-                    if (incrementRate > 0) {
-                        requestAnimationFrame(updateDisplay);
-                    }
-                }
-            });
-        }, { threshold: 0.5 });
-
-        odometerElements.forEach(el => odometerObserver.observe(el));
-
-        console.log('[Main.js] Stats counter initialized');
-    };
-
-    /* =========================================
-       Find Your Right Fit Interaction
-       ========================================= */
-    const initFindYourFit = () => {
-        const fitTrack = document.getElementById('voFitTrack');
-        const fitFeatured = document.getElementById('fitFeatured');
-        const prevBtn = document.querySelector('.vo-fit-arrow.prev');
-        const nextBtn = document.querySelector('.vo-fit-arrow.next');
-
-        if (!fitTrack || !fitFeatured) return;
-
-        // Initial center on mobile
-        if (window.innerWidth <= 768) {
-            setTimeout(() => {
-                fitFeatured.scrollIntoView({
-                    behavior: 'auto',
-                    block: 'nearest',
-                    inline: 'center'
-                });
-            }, 300);
-        }
-
-        // Arrow navigation
-        if (prevBtn && nextBtn) {
-            prevBtn.addEventListener('click', () => {
-                fitTrack.scrollBy({
-                    left: -300,
-                    behavior: 'smooth'
-                });
-            });
-
-            nextBtn.addEventListener('click', () => {
-                fitTrack.scrollBy({
-                    left: 300,
-                    behavior: 'smooth'
-                });
-            });
-        }
-
-        // Dynamic mobile scaling
-        if (window.innerWidth <= 1024) {
-            const fitCards = document.querySelectorAll('.vo-fit-card');
-
-            const observerOptions = {
-                root: fitTrack,
-                rootMargin: '0px -30% 0px -30%',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        fitCards.forEach(c => c.classList.remove('scale-active'));
-                        entry.target.classList.add('scale-active');
-                    }
-                });
-            }, observerOptions);
-
-            fitCards.forEach(card => observer.observe(card));
-        }
-
-        console.log('[Main.js] Find Your Fit initialized');
-    };
+    /* Redundant functions migrated to pages.js: initExpandingGallery, initStatsCounter, initFindYourFit */
 
     /* =========================================
        Expert Slideshow (Blob Fade)
@@ -260,44 +129,38 @@ document.addEventListener('DOMContentLoaded', () => {
        Why People Love Ventoutt (Tab Interaction)
        ========================================= */
     const initWhyPeopleLove = () => {
-        const points = document.querySelectorAll('.why-love-point');
-        const images = document.querySelectorAll('.why-love-photo');
+        const sections = document.querySelectorAll('.why-love-section');
 
-        if (points.length === 0 || images.length === 0) return;
+        sections.forEach(section => {
+            if (section.dataset.initialized === 'true') return;
+            section.dataset.initialized = 'true';
 
-        points.forEach((point, index) => {
-            point.addEventListener('mouseenter', () => { // Hover for desktop
-                // Remove active class from all
-                points.forEach(p => p.classList.remove('active'));
-                images.forEach(img => img.classList.remove('active'));
+            const points = section.querySelectorAll('.why-love-point');
+            const images = section.querySelectorAll('.why-love-photo');
 
-                // Add to current
-                point.classList.add('active');
-                if (images[index]) {
-                    images[index].classList.add('active');
-                }
-            });
+            if (points.length === 0 || images.length === 0) return;
 
-            point.addEventListener('click', () => { // Click for mobile
-                points.forEach(p => p.classList.remove('active'));
-                images.forEach(img => img.classList.remove('active'));
+            points.forEach((point, index) => {
+                const activate = () => {
+                    points.forEach(p => p.classList.remove('active'));
+                    images.forEach(img => img.classList.remove('active'));
 
-                point.classList.add('active');
-                if (images[index]) {
-                    images[index].classList.add('active');
-                }
+                    point.classList.add('active');
+                    if (images[index]) {
+                        images[index].classList.add('active');
+                    }
+                };
+
+                point.addEventListener('mouseenter', activate);
+                point.addEventListener('click', activate);
             });
         });
-
-        console.log('[Main.js] Why People Love interaction initialized');
+        console.log('[Main.js] Why People Love interactions initialized');
     };
 
     // Initialize all homepage features
     initHeroSlideshow();
     initDynamicGreeting();
-    initExpandingGallery();
-    initStatsCounter();
-    initFindYourFit();
     initExpertBlobFade();
     initFooterCheck();
     initWhyPeopleLove();
@@ -306,13 +169,16 @@ document.addEventListener('DOMContentLoaded', () => {
 /* =========================================
    Common Challenges Toggle Global Function
    ========================================= */
-window.toggleVoChallengesList = function () {
-    const expanded = document.querySelector('.vo-challenges-expanded');
-    const initial = document.querySelector('.vo-challenges-initial');
-    const toggleText = document.getElementById('voToggleText');
-    const btn = document.getElementById('voToggleChallenges');
+window.toggleVoChallengesList = function (btn) {
+    const section = btn ? btn.closest('.vo-specs-section') : document.querySelector('.vo-specs-section');
+    if (!section) return;
 
-    if (!expanded || !initial || !toggleText || !btn) {
+    const expanded = section.querySelector('.vo-challenges-expanded');
+    const initial = section.querySelector('.vo-challenges-list:not(.vo-challenges-expanded)');
+    const toggleText = section.querySelector('.vo-see-more-btn span, #voToggleText');
+    const toggleBtn = btn || section.querySelector('.vo-see-more-btn');
+
+    if (!expanded || !initial || !toggleText || !toggleBtn) {
         console.error('VO: Toggle elements not found');
         return;
     }
@@ -321,11 +187,11 @@ window.toggleVoChallengesList = function () {
         expanded.style.display = 'grid';
         initial.style.display = 'none';
         toggleText.textContent = 'See Less';
-        btn.classList.add('expanded');
+        toggleBtn.classList.add('expanded');
     } else {
         expanded.style.display = 'none';
         initial.style.display = 'grid';
         toggleText.textContent = 'See More';
-        btn.classList.remove('expanded');
+        toggleBtn.classList.remove('expanded');
     }
 };
